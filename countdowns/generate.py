@@ -474,7 +474,7 @@ def build_gallery():
     out += '    <div class="eyebrow">An archive · 2012 – 2025</div>\n'
     out += '    <h1 class="title">Countdowns</h1>\n'
     out += ('    <p class="lede">A collection of TV-show countdown sites I '
-            'handcrafted between 2012 and 2025. Every illustration, typeface and line of '
+            'handcrafted between 2012 and 2025. Every illustration and line of '
             "code was made by hand, and they're all still ticking.</p>\n")
     out += '    <nav class="shownav" aria-label="Shows">\n'
     for s in SHOWS:
