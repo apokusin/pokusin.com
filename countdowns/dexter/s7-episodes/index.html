@@ -18,7 +18,7 @@
       <div class="tl-stage"><iframe id="tl-frame" scrolling="no" title="Episode preview"></iframe></div>
       <div class="tl-cap"><span class="n" id="tl-n">Episode 1</span><span class="t" id="tl-t">Are You…?</span><span class="d" id="tl-d">Sep 30, 2012</span></div>
       <div class="tl-bar">
-        <button class="tl-play" id="tl-play" aria-label="Play or pause">❚❚</button>
+        <button class="tl-play" id="tl-play" data-state="playing" aria-label="Pause">❚❚</button>
         <div class="tl-track"><ol class="tl-ticks">
           <li><button class="tl-tick" data-i="0" aria-current="false" aria-label="Episode 1: Are You…?"><span class="dot"></span><span class="en">1</span></button></li>
           <li><button class="tl-tick" data-i="1" aria-current="false" aria-label="Episode 2: Sunshine and Frosty Swirl"><span class="dot"></span><span class="en">2</span></button></li>
@@ -32,7 +32,7 @@
     </div>
     <footer class="foot">
       <span>Artur Pokusin</span>
-      <span>7 shows · 34 versions · hosted on pokusin.com</span>
+      <span>7 shows · 34 versions · 2012 – 2025</span>
     </footer>
   </div>
 <script>(function(){
@@ -46,8 +46,8 @@
     ticks.forEach(function(tk,x){tk.setAttribute('aria-current',x===i?'true':'false');});}
   f.addEventListener('load',function(){f.style.opacity=1;});
   function go(n){i=(n%eps.length+eps.length)%eps.length;render();}
-  function play(){playing=true;P.innerHTML='❚❚';P.setAttribute('aria-label','Pause');clearInterval(timer);timer=setInterval(function(){go(i+1);},INT);}
-  function pause(){playing=false;P.innerHTML='▶';P.setAttribute('aria-label','Play');clearInterval(timer);}
+  function play(){playing=true;P.innerHTML='❚❚';P.setAttribute('data-state','playing');P.setAttribute('aria-label','Pause');clearInterval(timer);timer=setInterval(function(){go(i+1);},INT);}
+  function pause(){playing=false;P.innerHTML='▶';P.setAttribute('data-state','paused');P.setAttribute('aria-label','Play');clearInterval(timer);}
   P.addEventListener('click',function(){playing?pause():play();});
   ticks.forEach(function(tk){tk.addEventListener('click',function(){pause();go(+tk.getAttribute('data-i'));});});
   go(0);
