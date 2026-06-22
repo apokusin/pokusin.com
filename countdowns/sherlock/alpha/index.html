@@ -1,0 +1,72 @@
+<html>
+<head>
+  <title>Sherlock GIF Demo</title>
+</head>
+
+<!-- archived on pokusin.com; original analytics/social widgets removed; countdown re-pointed to run live -->
+
+<link rel='stylesheet' href='assets/css/normalize.css'>
+<link rel='stylesheet' href='assets/css/style.css'>
+
+<script src='assets/js/jquery-1.8.3.min.js'></script>
+<script src='assets/js/jquery.countdown.min.js'></script>
+<script src='assets/js/keyboard.js'></script>
+<script src='assets/js/app.js'></script>
+
+<body>
+
+  <div class="nav_selector">
+    <a href="#" data-href="hands" class="active">Hands</a>
+    <a href="#" data-href="violin">Violin</a>
+    <a href="#" data-href="title" data-noff>Title</a>
+    <a href="#" data-href="decision" data-noff>Decision</a>
+    <i href="#" class="icon-help"></i>
+  </div>
+
+  <a href="http://www.bbc.co.uk/programmes/b018ttws" class="bbc_logo" target="_blank">
+    BBC One: Sherlock
+  </a>
+
+  <a href="http://pokusin.com" class="pokusin_link" target="_blank">
+    pokusin.com
+  </a>
+
+  <div class="countdown_wrap">
+    <div class="countdown" id="countdown">
+      <div class="counter days">
+        <div class="amount">{dn}</div>
+        <div class="label">{dl}</div>
+      </div>
+      <div class="counter hours">
+        <div class="amount">{hn}</div>
+        <div class="label">{hl}</div>
+      </div>
+      <div class="counter minutes">
+        <div class="amount">{mn}</div>
+        <div class="label">{ml}</div>
+      </div>
+      <div class="counter seconds">
+        <div class="amount">{sn}</div>
+        <div class="label">{sl}</div>
+      </div>
+    </div>
+    <a href="#" class="main_nav left icon-left-open-big"></a>
+    <a href="#" class="main_nav right icon-right-open-big  "></a>
+  </div>
+
+  <div class="gif"></div>
+  <div class="modal_wrap help_modal">
+    <div class="overlay"></div>
+    <div class="modal">
+      <h2>Help</h2>
+
+      <p>Use the <code>left</code> and <code>right</code> arrow keys on your keyboard to switch slides.
+      <p>VIM users, use  the <code>h</code> and <code>l</code> keys.</p>
+      <p>Press <code>?</code> to trigger this message easily, or <code>escape</code> to hide it!</p>
+    </div>
+
+  </div>
+
+
+</body>
+</html>

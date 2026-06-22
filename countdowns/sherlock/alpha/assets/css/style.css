@@ -1,0 +1,273 @@
+@import url(fontello.css);
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body {
+  background: black;
+  font-family: sans-serif;
+  font-size: 14px; }
+
+.gif {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 20%;
+  height: 20%;
+  background-color: black;
+  background-image: url(../bg_gifs/hands.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  -webkit-filter: blur(1px) grayscale(0.2);
+  -webkit-transform-origin: top left;
+  -moz-transform-origin: top left;
+  -ms-transform-origin: top left;
+  -o-transform-origin: top left;
+  transform-origin: top left;
+  -webkit-transform: scale(5);
+  -moz-transform: scale(5);
+  -ms-transform: scale(5);
+  -o-transform: scale(5);
+  transform: scale(5);
+  z-index: -1;
+  opacity: 0.6; }
+
+.countdown_wrap {
+  z-index: 15;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 50%;
+  margin-top: -60px;
+  height: 100px;
+  color: white;
+  text-align: center; }
+  .countdown_wrap .main_nav {
+    position: absolute;
+    top: 50%;
+    font-size: 40px;
+    height: 40px;
+    margin-top: -30px;
+    color: rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    font-weight: 100;
+    z-index: 21; }
+    .countdown_wrap .main_nav:hover, .countdown_wrap .main_nav:focus {
+      color: white; }
+    .countdown_wrap .main_nav.left {
+      left: .1em; }
+    .countdown_wrap .main_nav.right {
+      right: .1em; }
+
+.countdown {
+  width: 900px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 900px) {
+  body {
+    font-size: 12px; }
+
+  .countdown {
+    width: 100%; } }
+.counter {
+  float: left;
+  text-align: center;
+  width: 25%; }
+
+.amount {
+  font-weight: bold;
+  font-size: 4em;
+  margin-bottom: 0.2em; }
+
+.label {
+  font-size: 1.5em;
+  font-weight: 100; }
+
+.bbc_logo {
+  text-indent: -150px;
+  width: 150px;
+  height: 75px;
+  overflow: hidden;
+  background: transparent url(../bbc_logo.png) center center no-repeat;
+  background-size: 100% auto;
+  z-index: 15;
+  position: absolute;
+  right: 1.5em;
+  bottom: 0;
+  cursor: pointer; }
+
+.pokusin_link {
+  position: absolute;
+  bottom: 1.5em;
+  left: 1.5em;
+  z-index: 15;
+  color: white;
+  text-decoration: none;
+  font-weight: 100;
+  font-size: 1em; }
+
+.nav_selector {
+  position: absolute;
+  bottom: 1em;
+  left: 0;
+  right: 0;
+  width: 250px;
+  height: 25px;
+  margin: 0 auto;
+  border-radius: 5px;
+  text-align: center;
+  background: transparent; }
+  .nav_selector .icon-help {
+    color: rgba(255, 255, 255, 0.5);
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    line-height: 15px;
+    margin-left: 5px;
+    text-indent: 0;
+    overflow: hidden;
+    display: inline-block;
+    border-radius: 50%;
+    margin-top: 7px;
+    outline: 0;
+    cursor: pointer; }
+    .nav_selector .icon-help:hover, .nav_selector .icon-help:focus {
+      color: white; }
+  .nav_selector > a {
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    text-indent: -100px;
+    overflow: hidden;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    margin-top: 7px;
+    outline: 0; }
+    .nav_selector > a:hover, .nav_selector > a:focus {
+      background-color: rgba(255, 255, 255, 0.75); }
+    .nav_selector > a:first-child {
+      margin-left: 0; }
+    .nav_selector > a.active {
+      background: white; }
+
+body.unsupported .browser_indicator {
+  display: block; }
+body.unsupported .main_nav, body.unsupported .nav_selector {
+  display: none; }
+
+.browser_indicator {
+  position: absolute;
+  bottom: 1.5em;
+  text-decoration: none;
+  left: 0;
+  right: 0;
+  text-align: center;
+  display: none; }
+  .browser_indicator a {
+    color: white;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1em;
+    width: auto;
+    display: inline-block;
+    border-radius: 10px;
+    border: 2px solid white; }
+
+.modal_wrap {
+  display: none; }
+  .modal_wrap .overlay {
+    background: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0);
+    background-image: -webkit-gradient(radial, center center, 0, center center, 460, color-stop(10%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.6)));
+    background-image: -webkit-radial-gradient(rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.6));
+    background-image: radial-gradient(  rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.6));
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20; }
+  .modal_wrap .modal {
+    width: 275px;
+    height: auto;
+    min-height: 100px;
+    background: white;
+    z-index: 21;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -50px;
+    margin-left: -125px;
+    border-radius: 5px;
+    padding: 1em 1.5em;
+    color: #4b525b;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+    .modal_wrap .modal h2 {
+      font-weight: bold;
+      line-height: 1.5em;
+      margin-bottom: 0.5em;
+      font-size: 1.1em; }
+    .modal_wrap .modal p {
+      line-height: 1.5em;
+      margin-bottom: 1em;
+      color: #4b525b;
+      font-size: 0.9em; }
+      .modal_wrap .modal p code {
+        font-family: monospace;
+        background-color: rgba(75, 82, 91, 0.05);
+        padding: 0 4px;
+        border-radius: 4px; }
+    .modal_wrap .modal a {
+      font-size: 0.9em;
+      text-decoration: none;
+      color: #5F7989;
+      text-decoration: underline; }
+      .modal_wrap .modal a:hover, .modal_wrap .modal a:focus {
+        text-decoration: none; }
+
+@-webkit-keyframes clockSlide {
+  0% {
+    opacity: 0; }
+
+  55% {
+    -webkit-transform: translateY(0%);
+    opacity: 1; }
+
+  100% {
+    opacity: 0; } }
+
+@-moz-keyframes clockSlide {
+  0% {
+    opacity: 0; }
+
+  55% {
+    -moz-transform: translateY(0%);
+    opacity: 1; }
+
+  100% {
+    opacity: 0; } }
+
+@-o-keyframes clockSlide {
+  0% {
+    opacity: 0; }
+
+  55% {
+    -o-transform: translateY(0%);
+    opacity: 1; }
+
+  100% {
+    opacity: 0; } }
+
+@keyframes clockSlide {
+  0% {
+    opacity: 0; }
+
+  55% {
+    transform: translateY(0%);
+    opacity: 1; }
+
+  100% {
+    opacity: 0; } }

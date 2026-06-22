@@ -1,0 +1,126 @@
+@import url(reset.css);
+.seo { height: 0; position: absolute; top: -400px; left: -1000px; text-indent: -999999px; }
+
+#world { background: transparent; position: fixed; }
+
+body { background: #09090a url("../img/dark_leather.png") top left repeat; font-family: "trajan-pro-3-1", "trajan-pro-3-2", serif; font-size: 16px; -webkit-transition: all 100ms ease-in-out; -moz-transition: all 100ms ease-in-out; -ms-transition: all 100ms ease-in-out; -o-transition: all 100ms ease-in-out; transition: all 100ms ease-in-out; margin: 0; padding: 0; width: 100%; height: 100%; }
+body a, body a:visited { color: #aab; }
+body a:hover, body a:focus { text-decoration: none; }
+body.default .ct_sect { display: inline-block; width: 180px; font-size: 4.5em; text-align: center; margin-top: 0.7em; color: #ccd; -webkit-transition: all 100ms ease-in-out; -moz-transition: all 100ms ease-in-out; -ms-transition: all 100ms ease-in-out; -o-transition: all 100ms ease-in-out; transition: all 100ms ease-in-out; }
+body.default .ct_sect .label { font-size: 0.22em; margin-top: 0.1em; }
+body.default .house_main { margin: 0; height: 292px; width: 100%; overflow: hidden; border-radius: 0; margin: 0 auto; margin-top: 2.5em; background: transparent url("../img/main_got_logo2.png") center center no-repeat; -webkit-transition: all 300ms ease-in-out; -moz-transition: all 300ms ease-in-out; -ms-transition: all 300ms ease-in-out; -o-transition: all 300ms ease-in-out; transition: all 300ms ease-in-out; }
+@media only screen and (max-width: 570px) { body.default .house_main { background-size: 100%; height: 150px; } }
+body.default .house_select { opacity: 1; -webkit-transition: all 100ms ease-in-out; -moz-transition: all 100ms ease-in-out; -ms-transition: all 100ms ease-in-out; -o-transition: all 100ms ease-in-out; transition: all 100ms ease-in-out; }
+body.default .house_select li.remove { display: none; }
+
+.social_links { opacity: 0.4; bottom: 1.5em; left: 1.2em; position: absolute; z-index: 999999; }
+@media only screen and (max-width: 788px) and (min-width: 570px) { .social_links { bottom: 90px; } }
+@media only screen and (max-width: 570px) { .social_links { position: relative; text-align: center; margin: 0 auto; margin-top: 1em; width: 90% !important; }
+  .social_links .fb-like { position: relative; left: -10px; } }
+.social_links:hover, .social_links:focus { opacity: 1; -webkit-transition: all 300ms ease-in-out; -moz-transition: all 300ms ease-in-out; -ms-transition: all 300ms ease-in-out; -o-transition: all 300ms ease-in-out; transition: all 300ms ease-in-out; }
+
+.tl, .tr, .br, .bl { position: fixed; z-index: 5; overflow: hidden; opacity: 0.5; }
+@media only screen and (max-width: 500px) { .tl, .tr, .br, .bl { width: 100% !important; } }
+
+.tl { background: transparent url("../img/top_left.png") top left no-repeat; top: 0; left: 0; width: 549px; height: 319px; }
+
+.tr { background: transparent url("../img/top_right.png") top right no-repeat; top: 0; right: 0; width: 498px; height: 375px; }
+
+.bl { background: transparent url("../img/bottom_left.png") bottom left no-repeat; bottom: 0; left: 0; width: 521px; height: 483px; }
+
+.br { background: transparent url("../img/bottom_right.png") bottom right no-repeat; bottom: 0; right: 0; width: 516px; height: 312px; }
+
+.countdown_wrap { margin: 0 auto; text-align: center; width: 100% !important; padding: 0; margin: 0; }
+
+.ct_sect { display: inline-block; width: 150px; font-size: 4em; text-align: center; margin-top: 1em; }
+@media only screen and (max-width: 500px) { .ct_sect { margin-top: 0.2em !important; } }
+.ct_sect .label { display: block; font-size: .3em; opacity: 0.8; }
+
+.house_select { display: block; text-align: center; margin: 0 auto; position: absolute; bottom: 10px; left: 0; right: 0; opacity: 0.3; z-index: 999; -webkit-transition: all 100ms ease-in-out; -moz-transition: all 100ms ease-in-out; -ms-transition: all 100ms ease-in-out; -o-transition: all 100ms ease-in-out; transition: all 100ms ease-in-out; }
+@media only screen and (max-width: 600px) { .house_select { position: relative; width: 90%; bottom: 0; margin-top: 3em; margin-bottom: 3em; } }
+.house_select:hover, .house_select:focus { opacity: 1; }
+.house_select li { display: inline-block; margin-bottom: 1em; }
+.house_select li a { width: 48px; margin: 0 5px; height: 48px; background: transparent; border-radius: 50%; text-indent: -9999px; display: inline-block; opacity: 0.5; }
+.house_select li a:hover, .house_select li a:focus { opacity: 1; -webkit-transition: all 50ms ease-in; -moz-transition: all 50ms ease-in; -ms-transition: all 50ms ease-in; -o-transition: all 50ms ease-in; transition: all 50ms ease-in; }
+.house_select li a.baratheon { background: url("../img/houses/baratheon.png") center center no-repeat; background-size: 48px 48px; }
+.house_select li a.stark { background: url("../img/houses/stark.png") center center no-repeat; background-size: 48px 48px; }
+.house_select li a.lannister { background: url("../img/houses/lannister.png") center center no-repeat; background-size: 48px 48px; }
+.house_select li a.targaryen { background: url("../img/houses/targaryen.png") center center no-repeat; background-size: 48px 48px; }
+.house_select li a.tully { background: url("../img/houses/tully.png") center center no-repeat; background-size: 48px 48px; }
+.house_select li a.arryn { background: url("../img/houses/arryn.png") center center no-repeat; background-size: 48px 48px; }
+.house_select li a.frey { background: url("../img/houses/frey.png") center center no-repeat; background-size: 48px 48px; }
+.house_select li a.tyrell { background: url("../img/houses/tyrell.png") center center no-repeat; background-size: 48px 48px; }
+.house_select li a.greyjoy { background: url("../img/houses/greyjoy.png") center center no-repeat; background-size: 48px 48px; }
+.house_select li a.default { background: url("../img/houses/remove.png") center center no-repeat; background-size: 48px 48px; }
+.house_select li a.gryffindor { background: url("../img/houses/gryffindor.png") center center no-repeat; background-size: 48px 48px; }
+.house_select li a.slytherin { background: url("../img/houses/slytherin.png") center center no-repeat; background-size: 48px 48px; }
+.house_select li a.hufflepuff { background: url("../img/houses/hufflepuff.png") center center no-repeat; background-size: 48px 48px; }
+.house_select li a.ravenclaw { background: url("../img/houses/ravenclaw.png") center center no-repeat; background-size: 48px 48px; }
+
+.house_main { border-radius: 50%; width: 172px; height: 172px; text-align: center; margin: 0 auto; margin-top: 50px; -webkit-transition: all 100ms ease-in-out; -moz-transition: all 100ms ease-in-out; -ms-transition: all 100ms ease-in-out; -o-transition: all 100ms ease-in-out; transition: all 100ms ease-in-out; }
+
+.baratheon { background: #e3bb31 url("../img/bg_houses/baratheon.png") top left repeat; color: #1f1a1f; }
+.baratheon .house_main { background: url("../img/houses/baratheon.png") center center no-repeat; }
+.baratheon a, .baratheon a:visited { color: #1f1a1f; }
+
+.stark { background: #ebe8de url("../img/bg_houses/stark.png") top left repeat; color: #020202; }
+.stark .house_main { background: url("../img/houses/stark.png") center center no-repeat; }
+.stark a, .stark a:visited { color: #020202; }
+.stark .label { color: #7d8d66; opacity: 1; }
+
+.lannister { background: #70201f url("../img/bg_houses/lannister.png") top left repeat; color: #cebe94; }
+.lannister .house_main { background: url("../img/houses/lannister.png") center center no-repeat; }
+.lannister a, .lannister a:visited { color: #cebe94; }
+
+.tully { background: #1e1e35 url("../img/bg_houses/tully.png") top left repeat; color: #c2b68d; }
+.tully .label { color: #9f4241; opacity: 1; }
+.tully .house_main { background: url("../img/houses/tully.png") center center no-repeat; }
+.tully a, .tully a:visited { color: #c2b68d; }
+
+.targaryen { background: #060601 url("../img/bg_houses/targaryen.png") top left repeat; color: #972721; }
+.targaryen .label { color: #cfc7b8; }
+.targaryen .house_main { background: url("../img/houses/targaryen.png") center center no-repeat; }
+.targaryen a, .targaryen a:visited { color: #972721; }
+
+.arryn { background: #212340 url("../img/bg_houses/arryn.png") top left repeat; color: #cdcfb0; }
+.arryn .house_main { background: url("../img/houses/arryn.png") center center no-repeat; }
+.arryn a, .arryn a:visited { color: #cdcfb0; }
+
+.frey { background: #1e1c3c url("../img/bg_houses/frey.png") top left repeat; color: #cfc7ac; }
+.frey .house_main { background: url("../img/houses/frey.png") center center no-repeat; }
+.frey a, .frey a:visited { color: #cfc7ac; }
+
+.tyrell { background: #404a34 url("../img/bg_houses/tyrell.png") top left repeat; color: #d6af35; }
+.tyrell .label { color: #d4be89; }
+.tyrell .house_main { background: url("../img/houses/tyrell.png") center center no-repeat; }
+.tyrell a, .tyrell a:visited { color: #d6af35; }
+
+.greyjoy { background: #0b0a07 url("../img/bg_houses/greyjoy.png") top left repeat; color: #debd4e; }
+.greyjoy .house_main { background: url("../img/houses/greyjoy.png") center center no-repeat; }
+.greyjoy a, .greyjoy a:visited { color: #debd4e; }
+
+.gryffindor { color: #d6af35; }
+.gryffindor .label { color: #e5291f; }
+.gryffindor .house_main { background: transparent url("../img/houses/gryffindor.png") center center no-repeat; border-radius: 0; }
+.gryffindor a, .gryffindor a:visited { color: #d6af35; }
+
+.slytherin { color: #2fb040; }
+.slytherin .label { color: #dad8d9; }
+.slytherin .house_main { background: transparent url("../img/houses/slytherin.png") center center no-repeat; border-radius: 0; }
+.slytherin a, .slytherin a:visited { color: #2fb040; }
+
+.hufflepuff { color: #d6af35; }
+.hufflepuff .label { color: #afaea9; }
+.hufflepuff .house_main { background: transparent url("../img/houses/hufflepuff.png") center center no-repeat; border-radius: 0; }
+.hufflepuff a, .hufflepuff a:visited { color: #d6af35; }
+
+.ravenclaw { color: #0a9fcc; }
+.ravenclaw .label { color: #dac297; }
+.ravenclaw .house_main { background: transparent url("../img/houses/ravenclaw.png") center center no-repeat; border-radius: 0; }
+.ravenclaw a, .ravenclaw a:visited { color: #0a9fcc; }
+
+#player { position: fixed; z-index: 999; top: 20px; right: 20px; -webkit-transition: all 0.1s ease-in; -moz-transition: all 0.1s ease-in; -ms-transition: all 0.1s ease-in; -o-transition: all 0.1s ease-in; transition: all 0.1s ease-in; opacity: .6; cursor: pointer; }
+
+#player:hover { opacity: 1; }
+
+#player svg[role="playing"] { display: none; }

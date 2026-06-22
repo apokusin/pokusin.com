@@ -1,0 +1,19 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  Artur Pokusin -- Creator --  @apokusin
+
+
+
+# TECHNOLOGY COLOPHON
+
+  Jekyll static site generator
+  Yeoman
+  Grunt
+  Bower
+  Sass
+  Coffeescript
+  HTML5 ★ Boilerplate
+

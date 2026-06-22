@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Game of Thrones: Season 3 Countdown</title/>
+  <link rel="stylesheet" href="css/main.css" type="text/css">
+</head>
+<body><!-- archived on pokusin.com; original analytics/social widgets removed; countdown re-pointed to run live -->
+  <header>
+    <h2>Game of Thrones</h2>
+    <h3>Season 3 Countdown</h3>
+  </header>
+  <div class="got-wrapper">
+    <div id="got-countdown">
+      Enable Javascript, mofo
+    </div><!-- #got-countdown -->
+  </div><!-- .got-wrapper -->
+  <!-- Tyrion is a badass -->
+  <!-- Le Scripts -->
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.countdown.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      var airDate = new Date(Date.now()+2160e6);
+      $('#got-countdown').countdown({until: airDate, format: 'ODHMS', timezone: -8});
+    });
+  </script>
+</body>
+</html>

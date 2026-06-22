@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dexter · Season 7, Episode by Episode · Archive</title>
+  <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin between 2012 and 2025, preserved and ticking live.">
+  <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=db80bc14">
+  <style>.wrap{max-width:1000px}</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="crumb"><a href="/">pokusin.com</a><span class="sep">/</span><a href="/countdowns/">countdowns</a><span class="sep">/</span><a href="/countdowns/dexter/">Dexter</a><span class="sep">/</span>Season 7 episode by episode</div>
+    <h1 class="title">🩸 Season 7, Episode by Episode</h1>
+    <p class="lede">Through the autumn of 2012 the Dexter countdown was re-skinned for each new episode in turn. Press play, or <strong>scrub the timeline</strong> to watch the subtle differences between them.</p>
+    <div class="tl">
+      <div class="tl-stage"><iframe id="tl-frame" scrolling="no" title="Episode preview"></iframe></div>
+      <div class="tl-cap"><span class="n" id="tl-n">Episode 1</span><span class="t" id="tl-t">Are You…?</span><span class="d" id="tl-d">Sep 30, 2012</span></div>
+      <div class="tl-bar">
+        <button class="tl-play" id="tl-play" data-state="playing" aria-label="Pause">❚❚</button>
+        <div class="tl-track"><ol class="tl-ticks">
+          <li><button class="tl-tick" data-i="0" aria-current="false" aria-label="Episode 1: Are You…?"><span class="dot"></span><span class="en">1</span></button></li>
+          <li><button class="tl-tick" data-i="1" aria-current="false" aria-label="Episode 2: Sunshine and Frosty Swirl"><span class="dot"></span><span class="en">2</span></button></li>
+          <li><button class="tl-tick" data-i="2" aria-current="false" aria-label="Episode 3: Buck the System"><span class="dot"></span><span class="en">3</span></button></li>
+          <li><button class="tl-tick" data-i="3" aria-current="false" aria-label="Episode 4: Run"><span class="dot"></span><span class="en">4</span></button></li>
+          <li><button class="tl-tick" data-i="4" aria-current="false" aria-label="Episode 5: Swim Deep"><span class="dot"></span><span class="en">5</span></button></li>
+          <li><button class="tl-tick" data-i="5" aria-current="false" aria-label="Episode 6: Do the Wrong Thing"><span class="dot"></span><span class="en">6</span></button></li>
+          <li><button class="tl-tick" data-i="6" aria-current="false" aria-label="Episode 7: Chemistry"><span class="dot"></span><span class="en">7</span></button></li>
+        </ol></div>
+      </div>
+    </div>
+    <footer class="foot">
+      <span>Artur Pokusin</span>
+      <span>7 shows · 35 versions · 2012 – 2025</span>
+    </footer>
+  </div>
+<script>(function(){
+  var eps=[{"s": "ep1-premiere", "n": 1, "t": "Are You\u2026?", "d": "Sep 30, 2012"}, {"s": "ep2-sunshine-and-frosty-swirl", "n": 2, "t": "Sunshine and Frosty Swirl", "d": "Oct 7, 2012"}, {"s": "ep3-buck-the-system", "n": 3, "t": "Buck the System", "d": "Oct 14, 2012"}, {"s": "ep4-run", "n": 4, "t": "Run", "d": "Oct 21, 2012"}, {"s": "ep5-swim-deep", "n": 5, "t": "Swim Deep", "d": "Oct 28, 2012"}, {"s": "ep6-do-the-wrong-thing", "n": 6, "t": "Do the Wrong Thing", "d": "Nov 4, 2012"}, {"s": "ep7-chemistry", "n": 7, "t": "Chemistry", "d": "Nov 11, 2012"}];
+  var i=0, playing=false, timer=null, INT=3800;
+  var f=document.getElementById('tl-frame'),N=document.getElementById('tl-n'),T=document.getElementById('tl-t'),D=document.getElementById('tl-d'),P=document.getElementById('tl-play');
+  var ticks=[].slice.call(document.querySelectorAll('.tl-tick'));
+  function render(){var e=eps[i];f.style.opacity=0;
+    setTimeout(function(){f.src='/countdowns/dexter/s7-episodes/'+e.s+'/';},170);
+    N.textContent='Episode '+e.n;T.textContent=e.t;D.textContent=e.d;
+    ticks.forEach(function(tk,x){tk.setAttribute('aria-current',x===i?'true':'false');});}
+  f.addEventListener('load',function(){f.style.opacity=1;});
+  function go(n){i=(n%eps.length+eps.length)%eps.length;render();}
+  function play(){playing=true;P.innerHTML='❚❚';P.setAttribute('data-state','playing');P.setAttribute('aria-label','Pause');clearInterval(timer);timer=setInterval(function(){go(i+1);},INT);}
+  function pause(){playing=false;P.innerHTML='▶';P.setAttribute('data-state','paused');P.setAttribute('aria-label','Play');clearInterval(timer);}
+  P.addEventListener('click',function(){playing?pause():play();});
+  ticks.forEach(function(tk){tk.addEventListener('click',function(){pause();go(+tk.getAttribute('data-i'));});});
+  go(0);
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){play();}else{pause();}
+})();</script></body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Countdown to Season 3 Episodes of Game of Thrones on HBO</title>
+  <!-- archival typography: original fonts via Adobe Fonts (Typekit kit xkh8lla); add pokusin.com to the kit allowed domains -->
+  <link rel="stylesheet" href="https://use.typekit.net/xkh8lla.css">
+  <link rel="stylesheet" href="css/style.css?v=2" />
+
+  <!-- iOS and standard icons -->
+  <link href="img/favicon.ico" rel="shortcut icon">
+  <link href="img/apple-touch-icon-precomposed.png" rel="apple-touch-icon-precomposed">
+
+  <!-- Social Meta shit -->
+  <meta property="og:title" content="Game of Thrones Season 3 Countdown on HBO" />
+  <meta property="og:description" content="Countding down to the Season 3 Premiere of Game of Thrones, on HBO." />
+  <meta content='yes' name='apple-mobile-web-app-capable'>
+  <meta content='black' name='apple-mobile-web-app-status-bar-style'>
+  <meta content='Game of Thrones' name='apple-mobile-web-app-title'>
+  <meta property="og:type" content="tv_show" />
+  <meta property="og:url" content="http://gameofthronescountdown.com" />
+  <meta property="og:image" content="http://gameofthronescountdown.com/img/share.png" />
+  <meta property="og:site_name" content="Game of Thrones Season 3 Countdown on HBO" />
+  <meta property="fb:admins" content="590293659" />
+</head>
+<body class="default">
+
+  <!-- archived on pokusin.com; original analytics/social widgets removed; countdown re-pointed to run live -->
+
+  <!--  Fork this shit on Github
+        https://github.com/apokusin/Game-of-Thrones-Season-Countdown-
+        By Artur Pokusin - pokusin.com
+
+        Thanks to HBO, Keith Wood (for jQuery.countdown.js) and Modernizr.js
+   -->
+
+  <p class="seo">Counting down to each episode of the 3rd Season of Game of Thrones on HBO. Choose your house at the bottom of the page to change the countdown style!</p>
+  <!-- divs cause I'm lazy -->
+  <div class="tr"></div>
+  <div class="tl"></div>
+  <div class="bl"></div>
+  <div class="br"></div>
+
+  <div class="house_main"></div>
+
+  <div id="got_countdown" class="countdown_wrap">
+    <div class="ct_sect hours">
+      <span>{dn}</span>
+      <span class="label">{dl}</span>
+    </div>
+    <div class="ct_sect hours">
+      <span>{hn}</span>
+      <span class="label">{hl}</span>
+    </div>
+    <div class="ct_sect minutes">
+      <span>{mn}</span>
+      <span class="label">{ml}</span>
+    </div>
+    <div class="ct_sect seconds">
+      <span>{sn}</span>
+      <span class="label">{sl}</span>
+    </div>
+  </div>
+
+  <ul class="house_select">
+    <li><a href="#" data-house="baratheon" class="baratheon">Baratheon</a></li>
+    <li><a href="#" data-house="greyjoy" class="greyjoy">Greyjoy</a></li>
+    <li><a href="#" data-house="lannister" class="lannister">Lannister</a></li>
+    <li><a href="#" data-house="stark" class="stark">Stark</a></li>
+    <li><a href="#" data-house="frey" class="frey">Frey</a></li>
+    <li><a href="#" data-house="arryn" class="arryn">Arryn</a></li>
+    <li><a href="#" data-house="targaryen" class="targaryen">Targaryen</a></li>
+    <li><a href="#" data-house="tully" class="tully">Tully</a></li>
+    <li><a href="#" data-house="tyrell" class="tyrell">Tully</a></li>
+    <li class="remove"><a href="#" data-house="default" class="default">No House</a></li>
+  </ul>
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.countdown.js"></script>
+  <script type="text/javascript" src="js/fin.js"></script>
+
+  <script type="text/javascript">
+    // UTC-4 = 9pm
+    // UTC = next day, UTC at 1am
+    var airDate = new Date(Date.now()+2160e6);
+    $('#got_countdown').countdown({until: airDate, onExpiry: fire, layout: $('#got_countdown').html()});
+      function fire() {
+        ignoreMe();
+      };
+  </script>
+
+  <!-- archived: Facebook SDK + Like button and Twitter widget/loader removed -->
+  <div class="social_links">
+    <div class="like_button">
+      <div style="margin-bottom: 5px"><a href="http://pokusin.com" target="_blank">pokusin.com</a></div>
+    </div>
+  </div>
+
+
+<!-- Game of Thrones theme  (thanks Tim Pietrusky timpietrusky.com ) -->
+<audio></audio>
+
+<div id="player">
+  <svg role="paused" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.0" id="layer1" width="40px" height="40px" viewBox="0 0 75 75">
+  <g><polygon
+     points="39.389,13.769 22.235,28.606 6,28.606 6,47.699 21.989,47.699 39.389,62.75 39.389,13.769"
+     style="stroke:#727884;stroke-width:5;stroke-linejoin:round;fill:#727884;" />
+  <path
+     d="M 48.651772,50.269646 69.395223,25.971024"
+     style="fill:none;stroke:#727884;stroke-width:5;stroke-linecap:round"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+  <path
+     d="M 69.395223,50.269646 48.651772,25.971024"
+     style="fill:none;stroke:#727884;stroke-width:5;stroke-linecap:round"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+  </g>
+  </svg>
+
+  <svg role="playing" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.0" width="40px" height="40px" viewBox="0 0 75 75">
+    <g>
+      <polygon
+points="39.389,13.769 22.235,28.606 6,28.606 6,47.699 21.989,47.699 39.389,62.75 39.389,13.769" style="stroke:#727884;stroke-width:5;stroke-linejoin:round;fill:#727884;"
+/>
+    <path
+        d="M 48.128,49.03 C 50.057,45.934 51.19,42.291 51.19,38.377 C 51.19,34.399 50.026,30.703 48.043,27.577" style="fill:none;stroke:#727884;stroke-width:5;stroke-linecap:round"/>
+    <path
+      d="M 55.082,20.537 C 58.777,25.523 60.966,31.694 60.966,38.377 C 60.966,44.998 58.815,51.115 55.178,56.076" style="fill:none;stroke:#727884;stroke-width:5;stroke-linecap:round"/>
+
+    <path
+      d="M 61.71,62.611 C 66.977,55.945 70.128,47.531 70.128,38.378 C 70.128,29.161 66.936,20.696 61.609,14.01"
+      style="fill:none;stroke:#727884;stroke-width:5;stroke-linecap:round"/>
+    </g>
+  </svg>
+</div>
+
+
+  <!-- archived: Typekit loader removed (Trajan Pro font falls back to serif) -->
+  <script type="text/javascript" src="js/modernizr.js"></script>
+
+  <!-- Theme song initiate -->
+  <script type="text/javascript">
+
+  /**
+   *
+   * Thanks to televisiontunes.com for the Game of Thrones theme
+   */
+  var audio = $('audio').get(0),
+      _paused = $('svg[role="paused"]'),
+      _playing = $('svg[role="playing"]');
+
+  audio.src = Modernizr.audio.ogg ?
+    './audio/Game of Thrones.ogg' :
+    './audio/Game of Thrones.mp3';
+
+  _paused.click(function() {
+    $(this).css('display', 'none');
+    _playing.css('display', 'block');
+    audio.play();
+  });
+
+  _playing.click(function() {
+    $(this).css('display', 'none');
+    _paused.css('display', 'block');
+    audio.pause();
+  });
+
+  // Set to start
+  $("audio").bind('ended', function(){
+      _playing.css('display', 'none');
+      _paused.css('display', 'block');
+      this.currentTime = 0;
+  });
+  </script>
+  <script>
+    var house = window.location.hash.substring(1);
+    if (house) {
+      $('body').removeClass().addClass(house);
+    }
+  </script>
+  <script>
+
+    $('.house_select li a').click(function(event) {
+      event.preventDefault();
+      var house = $(this).data('house');
+      $('body').removeClass().addClass(house);
+      window.location.hash=house;
+      return false;
+    });
+    </script>
+
+    <!-- archived: Woopra and Google Analytics tracking removed -->
+</body>
+</html>

@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'baveuse';
+    src: url(baveuse-webfont.eot);
+    src: url(baveuse-webfont.eot?#iefix) format('embedded-opentype'),
+         url(baveuse-webfont.woff) format('woff'),
+         url(baveuse-webfont.ttf) format('truetype'),
+         url(baveuse-webfont.svg#baveuseregular) format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
