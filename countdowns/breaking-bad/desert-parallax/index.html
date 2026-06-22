@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel='stylesheet' href='assets/css/normalize.css'>
+  <link rel='stylesheet' href='assets/css/style.css'>
+
+  
+<link href="assets/img/favicon.ico" rel="shortcut icon">
+<link href="assets/img/apple-touch-icon-precomposed.png" rel="apple-touch-icon-precomposed">
+
+<meta property="og:title" content="Breaking Bad Series Finale Countdown" />
+<meta property="og:description" content="Counting down to the last half of Breaking Bad on AMC." />
+<meta content='yes' name='apple-mobile-web-app-capable'>
+<meta content='black' name='apple-mobile-web-app-status-bar-style'>
+<meta content='Breaking Bad' name='apple-mobile-web-app-title'>
+<meta property="og:type" content="tv_show" />
+<meta property="og:url" content="http://breakingbadcountdown.com" />
+<meta property="og:image" content="http://breakingbadcountdown.com/assets/img/facebook_icon.png" />
+<meta property="og:site_name" content="Breaking Bad Series Finale Countdown" />
+<meta property="fb:admins" content="590293659" />
+  <title>Breaking Bad Series Finale Countdown</title>
+  <!--[if gte IE 9]>
+    <style type="text/css">
+      ul li {
+         filter: none;
+      }
+    </style>
+  <![endif]-->
+</head>
+
+<body>
+
+<!-- archived on pokusin.com; original analytics/social widgets removed; countdown re-pointed to run live -->
+
+<!--
+  <div class="parallax_wrap">
+    <ul>
+      <li class="parallax-layer"><img src="assets/img/front-layer.png" alt=""></li>
+      <li class="parallax-layer"><img src="assets/img/back-layer.png" alt=""></li>
+    </ul>
+  </div> -->
+
+  <div id="parallax_wrap" class="parallax_wrap clear">
+    <div class="parallax">
+        <div id="countdown" class="countdown_wrap parallax-layer" style="height:40%">Please enable javascript</div>
+      <img class="parallax-layer front" src="assets/img/front-layer.png" alt="" style="width:1404px; height:985px;"/>
+      <img class="parallax-layer back" src="assets/img/back-layer.png" alt="" style="width:1000px; height:702px;"/>
+    </div>
+  </div>
+
+
+<audio></audio>
+
+<div id="player">
+  <svg role="paused" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.0" id="layer1" width="40px" height="40px" viewBox="0 0 75 75">
+  <g><polygon
+     points="39.389,13.769 22.235,28.606 6,28.606 6,47.699 21.989,47.699 39.389,62.75 39.389,13.769"
+     style="stroke:#ccc;stroke-width:5;stroke-linejoin:round;fill:#ccc;" />
+  <path
+     d="M 48.651772,50.269646 69.395223,25.971024"
+     style="fill:none;stroke:#ccc;stroke-width:5;stroke-linecap:round"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+  <path
+     d="M 69.395223,50.269646 48.651772,25.971024"
+     style="fill:none;stroke:#ccc;stroke-width:5;stroke-linecap:round"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+  </g>
+  </svg>
+
+  <svg role="playing" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.0" width="40px" height="40px" viewBox="0 0 75 75">
+    <g>
+      <polygon
+points="39.389,13.769 22.235,28.606 6,28.606 6,47.699 21.989,47.699 39.389,62.75 39.389,13.769" style="stroke:#ccc;stroke-width:5;stroke-linejoin:round;fill:#ccc;"
+/>
+    <path
+        d="M 48.128,49.03 C 50.057,45.934 51.19,42.291 51.19,38.377 C 51.19,34.399 50.026,30.703 48.043,27.577" style="fill:none;stroke:#ccc;stroke-width:5;stroke-linecap:round"/>
+    <path
+      d="M 55.082,20.537 C 58.777,25.523 60.966,31.694 60.966,38.377 C 60.966,44.998 58.815,51.115 55.178,56.076" style="fill:none;stroke:#ccc;stroke-width:5;stroke-linecap:round"/>
+
+    <path
+      d="M 61.71,62.611 C 66.977,55.945 70.128,47.531 70.128,38.378 C 70.128,29.161 66.936,20.696 61.609,14.01"
+      style="fill:none;stroke:#ccc;stroke-width:5;stroke-linecap:round"/>
+    </g>
+  </svg>
+</div>
+
+
+<div class="personal_links">
+  <a href="http://pokusin.com" target="_blank">pokusin.com</a>
+</div>
+
+<div class="amc_links">
+  <a href="http://www.amctv.com/shows/breaking-bad" target="_blank" class="logo">Breaking Bad</a>
+</div>
+
+  <script src='assets/js/jquery-1.8.3.min.js'></script>
+  <script src='assets/js/modernizr.js'></script>
+  <script src='assets/js/jquery.countdown.js'></script>
+  <script src='assets/js/jquery.parallax.js'></script>
+  <script src='assets/js/app.js'></script>
+
+  <!-- Theme song initiate -->
+  <script type="text/javascript">
+
+  var audio = $('audio').get(0),
+      _paused = $('svg[role="paused"]'),
+      _playing = $('svg[role="playing"]');
+
+  audio.src = Modernizr.audio.ogg ?
+    'assets/Breaking_Bad.ogg' :
+    'assets/Breaking_Bad.mp3';
+
+  _paused.click(function() {
+    $(this).css('display', 'none');
+    _playing.css('display', 'block');
+    audio.play();
+  });
+
+  _playing.click(function() {
+    $(this).css('display', 'none');
+    _paused.css('display', 'block');
+    audio.pause();
+  });
+
+  // Set to start
+  $("audio").bind('ended', function(){
+      _playing.css('display', 'none');
+      _paused.css('display', 'block');
+      this.currentTime = 0;
+  });
+  </script>
+
+</body>
+
+</html>
