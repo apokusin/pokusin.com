@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Game of Thrones Countdowns — Archive</title>
-  <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin, 2012–2025 — preserved and ticking live.">
+  <title>Game of Thrones Countdowns · Archive</title>
+  <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin between 2012 and 2025, preserved and ticking live.">
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=85cbe8a2">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=db80bc14">
 </head>
 <body>
   <div class="wrap">
@@ -20,7 +20,7 @@
         <div class="body">
           <div class="label">Season 4</div>
           <div class="row"><span class="year">2014</span></div>
-          <div class="desc">The full-bleed house switcher — pick a house and the page floods with its colors and sigil.</div>
+          <div class="desc">The full-bleed house switcher. Pick a house and the page floods with its colors and sigil.</div>
         </div>
       </a>
       <a class="card" href="/countdowns/got/s3-redesign/" target="_blank" rel="noopener">
@@ -36,7 +36,7 @@
         <div class="body">
           <div class="label">Season 3 · Classic</div>
           <div class="row"><span class="year">2013</span></div>
-          <div class="desc">The original dark-leather look — sword logo and an HBO date block.</div>
+          <div class="desc">The original dark-leather look, sword logo and an HBO date block.</div>
         </div>
       </a>
       </div>
@@ -48,7 +48,7 @@
         <div class="body">
           <div class="label">Final Season</div>
           <div class="row"><span class="year">2019</span></div>
-          <div class="desc">A “refreshed for the final season — stay tuned!” splash, the last thing the site ever said.</div>
+          <div class="desc">A “refreshed for the final season, stay tuned!” splash, the last thing the site ever said.</div>
         </div>
       </a>
       <a class="card" href="/countdowns/got/coming-soon/" target="_blank" rel="noopener">
@@ -64,7 +64,7 @@
         <div class="body">
           <div class="label">Season 3 · Early Prototype</div>
           <div class="row"><span class="year">2012</span></div>
-          <div class="desc">The earliest working Season 3 countdown — a bare prototype, before the leather redesign.</div>
+          <div class="desc">The earliest working Season 3 countdown, a bare prototype, before the leather redesign.</div>
         </div>
       </a>
       <a class="card" href="/countdowns/got/s3-static/" target="_blank" rel="noopener">
@@ -157,5 +157,15 @@
   });
   ov.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click',close); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
+})();</script><script>(function(){
+  var nav=document.querySelector('.shownav'); if(!nav||!('IntersectionObserver' in window)) return;
+  var links={}; nav.querySelectorAll('a').forEach(function(a){ links[a.getAttribute('href').slice(1)]=a; });
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(!e.isIntersecting) return; var id=e.target.id;
+      Object.keys(links).forEach(function(k){ links[k].setAttribute('aria-current', k===id?'true':'false'); });
+      var act=links[id]; if(act && nav.scrollWidth>nav.clientWidth) act.scrollIntoView({inline:'center',block:'nearest'});
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('.shelf').forEach(function(sec){ io.observe(sec); });
 })();</script></body>
 </html>
