@@ -70,6 +70,8 @@
       closeBtn=ov.querySelector('.ov-close');
   var srcCard=null,DUR=440,EASE='cubic-bezier(.2,.8,.2,1)',ft=null;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fullCountdownMedia=matchMedia('(max-width: 640px)');
+  function shouldOpenFullCountdown(){ return fullCountdownMedia.matches; }
   frame.addEventListener('load',function(){ if((frame.src||'').indexOf('about:blank')<0) frame.classList.add('loaded'); });
   function map(card){ // uniform scale + translate so the dialog starts centered on the card frame
     var dr=dialog.getBoundingClientRect(), cr=card.querySelector('.frame').getBoundingClientRect();
@@ -113,6 +115,7 @@
   document.querySelectorAll('a.card').forEach(function(c){
     c.addEventListener('click',function(e){
       if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return;
+      if(shouldOpenFullCountdown()){ e.preventDefault(); window.location.href=c.href; return; }
       e.preventDefault(); openFrom(c);
     });
   });
