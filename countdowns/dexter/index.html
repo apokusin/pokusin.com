@@ -6,7 +6,7 @@
   <title>Dexter Countdowns — Archive</title>
   <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin, 2012–2025 — preserved and ticking live.">
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=aa2939fb">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=85cbe8a2">
 </head>
 <body>
   <div class="wrap">
@@ -31,15 +31,8 @@
           <div class="desc">Egg-shell texture, blood-spatter sprites, and the Dexter theme on a floating player.</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/dexter/s7-episodes/" target="_blank" rel="noopener">
-        <div class="frame"><iframe src="/countdowns/dexter/s7-episodes/ep1-premiere/" data-cycle='["/countdowns/dexter/s7-episodes/ep1-premiere/", "/countdowns/dexter/s7-episodes/ep2-sunshine-and-frosty-swirl/", "/countdowns/dexter/s7-episodes/ep3-buck-the-system/", "/countdowns/dexter/s7-episodes/ep4-run/", "/countdowns/dexter/s7-episodes/ep5-swim-deep/", "/countdowns/dexter/s7-episodes/ep6-do-the-wrong-thing/", "/countdowns/dexter/s7-episodes/ep7-chemistry/"]' loading="lazy" tabindex="-1" scrolling="no" title="Season 7 · Episode by Episode preview"></iframe><span class="tlbadge">Timeline</span><span class="open">Open ↗</span></div>
-        <div class="body">
-          <div class="label">Season 7 · Episode by Episode</div>
-          <div class="row"><span class="year">2012</span></div>
-          <div class="desc">Re-skinned for each new episode through the autumn of 2012 — scrub the timeline to watch it change.</div>
-        </div>
-      </a>
       </div>
+      <a class="deeplink" href="/countdowns/dexter/s7-episodes/">Season 7 · Episode by Episode — scrub the timeline <span class="arrow">→</span></a>
       <details class="archive">
         <summary><span class="tw">▶</span> Archived variants <span class="ct">1</span></summary>
       <div class="grid">
@@ -59,22 +52,7 @@
       <span>7 shows · 34 versions · 2012 – 2025</span>
     </footer>
   </div>
-<script>
-(function(){
-  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(es){
-    es.forEach(function(e){ e.target.__vis = e.isIntersecting; });
-  }, {rootMargin:'120px'}) : null;
-  document.querySelectorAll('iframe[data-cycle]').forEach(function(f){
-    var urls; try { urls = JSON.parse(f.getAttribute('data-cycle')); } catch(e){ return; }
-    if(!urls||!urls.length) return;
-    var i = 0; if(io) io.observe(f);
-    setInterval(function(){
-      if(io && f.__vis === false) return;
-      i = (i+1) % urls.length; f.src = urls[i];
-    }, 4200);
-  });
-})();
-</script>  <div class="ov" id="ov" hidden aria-hidden="true">
+  <div class="ov" id="ov" hidden aria-hidden="true">
     <div class="ov-backdrop" data-close></div>
     <div class="ov-dialog" role="dialog" aria-modal="true" aria-label="Countdown preview">
       <div class="ov-stage"><iframe id="ov-frame" title="Countdown preview" scrolling="no"></iframe></div>

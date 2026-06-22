@@ -6,7 +6,7 @@
   <title>Countdowns — Artur Pokusin</title>
   <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin, 2012–2025 — preserved and ticking live.">
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=aa2939fb">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=85cbe8a2">
 </head>
 <body>
   <div class="wrap">
@@ -19,7 +19,7 @@
         <div class="shelf-id"><span class="shelf-emoji">🐉</span><span class="shelf-name">Game of Thrones</span></div>
         <div class="shelf-years">2012 – 2019</div>
         <span class="shelf-domain">gameofthronescountdown.com</span>
-        <a class="more" href="/countdowns/got/">More from the archive <span class="arrow">→</span></a>
+        <a class="more" href="/countdowns/got/">More <span class="arrow">→</span></a>
       </div>
       <div class="grid">
       <a class="card" href="/countdowns/got/s4/" target="_blank" rel="noopener">
@@ -53,7 +53,7 @@
         <div class="shelf-id"><span class="shelf-emoji">🩸</span><span class="shelf-name">Dexter</span></div>
         <div class="shelf-years">2012 – 2013</div>
         <span class="shelf-domain">dextercountdown.com</span>
-        <a class="more" href="/countdowns/dexter/">More from the archive <span class="arrow">→</span></a>
+        <a class="more" href="/countdowns/dexter/">More <span class="arrow">→</span></a>
       </div>
       <div class="grid">
       <a class="card" href="/countdowns/dexter/s8-final/" target="_blank" rel="noopener">
@@ -72,14 +72,6 @@
           <div class="desc">Egg-shell texture, blood-spatter sprites, and the Dexter theme on a floating player.</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/dexter/s7-episodes/" target="_blank" rel="noopener">
-        <div class="frame"><iframe src="/countdowns/dexter/s7-episodes/ep1-premiere/" data-cycle='["/countdowns/dexter/s7-episodes/ep1-premiere/", "/countdowns/dexter/s7-episodes/ep2-sunshine-and-frosty-swirl/", "/countdowns/dexter/s7-episodes/ep3-buck-the-system/", "/countdowns/dexter/s7-episodes/ep4-run/", "/countdowns/dexter/s7-episodes/ep5-swim-deep/", "/countdowns/dexter/s7-episodes/ep6-do-the-wrong-thing/", "/countdowns/dexter/s7-episodes/ep7-chemistry/"]' loading="lazy" tabindex="-1" scrolling="no" title="Season 7 · Episode by Episode preview"></iframe><span class="tlbadge">Timeline</span><span class="open">Open ↗</span></div>
-        <div class="body">
-          <div class="label">Season 7 · Episode by Episode</div>
-          <div class="row"><span class="year">2012</span></div>
-          <div class="desc">Re-skinned for each new episode through the autumn of 2012 — scrub the timeline to watch it change.</div>
-        </div>
-      </a>
       </div>
     </section>
     <section class="shelf">
@@ -87,7 +79,7 @@
         <div class="shelf-id"><span class="shelf-emoji">🎻</span><span class="shelf-name">Sherlock</span></div>
         <div class="shelf-years">2013 – 2014</div>
         <span class="shelf-domain">sherlockcountdown.com</span>
-        <a class="more" href="/countdowns/sherlock/">More from the archive <span class="arrow">→</span></a>
+        <a class="more" href="/countdowns/sherlock/">More <span class="arrow">→</span></a>
       </div>
       <div class="grid">
       <a class="card" href="/countdowns/sherlock/final/" target="_blank" rel="noopener">
@@ -113,11 +105,11 @@
         <div class="shelf-id"><span class="shelf-emoji">🥃</span><span class="shelf-name">Archer</span></div>
         <div class="shelf-years">2012 – 2014</div>
         <span class="shelf-domain">archercountdown.com</span>
-        <a class="more" href="/countdowns/archer/">More from the archive <span class="arrow">→</span></a>
+        <a class="more" href="/countdowns/archer/">More <span class="arrow">→</span></a>
       </div>
       <div class="grid">
       <a class="card" href="/countdowns/archer/s5-final/" target="_blank" rel="noopener">
-        <div class="frame"><iframe src="/countdowns/archer/s5-final/" loading="lazy" tabindex="-1" scrolling="no" title="Season 5 preview"></iframe><span class="open">Open ↗</span></div>
+        <div class="frame"><iframe src="/countdowns/archer/s5-final/" style="width:500%;height:500%;transform:scale(0.2000)" loading="lazy" tabindex="-1" scrolling="no" title="Season 5 preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 5</div>
           <div class="row"><span class="year">2014</span></div>
@@ -131,7 +123,7 @@
         <div class="shelf-id"><span class="shelf-emoji">⚗️</span><span class="shelf-name">Breaking Bad</span></div>
         <div class="shelf-years">2012 – 2013</div>
         <span class="shelf-domain">breakingbadcountdown.com</span>
-        <a class="more" href="/countdowns/breaking-bad/">More from the archive <span class="arrow">→</span></a>
+        <a class="more" href="/countdowns/breaking-bad/">More <span class="arrow">→</span></a>
       </div>
       <div class="grid">
       <a class="card" href="/countdowns/breaking-bad/final/" target="_blank" rel="noopener">
@@ -191,22 +183,7 @@
       <span>7 shows · 34 versions · 2012 – 2025</span>
     </footer>
   </div>
-<script>
-(function(){
-  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(es){
-    es.forEach(function(e){ e.target.__vis = e.isIntersecting; });
-  }, {rootMargin:'120px'}) : null;
-  document.querySelectorAll('iframe[data-cycle]').forEach(function(f){
-    var urls; try { urls = JSON.parse(f.getAttribute('data-cycle')); } catch(e){ return; }
-    if(!urls||!urls.length) return;
-    var i = 0; if(io) io.observe(f);
-    setInterval(function(){
-      if(io && f.__vis === false) return;
-      i = (i+1) % urls.length; f.src = urls[i];
-    }, 4200);
-  });
-})();
-</script>  <div class="ov" id="ov" hidden aria-hidden="true">
+  <div class="ov" id="ov" hidden aria-hidden="true">
     <div class="ov-backdrop" data-close></div>
     <div class="ov-dialog" role="dialog" aria-modal="true" aria-label="Countdown preview">
       <div class="ov-stage"><iframe id="ov-frame" title="Countdown preview" scrolling="no"></iframe></div>

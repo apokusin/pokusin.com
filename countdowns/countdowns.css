@@ -43,6 +43,7 @@ h1.title{font-size:clamp(2rem,6.4vw,3.1rem);letter-spacing:-.035em;font-weight:7
 .eyebrow{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-variant-numeric:tabular-nums}
 /* archival shelf: a label gutter + a flowing row of previews per show */
 .shelf{display:grid;grid-template-columns:180px minmax(0,1fr);gap:clamp(20px,3.5vw,46px);align-items:start;border-top:1px solid var(--line);margin-top:clamp(26px,4vw,46px);padding-top:clamp(26px,4vw,46px)}
+.shelf-aside{display:flex;flex-direction:column;align-items:flex-start}
 .shelf-id{display:flex;align-items:center;gap:9px}
 .shelf-emoji{font-size:1.3rem;line-height:1}
 .shelf-name{font-size:clamp(1.05rem,2.4vw,1.32rem);font-weight:650;letter-spacing:-.02em;text-wrap:balance}
@@ -68,11 +69,12 @@ a.shelf-domain:hover{color:var(--fg)}
 .chip::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--live);margin-right:5px;vertical-align:middle;animation:pulse 2.4s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,208,127,.5)}70%{box-shadow:0 0 0 6px rgba(63,208,127,0)}100%{box-shadow:0 0 0 0 rgba(63,208,127,0)}}
 .desc{color:var(--muted);font-size:.855rem;margin-top:10px;line-height:1.5;text-wrap:pretty}
-.more{display:inline-flex;align-items:center;gap:7px;margin-top:22px;font-size:.88rem;color:var(--muted);border:1px solid var(--line);padding:11px 16px;border-radius:999px;transition:color .15s ease,border-color .15s ease,background .15s ease,scale .12s ease}
-.more:hover{color:var(--fg);border-color:var(--line-strong)}
-.more:active{scale:.96}
-.more .arrow{transition:transform .18s ease}
-.more:hover .arrow{transform:translateX(3px)}
+.more,.deeplink{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;color:var(--muted);background:none;border:0;padding:0;transition:color .15s ease}
+.more{margin-top:20px}
+.more:hover,.deeplink:hover{color:var(--fg)}
+.more .arrow,.deeplink .arrow{transition:transform .18s ease}
+.more:hover .arrow,.deeplink:hover .arrow{transform:translateX(3px)}
+.deeplink{margin-top:30px;font-size:.92rem}
 /* collapsible archived variants */
 .archive{margin-top:30px;border-top:1px solid var(--line);padding-top:8px}
 .archive>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:9px;padding:12px 2px;font-size:.9rem;color:var(--muted);font-weight:550;transition:color .15s ease}
