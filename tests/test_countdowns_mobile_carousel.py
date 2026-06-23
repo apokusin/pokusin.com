@@ -21,7 +21,7 @@ class CountdownsMobileCarouselTest(unittest.TestCase):
         self.assertIn("@media (max-width:760px)", css)
         self.assertIn(".carousel .grid{display:flex", css)
         self.assertIn("scroll-snap-type:x mandatory", css)
-        self.assertIn(".carousel .card{flex:0 0 min(82vw,320px)", css)
+        self.assertIn(".carousel .card{flex:0 0 min(340px,calc(100vw - 54px))", css)
         self.assertNotIn("@media (max-width:560px){\n  .grid{grid-template-columns:1fr}", css)
         self.assertIn("track.scrollTo({left:track.scrollLeft+(dir*step()),behavior:reduce?'auto':'smooth'});", html)
         self.assertIn("prev.addEventListener('click',function(){move(-1);});", html)
@@ -51,6 +51,28 @@ class CountdownsMobileCarouselTest(unittest.TestCase):
         self.assertIn(".shelf-origin{display:inline-block;margin-top:6px;font-size:.72rem", css)
         self.assertIn(".more.shelf-more{margin-top:12px}", css)
         self.assertIn(".shelf-aside .carousel-controls{margin:0;flex:0 0 auto", css)
+
+    def test_mobile_gallery_uses_section_gutters_instead_of_global_side_padding(self):
+        css = (ROOT / "countdowns" / "countdowns.css").read_text()
+
+        self.assertIn("--mobile-gutter:18px", css)
+        self.assertIn(".wrap{padding-left:0;padding-right:0}", css)
+        self.assertIn(
+            ".crumb,.eyebrow,h1.title,.lede,.foot{padding-left:var(--mobile-gutter);padding-right:var(--mobile-gutter)}",
+            css,
+        )
+        self.assertIn(
+            ".shownav{padding-left:var(--mobile-gutter);padding-right:var(--mobile-gutter);scroll-padding-inline:var(--mobile-gutter)}",
+            css,
+        )
+        self.assertIn(".shelf{grid-template-columns:1fr;gap:16px;padding-left:0;padding-right:0}", css)
+        self.assertIn(".shelf-aside{padding-left:var(--mobile-gutter);padding-right:var(--mobile-gutter)}", css)
+        self.assertIn(".more.shelf-more{margin-left:var(--mobile-gutter);margin-right:var(--mobile-gutter)}", css)
+        self.assertIn(
+            ".carousel .grid{display:flex;grid-template-columns:none;gap:16px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:2px var(--mobile-gutter) 12px;scroll-padding-inline:var(--mobile-gutter)}",
+            css,
+        )
+        self.assertIn(".carousel .card{flex:0 0 min(340px,calc(100vw - 54px))", css)
 
 
 if __name__ == "__main__":

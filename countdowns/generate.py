@@ -135,7 +135,7 @@ CSS = """:root{
   --chip:rgba(16,33,50,.06); --live:#1f9d57; --accent:#9a1d2e;
   --shadow:0 1px 2px rgba(16,33,50,.05),0 8px 24px rgba(16,33,50,.07);
   --shadow-hover:0 2px 6px rgba(16,33,50,.08),0 18px 48px rgba(16,33,50,.14);
-  --radius:16px;
+  --radius:16px; --mobile-gutter:18px;
 }
 @media (prefers-color-scheme:dark){
   :root{
@@ -264,7 +264,12 @@ a.shelf-origin:hover{color:var(--fg)}
   .shelf:nth-of-type(7){animation-delay:.51s}
 }
 @media (max-width:760px){
-  .shelf{grid-template-columns:1fr;gap:16px}
+  .wrap{padding-left:0;padding-right:0}
+  .crumb,.eyebrow,h1.title,.lede,.foot{padding-left:var(--mobile-gutter);padding-right:var(--mobile-gutter)}
+  .shownav{padding-left:var(--mobile-gutter);padding-right:var(--mobile-gutter);scroll-padding-inline:var(--mobile-gutter)}
+  .shelf{grid-template-columns:1fr;gap:16px;padding-left:0;padding-right:0}
+  .shelf-aside{padding-left:var(--mobile-gutter);padding-right:var(--mobile-gutter)}
+  .more.shelf-more{margin-left:var(--mobile-gutter);margin-right:var(--mobile-gutter)}
   .carousel{position:relative;margin-top:2px}
   .carousel-controls{display:flex;justify-content:flex-end;gap:8px}
   .carousel>.carousel-controls{margin:-4px 0 12px}
@@ -273,9 +278,9 @@ a.shelf-origin:hover{color:var(--fg)}
   .carousel-btn:hover{border-color:var(--accent)}
   .carousel-btn:active{transform:scale(.96)}
   .carousel-btn[disabled]{opacity:.35;cursor:default;transform:none}
-  .carousel .grid{display:flex;grid-template-columns:none;gap:16px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:2px 0 12px}
+  .carousel .grid{display:flex;grid-template-columns:none;gap:16px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:2px var(--mobile-gutter) 12px;scroll-padding-inline:var(--mobile-gutter)}
   .carousel .grid::-webkit-scrollbar{display:none}
-  .carousel .card{flex:0 0 min(82vw,320px);scroll-snap-align:start}
+  .carousel .card{flex:0 0 min(340px,calc(100vw - 54px));scroll-snap-align:start}
   .is-static .carousel-controls{display:none}
 }
 @media (max-width:560px){
