@@ -179,15 +179,18 @@ h1.title{font-size:clamp(2rem,6.4vw,3.1rem);letter-spacing:-.035em;font-weight:7
 .shownav .nv-e{font-size:1rem;line-height:1}
 /* archival shelf: a label gutter + a flowing row of previews per show */
 .shelf{display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(20px,3.5vw,44px);align-items:start;border-top:1px solid var(--line);margin-top:clamp(26px,4vw,46px);padding-top:clamp(26px,4vw,46px);scroll-margin-top:74px}
-.shelf-aside{display:flex;flex-direction:column;align-items:flex-start;max-width:100%}
+.shelf-aside{display:flex;align-items:center;justify-content:space-between;gap:14px;max-width:100%}
+.shelf-copy{min-width:0;max-width:100%}
+.shelf-kicker{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-variant-numeric:tabular-nums;margin-bottom:7px;line-height:1.1}
 .shelf-id{display:flex;align-items:center;gap:9px}
 .shelf-emoji{font-size:1.25rem;line-height:1;flex:0 0 auto}
 .shelf-name{font-size:clamp(1rem,2.2vw,1.18rem);font-weight:650;letter-spacing:-.02em;white-space:nowrap}
-.shelf-years{margin-top:9px;font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
-.shelf-domain{display:inline-block;margin-top:3px;font-size:.74rem;color:var(--muted);word-break:break-word;transition:color .15s ease}
-a.shelf-domain:hover{color:var(--fg)}
-.shelf .more{margin-top:18px}
+.shelf-origin{display:inline-block;margin-top:6px;font-size:.72rem;color:var(--muted);word-break:break-word;transition:color .15s ease;line-height:1.2}
+a.shelf-origin:hover{color:var(--fg)}
+.more.shelf-more{margin-top:12px}
 .shelf .grid{grid-template-columns:repeat(auto-fill,minmax(228px,1fr))}
+.carousel{min-width:0}
+.carousel-controls{display:none}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(282px,1fr));gap:clamp(16px,2.3vw,26px)}
 .card{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .2s cubic-bezier(.2,.7,.3,1),box-shadow .2s ease,border-color .2s ease}
 .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--line-strong)}
@@ -262,16 +265,28 @@ a.shelf-domain:hover{color:var(--fg)}
 }
 @media (max-width:760px){
   .shelf{grid-template-columns:1fr;gap:16px}
+  .carousel{position:relative;margin-top:2px}
+  .carousel-controls{display:flex;justify-content:flex-end;gap:8px}
+  .carousel>.carousel-controls{margin:-4px 0 12px}
+  .shelf-aside .carousel-controls{margin:0;flex:0 0 auto}
+  .carousel-btn{appearance:none;border:1px solid var(--line-strong);background:var(--card);color:var(--fg);width:42px;height:42px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.15rem;line-height:1;box-shadow:var(--shadow);transition:transform .12s ease,border-color .15s ease,opacity .15s ease}
+  .carousel-btn:hover{border-color:var(--accent)}
+  .carousel-btn:active{transform:scale(.96)}
+  .carousel-btn[disabled]{opacity:.35;cursor:default;transform:none}
+  .carousel .grid{display:flex;grid-template-columns:none;gap:16px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:2px 0 12px}
+  .carousel .grid::-webkit-scrollbar{display:none}
+  .carousel .card{flex:0 0 min(82vw,320px);scroll-snap-align:start}
+  .is-static .carousel-controls{display:none}
 }
 @media (max-width:560px){
-  .grid{grid-template-columns:1fr}
   .show-meta{margin-left:0;text-align:left;width:100%}
   .tl-cap .d{margin-left:0;width:100%}
   .tl-tick .en{font-size:.6rem}
 }
 @media (prefers-reduced-motion:reduce){
-  .card,.more,.more .arrow,.frame .open,.tl-stage iframe,.tl-tick .dot{transition:none}
+  .card,.more,.more .arrow,.frame .open,.tl-stage iframe,.tl-tick .dot,.carousel-btn{transition:none}
   .chip::before{animation:none}
+  .carousel .grid{scroll-behavior:auto}
 }
 /* ---- card preview overlay (FLIP expand) ---- */
 html.ov-lock{overflow:hidden}
@@ -410,6 +425,35 @@ NAV_JS = """<script>(function(){
   document.querySelectorAll('.shelf').forEach(function(sec){ io.observe(sec); });
 })();</script>"""
 
+CAROUSEL_JS = """<script>(function(){
+  function setup(root){
+    var track=root.querySelector('.grid'),prev=root.querySelector('.carousel-prev'),next=root.querySelector('.carousel-next');
+    if(!track||!prev||!next) return;
+    var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,raf=0;
+    function step(){
+      var card=track.querySelector('.card'); if(!card) return track.clientWidth;
+      var cs=getComputedStyle(track),gap=parseFloat(cs.columnGap||cs.gap)||0;
+      return card.getBoundingClientRect().width+gap;
+    }
+    function update(){
+      var max=Math.max(0,track.scrollWidth-track.clientWidth-1);
+      root.classList.toggle('is-static',max<=1);
+      prev.disabled=track.scrollLeft<=1;
+      next.disabled=track.scrollLeft>=max;
+    }
+    function move(dir){
+      track.scrollTo({left:track.scrollLeft+(dir*step()),behavior:reduce?'auto':'smooth'});
+      setTimeout(update,reduce?0:280);
+    }
+    prev.addEventListener('click',function(){move(-1);});
+    next.addEventListener('click',function(){move(1);});
+    track.addEventListener('scroll',function(){cancelAnimationFrame(raf);raf=requestAnimationFrame(update);},{passive:true});
+    addEventListener('resize',update,{passive:true});
+    update();
+  }
+  document.querySelectorAll('[data-carousel]').forEach(setup);
+})();</script>"""
+
 CSS_VER = hashlib.md5(CSS.encode("utf-8")).hexdigest()[:8]
 FAVICON = '<link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">'
 
@@ -467,8 +511,31 @@ def show_meta(s):
            if s["live"] else esc(s["domain"]))
     return f'{dom}<span class="dot">·</span>{esc(s["years"])}'
 
-def grid(show_slug, versions, zoom=4):
-    return '      <div class="grid">\n' + "".join(card(show_slug, v, zoom) for v in versions) + '      </div>\n'
+def carousel_controls(versions):
+    return (
+        '        <div class="carousel-controls" aria-label="Preview cards">\n'
+        '          <button class="carousel-btn carousel-prev" type="button" aria-label="Previous preview">‹</button>\n'
+        '          <button class="carousel-btn carousel-next" type="button" aria-label="Next preview">›</button>\n'
+        '        </div>\n'
+        if len(versions) > 1 else ""
+    )
+
+def grid(show_slug, versions, zoom=4, include_controls=True, carousel_root=True, more_href=None):
+    controls = carousel_controls(versions) if include_controls else ""
+    data_attr = ' data-carousel' if carousel_root and len(versions) > 1 else ""
+    more = (
+        f'        <a class="more shelf-more" href="{more_href}">More <span class="arrow">→</span></a>\n'
+        if more_href else ""
+    )
+    return (
+        f'      <div class="carousel"{data_attr}>\n'
+        f'{controls}'
+        '        <div class="grid">\n'
+        + "".join(card(show_slug, v, zoom) for v in versions) +
+        '        </div>\n'
+        f'{more}'
+        '      </div>\n'
+    )
 
 # --------------------------------------------------------------- gallery
 def build_gallery():
@@ -489,22 +556,24 @@ def build_gallery():
         collapsed = [v for v in s["versions"] if v.get("collapsed") and not v.get("timeline")]
         has_more = bool(collapsed) or any(v.get("timeline") for v in s["versions"])
         if s["live"]:
-            dom = (f'<a class="shelf-domain" href="https://{s["domain"]}" target="_blank" '
+            dom = (f'<a class="shelf-origin" href="https://{s["domain"]}" target="_blank" '
                    f'rel="noopener">{esc(s["domain"])} ↗</a>')
         else:
-            dom = f'<span class="shelf-domain">{esc(s["domain"])}</span>'
-        out += f'    <section class="shelf" id="{s["slug"]}">\n      <div class="shelf-aside">\n'
-        out += (f'        <div class="shelf-id"><span class="shelf-emoji">{s["emoji"]}</span>'
+            dom = f'<span class="shelf-origin">{esc(s["domain"])}</span>'
+        carousel_attr = ' data-carousel' if len(shown) > 1 else ""
+        more_href = f'/countdowns/{s["slug"]}/' if has_more else None
+        out += f'    <section class="shelf" id="{s["slug"]}"{carousel_attr}>\n      <div class="shelf-aside">\n'
+        out += '        <div class="shelf-copy">\n'
+        out += f'          <div class="shelf-kicker">{esc(s["years"])}</div>\n'
+        out += (f'          <div class="shelf-id"><span class="shelf-emoji">{s["emoji"]}</span>'
                 f'<span class="shelf-name">{esc(s["name"])}</span></div>\n')
-        out += f'        <div class="shelf-years">{esc(s["years"])}</div>\n'
-        out += f'        {dom}\n'
-        if has_more:
-            out += (f'        <a class="more" href="/countdowns/{s["slug"]}/">'
-                    f'More <span class="arrow">→</span></a>\n')
+        out += f'          {dom}\n'
+        out += '        </div>\n'
+        out += carousel_controls(shown)
         out += '      </div>\n'
-        out += grid(s["slug"], shown, s.get("preview_zoom", 4))
+        out += grid(s["slug"], shown, s.get("preview_zoom", 4), include_controls=False, carousel_root=False, more_href=more_href)
         out += '    </section>\n'
-    return out + foot(OVERLAY_HTML + OVERLAY_JS + NAV_JS)
+    return out + foot(OVERLAY_HTML + OVERLAY_JS + NAV_JS + CAROUSEL_JS)
 
 # ----------------------------------------------------- per-show details page
 def build_show_index(s):
@@ -530,7 +599,7 @@ def build_show_index(s):
         out += grid(s["slug"], collapsed, s.get("preview_zoom", 4))
         out += '      </details>\n'
     out += '    </section>\n'
-    return out + foot(OVERLAY_HTML + OVERLAY_JS + NAV_JS)
+    return out + foot(OVERLAY_HTML + OVERLAY_JS + NAV_JS + CAROUSEL_JS)
 
 # ----------------------------------------------- Dexter S7 timeline scrubber
 def build_timeline():

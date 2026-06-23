@@ -6,7 +6,7 @@
   <title>Dexter Countdowns · Archive</title>
   <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin between 2012 and 2025, preserved and ticking live.">
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=db80bc14">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=d61f4d2d">
 </head>
 <body>
   <div class="wrap">
@@ -14,7 +14,12 @@
     <h1 class="title">🩸 Dexter</h1>
     <p class="lede">Every version of the Dexter countdown, in the archive. <strong>2012 – 2013</strong>.</p>
     <section class="show">
-      <div class="grid">
+      <div class="carousel" data-carousel>
+        <div class="carousel-controls" aria-label="Preview cards">
+          <button class="carousel-btn carousel-prev" type="button" aria-label="Previous preview">‹</button>
+          <button class="carousel-btn carousel-next" type="button" aria-label="Next preview">›</button>
+        </div>
+        <div class="grid">
       <a class="card" href="/countdowns/dexter/s8-final/" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/dexter/s8-final/" loading="lazy" tabindex="-1" scrolling="no" title="Series Finale preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
@@ -31,11 +36,13 @@
           <div class="desc">Egg-shell texture, blood-spatter sprites, and the Dexter theme on a floating player.</div>
         </div>
       </a>
+        </div>
       </div>
       <a class="deeplink" href="/countdowns/dexter/s7-episodes/">Season 7 · Episode by Episode, scrub the timeline <span class="arrow">→</span></a>
       <details class="archive">
         <summary><span class="tw">▶</span> Archived variants <span class="ct">1</span></summary>
-      <div class="grid">
+      <div class="carousel">
+        <div class="grid">
       <a class="card" href="/countdowns/dexter/coming-soon/" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/dexter/coming-soon/" loading="lazy" tabindex="-1" scrolling="no" title="Coming Soon preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
@@ -44,6 +51,7 @@
           <div class="desc">A hand-drawn blood splatter and a promise.</div>
         </div>
       </a>
+        </div>
       </div>
       </details>
     </section>
@@ -131,5 +139,32 @@
     });
   }, {rootMargin:'-45% 0px -50% 0px'});
   document.querySelectorAll('.shelf').forEach(function(sec){ io.observe(sec); });
+})();</script><script>(function(){
+  function setup(root){
+    var track=root.querySelector('.grid'),prev=root.querySelector('.carousel-prev'),next=root.querySelector('.carousel-next');
+    if(!track||!prev||!next) return;
+    var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,raf=0;
+    function step(){
+      var card=track.querySelector('.card'); if(!card) return track.clientWidth;
+      var cs=getComputedStyle(track),gap=parseFloat(cs.columnGap||cs.gap)||0;
+      return card.getBoundingClientRect().width+gap;
+    }
+    function update(){
+      var max=Math.max(0,track.scrollWidth-track.clientWidth-1);
+      root.classList.toggle('is-static',max<=1);
+      prev.disabled=track.scrollLeft<=1;
+      next.disabled=track.scrollLeft>=max;
+    }
+    function move(dir){
+      track.scrollTo({left:track.scrollLeft+(dir*step()),behavior:reduce?'auto':'smooth'});
+      setTimeout(update,reduce?0:280);
+    }
+    prev.addEventListener('click',function(){move(-1);});
+    next.addEventListener('click',function(){move(1);});
+    track.addEventListener('scroll',function(){cancelAnimationFrame(raf);raf=requestAnimationFrame(update);},{passive:true});
+    addEventListener('resize',update,{passive:true});
+    update();
+  }
+  document.querySelectorAll('[data-carousel]').forEach(setup);
 })();</script></body>
 </html>
