@@ -1,6 +1,6 @@
 # Countdown concept implementation guide
 
-Prepared October 2, 2026. All eight directions have been implemented separately for comparison. No final replacement theme is selected yet. Values for lighting, motion and render budgets are proposed starting targets, to tune against the selected reference on actual devices.
+Prepared October 2, 2026. All eight directions have been implemented separately for comparison. The user subsequently rejected the conventional page framing; the revised Fair spec/report supersede its initial implementation and establish the first full-viewport world. Other concepts remain references for selection. No final replacement theme is selected yet. Values for lighting, motion and render budgets are proposed starting targets, to tune against the selected reference on actual devices.
 
 ## How to use this package
 
@@ -47,7 +47,7 @@ Bloom is permitted only where the spec asks for a luminous source. No default bl
 
 Movement should inherit the material: viscous wax, broad water waves, delayed plant flex, discrete drawn poses, heavy metal, or a light character's walk. Do not reuse one spring preset everywhere. Entry should present a finished resting composition; avoid long loading choreography or mandatory introductory tours.
 
-Keep core actions available through keyboard and touch. For art scenes, native scroll follows a clear sequence of work. In the third-person world, traversal controls are optional shortcuts to a spatial archive; provide direct exhibit navigation and preserve ordinary scrolling outside the canvas. Do not require pointer lock, precise jumping, collision puzzles or game skill.
+Keep core actions available through keyboard and touch. For art scenes, native scroll follows a clear sequence of work. In the third-person world, traversal controls are optional shortcuts to a spatial archive; provide direct exhibit navigation. The revised Fair occupies the whole viewport; its physical navigation and accessible semantic twin replace the ordinary archive continuation while graphics are available. Do not require pointer lock, precise jumping, collision puzzles or game skill.
 
 At 390 px and 320 px, prioritize legible time, a 44 px minimum action target and readable work before scenery. Recompose rather than shrinking a desktop screenshot. Reduced motion removes camera travel, trails, spinning and ongoing deformation while retaining the selected art language, immediate state updates and all previews. A failed WebGL context/import shows an illustrated composition with functioning DOM controls and archive links; never a blank screen or stuck button.
 

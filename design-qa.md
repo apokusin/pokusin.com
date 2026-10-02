@@ -1,6 +1,22 @@
 # Countdown worlds — design QA
 
-**Final result: passed.** Reviewed October 2, 2026. Eight selectable implementations retain Royal and Control, the authoritative shared countdown, the press tally, digit reels and real archive previews. No final direction is selected. No remaining P0/P1/P2 defect was identified in the final art and interaction review.
+**Current result: the revised Fair passes visual and native interaction review.** The user rejected the previous conventional page framing and insufficient material detail. The Fair is now a full-viewport tactile world. The other seven experiments remain references; no final concept is selected. The earlier all-world review below is historical evidence, not acceptance against the new world-first brief.
+
+## Fair rebuild — October 2, 2026
+
+- [Reference/current world](docs/countdown-concepts/qa/the-almost-fair-world-comparison.jpg), [1280 × 900 desktop](docs/countdown-concepts/qa/the-almost-fair-world-desktop.jpg), [390 × 844 phone](docs/countdown-concepts/qa/the-almost-fair-world-mobile.jpg) and [320 × 740 phone](docs/countdown-concepts/qa/the-almost-fair-world-320.jpg).
+- [Focused physical plan](docs/countdown-concepts/qa/the-almost-fair-world-plan.jpg), [genuine scene-framed projector](docs/countdown-concepts/qa/the-almost-fair-world-projector.jpg), [spatial Worlds choices](docs/countdown-concepts/qa/the-almost-fair-world-worlds.jpg), and [confirmed numbered ticket](docs/countdown-concepts/qa/the-almost-fair-world-ticket.jpg).
+- [Reduced-motion crown](docs/countdown-concepts/qa/the-almost-fair-world-reduced.jpg) and [actual graphics-loss fallback](docs/countdown-concepts/qa/the-almost-fair-world-fallback.jpg).
+
+Independent art review accepted the revised composition and tactile material/light relationships against the generated reference. Woven cloth, plaster, limestone, ceramic tile, satin machinery, architectural recesses and soft distant clusters replace featureless display stands. Physical clock/tally faces use the real shared values and existing slot-reel model; visible HTML chrome is absent while native semantics remain available.
+
+Native pointer checks pressed the machine's actual inscription, increasing local D1 369 → 370 and later 371 → 372, with deadlines one calendar month ahead. The latter produced ticket 372 and spinning drums; the single chit retracts and reduced motion omits it. The physical plan opened a safe Dexter/GoT viewpoint. A real Dexter screen click opened the original archived site inside its approached frame. Close returned to the same exhibit and restored focus. The Worlds Royal miniature opened the retained Royal theme. A physical GoT cabinet latch opened its genuine archive page and collapsed variants; browser Back recovered the Fair. Every shelf with further variants or a timeline has a corresponding physical latch.
+
+Native keyboard Tab reached an archive anchor; Return opened its real projector; Escape restored the initiating link. After clicking nonfocusable iframe content, Shift+Tab returned to Close. Resizing an open projector from 1280 px to 320 × 740 refitted a visible 281.6 × 180.2 px aperture. The reduced-motion physical clock continued ticking once per second and the crown revealed Long may I count. An actual WEBGL_lose_context event removed immersive clipping and restored the illustrated clock, enabled Again, seven direct show links and all 13 archive anchors. Both phone widths have no document overflow. Source checks cover input cancellation, camera restoration, occluded hits, route clearance, cleanup and the single reusable ticket. Device FPS figures remain unmeasured targets.
+
+The six remaining PR review threads were corrected: fallback focus transfer/hidden route/direct hrefs, backward iframe focus boundaries in the generator, and truthful coalesced-ripple wording. The small shared-countdown backend checks passed; no backend or archive-version redesign was introduced.
+
+## Historical first implementation review
 
 ## Review evidence
 
@@ -22,7 +38,7 @@ The Codex in-app browser rendered the local Cloudflare Pages/D1 preview at 1440 
 | Not Yet Ripe | [Pair](docs/countdown-concepts/qa/not-yet-ripe-comparison.jpg) | [Report](docs/countdown-concepts/reports/not-yet-ripe.md) | Irregular branch art, modeled citrus flesh/peel, calendar-derived ripeness, exposed digits and narrowed/repositioned 320 px fruit. |
 | Still Drawing Tomorrow | [Pair](docs/countdown-concepts/qa/still-drawing-tomorrow-comparison.jpg) | [Report](docs/countdown-concepts/reports/still-drawing-tomorrow.md) | Graphite texture, stepped runner poses, liftable cel corners, corrected phone projection, self-hosted handwriting and clear eraser tally. |
 | Held in Suspense | [Pair](docs/countdown-concepts/qa/held-in-suspense-comparison.jpg) | [Report](docs/countdown-concepts/reports/held-in-suspense.md) | Connected cantilever/bolts, studio chrome, suspended plates and bounded filings; separated phone title, action and tally. |
-| The Almost Fair | [Pair](docs/countdown-concepts/qa/the-almost-fair-comparison.jpg) | [Report](docs/countdown-concepts/reports/the-almost-fair.md) | Matte four-color world, revised camera showing the full clock, continuous triangulated promenade, camera-relative movement and optional direct routes. |
+| The Almost Fair | [Revised pair](docs/countdown-concepts/qa/the-almost-fair-world-comparison.jpg) | [Report](docs/countdown-concepts/reports/the-almost-fair.md) | Superseded by the full-viewport tactile world, physical navigation/machinery and approached real projector documented above. |
 
 Art-director subagents first reviewed each reference and uniform brief, then incorporated discoverability, physical feel and motion decisions into the specs. A separate final reviewer inspected source/runtime pairs, both phone widths, archive continuations and correction captures. Each report distinguishes observed visuals from behavior inspected in source.
 

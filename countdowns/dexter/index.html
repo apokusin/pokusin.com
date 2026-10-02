@@ -99,7 +99,7 @@
       if(e.key==='Escape'){e.preventDefault();close();return;}
       if(e.key!=='Tab')return;
       var stops=frameStops(),active=frame.contentDocument.activeElement;
-      if(!stops.length||e.shiftKey&&active===stops[0]||!e.shiftKey&&active===stops[stops.length-1]){
+      if(!stops.length||e.shiftKey&&(active===stops[0]||!stops.includes(active))||!e.shiftKey&&active===stops[stops.length-1]){
         e.preventDefault();(e.shiftKey?closeBtn:openLink).focus();
       }
     });}catch(e){}

@@ -1,6 +1,6 @@
 # Countdown worlds
 
-Eight art directions for the countdown archive: two retained references, five new material worlds, and an additional third-person exploration developed by a subagent. Prepared October 2, 2026. All eight now have separate, selectable implementations in PR #12. Royal and Control remain available, and no final replacement has been selected.
+Eight art directions for the countdown archive: two retained references, five new material worlds, and an additional third-person exploration developed by a subagent. Prepared October 2, 2026. All eight now have separate, selectable implementations in PR #12. Royal and Control remain available, and no final replacement has been selected. After user feedback, The Almost Fair has been rebuilt as a full-viewport tactile world; the other seven experiments remain references. Its revised spec/report supersede the earlier flat, conventional framing.
 
 Every brief uses the same eleven sections: premise, composition, palette/type, geometry/materials, camera/lighting, interaction, motion, effects/budget, responsive/fallback behavior, implementation boundaries, and fidelity checks. Read the [shared implementation guide](GUIDE.md) before a concept brief. It preserves the real shared countdown, digit reels, archive content, preview interaction, and minimal copy.
 
