@@ -1,7 +1,7 @@
 /* Shared semantics and responsive safety; each art world owns its composition. */
 .art-project{--bg:#f2ead8;--fg:#29261f;--muted:#746f63;--accent:#b15e40;color-scheme:light}
 .art-project body::before,.art-project body::after{display:none}
-.art-project .wrap{max-width:none;padding:0 0 45px;overflow:clip}
+.art-project .wrap{max-width:none;padding:0 0 45px;overflow:clip;overflow-anchor:none}
 .art-project .masthead{position:absolute;top:0;left:0;width:100%;padding:24px 30px;z-index:30;display:flex;align-items:flex-start;border:0}
 .art-project .home-link{font:11px 'IBM Plex Mono',monospace;letter-spacing:0;text-transform:none}
 .art-project .home-link,.art-project .theme-menu{font-family:inherit}
@@ -16,7 +16,8 @@
 .theme-menu-list a{padding:11px 12px;min-height:44px;border:0;white-space:nowrap;opacity:.75}
 .theme-menu-list a:hover,.theme-menu-list a[aria-current=page]{opacity:1;background:color-mix(in srgb,var(--fg) 8%,transparent)}
 .art-hero{position:relative;min-height:900px;height:min(1050px,100svh);isolation:isolate;overflow:hidden}
-.art-hero[hidden]{display:none}
+/* Reserve the selected scene before its optional module arrives, preventing archive anchoring. */
+.art-project .art-hero[hidden]{display:block;visibility:hidden}
 .art-stage{position:absolute;inset:0;z-index:-1;overflow:hidden}
 #art-scene{display:block;width:100%;height:100%;outline-offset:-4px;touch-action:pan-y;opacity:0}
 .art-scene-ready #art-scene{opacity:1}
