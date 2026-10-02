@@ -200,7 +200,10 @@
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){ if(!e.isIntersecting) return; var id=e.target.id;
       Object.keys(links).forEach(function(k){ links[k].setAttribute('aria-current', k===id?'true':'false'); });
-      var act=links[id]; if(act && nav.scrollWidth>nav.clientWidth) act.scrollIntoView({inline:'center',block:'nearest'});
+      var act=links[id]; if(act && nav.scrollWidth>nav.clientWidth) {
+        var itemRect=act.getBoundingClientRect(),navRect=nav.getBoundingClientRect();
+        nav.scrollLeft+=itemRect.left-navRect.left-(nav.clientWidth-itemRect.width)/2;
+      }
     });
   }, {rootMargin:'-45% 0px -50% 0px'});
   document.querySelectorAll('.shelf').forEach(function(sec){ io.observe(sec); });
