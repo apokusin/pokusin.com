@@ -40,19 +40,19 @@ Use an orthographic botanical camera with shallow layered depth. Key/fill/rim ar
 
 ### Interaction contract
 
-Pointer attracts one small bee within a bounded region; it stays secondary, cannot block clicks and is not a collectible or additional secret. Focus or hover opens the nearest leaf to clear a tag; keyboard focus does so immediately and stills its paper. The whole flat specimen image remains a normal preview link. Show-index links move to branches through regular scrolling.
+Pointer attracts one small bee within a bounded region; it stays secondary, cannot block clicks and is not a collectible or additional secret. Focus or hover opens the nearest visible modeled leaf to the tag's string attachment: it turns up to 0.9 radians out of the image plane with a small outward splay. Keyboard focus does so immediately, including under reduced motion; hover approaches with about 80 ms damping. Both hold secondary specimen sway still. The leaf is a visible courtesy, while at-rest photographs remain exposed and every part of the flat image is a normal preview link. Show-index links move to branches through regular scrolling.
 
 Pending Again flexes the fruit rim 2 px without changing peel color or branch length. Confirmed success sends a green front from the reset fruit across the four clock pods and briefly extends one existing branch tip. Failure releases the rim with no ripening change and uses the reserved short status. Repeats retarget the same bounded segment/front; they never add tags or cumulative geometry. Remote updates create only a 300 ms leaf flutter while digits/tally update truthfully.
 
 Decorative resting ripeness follows the current deadline's remaining fraction of the one preceding UTC calendar month, clamped to 0–1. Compute it from the shared deadline, not another stored progress state; shorter remaining time tends toward saffron, full time toward green. Preserve irregular masks/scars at both extremes and never present this color as a more precise timer. Authoritative accessible digits remain independent and immediate.
 
-The sole secret is a folded leaf near the clock with a small gold notch visible. Hover/focus on its 44 px semantic target opens the fold enough to show a crown; tap/Enter reveals Long may I count. inside it. Neither the bee nor a particular ripeness is required for discovery.
+The sole secret is a folded leaf near the clock with a small gold notch visible. Hover/focus on its 44 px semantic target opens the fold enough to show a crown; tap/Enter reveals “Long may I count.” inside it. Pointer departure must not close a keyboard-focused fold. Neither the bee nor a particular ripeness is required for discovery.
 
 ### Motion choreography
 
 Idle sway propagates from branch to twig to leaf with 100–180 ms lag between levels; keep the main branch under 1° and tips under 3°. Hanging tags respond first at the string attachment then the paper corners, with maximum rotation 2° and displacement 6 px. Focus keeps them still. The bee does not orbit the pointer continuously.
 
-Normal digit changes roll for 420 ms; successful reset reels use 1080 ms per digit and 45 ms column staggering, settling left to right over about 1.4 s overall. Concurrently the uneven green front spreads over 1500 ms. Pale interiors/screenshots stay unchanged. The tip extension peaks at 8% of one existing segment's length and settles back; no permanent growth or allocation. No automatic scroll, harvesting animation, falling preview tags or camera motion.
+Normal digit changes roll for 420 ms; successful reset reels use 1080 ms per digit and 45 ms column staggering, settling left to right over about 1.4 s overall. Concurrently the uneven green front spreads over 1500 ms of **visible scene time**. Opening a preview freezes its current peel colors and tip transform; closing resumes the remaining reversal from that exact phase rather than skipping to an elapsed wall-clock endpoint. A repeat snapshots the currently displayed peel colors and restarts the same bounded front. Pale interiors/screenshots stay unchanged. The tip extension peaks at 8% of one existing segment's length and settles back; no permanent growth or allocation. No automatic scroll, harvesting animation, falling preview tags or camera motion.
 
 ### Effects and render budget
 

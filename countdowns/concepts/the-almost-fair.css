@@ -39,6 +39,14 @@
 [data-theme="the-almost-fair"].fair-ready .art-mounts { display:none; }
 [data-theme="the-almost-fair"] .art-scene-unavailable .art-mounts { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); position:absolute; inset:64% 5% 5%; gap:24px; }
 [data-theme="the-almost-fair"] .art-scene-unavailable .art-mounts>.card { position:static; width:100%; align-self:start; }
+/* After context loss, reuse the direct route instead of an empty set of hero mounts. */
+[data-theme="the-almost-fair"].fair-ready .art-scene-unavailable .art-mounts,
+[data-theme="the-almost-fair"].fair-ready .art-scene-unavailable .fair-navbutton,
+[data-theme="the-almost-fair"].fair-ready .art-scene-unavailable .fair-route-row details { display:none!important; }
+[data-theme="the-almost-fair"].fair-ready .art-scene-unavailable .fair-route { display:grid!important; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; inset:70% 5% 5%; width:auto; max-height:none; padding:0; border:0; background:none; box-shadow:none; align-content:start; }
+[data-theme="the-almost-fair"].fair-ready .art-scene-unavailable .fair-route-row { display:block; min-height:44px; border:0; }
+[data-theme="the-almost-fair"].fair-ready .art-scene-unavailable .fair-route-row>a { min-height:48px; padding:8px 12px; background:#f2e5cc; border:1px solid #77958a66; }
+[data-theme="the-almost-fair"].fair-ready .art-scene-unavailable .fair-static-link { grid-column:1/-1; margin:0; padding:0 12px; background:#f2e5cc; }
 [data-theme="the-almost-fair"] .fair-navbutton { display:block; position:absolute; z-index:20; top:90px; right:20px; width:54px; height:54px; padding:10px; border:0; border-radius:50%; background:#f2e5cc; color:#d86b55; box-shadow:0 3px 0 #263b4012; cursor:pointer; }
 [data-theme="the-almost-fair"] .fair-navbutton svg { display:block; width:100%; height:100%; fill:none; stroke:currentColor; stroke-width:1.5; }
 [data-theme="the-almost-fair"] .fair-navbutton svg path { fill:currentColor; stroke:none; }
@@ -105,6 +113,8 @@
  [data-theme="the-almost-fair"] .art-scene-unavailable #royal-reset { top:33%; }
  [data-theme="the-almost-fair"] .art-scene-unavailable .press-tally { top:38%; }
  [data-theme="the-almost-fair"] .art-scene-unavailable .art-mounts { grid-template-columns:1fr; inset:46% 8% 3%; gap:28px; align-content:start; }
+ [data-theme="the-almost-fair"].fair-ready #art-hero.art-scene-unavailable { height:900px; min-height:900px; }
+ [data-theme="the-almost-fair"].fair-ready .art-scene-unavailable .fair-route { grid-template-columns:repeat(2,minmax(0,1fr)); inset:48% 8% 14%; }
  [data-theme="the-almost-fair"] .fair-navbutton { right:16px; top:68px; width:52px; height:52px; }
  [data-theme="the-almost-fair"] .fair-route { right:16px; top:130px; width:calc(100% - 32px); max-height:calc(100% - 150px); padding:8px 16px 12px; }
  [data-theme="the-almost-fair"] .fair-hint { bottom:28px; left:auto; right:20px; transform:none; }

@@ -123,9 +123,29 @@
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fullCountdownMedia=matchMedia('(max-width: 640px)');
   function shouldOpenFullCountdown(){ return !document.documentElement.classList.contains('gallery') && fullCountdownMedia.matches; }
+  function frameStops(){
+    var doc=frame.contentDocument;
+    if(!doc)return [];
+    return Array.from(doc.querySelectorAll('a[href],button,input,select,textarea,iframe,[tabindex]')).filter(function(el){
+      var css=doc.defaultView.getComputedStyle(el);
+      return el.tabIndex>=0&&!el.disabled&&!el.closest('[inert]')&&css.visibility!=='hidden'&&css.display!=='none'&&el.getClientRects().length;
+    }).sort(function(a,b){return (a.tabIndex>0?a.tabIndex:Infinity)-(b.tabIndex>0?b.tabIndex:Infinity);});
+  }
+  function focusFrame(last){
+    try{var stops=frameStops();if(stops.length){stops[last?stops.length-1:0].focus();return;}}catch(e){}
+    frame.focus();
+  }
   frame.addEventListener('load',function(){
     if((frame.src||'').indexOf('about:blank')<0) frame.classList.add('loaded');
-    try{frame.contentDocument.addEventListener('keydown',function(e){if(e.key==='Escape'&&!ov.hidden){e.preventDefault();close();}});}catch(e){}
+    try{frame.contentDocument.addEventListener('keydown',function(e){
+      if(ov.hidden)return;
+      if(e.key==='Escape'){e.preventDefault();close();return;}
+      if(e.key!=='Tab')return;
+      var stops=frameStops(),active=frame.contentDocument.activeElement;
+      if(!stops.length||e.shiftKey&&active===stops[0]||!e.shiftKey&&active===stops[stops.length-1]){
+        e.preventDefault();(e.shiftKey?closeBtn:openLink).focus();
+      }
+    });}catch(e){}
   });
   function map(card){ // uniform scale + translate so the dialog starts centered on the card frame
     var dr=dialog.getBoundingClientRect(), cr=srcRect||card.querySelector('.frame').getBoundingClientRect();
@@ -191,8 +211,9 @@
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
   ov.addEventListener('keydown',function(e){
     if(e.key!=='Tab'||ov.hidden)return;
-    if(e.target===closeBtn&&!e.shiftKey){e.preventDefault();frame.focus();}
-    else if(e.target===openLink&&e.shiftKey){e.preventDefault();frame.focus();}
+    if(e.target===closeBtn&&!e.shiftKey){e.preventDefault();focusFrame(false);}
+    else if(e.target===openLink&&e.shiftKey){e.preventDefault();focusFrame(true);}
+    else if(e.target===frame){e.preventDefault();(e.shiftKey?closeBtn:openLink).focus();}
   });
 })();</script><script>(function(){
   var nav=document.querySelector('.shownav'); if(!nav||!('IntersectionObserver' in window)) return;

@@ -19,7 +19,7 @@ Preserve the strong diagonal division: deep blue water upper-left, chalk-white t
 Unlike the illustrative reference, flat screenshot centers and every title remain optically dry. Wet paper edges and cast shadows carry the water effect. No photograph needs to be fished out or peeled before opening. The shell has a shallow inset Again face, a clear contact shadow and a small physical press affordance. The tally sits beside it on dry ground; omit the generated share symbol.
 
 
-The implemented material plate uses orthographic half-span 5.5 and independent dry DOM. The upper-right Severance mount is left 67%, top 6%, width 26%, clearing the seconds cylinder. Live-scene digits have no square backing: textured chalk provides their surface. Phone physically repositions stones into two pairs, shell and crown into the viewport; fallback adds chalk-shaped DOM framing.
+The implemented material plate uses orthographic half-span 5.5 and independent dry DOM. The upper-right Severance mount is left 67%, top 6%, width 26%, clearing the seconds cylinder. Desktop live-scene digits have no square backing: textured chalk provides their surface. At widths below 700 px, two repositioned stone pairs receive small rounded, translucent chalk backings to guarantee readable contrast; this is an accepted phone exception, not a desktop tile treatment. Shell and crown move into the viewport; fallback adds chalk-shaped DOM framing.
 
 ### Palette and typography
 
@@ -41,13 +41,13 @@ Pointer or a stationary touch creates one damped ripple near water; paper corner
 
 Pending Again depresses the shell 2 px with a small glint but keeps water fixed. Only POST success sends an incoming wave. Repeated successes retarget the same bounded front; errors release the shell with no wave and use the reserved short status. A newly observed remote count produces one small tide-edge ripple, never the local flood ceremony.
 
-The one crown is a shallow tide-pool object beside the shell, with a metallic tine visible. Hover/focus on its real 44 px target clears the local ripple enough to glimpse it. Tap/Enter reveals Long may I count. as a brief note beside that pool. Discovery never requires wave timing, water dragging or successful resets.
+The one crown is chipped **matte chalk**, resting in a small blue tide pool beside the shell. It shares the stones' granular diffuse/bump material and has irregular points and band edges; do not substitute metallic gold tines. Hover/focus on its real 44 px target immediately quiets incidental water detail nearby and reduces the pool's blue veil from 23% to 7% opacity, enough to make the rough crown clearer. Keyboard focus remains active if the pointer leaves. Tap/Enter reveals “Long may I count.” as a brief note beside that pool. Discovery never requires wave timing, water dragging or successful resets.
 
 ### Motion choreography
 
 Idle currents drift slowly in opposing directions with broad, low movement. Caustics never flicker across the timer. Normal digit reels take 420 ms; successful reset reels use 1080 ms per digit and 45 ms column staggering, about 1.4 s overall with left-to-right settling.
 
-Concurrently, one broad successful front approaches from the upper-left for 450 ms, briefly curls around cylinder bases, and eases back over 1150 ms. It never crosses the authored dry exclusion regions. Repeats reuse the same front and cannot raise the resting tide. Ripples are elliptical in the camera view, have one restrained crest, and decay under 900 ms; pointer samples are at least 120 ms apart with eight concurrent ripples maximum. Paper settles, stills on focus/preview, and never bobs endlessly. No obligatory camera travel.
+Concurrently, one broad successful front approaches from the upper-left for 450 ms, briefly curls around cylinder bases, and eases back over 1150 ms. It never crosses the authored dry exclusion regions. Repeats reuse the same front and cannot raise the resting tide. Ripples are elliptical in the camera view, have one restrained crest, and decay under 900 ms; pointer samples are at least 120 ms apart with eight concurrent ripples maximum. A remote event enqueues exactly one small edge ripple independently of this pointer sample gate, so a moving mouse cannot starve it; an open preview defers it until the scene resumes. Paper settles, stills on focus/preview, and never bobs endlessly. No obligatory camera travel.
 
 ### Effects and render budget
 
@@ -57,7 +57,7 @@ Start below 80k visible triangles, 60 draw calls, and eight concurrent ripple un
 
 Mobile turns the shore into a vertical diagonal, keeps timer cylinders in two pairs, and places the shell above the first archive sheet. Sheets remain large enough to recognize and select. Coarse pointers use tap ripples. Reduced motion freezes water and caustics, updates values immediately, and preserves dry navigation. Static fallback combines art-only shoreline texture with real DOM controls and previews.
 
-A tap ripple is optional feedback, not a required gesture. Vertical swipes retain ordinary scroll from paper or water. Keep the rust action and dry tally readable above the first sheet at 320 px; preserve the white/blue diagonal in the fallback. The one crown has the same focus/tap path as desktop.
+A tap ripple is optional feedback, not a required gesture. Vertical swipes retain ordinary scroll from paper or water. Keep the rust action and dry tally readable above the first sheet at 320 px; preserve the white/blue diagonal in the fallback. The one crown has the same focus/tap path as desktop. The expired-countdown note belongs to the action's normal flex flow after its status, so it cannot overlap Again, the tally or a revealed crown note.
 
 ### Implementation boundaries
 

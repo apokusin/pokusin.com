@@ -63,12 +63,13 @@
  [data-theme="low-tide-later"] .shelf .grid,[data-theme="low-tide-later"] .shelf .carousel-track{flex-direction:column;gap:60px}
  [data-theme="low-tide-later"] .shelf .card{width:100%;flex-basis:auto;padding:9px 9px 17px}
  [data-theme="low-tide-later"] .shelf .card:nth-child(even){transform:rotate(5deg)}
- [data-theme="low-tide-later"] .shelf .card:nth-child(even):hover{transform:rotate(3deg) translateY(-3px)}
+ [data-theme="low-tide-later"] .shelf .card:nth-child(even):hover,[data-theme="low-tide-later"] .shelf .card:nth-child(even):focus-visible{transform:rotate(3deg) translateY(-3px)}
 }
 @media(prefers-reduced-motion:reduce){[data-theme="low-tide-later"] .card,[data-theme="low-tide-later"] #royal-reset{transition:none!important}}
 
 [data-theme="low-tide-later"] .art-reset-area{right:auto;bottom:auto;height:auto}
 [data-theme="low-tide-later"] .art-reset-area #royal-reset,[data-theme="low-tide-later"] .art-reset-area .art-tally,[data-theme="low-tide-later"] .art-reset-area #clock-status,[data-theme="low-tide-later"] .art-reset-area #countdown-secret{position:relative;top:auto;left:auto;right:auto;bottom:auto}
+[data-theme="low-tide-later"] .art-reset-area .countdown-ended{position:relative;top:auto;left:auto;right:auto;bottom:auto;margin:0;width:100%;font:14px/1.3 Arial,sans-serif;text-align:center;color:#123ca6}
 [data-theme="low-tide-later"] .archive-shelves{max-width:none;padding:0}
 [data-theme="low-tide-later"] .shelf::before{display:block}
 

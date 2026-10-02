@@ -35,7 +35,7 @@ The working scene adds an original art-only `mineral-coast.jpg` scenery layer: p
 Use an orthographic camera at roughly 32° downward pitch and 25° azimuth. Begin with warm upper-left key, cool sky fill, and subtle rear-right rim in a 1:0.35:0.18 intensity ratio. One directional light casts soft PCF shadows; ground-contact darkness comes from baked or simple projected contact shading. Keep distant structures atmospheric and previews sharp. Lighting values are proposals.
 
 
-The implemented desktop comparison uses an orthographic half-span of 5.75 units, target `(0, 2, 0)` and view position `(0, 8.7, 23)`, with the clock enlarged 28% relative to the first prototype. This fills the upper-left composition instead of leaving a blank upper band. Phone framing derives its vertical span from a 7.3-unit horizontal field and recomposes the three supported mounts vertically. Re-register projected DOM widths whenever object scale changes; the projection helper interprets width in world units.
+The implemented desktop comparison uses an orthographic vertical half-span of `max(5.75, 9.2 × stage height / stage width)`, target `(0, 2, 0)` and view position `(0, 8.7, 23)`, with the clock enlarged 28% relative to the first prototype. A minimum 18.4-unit horizontal field protects the clock’s left edge and both outer billboard mounts at narrow desktop/tablet aspect ratios; the 5.75-unit baseline retains the large-screen framing. This fills the upper-left composition instead of leaving a blank upper band. Phone framing derives its vertical span from a 7.3-unit horizontal field and recomposes the three supported mounts vertically. Re-register projected DOM widths whenever object scale changes; the projection helper interprets width in world units.
 
 ### Interaction contract
 
@@ -58,7 +58,7 @@ On phone, compress the route into a vertical serpentine; show clock and button b
 Use the static generator and vendored Three.js; add no framework or build pipeline. The generated image is a composition reference, not a runtime asset. Raster art may supply horizon or grain accents, never burned-in clock values or fake preview controls. Archived sites stay faithful and the shared API remains unchanged.
 
 
-The scenery asset and its generation provenance live under `assets/concepts/tomorrows-roadworks/`. Its CSS also supplies the no-WebGL scenery fallback. The archive continues through unequal roadside billboard stations with native scrolling, supported mounts and restrained safety markers; it is not a generic shelf below a hero.
+The scenery asset and its generation provenance live under `countdowns/assets/concepts/tomorrows-roadworks/`. Its CSS also supplies the no-WebGL scenery fallback. The archive continues through unequal roadside billboard stations with native scrolling, supported mounts and restrained safety markers; it is not a generic shelf below a hero.
 
 ### Fidelity checks
 

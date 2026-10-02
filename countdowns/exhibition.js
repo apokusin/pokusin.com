@@ -1,6 +1,7 @@
 // Optional art worlds reuse the real archive, clock, and preview rather than duplicating them.
 export async function initExhibition(options) {
   const { theme, reducedMotion, requestReset, getDigits, revealSecret } = options;
+  const phoneViewport = matchMedia('(max-width: 699px)');
   const hero = document.getElementById('art-hero');
   const stage = document.getElementById('art-stage');
   const canvas = document.getElementById('art-scene');
@@ -90,7 +91,7 @@ export async function initExhibition(options) {
   const thumbnailOnlyFallback=()=>{hero.classList.remove('art-scene-ready');hero.classList.add('art-scene-unavailable');};
   function animate(ms) {
     frame=0;if(stopped||!visible||document.hidden)return;
-    const phone=stage.clientWidth<700;
+    const phone=phoneViewport.matches;
     if(ms-lastDraw<(phone?32:16)){wake();return;}
     const dt=lastTime?Math.min((ms-lastTime)/1000,.05):1/60;
     lastTime=lastDraw=ms;
@@ -115,13 +116,13 @@ export async function initExhibition(options) {
     if(!reducedMotion.matches||pointer.down||performance.now()/1000-burstAt<2.5||performance.now()/1000-remoteAt<.7)wake();
   }
   const ctx={theme,stage,canvas,hero,dom,cards,shelves,showData,mounts:representative,pointer,on,wake,
-    get mobile(){return stage.clientWidth<700;},get reduced(){return reducedMotion.matches;},
+    get mobile(){return phoneViewport.matches;},get reduced(){return reducedMotion.matches;},
     get pending(){return pending;},get burst(){return Number.isFinite(burstAt)?performance.now()/1000-burstAt:999;},
     get remoteAge(){return Number.isFinite(remoteAt)?performance.now()/1000-remoteAt:999;},
     requestReset,revealSecret,getDigits,
     openPreview(card,{originRect}={}){document.dispatchEvent(new CustomEvent('archive:open',{detail:{card:card.anchor||card,originRect}}));},
     pin(element,object,{offset=[0,0,0],width}={}){pins.set(element,{object,offset:new ctx.THREE.Vector3(...offset),width});element.classList.add('art-pinned');wake();},
-    unpin(element){pins.delete(element);element.classList.remove('art-pinned');element.style.visibility='';element.style.translate='';element.style.transform='';},
+    unpin(element){pins.delete(element);element.classList.remove('art-pinned');for(const property of ['visibility','left','top','width','translate','transform'])element.style[property]='';},
     setCamera(next){camera=next;ctx.camera=next;},
     fitCamera(span,target=[0,1,0],position=[0,4,14]){
       const aspect=stage.clientWidth/Math.max(1,stage.clientHeight);

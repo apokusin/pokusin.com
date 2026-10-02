@@ -1,6 +1,6 @@
 # Art direction review — The Almost Fair
 
-Reviewed the [actual image](../references/the-almost-fair.jpg), [spec](../specs/the-almost-fair.md), and shared guide. This is a pre-implementation review; the recommendations below have been incorporated into the spec.
+Reviewed the [actual image](../references/the-almost-fair.jpg), [spec](../specs/the-almost-fair.md), and shared guide. The first sections retain the pre-implementation review, whose recommendations were incorporated into the spec. Implementation refinements, visual acceptance and subsequent runtime corrections are recorded below.
 
 ## Creative judgment
 
@@ -59,3 +59,11 @@ On WebGL failure, the illustrated ground plan keeps a centered live clock, Again
 **Code-reviewed feel:** Input distinguishes a 6 px mouse/10 px touch orbit from activation, clears held movement on cancellation and preview opening, and snapshots the exact camera/player pose for restoration. Direct route links make walking optional. Reduced motion still schedules deliberate locomotion while omitting ambient choreography. These are source observations; the root interaction checks, not these stills, establish successful movement and preview restoration.
 
 **Fidelity decision:** Accept the deliberately simpler sculpture-like world over the reference's realistic vegetation, ornamental detail and noisy miniature surfaces. Preserve continuous paths and recognizable pavilion operations before adding props or copy. Faithful screen textures are intentional. No remaining P0/P1/P2 visual defect was identified in the supplied final compositions; runtime state, input and failure acceptance is recorded separately in the shared QA report.
+
+## Runtime review follow-up — 2026-10-02
+
+Review found four straight promenade connections crossing expanded pavilion colliders, including the shortest route from spawn past GoT. Those paths now visibly bend around GoT, Dexter, Sherlock and House of Cards. The navigation graph is built after all props exist, excludes obstructed segments using the walking clearance, and requires a clear approach from the player's current position. An unreachable click cannot start a blocked route. Static execution of the source pathfinder and movement equations completed 3,828 routes between every node, edge midpoint and all eight spawn/travel poses at 60 Hz, 30 Hz and 50 ms steps without collision or stalling. All 23 authored edges are clear; the continuous promenade retains three court holes. These are geometric and source checks, rather than additional visual captures.
+
+Direct travel now focuses the canvas before hiding its initiating button, so the next movement key works without an extra click. A lost WebGL context clears held input and turns the existing route drawer into an always-visible seven-show preview grid plus Archive. The genuine links keep their preview and modified-click behavior; all thirteen original cards remain below, with no cloned cards or nested interactive controls. The fallback transfers focus away from hidden travel controls and omits movement hints and unavailable travel actions.
+
+The spec now distinguishes the verified 48-degree framing, lighting and responsive settings from rendering budgets and frame-rate targets. Device performance figures remain targets to profile.

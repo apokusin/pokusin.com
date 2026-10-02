@@ -12,11 +12,12 @@ const binding = { prepare(sql) { return { bind(...args) { return {
   async first() { return db.prepare(sql).get(...args); },
   async run() { return db.prepare(sql).run(...args); }
 }; } }; } };
+const testSecret = 'countdown-check-only-key';
 const call = async (method = 'GET', key = 'preview', headers = {}, storage = binding) => {
   const tasks = [];
   const response = await onRequest({
     request: new Request('https://example.com/api/countdown', { method, headers: { ...(method === 'POST' ? { 'Content-Type': 'application/json', Origin: 'https://example.com' } : {}), ...headers } }),
-    env: { COUNTDOWN_DB: storage, COUNTDOWN_KEY: key }, waitUntil(task) { tasks.push(task); }
+    env: { COUNTDOWN_DB: storage, COUNTDOWN_KEY: key, COUNTDOWN_RATE_LIMIT_SECRET: testSecret }, waitUntil(task) { tasks.push(task); }
   });
   await Promise.all(tasks);
   return response;
@@ -73,7 +74,8 @@ try {
   let cleanupIp;
   for (let i = 0; !cleanupIp; i++) {
     const ip = `cleanup-${i}`;
-    const hash = new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(`preview:${minute}:${ip}`)));
+    const hmac = await crypto.subtle.importKey('raw', new TextEncoder().encode(testSecret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+    const hash = new Uint8Array(await crypto.subtle.sign('HMAC', hmac, new TextEncoder().encode(`preview:${minute}:${ip}`)));
     if (hash[0] < 16) cleanupIp = ip;
   }
   assert.equal((await call('POST', 'preview', { 'CF-Connecting-IP': cleanupIp })).status, 200);
@@ -105,7 +107,7 @@ if (process.argv[2]) {
   // Cloudflare overwrites CF-Connecting-IP on public requests; this is only for Pages dev.
   const testIp = `2001:db8:${crypto.randomUUID().replaceAll('-', '').slice(0, 24).match(/.{4}/g).join(':')}`;
   let baseline = await get();
-  if (baseline.serverNow % 60000 > 50000) {
+  if (baseline.serverNow % 60000 > 1000) {
     await new Promise(resolve => setTimeout(resolve, 60010 - baseline.serverNow % 60000));
     baseline = await get();
   }
@@ -117,6 +119,7 @@ if (process.argv[2]) {
   })));
   const accepted = burst.filter(result => result.status === 200);
   const rejected = burst.filter(result => result.status === 429);
+  assert.ok(burst.every(result => Math.floor(result.body.serverNow / 60000) === Math.floor(baseline.serverNow / 60000) || result.status === 429), 'The local burst exceeded its fresh minute; rerun on a faster local preview.');
   assert.equal(accepted.length, 60);
   assert.equal(rejected.length, 20);
   assert.ok(rejected.every(result => Number(result.retryAfter) > 0 && result.body.retryAfter === Number(result.retryAfter)));

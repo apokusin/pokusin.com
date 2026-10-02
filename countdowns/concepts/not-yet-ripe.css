@@ -66,7 +66,7 @@
  [data-theme="not-yet-ripe"] .shelf .grid,[data-theme="not-yet-ripe"] .shelf .carousel-track{flex-direction:column;gap:60px}
  [data-theme="not-yet-ripe"] .shelf .card{width:100%;flex-basis:auto;padding:9px 9px 18px}
  [data-theme="not-yet-ripe"] .shelf .card:nth-child(even){transform:rotate(5deg)}
- [data-theme="not-yet-ripe"] .shelf .card:nth-child(even):hover{transform:rotate(3deg) translateY(-4px)}
+ [data-theme="not-yet-ripe"] .shelf .card:nth-child(even):hover,[data-theme="not-yet-ripe"] .shelf .card:nth-child(even):focus-visible{transform:rotate(3deg) translateY(-4px)}
 }
 @media(prefers-reduced-motion:reduce){[data-theme="not-yet-ripe"] .card,[data-theme="not-yet-ripe"] #royal-reset{transition:none!important}}
 @media(max-width:360px){

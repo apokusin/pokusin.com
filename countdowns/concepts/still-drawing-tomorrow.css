@@ -18,10 +18,11 @@
 [data-theme="still-drawing-tomorrow"] .art-reset-area #royal-reset:focus-visible{outline:2px solid #3154b8;outline-offset:4px}
 [data-theme="still-drawing-tomorrow"] .art-reset-area #royal-reset:disabled{cursor:wait;opacity:.7}
 [data-theme="still-drawing-tomorrow"] .art-reset-area .art-tally{position:absolute;left:35%;top:77%;transform:translate(-50%,-50%);font:26px "Caveat",cursive;font-weight:700;color:#d94b32;white-space:nowrap;text-align:center}
-[data-theme="still-drawing-tomorrow"] .art-status{position:absolute;left:50%;bottom:1%;transform:translateX(-50%);width:min(90%,500px);text-align:center;font:14px "Barlow Condensed",sans-serif;min-height:24px;color:#534e45}
-[data-theme="still-drawing-tomorrow"] .art-secret{position:absolute;left:50%;bottom:5%;transform:translateX(-50%) rotate(-2deg);font:24px "Caveat",cursive;background:#f9f5ed;padding:4px 12px;z-index:8}
+[data-theme="still-drawing-tomorrow"] .art-reset-area .clock-status{position:absolute;left:50%;right:auto;top:auto;bottom:1%;transform:translateX(-50%);width:min(90%,500px);text-align:center;font:14px "Barlow Condensed",sans-serif;min-height:24px;color:#534e45}
+[data-theme="still-drawing-tomorrow"] .art-reset-area .countdown-secret{font:24px "Caveat",cursive;background:#f9f5ed;padding:4px 12px}
 [data-theme="still-drawing-tomorrow"] .art-secret-trigger{position:absolute;left:93%;top:30%;min-width:44px;min-height:44px;transform:translate(-50%,-50%);border:0;background:transparent;color:#25231f;cursor:pointer;opacity:.35;z-index:8}
 [data-theme="still-drawing-tomorrow"] .art-secret-trigger:hover,[data-theme="still-drawing-tomorrow"] .art-secret-trigger:focus-visible{opacity:1;outline:1px solid #3154b8;outline-offset:2px}
+[data-theme="still-drawing-tomorrow"] .art-scene-ready .art-secret-trigger img{display:none}
 [data-theme="still-drawing-tomorrow"] .art-mounts .card{position:absolute;width:28%;margin:0;background:#f5f1e999;border:12px solid #f6f2e99c;border-top-width:22px;border-bottom-width:18px;border-radius:1px;transform:translate(-50%,-50%);box-shadow:0 2px 5px #75685418;overflow:visible;z-index:5;pointer-events:auto}
 [data-theme="still-drawing-tomorrow"] .art-mounts .card:nth-child(1){left:20%;top:24%}
 [data-theme="still-drawing-tomorrow"] .art-mounts .card:nth-child(2){left:49%;top:20%}

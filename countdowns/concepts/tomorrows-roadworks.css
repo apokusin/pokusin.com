@@ -16,10 +16,11 @@
 [data-theme="tomorrows-roadworks"] .art-reset-area #royal-reset:focus-visible{outline:3px dashed #f4dfb9;outline-offset:5px}
 [data-theme="tomorrows-roadworks"] .art-reset-area #royal-reset:disabled{cursor:wait;filter:brightness(.92)}
 [data-theme="tomorrows-roadworks"] .art-reset-area .art-tally{position:absolute;left:58%;top:38%;transform:translate(-50%,-50%);font:500 20px "Barlow Condensed",sans-serif;color:#24231f;text-align:center;white-space:nowrap}
-[data-theme="tomorrows-roadworks"] .art-reset-area .art-status{position:absolute;left:50%;bottom:2%;transform:translateX(-50%);font:14px "Barlow Condensed",sans-serif;width:min(90%,500px);text-align:center;color:#342d25;min-height:24px}
-[data-theme="tomorrows-roadworks"] .art-reset-area .art-secret{position:absolute;left:50%;bottom:5%;transform:translateX(-50%);font:italic 22px "Libre Baskerville",serif;background:#e4bb9e;padding:5px 14px;z-index:6}
+[data-theme="tomorrows-roadworks"] .art-reset-area .clock-status{position:absolute;left:50%;right:auto;top:auto;bottom:2%;transform:translateX(-50%);font:14px "Barlow Condensed",sans-serif;width:min(90%,500px);text-align:center;color:#342d25;min-height:24px}
+[data-theme="tomorrows-roadworks"] .art-reset-area .countdown-secret{font:italic 22px "Libre Baskerville",serif;background:#e4bb9e;padding:5px 14px}
 [data-theme="tomorrows-roadworks"] .art-secret-trigger{position:absolute;left:69%;top:21%;min-width:44px;min-height:44px;transform:translate(-50%,-50%);border:0;background:transparent;color:#d8d638;opacity:.18;z-index:7;cursor:pointer}
 [data-theme="tomorrows-roadworks"] .art-secret-trigger:hover,[data-theme="tomorrows-roadworks"] .art-secret-trigger:focus-visible{opacity:1;outline:1px dashed #292d32;outline-offset:2px}
+[data-theme="tomorrows-roadworks"] .art-scene-ready .art-secret-trigger img{display:none}
 [data-theme="tomorrows-roadworks"] .art-mounts .card{position:absolute;width:24%;margin:0;transform:translate(-50%,-50%);background:#24231f;border:3px solid #dcc1a0;box-shadow:0 4px 2px #8c6a5659;overflow:visible;pointer-events:auto;border-radius:0;z-index:4}
 [data-theme="tomorrows-roadworks"] .art-mounts .card:nth-child(1){left:20%;top:69%}
 [data-theme="tomorrows-roadworks"] .art-mounts .card:nth-child(2){left:81%;top:48%}
@@ -44,6 +45,9 @@
 [data-theme="tomorrows-roadworks"] .shelf .card .body{padding:12px 16px}
 [data-theme="tomorrows-roadworks"] .shelf .card .label{font-size:14px}
 [data-theme="tomorrows-roadworks"] .shelf-more{color:#22221d;font:500 14px "Barlow Condensed",sans-serif;background:#dcc5a8;border:1px solid #91755f;padding:10px 15px;border-radius:0;min-height:44px}
+@media(min-width:700px) and (max-width:900px){
+ [data-theme="tomorrows-roadworks"] .art-reset-area #royal-reset{min-width:76px;min-height:70px;font-size:21px}
+}
 @media(max-width:699px){
  [data-theme="tomorrows-roadworks"] #art-hero{height:1170px;min-height:0}
  [data-theme="tomorrows-roadworks"] .art-title{font-size:52px;bottom:5%;left:7%;transform:rotate(-5deg)}

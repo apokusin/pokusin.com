@@ -44,7 +44,7 @@ Pointer proximity bends flame by at most 12 degrees; nearby ash follows a brief 
 
 Pending Again depresses the pool 2 px and narrows its highlight while keeping wax fixed. Only confirmed POST success sends wax visibly upward against gravity, rebuilds the wick and updates reels. Failure releases the pool over 180 ms, leaves wax unchanged and uses the reserved short status. Repeated successes retarget one bounded reversal without accumulating geometry or candle height. A newer polled count gives only a small flame lift over 400 ms.
 
-The one crown is lodged in the foreground drip, with a small gold edge visible. Give its 44 px semantic target a tiny warm pool on hover/focus; tap/Enter makes a 5° bow and reveals Long may I count. locally for a dismissible beat. It is not an ash collection or cursor-trail game.
+The one crown is lodged in the foreground drip, with a small gold edge visible. Give its 44 px semantic target a tiny warm pool on hover/focus; keep keyboard focus independent of pointer presence so pointer departure cannot cancel that cue. Tap/Enter makes a 5° bow and reveals “Long may I count.” locally for a dismissible beat. It is not an ash collection or cursor-trail game.
 
 ### Motion choreography
 

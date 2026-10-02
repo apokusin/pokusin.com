@@ -66,7 +66,7 @@
  [data-theme="after-the-flame"] .shelf .grid,[data-theme="after-the-flame"] .shelf .carousel-track{flex-direction:column;gap:55px;padding-bottom:0}
  [data-theme="after-the-flame"] .shelf .card{width:100%;flex-basis:auto;border-width:10px}
  [data-theme="after-the-flame"] .shelf .card:nth-child(even){transform:rotate(1deg)}
- [data-theme="after-the-flame"] .shelf .card:nth-child(even):hover{transform:translateY(-2px)}
+ [data-theme="after-the-flame"] .shelf .card:nth-child(even):hover,[data-theme="after-the-flame"] .shelf .card:nth-child(even):focus-visible{transform:translateY(-2px)}
  [data-theme="after-the-flame"] .shelf .label{font-size:17px}
 }
 @media(prefers-reduced-motion:reduce){[data-theme="after-the-flame"] .card,[data-theme="after-the-flame"] #royal-reset{transition:none!important}}

@@ -1,6 +1,6 @@
 # Art direction review — Low Tide, Later
 
-Reviewed the actual [reference image](../references/low-tide-later.jpg), complete [spec](../specs/low-tide-later.md), and shared guide. This is an implementation critique, not a review of a working page.
+Reviewed the actual [reference image](../references/low-tide-later.jpg), complete [spec](../specs/low-tide-later.md), and shared guide. The initial sections below are recommendations for implementation; the later implementation addendum and final acceptance distinguish source review from observed working-page visuals.
 
 ## The compelling idea
 
@@ -21,7 +21,7 @@ The shell needs a shallow inset Again face and a 2 px press so it reads as an ac
 
 ## Discovery and the one easter egg
 
-Place the crown in one shallow tide pool beside the shell. Only one metallic tine is visible. A nearby pointer/focused semantic target clears the local ripple long enough to glimpse it; tap/Enter reveals “Long may I count.” as a brief handwritten note beside the pool. Do not require tide timing, dragging water or repeated successful resets to discover it.
+Place the crown in one shallow tide pool beside the shell, made from the same chipped matte chalk as the clock stones. A rough white point peeks above a quiet blue veil. A nearby pointer/focused semantic target clears incidental water detail enough to glimpse it; tap/Enter reveals “Long may I count.” as a brief handwritten note beside the pool. Do not require tide timing, dragging water or repeated successful resets to discover it.
 
 ## Assets and execution risk
 
@@ -36,6 +36,8 @@ Preserve the white/blue diagonal, chalk apertures, shell accent and irregular ph
 The tide is procedural Three.js: one masked displaced water plate with broad currents, restrained cyanotype grain/caustic veins and eight bounded ripples; four chipped chalk cylinders have authored irregular tops and procedural granular diffuse/bump; the shell has actual raised ridges. DOM digits sit directly on the chalk, with no square tile backing in the live scene. Native taps/scroll and ordinary full-photo preview links remain intact. A confirmed wave peaks at 450 ms, recedes over 1150 ms, and never covers live content because the water stays behind independent dry DOM surfaces.
 
 An orthographic overlay at half-span 5.5 preserves the diagonal image plane. The top Severance print is 67%/6%/26% (left/top/width), clearing the seconds cylinder. The home link is paper-white over water. Phone repositions the **actual** stones into two pairs and moves shell/crown into the viewport; it does not merely shrink the desktop row. The reduced/WebGL fallback keeps chalk-shaped DOM framing and dry controls. Only Georgia/Arial are used in themed UI. No ocean engine, fluid service, full-scene generated bitmap or fictitious share control was added.
+
+A subsequent source review gives remote observations their own one-shot ripple queue, independent of local pointer sampling; continuous mouse movement can no longer starve that response. The crown now shares the stones' matte granular chalk material, with chipped band/points and a small blue pool whose veil attenuates on hover or keyboard focus; focus remains active after pointer departure. Local water detail quiets in that region as well. The expired-countdown note now follows the action in normal flex flow, and even-numbered phone prints use the same bounded keyboard lift as hover. The no-backing rule applies to desktop; the rounded translucent phone contrast backings observed below remain an explicit accepted exception.
 
 ## Final independent art acceptance — 2026-10-02
 

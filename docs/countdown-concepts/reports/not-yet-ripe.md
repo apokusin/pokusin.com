@@ -1,6 +1,6 @@
 # Art direction review — Not Yet Ripe
 
-Reviewed the actual [reference image](../references/not-yet-ripe.jpg), complete [spec](../specs/not-yet-ripe.md), and shared guide. This is an implementation critique, not a review of a working page.
+Reviewed the actual [reference image](../references/not-yet-ripe.jpg), complete [spec](../specs/not-yet-ripe.md), and shared guide. The initial sections below are recommendations for implementation; the later implementation addendum and final acceptance distinguish source review from observed working-page visuals.
 
 ## The compelling idea
 
@@ -39,6 +39,8 @@ A newly generated transparent **art-only** bark/leaf layer, `assets/concepts/not
 Desktop fruit centers were lowered to world y=.30; the DOM clock starts at 39.5%. Both top prints are now at 6%, with 23%/26% widths, so the entire fruit row remains exposed. Phone uses two pairs, a 52.5% reset region and separated lower paper mounts; paper rotates around its string attachment rather than its center. The sole crown is between exhibits rather than under a photo, and has the same immediate focus/tap discovery in reduced motion. Calendar ripeness is computed from the actual remaining digits and the preceding clamped UTC month; it has no stored progress or backend changes. Georgia/Arial replace the earlier third typeface.
 
 At 320 px, a final comparison exposed the cropped left fruit and title/glyph collision. The narrow breakpoint now shifts and reduces only the four fruit meshes, narrows the title to 36 px and leaves a 12 px minimum reading gap; both phone widths place live digits at 29% to sit within the flesh.
+
+A subsequent source review replaces the reversal's wall-clock age with visible scene time. Preview opening holds the exact peel/twig phase, and closing resumes its remaining progression; repeated confirmations snapshot the current peel colors. Hover or focus now visibly turns/splays the nearest modeled leaf to the specimen string, with immediate keyboard/reduced-motion response and no content-uncovering requirement. The crown tracks focus independently of hover. Even-numbered phone archive prints receive the same local keyboard lift as hover instead of the desktop stagger.
 
 ## Final independent art acceptance — 2026-10-02
 

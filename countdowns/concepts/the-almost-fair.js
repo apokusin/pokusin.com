@@ -42,17 +42,15 @@ export function create(ctx) {
   const nodes = [
     [0, 7], [0, 4], [-3, 2.8], [-5.8, 1.65], [-8, -2.5], [-10, -4.4],
     [-5.5, -8.1], [0, -9], [0, -10.6], [5.5, -8.1], [10, -4.4],
-    [8, -2.5], [5.8, 1.65], [3, 2.8], [0, -3.5]
+    [8, -2.5], [5.8, 1.65], [3, 2.8], [0, -3.5],
+    [-9.2, 1.65], [-9.2, -2.5], [9.2, 1.65], [9.2, -2.5], [-7, -4.4], [7, -4.4]
   ].map(([x, z]) => ({ x, z, edges: [] }));
-  const edges = [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[7,9],[9,10],
-    [10,11],[11,12],[12,13],[13,1],[4,14],[14,11],[14,7]];
+  // Outer bends clear the front pavilions; short apron bends clear the two rear doorways.
+  const edges = [[0,1],[1,2],[2,3],[3,15],[15,16],[16,4],[4,5],[5,19],[19,6],
+    [6,7],[7,8],[7,9],[9,20],[20,10],[10,11],[11,18],[18,17],[17,12],
+    [12,13],[13,1],[4,14],[14,11],[14,7]];
   batch('box', 'cream', 0, -.2, -3, 38, .4, 30, 0, 0, 0, false);
   batch('box', 'jade', 0, .005, -3, 31, .025, 23, 0, 0, 0, false);
-  for (const [a, b] of edges) {
-    const A = nodes[a], B = nodes[b], dx = B.x - A.x, dz = B.z - A.z;
-    const length = Math.hypot(dx, dz);
-    A.edges.push({ to: b, length }); B.edges.push({ to: a, length });
-  }
   // One triangulated capsule union makes a continuous promenade: no overlapping discs or cracks.
   function walkwayShape() {
     const step = .2, left = -13, back = -13, columns = 130, rows = 113, radius = 1.225;
@@ -277,6 +275,13 @@ export function create(ctx) {
   ctx.pin(ctx.dom.tally, tallyAnchor, { width: .85 });
   ctx.pin(ctx.dom.secretButton, crown, { width: .3 });
 
+  // Build navigation only after every collider exists, using the same clearance as walking.
+  const walkableEdges = edges.filter(([a, b]) => clearSegment(nodes[a], nodes[b]));
+  for (const [a, b] of walkableEdges) {
+    const length = Math.hypot(nodes[b].x - nodes[a].x, nodes[b].z - nodes[a].z);
+    nodes[a].edges.push({ to: b, length }); nodes[b].edges.push({ to: a, length });
+  }
+
   for (const { geometry, material, matrices, castShadow } of batches.values()) {
     const instances = new T.InstancedMesh(geometry, material, matrices.length);
     matrices.forEach((m, i) => instances.setMatrixAt(i, m)); instances.castShadow = castShadow; instances.receiveShadow = true; world.add(instances);
@@ -294,7 +299,7 @@ export function create(ctx) {
   const playerAO = mesh(new T.PlaneGeometry(.8, .8), aoMaterial, 0, .044, 0, player);
   playerAO.rotation.x = -Math.PI / 2; playerAO.castShadow = false;
 
-  let disposed = false, frozen = false, snapshot = null, held = new Set(), restoreCamera = false, previewOrigin = null;
+  let disposed = false, frozen = false, sceneLost = false, snapshot = null, held = new Set(), restoreCamera = false, previewOrigin = null;
   let yaw = 0, pitch = Math.PI / 6, cameraDistance = 6.5, followX = player.position.x, followZ = player.position.z;
   let vx = 0, vz = 0, walkPhase = 0, heading = Math.PI, selected = 'clock';
   let pointer = null, joystickPointer = null, joyX = 0, joyZ = 0, route = [], travelAt = -Infinity, travelPose = null;
@@ -364,8 +369,8 @@ export function create(ctx) {
     stick.style.transform = 'translate(0,0)';
   }
   function travel(slug) {
-    if (frozen) return;
-    clearInput(); closeRoute(); selected = slug;
+    if (frozen || sceneLost) return;
+    clearInput(); ctx.canvas.focus({ preventScroll: true }); closeRoute(); selected = slug;
     if (ctx.reduced) { setPose(safePoses[slug]); return; }
     travelPose = safePoses[slug]; travelAt = performance.now() / 1000;
     ctx.stage.classList.remove('fair-travel'); void ctx.stage.offsetWidth; ctx.stage.classList.add('fair-travel'); ctx.wake();
@@ -375,28 +380,31 @@ export function create(ctx) {
     player.position.x = followX = pose.x; player.position.z = followZ = pose.z; yaw = pose.yaw; heading = Math.PI; player.rotation.y = heading;
     restoreCamera = false; cameraDistance = ctx.mobile ? 7.5 : 6.5; updateCamera(1, true); hint.hidden = true; ctx.wake();
   }
-  function closestPath(x, z) {
+  function closestPath(x, z, clearApproach = false) {
     let best = null;
-    for (const [a, b] of edges) {
+    for (const [a, b] of walkableEdges) {
       const A = nodes[a], B = nodes[b], dx = B.x - A.x, dz = B.z - A.z;
       const ratio = Math.max(0, Math.min(1, ((x - A.x) * dx + (z - A.z) * dz) / (dx * dx + dz * dz)));
       const px = A.x + dx * ratio, pz = A.z + dz * ratio, distance = Math.hypot(x - px, z - pz);
+      if (clearApproach && !clearSegment({ x, z }, { x: px, z: pz })) continue;
       if (!best || distance < best.distance) best = { x: px, z: pz, a, b, distance };
     }
     return best;
   }
   function walkTo(x, z) {
     const target = closestPath(x, z); if (!target || target.distance > 1.3) return;
-    const start = closestPath(player.position.x, player.position.z);
+    const start = closestPath(player.position.x, player.position.z, true); if (!start) return;
     if (start.a === target.a && start.b === target.b) { route = [start, target]; ctx.wake(); return; }
     const distance = nodes.map(() => Infinity), previous = nodes.map(() => -1), unvisited = new Set(nodes.map((_, i) => i));
     for (const index of [start.a, start.b]) distance[index] = Math.hypot(start.x - nodes[index].x, start.z - nodes[index].z);
     while (unvisited.size) {
       let nearest = -1; for (const index of unvisited) if (nearest < 0 || distance[index] < distance[nearest]) nearest = index;
+      if (!Number.isFinite(distance[nearest])) break;
       unvisited.delete(nearest);
       for (const edge of nodes[nearest].edges) if (distance[nearest] + edge.length < distance[edge.to]) { distance[edge.to] = distance[nearest] + edge.length; previous[edge.to] = nearest; }
     }
     const finish = distance[target.a] + Math.hypot(target.x - nodes[target.a].x, target.z - nodes[target.a].z) < distance[target.b] + Math.hypot(target.x - nodes[target.b].x, target.z - nodes[target.b].z) ? target.a : target.b;
+    if (!Number.isFinite(distance[finish])) return;
     const chain = []; let current = finish;
     while (current >= 0) { chain.unshift(nodes[current]); current = previous[current]; }
     route = [start, ...chain, target]; ctx.wake();
@@ -416,7 +424,16 @@ export function create(ctx) {
     clearInput(); ctx.dom.route.hidden = !ctx.dom.route.hidden; ctx.dom.archiveToggle.setAttribute('aria-expanded', String(!ctx.dom.route.hidden));
     if (!ctx.dom.route.hidden) clockTravel.focus({ preventScroll: true });
   });
-  ctx.on(ctx.dom.route, 'keydown', event => { if (event.key === 'Escape') { event.stopPropagation(); closeRoute(); ctx.dom.archiveToggle.focus({ preventScroll: true }); } });
+  ctx.on(ctx.dom.route, 'keydown', event => { if (event.key === 'Escape' && !sceneLost) { event.stopPropagation(); closeRoute(); ctx.dom.archiveToggle.focus({ preventScroll: true }); } });
+  ctx.on(ctx.canvas, 'webglcontextlost', () => {
+    const active = document.activeElement;
+    const moveFocus = active === ctx.canvas || active === ctx.dom.archiveToggle || active?.closest?.('.fair-travel-button,.fair-route-heading');
+    sceneLost = true; frozen = true; travelPose = null; clearInput();
+    ctx.stage.classList.remove('fair-travel'); ctx.dom.route.hidden = false;
+    ctx.dom.archiveToggle.setAttribute('aria-expanded', 'true');
+    // The existing drawer becomes ordinary direct links; its genuine anchors need no clones.
+    queueMicrotask(() => { if (moveFocus && !disposed) ctx.dom.route.querySelector('.fair-route-row>a')?.focus({ preventScroll: true }); });
+  });
   ctx.on(ctx.canvas, 'keydown', event => {
     if (frozen || document.activeElement !== ctx.canvas) return;
     const key = event.key.toLowerCase();
@@ -489,6 +506,20 @@ export function create(ctx) {
   function canStand(x, z) {
     if (x < -17 || x > 17 || z < -15 || z > 10.5) return false;
     return !obstacles.some(box => x > box.minX - .28 && x < box.maxX + .28 && z > box.minZ - .28 && z < box.maxZ + .28);
+  }
+  function clearSegment(from, to) {
+    if (!canStand(from.x, from.z) || !canStand(to.x, to.z)) return false;
+    for (const bounds of obstacles) {
+      let near = 0, far = 1;
+      for (const [axis, min, max] of [['x', bounds.minX - .28, bounds.maxX + .28], ['z', bounds.minZ - .28, bounds.maxZ + .28]]) {
+        const start = from[axis], delta = to[axis] - start;
+        if (Math.abs(delta) < .00001) { if (start <= min || start >= max) { near = Infinity; break; } continue; }
+        let a = (min - start) / delta, b = (max - start) / delta; if (a > b) [a, b] = [b, a];
+        near = Math.max(near, a); far = Math.min(far, b); if (near >= far) break;
+      }
+      if (near < far && far > 0 && near < 1) return false;
+    }
+    return true;
   }
   function segmentBoxDistance(from, to, bounds) {
     let near = 0, far = 1;

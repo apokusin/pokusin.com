@@ -1,6 +1,6 @@
 # Art direction review — After the Flame
 
-Reviewed the actual [reference image](../references/after-the-flame.jpg), complete [spec](../specs/after-the-flame.md), and shared guide. This is an implementation critique, not a review of a working page.
+Reviewed the actual [reference image](../references/after-the-flame.jpg), complete [spec](../specs/after-the-flame.md), and shared guide. The initial sections below are recommendations for implementation; the later implementation addendum and final acceptance distinguish source review from observed working-page visuals.
 
 ## The compelling idea
 
@@ -38,6 +38,8 @@ The wax canyon uses a newly generated, transparent **art-only** layer, `assets/c
 The art layer owns the photographic perspective; an orthographic overlay camera at half-span 5.5 aligns physical light/flow with it. Reverse-flow geometry is **invisible at rest**, replacing an early rack-like arrangement of exposed tubes; ten irregular overlapping rivulets appear only after accepted success and fade within 1500 ms. The action is now actually seated in the wax pool after correcting inherited absolute child positions. Title is below Worlds, at 92 px. Desktop apertures occupy 34%/66%/53% (left/top/width); phone uses two pairs, with lower prints at 65% and 81% to retain their full labels. Georgia/Arial are the only themed UI faces. The static layer keeps the canyon language when WebGL fails.
 
 A final independent desktop comparison found the upper Game of Thrones caption partially hidden by the two neighboring mounts. Its caption now sits 10 px above its own recess at widths ≥700 px; the scene, image bounds and phone layout remain intact. All three full show captions must be visible at rest, including wide desktop views where recess proportions diverge most.
+
+A subsequent source review separates the crown's keyboard focus from pointer hover, so pointer departure cannot cancel a still-focused discovery cue. Even-numbered phone archive prints now use the same local 2 px lift for keyboard focus as for hover, preserving the phone arrangement rather than inheriting the desktop vertical stagger.
 
 ## Final independent art acceptance — 2026-10-02
 

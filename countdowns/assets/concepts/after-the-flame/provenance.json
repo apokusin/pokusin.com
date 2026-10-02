@@ -3,6 +3,7 @@
   "date": "2026-10-02",
   "id": "after-the-flame",
   "file": "canyon.webp",
+  "sha256": "60e209d1f4cefebc77df5d7771e0c5266a6cbfb9d329c490db4c6f821755fdd6",
   "original": "exec-d2644da6-900e-4d0c-892b-e355223b590f.png",
   "prompt": "Use case: stylized-concept. Asset type: production art-only transparent layer for an interactive Three.js candle/wax archive. Input image 1 is composition/material reference only; remove ALL user interface and preserve the sculptural wax language. Primary request: a monumental ivory wax canyon, tower of melted candle cropped at far left, irregular thick wax terraces ascending at right, wet thin rivulets and dry matte ledges, four carved EMPTY plain ivory recess frames along bottom center, large shallow EMPTY wax pool lower left. Camera shallow perspective across foreground, upper-left warm candle lighting and faint cool rim on right. Intricate believable wax silhouette, thickness translucency at thin edges, crevice occlusion and beautiful imperfections; deep burgundy negative space should be TRANSPARENT, not filled. No flame, no crown, no ash particles: these will be interactive 3D objects. Exclude absolutely all text, words, digits, clocks, screens, photographs, archive artwork, buttons, people, letters and logos. Wide landscape composition, transparent background and empty recesses; this is an environmental art asset, NOT a website screenshot. Do not include any interface markings or baked content."
 }

@@ -32,9 +32,11 @@ export function create(ctx) {
   const crown=new T.Group();const band=new T.Mesh(new T.TorusGeometry(.18,.035,6,24),gold);band.rotation.x=Math.PI/2;crown.add(band);
   for(let i=0;i<3;i++){const p=new T.Mesh(new T.ConeGeometry(.065,.22,4),gold);p.position.set((i-1)*.13,.12,0);crown.add(p);}
   crown.position.set(-2.1,-3.9,2);group.add(crown);ctx.pin(ctx.dom.secretButton,crown,{width:.62});
-  let frozen=false,secretFocus=false;
-  for(const event of ['focus','pointerenter'])ctx.on(ctx.dom.secretButton,event,()=>{secretFocus=true;ctx.wake();});
-  for(const event of ['blur','pointerleave'])ctx.on(ctx.dom.secretButton,event,()=>{secretFocus=false;ctx.wake();});
+  let frozen=false,secretFocused=false,secretHovered=false;
+  ctx.on(ctx.dom.secretButton,'focus',()=>{secretFocused=true;ctx.wake();});
+  ctx.on(ctx.dom.secretButton,'blur',()=>{secretFocused=false;ctx.wake();});
+  ctx.on(ctx.dom.secretButton,'pointerenter',()=>{secretHovered=true;ctx.wake();});
+  ctx.on(ctx.dom.secretButton,'pointerleave',()=>{secretHovered=false;ctx.wake();});
   const resize=()=>{ctx.fitCamera(ctx.mobile?6:5.5,[0,0,0],[0,0,18]);
     group.scale.setScalar(ctx.mobile?.68:1);group.position.set(ctx.mobile?2.3:0,ctx.mobile?1.7:0,0);};resize();
   return {resize,overlay(value){frozen=value;},
@@ -54,7 +56,7 @@ export function create(ctx) {
       ash.visible=!still&&!ctx.mobile;
       if(ash.visible){for(let i=0;i<ashCount;i++){const s=ashSeeds[i],phase=(time*.12+s)%1;ashPositions[i*3]=-4.05+Math.sin(time*.37+i)*(.2+phase*1.7);ashPositions[i*3+1]=2.7+phase*3.5;}
         ashGeometry.attributes.position.needsUpdate=true;}
-      crown.rotation.z=secretFocus&&!still?-.085:0;
+      crown.rotation.z=(secretFocused||secretHovered)&&!still?-.085:0;
     }
   };
 }

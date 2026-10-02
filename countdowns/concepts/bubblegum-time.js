@@ -114,6 +114,7 @@ export function create(ctx) {
           arr[i+2]=ribbonBase[i+2]+influence*(ctx.pointer.down?.18:.065);
         }
         ribbon.geometry.attributes.position.needsUpdate=true;
+        ribbon.geometry.computeVertexNormals();
       }
       deforming=needsDeform;
       curl.rotation.x=secretFocus?.22:0;crown.rotation.z=-.1+(secretFocus?.07:0);

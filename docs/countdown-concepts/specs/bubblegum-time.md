@@ -33,7 +33,7 @@ Author the connected aperture silhouette and pin joins; four separate rounded ca
 
 ### Camera and lighting
 
-Use shallow perspective, approximately 35 mm equivalent; balloon and title cross frame boundaries. Start with a broad upper-left key, soft front fill, and rear-right strip rim at 1:0.25:0.6. Long rectangular highlight bands should reveal stretched material curvature. Use a studio reflection texture and one soft shadow source; contact shadows anchor paper and gum. Any iridescence stays in highlights rather than recoloring preview content.
+The visual reference suggests shallow perspective, approximately 35 mm equivalent. The implementation contract uses an **orthographic** material stage with vertical half-span 5.5 desktop / 6.6 phone so the physical apertures and independent DOM stay aligned; do not replace it with a perspective camera merely to copy the illustration. Balloon and title still cross frame boundaries. A broad upper-left key, soft hemisphere fill and rear-right strip rim reveal curvature through long rectangular bands from the neutral studio reflection. Recompute the ribbon's vertex normals whenever its vertices deform, including the final return to rest, so the gloss follows the material's actual shape. Contact shadows anchor paper and gum; highlights must not recolor preview content.
 
 ### Interaction contract
 

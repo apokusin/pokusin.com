@@ -1,6 +1,6 @@
 # Art direction review — Bubblegum Time
 
-Reviewed the actual [reference image](../references/bubblegum-time.jpg), complete [spec](../specs/bubblegum-time.md), and shared guide. This is an implementation critique, not a review of a working page.
+Reviewed the actual [reference image](../references/bubblegum-time.jpg), complete [spec](../specs/bubblegum-time.md), and shared guide. The initial sections below are recommendations for implementation; the later implementation addendum and final acceptance distinguish source review from observed working-page visuals.
 
 ## The compelling idea
 
@@ -36,6 +36,8 @@ Keep the connected diagonal strip, cropped balloon, pale drums, mint silence and
 The implementation is a connected, scalloped extruded gum belt, a volumetric balloon, thin tethers and pins, and real DOM reel drums. A procedural neutral studio reflection supplies long gloss bands; billowed depth and inset drum-side shading replace the initial flat plank/tiles. No complete reference image is used at runtime. Resting deformation sleeps until approach or reset; a 6 px deliberate drag threshold protects ordinary taps and native vertical phone scroll. Confirmed expansion peaks at 650 ms and returns by 1800 ms; repeated responses reuse the same vertices.
 
 Desktop uses an orthographic material stage (half-span 5.5) to align independently readable DOM. At 390/320 px the belt scales and the four drums remain a single line. The two lower phone prints are separated at 55% and 72% of the hero rather than overlapping their labels. Crown projection follows its one real mesh and replaces the fallback crown icon. The actual face pair is Georgia/Arial. The first scene pass exposed an infinite-age/NaN deformation bug and inherited absolute reset positioning; both were fixed and initial, reset and reduced/mobile vertex states were checked as finite. Browser fidelity and performance remain acceptance checks, not measured claims here.
+
+A subsequent source review corrected two interaction details: deformed belt vertices now recompute their normals, keeping the studio gloss attached to the moving surface, and even-numbered phone archive prints use the same small lift for keyboard focus as for hover instead of inheriting a desktop vertical stagger. The orthographic camera is the implementation contract; the 35 mm perspective belongs only to the visual reference.
 
 ## Final independent art acceptance — 2026-10-02
 

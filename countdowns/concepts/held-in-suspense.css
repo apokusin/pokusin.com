@@ -19,10 +19,11 @@
 [data-theme="held-in-suspense"] .art-reset-area #royal-reset:focus-visible{outline:2px solid #263b40;outline-offset:5px}
 [data-theme="held-in-suspense"] .art-reset-area #royal-reset:disabled{cursor:wait;opacity:.75}
 [data-theme="held-in-suspense"] .art-reset-area .art-tally{position:absolute;left:85%;top:81%;transform:translate(-50%,-50%);font:17px "Barlow Condensed",sans-serif;letter-spacing:.06em;color:#222526;text-align:center;white-space:nowrap}
-[data-theme="held-in-suspense"] .art-status{position:absolute;left:50%;bottom:1%;transform:translateX(-50%);width:min(90%,500px);text-align:center;min-height:24px;font:14px "Barlow Condensed",sans-serif;color:#4a5558}
-[data-theme="held-in-suspense"] .art-secret{position:absolute;left:50%;bottom:5%;transform:translateX(-50%);font:italic 23px "Libre Baskerville",serif;color:#222526;background:#f7f8f0;padding:5px 12px;z-index:7}
+[data-theme="held-in-suspense"] .art-reset-area .clock-status{position:absolute;left:50%;right:auto;top:auto;bottom:1%;transform:translateX(-50%);width:min(90%,500px);text-align:center;min-height:24px;font:14px "Barlow Condensed",sans-serif;color:#4a5558}
+[data-theme="held-in-suspense"] .art-reset-area .countdown-secret{font:italic 23px "Libre Baskerville",serif;color:#222526;background:#f7f8f0;padding:5px 12px}
 [data-theme="held-in-suspense"] .art-secret-trigger{position:absolute;left:15%;top:61%;min-width:44px;min-height:44px;transform:translate(-50%,-50%);background:transparent;border:0;color:#353f44;opacity:.18;cursor:pointer;z-index:8}
 [data-theme="held-in-suspense"] .art-secret-trigger:hover,[data-theme="held-in-suspense"] .art-secret-trigger:focus-visible{opacity:1;outline:1px solid #586e79;outline-offset:2px}
+[data-theme="held-in-suspense"] .art-scene-ready .art-secret-trigger img{display:none}
 [data-theme="held-in-suspense"] .art-mounts .card{position:absolute;width:27%;margin:0;transform:translate(-50%,-50%);background:linear-gradient(100deg,#e4e8e6,#aab5bc);border:6px solid #b2bdc2;border-radius:0;box-shadow:inset 1px 0 #f4f5f0,0 4px 5px #33454826;overflow:visible;pointer-events:auto;z-index:5}
 [data-theme="held-in-suspense"] .art-mounts .card:nth-child(1){left:24%;top:35%}
 [data-theme="held-in-suspense"] .art-mounts .card:nth-child(2){left:50%;top:31%}

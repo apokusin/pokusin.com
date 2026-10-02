@@ -40,7 +40,7 @@ export function create(ctx) {
   for(let i=0;i<15;i++){
     const mesh=new T.Mesh(leafGeometry,leafMaterial);const x=i<8?-6.2+i*1.45:-6.4+(i-8)*.25,y=i<8?2.9+(i%3)*.16:-2.7+(i%3)*.45;
     mesh.position.set(x,y,.5);mesh.rotation.z=(i%2?1:-1)*(.45+(i%4)*.31);mesh.rotation.y=.2;
-    const scale=.65+(i%3)*.2;mesh.scale.setScalar(scale);group.add(mesh);leaves.push({mesh,z:mesh.rotation.z,phase:i*.72});
+    const scale=.65+(i%3)*.2;mesh.scale.setScalar(scale);group.add(mesh);leaves.push({mesh,z:mesh.rotation.z,phase:i*.72,open:0});
   }
   const gold=new T.MeshStandardMaterial({color:0xd2ae49,metalness:.62,roughness:.34});
   const crown=new T.Group();const band=new T.Mesh(new T.TorusGeometry(.16,.033,7,20),gold);band.rotation.x=Math.PI/2;crown.add(band);
@@ -51,16 +51,26 @@ export function create(ctx) {
   const wingMaterial=new T.MeshStandardMaterial({color:0xf0e9cc,transparent:true,opacity:.45,roughness:.6,side:T.DoubleSide});const wings=[];
   for(const side of [-1,1]){const wing=new T.Mesh(new T.CircleGeometry(.14,16),wingMaterial);wing.position.set(side*.11,.07,.04);wing.scale.set(.8,1.4,1);bee.add(wing);wings.push({wing,side});}
   bee.position.set(-1.2,-2.6,1.7);group.add(bee);
-  let frozen=false,focused=false,secretFocus=false,lastSample=-1,restRipeness=1;
-  ctx.on(ctx.hero,'focusin',e=>{focused=!!e.target.closest?.('.card,.art-secret-trigger');ctx.wake();});
-  ctx.on(ctx.hero,'focusout',()=>{focused=false;ctx.wake();});
-  for(const event of ['focus','pointerenter'])ctx.on(ctx.dom.secretButton,event,()=>{secretFocus=true;ctx.wake();});
-  for(const event of ['blur','pointerleave'])ctx.on(ctx.dom.secretButton,event,()=>{secretFocus=false;ctx.wake();});
+  let frozen=false,focused=false,focusCard=null,hoverCard=null,secretFocused=false,secretHovered=false,lastSample=-1,restRipeness=1,resetAge=999,holdResetFrame=false;
+  ctx.on(ctx.hero,'focusin',e=>{focusCard=e.target.closest?.('.card')||null;focused=!!e.target.closest?.('.card,.art-secret-trigger');ctx.wake();});
+  ctx.on(ctx.hero,'focusout',()=>{focusCard=null;focused=false;ctx.wake();});
+  ctx.on(ctx.hero,'pointerover',e=>{const card=e.target.closest?.('.card');if(card){hoverCard=card;ctx.wake();}});
+  ctx.on(ctx.hero,'pointerout',e=>{const card=e.target.closest?.('.card');if(card&&card!==e.relatedTarget?.closest?.('.card')){hoverCard=null;ctx.wake();}});
+  ctx.on(ctx.dom.secretButton,'focus',()=>{secretFocused=true;ctx.wake();});
+  ctx.on(ctx.dom.secretButton,'blur',()=>{secretFocused=false;ctx.wake();});
+  ctx.on(ctx.dom.secretButton,'pointerenter',()=>{secretHovered=true;ctx.wake();});
+  ctx.on(ctx.dom.secretButton,'pointerleave',()=>{secretHovered=false;ctx.wake();});
   const calculateRipeness=()=>{const d=ctx.getDigits();const remaining=d[0]*86400+d[1]*3600+d[2]*60+d[3];
     const end=new Date(Date.now()+remaining*1000),previous=new Date(end);const day=end.getUTCDate();previous.setUTCDate(1);previous.setUTCMonth(previous.getUTCMonth()-1);
     const lastDay=new Date(Date.UTC(previous.getUTCFullYear(),previous.getUTCMonth()+1,0)).getUTCDate();previous.setUTCDate(Math.min(day,lastDay));
     restRipeness=Math.max(0,Math.min(1,remaining/Math.max(1,(end-previous)/1000)));};calculateRipeness();
-  const targetColor=new T.Color();
+  const targetColor=new T.Color(),leafWorld=new T.Vector3();
+  function nearestLeaf(card){if(!card)return null;const target=card.getBoundingClientRect(),stage=ctx.stage.getBoundingClientRect();
+    const x=target.left+target.width/2-stage.left,y=target.top-stage.top;
+    let nearest=null,distance=Infinity;
+    for(const leaf of leaves){leaf.mesh.getWorldPosition(leafWorld);const p=ctx.project(leafWorld);if(!p.visible)continue;
+      const d=(p.x-x)**2+(p.y-y)**2;if(d<distance){distance=d;nearest=leaf;}}
+    return nearest;}
   const resize=()=>{ctx.fitCamera(ctx.mobile?6.4:5.5,[0,0,0],[0,0,18]);
     group.scale.setScalar(ctx.mobile?.6:1);group.position.set(ctx.mobile?-.13:0,ctx.mobile?1.3:0,0);
     const narrow=ctx.mobile&&ctx.stage.clientWidth<=360;
@@ -69,17 +79,24 @@ export function create(ctx) {
     resetFruit.group.position.set(ctx.mobile?1.2:-4.8,ctx.mobile?-4:-2.9,.4);
     crown.position.set(ctx.mobile?-2:1.1,ctx.mobile?-3.7:-2.8,.7);fold.position.set(crown.position.x-.28,crown.position.y-.28,.86);
   };resize();
-  return {resize,overlay(value){frozen=value;},celebrate(){for(const f of fruits)f.resetColor.copy(f.material.color);},
-    animate(time,dt){if(frozen)return;const motion=!ctx.reduced&&!focused;
+  return {resize,overlay(value){frozen=value;if(!value)holdResetFrame=true;},celebrate(){resetAge=0;holdResetFrame=true;for(const f of fruits)f.resetColor.copy(f.material.color);},
+    animate(time,dt){if(frozen)return;const motion=!ctx.reduced&&!focused&&!hoverCard;
+      if(holdResetFrame)holdResetFrame=false;else if(resetAge<1.5)resetAge=Math.min(1.5,resetAge+dt);
       if(Math.floor(time)!==lastSample){lastSample=Math.floor(time);calculateRipeness();}
-      const age=Number.isFinite(ctx.burst)?ctx.burst:99;targetColor.lerpColors(saffron,green,restRipeness);
+      // Visible scene time preserves a partly completed reversal while a preview is open.
+      const age=resetAge;targetColor.lerpColors(saffron,green,restRipeness);
       for(let i=0;i<4;i++){const f=fruits[i];const progress=ctx.reduced?1:Math.max(0,Math.min(1,(age-i*.08)/1.18));
         if(age<1.5)f.material.color.lerpColors(f.resetColor,targetColor,progress);else f.material.color.copy(targetColor);
         f.group.rotation.z=motion?Math.sin(time*.42+i*.32)*.014:0;
       }
       const tip=!ctx.reduced&&age<1.5?Math.sin(age/1.5*Math.PI)*.08:0;twigs[3].scale.y=1+tip;
       const remote=ctx.remoteAge<.3&&!ctx.reduced?Math.sin(ctx.remoteAge/.3*Math.PI)*.045:0;
-      for(const leaf of leaves){leaf.mesh.rotation.z=leaf.z+(motion?Math.sin(time*.6+leaf.phase)*.035:0)+remote;}
+      const opening=nearestLeaf(focusCard||hoverCard);
+      for(const leaf of leaves){const target=leaf===opening?1:0;
+        leaf.open=ctx.reduced||focusCard?target:leaf.open+(target-leaf.open)*Math.min(1,dt*12);
+        leaf.mesh.rotation.y=.2+leaf.open*.9;
+        leaf.mesh.rotation.z=leaf.z+(motion?Math.sin(time*.6+leaf.phase)*.035:0)+remote+leaf.open*(leaf.z<0?-.12:.12);}
+      const secretFocus=secretFocused||secretHovered;
       fold.rotation.y=.2+(secretFocus?.75:0);crown.rotation.z=secretFocus?.07:0;
       resetFruit.group.scale.y=.85*(ctx.pending?.98:1);
       if(motion){const px=ctx.pointer.active?Math.max(-2.5,Math.min(1.5,ctx.pointer.x*3)):-1.2,py=ctx.pointer.active?Math.max(-3.3,Math.min(-1.8,ctx.pointer.y*3)):-2.6;

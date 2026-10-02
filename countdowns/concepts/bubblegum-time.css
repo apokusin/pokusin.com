@@ -57,7 +57,7 @@
  [data-theme="bubblegum-time"] .shelf .grid,[data-theme="bubblegum-time"] .shelf .carousel-track{display:flex;flex-direction:column;gap:50px}
  [data-theme="bubblegum-time"] .shelf .card{width:92%;flex-basis:auto}
  [data-theme="bubblegum-time"] .shelf .card:nth-child(even){align-self:flex-end;transform:rotate(5deg)}
- [data-theme="bubblegum-time"] .shelf .card:nth-child(even):hover{transform:rotate(3deg) translateY(-4px)}
+ [data-theme="bubblegum-time"] .shelf .card:nth-child(even):hover,[data-theme="bubblegum-time"] .shelf .card:nth-child(even):focus-visible{transform:rotate(3deg) translateY(-4px)}
  [data-theme="bubblegum-time"] .shelf .card .label{font-size:17px}
 }
 @media(prefers-reduced-motion:reduce){[data-theme="bubblegum-time"] .card,[data-theme="bubblegum-time"] .card::after,[data-theme="bubblegum-time"] #royal-reset{transition:none!important}}

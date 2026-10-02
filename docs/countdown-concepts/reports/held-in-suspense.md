@@ -24,7 +24,7 @@ A suspended cylinder can read as sculpture rather than a button. Keep Again fron
 
 An invisible spring simulation might look randomly wobbly rather than heavy. The motion must travel through a visible connection: cap pressure, cable tension, pivot transfer, plate correction, then a slow settle. Separate the large counterweight movement from the very small timer movement so reading remains effortless.
 
-Filings that follow the pointer everywhere could contaminate the pristine floor and obscure controls. Restrict their field to the authored lower-right patch. Fingers on mobile should comb the patch only; ordinary scrolling and preview activation take priority. Bays reached by scrolling need supported frames at coherent heights rather than disconnected copies of the hero.
+Filings that follow the pointer everywhere could contaminate the pristine floor and obscure controls. Restrict their field to the authored lower-right patch. Phone framing moves a reduced filing sample onto a small frontal tray connected to the left support. Fingers comb only that visible patch; ordinary scrolling and preview activation take priority. Bays reached by scrolling need supported frames at coherent heights rather than disconnected copies of the hero.
 
 ## Feel decisions incorporated
 
@@ -32,7 +32,7 @@ The endcap travels axially by 0.04 scene units over 110 ms on hover/focus and an
 
 Clock plates never exceed one degree, archive plates three degrees. Archive targets freeze while pointed at or focused. Remote updates cause only a half-degree pivot correction; error releases pressure without a wave. Closing a preview restores the same bay, scroll and focus. A tiny engraved crown under one pivot gets a small grazing-light glint on approach, with an equivalent keyboard/touch target; it alone reveals the hidden line.
 
-Use a capped field of filings with 100 ms magnetic response and a 600 ms return to rest after the pointer leaves. Maintain visible empty ground around the patch. A focused plate lifts slightly instead of generating particles. The index is a restrained vertical rail of real show names with a short active dash, never an unnamed set of ambiguous tick marks.
+Use a capped field of filings with 100 ms magnetic response and approximately 600 ms characteristic relaxation toward rest after the pointer leaves. Maintain visible empty ground around the patch. A focused plate keeps a clear material outline and a stable target instead of generating particles. The index is a restrained vertical rail of real show names with a short active dash, never an unnamed set of ambiguous tick marks.
 
 ## Asset and implementation direction
 
@@ -44,9 +44,9 @@ At rest, the structure appears held under weight. At success, a viewer can trace
 
 ## Implemented art pass
 
-The working sculpture uses beveled extruded rails, flush pivot bolts, cables attached at the actual rail heights, varied archive elevations, and an irregular subdivided slate plinth. An authored monochrome rectangular studio environment is prefiltered once; a restrained directional brush/reflection profile strengthens the steel surface. The filing patch uses at most 2200 pooled instances, with no physics bodies or new allocation per press.
+The working sculpture uses beveled extruded rails, flush pivot bolts, cables attached at the actual rail heights, varied archive elevations, and an irregular subdivided slate plinth. An authored monochrome rectangular studio environment is prefiltered once; a restrained directional brush/reflection profile strengthens the steel surface. The desktop floor patch uses at most 2200 pooled instances. Phone framing presents 180 of the same instances on a small frontal steel tray connected to the left support; there are no physics bodies or allocations per press.
 
-The implemented desktop view targets `(0, 2, 0)` from `(0, 7.8, 24)` with a 5.85-unit orthographic half-span, retaining upright architectural relationships and enough downward view to read the ground filings. Phone framing uses a seven-unit horizontal field and one connected vertical support system, with timer plates in two pairs and supported archive plates below. The small wordmark stays in the clear header margin, avoiding bolts and the theme selector.
+The implemented desktop view targets `(0, 2, 0)` from `(0, 7.8, 24)` with an orthographic vertical half-span of `max(5.85, 8.4 × stage height / stage width)`, retaining upright architectural relationships and enough downward view to read the ground filings. Its minimum 16.8-unit horizontal field includes the stone plinth, both outer archive mounts and the full endcap at narrow desktop/tablet aspect ratios; wide screens retain the original 5.85-unit baseline. Phone framing uses a seven-unit horizontal field and one connected vertical support system, with timer plates in two pairs and supported archive plates below. The small wordmark stays in the clear header margin, avoiding bolts and the theme selector.
 
 Live clock units are individually projected onto their real suspended plates; the reset and tally follow the real counterweight endcap. Re-pin world widths when scale changes on mobile. All studio textures are authored locally in the module, not external HDR downloads. The archive continues as cable-supported cantilever bays with a restrained named show index.
 
@@ -65,3 +65,13 @@ This pass changes font selection only. Existing camera framing, projected widths
 **Code-reviewed feel:** Pressure moves the cap along its axis; confirmation raises the existing weight and transfers bounded correction through connected plates. Focused/hovered archive faces suppress their swing. The filing patch uses pooled instances and an authored boundary rather than a free-ranging particle system; reduced motion holds the balance. Those source choices support deterministic material behavior, but this review does not infer full force-transfer timing or frame-rate measurements from still captures.
 
 **Fidelity decision:** Accept the restrained rectangular studio reflections and simpler brushed plate profile; they keep numbers legible while avoiding mirror chrome. Preserve tallies and phrase placement independently when refining the endcap. Actual archive screenshots intentionally replace the reference's invented imagery. No remaining P0/P1/P2 visual defect was identified in the corrected compositions; runtime state, input and failure acceptance is recorded separately in the shared QA report.
+
+## Follow-up implementation corrections
+
+**Code-reviewed:** Camera direction is now consistently orthographic in the spec. Phone framing adds a visible brushed-steel filing sample tray on the left support beside the counterweight. Its 180 pooled strokes respond only to contact begun inside the patch, hold a short tap for 280 ms, and rotate through the shortest angular path. No pointer capture or default prevention is used; native scroll cancellation releases the field immediately. Desktop retains the authored ground patch. Reduced motion retains the still material sample.
+
+Actual `clock-status` and `countdown-secret` classes now receive theme styling without competing with the shared bounded secret placement. Successful scene rendering hides the fallback crown image, while no-WebGL retains it. Source checks pass; the new phone tray, touch response and fallback/discovery states still need root browser review. Earlier visual acceptance refers to the supplied preceding captures.
+
+## Tablet framing correction
+
+The supplied 700 px viewport captures exposed horizontal clipping after the shared breakpoint was aligned with CSS. The scene now derives its desktop orthographic span from the actual stage aspect ratio, including scrollbar-reduced width, while keeping the original wide-screen baseline. This is a camera-fit correction only; geometry, type, hit targets and interactions remain unchanged. Source checks pass. Root will recapture the corrected 700 px and large desktop views before visual acceptance.

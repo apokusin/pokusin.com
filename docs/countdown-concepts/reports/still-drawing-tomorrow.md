@@ -32,7 +32,7 @@ At rest, the runner stops one pose before a finish stripe. Pressing the eraser c
 
 Cel tabs lift 6 px and rotate no more than two degrees over 180 ms, with a 260 ms return. The actual preview rectangle does not translate, and lifting pauses while focus or a pointer remains on its actionable region. Touch activation of the corner reveals the next tab without opening a site; tapping the preview itself opens the real overlay. Each tab is also a ordinary show link, and normal document order remains intact.
 
-Success onion-skin outlines sit beside, never over, the real clock digits. They clear within 300 ms after the final reel settles. Red/blue accents are registration marks, not success/error colors. Remote updates advance only one runner pose and update the true numerical state. Errors release the eraser and retain the finish stripe.
+The implementation retains fixed red/blue cel registration behind genuine live glyphs and keeps onion-skin pose ghosts on the runner path. It intentionally omits animated duplicate clock outlines: the shared reels carry numerical change, while the authored registration marks preserve the handmade drawing language without reducing legibility. Red/blue accents are registration marks, not success/error colors. Remote updates advance only one runner pose and update the true numerical state. Errors release the eraser and retain the finish stripe.
 
 ## Asset and implementation direction
 
@@ -46,7 +46,7 @@ The archive is visible before hover, and an unfamiliar visitor can open a previe
 
 The implementation authors paper fibers, registration marks and twelve runner poses as bounded canvas textures, plus a local `graphite-ink.svg` surface clipped inside real live digit glyphs. These textures contain no fabricated countdown or archive data. Cel geometry curls physically; two separate semantic corner controls lift their sheets on touch or keyboard without opening the archive preview. Rounded eraser geometry and pencil shafts provide actual shallow depth.
 
-The implemented orthographic worktable is a shallow XY arrangement viewed from `(0, 2, 24)` with a 6.8-unit desktop half-span. Phone framing uses a 7.4-unit horizontal field; its vertical span follows viewport aspect. The clock cel is scaled to 51% and its projected DOM width is explicitly scaled to match, preserving all four units at narrow widths rather than clipping them. Softer shadows and stronger registration strokes preserve a handmade surface without a camera tour.
+The implemented orthographic worktable is a shallow XY arrangement viewed from `(0, 2, 24)` with a desktop vertical half-span of `max(6.8, 9.75 × height / width)`. This retains a minimum 19.5-unit horizontal field at narrow desktop/tablet aspect ratios, so the outer archive sheets and pencils remain inside the canvas. Phone framing uses a 7.4-unit horizontal field; its vertical span follows viewport aspect. The clock cel is scaled to 51% and its projected DOM width is explicitly scaled to match, preserving all four units at narrow widths rather than clipping them. Softer shadows and stronger registration strokes preserve a handmade surface without a camera tour.
 
 The working runner uses authored graphite anatomy at roughly one world-unit scale, with darker stopped pose ghosts along the path so the trajectory is visible at rest. A bounded closed drawn path lets each successful reset move the finish forward without allocating more geometry. Cursor marks last no more than 700 ms. Corner lifts preserve preview positions and offer a dedicated touch/keyboard target.
 
@@ -54,7 +54,7 @@ Desktop and 375 px comparison captures were reviewed during implementation. Root
 
 ## Final typography consistency
 
-The implemented font pair is **Barlow Condensed + Caveat**. Barlow Condensed gives the graphite-textured live clock and small archive/header/menu/status/footer labels one legible condensed face. Caveat supplies the hand-lettered title, eraser action, drawn tally, archive continuation and hidden line. Caveat is self-hosted as a variable font with its OFL license under `assets/concepts/still-drawing-tomorrow/`; remove platform-dependent Bradley Hand/Segoe Print, Impact and Georgia from selected UI styling. The authored graphite texture remains clipped inside the real live glyphs.
+The implemented font pair is **Barlow Condensed + Caveat**. Barlow Condensed gives the graphite-textured live clock and small archive/header/menu/status/footer labels one legible condensed face. Caveat supplies the hand-lettered title, eraser action, drawn tally, archive continuation and hidden line. Caveat is self-hosted as a variable font with its OFL license under `countdowns/assets/concepts/still-drawing-tomorrow/`; remove platform-dependent Bradley Hand/Segoe Print, Impact and Georgia from selected UI styling. The authored graphite texture remains clipped inside the real live glyphs.
 
 This pass changes font selection only. Existing camera framing, projected widths, hit targets, geometry, shared values and motion remain unchanged; root rechecks the final 320 px composition.
 
@@ -65,3 +65,9 @@ This pass changes font selection only. Existing camera framing, projected widths
 **Code-reviewed feel:** Twelve authored pose textures and a bounded drawn path establish discrete runner timing, while separate corner controls lift sheet geometry without activating the preview. Confirmation erases/reveals the finish sequence; preview state freezes it. Pointer strokes expire within a capped trail rather than promising an editable drawing. Reduced motion omits that trail and holds the runner; the supplied crown capture reveals a local note on the lifted sheet. These are source and static-state observations, not full-motion or physical-device performance measurements.
 
 **Fidelity decision:** Accept the less cluttered worktable and stable Barlow Condensed/Caveat pair over the reference's incidental margin jokes and platform-dependent handwriting. Keep the clock's graphite treatment clipped inside genuine live glyphs. Actual archived screens remain faithful. No remaining P0/P1/P2 visual defect was identified in the corrected compositions; runtime state, input and failure acceptance is recorded separately in the shared QA report.
+
+## Follow-up implementation corrections
+
+**Code-reviewed:** Desktop/tablet camera span now follows aspect ratio, retaining both outer sheets at 700 × 730 as well as the spacious desktop composition. The secret/status selectors target the real DOM classes; theme styling no longer supplies competing secret placement, leaving the shared viewport-bounded placement intact. A successful 3D scene hides the fallback crown image, so only the drawn crown appears during discovery; the fallback image remains available without WebGL. Font provenance paths now include the repository’s `countdowns/` prefix. The spec explicitly describes fixed registration cels and shared reels rather than an unimplemented 300 ms ghost-digit effect.
+
+These corrections passed source checks. Their updated tablet/fallback/discovery compositions remain for the root’s browser review; earlier observed visual acceptance refers to the preceding captures.

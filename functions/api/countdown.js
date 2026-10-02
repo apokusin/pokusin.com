@@ -13,10 +13,14 @@ function json(value, status = 200, headers = {}) {
 }
 async function acceptReset(context, key, now) {
   const minute = Math.floor(now / 60000);
-  // Cloudflare supplies this header. The minute makes the hash a temporary bucket,
-  // rather than an identifier that follows a visitor between visits.
+  // Cloudflare supplies this header. A server-secret HMAC prevents a retained
+  // bucket being matched against guessed IPs; minute + environment keep it temporary.
   const ip = context.request.headers.get('CF-Connecting-IP') || 'local';
-  const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(`${key}:${minute}:${ip}`)));
+  const secret = context.env.COUNTDOWN_RATE_LIMIT_SECRET;
+  if (!secret) throw new Error('Countdown rate-limit secret is missing');
+  const encoder = new TextEncoder();
+  const hmac = await crypto.subtle.importKey('raw', encoder.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const digest = new Uint8Array(await crypto.subtle.sign('HMAC', hmac, encoder.encode(`${key}:${minute}:${ip}`)));
   const id = Array.from(digest, byte => byte.toString(16).padStart(2, '0')).join('');
   const bucket = await context.env.COUNTDOWN_DB.prepare('INSERT INTO countdown_reset_limits (id, minute, count) VALUES (?, ?, 1) ON CONFLICT(id) DO UPDATE SET count = count + 1 WHERE count < ? RETURNING count').bind(id, minute, resetLimit).first();
   // Roughly one in sixteen new buckets cleans up expired buckets off the response
