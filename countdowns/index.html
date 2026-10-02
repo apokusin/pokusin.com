@@ -6,40 +6,45 @@
   <title>Countdowns · Artur Pokusin</title>
   <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin between 2012 and 2025, preserved and ticking live.">
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=10f2cb50">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=b4c9ec67">
 <script>
 (function(){var theme=new URLSearchParams(location.search).get('theme');
  document.documentElement.dataset.theme=theme==='control'?'control':'royal';})();
 </script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
 </head>
 <body>
   <div class="wrap">
-    <header class="masthead"><a class="home-link" href="/">Artur Pokusin</a><nav class="theme-picker" aria-label="Archive theme"><a href="?theme=royal" data-theme-link="royal">Royal archive</a><a href="?theme=control" data-theme-link="control">Control room</a></nav></header>
-    <div class="archive-heading"><p class="eyebrow">An archive of television anticipation</p><h1 class="title">Countdowns</h1>
-    <p class="lede">TV-show countdowns, handcrafted and still ticking.</p><p class="archive-years">2012 — 2025</p></div>
+    <header class="masthead"><a class="home-link" href="/">Artur Pokusin</a><nav class="theme-picker" aria-label="Archive theme"><a href="?theme=royal" data-theme-link="royal" aria-label="Royal archive">Royal</a><a href="?theme=control" data-theme-link="control" aria-label="Control room">Control</a></nav></header>
+    <div class="hero-surface" id="hero-surface">
+<div class="hero-atmosphere" aria-hidden="true"></div><div class="archive-heading"><p class="eyebrow">2012 — ∞</p><h1 class="title" aria-label="Countdowns"><span aria-hidden="true"><span class="title-line"><span class="title-glyph" style="--i:0">C</span><span class="title-glyph" style="--i:1">o</span><span class="title-glyph" style="--i:2">u</span><span class="title-glyph" style="--i:3">n</span><span class="title-glyph" style="--i:4">t</span></span><span class="title-line"><span class="title-glyph" style="--i:5">d</span><span class="title-glyph" style="--i:6">o</span><span class="title-glyph" style="--i:7">w</span><span class="title-glyph" style="--i:8">n</span><span class="title-glyph" style="--i:9">s</span></span></span></h1>
+<p class="lede">An archive of anticipation.</p></div>
     <section class="next-countdown" aria-labelledby="next-countdown-heading">
       <img class="royal-guardians" src="assets/royal-guardians.png" alt="" width="1440" height="520">
       <div class="countdown-caption"><h2 id="next-countdown-heading">Next countdown</h2><time id="next-countdown-date" datetime="2026-11-01T00:00:00-07:00">Nov 1, 2026 · Pacific time</time></div>
       <div class="royal-clock" role="timer" aria-label="Time until the next countdown"><div class="clock-unit"><span data-unit="days">30</span><small>days</small></div><div class="clock-unit"><span data-unit="hours">00</span><small>hours</small></div><div class="throne-space"></div><div class="clock-unit"><span data-unit="minutes">00</span><small>minutes</small></div><div class="clock-unit"><span data-unit="seconds">00</span><small>seconds</small></div></div>
       <div class="scene-stage" id="scene-stage"><img class="scene-fallback royal-fallback" src="assets/throne-fallback.png" alt="A tiny crown on an empty throne"><div class="scene-fallback control-fallback"><img src="assets/console-fallback.png" alt="A timer console wired to a red button" width="1024" height="480"><span class="fallback-digits" id="fallback-digits">30:00:00:00</span></div><canvas id="theme-scene" aria-hidden="true"></canvas><button class="scene-action" id="scene-action" type="button" aria-label="Crown the countdown" aria-controls="countdown-secret" aria-expanded="false"></button></div>
-      <button class="royal-reset royal-only" id="royal-reset" type="button" aria-controls="countdown-secret" aria-expanded="false">By royal decree: postpone.</button>
-      <p class="scene-hint"><span class="royal-only">A small crown. A long wait.</span><span class="control-only">Lift the cover. Press the button.</span></p>
+      <button class="royal-reset royal-only" id="royal-reset" type="button" aria-label="Postpone the next countdown" aria-controls="countdown-secret" aria-expanded="false">Again.</button>
+      <p class="scene-hint"><span class="royal-only">A small crown. A long wait.</span><span class="control-only">Lift. Press.</span></p>
       <p class="countdown-secret" id="countdown-secret" role="status" hidden>Long may I count.</p>
       <p class="sr-only" id="timer-readable" role="timer" aria-live="off"></p>
-      <p class="reset-count" id="reset-count">Connecting the shared clock…</p>
+      <p class="press-tally"><span id="reset-count">—</span><small>postponements</small></p>
+      <p class="clock-status" id="clock-status" role="status"></p>
       <p class="countdown-ended" id="countdown-ended" hidden>Time to start another countdown.</p>
+      <span class="reset-echo control-only" aria-hidden="true">Again.</span>
     </section>
+    </div>
     <nav class="shownav" aria-label="Shows">
-      <a href="#got"><span class="nv-e">I</span><span class="nv-n">Game of Thrones</span></a>
-      <a href="#dexter"><span class="nv-e">II</span><span class="nv-n">Dexter</span></a>
-      <a href="#sherlock"><span class="nv-e">III</span><span class="nv-n">Sherlock</span></a>
-      <a href="#archer"><span class="nv-e">IV</span><span class="nv-n">Archer</span></a>
-      <a href="#breaking-bad"><span class="nv-e">V</span><span class="nv-n">Breaking Bad</span></a>
-      <a href="#house-of-cards"><span class="nv-e">VI</span><span class="nv-n">House of Cards</span></a>
-      <a href="#severance"><span class="nv-e">VII</span><span class="nv-n">Severance</span></a>
+      <a href="?theme=royal#got"><span class="nv-e">I</span><span class="nv-n">Game of Thrones</span></a>
+      <a href="?theme=royal#dexter"><span class="nv-e">II</span><span class="nv-n">Dexter</span></a>
+      <a href="?theme=royal#sherlock"><span class="nv-e">III</span><span class="nv-n">Sherlock</span></a>
+      <a href="?theme=royal#archer"><span class="nv-e">IV</span><span class="nv-n">Archer</span></a>
+      <a href="?theme=royal#breaking-bad"><span class="nv-e">V</span><span class="nv-n">Breaking Bad</span></a>
+      <a href="?theme=royal#house-of-cards"><span class="nv-e">VI</span><span class="nv-n">House of Cards</span></a>
+      <a href="?theme=royal#severance"><span class="nv-e">VII</span><span class="nv-n">Severance</span></a>
     </nav>
-    <section class="shelf" id="got" data-carousel>
+    <main class="archive-shelves" id="archive-shelves" aria-label="Countdown archive">
+    <section class="shelf" id="got" data-shelf-index="01" data-carousel>
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2012 – 2019</div>
@@ -81,7 +86,7 @@
         <a class="more shelf-more" href="/countdowns/got/">More <span class="arrow">→</span></a>
       </div>
     </section>
-    <section class="shelf" id="dexter" data-carousel>
+    <section class="shelf" id="dexter" data-shelf-index="02" data-carousel>
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2012 – 2013</div>
@@ -115,7 +120,7 @@
         <a class="more shelf-more" href="/countdowns/dexter/">More <span class="arrow">→</span></a>
       </div>
     </section>
-    <section class="shelf" id="sherlock" data-carousel>
+    <section class="shelf" id="sherlock" data-shelf-index="03" data-carousel>
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2013 – 2014</div>
@@ -149,7 +154,7 @@
         <a class="more shelf-more" href="/countdowns/sherlock/">More <span class="arrow">→</span></a>
       </div>
     </section>
-    <section class="shelf" id="archer">
+    <section class="shelf" id="archer" data-shelf-index="04">
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2012 – 2014</div>
@@ -171,7 +176,7 @@
         <a class="more shelf-more" href="/countdowns/archer/">More <span class="arrow">→</span></a>
       </div>
     </section>
-    <section class="shelf" id="breaking-bad" data-carousel>
+    <section class="shelf" id="breaking-bad" data-shelf-index="05" data-carousel>
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2012 – 2013</div>
@@ -205,7 +210,7 @@
         <a class="more shelf-more" href="/countdowns/breaking-bad/">More <span class="arrow">→</span></a>
       </div>
     </section>
-    <section class="shelf" id="house-of-cards">
+    <section class="shelf" id="house-of-cards" data-shelf-index="06">
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2014</div>
@@ -226,7 +231,7 @@
         </div>
       </div>
     </section>
-    <section class="shelf" id="severance" data-carousel>
+    <section class="shelf" id="severance" data-shelf-index="07" data-carousel>
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2025 –</div>
@@ -259,6 +264,7 @@
         </div>
       </div>
     </section>
+    </main>
     <footer class="foot">
       <span>Artur Pokusin</span>
       <span>7 shows · 35 versions · 2012 – 2025</span>
@@ -335,7 +341,7 @@
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
 })();</script><script>(function(){
   var nav=document.querySelector('.shownav'); if(!nav||!('IntersectionObserver' in window)) return;
-  var links={}; nav.querySelectorAll('a').forEach(function(a){ links[a.getAttribute('href').slice(1)]=a; });
+  var links={}; nav.querySelectorAll('a').forEach(function(a){ links[a.getAttribute('href').split('#').pop()]=a; });
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){ if(!e.isIntersecting) return; var id=e.target.id;
       Object.keys(links).forEach(function(k){ links[k].setAttribute('aria-current', k===id?'true':'false'); });

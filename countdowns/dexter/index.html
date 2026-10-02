@@ -6,7 +6,7 @@
   <title>Dexter Countdowns · Archive</title>
   <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin between 2012 and 2025, preserved and ticking live.">
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=10f2cb50">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=b4c9ec67">
 </head>
 <body>
   <div class="wrap">
@@ -131,7 +131,7 @@
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
 })();</script><script>(function(){
   var nav=document.querySelector('.shownav'); if(!nav||!('IntersectionObserver' in window)) return;
-  var links={}; nav.querySelectorAll('a').forEach(function(a){ links[a.getAttribute('href').slice(1)]=a; });
+  var links={}; nav.querySelectorAll('a').forEach(function(a){ links[a.getAttribute('href').split('#').pop()]=a; });
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){ if(!e.isIntersecting) return; var id=e.target.id;
       Object.keys(links).forEach(function(k){ links[k].setAttribute('aria-current', k===id?'true':'false'); });

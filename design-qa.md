@@ -1,66 +1,61 @@
-# Countdown themes — design QA
+# Countdown archive — art direction QA
 
 Final result: passed
 
-Scope: two functional explorations of the selected royal archive and control room concepts. The user allowed layout changes and explicitly requested Three.js rendering, a shared reset button, and a press tally. These are thematic implementations, not pixel-for-pixel clones of the concept images.
+The user requested a freer art project: stronger containers, type, background effects, ordering and motion, with fewer labels. This pass intentionally changes the selected themes rather than cloning their earlier composition.
 
-## Visual evidence
+## Reviewable pages
 
-Published reviewable implementation: [royal archive](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=royal) and [control room](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=control). Both were verified against the remote shared counter. The local capture paths below record the source comparison in this Codex workspace.
+- [Royal / paper theatre](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=royal)
+- [Control / broadcast limbo](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=control)
 
-Source visual truth:
-- Royal: `/Users/pcyx/.codex/generated_images/01a0fb3c-c709-76f2-8d29-692947f7dcc7/exec-479baf4b-0dfe-4ce8-83cb-c8e87b63ad6d.png` — 1214 × 1295 px.
-- Control: `/Users/pcyx/.codex/generated_images/01a0fb3c-c709-76f2-8d29-692947f7dcc7/exec-794c08ad-2e21-4a67-b409-d9716af8e657.png` — 1024 × 1536 px.
+## Source and rendered evidence
 
 Evidence directory: `/Users/pcyx/.codex/visualizations/2026/10/02/01a0fb3c-c709-76f2-8d29-692947f7dcc7/`.
 
-Browser-rendered implementation:
-- `royal-implementation.png`: 1214 × 1295 CSS px, captured at 2× (2428 × 2590), normalized to 1×.
-- `control-implementation.png`: 1024 × 1536 CSS px, captured at 2× (2048 × 3072), normalized to 1×.
-- `royal-mobile.png`, `control-mobile.png`: 390 × 700 CSS px, captured at 2× and normalized to 1×.
-- `control-fallback.png`: same phone viewport, with the Three.js module intentionally blocked.
+Source visual truth is the fresh capture of the implementation before this pass: `royal-art-before.png` and `control-art-before.png`. Both were captured at 1280 × 900 CSS px / 2× density (2560 × 1800 pixels), then normalized to 1280 × 900.
 
-Same-input source/implementation comparisons were opened and inspected:
-- Full view: `royal-comparison.png`, `control-comparison.png`.
-- Focused typography, timer, artwork and button: `royal-hero-comparison.png`, `control-hero-comparison.png`.
-- Earlier comparison: corresponding `*-before.png` files.
+Rendered desktop evidence uses the same viewport and normalization: `royal-art-final.png`, `control-art-final.png`. The scroll states `royal-art-wall.png` and `control-art-wall.png` show the actual archive containers and captions, at 1280 × 900. Phone evidence `royal-art-phone.png`, `control-art-phone.png`, and `control-art-fallback.png` uses 390 × 700 CSS px / 2× (780 × 1400), normalized to 390 × 700. Both themes also had bounds checked at 320 px.
 
-State: default theme view, live timer, closed control cover, no preview dialog. The reference uses illustrative timer values and some invented archived seasons; implementation uses the repository's actual archive data. Current countdown values and press totals naturally differ between captures.
+Source and implementation were placed together, opened, and inspected:
+- Full view: `royal-art-comparison.png`, `control-art-comparison.png` (2560 × 932 with a comparison header).
+- Focused type/artwork/clock: `royal-art-detail-comparison.png`, `control-art-detail-comparison.png` (1600 × 540). Their deliberate crop does not represent viewport clipping; full views and 320 px checks establish the actual text bounds.
+- Combined hero/archive showcase: `art-directions.png`.
 
-## Findings and iteration history
+Default scene / closed control lid was used for the main implementation captures. The earlier royal source has the secret revealed, while the main new royal capture has it hidden. That state difference was excluded from composition findings; successful reset and secret reveal were checked separately. Running clock values and totals naturally differ. Final contrast polish was checked numerically after the captures.
 
-Resolved P2 findings:
-1. Royal illustration crowded the outer timer digits. Moved the desktop clock inset to 28%; subsequent full-view and phone evidence shows clear digits.
-2. Control display was undersized and the fallback could cover the canvas. Corrected camera framing, display depth and fallback visibility; final focused comparison shows legible seven-segment digits across the housing.
-3. Phone press tally collided with show navigation. Restored 36 px below the hero; final mobile evidence shows the tally on its own line.
-4. Control headline was too condensed compared with the source, and lighting washed the button pink. Replaced only the main headline with Archivo Black, adjusted phone sizing, lowered scene exposure and deepened the red material. Compare the saved before/final control comparisons.
-5. Illustrated fallback digits were not anchored to the display. Grouped the illustration and digits, centered the digits inside its window, and made the visibly open fallback button reset on its first press. Final fallback screenshot and successful reset verify the correction.
+## Exploration and iteration
 
-No actionable P0/P1/P2 findings remain within the requested exploration scope.
+Considered a museum wall, a paper theatre, and an unfinished broadcast. Chosen treatments deliberately diverge: royal uses a continuous warm paper surface and uneven mounts; control uses a dark screen wall with newest work first. The shared backend remains unchanged.
 
-## Required fidelity surfaces
+Resolved findings from the first art pass:
+1. **P2 — Guardians crossed the royal digits.** First desktop capture (`/private/tmp/royal-art-first.png`) showed the collision. Reduced the guardian height to 280 px, moved the clock below the artwork, and reserved separate space for the action and tally. `royal-art-final.png` shows clear digits.
+2. **P2 — Caption alignment and console/type crowding.** The initial royal caption inherited flex layout, and the control title crowded the console. Set the caption heading to block layout, adjusted the control hero overlap and placed the instrument in front of the title. Final desktop captures show centered royal metadata and readable control digits; the small intentional foreground overlap is part of the poster composition.
+3. **P2 — Phone title cropped its last letters.** `/private/tmp/control-art-phone.png` showed the clipped title. Changed the phone type scale from 24vw to 20.5vw and reduced its minimum size. `control-art-phone.png` shows both words in full; at 320 px the glyph bounds remain within the viewport.
+4. **P2 — A tilted caption crowded the next picture mount.** The first royal wall capture showed almost no clearance below the second caption. Increased the three-picture row gap to 70 px. The final `royal-art-wall.png` shows the year and label clear of the next mount.
+5. **P2 — Theme continuity during show navigation.** Made navigation URLs explicitly carry the theme and adjusted scroll-spy parsing. Verified control remains control after selecting Severance; `control-art-wall.png` is the resulting dark archive state.
 
-- **Typography:** Cormorant Garamond gives the royal heading and timers their serif character; Archivo Black restores the control concept's wide, heavy headline; Barlow Condensed and IBM Plex Mono carry the rack labels and instrumentation. Actual loaded browser rendering checked. Show names remain on one line; long names and controls fit at 320 px. Font fallbacks retain the hierarchy.
-- **Spacing/layout:** royal uses an editorial gallery, control uses enamel racks with a label gutter. Both keep original preview cards, show navigation and archive access. Larger interactive heroes, simpler ornamentation and taller cards are intentional adaptations for the requested 3D scenes, buttons and actual archive descriptions. Mobile cards form horizontal shelves without page overflow.
-- **Colors/tokens:** cream, antique gold and muted brown for royal; warm gray enamel, charcoal and deep red for control. Adjusted exposure improves material and button contrast. Focus states remain visible.
-- **Image quality:** generated transparent guardian, throne and console illustrations match the selected themes. No emoji substitute for hero artwork. True Three.js models intentionally replace the reference's still objects at the user's request; illustrated fallbacks retain richer engraved/hardware detail. Original archived sites remain untouched.
-- **Copy/content:** new copy stays brief. “Long may I count.” appears after a successful reset. Existing archive dates, labels, descriptions and LIVE conventions remain authoritative rather than copying invented reference content.
+No actionable P0/P1/P2 findings remain within this requested pass.
 
-## Verification
+## Required visual surfaces
 
-- Desktop layouts: 1440 px, plus matched source viewports 1214 px / 1024 px.
-- Phone layouts: 390 px and narrow 320 px; verified document width and shelf/control bounds.
-- Royal decree resets the shared countdown and increments its tally. Control cover opens separately, then the physical button resets it. Reloading the other theme shows the same state.
-- Preview overlays open on desktop and phones; Escape and close dismiss them. Existing modifier-click behavior is retained in the unchanged event guard. Mobile shelf controls and sticky show navigation remain available.
-- Reduced motion checked in the browser: static scene rendering and responsive layout remain usable.
-- Final interaction review: the reduced-motion control button releases after a successful reset; pointer/crown/cover animation stops when settled. Offscreen and hidden scenes skip rendering, while the visible control display refreshes once per second.
-- Three.js failure simulated: illustrated timer and direct button remain functional.
-- Backend checks: end-of-month/leap-year dates, request handling, no-store responses, atomic increments and live/preview row isolation. The optional HTTP integration check counted eight simultaneous local Pages/D1 presses without loss. Stale responses are rejected before updating the client clock offset.
-- Browser errors inspected: no errors attributed to the new theme scripts. Wallet-extension errors and unattributed MutationObserver errors were present; the new scripts/vendor contain no MutationObserver. An existing Severance iframe emits React hydration error 418; rebuilding that archived app is outside this gallery change.
+- **Fonts/type:** royal uses Cormorant Garamond with proper italic faces and IBM Plex Mono; control uses Archivo Black and IBM Plex Mono. The heading now dominates the composition, while captions stay quiet. Loaded rendering inspected, including the narrow viewport. Accessible heading names remain intact despite animated, decorative glyph spans.
+- **Spacing/layout:** removed the pale rack containers and boxed initials. Royal has uneven picture mounts, a large leading work, and offset sections; control has grouped monitor frames on one continuous dark surface. Title, clock, action and tally retain separate space. Mobile shelves scroll horizontally; show names stay on one line. Taller poster heroes and revised ordering are intentional user-authorized changes.
+- **Colors/background:** warm paper, brown ink and burgundy for royal; deep green-black, cream and warm orange for control. Royal reuses the existing archive's actual paper texture. Soft light and scanlines support each theme. Final small-text token contrast is 4.90:1 royal and 7.30:1 control against their base surfaces; the royal action is 6.54:1. This is not a claim of complete accessibility conformance.
+- **Image quality:** original engraved guardians, illustrated fallbacks and actual archive previews are retained. Three.js remains the explicitly requested interactive rendering. The new frames do not replace or alter the archived sites themselves. Captures confirm no guardian/digit collision, misplaced fallback display or unintended title clipping.
+- **Copy/content:** removed the gallery card descriptions, domains for retired sites, instructional hints, and verbose tally sentence. Kept titles, dates, a short subtitle, the total, and “Long may I count.” after a successful reset. No new product/dashboard labels were added.
+
+## Interaction and motion checks
+
+- Royal reset and control covered button both update the same countdown/tally. The cover opens separately from a reset. A failed Three.js import provides a working direct reset on the illustrated control button.
+- Royal letters drift slowly, changing digits lift into place, and a successful reset creates a wave through the title. Control has a brief visual rewind and a title recoil. The accessible timer always retains the real deadline during the display gag.
+- Decorative CSS motion pauses offscreen and when hidden. Reduced motion disables type drift, reveals and reset effects; fallback/reset was tested with reduced motion enabled.
+- Archive previews open on phones and desktop; close and Escape start the closing transition. Modifier-click handling is unchanged. Theme-aware show navigation and 320 px title bounds checked.
+- Backend date, request handling, atomic increment and environment isolation checks pass. Existing eight-request HTTP integration coverage remains unchanged; no backend code changed in this pass.
+- Browser logs inspected. Expected blocked-import warning during fallback simulation, wallet-extension errors, and the existing Severance React 418 hydration error were present. No new error attributed to the theme implementation was found. Archived Severance rebuilding remains outside this change.
 
 ## Follow-up polish
 
-- P3: a bespoke sculpted throne could carry more engraving detail than the deliberately small procedural miniature.
-- P3: source ornamented initials and engraved hardware plates are richer than the simplified gallery frames. Further embellishment can follow the user's theme selection.
+P3: the procedural throne is still simpler than a bespoke sculpted model. That does not block this art-direction pass.
 
-Implementation checklist: responsive layouts, shared reset/tally, preview overlays, fallback rendering, reduced motion, atomic persistence, environment isolation and final visual comparisons completed.
+Checklist completed: both compositions, containers, type, backgrounds, chronological/reverse ordering, sparse copy, motion, shared reset, previews, narrow layouts, reduced motion, fallback and combined visual comparisons.

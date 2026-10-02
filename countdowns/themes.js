@@ -5,12 +5,16 @@ const action = document.getElementById('scene-action');
 const royalButton = document.getElementById('royal-reset');
 const secret = document.getElementById('countdown-secret');
 const countLabel = document.getElementById('reset-count');
+const clockStatus = document.getElementById('clock-status');
+const hero = document.getElementById('hero-surface');
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const dateLabel = document.getElementById('next-countdown-date');
 const initialDeadline = Date.parse(dateLabel.dateTime);
 let state = { deadline: initialDeadline, count: 0 };
 let celebrate = () => {}, ready = false, pending = false, clockOffset = 0;
 function updateLabels() {
-  countLabel.textContent = `${state.count.toLocaleString()} ${state.count === 1 ? 'postponement' : 'postponements'} · and counting`;
+  countLabel.textContent = state.count.toLocaleString();
+  clockStatus.textContent = '';
   dateLabel.dateTime = new Date(state.deadline).toISOString();
   dateLabel.textContent = new Date(state.deadline).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
@@ -28,7 +32,7 @@ async function sync() {
     const response = await fetch('/api/countdown', { cache: 'no-store' });
     if (!response.ok) throw new Error('Unavailable');
     applyState(await response.json());
-  } catch (_) { if (!ready) countLabel.textContent = 'The shared clock is taking a little break.'; }
+  } catch (_) { if (!ready) clockStatus.textContent = 'The shared clock is taking a little break.'; }
 }
 async function reset() {
   if (pending) return;
@@ -38,8 +42,8 @@ async function reset() {
     if (!response.ok) throw new Error('Unavailable');
     applyState(await response.json());
     secret.hidden = false; action.setAttribute('aria-expanded', 'true');
-    royalButton?.setAttribute('aria-expanded', 'true'); celebrate();
-  } catch (_) { countLabel.textContent = 'The clock refused. Try again in a moment.'; }
+    royalButton?.setAttribute('aria-expanded', 'true'); celebrate(); animatePageReset();
+  } catch (_) { clockStatus.textContent = 'The clock refused. Try again in a moment.'; }
   finally { pending = false; action.disabled = false; if (royalButton) royalButton.disabled = false; }
 }
 let coverOpen = false;
@@ -54,17 +58,64 @@ if (control) action.setAttribute('aria-label', 'Lift the launch button cover');
 action.addEventListener('click', press);
 royalButton?.addEventListener('click', reset);
 document.querySelector(`[data-theme-link="${theme}"]`).setAttribute('aria-current', 'page');
+document.querySelectorAll('.shownav a').forEach(link => {
+  link.setAttribute('href', `?theme=${theme}#${link.getAttribute('href').split('#').pop()}`);
+});
+// The theatre reads forward through the archive; the broadcast starts with the live work.
+if (control) {
+  const shelves = document.getElementById('archive-shelves');
+  shelves.append(...Array.from(shelves.children).reverse());
+  const nav = document.querySelector('.shownav');
+  nav.append(...Array.from(nav.children).reverse());
+}
+if ('IntersectionObserver' in window) {
+  const reveal = new IntersectionObserver(entries => {
+    for (const entry of entries) if (entry.isIntersecting) {
+      entry.target.classList.add('in-view'); reveal.unobserve(entry.target);
+    }
+  }, { rootMargin: '0px 0px 80px 0px', threshold: .03 });
+  document.querySelectorAll('.shelf').forEach(shelf => reveal.observe(shelf));
+  document.documentElement.classList.add('motion-ready');
+  let inFrame = true;
+  const awake = () => hero.classList.toggle('hero-awake', inFrame && !document.hidden);
+  new IntersectionObserver(entries => { inFrame = entries[0].isIntersecting; awake(); }).observe(hero);
+  document.addEventListener('visibilitychange', awake);
+} else hero.classList.add('hero-awake');
+function animatePageReset() {
+  if (reducedMotion.matches) return;
+  hero.querySelectorAll('.title-glyph').forEach((glyph, i) => glyph.animate(control ? [
+    { transform: 'translateY(0)', opacity: 1 },
+    { transform: 'translateY(32px) skewY(8deg)', opacity: .3, offset: .25 },
+    { transform: 'translateY(-12px)', opacity: 1, offset: .65 },
+    { transform: 'translateY(0)', opacity: 1 }
+  ] : [
+    { transform: 'translateY(0) rotate(0)' },
+    { transform: 'translateY(-18px) rotate(-3deg)', offset: .35 },
+    { transform: 'translateY(3px) rotate(1deg)', offset: .8 },
+    { transform: 'translateY(0) rotate(0)' }
+  ], { duration: control ? 900 : 1400, delay: i * 30, easing: 'cubic-bezier(.2,.8,.2,1)' }));
+  if (control) hero.querySelector('.reset-echo').animate([
+    { opacity: 0, transform: 'translateX(-8%) rotate(-6deg)' },
+    { opacity: .18, transform: 'translateX(3%) rotate(2deg)', offset: .4 },
+    { opacity: 0, transform: 'translateX(8%) rotate(6deg)' }
+  ], { duration: 1300, easing: 'ease-out' });
+}
 document.addEventListener('visibilitychange', () => { if (!document.hidden) sync(); });
 window.addEventListener('focus', sync);
 let displayUpdate = () => {};
-function remaining() {
-  const s = Math.max(0, Math.ceil((state.deadline - (Date.now() + clockOffset)) / 1000));
+function timeParts(s) {
   return [Math.floor(s / 86400), Math.floor(s % 86400 / 3600), Math.floor(s % 3600 / 60), s % 60];
 }
+function secondsRemaining() { return Math.max(0, Math.ceil((state.deadline - (Date.now() + clockOffset)) / 1000)); }
+function remaining() { return timeParts(secondsRemaining()); }
 function tick() {
   const values = remaining();
   ['days', 'hours', 'minutes', 'seconds'].forEach((unit, i) => {
-    document.querySelector(`[data-unit="${unit}"]`).textContent = String(values[i]).padStart(2, '0');
+    const digit = document.querySelector(`[data-unit="${unit}"]`), text = String(values[i]).padStart(2, '0');
+    if (digit.textContent !== text && !control && !reducedMotion.matches && hero.classList.contains('hero-awake')) {
+      digit.animate([{ transform: 'translateY(-7px)', opacity: .65 }, { transform: 'translateY(0)', opacity: 1 }], { duration: 420, easing: 'ease-out' });
+    }
+    digit.textContent = text;
   });
   document.getElementById('countdown-ended').hidden = values.some(v => v > 0);
   document.getElementById('timer-readable').textContent = `${values[0]} days, ${values[1]} hours, ${values[2]} minutes, ${values[3]} seconds`;
@@ -174,7 +225,7 @@ async function initScene() {
     display.castShadow = false;
     const segments = [[14,0,30,6],[43,7,6,33],[43,47,6,33],[14,80,30,6],[7,47,6,33],[7,7,6,33],[14,40,30,6]];
     const digits = ['1111110','0110000','1101101','1111001','0110011','1011011','1011111','1110000','1111111','1111011'];
-    displayUpdate = values => {
+    displayUpdate = (values, renderNow = true) => {
       ctx.fillStyle = '#101716'; ctx.fillRect(0, 0, 1024, 192);
       ctx.save(); ctx.translate(51, 18); ctx.scale(1.65, 1.65);
       const text = values.map(v => String(v).padStart(2,'0')).join(':'); let x = 0;
@@ -184,7 +235,7 @@ async function initScene() {
       }
       ctx.restore(); ctx.fillStyle='#828b7e';ctx.font='16px monospace';
       ['d','h','m','s'].forEach((u,i)=>ctx.fillText(u,140+i*224,181));
-      texture.needsUpdate = true; render();
+      texture.needsUpdate = true; if (renderNow) render();
     };
     box(1.25,.42,1.08,enamel,3.04,.2,.05);
     mesh(new THREE.CylinderGeometry(.34,.36,.12,32),silver,3.04,.45,.1);
@@ -233,6 +284,11 @@ async function initScene() {
     }
     if(cover)cover.rotation.x=THREE.MathUtils.lerp(cover.rotation.x,coverOpen?-1.9:0,reduce.matches?1:.13);
     if(button)button.position.y=.58-(t-pressTime<.2?.09:0);
+    // A brief mechanical rewind; the accessible clock always keeps the real deadline.
+    if(control && t-burstAt<1.4){
+      const rewind=reduce.matches?0:Math.max(0,1-(t-burstAt)/1.1);
+      displayUpdate(timeParts(Math.max(0,secondsRemaining()-Math.ceil(rewind*rewind*129600))),false);
+    }
     for(let i=particles.length-1;i>=0;i--){
       const p=particles[i],age=t-p.userData.birth;
       if(age>2.3){root.remove(p);p.traverse(o=>o.geometry?.dispose());particles.splice(i,1);continue;}
@@ -243,7 +299,8 @@ async function initScene() {
     const turning=Math.abs(root.rotation.y-targetY)>.0005||Math.abs(root.rotation.x-targetX)>.0005;
     const crowning=royalCrown&&!reduce.matches&&t-burstAt<2.5;
     const releasing=button&&t-pressTime<.2;
-    if(turning||crowning||releasing||particles.length||(cover&&Math.abs(cover.rotation.x-(coverOpen?-1.9:0))>.001))schedule();
+    const rewinding=control&&!reduce.matches&&t-burstAt<1.1;
+    if(turning||crowning||releasing||rewinding||particles.length||(cover&&Math.abs(cover.rotation.x-(coverOpen?-1.9:0))>.001))schedule();
   }
   sceneChange=()=>{schedule();};
   celebrate=()=>{

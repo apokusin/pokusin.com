@@ -23,7 +23,7 @@ The Python server previews the layout but cannot run the shared reset API.
 
 ## Shared countdown and themes
 
-- `?theme=royal` (default) and `?theme=control` explore two gallery designs.
+- `?theme=royal` (default) is a paper theatre with uneven picture mounts; `?theme=control` is a dark broadcast wall. Royal reads forward through the archive, while control starts with the newest work. Show navigation preserves the selected theme.
 - Edit gallery markup/CSS in `generate.py`; edit the shared timer and Three.js scenes in `countdowns/themes.js`.
 - `functions/api/countdown.js` reads or atomically resets one D1 row: deadline plus total presses. Each press moves the deadline one calendar month ahead in UTC, clamped at month end.
 - `wrangler.toml` supplies the `COUNTDOWN_DB` binding and `COUNTDOWN_KEY`: `live` for production, `preview` otherwise. Preview presses never alter the live row. Local development uses local storage.
@@ -32,6 +32,7 @@ The Python server previews the layout but cannot run the shared reset API.
 - Run `node countdowns/check-shared-countdown.mjs` with Node 22.13+ for the small backend checks. No dependencies are needed.
 - With the local Pages preview running, add `http://127.0.0.1:8000` to that check command to verify eight simultaneous HTTP presses against local D1.
 - Three.js 0.180.0 is vendored under `countdowns/assets/vendor/` with its license. Both scenes have illustrated fallbacks and respect reduced motion.
+- The royal title drifts and the control display briefly rewinds after a reset. The accessible timer always uses the real shared deadline. Decorative motion pauses offscreen and when the page is hidden.
 
 ## The /countdowns archive
 
