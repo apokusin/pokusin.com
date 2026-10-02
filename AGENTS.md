@@ -25,6 +25,7 @@ The Python server previews the layout but cannot run the shared reset API.
 
 - `?theme=royal` (default) is a paper theatre with uneven picture mounts; `?theme=control` is a dark broadcast wall. Royal reads forward through the archive, while control starts with the newest work. Show navigation preserves the selected theme.
 - Edit gallery markup/CSS in `generate.py`; edit the shared timer and Three.js scenes in `countdowns/themes.js`.
+- `countdowns/reels.js` supplies digit reels for both clocks and the press tally. Regular ticks roll only changed digits; resets spin and settle from left to right. Preserve immediate values for reduced motion and screen readers.
 - `functions/api/countdown.js` reads or atomically resets one D1 row: deadline plus total presses. Each press moves the deadline one calendar month ahead in UTC, clamped at month end.
 - `wrangler.toml` supplies the `COUNTDOWN_DB` binding and `COUNTDOWN_KEY`: `live` for production, `preview` otherwise. Preview presses never alter the live row. Local development uses local storage.
 - `_routes.json` runs the Function only for `/api/countdown`. Keep the rest of the site static.

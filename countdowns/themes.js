@@ -1,4 +1,5 @@
 // Two static archive themes, one shared countdown via the small Pages Function.
+import { NumberReel, reelPlan, reelPosition } from './reels.js';
 const theme = document.documentElement.dataset.theme;
 const control = theme === 'control';
 const action = document.getElementById('scene-action');
@@ -12,19 +13,28 @@ const dateLabel = document.getElementById('next-countdown-date');
 const initialDeadline = Date.parse(dateLabel.dateTime);
 let state = { deadline: initialDeadline, count: 0 };
 let celebrate = () => {}, ready = false, pending = false, clockOffset = 0;
-function updateLabels() {
-  countLabel.textContent = state.count.toLocaleString();
+const reelEnabled = () => hero.classList.contains('hero-awake') && !document.hidden;
+const countReel = new NumberReel(countLabel, { enabled: reelEnabled, reducedMotion, direction: 1 });
+const timerReels = ['days', 'hours', 'minutes', 'seconds'].map(unit => new NumberReel(
+  document.querySelector(`[data-unit="${unit}"]`), { enabled: () => !control && reelEnabled(), reducedMotion }
+));
+const fallbackReel = new NumberReel(document.getElementById('fallback-digits'), {
+  enabled: () => control && reelEnabled() && !document.getElementById('scene-stage').classList.contains('scene-ready'), reducedMotion
+});
+function updateLabels(spin = false) {
+  countReel.set(state.count.toLocaleString(), { spin });
   clockStatus.textContent = '';
   dateLabel.dateTime = new Date(state.deadline).toISOString();
   dateLabel.textContent = new Date(state.deadline).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
-function applyState(next) {
+function applyState(next, forceSpin = false) {
   if (!Number.isFinite(next.deadline) || !Number.isFinite(next.serverNow) || !Number.isSafeInteger(next.count) || next.count < 0) throw new Error('Invalid countdown');
   // A slower GET must never overwrite a newer reset response.
   if (next.count < state.count || (ready && next.count === state.count && next.serverNow < state.serverNow)) return;
+  const spin = ready && (forceSpin || next.count > state.count);
   state = next;
   clockOffset = next.serverNow - Date.now(); ready = true;
-  updateLabels(); tick();
+  updateLabels(spin); tick(spin);
 }
 async function sync() {
   if (document.hidden || pending) return;
@@ -40,7 +50,7 @@ async function reset() {
   try {
     const response = await fetch('/api/countdown', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
     if (!response.ok) throw new Error('Unavailable');
-    applyState(await response.json());
+    applyState(await response.json(), true);
     secret.hidden = false; action.setAttribute('aria-expanded', 'true');
     royalButton?.setAttribute('aria-expanded', 'true'); celebrate(); animatePageReset();
   } catch (_) { clockStatus.textContent = 'The clock refused. Try again in a moment.'; }
@@ -108,19 +118,13 @@ function timeParts(s) {
 }
 function secondsRemaining() { return Math.max(0, Math.ceil((state.deadline - (Date.now() + clockOffset)) / 1000)); }
 function remaining() { return timeParts(secondsRemaining()); }
-function tick() {
+function tick(spin = false) {
   const values = remaining();
-  ['days', 'hours', 'minutes', 'seconds'].forEach((unit, i) => {
-    const digit = document.querySelector(`[data-unit="${unit}"]`), text = String(values[i]).padStart(2, '0');
-    if (digit.textContent !== text && !control && !reducedMotion.matches && hero.classList.contains('hero-awake')) {
-      digit.animate([{ transform: 'translateY(-7px)', opacity: .65 }, { transform: 'translateY(0)', opacity: 1 }], { duration: 420, easing: 'ease-out' });
-    }
-    digit.textContent = text;
-  });
+  timerReels.forEach((reel, i) => reel.set(String(values[i]).padStart(2, '0'), { spin, index: i * 2 }));
   document.getElementById('countdown-ended').hidden = values.some(v => v > 0);
   document.getElementById('timer-readable').textContent = `${values[0]} days, ${values[1]} hours, ${values[2]} minutes, ${values[3]} seconds`;
-  document.getElementById('fallback-digits').textContent = values.map(v=>String(v).padStart(2,'0')).join(':');
-  displayUpdate(values);
+  fallbackReel.set(values.map(v=>String(v).padStart(2,'0')).join(':'), { spin });
+  displayUpdate(values, { spin });
 }
 updateLabels(); tick(); setInterval(tick, 1000); sync(); setInterval(sync, 30000);
 let sceneChange = () => {};
@@ -138,6 +142,7 @@ async function initScene() {
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   const scene = new THREE.Scene();
+  let paintDisplay = () => false;
   const camera = new THREE.PerspectiveCamera(control ? 30 : 35, 1, .1, 100);
   camera.position.set(control ? 0 : 0.9, control ? 4 : 2.6, control ? 12.4 : 6.4);
   camera.lookAt(0, control ? 0.35 : 1.2, 0);
@@ -225,17 +230,52 @@ async function initScene() {
     display.castShadow = false;
     const segments = [[14,0,30,6],[43,7,6,33],[43,47,6,33],[14,80,30,6],[7,47,6,33],[7,7,6,33],[14,40,30,6]];
     const digits = ['1111110','0110000','1101101','1111001','0110011','1011011','1011111','1110000','1111111','1111011'];
-    displayUpdate = (values, renderNow = true) => {
+    let displayText = '', displayPlans = [], spinUntil = 0, queuedDisplay = null;
+    const drawDigit = (char, x, y) => segments.forEach((segment, i) => {
+      ctx.fillStyle = digits[Number(char)][i] === '1' ? '#f16b55' : '#29302b';
+      ctx.fillRect(x + segment[0], y + segment[1], segment[2], segment[3]);
+    });
+    paintDisplay = ms => {
       ctx.fillStyle = '#101716'; ctx.fillRect(0, 0, 1024, 192);
       ctx.save(); ctx.translate(51, 18); ctx.scale(1.65, 1.65);
-      const text = values.map(v => String(v).padStart(2,'0')).join(':'); let x = 0;
-      for (const char of text) {
-        if (char === ':') { ctx.fillStyle='#d25e4a'; ctx.fillRect(x+4,24,5,5);ctx.fillRect(x+4,58,5,5);x+=18;continue; }
-        segments.forEach((seg,i) => {ctx.fillStyle=digits[+char][i]==='1'?'#f16b55':'#29302b';ctx.fillRect(x+seg[0],seg[1],seg[2],seg[3]);}); x+=59;
-      }
+      let x = 0, moving = false;
+      [...displayText].forEach((char, i) => {
+        if (char === ':') { ctx.fillStyle='#d25e4a'; ctx.fillRect(x+4,24,5,5);ctx.fillRect(x+4,58,5,5);x+=18;return; }
+        const plan = displayPlans[i];
+        const active = plan && !reduce.matches && ms < plan.started + plan.delay + plan.duration;
+        if (active) {
+          const position = reelPosition(plan, ms - plan.started); moving = true;
+          ctx.save(); ctx.beginPath(); ctx.rect(x, -5, 56, 98); ctx.clip();
+          for (let row = Math.max(0, Math.floor(position) - 1); row <= Math.min(plan.cells.length - 1, Math.ceil(position) + 1); row++) {
+            drawDigit(plan.cells[row], x, (row - position) * 104);
+          }
+          ctx.restore();
+        } else drawDigit(char, x, 0);
+        x += 59;
+      });
       ctx.restore(); ctx.fillStyle='#828b7e';ctx.font='16px monospace';
       ['d','h','m','s'].forEach((u,i)=>ctx.fillText(u,140+i*224,181));
-      texture.needsUpdate = true; if (renderNow) render();
+      texture.needsUpdate = true;
+      if (queuedDisplay && ms >= spinUntil) {
+        const values = queuedDisplay; queuedDisplay = null; displayUpdate(values); return true;
+      }
+      return moving;
+    };
+    displayUpdate = (values, { spin = false } = {}) => {
+      const now = performance.now(), text = values.map(v => String(v).padStart(2, '0')).join(':');
+      if (now < spinUntil && !spin && !reduce.matches && visible && !document.hidden) { queuedDisplay = values; return; }
+      if (text === displayText && !spin && !reduce.matches) return;
+      const motion = displayText.length === text.length && !reduce.matches && visible && !document.hidden;
+      let index = 0;
+      displayPlans = [...text].map((char, i) => {
+        if (char === ':') return null;
+        const plan = motion && (spin || displayText[i] !== char)
+          ? { ...reelPlan(displayText[i], char, { spin, direction: spin ? 1 : -1, index }), started: now } : null;
+        index++; return plan;
+      });
+      spinUntil = spin && motion ? now + Math.max(...displayPlans.filter(Boolean).map(plan => plan.delay + plan.duration)) : 0;
+      queuedDisplay = null; displayText = text;
+      const moving = paintDisplay(now); render(); if (moving) schedule();
     };
     box(1.25,.42,1.08,enamel,3.04,.2,.05);
     mesh(new THREE.CylinderGeometry(.34,.36,.12,32),silver,3.04,.45,.1);
@@ -284,11 +324,7 @@ async function initScene() {
     }
     if(cover)cover.rotation.x=THREE.MathUtils.lerp(cover.rotation.x,coverOpen?-1.9:0,reduce.matches?1:.13);
     if(button)button.position.y=.58-(t-pressTime<.2?.09:0);
-    // A brief mechanical rewind; the accessible clock always keeps the real deadline.
-    if(control && t-burstAt<1.4){
-      const rewind=reduce.matches?0:Math.max(0,1-(t-burstAt)/1.1);
-      displayUpdate(timeParts(Math.max(0,secondsRemaining()-Math.ceil(rewind*rewind*129600))),false);
-    }
+    const rolling = control && paintDisplay(ms);
     for(let i=particles.length-1;i>=0;i--){
       const p=particles[i],age=t-p.userData.birth;
       if(age>2.3){root.remove(p);p.traverse(o=>o.geometry?.dispose());particles.splice(i,1);continue;}
@@ -299,8 +335,7 @@ async function initScene() {
     const turning=Math.abs(root.rotation.y-targetY)>.0005||Math.abs(root.rotation.x-targetX)>.0005;
     const crowning=royalCrown&&!reduce.matches&&t-burstAt<2.5;
     const releasing=button&&t-pressTime<.2;
-    const rewinding=control&&!reduce.matches&&t-burstAt<1.1;
-    if(turning||crowning||releasing||rewinding||particles.length||(cover&&Math.abs(cover.rotation.x-(coverOpen?-1.9:0))>.001))schedule();
+    if(turning||crowning||releasing||rolling||particles.length||(cover&&Math.abs(cover.rotation.x-(coverOpen?-1.9:0))>.001))schedule();
   }
   sceneChange=()=>{schedule();};
   celebrate=()=>{

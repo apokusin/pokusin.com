@@ -48,7 +48,7 @@ No actionable P0/P1/P2 findings remain within this requested pass.
 ## Interaction and motion checks
 
 - Royal reset and control covered button both update the same countdown/tally. The cover opens separately from a reset. A failed Three.js import provides a working direct reset on the illustrated control button.
-- Royal letters drift slowly, changing digits lift into place, and a successful reset creates a wave through the title. Control has a brief visual rewind and a title recoil. The accessible timer always retains the real deadline during the display gag.
+- Royal letters drift slowly, changing digits roll in clipped slots, and a successful reset creates a wave through the title. Both clocks now spin their individual digits on reset; control renders those reels inside its actual Three.js display. The accessible timer always retains the real deadline during the display gag.
 - Decorative CSS motion pauses offscreen and when hidden. Reduced motion disables type drift, reveals and reset effects; fallback/reset was tested with reduced motion enabled.
 - Archive previews open on phones and desktop; close and Escape start the closing transition. Modifier-click handling is unchanged. Theme-aware show navigation and 320 px title bounds checked.
 - Backend date, request handling, atomic increment and environment isolation checks pass. Existing eight-request HTTP integration coverage remains unchanged; no backend code changed in this pass.
@@ -59,3 +59,17 @@ No actionable P0/P1/P2 findings remain within this requested pass.
 P3: the procedural throne is still simpler than a bespoke sculpted model. That does not block this art-direction pass.
 
 Checklist completed: both compositions, containers, type, backgrounds, chronological/reverse ordering, sparse copy, motion, shared reset, previews, narrow layouts, reduced motion, fallback and combined visual comparisons.
+
+## Slot-number follow-up
+
+The user's reference was [Transitions.dev's spinning counter](https://transitions.dev/transitions/spinning-counter/). Implemented a small native digit-strip renderer, shared with the console's canvas texture. No dependency or site build was added. A normal tick rolls only changed digits downward in 420 ms; a reset spins every reel upward for 1080 ms with 45 ms between columns. The press tally rolls too. Tick updates arriving during the reset are queued and applied after landing.
+
+Recorded real browser frames for both reset animations in `royal-reel-frames-final/` and `control-reel-frames-final/` in the evidence directory. Their timing files record capture timestamps. The GIFs `royal-slot-motion.gif` and `control-slot-motion.gif` are cropped sequences from those captures. Opened and inspected moving and settled frames. Expanded the royal reel window to retain the serif numerals' descenders; preserved the clock's layout height with matching margins.
+
+- Desktop and 390 px screenshots inspected; `royal-slots-phone.png` and `control-slots-phone.png` show the final phone rendering. Both themes have no document overflow at 320 px. All four visible royal pairs remain within the viewport.
+- Both buttons reset successfully. The control cover still opens before a reset. Console numbers and the royal clock land on the real deadline; press totals update with the same API.
+- Reduced motion tested on both themes: zero digit-strip animation cells after reset, immediate real values, and successful button/secret behavior.
+- Blocked the Three.js import at 320 px and checked the illustrated control display: immediate reset with reduced motion, then 125 reel cells during the animated reset after restoring normal motion. `control-slots-fallback.png` records the reduced-motion fallback state. Temporary media, width and network overrides were cleared.
+- All 200 combinations of decimal start/end values and both directions passed wrap/landing checks. JavaScript syntax and generated-output whitespace checks pass. Backend implementation is unchanged.
+
+Final result for the slot follow-up: passed. No new actionable P0/P1/P2 findings.

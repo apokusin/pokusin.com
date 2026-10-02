@@ -239,6 +239,11 @@ html.gallery{--bg:#eee7d8;--fg:#39291f;--muted:#6c6155;--line:#c6b9a0;--line-str
 .royal-clock{position:absolute;left:17%;right:17%;top:325px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;z-index:3;pointer-events:none}
 .throne-space{display:none}
 .clock-unit>span{display:inline-block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(68px,7.8vw,104px);font-variant-numeric:tabular-nums;line-height:.85;letter-spacing:-.06em}
+.number-reel{--reel-cell:.85em;white-space:nowrap}
+.number-reel .digit-slot{display:inline-block;position:relative;width:1ch;height:var(--reel-cell);overflow:hidden;vertical-align:top;letter-spacing:0;mask-image:linear-gradient(transparent,#000 4%,#000 96%,transparent)}
+.clock-unit>.number-reel{--reel-cell:1.1em;line-height:1.1em;margin-block:-.125em}
+.digit-strip{display:block;line-height:var(--reel-cell);text-align:center}
+.digit-cell{display:flex;align-items:center;justify-content:center;height:var(--reel-cell)}
 .clock-unit>small{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:16px;color:var(--muted);margin-top:10px}
 .scene-stage{position:absolute;width:370px;height:310px;left:50%;top:15px;transform:translateX(-50%);z-index:2}
 #theme-scene{width:100%;height:100%;display:block;opacity:0;touch-action:pan-y}
@@ -249,6 +254,7 @@ html.gallery{--bg:#eee7d8;--fg:#39291f;--muted:#6c6155;--line:#c6b9a0;--line-str
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .control-fallback img{width:100%;height:auto;display:block}
 .fallback-digits{position:absolute;left:38.5%;top:56%;transform:translate(-50%,-50%);font-family:monospace;font-size:clamp(11px,3vw,34px);letter-spacing:.04em;color:#ee6655;white-space:nowrap;pointer-events:none}
+.fallback-digits.number-reel{--reel-cell:1.1em}
 .scene-action{position:absolute;left:30%;top:20%;width:40%;height:65%;background:none;border:0;border-radius:12px;cursor:pointer;color:var(--fg)}
 .scene-action:hover{background:radial-gradient(ellipse,#ac6e3420,transparent 70%)}
 .gallery .scene-hint{display:none}
@@ -257,6 +263,7 @@ html.gallery{--bg:#eee7d8;--fg:#39291f;--muted:#6c6155;--line:#c6b9a0;--line-str
 .gallery .countdown-secret{position:absolute;left:0;right:0;top:280px;margin:0;font:italic 24px 'Cormorant Garamond',Georgia,serif;color:var(--accent);z-index:4;pointer-events:none}
 .press-tally{position:absolute;top:461px;right:5%;text-align:left;color:var(--muted)}
 .press-tally>span{display:block;font:italic 40px 'Cormorant Garamond',Georgia,serif;line-height:1;font-variant-numeric:tabular-nums}
+.press-tally>.number-reel{--reel-cell:1em}
 .press-tally>small{display:block;font-size:9px;letter-spacing:.04em;margin-top:5px}
 .clock-status{position:absolute;bottom:0;left:0;right:0;font-size:11px;color:var(--accent)}
 .countdown-ended{position:absolute;bottom:0;left:0;right:0;font-size:11px}
