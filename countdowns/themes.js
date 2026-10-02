@@ -17,7 +17,8 @@ function updateLabels() {
 function applyState(next) {
   if (!Number.isFinite(next.deadline) || !Number.isFinite(next.serverNow) || !Number.isSafeInteger(next.count) || next.count < 0) throw new Error('Invalid countdown');
   // A slower GET must never overwrite a newer reset response.
-  if (next.count >= state.count) state = next;
+  if (next.count < state.count || (ready && next.count === state.count && next.serverNow < state.serverNow)) return;
+  state = next;
   clockOffset = next.serverNow - Date.now(); ready = true;
   updateLabels(); tick();
 }
@@ -199,7 +200,7 @@ async function initScene() {
   }
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   let visible = true, pointerX = 0, pointerY = 0, lastFrame = 0, frameId = 0, burstAt = -10;
-  function render() { renderer.render(scene,camera); }
+  function render() { if (visible && !document.hidden) renderer.render(scene,camera); }
   function resize() {
     const w = stage.clientWidth, h = stage.clientHeight; renderer.setSize(w,h,false);camera.aspect=w/h;
     if (control) {
@@ -221,8 +222,10 @@ async function initScene() {
     frameId=0;if(!visible||document.hidden)return;
     if(ms-lastFrame<32){schedule();return;}lastFrame=ms;
     const t=clock.getElapsedTime();
-    root.rotation.y=THREE.MathUtils.lerp(root.rotation.y,(control?-.025:-.13)+pointerX*(control?.035:.35),.08);
-    if(!reduce.matches)root.rotation.x=THREE.MathUtils.lerp(root.rotation.x,pointerY*.025,.08);
+    const targetY=(control?-.025:-.13)+(reduce.matches?0:pointerX*(control?.035:.35));
+    const targetX=reduce.matches?0:pointerY*.025;
+    root.rotation.y=THREE.MathUtils.lerp(root.rotation.y,targetY,reduce.matches?1:.08);
+    root.rotation.x=THREE.MathUtils.lerp(root.rotation.x,targetX,reduce.matches?1:.08);
     if(royalCrown){
       const b=Math.max(0,1-(t-burstAt)/2.5);
       royalCrown.position.y=.93+(reduce.matches?0:Math.sin(b*Math.PI)*1.15);
@@ -237,7 +240,10 @@ async function initScene() {
       p.rotation.y+=.07;p.rotation.z+=.025;p.scale.setScalar(.15*Math.min(1,(2.3-age)*2));
     }
     render();
-    if(!reduce.matches || particles.length || (cover && Math.abs(cover.rotation.x-(coverOpen?-1.9:0))>.001))schedule();
+    const turning=Math.abs(root.rotation.y-targetY)>.0005||Math.abs(root.rotation.x-targetX)>.0005;
+    const crowning=royalCrown&&!reduce.matches&&t-burstAt<2.5;
+    const releasing=button&&t-pressTime<.2;
+    if(turning||crowning||releasing||particles.length||(cover&&Math.abs(cover.rotation.x-(coverOpen?-1.9:0))>.001))schedule();
   }
   sceneChange=()=>{schedule();};
   celebrate=()=>{

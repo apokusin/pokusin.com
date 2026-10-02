@@ -327,7 +327,7 @@ html.gallery[data-theme=control]{--bg:#e9e6df;--fg:#1b2225;--muted:#626565;--car
  .clock-unit>span{font-size:37px}.clock-unit>small{font-size:13px;margin-top:4px}
  .scene-stage{width:215px;height:218px;top:56px}
  .gallery .countdown-secret{bottom:71px;font-size:21px}
- .scene-hint{font-size:10px;bottom:5px}
+ .scene-hint{font-size:10px}
  .gallery .shownav{margin:4px -18px 0;padding:10px 18px;justify-content:flex-start;gap:7px}
  .gallery .shownav a{font-size:9px;padding:7px 10px}
  .gallery .shelf{margin-top:28px;padding:0;gap:12px}

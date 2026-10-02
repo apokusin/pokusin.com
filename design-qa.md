@@ -6,6 +6,8 @@ Scope: two functional explorations of the selected royal archive and control roo
 
 ## Visual evidence
 
+Published reviewable implementation: [royal archive](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=royal) and [control room](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=control). Both were verified against the remote shared counter. The local capture paths below record the source comparison in this Codex workspace.
+
 Source visual truth:
 - Royal: `/Users/pcyx/.codex/generated_images/01a0fb3c-c709-76f2-8d29-692947f7dcc7/exec-479baf4b-0dfe-4ce8-83cb-c8e87b63ad6d.png` — 1214 × 1295 px.
 - Control: `/Users/pcyx/.codex/generated_images/01a0fb3c-c709-76f2-8d29-692947f7dcc7/exec-794c08ad-2e21-4a67-b409-d9716af8e657.png` — 1024 × 1536 px.
@@ -51,8 +53,9 @@ No actionable P0/P1/P2 findings remain within the requested exploration scope.
 - Royal decree resets the shared countdown and increments its tally. Control cover opens separately, then the physical button resets it. Reloading the other theme shows the same state.
 - Preview overlays open on desktop and phones; Escape and close dismiss them. Existing modifier-click behavior is retained in the unchanged event guard. Mobile shelf controls and sticky show navigation remain available.
 - Reduced motion checked in the browser: static scene rendering and responsive layout remain usable.
+- Final interaction review: the reduced-motion control button releases after a successful reset; pointer/crown/cover animation stops when settled. Offscreen and hidden scenes skip rendering, while the visible control display refreshes once per second.
 - Three.js failure simulated: illustrated timer and direct button remain functional.
-- Backend checks: end-of-month/leap-year dates, request handling, no-store responses, concurrent tally and live/preview row isolation. Real local Pages/D1 integration counted eight simultaneous presses without loss.
+- Backend checks: end-of-month/leap-year dates, request handling, no-store responses, atomic increments and live/preview row isolation. The optional HTTP integration check counted eight simultaneous local Pages/D1 presses without loss. Stale responses are rejected before updating the client clock offset.
 - Browser errors inspected: no errors attributed to the new theme scripts. Wallet-extension errors and unattributed MutationObserver errors were present; the new scripts/vendor contain no MutationObserver. An existing Severance iframe emits React hydration error 418; rebuilding that archived app is outside this gallery change.
 
 ## Follow-up polish

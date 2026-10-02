@@ -29,7 +29,8 @@ The Python server previews the layout but cannot run the shared reset API.
 - `wrangler.toml` supplies the `COUNTDOWN_DB` binding and `COUNTDOWN_KEY`: `live` for production, `preview` otherwise. Preview presses never alter the live row. Local development uses local storage.
 - `_routes.json` runs the Function only for `/api/countdown`. Keep the rest of the site static.
 - Initialize the remote schema once with `wrangler d1 execute pokusin-countdown --remote --file countdowns/schema.sql`. It is idempotent.
-- Run `node countdowns/check-shared-countdown.mjs` with Node 22+ for the small backend checks. No dependencies are needed.
+- Run `node countdowns/check-shared-countdown.mjs` with Node 22.13+ for the small backend checks. No dependencies are needed.
+- With the local Pages preview running, add `http://127.0.0.1:8000` to that check command to verify eight simultaneous HTTP presses against local D1.
 - Three.js 0.180.0 is vendored under `countdowns/assets/vendor/` with its license. Both scenes have illustrated fallbacks and respect reduced motion.
 
 ## The /countdowns archive
