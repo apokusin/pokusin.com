@@ -12,7 +12,7 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const dateLabel = document.getElementById('next-countdown-date');
 const initialDeadline = Date.parse(dateLabel.dateTime);
 let state = { deadline: initialDeadline, count: 0 };
-let celebrate = () => {}, ready = false, pending = false, clockOffset = 0;
+let celebrate = () => {}, ready = false, pending = false, clockOffset = 0, tickInterval = 0;
 const reelEnabled = () => hero.classList.contains('hero-awake') && !document.hidden;
 const countReel = new NumberReel(countLabel, { enabled: reelEnabled, reducedMotion, direction: 1 });
 const timerReels = ['days', 'hours', 'minutes', 'seconds'].map(unit => new NumberReel(
@@ -34,7 +34,7 @@ function applyState(next, forceSpin = false) {
   const spin = ready && (forceSpin || next.count > state.count);
   state = next;
   clockOffset = next.serverNow - Date.now(); ready = true;
-  updateLabels(spin); tick(spin);
+  updateLabels(spin); tick(spin); startTicker();
 }
 async function sync() {
   if (document.hidden || pending) return;
@@ -49,6 +49,11 @@ async function reset() {
   pending = true; action.disabled = true; if (royalButton) royalButton.disabled = true;
   try {
     const response = await fetch('/api/countdown', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
+    if (response.status === 429) {
+      const seconds = Number(response.headers.get('Retry-After')) || 60;
+      clockStatus.textContent = `Give the button a breather. Try again in ${seconds} seconds.`;
+      return;
+    }
     if (!response.ok) throw new Error('Unavailable');
     applyState(await response.json(), true);
     secret.hidden = false; action.setAttribute('aria-expanded', 'true');
@@ -120,13 +125,17 @@ function secondsRemaining() { return Math.max(0, Math.ceil((state.deadline - (Da
 function remaining() { return timeParts(secondsRemaining()); }
 function tick(spin = false) {
   const values = remaining();
+  if (!values.some(value => value > 0)) { clearInterval(tickInterval); tickInterval = 0; }
   timerReels.forEach((reel, i) => reel.set(String(values[i]).padStart(2, '0'), { spin, index: i * 2 }));
   document.getElementById('countdown-ended').hidden = values.some(v => v > 0);
   document.getElementById('timer-readable').textContent = `${values[0]} days, ${values[1]} hours, ${values[2]} minutes, ${values[3]} seconds`;
   fallbackReel.set(values.map(v=>String(v).padStart(2,'0')).join(':'), { spin });
   displayUpdate(values, { spin });
 }
-updateLabels(); tick(); setInterval(tick, 1000); sync(); setInterval(sync, 30000);
+function startTicker() {
+  if (!tickInterval && secondsRemaining()) tickInterval = setInterval(tick, 1000);
+}
+updateLabels(); tick(); startTicker(); sync(); setInterval(sync, 30000);
 let sceneChange = () => {};
 
 async function initScene() {

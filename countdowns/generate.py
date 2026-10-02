@@ -2,6 +2,7 @@
 """Generate the /countdowns archive: gallery, per-show details (with collapsible
 archived variants), and the Dexter Season 7 timeline scrubber."""
 import os, html, json, hashlib
+from datetime import datetime
 
 CD = os.path.dirname(os.path.abspath(__file__))  # this script lives in countdowns/
 REPO = os.path.dirname(CD)
@@ -128,6 +129,8 @@ EPISODES = [
 SHOW_COUNT = len(SHOWS)
 TOTAL = 8 + 10 + 3 + 7 + 4 + 1 + 2  # GoT8 Dexter(3+7eps) Sherlock3 Archer7 BB4 HoC1 Sev2 = 35
 NEXT_COUNTDOWN_DATE = "2026-11-01T00:00:00-07:00"  # One month from October 1, Pacific time.
+_next_countdown = datetime.fromisoformat(NEXT_COUNTDOWN_DATE)
+NEXT_COUNTDOWN_LABEL = f'{_next_countdown:%b} {_next_countdown.day}, {_next_countdown.year} · Pacific time'
 
 THEME_HEAD = """<script>
 (function(){var theme=new URLSearchParams(location.search).get('theme');
@@ -513,7 +516,7 @@ html.gallery{--bg:#eee7d8;--fg:#39291f;--muted:#6c6155;--line:#c6b9a0;--line-str
 .throne-space{display:none}
 .clock-unit>span{display:inline-block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(68px,7.8vw,104px);font-variant-numeric:tabular-nums;line-height:.85;letter-spacing:-.06em}
 .number-reel{--reel-cell:.85em;white-space:nowrap}
-.number-reel .digit-slot{display:inline-block;position:relative;width:1ch;height:var(--reel-cell);overflow:hidden;vertical-align:top;letter-spacing:0;mask-image:linear-gradient(transparent,#000 4%,#000 96%,transparent)}
+.number-reel .digit-slot{display:inline-block;position:relative;width:1ch;height:var(--reel-cell);overflow:hidden;vertical-align:top;letter-spacing:0;-webkit-mask-image:linear-gradient(transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(transparent,#000 4%,#000 96%,transparent)}
 .clock-unit>.number-reel{--reel-cell:1.1em;line-height:1.1em;margin-block:-.125em}
 .digit-strip{display:block;line-height:var(--reel-cell);text-align:center}
 .digit-cell{display:flex;align-items:center;justify-content:center;height:var(--reel-cell)}
@@ -538,7 +541,7 @@ html.gallery{--bg:#eee7d8;--fg:#39291f;--muted:#6c6155;--line:#c6b9a0;--line-str
 .press-tally>span{display:block;font:italic 40px 'Cormorant Garamond',Georgia,serif;line-height:1;font-variant-numeric:tabular-nums}
 .press-tally>.number-reel{--reel-cell:1em}
 .press-tally>small{display:block;font-size:9px;letter-spacing:.04em;margin-top:5px}
-.clock-status{position:absolute;bottom:0;left:0;right:0;font-size:11px;color:var(--accent)}
+.clock-status{position:absolute;bottom:0;left:10px;right:10px;max-width:34ch;margin-inline:auto;font-size:11px;line-height:1.5;color:var(--accent)}
 .countdown-ended{position:absolute;bottom:0;left:0;right:0;font-size:11px}
 .gallery .shownav{position:sticky;top:0;justify-content:space-between;gap:12px;margin:0;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;background:var(--bg);box-shadow:none;backdrop-filter:none}
 .gallery .shownav a{border-radius:0;flex-direction:row;gap:8px;padding:6px 0;font-size:10px;letter-spacing:-.035em;background:none}
@@ -589,6 +592,7 @@ html.gallery[data-theme=control]{--bg:#151b1b;--fg:#e7dfcc;--muted:#a7a99b;--lin
 [data-theme=control] .title-glyph:hover{transform:translateY(-10px) rotate(-4deg)}
 [data-theme=control] .lede{position:absolute;top:38px;right:0;margin:0;font:11px 'IBM Plex Mono',monospace;max-width:20ch;text-align:right;line-height:1.6}
 [data-theme=control] .next-countdown{height:335px;margin:-35px 0 10px;z-index:2}
+[data-theme=control] .next-countdown:has(.clock-status:not(:empty)){height:375px}
 [data-theme=control] .royal-guardians,[data-theme=control] .royal-clock,[data-theme=control] .royal-fallback,[data-theme=control] .royal-only{display:none}
 [data-theme=control] .control-fallback,[data-theme=control] .control-only{display:block}
 [data-theme=control] .control-fallback{inset:auto;left:7.5%;top:50%;width:85%;height:auto;transform:translateY(-50%)}
@@ -676,6 +680,7 @@ html.gallery[data-theme=control]{--bg:#151b1b;--fg:#e7dfcc;--muted:#a7a99b;--lin
  [data-theme=control] .title-line:last-child{margin-top:6px;transform:rotate(-3deg)}
  [data-theme=control] .lede{top:33px;font-size:9px;max-width:18ch;line-height:1.5}
  [data-theme=control] .next-countdown{height:230px;margin:-10px -10px 8px}
+ [data-theme=control] .next-countdown:has(.clock-status:not(:empty)){height:270px}
  [data-theme=control] .scene-stage{height:210px;width:110%;left:-5%;top:0}
  [data-theme=control] .countdown-caption{top:176px;left:10px}
  [data-theme=control] .next-countdown h2,[data-theme=control] .countdown-caption time{font-size:9px}
@@ -804,7 +809,7 @@ def build_gallery():
         '    <section class="next-countdown" aria-labelledby="next-countdown-heading">\n'
         '      <img class="royal-guardians" src="assets/royal-guardians.png" alt="" width="1440" height="520">\n'
         '      <div class="countdown-caption"><h2 id="next-countdown-heading">Next countdown</h2>'
-        f'<time id="next-countdown-date" datetime="{NEXT_COUNTDOWN_DATE}">Nov 1, 2026 · Pacific time</time></div>\n'
+        f'<time id="next-countdown-date" datetime="{NEXT_COUNTDOWN_DATE}">{NEXT_COUNTDOWN_LABEL}</time></div>\n'
         '      <div class="royal-clock" role="timer" aria-label="Time until the next countdown">'
         '<div class="clock-unit"><span data-unit="days">30</span><small>days</small></div>'
         '<div class="clock-unit"><span data-unit="hours">00</span><small>hours</small></div>'
@@ -831,7 +836,7 @@ def build_gallery():
     )
     out += '    <nav class="shownav" aria-label="Shows">\n'
     for i, s in enumerate(SHOWS):
-        out += (f'      <a href="?theme=royal#{s["slug"]}"><span class="nv-e">{["I", "II", "III", "IV", "V", "VI", "VII"][i]}</span>'
+        out += (f'      <a href="#{s["slug"]}"><span class="nv-e">{["I", "II", "III", "IV", "V", "VI", "VII"][i]}</span>'
                 f'<span class="nv-n">{esc(s["name"])}</span></a>\n')
     out += '    </nav>\n'
     out += '    <main class="archive-shelves" id="archive-shelves" aria-label="Countdown archive">\n'

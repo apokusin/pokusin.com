@@ -27,11 +27,12 @@ The Python server previews the layout but cannot run the shared reset API.
 - Edit gallery markup/CSS in `generate.py`; edit the shared timer and Three.js scenes in `countdowns/themes.js`.
 - `countdowns/reels.js` supplies digit reels for both clocks and the press tally. Regular ticks roll only changed digits; resets spin and settle from left to right. Preserve immediate values for reduced motion and screen readers.
 - `functions/api/countdown.js` reads or atomically resets one D1 row: deadline plus total presses. Each press moves the deadline one calendar month ahead in UTC, clamped at month end.
+- A small D1 spam guard accepts up to 60 resets per IP per minute. Its keys hash the IP with the minute and environment; raw IPs and persistent visitor identifiers are not stored. Excess requests return 429 with `Retry-After`. Old indexed buckets are cleaned opportunistically in the background.
 - `wrangler.toml` supplies the `COUNTDOWN_DB` binding and `COUNTDOWN_KEY`: `live` for production, `preview` otherwise. Preview presses never alter the live row. Local development uses local storage.
 - `_routes.json` runs the Function only for `/api/countdown`. Keep the rest of the site static.
 - Initialize the remote schema once with `wrangler d1 execute pokusin-countdown --remote --file countdowns/schema.sql`. It is idempotent.
 - Run `node countdowns/check-shared-countdown.mjs` with Node 22.13+ for the small backend checks. No dependencies are needed.
-- With the local Pages preview running, add `http://127.0.0.1:8000` to that check command to verify eight simultaneous HTTP presses against local D1.
+- With the local Pages preview running, add `http://127.0.0.1:8000` to that check command to verify eight simultaneous HTTP presses against local D1, then a limiter burst of 80 requests with ten in flight at a time.
 - Three.js 0.180.0 is vendored under `countdowns/assets/vendor/` with its license. Both scenes have illustrated fallbacks and respect reduced motion.
 - The royal title drifts and the control display briefly rewinds after a reset. The accessible timer always uses the real shared deadline. Decorative motion pauses offscreen and when the page is hidden.
 
