@@ -3,7 +3,9 @@ export async function create(ctx) {
   const {drawingSurfaces}=await import(`./drawing-surfaces.js?v=${document.documentElement.dataset.artVersion||'1'}`);
   const surfaces=drawingSurfaces(T,ctx.renderer,resources);ctx.scene.environment=surfaces.environment;ctx.scene.environmentIntensity=.28;
   const stock=ctx.texture(`assets/concepts/still-drawing-tomorrow/paper-stock.png?v=${document.documentElement.dataset.artVersion||'1'}`);
-  stock.wrapS=stock.wrapT=T.RepeatWrapping;stock.anisotropy=Math.min(4,ctx.renderer.capabilities.getMaxAnisotropy());surfaces.paper.map=stock;resources.push(stock);
+  stock.wrapS=stock.wrapT=T.RepeatWrapping;stock.anisotropy=Math.min(4,ctx.renderer.capabilities.getMaxAnisotropy());stock.repeat.set(5,4);resources.push(stock);
+  let stockApplied=false;
+  function applyPaperStock(){if(!stockApplied&&stock.image?.width){surfaces.paper.map=stock;surfaces.paper.needsUpdate=true;stockApplied=true;}}
   document.documentElement.style.setProperty('--drawing-paper','url("assets/concepts/still-drawing-tomorrow/paper-stock.png")');
   ctx.renderer.toneMapping=T.NeutralToneMapping;ctx.renderer.toneMappingExposure=1.03;
   ctx.renderer.shadowMap.type=T.VSMShadowMap;
@@ -69,6 +71,7 @@ export async function create(ctx) {
   ctx.on(document,'visibilitychange',()=>{if(document.hidden){age=99;remoteAge=99;last=null;}});
   resize();
   return {resize,pending(v){pending=v;ctx.wake();},celebrate(){age=document.hidden||frozen?99:0;start=target;finish=(finish+.22)%1;target=(finish-.035+1)%1;const attr=extensionGeom.attributes.position;for(let i=0;i<61;i++){const u=(start+i/60*.25)%1;temp.copy(path.getPoint(u));attr.setXYZ(i,temp.x,temp.y,temp.z+.02);}attr.needsUpdate=true;setFinish(finish);ctx.wake();},remote(){remoteAge=0;ctx.wake();},overlay(v){frozen=v;last=null;},animate(time,dt){if(frozen)return;age+=dt;remoteAge+=dt;const reduced=ctx.reduced;eraser.scale.z=pending?.88:1;
+    applyPaperStock();
     for(const g of sheets){const rest=g.userData.baseZ,active=Boolean(g.userData.lift||g.userData.held||g.userData.secretActive);const wanted=rest+(active?.07:0);g.position.z=reduced?wanted:g.position.z+(wanted-g.position.z)*Math.min(1,dt*14);g.userData.corner=reduced?Number(active):g.userData.corner+(Number(active)-g.userData.corner)*Math.min(1,dt*10);const attr=g.userData.surface.attributes.position,w=g.userData.w,h=g.userData.h;for(let i=0;i<attr.count;i++){const x=attr.getX(i),y=attr.getY(i),corner=Math.max(0,(x-w*.3)/(w*.2))*Math.max(0,(y-h*.15)/(h*.35));attr.setZ(i,corner*corner*(g.userData.curl+g.userData.corner*.33));}attr.needsUpdate=true;g.userData.surface.computeVertexNormals();}crown.visible=sheets[2].userData.corner>.1;
     let u=target;let frame=0;if(!reduced&&age<1.5){const progress=age<.6?0:Math.min(1,(age-.6)/.9);u=(start+progress*.22)%1;frame=Math.floor(age*12)%12;stripe.scale.setScalar(age<.6?1-age/.6:Math.min(1,(age-.6)/.9));extension.visible=!ctx.mobile;extensionGeom.setDrawRange(0,Math.floor(progress*60)+1);}else{stripe.scale.setScalar(1);extension.visible=false;if(!reduced&&!ctx.mobile&&time%12<1.3){u=(target+Math.sin(time%12/1.3*Math.PI)*.017)%1;frame=Math.floor(time*12)%12;}}
     runner.position.copy(path.getPoint(u));runner.position.y+=.49;runner.position.z=.19;runnerMat.map=poses[!reduced&&remoteAge<.5?1:frame];for(let i=0;i<36;i++)if(performance.now()/1000-trailTimes[i]>.7){trailPos.fill(0,i*6,i*6+6);}trailGeo.attributes.position.needsUpdate=true;trail.visible=!reduced&&!ctx.mobile;

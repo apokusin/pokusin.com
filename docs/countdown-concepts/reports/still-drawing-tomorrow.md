@@ -6,6 +6,8 @@
 
 Unequal sheet sizes, rotations and depths replace the earlier tidy row. Real cotton texture, window light, registration strokes, pencil props and a scored eraser create a worktable. Lowering the phone eraser grounds its shadow. The separate corner lift opens no preview, and its targets hide after graphics loss.
 
+**Published-load correction:** Actual Cloudflare first paint exposed an undecoded map briefly darkening the table. Warm procedural stock now remains until the raster is decoded. Both blocked-image and uncached first-frame screenshots retain the warm scene; this is observed loading behavior, not inferred from configured materials.
+
 **Accepted source limitation:** Paper/cel surfaces, runner anatomy and wear are cleaner and simpler than the reference's worn translucent acetate. This is the documented rendered interpretation, not a claim of photographic source equivalence.
 
 Evidence: [reference/current](../qa/still-drawing-tomorrow-material-comparison.jpg), [1280 × 900](../qa/still-drawing-tomorrow-material-desktop.jpg), [390 × 844](../qa/still-drawing-tomorrow-material-mobile.jpg), [320 × 720](../qa/still-drawing-tomorrow-material-320.jpg). Root separately verified real phone resets 386 → 393 across all seven, genuine archive preview/Escape/focus restoration, 44 px or larger targets, no document overflow, reduced-motion crown discovery and actual graphics-loss restoration. [Shared runtime QA](../../../design-qa.md) distinguishes native checks from still-image review; no hardware FPS or physical touch-device result is implied.
