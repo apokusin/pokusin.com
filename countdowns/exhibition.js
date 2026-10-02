@@ -33,9 +33,9 @@ export async function initExhibition(options) {
   // Art themes use faithful stills in closed mounts; only the overlay runs the actual site.
   for (const card of cards) {
     const frame = card.querySelector('.frame');
-    const image = document.createElement('img'); image.src = card.dataset.thumb;
+    const image = frame.querySelector('img')||document.createElement('img'); image.src = card.dataset.thumb;
     image.alt = ''; image.loading = 'lazy'; image.width = 720; image.height = 450;
-    frame.querySelector('iframe')?.remove(); frame.prepend(image);
+    frame.querySelector('iframe')?.remove(); if(!frame.contains(image))frame.prepend(image);
     const shelf = card.closest('.shelf');
     card.setAttribute('aria-label',`${shelf.querySelector('.shelf-name').textContent}, ${card.querySelector('.label').textContent}`);
   }

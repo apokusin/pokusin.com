@@ -775,7 +775,7 @@ def foot(scripts=""):
         "</body>\n</html>\n"
     )
 
-def card(show_slug, v, zoom=4):
+def card(show_slug, v, zoom=4, defer_frames=False):
     zoom = v.get("zoom", zoom)  # per-version override beats the show default
     base = f'/countdowns/{show_slug}/{v["slug"]}'
     if not base.endswith("/"):
@@ -788,6 +788,10 @@ def card(show_slug, v, zoom=4):
               f'title="{esc(v["label"])} preview"></iframe>')
     chip = f'<span class="chip">{esc(v["chip"])}</span>' if v.get("chip") else ""
     thumb = f'/countdowns/assets/previews/{show_slug}-{v["slug"].strip("/").replace("/", "-")}.jpg'
+    if defer_frames:
+        # Inert until the theme is known: art worlds never boot archived scripts behind their stills.
+        iframe = (f'<template class="card-preview">{iframe}</template>'
+                  f'<img src="{thumb}" alt="" loading="lazy" width="720" height="450">')
     return (
         f'      <a class="card" href="{base}" data-thumb="{thumb}" target="_blank" rel="noopener">\n'
         f'        <div class="frame">{iframe}<span class="open">Open ↗</span></div>\n'
@@ -813,7 +817,7 @@ def carousel_controls(versions):
         if len(versions) > 1 else ""
     )
 
-def grid(show_slug, versions, zoom=4, include_controls=True, carousel_root=True, more_href=None):
+def grid(show_slug, versions, zoom=4, include_controls=True, carousel_root=True, more_href=None, defer_frames=False):
     controls = carousel_controls(versions) if include_controls else ""
     data_attr = ' data-carousel' if carousel_root and len(versions) > 1 else ""
     more = (
@@ -824,7 +828,7 @@ def grid(show_slug, versions, zoom=4, include_controls=True, carousel_root=True,
         f'      <div class="carousel"{data_attr}>\n'
         f'{controls}'
         '        <div class="grid">\n'
-        + "".join(card(show_slug, v, zoom) for v in versions) +
+        + "".join(card(show_slug, v, zoom, defer_frames=defer_frames) for v in versions) +
         '        </div>\n'
         f'{more}'
         '      </div>\n'
@@ -911,10 +915,17 @@ def build_gallery():
         out += '        </div>\n'
         out += carousel_controls(shown)
         out += '      </div>\n'
-        out += grid(s["slug"], shown, s.get("preview_zoom", 4), include_controls=False, carousel_root=False, more_href=more_href)
+        out += grid(s["slug"], shown, s.get("preview_zoom", 4), include_controls=False, carousel_root=False, more_href=more_href, defer_frames=True)
         out += '    </section>\n'
     themes_version = hashlib.sha256(open(os.path.join(CD, 'themes.js'), 'rb').read()).hexdigest()[:10]
-    return out + '    </main>\n' + foot(OVERLAY_HTML + OVERLAY_JS + NAV_JS + CAROUSEL_JS + f'<script type="module" src="themes.js?v={themes_version}"></script>')
+    previews = """<script>(function(){
+      var art=document.documentElement.classList.contains('art-project');
+      document.querySelectorAll('template.card-preview').forEach(function(t){
+        if(art){t.remove();return;}
+        t.parentElement.querySelector('img').remove();t.replaceWith(t.content);
+      });
+    })();</script>"""
+    return out + '    </main>\n' + foot(previews + OVERLAY_HTML + OVERLAY_JS + NAV_JS + CAROUSEL_JS + f'<script type="module" src="themes.js?v={themes_version}"></script>')
 
 # ----------------------------------------------------- per-show details page
 def build_show_index(s):
