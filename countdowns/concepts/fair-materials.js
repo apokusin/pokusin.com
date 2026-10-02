@@ -6,6 +6,8 @@ export function createFairMaterials(ctx, world) {
   const ownedTextures = new Set(), ownedMaterials = new Set(), ownedGeometry = new Set();
   const atmosphere = new T.Group(); atmosphere.name = 'Fair atmosphere'; world.add(atmosphere);
   const oldEnvironment = ctx.scene.environment;
+  const oldEnvironmentIntensity = ctx.scene.environmentIntensity;
+  const oldBackground = ctx.scene.background;
   const oldFog = ctx.scene.fog;
   let disposed = false;
 
@@ -159,7 +161,8 @@ export function createFairMaterials(ctx, world) {
   const pmrem = new T.PMREMGenerator(ctx.renderer);
   const environment = pmrem.fromEquirectangular(environmentTexture); pmrem.dispose(); environmentTexture.dispose();
   ctx.scene.environment = environment.texture; ctx.scene.environmentIntensity = .34;
-  ctx.scene.background = new T.Color(0xb6c5cc); ctx.scene.fog = new T.Fog(0xb6c5cc, 29, 77);
+  const fairBackground = new T.Color(0xb6c5cc), fairFog = new T.Fog(0xb6c5cc, 29, 77);
+  ctx.scene.background = fairBackground; ctx.scene.fog = fairFog;
 
   const skyMaterial = new T.ShaderMaterial({
     side: T.BackSide, depthWrite: false,
@@ -227,8 +230,13 @@ export function createFairMaterials(ctx, world) {
     update(time) { if (!disposed && !ctx.reduced) skyMaterial.uniforms.time.value = time; },
     dispose() {
       if (disposed) return; disposed = true;
-      if (ctx.scene.environment === environment.texture) ctx.scene.environment = oldEnvironment;
-      ctx.scene.fog = oldFog; environment.dispose(); sun.shadow.map?.dispose();
+      if (ctx.scene.environment === environment.texture) {
+        ctx.scene.environment = oldEnvironment;
+        ctx.scene.environmentIntensity = oldEnvironmentIntensity;
+      }
+      if (ctx.scene.background === fairBackground) ctx.scene.background = oldBackground;
+      if (ctx.scene.fog === fairFog) ctx.scene.fog = oldFog;
+      environment.dispose(); sun.shadow.map?.dispose();
       ownedTextures.forEach(texture => texture.dispose());
       ownedMaterials.forEach(item => item.dispose()); ownedGeometry.forEach(item => item.dispose());
       atmosphere.removeFromParent();

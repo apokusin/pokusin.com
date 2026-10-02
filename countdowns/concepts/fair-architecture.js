@@ -257,7 +257,8 @@ export function createFairArchitecture(ctx, world, options) {
     contact?.(x, 0, 1.28, 1.45);
   }
   arch(5.4, 0, .38, .51, jade, 0, 2.69, -.10);
-  const insetBand = arch(5.15, 0, .045, .038, cream, 0, 2.69, .188); insetBand.castShadow = false;
+  // Keep this shallow applied trim independent: merging it into stone would restore casting.
+  const insetBand = arch(5.15, 0, .045, .038, cream, 0, 2.69, .188, world, false); insetBand.castShadow = false;
   block(4.84, .20, .56, jade, 0, 3.87, .035, world, .045);
   for (const x of [-2.08, 2.08]) sphere(.15, brass, x, 3.87, .31);
   const lowerArch = arch(4.63, 0, .36, .47, cream, 0, .29, -.08); lowerArch.scale.y = .61;

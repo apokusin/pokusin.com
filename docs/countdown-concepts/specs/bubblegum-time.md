@@ -2,7 +2,7 @@
 
 Retained reference from the previous exploration round; not numbered in the new round.
 
-Read the [shared implementation guide](../GUIDE.md) with this spec. Numerical settings are proposed art and performance targets, not measurements of implemented software.
+Read the [shared implementation guide](../GUIDE.md) with this spec. This revision supersedes the initial shallow material pass. Numerical settings are exact starting recipes to tune against actual desktop and phone renders; acceptance remains pending fresh browser review.
 
 ![Bubblegum Time visual reference](../references/bubblegum-time.jpg)
 
@@ -10,7 +10,7 @@ Art direction reviewed against the actual visual; see the [individual report](..
 
 ### Premise
 
-The countdown is caught in bubblegum. Each confirmed reset gives it another breath before relaxation. Peelable archive prints hang from the same elastic structure. Numerical defaults are visual starting targets, not tested measurements.
+A single stretched pink membrane holds an absurdly serious four-drum clock. Paper archives are caught on its edges; the enormous bubble is the same material, stretched thin. The image is an editorial studio still life, not a toy UI.
 
 ### Art style and composition
 
@@ -19,7 +19,9 @@ Preserve the mint field, glossy pink diagonal clock strip, four pale mechanical 
 Keep still, mint breathing space around the first working photograph. Metal pins and matte paper provide contrast with the glossy gum. A photograph should appear selectable before any gesture is discovered: flat image, small cast shadow, lifted corner and readable caption. Cropping applies to balloon/title, never to live digits or a paper target.
 
 
-Implemented framing uses an orthographic half-span 5.5 for alignment of the live DOM with the connected 3D belt. Phone uses half-span 6.6 and a recomposed horizontal drum row; lower photographs start at 55% and 72% of the 1050 px hero, leaving their captions readable. Cropped title yields to these targets.
+Framing uses an orthographic half-span 5.5 and projected drum-centre anchors for exact alignment of the real DOM with the connected 3D belt. Phone uses half-span 6.6, a narrower X silhouette (0.37 scale, 0.34 below 361 px) and 0.51 Y/Z scale, with the drum glyphs recomposed into one legible row; lower photographs start at 55% and 72% of the 1050 px hero, leaving their captions readable. Cropped title yields to these targets.
+
+The archive is a descending studio installation. Alternate large isolated paper prints and paired smaller prints along stretched gum ribs; use substantial mint gaps, pressure shadows and uneven attachment points. Show names are quiet ink on paper, never a repeated heading row above a neat grid. The hero’s black diagonal title is the only oversized typography. The Worlds/Home controls remain small real links. Keep native scroll: the visual world continues rather than ending at a hero boundary.
 
 ### Palette and typography
 
@@ -27,13 +29,15 @@ Use pale mint #D6EAC9, candy pink #F372AC, highlight pink #FFC2DC, cream #F1EBD8
 
 ### Geometry and materials
 
-Model the gum as a thick ribbon with four drum openings, stretched bridges, pinned ends, and sparse dangling droplets. A connected balloon supplies the upper-right mass. Start gum roughness at 0.15, clearcoat at 0.8, and approximate translucency. Drums have pale enamel roughness 0.32; pins have metallic roughness 0.23. Prints have paper grain and modeled curled corners; keep real content flat and legible.
+The gum has two optical scales. Its broad shape is a rounded, connected four-aperture membrane with stretched lobes at the pin joins. Its close surface has shallow longitudinal pull lines and isolated compressed wrinkles around apertures; no blanket random displacement. A 256 px repeat bump/roughness texture adds fine stretched imperfections: bump 0.026 world units, base roughness 0.20 varying 0.16–0.29. Clearcoat 0.95 / clearcoat roughness 0.10, IOR 1.42, thin pink transmission 0.12 with thickness 0.65. The balloon uses the same skin with 0.20 transmission, thickness 0.32, brighter attenuation and roughness 0.15; its lower neck folds gather into the membrane. Keep its centre at z=−2.8 so its front remains behind the drums even at the 12% breath peak. The neck starts above and to the right of the seconds aperture, never through its reading face; all four full cream faces and their centred true units must remain exposed. Neither surface is metal. Model a few stretched fold ridges as tapering tubes along the aperture edges and pin joins, with their roots flush to the membrane. Sparse translucent droplets use the same material, not floating opaque balls.
 
-Author the connected aperture silhouette and pin joins; four separate rounded cards are insufficient. Use a neutral studio strip reflection and art-only corner layers/normal detail. Preserve rigid exclusion regions around clock faces and flat screenshot centers. No gum deformation may distort live numbers or archive artwork.
+Drums are actual independent cream enamel cylinders on a horizontal axle, recessed into the four apertures, with satin-steel end rings and a narrow mechanical central seam; real DOM reel glyphs remain rigid and project to the drum centres. Healthy graphics remove the earlier CSS gradient tiles. Graphics loss restores the illustrated DOM drum surfaces. Pins are turned satin steel, metalness 0.92 / roughness 0.24 with a wider edge glint. Paper is warm cotton stock: a repeat 192 px fibre/grain layer, base roughness 0.93 and visible edge thickness. Every hero print has a curved underside and a larger folded corner made from a segmented surface; the screenshot centre stays flat. Archive prints continue this same paper, pressure marks and curl language. No invented images or tinted screenshots.
 
 ### Camera and lighting
 
-The visual reference suggests shallow perspective, approximately 35 mm equivalent. The implementation contract uses an **orthographic** material stage with vertical half-span 5.5 desktop / 6.6 phone so the physical apertures and independent DOM stay aligned; do not replace it with a perspective camera merely to copy the illustration. Balloon and title still cross frame boundaries. A broad upper-left key, soft hemisphere fill and rear-right strip rim reveal curvature through long rectangular bands from the neutral studio reflection. Recompute the ribbon's vertex normals whenever its vertices deform, including the final return to rest, so the gloss follows the material's actual shape. Contact shadows anchor paper and gum; highlights must not recolor preview content.
+Keep the existing orthographic half-span 5.5 desktop / 6.6 phone, looking straight along −Z. The whole-page mint field is a studio sweep, with a receiving plane at z=−2.8 that grounds gum and paper. Use one shadow-casting warm white key from (−5,8,10), strength 3.0; cool mint fill 0.70; rear-right pink rim 1.15. ACES exposure starts at 1.02 and must be tuned against cream drums rather than clipping highlights.
+
+Build a PMREM studio environment from a 512×256 equirectangular map: one tall white softbox at front-left, a wide overhead strip and a smaller rose bounce at right; black gaps between these sources are essential. Environment intensity 1.35 gum / 1.20 balloon. Reflections should describe the long folds as broad white bands, with a small sharper steel highlight. A single 2048 desktop / 1024 phone variance shadow map receives on the mint sweep; tight ±12 bounds, blur radius 6 with 10 samples, normal bias 0.03. Limit the receiver to 16% density so the soft studio shadow never reads as a second graphic object. Additional bounded radial contact shading anchors the gum neck and paper attachments. Avoid rainbow iridescence, bloom, chromatic aberration, default vignette or a chalky flat pink fill.
 
 ### Interaction contract
 

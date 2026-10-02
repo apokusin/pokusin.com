@@ -63,8 +63,50 @@
 @media(prefers-reduced-motion:reduce){[data-theme="bubblegum-time"] .card,[data-theme="bubblegum-time"] .card::after,[data-theme="bubblegum-time"] #royal-reset{transition:none!important}}
 
 [data-theme="bubblegum-time"] .art-reset-area{right:auto;bottom:auto;height:auto}
-[data-theme="bubblegum-time"] .art-reset-area #royal-reset,[data-theme="bubblegum-time"] .art-reset-area .art-tally,[data-theme="bubblegum-time"] .art-reset-area #clock-status,[data-theme="bubblegum-time"] .art-reset-area #countdown-secret{position:relative;top:auto;left:auto;right:auto;bottom:auto}
+[data-theme="bubblegum-time"] .art-reset-area #royal-reset,[data-theme="bubblegum-time"] .art-reset-area .art-tally,[data-theme="bubblegum-time"] .art-reset-area #clock-status,[data-theme="bubblegum-time"] #countdown-secret{position:relative;top:auto;left:auto;right:auto;bottom:auto}
 [data-theme="bubblegum-time"] .archive-shelves{max-width:none;padding:0}
 [data-theme="bubblegum-time"] .shelf::before{display:block}
 
 [data-theme="bubblegum-time"] .home-link,[data-theme="bubblegum-time"] .theme-menu,[data-theme="bubblegum-time"] .theme-menu-list a,[data-theme="bubblegum-time"] .shownav a,[data-theme="bubblegum-time"] .foot{font-family:Arial,sans-serif}
+
+/* A studio sweep continues through the hanging archive, rather than a panel boundary. */
+[data-theme="bubblegum-time"] body{background:radial-gradient(ellipse at 77% 7%,#eef6df 0,transparent 35%),radial-gradient(ellipse at 2% 37%,#bed6b0 0,transparent 47%),#d6eac9}
+[data-theme="bubblegum-time"] .art-scene-ready .art-mounts .card{background:transparent;box-shadow:none}
+[data-theme="bubblegum-time"] .art-scene-ready .art-mounts .card::after{display:none}
+[data-theme="bubblegum-time"] .clock-unit{position:relative;background:linear-gradient(90deg,#bcc5ae 0,#e9eed8 13%,#fffceb 39%,#e9ecd8 68%,#b5bfa9 100%);border-color:#bac4a7;box-shadow:inset 4px 0 8px #ffffff85,inset -5px 0 9px #243d2d35,0 3px 1px #3849287d,0 6px 11px #61264460}
+[data-theme="bubblegum-time"] .clock-unit::before{content:'';position:absolute;left:49.6%;top:2%;bottom:2%;width:1px;background:#43513c35;box-shadow:1px 0 0 #ffffee80;pointer-events:none}
+[data-theme="bubblegum-time"] .clock-unit>span,[data-theme="bubblegum-time"] .clock-unit>small{position:relative;z-index:1}
+[data-theme="bubblegum-time"] .card{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' opacity='.15' filter='url(%23f)'/%3E%3C/svg%3E");background-blend-mode:multiply}
+[data-theme="bubblegum-time"] .shelf{padding-top:140px;padding-bottom:160px;min-height:720px;background:radial-gradient(ellipse at 77% 51%,#a9c59c18,transparent 48%)}
+[data-theme="bubblegum-time"] .shelf::before{left:-7%;top:41%;width:113%;height:58px;transform:rotate(9deg);background:linear-gradient(180deg,#ffcde3 0,#f783b5 14%,#f372ac 44%,#df5591 81%,#aa316c 94%,#ef83b6);border-top:2px solid #ffdfef;box-shadow:0 11px 17px #344f3230,inset 0 4px 8px #ffe0ef85}
+[data-theme="bubblegum-time"] .shelf:nth-child(even)::before{left:-4%;top:37%;transform:rotate(-11deg);height:44px}
+[data-theme="bubblegum-time"] .shelf-aside{margin:0 0 62px 2%;width:max-content;max-width:90%;padding:7px 15px 13px;background:#f1ebd8;box-shadow:3px 5px 8px #344f3222;transform:rotate(-4deg)}
+[data-theme="bubblegum-time"] .shelf-name{font-size:clamp(26px,3vw,43px);letter-spacing:-.04em}
+[data-theme="bubblegum-time"] .shelf .grid,[data-theme="bubblegum-time"] .shelf .carousel-track{gap:115px 13%}
+[data-theme="bubblegum-time"] .shelf .card{width:36%;flex-basis:36%;box-shadow:0 2px 0 #beb59b,5px 17px 18px #344f3236}
+[data-theme="bubblegum-time"] .shelf .card:nth-child(even){transform:translateY(103px) rotate(9deg)}
+[data-theme="bubblegum-time"] .shelf .card:nth-child(3n){margin-left:7%;width:44%;flex-basis:44%;transform:rotate(-3deg)}
+[data-theme="bubblegum-time"] .shelf .card:nth-child(even):hover,[data-theme="bubblegum-time"] .shelf .card:nth-child(even):focus-visible{transform:translateY(97px) rotate(7deg)}
+@media(max-width:699px){
+ [data-theme="bubblegum-time"] .shelf{padding:100px 8% 125px;min-height:0}
+ [data-theme="bubblegum-time"] .shelf::before{width:33px;height:100%;top:0;left:46%;transform:rotate(7deg);background:linear-gradient(90deg,#ffcde3,#f783b5 22%,#df5591 72%,#ef83b6);border-top:0}
+ [data-theme="bubblegum-time"] .shelf:nth-child(even)::before{left:57%;top:0;height:100%;transform:rotate(-8deg)}
+ [data-theme="bubblegum-time"] .shelf-aside{margin-bottom:60px}
+ [data-theme="bubblegum-time"] .shelf .grid,[data-theme="bubblegum-time"] .shelf .carousel-track{gap:78px}
+ [data-theme="bubblegum-time"] .shelf .card,[data-theme="bubblegum-time"] .shelf .card:nth-child(3n){width:92%;flex-basis:auto;margin-left:0;transform:rotate(-5deg)}
+ [data-theme="bubblegum-time"] .shelf .card:nth-child(even){transform:rotate(7deg)}
+ [data-theme="bubblegum-time"] .shelf .card:nth-child(even):hover,[data-theme="bubblegum-time"] .shelf .card:nth-child(even):focus-visible{transform:rotate(5deg) translateY(-4px)}
+}
+
+/* The real drum values sit in their actual holes, not four independently placed tiles. */
+[data-theme="bubblegum-time"] .art-scene-ready .art-clock{inset:0;width:100%;height:100%;display:block;transform:none;pointer-events:none}
+[data-theme="bubblegum-time"] .art-scene-ready .clock-unit{position:absolute;rotate:-5.4deg;pointer-events:none}
+@media(max-width:699px){
+ [data-theme="bubblegum-time"] .art-scene-ready .clock-unit{rotate:-2.7deg;padding:7px 1px 6px;border-radius:13px}
+ [data-theme="bubblegum-time"] .art-scene-ready .clock-unit>span{font-size:clamp(33px,10.8vw,43px)}
+ [data-theme="bubblegum-time"] .art-scene-ready .clock-unit>small{margin-top:3px}
+}
+[data-theme="bubblegum-time"] .art-scene-ready .clock-unit{background:none;border-color:transparent;box-shadow:none}
+[data-theme="bubblegum-time"] .art-scene-ready .clock-unit::before{display:none}
+
+@media(max-width:699px){[data-theme="bubblegum-time"] #countdown-secret{font-size:18px;line-height:1.1;padding:4px 8px}}

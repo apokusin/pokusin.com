@@ -1,6 +1,6 @@
 # Countdown concept implementation guide
 
-Prepared October 2, 2026. All eight directions have been implemented separately for comparison. The user subsequently rejected the conventional page framing; the revised Fair spec/report supersede its initial implementation and establish the first full-viewport world. Other concepts remain references for selection. No final replacement theme is selected yet. Values for lighting, motion and render budgets are proposed starting targets, to tune against the selected reference on actual devices.
+Prepared October 2, 2026. All eight directions have been implemented separately for comparison. The user subsequently rejected the conventional page framing; the revised Fair spec/report supersede its initial implementation and establish the first full-viewport world. The other seven have now received the same material review, with concrete per-material maps/geometry, light and reflection construction, shadow character, interaction and motion recipes. All remain independently implemented comparisons, with no final replacement selected. Values describe source recipes where explicitly stated; motion/performance budgets remain profiling targets. Rendered evidence and corrected defects belong in each report, not just numerical settings in a brief.
 
 ## How to use this package
 
@@ -37,7 +37,7 @@ Generated work previews are composition placeholders. Take actual content from `
 
 ## Lighting and effects discipline
 
-The per-concept light recipes specify direction, temperature and relative key/fill/rim strengths. Treat those ratios as an art target, not measured radiometry. Tune exposure against reference whites and blacks before adding effects. Preserve the chosen shadow character and silhouette at rest.
+The per-concept light recipes specify direction, temperature and relative key/fill/rim strengths. Treat those ratios as an art target, not measured radiometry. Every spec must distinguish diffuse colour from microscopic height and roughness, name the reflection source, define contact and shadow softness, and state the actual geometry or authored-relief limits. Evaluate those recipes against a resting rendered frame: a configured reflection that reads as painted grey has not met its visual goal. Tune exposure against reference whites and blacks before adding effects. Preserve the chosen shadow character and silhouette at rest.
 
 Ambient occlusion should establish contact and creases, not dirty every surface. Prefer authored/baked occlusion or inexpensive contact shading. Add a screen-space AO pass only if its visible improvement survives phone profiling. One shadow-casting light is the default. Start at 2048 desktop / 1024 phone shadow resolution; use tighter bounds before increasing resolution.
 

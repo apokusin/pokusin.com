@@ -1,3 +1,43 @@
+# Revised art direction — Tomorrows Roadworks
+
+## Final renewed independent review — October 2, 2026
+
+**Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
+
+Textured cast enclosure, cobalt aggregate ribbon, real piers, billboard trusses, enamel and warm work lamps form one construction miniature. Both phone widths retain readable time, action and work.
+
+**Accepted source limitation:** The foreground vehicles and rocks remain simpler and less distressed than the authored distant landscape. This is the documented rendered interpretation, not a claim of photographic source equivalence.
+
+Evidence: [reference/current](../qa/tomorrows-roadworks-material-comparison.jpg), [1280 × 900](../qa/tomorrows-roadworks-material-desktop.jpg), [390 × 844](../qa/tomorrows-roadworks-material-mobile.jpg), [320 × 720](../qa/tomorrows-roadworks-material-320.jpg). Root separately verified real phone resets 386 → 393 across all seven, genuine archive preview/Escape/focus restoration, 44 px or larger targets, no document overflow, reduced-motion crown discovery and actual graphics-loss restoration. [Shared runtime QA](../../../design-qa.md) distinguishes native checks from still-image review; no hardware FPS or physical touch-device result is implied.
+
+The implementation-stage observations below record the development and correction of these surfaces; earlier pending/historical acceptance is superseded by this final review.
+
+The latest user review rejected prototype-level material fidelity. Re-read the actual reference and the current published baseline; this pass supersedes the historical visual acceptance below.
+
+## Current diagnosis
+
+The generated coast had more believable material and light than the live construction geometry. The first implementation’s smooth road, blank concrete boxes, simplified crane and unsupported billboard legs weakened the crafted diorama. Merely adding noise would preserve that mismatch. The revised spec requires thick granular highway, cast enclosure, connected trusses/piers, meaningful work lamps and material-specific light response.
+
+## Acceptance status
+
+Specs have concrete albedo/roughness/bump/environment, key/fill/rim and shadow recipes, bounded material motion and responsive construction rules. The source-frozen implementation now follows those recipes. Root will provide actual revised desktop/phone/reset/fallback screenshots; current rendered acceptance remains pending. No hardware frame-rate measurements are asserted.
+
+## Source-reviewed revision
+
+The construction now uses separate cast-concrete, aggregate asphalt, orange powder coat, near-black treaded rubber and reflective galvanized steel surfaces. Concrete enclosure caps normalize their extrusion UVs so cast pores and stains remain visible at screen scale; a slightly irregular perimeter prevents the slab from reading as pristine foam. Asphalt receives continuous distance UVs, a dark lower slab, .13-unit edges and reduced aggregate repetition. Cylindrical loop piers, truss-supported billboard legs, base contacts, real work-lamp pools, a diagonally braced crane, roll layer rings and pooled cones explain the construction. Successful source parsing covers the main module and shared local material helper.
+
+## Render evidence reviewed during revision
+
+Reviewed current published baseline, the root-supplied first-pass desktop/phone captures and the reference/current comparison. The first pass exposed an extrusion UV scale defect: cap texture repeated too finely to read. The corrected comparison shows more credible cast surface, granular roll, thick route and connected billboard trusses, with readable 390 px values/action. This is observed still-image evidence, not acceptance of interactions, 320 px input or hardware performance. Root is completing the final source-frozen browser review.
+
+## Remaining art limits
+
+The miniature is intentionally less crowded than the generated reference: three actual hero exhibits replace invented show stations; tiny workers, piles of pipes and abundant vegetation are not reproduced. The photographic coast remains a distant art-only layer, so foreground physical lighting must continue to be checked against it. No FPS claim is made. The remaining density difference is a P3 art simplification, while genuine archive continuation, live state and fallback acceptance remain root’s responsibility.
+
+---
+
+## Historical exploration review (superseded material acceptance)
+
 # Art direction review — Tomorrow’s Roadworks
 
 Reviewed the [actual image](../references/tomorrows-roadworks.jpg), [spec](../specs/tomorrows-roadworks.md), and shared guide. This is a pre-implementation review; the recommendations below have been incorporated into the spec.

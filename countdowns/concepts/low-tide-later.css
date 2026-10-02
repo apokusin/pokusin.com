@@ -68,7 +68,7 @@
 @media(prefers-reduced-motion:reduce){[data-theme="low-tide-later"] .card,[data-theme="low-tide-later"] #royal-reset{transition:none!important}}
 
 [data-theme="low-tide-later"] .art-reset-area{right:auto;bottom:auto;height:auto}
-[data-theme="low-tide-later"] .art-reset-area #royal-reset,[data-theme="low-tide-later"] .art-reset-area .art-tally,[data-theme="low-tide-later"] .art-reset-area #clock-status,[data-theme="low-tide-later"] .art-reset-area #countdown-secret{position:relative;top:auto;left:auto;right:auto;bottom:auto}
+[data-theme="low-tide-later"] .art-reset-area #royal-reset,[data-theme="low-tide-later"] .art-reset-area .art-tally,[data-theme="low-tide-later"] .art-reset-area #clock-status,[data-theme="low-tide-later"] #countdown-secret{position:relative;top:auto;left:auto;right:auto;bottom:auto}
 [data-theme="low-tide-later"] .art-reset-area .countdown-ended{position:relative;top:auto;left:auto;right:auto;bottom:auto;margin:0;width:100%;font:14px/1.3 Arial,sans-serif;text-align:center;color:#123ca6}
 [data-theme="low-tide-later"] .archive-shelves{max-width:none;padding:0}
 [data-theme="low-tide-later"] .shelf::before{display:block}
@@ -77,3 +77,32 @@
 
 [data-theme="low-tide-later"] .home-link{color:#e8f1ec;text-shadow:0 1px 4px #07163e}
 [data-theme="low-tide-later"] .art-scene-unavailable .clock-unit{background:linear-gradient(90deg,#d7dcce,#e8e4d5 55%,#c8cdc4);border-radius:22%/7%;box-shadow:0 7px 13px #123ca620}
+
+/* The water/stone/paper world owns geometry; native links and reels sit on dry faces. */
+[data-theme="low-tide-later"] .art-scene-ready #art-stage{background:#e8f1ec}
+[data-theme="low-tide-later"] .art-scene-ready .art-clock{inset:0;width:100%;height:100%;display:block;pointer-events:none}
+[data-theme="low-tide-later"] .art-scene-ready .clock-unit{position:absolute;padding:0 0 5px;transform:none;background:none;box-shadow:none;border-radius:0}
+[data-theme="low-tide-later"] .art-scene-ready .clock-unit>span{font-size:clamp(58px,6.8vw,104px);color:#113f73}
+[data-theme="low-tide-later"] .art-scene-ready .clock-unit>small{margin-top:5px;color:#113f73}
+[data-theme="low-tide-later"] .art-scene-ready .art-reset-area{right:auto;bottom:auto;height:auto;gap:3px}
+[data-theme="low-tide-later"] .art-scene-ready #royal-reset{background:none;border:0;border-radius:0;box-shadow:none;min-height:60px;font-size:36px;text-shadow:0 1px 2px #742b2570}
+[data-theme="low-tide-later"] .art-scene-ready .art-tally{font-size:17px}
+[data-theme="low-tide-later"] .art-scene-ready #clock-status{min-height:27px;font-size:12px}
+[data-theme="low-tide-later"] .art-scene-ready .art-mounts .card{padding:0;background:none;box-shadow:none;border:0;filter:none}
+[data-theme="low-tide-later"] .art-scene-ready .art-mounts .card::after{display:none}
+[data-theme="low-tide-later"] .art-scene-ready .art-mounts .frame{aspect-ratio:16/9;box-shadow:0 1px 4px #18375b33}
+[data-theme="low-tide-later"] .art-scene-ready .art-mounts .body{padding:8px 0 0}
+[data-theme="low-tide-later"] .art-scene-ready .art-mounts .label{font-size:19px;color:#113f73}
+[data-theme="low-tide-later"] .shelf .card{background:linear-gradient(97deg,#dfe4d9,#f0f0e4 7%,#eaece1 90%,#d8e0d7);box-shadow:2px 8px 9px #14385724,0 16px 22px #24496713}
+[data-theme="low-tide-later"] .shelf .card::after{border-color:#557b9138;box-shadow:inset 0 -7px 8px #456d8a1f,inset 2px 0 3px #fff9}
+[data-theme="low-tide-later"] .shelf::before{width:8px;background:linear-gradient(90deg,#5a9da62b,#8bbcc56b,#dce9dc);box-shadow:-12px 0 0 #9fced61e}
+@media(max-width:699px){
+ [data-theme="low-tide-later"] .art-scene-ready .clock-unit>span{font-size:clamp(45px,14vw,61px)}
+ [data-theme="low-tide-later"] .art-scene-ready .clock-unit>small{font-size:13px}
+ [data-theme="low-tide-later"] .art-scene-ready #royal-reset{font-size:29px;min-height:46px}
+ [data-theme="low-tide-later"] .art-scene-ready .art-tally{font-size:14px}
+ [data-theme="low-tide-later"] .art-scene-ready .art-mounts .label{font-size:15px}
+}
+@media(max-width:360px){
+ [data-theme="low-tide-later"] .art-title{right:1%;font-size:29px}
+}

@@ -1,3 +1,35 @@
+# Revised material direction — Not Yet Ripe
+
+## Final renewed independent review — October 2, 2026
+
+**Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
+
+Uneven rind, raised pith, actual sac relief, varied flesh texture, attached stems, veined leaves and suspended papers establish a tactile specimen installation. Shortening decorative desktop type clears Again; both phone widths keep all four specimens and the first tag.
+
+**Accepted source limitation:** The fruit remains cleaner and more graphic than the reference. The richest bark and botanical detail belongs to the authored branch layer. This is the documented rendered interpretation, not a claim of photographic source equivalence.
+
+Evidence: [reference/current](../qa/not-yet-ripe-material-comparison.jpg), [1280 × 900](../qa/not-yet-ripe-material-desktop.jpg), [390 × 844](../qa/not-yet-ripe-material-mobile.jpg), [320 × 720](../qa/not-yet-ripe-material-320.jpg). Root separately verified real phone resets 386 → 393 across all seven, genuine archive preview/Escape/focus restoration, 44 px or larger targets, no document overflow, reduced-motion crown discovery and actual graphics-loss restoration. [Shared runtime QA](../../../design-qa.md) distinguishes native checks from still-image review; no hardware FPS or physical touch-device result is implied.
+
+The implementation-stage observations below record the development and correction of these surfaces; earlier pending/historical acceptance is superseded by this final review.
+
+The user rejected the earlier scenes as prototype-level compared with their references. The previous acceptance below is historical and does not certify this revision. Fresh browser acceptance is pending.
+
+The actual reference and earlier desktop render were reviewed side by side before this implementation. The earlier citrus read as a smooth green ring around a flat radial illustration. The revision must demonstrate pitted irregular peel, thick pith, delicate membranes and flesh relief, attached stems, waxy veined leaves and cast specimen shadows. The existing art-only branch layer preserves silhouette but cannot excuse disconnected foreground anatomy.
+
+Read the revised eleven-section spec for the exact recipe. Source checks and root browser captures will be recorded separately; no frame-rate or physical-device claim is made before measurement.
+
+## Material implementation in this revision
+
+The citrus skin has uneven geometry, randomized pitted bump, a persistent olive/yellow colour mask and a separate dry roughness field. A pale anatomical flesh texture supplies vesicles and membranes; raised pith boundaries, ten membrane curves and three small seeds provide depth around the rigid live numeral zone. The pith is batched into one mesh per fruit and seeds are instanced. Stems have visible collars, attached curved bark and a true tapered/ridged foreground branch in addition to the art-only background silhouette. Leaves are curved physical wax surfaces with central/secondary vein maps, restrained thin transmission and cast shadows.
+
+Directional warm specimen light and a muted warm/cool environment distinguish dry peel, pale flesh, dark bark and waxy leaves. A transparent chalk receiver limits shadow density to 11%, with bounded variance-map blur. The genuine clock units, Again action and real tally project directly onto their anatomical centres; graphics loss restores the independent illustrated layout. The Again label now sits directly on its split-fruit geometry while the illustrated DOM button is restored when graphics fail. Hanging archive papers use cellulose grain, threaded attachment holes, deeper contact shadows and changing sizes/positions along the same botanical plate.
+
+The final comparison’s actionable art-direction defect was the foreground’s medallion-like anatomy beside the rich bark. The targeted second anatomy pass replaces the flat disc with a tessellated relief cut: unequal elongated sac colour/height, curved membranes of changing thickness, a thicker uneven pith rim with local contact shadows and stronger rind pitting. The projected true clock/action/tally centres and mobile composition are unchanged. Fresh source/reference review must confirm that the directional light reveals flesh depth without harming glyph readability.
+
+Source validation: module syntax passed. Fresh root browser review remains required for anatomy readability, physical/DOM alignment, desktop/390/320 composition, confirmed un-ripening and fallbacks. The older acceptance below applies only to the preceding shallow rendering and is explicitly superseded.
+
+---
+
 # Art direction review — Not Yet Ripe
 
 Reviewed the actual [reference image](../references/not-yet-ripe.jpg), complete [spec](../specs/not-yet-ripe.md), and shared guide. The initial sections below are recommendations for implementation; the later implementation addendum and final acceptance distinguish source review from observed working-page visuals.

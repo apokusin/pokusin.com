@@ -1,8 +1,8 @@
 # Still Drawing Tomorrow
 
-New exploration 4; numbered in the order displayed in the conversation.
+Material revision — October 2, 2026. This brief supersedes the initial flat paper/cel treatment. The existing reference remains the target; the other worlds are independent comparisons, and no final theme is selected.
 
-Read the [shared implementation guide](../GUIDE.md) with this spec. Numerical settings are proposed art and performance targets, not measurements of implemented software.
+Read the [shared implementation guide](../GUIDE.md) with this spec. The material/light values below describe the current source recipe. Frame-rate and draw-call limits remain profiling targets, not measured device guarantees.
 
 Art direction refinements are documented in the [review report](../reports/still-drawing-tomorrow.md) and incorporated below.
 
@@ -25,14 +25,14 @@ The implemented font pair is **Barlow Condensed + Caveat**. Barlow Condensed giv
 
 ### Geometry and materials
 
-Paper is matte with baked fiber detail and shallow bent edges. Acetate cels use thin translucent planes with Fresnel highlights, low-opacity reflected light, and localized curled corners; avoid stacked full-screen transparent meshes. Small eraser chips and worn graphite strokes give scale. Author twelve deliberate runner poses, finish-stripe strokes and erase/reveal masks; a bouncing dot cannot replace the runner. Limit transparent overlaps to the authored cel regions rather than adding full-page glare. DOM screenshots and reels sit on planar cel regions; never embed invented mock imagery in a texture atlas.
+The table uses warm-white cotton stock: the source-grounded generated paper-stock.png supplies real raster albedo with cellulose fibers and tonal mottling; separate 512 px procedural height/roughness maps add fine surface response. Red rubber and wood use their own independent packed recipes. Asset provenance is adjacent to the source image. Fine height affects grazing highlights at bump scale 0.014; matte roughness is 0.94. Repeat at five by four across the large table so grain remains a surface rather than a wallpaper motif. The same paper stock continues below the table, with shallow sheet edges and separate underlying mounts. Acetate is a physically lit separate surface, opacity 0.16, roughness 0.19, clearcoat 0.75 and clearcoat roughness 0.17, with localized curled corners and reflected studio window cards; avoid stacked full-screen transparent meshes. The eraser has distinct scored red rubber (roughness 0.89, bump 0.025), a matte paper sleeve, small edge nicks and 95 bounded irregular crumbs. Hexagonal pencil shafts use directional wood grain (roughness 0.79, bump 0.015); twelve curled wooden shavings are separate geometry. Keep these worn details localized to the lower table so they provide scale without covering the work. Author twelve deliberate runner poses, finish-stripe strokes and erase/reveal masks; a bouncing dot cannot replace the runner. Limit transparent overlaps to the authored cel regions rather than adding full-page glare. DOM screenshots and reels sit on planar cel regions; never embed invented mock imagery in a texture atlas.
 
 
 The implementation authors paper fibers, registration marks and twelve runner poses as bounded canvas textures, plus a local `graphite-ink.svg` surface clipped inside real live digit glyphs. These textures contain no fabricated countdown or archive data. Cel geometry curls physically; two separate semantic corner controls lift their sheets on touch or keyboard without opening the archive preview. Rounded eraser geometry and pencil shafts provide actual shallow depth.
 
 ### Camera and lighting
 
-Use an orthographic near-overhead camera with slight tilt, not a rotating studio tour. Key/fill/rim around 1:0.45:0.1: broad upper-left daylight, generous white room fill, delicate acetate edge highlight. One soft shadow map or baked layer shadows defines sheet separation. No bloom, neon, CRT scanlines, hard vignettes, or aggressive depth-of-field blur.
+Use an orthographic near-overhead camera with slight tilt, not a rotating studio tour. Key/fill/rim around 1:0.45:0.1: broad upper-left daylight, generous white room fill, delicate acetate edge highlight. A 1024² VSM shadow map, radius 7 and eight blur samples defines sheet separation with soft edges. Transparent ink/cel planes neither cast opaque rectangle shadows nor receive a second dirty layer; backing paper and eraser geometry provide contact. Camera-invisible high window mullions cast two restrained diagonal daylight bands on free paper. Those bands must leave the live clock region legible rather than darken the entire clock sheet. Current light recipe: warm #fff3dc key intensity 3.15 from (-9,12,18), cool #eaf0f5 hemisphere at 0.82, and #eaf3ff rim at 0.18. A generated PMREM contains one broad warm window and one narrower cool card; environment intensity is 0.28. Neutral tone mapping uses exposure 1.03. Reflections belong on acetate; paper stays matte. No bloom, neon, CRT scanlines, hard vignette or depth-of-field blur.
 
 
 The implemented orthographic worktable is a shallow XY arrangement viewed from `(0, 2, 24)` with a desktop vertical half-span of `max(6.8, 9.75 × height / width)`. This retains a minimum 19.5-unit horizontal field at narrow desktop/tablet aspect ratios, so the outer archive sheets and pencils remain inside the canvas. Phone framing uses a 7.4-unit horizontal field; its vertical span follows viewport aspect. The clock cel is scaled to 51% and its projected DOM width is explicitly scaled to match, preserving all four units at narrow widths rather than clipping them. Softer shadows and stronger registration strokes preserve a handmade surface without a camera tour.
@@ -54,7 +54,7 @@ Start below 50k triangles and 55 draw calls, with at most six overlapping transl
 
 ### Responsive and fallback behavior
 
-Mobile keeps one large clock sheet, eraser directly below, and an edge-tab stack with full-width selected previews. Reduce props and layers rather than shrinking all labels. Touch can lift a corner through explicit activation, while a separate large preview region opens immediately; no core hover-only behavior. Keep visible edge tabs and a stable hit region when layers rearrange. Reduced motion freezes runner, disables graphite trails, and applies numbers immediately. Fallback uses paper/cel art layers with working DOM previews and anchors.
+Mobile keeps one large clock sheet, eraser directly below, and an edge-tab stack with full-width selected previews. Reduce props and layers rather than shrinking all labels. Touch can lift a corner through explicit activation, while a separate large preview region opens immediately; no core hover-only behavior. Keep visible edge tabs and a stable hit region when layers rearrange. Reduced motion freezes runner, disables graphite trails, and applies numbers immediately. Fallback keeps paper/cel art layers and the original visible DOM mounts/actions. Healthy rendering removes the redundant HTML clock and card backgrounds so ink and faithful screenshots inhabit the actual physical sheet, while links, focus and live numerical semantics remain native. Fallback restores those conventional surfaces when the scene is unavailable.
 
 ### Implementation boundaries
 
@@ -63,3 +63,5 @@ Static generated markup and vendored Three.js; do not introduce a framework buil
 ### Fidelity checks
 
 The table must feel made of paper, pencil, and acetate, with the broad clock sheet as a drawing in progress. Reject scrapbook sticker overload, toolbar chrome, explanatory margin notes, or a television effect. Check that a visitor can find and open an archive preview before discovering the corner trick. Verify visibly erased finish/redrawn extension after success, deliberate runner hold poses, pressure in the eraser, failure recovery, stable cel hit targets, keyboard tab order, responsive stacking, transparent-layer legibility, and truthful accessible numbers.
+
+Final composition correction: desktop sheet scales 0.95 / 1.08 / 0.90, rotations −0.17 / 0.10 / −0.10 radians and uneven heights break the earlier equal-card row. Projected screenshot widths use exactly those same scales. Phone eraser contact was lowered from z=1.10 to 0.44. Dynamic corner controls hide on graphics loss; the fallback has no detached nonfunctional corner buttons.

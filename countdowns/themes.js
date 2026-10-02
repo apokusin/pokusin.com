@@ -368,17 +368,20 @@ function revealArtSecret(){
   const trigger=hero.querySelector('.art-secret-trigger');
   secret.hidden=!secret.hidden;trigger.setAttribute('aria-expanded',String(!secret.hidden));
   if(secret.hidden)return;
+  // Keep the note out of moving, centered projection containers.
+  const onHero=theme!=='the-almost-fair';if(onHero)hero.append(secret);
   // Discoveries stay near their clue, inside the view, and clear of time/reset controls.
   const area=hero.querySelector('.art-reset-area'),hr=hero.getBoundingClientRect(),br=trigger.getBoundingClientRect();
-  const pr=getComputedStyle(area).position==='static'?hr:area.getBoundingClientRect();
-  secret.style.cssText=`position:absolute;margin:0;width:max-content;max-width:${Math.max(44,hr.width-24)}px;right:auto;bottom:auto;transform:translateX(-50%);text-align:center`;
+  secret.style.cssText=`position:absolute;margin:0;width:max-content;max-width:${Math.max(44,hr.width-24)}px;right:auto;bottom:auto;transform:translateX(-50%);text-align:center;z-index:20`;
   const sr=secret.getBoundingClientRect();
+  // Measure after removing the note from flow: pinned parents center their own height.
+  const pr=onHero||getComputedStyle(area).position==='static'?hr:area.getBoundingClientRect();
   const center=Math.max(hr.left+sr.width/2+12,Math.min(hr.right-sr.width/2-12,br.left+br.width/2));
   const left=center-sr.width/2,right=center+sr.width/2;
-  const controls=[royalButton,...hero.querySelectorAll('.clock-unit')].map(e=>e.getBoundingClientRect());
+  const controls=[royalButton,...hero.querySelectorAll('.clock-unit,.art-mounts a.card')].map(e=>e.getBoundingClientRect());
   const minTop=Math.max(0,hr.top)+12,maxTop=Math.min(innerHeight,hr.bottom)-sr.height-12;
-  const candidates=[br.bottom+10,br.top-sr.height-10,...controls.flatMap(r=>[r.top-sr.height-12,r.bottom+12])];
-  const clear=y=>y>=minTop&&y<=maxTop&&!controls.some(r=>left<r.right+4&&right>r.left-4&&y<r.bottom+4&&y+sr.height>r.top-4);
+  const candidates=[br.bottom+10,br.top-sr.height-10,...controls.flatMap(r=>[r.top-sr.height-4,r.bottom+4])];
+  const clear=y=>y>=minTop&&y<=maxTop&&!controls.some(r=>left<r.right+2&&right>r.left-2&&y<r.bottom+2&&y+sr.height>r.top-2);
   const top=candidates.find(clear)??Math.max(minTop,Math.min(maxTop,br.top-sr.height-10));
   secret.style.left=`${center-pr.left}px`;secret.style.top=`${top-pr.top}px`;
 }

@@ -1,3 +1,33 @@
+# Revised material direction — Bubblegum Time
+
+## Final renewed independent review — October 2, 2026
+
+**Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
+
+All four genuine values now sit inside cream physical drum apertures. Glossy stretched gum, cotton photographs and satin pins remain distinct. The fourth face initially escaped behind the balloon; moving the balloon/neck behind that aperture fixed the P1 in fresh renders.
+
+**Accepted source limitation:** The broad folds and paper curls are simpler and less viscous than the generated reference. Isolated cord-like fold ridges are an optional refinement. This is the documented rendered interpretation, not a claim of photographic source equivalence.
+
+Evidence: [reference/current](../qa/bubblegum-time-material-comparison.jpg), [1280 × 900](../qa/bubblegum-time-material-desktop.jpg), [390 × 844](../qa/bubblegum-time-material-mobile.jpg), [320 × 720](../qa/bubblegum-time-material-320.jpg). Root separately verified real phone resets 386 → 393 across all seven, genuine archive preview/Escape/focus restoration, 44 px or larger targets, no document overflow, reduced-motion crown discovery and actual graphics-loss restoration. [Shared runtime QA](../../../design-qa.md) distinguishes native checks from still-image review; no hardware FPS or physical touch-device result is implied.
+
+The implementation-stage observations below record the development and correction of these surfaces; earlier pending/historical acceptance is superseded by this final review.
+
+The user rejected the earlier scenes as prototype-level compared with their references. The previous acceptance below is historical and does not certify this revision. Fresh browser acceptance is pending.
+
+The actual reference and earlier desktop render were reviewed side by side before this implementation. The earlier belt read as a beveled plank and the balloon as a uniformly glossy sphere. The revision must demonstrate pulled membrane folds, gathered joins, shaped studio reflections, thin pink volume, satin pins and tactile paper. Its authored asymmetry and quiet mint space are already valuable; material richness must strengthen those, not add more labels.
+
+Read the revised eleven-section spec for the exact recipe. Source checks and root browser captures will be recorded separately; no frame-rate or physical-device claim is made before measurement.
+
+## Material implementation in this revision
+
+The connected belt is adaptively tessellated, then sculpted and smoothed across coincident vertices. Gathered folds are unequal and restrained, concentrated at aperture shoulders, pin roots and the balloon neck. Precomputed normal groups keep the moving gloss attached to geometry without rebuilding lookup maps per frame. A shaped PMREM studio environment supplies front-left and overhead white softboxes with dark gaps and a rose bounce. Pink membrane/balloon use physical clearcoat, low transmission and bounded thickness, while the mint receiving shadow is deliberately limited to 16% density. The final drums are actual recessed enamel cylinders with satin rim rings and narrow centre seams. The genuine DOM glyphs project onto rigid drum-centre anchors; healthy graphics remove the earlier independently positioned gradient tiles, and graphics loss restores their illustrated fallback.
+
+Hero prints have curved physical cotton-paper surfaces beneath the genuine flat image/caption controls; their corner curl has actual depth and casts a shadow. Continued archive prints use matching fibre stock, larger uneven gum slings, mixed paper sizes and longer quiet gaps. A conventional repeated heading row is replaced by a small attached paper identifier.
+
+Source validation: module syntax passed. First desktop pass showed overly hard, dark shadow wedges and regular raised folds; the second pass reduces shadow density, reduces/reorders the fold relief and removes planar triangle facets. Root browser review remains required for the revised desktop, 390 px and 320 px compositions, motion and controls. A later fresh capture revealed seconds occlusion: the balloon front and the initial neck crossed the fourth cavity while the real glyph remained visible above them. The targeted correction moves the balloon behind every drum, including at peak breath, and moves the neck outside the aperture reading zone. Fresh browser confirmation of all four faces remains required.
+
+---
+
 # Art direction review — Bubblegum Time
 
 Reviewed the actual [reference image](../references/bubblegum-time.jpg), complete [spec](../specs/bubblegum-time.md), and shared guide. The initial sections below are recommendations for implementation; the later implementation addendum and final acceptance distinguish source review from observed working-page visuals.

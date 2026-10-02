@@ -1,3 +1,43 @@
+# Revised art direction — Held In Suspense
+
+## Final renewed independent review — October 2, 2026
+
+**Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
+
+Cambered plate gradients, varied connected-rail reflections and a broad cylinder window highlight resolve the flat grey/banded-metal concerns. Real off-axis/overhead studio lights and vertical flags shape reflections; no painted reflection stripes are used. Slate, dark inserts, taut cables and pivots explain the machine. Both phone structures stay connected and readable.
+
+**Accepted source limitation:** Machined realism and architectural floor lighting are simpler than the photographic reference. This is a graphic kinetic sculpture. This is the documented rendered interpretation, not a claim of photographic source equivalence.
+
+Evidence: [reference/current](../qa/held-in-suspense-material-comparison.jpg), [1280 × 900](../qa/held-in-suspense-material-desktop.jpg), [390 × 844](../qa/held-in-suspense-material-mobile.jpg), [320 × 720](../qa/held-in-suspense-material-320.jpg). Root separately verified real phone resets 386 → 393 across all seven, genuine archive preview/Escape/focus restoration, 44 px or larger targets, no document overflow, reduced-motion crown discovery and actual graphics-loss restoration. [Shared runtime QA](../../../design-qa.md) distinguishes native checks from still-image review; no hardware FPS or physical touch-device result is implied.
+
+The implementation-stage observations below record the development and correction of these surfaces; earlier pending/historical acceptance is superseded by this final review.
+
+The latest user review rejected prototype-level material fidelity. Re-read the actual reference and the current published baseline; this pass supersedes the historical visual acceptance below.
+
+## Current diagnosis
+
+The first implementation painted repeated light/dark stripes into metal albedo and used strong ambient fill. That reads as a silver texture rather than a real reflected room. The revised spec separates neutral brushed metal, polished edges, true rectangular studio reflections and dark flags. Solid beveled structure, machined collars/bolts and slate contact must make the engineered silhouette feel heavy at rest.
+
+## Acceptance status
+
+Specs have concrete albedo/roughness/bump/environment, key/fill/rim and shadow recipes, bounded material motion and responsive construction rules. The source-frozen implementation now follows those recipes. Root will provide actual revised desktop/phone/reset/fallback screenshots; current rendered acceptance remains pending. No hardware frame-rate measurements are asserted.
+
+## Source-reviewed revision
+
+The painted reflection-gradient albedo is removed. Neutral directional microbrushing, anisotropy .52, roughness .20, polished .14 edges and an actual studio PMREM supply the metal. Beams have .06-unit manufactured camber between fixed attachment points; nearly flat plate faces have .075-unit camber so real normals cross a reflected window/flag boundary. Hex heads, sockets, collars, thimbles, face screws, counterweight gaskets and lugs make the assembly solid. An angled machined collar joins the tilted weight to a frontal circular endcap; the live button is transparent over that actual surface. Slate cleavage and contact shading differ from the clean matte mineral floor. The shared local helper and main module pass syntax parsing.
+
+## Render evidence and corrections
+
+Viewed the actual reference/current comparison and 390 px capture. The initial new environment produced almost-black front faces: its bright cards sat above the reflected horizon of the orthographic plates. A broad true studio window now straddles that horizon, with narrower dark flags and a cool side strip. The next captured pass corrected black faces but still flattened their highlights; source then added shallow camber and a flag near the actual reflected viewing direction. The same phone capture exposed an excessively elliptical action face; a solid angled collar/frontal endcap now corrects that geometry. Root’s later final pair exposed a remaining P2: broad white-window coverage left cambered plates uniformly grey and repeated horizontal mullions flattened the weight. A targeted correction narrows/offsets the actual window, uses one broad and one narrow vertical flag, removes all horizontal studio strips and lowers microbrush bump to .001. The material helper import now follows the generated art version so iterative scene updates cannot retain an older helper URL. The following root capture showed a clean vertical plate gradient but an overly dark weight. Its tilted side normals reflect upward, so a real horizontal overhead softbox now supplies the missing bright cylinder band. Plate/rail camber is enlarged to .075/.06 units for a clearly visible resting window-edge gradient. Reviewed the subsequent actual desktop, 390 px and 320 px captures. The overhead window creates a broad bright/dark sweep across the weight; the plate and rail camber now crosses a visible vertical studio boundary at rest. Repeated horizontal bands are absent, and black numerals remain legible. This resolves the material P2 for an analytic studio interpretation, rather than asserting equivalence with the generated photograph. Phone still shows one connected support, two clock pairs and a clear genuine action. Native state/input acceptance remains separately owned by root. Do not carry forward acceptance from the preceding image or historical section.
+
+## Remaining art limits
+
+The orthographic assembly is more frontal than the oblique generated reference, protecting real projected previews and native targets. Studio reflection is prefiltered once, without realtime room reflection or screen-space effects. One directional PCF shadow remains a simpler approximation of a broad window’s variable penumbra; the pale fill reduces its contrast. Actual performance has not been measured. The observed revised desktop/390/320 views preserve numeral contrast across the real reflected bands. Root owns native state/input/fallback acceptance.
+
+---
+
+## Historical exploration review (superseded material acceptance)
+
 # Art direction review — Held in Suspense
 
 Reviewed the [actual image](../references/held-in-suspense.jpg), [spec](../specs/held-in-suspense.md), and shared guide. This is a pre-implementation review; the recommendations below have been incorporated into the spec.

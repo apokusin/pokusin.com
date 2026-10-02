@@ -17,7 +17,7 @@
 [data-theme="tomorrows-roadworks"] .art-reset-area #royal-reset:disabled{cursor:wait;filter:brightness(.92)}
 [data-theme="tomorrows-roadworks"] .art-reset-area .art-tally{position:absolute;left:58%;top:38%;transform:translate(-50%,-50%);font:500 20px "Barlow Condensed",sans-serif;color:#24231f;text-align:center;white-space:nowrap}
 [data-theme="tomorrows-roadworks"] .art-reset-area .clock-status{position:absolute;left:50%;right:auto;top:auto;bottom:2%;transform:translateX(-50%);font:14px "Barlow Condensed",sans-serif;width:min(90%,500px);text-align:center;color:#342d25;min-height:24px}
-[data-theme="tomorrows-roadworks"] .art-reset-area .countdown-secret{font:italic 22px "Libre Baskerville",serif;background:#e4bb9e;padding:5px 14px}
+[data-theme="tomorrows-roadworks"] .countdown-secret{font:italic 22px "Libre Baskerville",serif;background:#e4bb9e;padding:5px 14px}
 [data-theme="tomorrows-roadworks"] .art-secret-trigger{position:absolute;left:69%;top:21%;min-width:44px;min-height:44px;transform:translate(-50%,-50%);border:0;background:transparent;color:#d8d638;opacity:.18;z-index:7;cursor:pointer}
 [data-theme="tomorrows-roadworks"] .art-secret-trigger:hover,[data-theme="tomorrows-roadworks"] .art-secret-trigger:focus-visible{opacity:1;outline:1px dashed #292d32;outline-offset:2px}
 [data-theme="tomorrows-roadworks"] .art-scene-ready .art-secret-trigger img{display:none}
@@ -76,6 +76,27 @@
 
 /* Two intentional UI faces; preserve all measured positions and projected widths. */
 [data-theme="tomorrows-roadworks"] body,[data-theme="tomorrows-roadworks"] button,[data-theme="tomorrows-roadworks"] input,[data-theme="tomorrows-roadworks"] select,[data-theme="tomorrows-roadworks"] textarea,[data-theme="tomorrows-roadworks"] .masthead *,[data-theme="tomorrows-roadworks"] .theme-menu *,[data-theme="tomorrows-roadworks"] .foot,[data-theme="tomorrows-roadworks"] .foot *,[data-theme="tomorrows-roadworks"] .ov,[data-theme="tomorrows-roadworks"] .ov-ctrls *,[data-theme="tomorrows-roadworks"] .art-return,[data-theme="tomorrows-roadworks"] .art-reset-area .clock-status,[data-theme="tomorrows-roadworks"] .art-reset-area .countdown-ended{font-family:"Barlow Condensed",sans-serif}
-[data-theme="tomorrows-roadworks"] .art-reset-area .countdown-secret{font-family:"Libre Baskerville",serif}
+[data-theme="tomorrows-roadworks"] .countdown-secret{font-family:"Libre Baskerville",serif}
 [data-theme="tomorrows-roadworks"] .art-reset-area .art-tally>span{font-family:inherit}
 [data-theme="tomorrows-roadworks"] .shelf .more.shelf-more{font-family:"Barlow Condensed",sans-serif}
+
+/* The healthy scene supplies physical enclosures, bevels and lamp light. */
+[data-theme="tomorrows-roadworks"] .art-scene-ready .art-clock{background:transparent;border:0;box-shadow:none;border-radius:0;padding:12px 10px}
+[data-theme="tomorrows-roadworks"] .art-scene-ready .art-clock .clock-unit{background:transparent;border-color:transparent;box-shadow:none}
+[data-theme="tomorrows-roadworks"] .art-scene-ready .art-mounts .card{border:0;background:transparent;box-shadow:none}
+[data-theme="tomorrows-roadworks"] .art-scene-ready .art-mounts .card .body{background:#252621e8;padding:5px 10px}
+[data-theme="tomorrows-roadworks"] .art-scene-ready .art-reset-area #royal-reset{background:transparent;border-color:transparent;box-shadow:none;text-shadow:0 1px 2px #80360b}
+[data-theme="tomorrows-roadworks"] .art-scene-ready .art-reset-area #royal-reset:hover{background:#fff5dc0b}
+[data-theme="tomorrows-roadworks"] .shownav{background:transparent;box-shadow:none;border:0;justify-content:center;padding:12px 3vw;gap:7px}
+[data-theme="tomorrows-roadworks"] .shownav a{background:#d7d741;border:1px solid #817b30;box-shadow:2px 3px 0 #7a5d42;padding:9px 13px;transform:rotate(-1deg)}
+[data-theme="tomorrows-roadworks"] .shownav a:nth-child(even){transform:rotate(1deg)}
+[data-theme="tomorrows-roadworks"] .shownav a[aria-current=true]{background:#24251e;color:#e2df70;border-color:#24251e}
+[data-theme="tomorrows-roadworks"] .shelf{background-image:radial-gradient(ellipse at 68% 84%,#9d61432e,transparent 50%),url("../assets/concepts/tomorrows-roadworks/cast-surface.svg");background-size:auto,256px 256px}
+[data-theme="tomorrows-roadworks"] .shelf .card{border-image:linear-gradient(135deg,#f3d8b8,#b89171 46%,#e2c29e 75%,#a47e60) 1;box-shadow:2px 4px 0 #705139,6px 12px 12px #70462940}
+[data-theme="tomorrows-roadworks"] .shelf .card .body{background:#252621}
+[data-theme="tomorrows-roadworks"] .shelf .card::after{height:70px;background:linear-gradient(90deg,transparent 8%,#455b67 8% 11%,#91a1a3 11% 12%,transparent 12% 88%,#455b67 88% 91%,#91a1a3 91% 92%,transparent 92%),linear-gradient(32deg,transparent 47%,#536873 48% 49%,transparent 50%),linear-gradient(-32deg,transparent 47%,#536873 48% 49%,transparent 50%)}
+@media(max-width:699px){
+ [data-theme="tomorrows-roadworks"] .art-scene-ready .art-clock{padding:9px 7px}
+ [data-theme="tomorrows-roadworks"] .shownav{justify-content:flex-start;padding:13px 14px;gap:9px;background:#dbb195f2}
+ [data-theme="tomorrows-roadworks"] .shownav a{font-size:11px;padding:9px 11px}
+}

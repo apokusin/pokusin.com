@@ -2,14 +2,14 @@
 [data-theme="still-drawing-tomorrow"]{--bg:#f3eee4;--fg:#25231f;--accent:#d94b32;--muted:#746f64;--line:#cec6b8;--card:#fffdf5;background:#f3eee4;color:#25231f;font-family:"Caveat",cursive}
 [data-theme="still-drawing-tomorrow"] body{background:radial-gradient(ellipse at 15% 0,#fffff8 0,transparent 60%),#f3eee4;color:#25231f}
 [data-theme="still-drawing-tomorrow"] .gallery{max-width:none;padding-inline:0;overflow:clip}
-[data-theme="still-drawing-tomorrow"] #art-hero{height:min(970px,83vw);min-height:730px;position:relative;margin:0;background:#f3eee4;isolation:isolate}
+[data-theme="still-drawing-tomorrow"] #art-hero{height:100svh;min-height:730px;position:relative;margin:0;background:#f3eee4;isolation:isolate}
 [data-theme="still-drawing-tomorrow"] #art-stage{position:absolute;inset:0;background:radial-gradient(ellipse at 0 0,#fffefa,transparent 80%)}
 [data-theme="still-drawing-tomorrow"] #art-stage canvas{display:block;width:100%;height:100%}
 [data-theme="still-drawing-tomorrow"] .art-title{position:absolute;top:auto;bottom:5%;right:7%;left:auto;font-family:"Caveat",cursive;font-weight:700;font-size:clamp(52px,7.5vw,105px);line-height:1;letter-spacing:-.07em;color:#25231f;transform:rotate(-5deg);pointer-events:none;text-shadow:1px 0 #25231f;z-index:3}
 [data-theme="still-drawing-tomorrow"] .art-title::after{content:"";position:absolute;left:12%;right:2%;bottom:-9px;height:4px;background:#d94b32;transform:rotate(-1deg);clip-path:polygon(0 40%,100% 0,98% 100%,3% 70%)}
 [data-theme="still-drawing-tomorrow"] .art-clock{position:absolute;left:49%;top:51%;width:77%;display:flex;align-items:center;justify-content:center;gap:22px;transform:translate(-50%,-50%);padding:16px 18px;color:#25231f;background:#faf7f055;border:1px solid #bfb6a866;border-radius:0;box-shadow:3px 4px 8px #5d504019;z-index:4}
 [data-theme="still-drawing-tomorrow"] .art-clock .clock-unit{flex:1;min-width:0;text-align:center;padding:3px 0}
-[data-theme="still-drawing-tomorrow"] .art-clock .clock-unit>span{font-family:"Barlow Condensed",sans-serif;font-size:clamp(72px,10.2vw,148px);font-weight:500;color:#25231f;line-height:1.05;letter-spacing:-.025em}
+[data-theme="still-drawing-tomorrow"] .art-clock .clock-unit>span{font-family:"Barlow Condensed",sans-serif;font-size:clamp(76px,13.5vw,172px);font-weight:500;color:#25231f;line-height:1.05;letter-spacing:-.025em}
 [data-theme="still-drawing-tomorrow"] .art-clock .clock-unit>small{font:700 15px "Barlow Condensed",sans-serif;margin-top:14px;letter-spacing:.2em;text-transform:uppercase;color:#25231f}
 [data-theme="still-drawing-tomorrow"] .art-reset-area,[data-theme="still-drawing-tomorrow"] .art-mounts{position:absolute;inset:0;pointer-events:none}
 [data-theme="still-drawing-tomorrow"] .art-reset-area>*{pointer-events:auto}
@@ -19,7 +19,7 @@
 [data-theme="still-drawing-tomorrow"] .art-reset-area #royal-reset:disabled{cursor:wait;opacity:.7}
 [data-theme="still-drawing-tomorrow"] .art-reset-area .art-tally{position:absolute;left:35%;top:77%;transform:translate(-50%,-50%);font:26px "Caveat",cursive;font-weight:700;color:#d94b32;white-space:nowrap;text-align:center}
 [data-theme="still-drawing-tomorrow"] .art-reset-area .clock-status{position:absolute;left:50%;right:auto;top:auto;bottom:1%;transform:translateX(-50%);width:min(90%,500px);text-align:center;font:14px "Barlow Condensed",sans-serif;min-height:24px;color:#534e45}
-[data-theme="still-drawing-tomorrow"] .art-reset-area .countdown-secret{font:24px "Caveat",cursive;background:#f9f5ed;padding:4px 12px}
+[data-theme="still-drawing-tomorrow"] .countdown-secret{font:24px "Caveat",cursive;background:#f9f5ed;padding:4px 12px}
 [data-theme="still-drawing-tomorrow"] .art-secret-trigger{position:absolute;left:93%;top:30%;min-width:44px;min-height:44px;transform:translate(-50%,-50%);border:0;background:transparent;color:#25231f;cursor:pointer;opacity:.35;z-index:8}
 [data-theme="still-drawing-tomorrow"] .art-secret-trigger:hover,[data-theme="still-drawing-tomorrow"] .art-secret-trigger:focus-visible{opacity:1;outline:1px solid #3154b8;outline-offset:2px}
 [data-theme="still-drawing-tomorrow"] .art-scene-ready .art-secret-trigger img{display:none}
@@ -83,7 +83,21 @@
 
 /* Two intentional UI faces; preserve all measured positions and projected widths. */
 [data-theme="still-drawing-tomorrow"] body,[data-theme="still-drawing-tomorrow"] button,[data-theme="still-drawing-tomorrow"] input,[data-theme="still-drawing-tomorrow"] select,[data-theme="still-drawing-tomorrow"] textarea,[data-theme="still-drawing-tomorrow"] .masthead *,[data-theme="still-drawing-tomorrow"] .theme-menu *,[data-theme="still-drawing-tomorrow"] .foot,[data-theme="still-drawing-tomorrow"] .foot *,[data-theme="still-drawing-tomorrow"] .ov,[data-theme="still-drawing-tomorrow"] .ov-ctrls *,[data-theme="still-drawing-tomorrow"] .art-return,[data-theme="still-drawing-tomorrow"] .art-reset-area .clock-status,[data-theme="still-drawing-tomorrow"] .art-reset-area .countdown-ended{font-family:"Barlow Condensed",sans-serif}
-[data-theme="still-drawing-tomorrow"] .art-reset-area .countdown-secret{font-family:"Caveat",cursive}
+[data-theme="still-drawing-tomorrow"] .countdown-secret{font-family:"Caveat",cursive}
 [data-theme="still-drawing-tomorrow"] .art-reset-area .art-tally>span{font-family:inherit}
 [data-theme="still-drawing-tomorrow"] .shelf .more.shelf-more{font-family:"Caveat",cursive}
 [data-theme="still-drawing-tomorrow"] .art-title{font-style:normal}
+
+/* Light falls on actual paper and acetate; DOM contributes only ink and faithful work. */
+[data-theme="still-drawing-tomorrow"] body{background:#f3eee4 var(--drawing-paper,none) repeat;background-size:420px 420px}
+[data-theme="still-drawing-tomorrow"] .art-scene-ready .art-clock{border:0;background:none;box-shadow:none}
+[data-theme="still-drawing-tomorrow"] .art-scene-ready .art-mounts .card{background:none;border-color:transparent;box-shadow:none}
+[data-theme="still-drawing-tomorrow"] .art-scene-ready .art-reset-area #royal-reset{border:0;background:none;box-shadow:none;padding:5px 0}
+[data-theme="still-drawing-tomorrow"] .theme-menu summary{border:0;background:transparent;font:20px "Caveat",cursive;padding:6px 12px}
+[data-theme="still-drawing-tomorrow"] .home-link{font:19px "Caveat",cursive}
+[data-theme="still-drawing-tomorrow"] .shownav{background:transparent;box-shadow:none;border:0}
+[data-theme="still-drawing-tomorrow"] .shownav a{background:#fffaf3 var(--drawing-paper,none);border-color:#d3c8b944;box-shadow:1px 2px 4px #49392b15}
+[data-theme="still-drawing-tomorrow"] .shelf::before{background:#faf7f0 var(--drawing-paper,none);background-size:420px 420px;border-color:#aaa09144;box-shadow:4px 8px 14px #45352818}
+[data-theme="still-drawing-tomorrow"] .shelf:nth-of-type(even)::before{background:#f0ece2 var(--drawing-paper,none)}
+[data-theme="still-drawing-tomorrow"] .shelf .card{border-color:#fffaf344;background:transparent;box-shadow:2px 5px 10px #45352816}
+[data-theme="still-drawing-tomorrow"] .art-scene-unavailable .cel-lift{display:none}

@@ -20,7 +20,7 @@
 [data-theme="held-in-suspense"] .art-reset-area #royal-reset:disabled{cursor:wait;opacity:.75}
 [data-theme="held-in-suspense"] .art-reset-area .art-tally{position:absolute;left:85%;top:81%;transform:translate(-50%,-50%);font:17px "Barlow Condensed",sans-serif;letter-spacing:.06em;color:#222526;text-align:center;white-space:nowrap}
 [data-theme="held-in-suspense"] .art-reset-area .clock-status{position:absolute;left:50%;right:auto;top:auto;bottom:1%;transform:translateX(-50%);width:min(90%,500px);text-align:center;min-height:24px;font:14px "Barlow Condensed",sans-serif;color:#4a5558}
-[data-theme="held-in-suspense"] .art-reset-area .countdown-secret{font:italic 23px "Libre Baskerville",serif;color:#222526;background:#f7f8f0;padding:5px 12px}
+[data-theme="held-in-suspense"] .countdown-secret{font:italic 23px "Libre Baskerville",serif;color:#222526;background:#f7f8f0;padding:5px 12px}
 [data-theme="held-in-suspense"] .art-secret-trigger{position:absolute;left:15%;top:61%;min-width:44px;min-height:44px;transform:translate(-50%,-50%);background:transparent;border:0;color:#353f44;opacity:.18;cursor:pointer;z-index:8}
 [data-theme="held-in-suspense"] .art-secret-trigger:hover,[data-theme="held-in-suspense"] .art-secret-trigger:focus-visible{opacity:1;outline:1px solid #586e79;outline-offset:2px}
 [data-theme="held-in-suspense"] .art-scene-ready .art-secret-trigger img{display:none}
@@ -82,6 +82,27 @@
 
 /* Two intentional UI faces; preserve all measured positions and projected widths. */
 [data-theme="held-in-suspense"] body,[data-theme="held-in-suspense"] button,[data-theme="held-in-suspense"] input,[data-theme="held-in-suspense"] select,[data-theme="held-in-suspense"] textarea,[data-theme="held-in-suspense"] .masthead *,[data-theme="held-in-suspense"] .theme-menu *,[data-theme="held-in-suspense"] .foot,[data-theme="held-in-suspense"] .foot *,[data-theme="held-in-suspense"] .ov,[data-theme="held-in-suspense"] .ov-ctrls *,[data-theme="held-in-suspense"] .art-return,[data-theme="held-in-suspense"] .art-reset-area .clock-status,[data-theme="held-in-suspense"] .art-reset-area .countdown-ended{font-family:"Barlow Condensed",sans-serif}
-[data-theme="held-in-suspense"] .art-reset-area .countdown-secret{font-family:"Libre Baskerville",serif}
+[data-theme="held-in-suspense"] .countdown-secret{font-family:"Libre Baskerville",serif}
 [data-theme="held-in-suspense"] .art-reset-area .art-tally>span{font-family:inherit}
 [data-theme="held-in-suspense"] .shelf .more.shelf-more{font-family:"Libre Baskerville",serif}
+
+/* Live type sits on the actual machined plate; reflections belong to Three.js. */
+[data-theme="held-in-suspense"] .art-scene-ready .art-clock .clock-unit{background:transparent;border-color:transparent;box-shadow:none;padding:14px 3px 10px}
+[data-theme="held-in-suspense"] .art-scene-ready .art-mounts .card{background:transparent;border:0;box-shadow:none}
+[data-theme="held-in-suspense"] .art-scene-ready .art-mounts .card .body{background:transparent;padding:5px 9px}
+[data-theme="held-in-suspense"] .art-scene-ready .art-reset-area #royal-reset{background:transparent;border-color:transparent;box-shadow:none;padding:0;aspect-ratio:auto;min-height:74px}
+[data-theme="held-in-suspense"] .art-scene-ready .art-reset-area #royal-reset:hover{background:#ffffff06;filter:none}
+[data-theme="held-in-suspense"] .shelf{background:radial-gradient(ellipse at 78% 50%,#fafaf5b3,transparent 70%)}
+[data-theme="held-in-suspense"] .shelf::before{background:linear-gradient(90deg,#5f6a70 0%,#a9b6bf 12%,#e7ecea 27%,#a5b0b3 43%,#7c898f 52%,#d7dfdf 76%,#f4f5ed 85%,#77858c 100%);width:11px;box-shadow:2px 1px 2px #212c3333,7px 0 12px #31414a14}
+[data-theme="held-in-suspense"] .shelf::after{height:11px;background:linear-gradient(#f3f5ed 0%,#bfc9ce 19%,#8d9ca4 45%,#d6dddf 67%,#7e8b92 100%);box-shadow:0 1px 0 #5d6870,0 6px 10px #46565e18}
+[data-theme="held-in-suspense"] .shelf .card{border-image:linear-gradient(110deg,#718088 0%,#dae3e3 14%,#f0f1e9 28%,#82949e 42%,#b9c5ca 62%,#f0f3ed 84%,#77848c 100%) 1;box-shadow:1px 2px 0 #45525b,4px 8px 13px #2738411c;transform:rotate(-.45deg)}
+[data-theme="held-in-suspense"] .shelf .card:nth-child(even){transform:rotate(.6deg)}
+[data-theme="held-in-suspense"] .shelf .card .body{background:linear-gradient(105deg,#cfd8da,#b5c0c5 46%,#e0e5e3);padding:7px 13px}
+[data-theme="held-in-suspense"] .shelf .card::before{background:linear-gradient(90deg,#27343c 0 1px,#a4b5bc 1px 2px,transparent 2px calc(100% - 2px),#26353d calc(100% - 2px) calc(100% - 1px),#a4b5bc calc(100% - 1px));box-shadow:none}
+[data-theme="held-in-suspense"] .shelf .card::after{width:9px;height:9px;border-width:1px;background:radial-gradient(circle at 30% 22%,#eef1ea,#d3dcdd 28%,#46575f 68%,#bfc7c9 75%);box-shadow:0 1px 2px #13252a40}
+@media(max-width:699px){
+ [data-theme="held-in-suspense"] .art-scene-ready .art-clock .clock-unit{padding:12px 1px 8px}
+ [data-theme="held-in-suspense"] .art-scene-ready .art-reset-area #royal-reset{min-height:60px}
+ [data-theme="held-in-suspense"] .shelf::before{width:7px}
+ [data-theme="held-in-suspense"] .shelf::after{height:7px}
+}

@@ -2,7 +2,7 @@
 
 New exploration 3; numbered in the order displayed in the conversation.
 
-Read the [shared implementation guide](../GUIDE.md) with this spec. Numerical settings are proposed art and performance targets, not measurements of implemented software.
+Read the [shared implementation guide](../GUIDE.md) with this spec. This revision supersedes the initial shallow material pass. Numerical settings are exact starting recipes to tune against actual desktop and phone renders; acceptance remains pending fresh browser review.
 
 ![Not Yet Ripe visual reference](../references/not-yet-ripe.jpg)
 
@@ -10,7 +10,7 @@ Art direction reviewed against the actual visual; see the [individual report](..
 
 ### Premise
 
-Tomorrow is nearly ripe. Again turns its fruit green and adds another month of waiting. This gag must be visible through the changing fruit skin, with no explanatory paragraph. The archive is a collection of specimen tags hanging from the same oversized branch; time is a strange botanical harvest.
+Tomorrow is a strange botanical specimen. Four cut citrus pods carry the real clock; Again turns the skin green again. Old countdowns hang from the same branch as specimen papers. The visual language is a tactile botanical plate, with real anatomy and directional light.
 
 ### Art style and composition
 
@@ -19,7 +19,7 @@ Keep the diagonal woody branch, four cut citrus pods suspended beneath it, tags 
 Keep at least 85% of each flat preview and its entire title visible at rest. Leaves frame the tag; opening a leaf is a courtesy, never a content lock. The split-fruit rim has a clear concavity/contact shadow and a local press response. Omit the generated share-like symbol and preserve quiet chalk gaps between botanical masses.
 
 
-Implemented desktop centers are world x=-3.2/-0.3/2.6/5.5, y=.30, with live clock left 22%, top 39.5%, width 70%. Two hanging upper photographs start at 6% with 23%/26% widths, exposing every digit. Phone uses two fruit pairs with live digits at 29%, reset at 52.5%, and separated lower mounts at 66.5%/83%. At widths ≤360 px the vertical title becomes 36 px, clock shifts to left 19%/width 68%, and only the four fruit meshes shrink 14% and shift right to leave at least 12 px between title and first glyph. Decorative paper pivots around the string attachment; the crown stays in an open plant gap.
+Desktop fruit centres remain world x=−3.2/−0.3/2.6/5.5, y=0.30. While graphics are healthy, project the four genuine clock units directly onto these anatomical centres; do not approximate alignment with page percentages. Project Again and its real tally onto the split fruit in the same way. Phone recomposes the specimens into two pairs, and narrows only their geometry at ≤360 px. Graphics loss clears all projection styles and restores the independent illustrated DOM arrangement. Two upper photographs and two lower phone photographs remain flat, exposed and directly selectable; paper pivots around its string attachment. The crown stays in an open plant gap.
 
 ### Palette and typography
 
@@ -27,16 +27,17 @@ Chalk `#F1EAD8`, unripe green `#91BB27`, ripe saffron `#E5A834`, bruised plum `#
 
 ### Geometry and materials
 
-Use authored branch curves with instanced leaves and irregular citrus halves. Peel gets a pore normal map, dry roughness 0.55–0.8, and uneven green/yellow masks. Pale flesh has thin-edge warm scattering from thickness maps; seed shapes remain subtle. Paper tags are slightly bent planes on string curves. Keep the real clock as DOM reels over pale fruit interiors, not shader-generated text.
+Fruit is an irregular half specimen, not a sphere with a coloured torus. Preserve a slightly pointed top/bottom profile and unequal left/right lobes. The peel has two scales of relief: a densely pitted 256 px pore field (bump 0.082 world units) and lower frequency dimples/scars built into the skin and irregular cut rim. Use base peel roughness 0.67 varying 0.54–0.84, clearcoat 0.16 / roughness 0.30, no metal. A multiplicative yellow/olive pore colour mask remains visible at both green and saffron deadline extremes; add only two or three authored bruises.
 
-Vary bark thickness and model believable string attachments; identical cylinders are not the branch silhouette. Citrus needs a pale radial interior, distinct peel mask and authored half shape. Keep yellow scars, pores and bruised plum accents even when the reset greens the skin. Digits and screenshot surfaces are rigid regions excluded from foliage, peel tint and tag deformation.
+The cut face has a thick off-white pith ring, radial segment membranes that converge at a pale central core, and translucent pale citrus vesicles. A 512 px flesh colour/bump map supplies unequal elongated sacs and curved segment boundaries, with base roughness 0.44, bump 0.032 and warm edge tint. The cut face is a 26-ring / 96-segment relief surface, with 0.024 world-unit sac bulges and restrained unequal segment billow so directional light reveals actual flesh height. Vary membrane curvature and width from 0.004–0.009 world units instead of printing perfect spokes. The off-white pith rim varies in thickness by roughly 40% and rises/falls by 0.019 world units; it casts local contact shadow onto the flesh. Keep a few cream seeds around the outer third, away from the live glyphs. No perfect graphic wheel or saturated orange pulp. Stem collars and curved stalks visibly join each fruit to the branch.
 
-
-Runtime asset: `countdowns/assets/concepts/not-yet-ripe/branch.webp`, an art-only transparent bark/leaf layer generated with the built-in ImageGen tool. Read its adjacent provenance file for the exact prompt/source. All fruit, crown, numbers, photographs and controls are separate geometry/DOM. The layer also preserves the branch in static fallback.
+Branch geometry uses tapered, ridged bark with dark crevices (roughness 0.92, bump 0.10); the existing art-only bark/leaf layer remains a distant silhouette, never a replacement for the attached foreground stems. Leaves are folded and slightly cupped with modeled central veins, fine secondary vein bump, waxy roughness 0.44 / clearcoat 0.20 and restrained thin-edge transmission. Papery specimen tags use off-white cotton grain, darkened hole edges, threaded loops and pale imperfect folds. Screenshots remain faithful and flat.
 
 ### Camera and lighting
 
-Use an orthographic botanical camera with shallow layered depth. Key/fill/rim around 1:0.28:0.18: broad low afternoon key, cool leafy fill, warm leaf-edge rim. One soft shadow light creates legible leaf shadows on chalk. Bake branch crevice AO; use a restrained wrapped-light leaf shader. Avoid glossy candy highlights and shallow focus over interactive tags.
+Use the existing orthographic specimen camera, half-span 5.5 desktop / 6.4 phone. The chalk receiving plane sits at z=−2.4. A warm low upper-left key at (−6,8,10), strength 3.15, provides readable diagonal botanical shadows; cool olive hemisphere fill 0.72 and warm leaf-edge rim 0.60 establish key/fill/rim near 1:0.23:0.19. ACES exposure starts at 1.03. One 2048 desktop / 1024 phone variance shadow map, tight ±11 bounds, normal bias 0.025, blur radius 5 and 10 samples. Limit the transparent chalk shadow receiver to 11% density; its job is soft anchoring rather than dark duplicated fruit silhouettes.
+
+Use a muted warm/cool PMREM environment for leaf wax and moist flesh only, intensity 0.35–0.45. Peel stays dry; pith stays matte. Skin contact, stem collars and leaf folds get local dark occlusion rather than dirtying every surface. The reference’s side light must reveal the flesh depth, bark ridges and waxy curved leaves at rest. No bloom, candy gloss, camera blur over tags or uniform ambient washing-out.
 
 ### Interaction contract
 
@@ -73,3 +74,5 @@ Implement with vendored Three.js, generated DOM, existing reels/API, and actual 
 The citrus cross-sections, diagonal bark, visible strings, and pale specimen tags should dominate. Avoid a tropical landing page, gum-like surfaces, neat card grid, or dense museum labels. Test peel reversal after success, failures, remote update restraint, readable fruit interiors, complete tag access, keyboard preview closure, and reduced-motion stills.
 
 One successful reset should visibly un-ripen the peel. Check at-rest tag visibility without hover, one-touch full-photo activation, bee clearance, real deadline/color extremes, non-accumulating repeat growth, a still focused specimen, restrained remote response, accessible fold discovery, and the art-only fallback.
+
+Final type clearance: desktop edge title uses clamp(50 px, 4.8 vw, 75 px), ending before the Again fruit. The 390/320 compositions retain their smaller separate title sizes. Decorative type must never cross the real action face.

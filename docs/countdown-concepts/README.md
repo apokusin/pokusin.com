@@ -1,6 +1,6 @@
 # Countdown worlds
 
-Eight art directions for the countdown archive: two retained references, five new material worlds, and an additional third-person exploration developed by a subagent. Prepared October 2, 2026. All eight now have separate, selectable implementations in PR #12. Royal and Control remain available, and no final replacement has been selected. After user feedback, The Almost Fair has been rebuilt as a full-viewport tactile world; the other seven experiments remain references. Its revised spec/report supersede the earlier flat, conventional framing.
+Eight art directions for the countdown archive: two retained references, five new material worlds, and an additional third-person exploration developed by a subagent. Prepared October 2, 2026. All eight now have separate, selectable implementations in PR #12. Royal and Control remain available, and no final replacement has been selected. After user feedback, The Almost Fair has been rebuilt as a full-viewport tactile world; the other seven now have a material revision with concrete texture, construction, lighting, motion and phone recipes. All eight remain selectable comparisons; their revised specs/reports supersede the earlier simple-surface acceptance.
 
 Every brief uses the same eleven sections: premise, composition, palette/type, geometry/materials, camera/lighting, interaction, motion, effects/budget, responsive/fallback behavior, implementation boundaries, and fidelity checks. Read the [shared implementation guide](GUIDE.md) before a concept brief. It preserves the real shared countdown, digit reels, archive content, preview interaction, and minimal copy.
 
@@ -70,7 +70,7 @@ Numbers match the order in which the six new images appeared in the conversation
 
 [Complete spec](specs/the-almost-fair.md)
 
-The third-person reference establishes the player, branching promenade, and clock landmark. Its incidental photographic textures, trees, stairs, ornate trim, and large crowns are excluded from the implementation direction. The brief specifies flat matte colors, simple faceted architecture, restrained contact occlusion, step-free access, and one hidden crown. Its exhibit mapping and mono clock typography take priority over the image’s invented details.
+The third-person reference establishes the player, branching promenade and clock landmark. The revised world uses porous limestone, plaster recesses, woven canvas, painted timber, satin machinery, a warm sun/cool sky and sparse distant trees. Traversal stays step-free; one hidden crown and the real clock/press tally replace the image's invented ornaments and values. The physical plan and native focus route provide equivalent direct access without a permanent website menu.
 
 ## Retained references
 

@@ -1,5 +1,31 @@
 # Art direction review — Low Tide, Later
 
+## Final renewed independent review — October 2, 2026
+
+**Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
+
+Continuous curved marine reflection/current structure replaces the rejected checker pattern and subsequent nearly flat navy field. Pale fine grit replaces dark pixel squares. Chalk stains, shell ribs and dry paper remain distinct; the narrow title clears the complete first phone photograph.
+
+**Accepted source limitation:** The frontal shoreline relief has quieter foam, simpler stone/shell geometry and less macro microdetail than the oblique generated photograph. This is the documented rendered interpretation, not a claim of photographic source equivalence.
+
+Evidence: [reference/current](../qa/low-tide-later-material-comparison.jpg), [1280 × 900](../qa/low-tide-later-material-desktop.jpg), [390 × 844](../qa/low-tide-later-material-mobile.jpg), [320 × 720](../qa/low-tide-later-material-320.jpg). Root separately verified real phone resets 386 → 393 across all seven, genuine archive preview/Escape/focus restoration, 44 px or larger targets, no document overflow, reduced-motion crown discovery and actual graphics-loss restoration. [Shared runtime QA](../../../design-qa.md) distinguishes native checks from still-image review; no hardware FPS or physical touch-device result is implied.
+
+The implementation-stage observations below record the development and correction of these surfaces; earlier pending/historical acceptance is superseded by this final review.
+
+## Renewed material review — October 2, 2026
+
+The user requested the same material rigor as the revised Fair. Earlier acceptance below is historical and does not govern this revision.
+
+**Observed baseline weakness:** The prior water was a flat blue patterned plate, the chalk smooth and toy-like, the wet line an obvious detached band, and Again a pill laid over a shell. These approximations missed the reference's porous chalk, depth, reflections and salt-worn paper.
+
+**Revised physical recipe:** Two normal scales, Fresnel/cloud reflection, actual view/light-dependent glints, depth tint, narrow shallow caustic veins and a broken incoming foam edge now compose one bounded water surface. The shoreline has shallow strata, granular diffuse/bump and dry-only instanced grit. Cylinders have chipped continuous contours and a shader wet stain derived from real local height. Bent dry paper beds cast shadows; Again sits on the scallop's actual raised ribs. Native timer units project onto each stone, retaining the genuine numerical model.
+
+**Observed and corrected integration defect:** Viewed `/private/tmp/rigor-pass2-low-tide-later.png`; it was captured between module and style changes and showed detached numbers below bare stones. Healthy-scene CSS now gives the projected children a full-stage coordinate origin. Viewed `/private/tmp/rigor-pair-low-tide-later.jpg` and the pass-3 phone capture: the digits now align correctly, water has real depth and the shell reads as a physical action. The phone's vertical title still approached the first photograph; its mount has subsequently moved left. Chalk/shore diffuse pores were strengthened and sand flecks were removed from open water. These final corrections require refreshed capture.
+
+**Acceptance status:** Pending renewed root desktop/390/320 and runtime QA. Current static evidence supports improved composition and proper projection; it is not measured rendering performance or proof of the entire motion/input model. The reference remains denser and more photographic than the procedural water. Keep that difference explicit rather than describing the simpler shader as source-equivalent.
+
+---
+
 Reviewed the actual [reference image](../references/low-tide-later.jpg), complete [spec](../specs/low-tide-later.md), and shared guide. The initial sections below are recommendations for implementation; the later implementation addendum and final acceptance distinguish source review from observed working-page visuals.
 
 ## The compelling idea

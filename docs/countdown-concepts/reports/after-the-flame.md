@@ -1,5 +1,33 @@
 # Art direction review — After the Flame
 
+## Final renewed independent review — October 2, 2026
+
+**Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
+
+Irregular matte cooled-wax lips integrate with the detailed canyon relief; warm flame, burgundy void and cooler edges retain the macro atmosphere. The first exhibit and its name now fit at 320 px after matching mesh/pin scaling.
+
+**Accepted source limitation:** The richest canyon sculpture is authored art-only relief, not a fully navigable wax mesh. The action pool is intentionally clearer than the reference. This is the documented rendered interpretation, not a claim of photographic source equivalence.
+
+Evidence: [reference/current](../qa/after-the-flame-material-comparison.jpg), [1280 × 900](../qa/after-the-flame-material-desktop.jpg), [390 × 844](../qa/after-the-flame-material-mobile.jpg), [320 × 720](../qa/after-the-flame-material-320.jpg). Root separately verified real phone resets 386 → 393 across all seven, genuine archive preview/Escape/focus restoration, 44 px or larger targets, no document overflow, reduced-motion crown discovery and actual graphics-loss restoration. [Shared runtime QA](../../../design-qa.md) distinguishes native checks from still-image review; no hardware FPS or physical touch-device result is implied.
+
+The implementation-stage observations below record the development and correction of these surfaces; earlier pending/historical acceptance is superseded by this final review.
+
+## Renewed material review — October 2, 2026
+
+The user requested the same material rigor as the revised Fair. The earlier acceptance below records an earlier implementation and no longer governs this revision.
+
+**Observed baseline weakness:** The original canyon had excellent sculptural detail in its authored art layer, but actual clock/button surfaces looked like independent flat web boxes. Physical light/flow did not establish a coherent relationship with that sculpture.
+
+**Rejected first revision:** Viewed `/private/tmp/rigor-pass1-after-the-flame.png` and its phone capture. A triangle-cut relief produced a conspicuous stair-step burgundy hole; the visible cylinder became a stiff wall of strings, and detached rounded frames had hard grey shadows. Adding geometry had reduced fidelity. That pass was explicitly rejected and corrected.
+
+**Corrected direction:** The authored transparent canyon is now a mapped, gently displaced material relief with preserved smooth silhouette and macro pores. Real irregular carved frames, recessed interiors, molten lips, oval action rim, flame-local light, cool rim and twelve bounded reverse strands supply physical depth and behavior. True native clock/screens/actions project onto those surfaces. A procedural HDR environment and separate diffuse/bump/roughness maps distinguish cooled wax and molten sheen; the plate supplies detailed sculpture rather than inventing content.
+
+**Observed comparison:** Viewed `/private/tmp/rigor-pair-after-the-flame.jpg` against the actual reference and `/private/tmp/rigor-pass3-mobile-after-the-flame.png`. The reference silhouette, burgundy opening and terrace sequence returned, and the native numbers correctly sit inside physical apertures. Remaining differences are the slightly regular foreground rims and fewer tiny hanging wax details. The phone frame also stretched the original macro texture too narrowly; the next revision crops its UV range instead of squeezing the whole canyon and adds material-local pores to foreground wax. These last corrections require refreshed capture before renewed acceptance.
+
+**Acceptance status:** Pending root desktop/390/320 and runtime QA. The source review establishes real projection, reduced-motion bounds and the success-only reversal; it does not prove frame rate, subjective flow feel or complete input correctness. Final evidence must include the corrected rest image and one accepted reset motion frame, not only source equivalence.
+
+---
+
 Reviewed the actual [reference image](../references/after-the-flame.jpg), complete [spec](../specs/after-the-flame.md), and shared guide. The initial sections below are recommendations for implementation; the later implementation addendum and final acceptance distinguish source review from observed working-page visuals.
 
 ## The compelling idea

@@ -1,5 +1,29 @@
 # Art direction review — Still Drawing Tomorrow
 
+## Final renewed independent review — October 2, 2026
+
+**Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
+
+Unequal sheet sizes, rotations and depths replace the earlier tidy row. Real cotton texture, window light, registration strokes, pencil props and a scored eraser create a worktable. Lowering the phone eraser grounds its shadow. The separate corner lift opens no preview, and its targets hide after graphics loss.
+
+**Accepted source limitation:** Paper/cel surfaces, runner anatomy and wear are cleaner and simpler than the reference's worn translucent acetate. This is the documented rendered interpretation, not a claim of photographic source equivalence.
+
+Evidence: [reference/current](../qa/still-drawing-tomorrow-material-comparison.jpg), [1280 × 900](../qa/still-drawing-tomorrow-material-desktop.jpg), [390 × 844](../qa/still-drawing-tomorrow-material-mobile.jpg), [320 × 720](../qa/still-drawing-tomorrow-material-320.jpg). Root separately verified real phone resets 386 → 393 across all seven, genuine archive preview/Escape/focus restoration, 44 px or larger targets, no document overflow, reduced-motion crown discovery and actual graphics-loss restoration. [Shared runtime QA](../../../design-qa.md) distinguishes native checks from still-image review; no hardware FPS or physical touch-device result is implied.
+
+The implementation-stage observations below record the development and correction of these surfaces; earlier pending/historical acceptance is superseded by this final review.
+
+## Material revision — October 2, 2026
+
+The fresh 1280 × 900 published baseline (`rigor-before-still-drawing-tomorrow.png`) confirms the previous acceptance understated the gap: paper is almost uniform beige, acetate is a second rectangular container, and the eraser is clean plastic. This revision supersedes that material acceptance while retaining the genuine archive and timing checks.
+
+The new recipe distinguishes fibrous matte paper, scored rubber, directional wood and thin reflected acetate. A warm window key and cool fill now reveal thickness; generated PMREM window cards reflect on the acetate instead of painting a universal glare. Separate backing sheets anchor the archive, and healthy DOM surfaces contribute only ink and faithful work. Window bands, crumbs and shavings are localized rather than adding generic noise to everything.
+
+First actual render exposed overly dark window bands and an opaque shadow from a transparent registration plane. Those are P2 defects: softer VSM shadows, fewer mullions and excluding transparent planes from the shadow pass correct the cause. Final source/reference comparison, phone review and native reset/lift checks are pending the post-fix captures; no current acceptance or hardware performance is claimed yet.
+
+---
+
+## Historical review
+
 Reviewed the [actual image](../references/still-drawing-tomorrow.jpg), [spec](../specs/still-drawing-tomorrow.md), and shared guide. This is a pre-implementation review; the recommendations below have been incorporated into the spec.
 
 ## Creative judgment

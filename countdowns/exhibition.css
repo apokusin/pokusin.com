@@ -37,7 +37,7 @@
 .art-reset-area .clock-status{position:absolute;left:5%;right:auto;top:auto;bottom:18px;width:min(85%,320px);font:11px/1.5 'IBM Plex Mono',monospace;text-align:left;color:var(--fg);background:var(--bg);padding:8px;z-index:12}
 .art-reset-area .clock-status:empty{display:none}
 .art-reset-area .countdown-ended{position:absolute;bottom:10px;left:5%;font:12px 'IBM Plex Mono',monospace}
-.art-reset-area .countdown-secret{position:absolute;top:auto;left:auto;right:4%;bottom:28px;color:var(--fg);font:italic 24px 'Cormorant Garamond',Georgia,serif;text-align:right;z-index:20;background:var(--bg);padding:8px 12px}
+#art-hero .countdown-secret{position:absolute;top:auto;left:auto;right:4%;bottom:28px;color:var(--fg);font:italic 24px 'Cormorant Garamond',Georgia,serif;text-align:right;z-index:20;background:var(--bg);padding:8px 12px}
 .art-secret-trigger{position:absolute;left:5%;bottom:8%;width:44px;height:44px;border:0;background:none;cursor:pointer;z-index:8}
 .art-secret-trigger img{width:24px;height:24px;object-fit:contain;opacity:.55}
 .art-secret-trigger:hover img,.art-secret-trigger:focus-visible img{opacity:1}
@@ -89,6 +89,6 @@
  .art-project .shelf{margin-bottom:65px}.art-project .shelf .grid{gap:32px}
  .art-project .shelf .card{width:100%}.art-project .shelf-name{font-size:25px}
  .art-project .frame{aspect-ratio:16/10}
- .art-reset-area .countdown-secret{font-size:22px;bottom:20px;right:3%}
+ #art-hero .countdown-secret{font-size:22px;bottom:20px;right:3%}
 }
 @media(prefers-reduced-motion:reduce){.art-project *{scroll-behavior:auto!important}.art-project .card{transition:none!important;animation:none!important}}

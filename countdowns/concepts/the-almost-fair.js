@@ -172,6 +172,7 @@ export async function create(ctx) {
   cap.traverse(object => { if(object.isMesh){object.userData.reset=true; interactive.push(object);} });
   for(const surface of [architecture.reset.labelSurface,architecture.reset.numberSurface]){surface.userData.reset=true;interactive.push(surface);}
   const resetShell = mesh(new T.CylinderGeometry(.72,.78,1.25,24),new T.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false}),0,.75,0,architecture.reset.group);
+  resetShell.castShadow = false; resetShell.receiveShadow = false;
   resetShell.userData.reset=true;interactive.push(resetShell);
   const resetFocus=mesh(new T.TorusGeometry(.67,.016,8,40),materials.cream,0,.18,0,cap);resetFocus.rotation.x=-Math.PI/2;resetFocus.visible=false;
   carousel = architecture.carousel;
@@ -183,6 +184,7 @@ export async function create(ctx) {
     const latch=mesh(new T.TorusGeometry(.13,.035,8,24),materials.brass||materials.cream,x+1.75,1.02,z+1.14);
     const plate=namePlate('+',x+1.75,1.36,z+1.16,.32,64);plate.userData.world=more.getAttribute('href');interactive.push(plate);
     const hit=mesh(new T.PlaneGeometry(.55,.68),new T.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false}),x+1.75,1.17,z+1.19);
+    hit.castShadow=false;hit.receiveShadow=false;
     hit.userData.world=more.getAttribute('href');interactive.push(hit);
     ctx.on(more,'focus',()=>{if(ready&&!disposed&&!focusRestoring&&!frozen&&!sceneLost)travel(show.slug,false);});
   }
@@ -192,6 +194,8 @@ export async function create(ctx) {
   crownShape.lineTo(0, .13); crownShape.lineTo(.05, .035); crownShape.lineTo(.13, .09); crownShape.lineTo(.1, -.05); crownShape.closePath();
   const crown = mesh(new T.ShapeGeometry(crownShape), materials.coral, -2.3, 1.57, .35); crown.castShadow = false;
   crown.userData.secret = true; interactive.push(crown);
+  const crownFocus = mesh(new T.TorusGeometry(.20,.016,8,32),new T.MeshBasicMaterial({color:palette.cream,toneMapped:false}),-2.3,1.59,.371);
+  crownFocus.castShadow=false;crownFocus.receiveShadow=false;crownFocus.visible=false;
   const secretPlate = namePlate('Long may I count', 0, 4.43, .24, 2.55); secretPlate.visible = false;
 
   const plan = new T.Group(); plan.position.set(-3.65, 0, 5.0); world.add(plan);
@@ -199,7 +203,10 @@ export async function create(ctx) {
   mesh(new T.CylinderGeometry(.70, .87, .65, 32), materials.cream, 0, .66, 0, plan);
   const planFace = mesh(new T.CylinderGeometry(1.04, 1.02, .12, 48), materials.cream, 0, 1.06, 0, plan);
   planFace.userData.plan = true; interactive.push(planFace);
+  const planNavFocus = mesh(new T.TorusGeometry(1.025,.02,8,48),materials.coral,0,1.132,0,plan);
+  planNavFocus.rotation.x=-Math.PI/2;planNavFocus.castShadow=false;planNavFocus.receiveShadow=false;planNavFocus.visible=false;
   const planObjects = new T.Group(); planObjects.position.y = 1.13; plan.add(planObjects);
+  const planTokens = new Map();
   const planScale = .066;
   for (const [a, b] of edges) {
     const A = nodes[a], B = nodes[b], length = Math.hypot(B.x - A.x, B.z - A.z) * planScale;
@@ -212,13 +219,16 @@ export async function create(ctx) {
       ['got', 'sherlock', 'house-of-cards'].includes(show.slug) ? materials.jade : materials.coral,
       x * planScale, .085, (z + 4) * planScale, planObjects);
     token.userData.travel = show.slug; interactive.push(token);
+    planTokens.set(show.slug,token);
     const hit = mesh(new T.CylinderGeometry(.17, .17, .18, 16), new T.MeshBasicMaterial({ transparent:true, opacity:0, depthWrite:false }),
       x * planScale, .09, (z + 4) * planScale, planObjects);
     hit.userData.travel = show.slug; interactive.push(hit);
+    hit.castShadow=false;hit.receiveShadow=false;
   }
   const planFocus=mesh(new T.TorusGeometry(.17,.018,8,24),materials.cream,0,.20,0,planObjects);planFocus.rotation.x=-Math.PI/2;planFocus.visible=false;
   const clockToken = mesh(new T.TorusGeometry(.105, .022, 8, 20, Math.PI), materials.jade, 0, .07, .25, planObjects);
   clockToken.userData.travel = 'clock'; interactive.push(clockToken);
+  planTokens.set('clock',clockToken);
   const planLetter = namePlate('↗', -3.65, .73, 5.88, .45);
   contact(-3.65, 5, 2.7, 2.7);
   const planBounds = {minX:-4.7,maxX:-2.6,minZ:3.95,maxZ:6.05,height:1.25}; obstacles.push(planBounds);
@@ -271,7 +281,7 @@ export async function create(ctx) {
   const playerAO = mesh(new T.PlaneGeometry(.8, .8), aoMaterial, 0, .044, 0, player);
   playerAO.rotation.x = -Math.PI / 2; playerAO.castShadow = false;
 
-  let focusRestoring = false, inspectedSurface = null;
+  let focusRestoring = false, inspectedSurface = null, routePlanFocus=false;
   let frozen = false, sceneLost = false, snapshot = null, held = new Set(), restoreCamera = false, previewOrigin = null;
   let yaw = 0, pitch = Math.PI / 6, cameraDistance = 6.5, followX = player.position.x, followZ = player.position.z;
   let vx = 0, vz = 0, walkPhase = 0, heading = Math.PI, selected = 'clock';
@@ -293,7 +303,7 @@ export async function create(ctx) {
   const clockTravel = document.createElement('button'); clockTravel.type = 'button'; clockTravel.textContent = 'Clock';
   ctx.on(clockTravel, 'click', () => travel('clock')); routeHeading.append(clockTravel); ctx.dom.route.append(routeHeading);
   for (const show of ctx.showData) {
-    const row = document.createElement('div'); row.className = 'fair-route-row';
+    const row = document.createElement('div'); row.className = 'fair-route-row';row.dataset.fairSlug=show.slug;
     const open = document.createElement('a'); open.textContent = show.name;
     const first = show.cards[0]; open.href = first.href; open.target = '_blank'; open.rel = 'noopener';
     ctx.on(open, 'click', event => routePreview(event, first)); row.append(open);
@@ -311,7 +321,11 @@ export async function create(ctx) {
     versions.append(links); row.append(versions); ctx.dom.route.append(row);
   }
   const archive = document.createElement('a'); archive.className = 'fair-static-link'; archive.textContent = 'Archive ↓'; archive.href = '#archive-shelves';
-  ctx.on(archive, 'click', () => { closeRoute(); clearInput(); }); ctx.dom.route.append(archive);
+  archive.textContent='Plan';
+  ctx.on(archive, 'click', event => {
+    if(!sceneLost && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey){event.preventDefault();closeRoute();ctx.canvas.focus({preventScroll:true});inspectPlan();}
+    else{closeRoute();clearInput();}
+  }); ctx.dom.route.append(archive);
   const stick = document.createElement('span'); stick.className = 'fair-stick'; ctx.dom.joystick.append(stick);
   ctx.dom.joystick.setAttribute('aria-label', 'Walk'); ctx.dom.joystick.setAttribute('role', 'group');
   // Hero samples rejoin their shelves: the conventional archive remains complete below the world.
@@ -339,7 +353,12 @@ export async function create(ctx) {
     ctx.on(link, 'click', event => { if (!sceneLost) {event.preventDefault(); travel(slug); } });
   }
   ctx.on(ctx.dom.reset, 'focus', () => { if (!focusRestoring && !sceneLost && !frozen) travel('clock', false); });
-  ctx.on(ctx.dom.secretButton, 'focus', () => { if (!focusRestoring && !sceneLost && !frozen) travel('clock', false); });
+  ctx.on(ctx.dom.secretButton, 'focus', () => { if (!focusRestoring && !sceneLost && !frozen) travel('clock', false);ctx.wake(); });
+  ctx.on(ctx.dom.secretButton,'blur',()=>ctx.wake());
+  ctx.on(ctx.dom.archiveToggle,'focus',()=>{if(!focusRestoring&&!sceneLost&&!frozen)inspectPlan();ctx.wake();});
+  ctx.on(ctx.dom.archiveToggle,'blur',()=>ctx.wake());
+  ctx.on(ctx.dom.route,'focusin',()=>{if(!focusRestoring&&!sceneLost&&!frozen&&inspectionMode!=='plan')inspectPlan();ctx.wake();});
+  ctx.on(ctx.dom.route,'focusout',()=>{queueMicrotask(()=>{if(!disposed&&!frozen&&!ctx.dom.route.contains(document.activeElement)&&document.activeElement!==ctx.dom.archiveToggle)closeRoute();});ctx.wake();});
   ctx.on(document.querySelector('.home-link'),'focus',()=>{if(!focusRestoring&&!sceneLost&&!frozen)inspectWorlds();});
   ctx.on(document.querySelector('.theme-menu summary'),'focus',()=>{if(!focusRestoring&&!sceneLost&&!frozen)inspectWorlds();});
   for (const link of document.querySelectorAll('.theme-menu-list a')) ctx.on(link, 'focus', () => { if (!focusRestoring && !sceneLost && !frozen) inspectWorlds(); });
@@ -429,6 +448,7 @@ export async function create(ctx) {
     interactive.push(...destinationHits); moveCamera(new T.Vector3(gateway.position.x,1.25*gateway.scale.y,gateway.position.z+(ctx.mobile?6.6:4.35)),new T.Vector3(gateway.position.x,1.25*gateway.scale.y,gateway.position.z+.08));
   }
   function inspectPlan() {
+    if(inspectionMode==='plan')return;
     exitInspection(); preInspection = capturePose(); inspectionMode = 'plan';
     moveCamera(new T.Vector3(plan.position.x,ctx.mobile?4.9:3.65,plan.position.z+.8),new T.Vector3(plan.position.x,1.12*plan.scale.y,plan.position.z));
   }
@@ -480,6 +500,7 @@ export async function create(ctx) {
     sceneLost = true; frozen = true; travelPose = null; clearInput();
     ctx.stage.classList.remove('fair-travel'); ctx.dom.route.hidden = false;
     ctx.dom.archiveToggle.setAttribute('aria-expanded', 'true');
+    archive.textContent='Archive ↓';
     // The existing drawer becomes ordinary direct links; its genuine anchors need no clones.
     queueMicrotask(() => { if (moveFocus && !disposed) ctx.dom.route.querySelector('.fair-route-row>a')?.focus({ preventScroll: true }); });
   });
@@ -610,6 +631,13 @@ export async function create(ctx) {
   function animate(time, delta) {
     if (disposed) return;
     environment.update(time, delta); machinery.update(time); secretPlate.visible = !ctx.dom.secret.hidden; resetFocus.visible=document.activeElement===ctx.dom.reset;
+    const focused=document.activeElement;
+    crownFocus.visible=!sceneLost&&focused===ctx.dom.secretButton;
+    planNavFocus.visible=!sceneLost&&(focused===ctx.dom.archiveToggle||ctx.dom.route.contains(focused));
+    if(!sceneLost&&ctx.dom.route.contains(focused)){
+      const token=planTokens.get(focused.closest('.fair-route-row')?.dataset.fairSlug||'clock');
+      routePlanFocus=true;planFocus.visible=!!token;if(token)planFocus.position.set(token.position.x,.20,token.position.z);
+    }else if(routePlanFocus){routePlanFocus=false;planFocus.visible=false;}
     if (frozen) return;
     if (cameraMotion) {
       const motion = cameraMotion, progress = motion.duration ? Math.min(1,(time-motion.start)/motion.duration) : 1;
