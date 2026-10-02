@@ -1,5 +1,13 @@
 # Revised art direction — Tomorrows Roadworks
 
+## Current status — architecture reset, October 2, 2026
+
+**Current implementation rejected by the user. All prior visual acceptance and “accepted source limitation/interpretation” verdicts below are withdrawn and retained only as a historical record.** Those verdicts incorrectly reduced the original concept's ambition to fit the implementation. Functional/API/preview checks remain historical functional evidence; they do not establish visual fidelity.
+
+The original reference is the authority. The replacement [scene-first spec](../specs/tomorrows-roadworks.md) and [architecture proposal](../architecture/installations.md) are **planned, not implemented**. Their first gate is a final-lit material/geometry/content slice compared directly with the original before navigation and secondary effects. The accepted Fair remains unchanged. No new visual acceptance is claimed.
+
+## Historical development record — superseded
+
 ## Final renewed independent review — October 2, 2026
 
 **Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.

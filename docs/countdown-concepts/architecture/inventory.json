@@ -1,0 +1,1100 @@
+{
+  "status": "architecture plan only; named nodes/assets not yet authored",
+  "source": "countdowns/generate.py SHOWS, October 2 2026; runtime must continue reading generated records",
+  "previewRecords": [
+    {
+      "id": "got/s4",
+      "show": "got",
+      "showLabel": "Game of Thrones",
+      "label": "Season 4",
+      "href": "/countdowns/got/s4/",
+      "thumbnail": "/countdowns/assets/previews/got-s4.jpg",
+      "live": false
+    },
+    {
+      "id": "got/s3-redesign",
+      "show": "got",
+      "showLabel": "Game of Thrones",
+      "label": "Season 3 · Redesign",
+      "href": "/countdowns/got/s3-redesign/",
+      "thumbnail": "/countdowns/assets/previews/got-s3-redesign.jpg",
+      "live": false
+    },
+    {
+      "id": "got/s3-classic",
+      "show": "got",
+      "showLabel": "Game of Thrones",
+      "label": "Season 3 · Classic",
+      "href": "/countdowns/got/s3-classic/",
+      "thumbnail": "/countdowns/assets/previews/got-s3-classic.jpg",
+      "live": false
+    },
+    {
+      "id": "dexter/s8-final",
+      "show": "dexter",
+      "showLabel": "Dexter",
+      "label": "Series Finale",
+      "href": "/countdowns/dexter/s8-final/",
+      "thumbnail": "/countdowns/assets/previews/dexter-s8-final.jpg",
+      "live": false
+    },
+    {
+      "id": "dexter/s7-finale",
+      "show": "dexter",
+      "showLabel": "Dexter",
+      "label": "Season 7 · Finale",
+      "href": "/countdowns/dexter/s7-finale/",
+      "thumbnail": "/countdowns/assets/previews/dexter-s7-finale.jpg",
+      "live": false
+    },
+    {
+      "id": "sherlock/final",
+      "show": "sherlock",
+      "showLabel": "Sherlock",
+      "label": "Season 3",
+      "href": "/countdowns/sherlock/final/",
+      "thumbnail": "/countdowns/assets/previews/sherlock-final.jpg",
+      "live": false
+    },
+    {
+      "id": "sherlock/alpha",
+      "show": "sherlock",
+      "showLabel": "Sherlock",
+      "label": "Season 3 · Alpha",
+      "href": "/countdowns/sherlock/alpha/",
+      "thumbnail": "/countdowns/assets/previews/sherlock-alpha.jpg",
+      "live": false
+    },
+    {
+      "id": "archer/s5-final",
+      "show": "archer",
+      "showLabel": "Archer",
+      "label": "Season 5",
+      "href": "/countdowns/archer/s5-final/",
+      "thumbnail": "/countdowns/assets/previews/archer-s5-final.jpg",
+      "live": false
+    },
+    {
+      "id": "breaking-bad/final",
+      "show": "breaking-bad",
+      "showLabel": "Breaking Bad",
+      "label": "Series Finale",
+      "href": "/countdowns/breaking-bad/final/",
+      "thumbnail": "/countdowns/assets/previews/breaking-bad-final.jpg",
+      "live": false
+    },
+    {
+      "id": "breaking-bad/desert-parallax",
+      "show": "breaking-bad",
+      "showLabel": "Breaking Bad",
+      "label": "Desert Parallax",
+      "href": "/countdowns/breaking-bad/desert-parallax/",
+      "thumbnail": "/countdowns/assets/previews/breaking-bad-desert-parallax.jpg",
+      "live": false
+    },
+    {
+      "id": "house-of-cards/s2",
+      "show": "house-of-cards",
+      "showLabel": "House of Cards",
+      "label": "Season 2",
+      "href": "/countdowns/house-of-cards/s2/",
+      "thumbnail": "/countdowns/assets/previews/house-of-cards-s2.jpg",
+      "live": false
+    },
+    {
+      "id": "severance/s2",
+      "show": "severance",
+      "showLabel": "Severance",
+      "label": "Season 2",
+      "href": "/countdowns/severance/s2/",
+      "thumbnail": "/countdowns/assets/previews/severance-s2.jpg",
+      "live": false
+    },
+    {
+      "id": "severance/tracker",
+      "show": "severance",
+      "showLabel": "Severance",
+      "label": "Season 3",
+      "href": "/countdowns/severance/tracker/",
+      "thumbnail": "/countdowns/assets/previews/severance-tracker.jpg",
+      "live": true
+    }
+  ],
+  "destinations": [
+    {
+      "id": "archive/got",
+      "show": "got",
+      "kind": "archive",
+      "label": "Game of Thrones · More",
+      "href": "/countdowns/got/"
+    },
+    {
+      "id": "archive/dexter",
+      "show": "dexter",
+      "kind": "archive",
+      "label": "Dexter · More",
+      "href": "/countdowns/dexter/"
+    },
+    {
+      "id": "archive/sherlock",
+      "show": "sherlock",
+      "kind": "archive",
+      "label": "Sherlock · More",
+      "href": "/countdowns/sherlock/"
+    },
+    {
+      "id": "archive/archer",
+      "show": "archer",
+      "kind": "archive",
+      "label": "Archer · More",
+      "href": "/countdowns/archer/"
+    },
+    {
+      "id": "archive/breaking-bad",
+      "show": "breaking-bad",
+      "kind": "archive",
+      "label": "Breaking Bad · More",
+      "href": "/countdowns/breaking-bad/"
+    },
+    {
+      "id": "timeline/dexter",
+      "show": "dexter",
+      "kind": "timeline",
+      "label": "Season 7 · Episode by Episode",
+      "href": "/countdowns/dexter/s7-episodes/"
+    },
+    {
+      "id": "live/severance",
+      "show": "severance",
+      "kind": "external",
+      "label": "severancecountdown.com",
+      "href": "https://severancecountdown.com/"
+    }
+  ],
+  "concepts": {
+    "tomorrows-roadworks": {
+      "placements": {
+        "got/s4": {
+          "node": "exhibit.got.s4",
+          "location": "road station 01, low-left foreground",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "got/s3-redesign": {
+          "node": "exhibit.got.s3-redesign",
+          "location": "road station 01, low-left foreground",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "got/s3-classic": {
+          "node": "exhibit.got.s3-classic",
+          "location": "road station 01, low-left foreground",
+          "versionPosition": 3,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "dexter/s8-final": {
+          "node": "exhibit.dexter.s8-final",
+          "location": "road station 06, outside upper loop",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "dexter/s7-finale": {
+          "node": "exhibit.dexter.s7-finale",
+          "location": "road station 06, outside upper loop",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "sherlock/final": {
+          "node": "exhibit.sherlock.final",
+          "location": "road station 07, high distant rise",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "sherlock/alpha": {
+          "node": "exhibit.sherlock.alpha",
+          "location": "road station 07, high distant rise",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "archer/s5-final": {
+          "node": "exhibit.archer.s5-final",
+          "location": "road station 05, far-right loop shoulder",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "breaking-bad/final": {
+          "node": "exhibit.breaking-bad.final",
+          "location": "road station 04, center of upper approach",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "breaking-bad/desert-parallax": {
+          "node": "exhibit.breaking-bad.desert-parallax",
+          "location": "road station 04, center of upper approach",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "house-of-cards/s2": {
+          "node": "exhibit.house-of-cards.s2",
+          "location": "road station 03, right shoulder of first rise",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "severance/s2": {
+          "node": "exhibit.severance.s2",
+          "location": "road station 02, inside lower S-bend",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "severance/tracker": {
+          "node": "exhibit.severance.tracker",
+          "location": "road station 02, inside lower S-bend",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        }
+      },
+      "destinations": {
+        "archive/got": {
+          "node": "destination.archive.got",
+          "location": "road station 01, low-left foreground: station-mounted lower steel file flap",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/dexter": {
+          "node": "destination.archive.dexter",
+          "location": "road station 06, outside upper loop: station-mounted lower steel file flap",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/sherlock": {
+          "node": "destination.archive.sherlock",
+          "location": "road station 07, high distant rise: station-mounted lower steel file flap",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/archer": {
+          "node": "destination.archive.archer",
+          "location": "road station 05, far-right loop shoulder: station-mounted lower steel file flap",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/breaking-bad": {
+          "node": "destination.archive.breaking-bad",
+          "location": "road station 04, center of upper approach: station-mounted lower steel file flap",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "timeline/dexter": {
+          "node": "destination.timeline.dexter",
+          "location": "road station 06, outside upper loop: station-mounted lower steel file flap",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "live/severance": {
+          "node": "destination.live.severance",
+          "location": "road station 02, inside lower S-bend: station-mounted lower steel file flap",
+          "activate": "real destination; preserve theme for local archive links"
+        }
+      }
+    },
+    "bubblegum-time": {
+      "placements": {
+        "got/s4": {
+          "node": "exhibit.got.s4",
+          "location": "lower-right main tether",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "got/s3-redesign": {
+          "node": "exhibit.got.s3-redesign",
+          "location": "lower-right main tether",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "got/s3-classic": {
+          "node": "exhibit.got.s3-classic",
+          "location": "lower-right main tether",
+          "versionPosition": 3,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "dexter/s8-final": {
+          "node": "exhibit.dexter.s8-final",
+          "location": "upper-middle tether beside bubble neck",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "dexter/s7-finale": {
+          "node": "exhibit.dexter.s7-finale",
+          "location": "upper-middle tether beside bubble neck",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "sherlock/final": {
+          "node": "exhibit.sherlock.final",
+          "location": "continuing left membrane branch",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "sherlock/alpha": {
+          "node": "exhibit.sherlock.alpha",
+          "location": "continuing left membrane branch",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "archer/s5-final": {
+          "node": "exhibit.archer.s5-final",
+          "location": "lower-middle print branching from clock strip",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "breaking-bad/final": {
+          "node": "exhibit.breaking-bad.final",
+          "location": "final lower hanging membrane branch",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "breaking-bad/desert-parallax": {
+          "node": "exhibit.breaking-bad.desert-parallax",
+          "location": "final lower hanging membrane branch",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "house-of-cards/s2": {
+          "node": "exhibit.house-of-cards.s2",
+          "location": "unequal neighboring tether past Sherlock",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "severance/s2": {
+          "node": "exhibit.severance.s2",
+          "location": "left upper cotton-print tether",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "severance/tracker": {
+          "node": "exhibit.severance.tracker",
+          "location": "left upper cotton-print tether",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        }
+      },
+      "destinations": {
+        "archive/got": {
+          "node": "destination.archive.got",
+          "location": "lower-right main tether: small folded paper tab attached to corresponding print tether",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/dexter": {
+          "node": "destination.archive.dexter",
+          "location": "upper-middle tether beside bubble neck: small folded paper tab attached to corresponding print tether",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/sherlock": {
+          "node": "destination.archive.sherlock",
+          "location": "continuing left membrane branch: small folded paper tab attached to corresponding print tether",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/archer": {
+          "node": "destination.archive.archer",
+          "location": "lower-middle print branching from clock strip: small folded paper tab attached to corresponding print tether",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/breaking-bad": {
+          "node": "destination.archive.breaking-bad",
+          "location": "final lower hanging membrane branch: small folded paper tab attached to corresponding print tether",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "timeline/dexter": {
+          "node": "destination.timeline.dexter",
+          "location": "upper-middle tether beside bubble neck: small folded paper tab attached to corresponding print tether",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "live/severance": {
+          "node": "destination.live.severance",
+          "location": "left upper cotton-print tether: small folded paper tab attached to corresponding print tether",
+          "activate": "real destination; preserve theme for local archive links"
+        }
+      }
+    },
+    "after-the-flame": {
+      "placements": {
+        "got/s4": {
+          "node": "exhibit.got.s4",
+          "location": "high right wax terrace",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "got/s3-redesign": {
+          "node": "exhibit.got.s3-redesign",
+          "location": "high right wax terrace",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "got/s3-classic": {
+          "node": "exhibit.got.s3-classic",
+          "location": "high right wax terrace",
+          "versionPosition": 3,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "dexter/s8-final": {
+          "node": "exhibit.dexter.s8-final",
+          "location": "lower right bank",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "dexter/s7-finale": {
+          "node": "exhibit.dexter.s7-finale",
+          "location": "lower right bank",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "sherlock/final": {
+          "node": "exhibit.sherlock.final",
+          "location": "downstream left carved bank",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "sherlock/alpha": {
+          "node": "exhibit.sherlock.alpha",
+          "location": "downstream left carved bank",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "archer/s5-final": {
+          "node": "exhibit.archer.s5-final",
+          "location": "low ledge beside downstream channel",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "breaking-bad/final": {
+          "node": "exhibit.breaking-bad.final",
+          "location": "farther right terraced inlet",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "breaking-bad/desert-parallax": {
+          "node": "exhibit.breaking-bad.desert-parallax",
+          "location": "farther right terraced inlet",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "house-of-cards/s2": {
+          "node": "exhibit.house-of-cards.s2",
+          "location": "last raised recess at channel turn",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "severance/s2": {
+          "node": "exhibit.severance.s2",
+          "location": "middle right inset",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "severance/tracker": {
+          "node": "exhibit.severance.tracker",
+          "location": "middle right inset",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        }
+      },
+      "destinations": {
+        "archive/got": {
+          "node": "destination.archive.got",
+          "location": "high right wax terrace: recessed engraved wax lip adjoining corresponding bank",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/dexter": {
+          "node": "destination.archive.dexter",
+          "location": "lower right bank: recessed engraved wax lip adjoining corresponding bank",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/sherlock": {
+          "node": "destination.archive.sherlock",
+          "location": "downstream left carved bank: recessed engraved wax lip adjoining corresponding bank",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/archer": {
+          "node": "destination.archive.archer",
+          "location": "low ledge beside downstream channel: recessed engraved wax lip adjoining corresponding bank",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/breaking-bad": {
+          "node": "destination.archive.breaking-bad",
+          "location": "farther right terraced inlet: recessed engraved wax lip adjoining corresponding bank",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "timeline/dexter": {
+          "node": "destination.timeline.dexter",
+          "location": "lower right bank: recessed engraved wax lip adjoining corresponding bank",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "live/severance": {
+          "node": "destination.live.severance",
+          "location": "middle right inset: recessed engraved wax lip adjoining corresponding bank",
+          "activate": "real destination; preserve theme for local archive links"
+        }
+      }
+    },
+    "low-tide-later": {
+      "placements": {
+        "got/s4": {
+          "node": "exhibit.got.s4",
+          "location": "initial lower-left partly wet print",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "got/s3-redesign": {
+          "node": "exhibit.got.s3-redesign",
+          "location": "initial lower-left partly wet print",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "got/s3-classic": {
+          "node": "exhibit.got.s3-classic",
+          "location": "initial lower-left partly wet print",
+          "versionPosition": 3,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "dexter/s8-final": {
+          "node": "exhibit.dexter.s8-final",
+          "location": "initial lower-right dry-center print",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "dexter/s7-finale": {
+          "node": "exhibit.dexter.s7-finale",
+          "location": "initial lower-right dry-center print",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "sherlock/final": {
+          "node": "exhibit.sherlock.final",
+          "location": "next diagonal exposure among chalk crumbs",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "sherlock/alpha": {
+          "node": "exhibit.sherlock.alpha",
+          "location": "next diagonal exposure among chalk crumbs",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "archer/s5-final": {
+          "node": "exhibit.archer.s5-final",
+          "location": "next wide sand exposure inside shore bend",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "breaking-bad/final": {
+          "node": "exhibit.breaking-bad.final",
+          "location": "farther partly wet outer exposure",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "breaking-bad/desert-parallax": {
+          "node": "exhibit.breaking-bad.desert-parallax",
+          "location": "farther partly wet outer exposure",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "house-of-cards/s2": {
+          "node": "exhibit.house-of-cards.s2",
+          "location": "final small dry sand shelf",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "severance/s2": {
+          "node": "exhibit.severance.s2",
+          "location": "initial dry upper-right beach print",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "severance/tracker": {
+          "node": "exhibit.severance.tracker",
+          "location": "initial dry upper-right beach print",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        }
+      },
+      "destinations": {
+        "archive/got": {
+          "node": "destination.archive.got",
+          "location": "initial lower-left partly wet print: dry attached paper strip at corresponding shore exposure",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/dexter": {
+          "node": "destination.archive.dexter",
+          "location": "initial lower-right dry-center print: dry attached paper strip at corresponding shore exposure",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/sherlock": {
+          "node": "destination.archive.sherlock",
+          "location": "next diagonal exposure among chalk crumbs: dry attached paper strip at corresponding shore exposure",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/archer": {
+          "node": "destination.archive.archer",
+          "location": "next wide sand exposure inside shore bend: dry attached paper strip at corresponding shore exposure",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/breaking-bad": {
+          "node": "destination.archive.breaking-bad",
+          "location": "farther partly wet outer exposure: dry attached paper strip at corresponding shore exposure",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "timeline/dexter": {
+          "node": "destination.timeline.dexter",
+          "location": "initial lower-right dry-center print: dry attached paper strip at corresponding shore exposure",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "live/severance": {
+          "node": "destination.live.severance",
+          "location": "initial dry upper-right beach print: dry attached paper strip at corresponding shore exposure",
+          "activate": "real destination; preserve theme for local archive links"
+        }
+      }
+    },
+    "not-yet-ripe": {
+      "placements": {
+        "got/s4": {
+          "node": "exhibit.got.s4",
+          "location": "lower-right outward branch tag",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "got/s3-redesign": {
+          "node": "exhibit.got.s3-redesign",
+          "location": "lower-right outward branch tag",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "got/s3-classic": {
+          "node": "exhibit.got.s3-classic",
+          "location": "lower-right outward branch tag",
+          "versionPosition": 3,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "dexter/s8-final": {
+          "node": "exhibit.dexter.s8-final",
+          "location": "low-left hanging specimen tag",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "dexter/s7-finale": {
+          "node": "exhibit.dexter.s7-finale",
+          "location": "low-left hanging specimen tag",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "sherlock/final": {
+          "node": "exhibit.sherlock.final",
+          "location": "next curled upper branch fork",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "sherlock/alpha": {
+          "node": "exhibit.sherlock.alpha",
+          "location": "next curled upper branch fork",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "archer/s5-final": {
+          "node": "exhibit.archer.s5-final",
+          "location": "side fork with folded leaf",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "breaking-bad/final": {
+          "node": "exhibit.breaking-bad.final",
+          "location": "next gnarled descending offshoot",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "breaking-bad/desert-parallax": {
+          "node": "exhibit.breaking-bad.desert-parallax",
+          "location": "next gnarled descending offshoot",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "house-of-cards/s2": {
+          "node": "exhibit.house-of-cards.s2",
+          "location": "terminal twig tag",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "severance/s2": {
+          "node": "exhibit.severance.s2",
+          "location": "upper-right primary fork tag",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "severance/tracker": {
+          "node": "exhibit.severance.tracker",
+          "location": "upper-right primary fork tag",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        }
+      },
+      "destinations": {
+        "archive/got": {
+          "node": "destination.archive.got",
+          "location": "lower-right outward branch tag: small tied botanical index tag at corresponding fork",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/dexter": {
+          "node": "destination.archive.dexter",
+          "location": "low-left hanging specimen tag: small tied botanical index tag at corresponding fork",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/sherlock": {
+          "node": "destination.archive.sherlock",
+          "location": "next curled upper branch fork: small tied botanical index tag at corresponding fork",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/archer": {
+          "node": "destination.archive.archer",
+          "location": "side fork with folded leaf: small tied botanical index tag at corresponding fork",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/breaking-bad": {
+          "node": "destination.archive.breaking-bad",
+          "location": "next gnarled descending offshoot: small tied botanical index tag at corresponding fork",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "timeline/dexter": {
+          "node": "destination.timeline.dexter",
+          "location": "low-left hanging specimen tag: small tied botanical index tag at corresponding fork",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "live/severance": {
+          "node": "destination.live.severance",
+          "location": "upper-right primary fork tag: small tied botanical index tag at corresponding fork",
+          "activate": "real destination; preserve theme for local archive links"
+        }
+      }
+    },
+    "still-drawing-tomorrow": {
+      "placements": {
+        "got/s4": {
+          "node": "exhibit.got.s4",
+          "location": "opening upper-center folio behind first sheet",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "got/s3-redesign": {
+          "node": "exhibit.got.s3-redesign",
+          "location": "opening upper-center folio behind first sheet",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "got/s3-classic": {
+          "node": "exhibit.got.s3-classic",
+          "location": "opening upper-center folio behind first sheet",
+          "versionPosition": 3,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "dexter/s8-final": {
+          "node": "exhibit.dexter.s8-final",
+          "location": "opening upper-left acetate folio",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "dexter/s7-finale": {
+          "node": "exhibit.dexter.s7-finale",
+          "location": "opening upper-left acetate folio",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "sherlock/final": {
+          "node": "exhibit.sherlock.final",
+          "location": "left adjoining folio exposed by desk pan",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "sherlock/alpha": {
+          "node": "exhibit.sherlock.alpha",
+          "location": "left adjoining folio exposed by desk pan",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "archer/s5-final": {
+          "node": "exhibit.archer.s5-final",
+          "location": "lower-left worktable folio",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "breaking-bad/final": {
+          "node": "exhibit.breaking-bad.final",
+          "location": "right adjoining large folio",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "breaking-bad/desert-parallax": {
+          "node": "exhibit.breaking-bad.desert-parallax",
+          "location": "right adjoining large folio",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "house-of-cards/s2": {
+          "node": "exhibit.house-of-cards.s2",
+          "location": "far-right narrow folio",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "severance/s2": {
+          "node": "exhibit.severance.s2",
+          "location": "opening upper-right broadly rolled acetate folio",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "severance/tracker": {
+          "node": "exhibit.severance.tracker",
+          "location": "opening upper-right broadly rolled acetate folio",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        }
+      },
+      "destinations": {
+        "archive/got": {
+          "node": "destination.archive.got",
+          "location": "opening upper-center folio behind first sheet: protruding lower folio tab outside every overlap",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/dexter": {
+          "node": "destination.archive.dexter",
+          "location": "opening upper-left acetate folio: protruding lower folio tab outside every overlap",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/sherlock": {
+          "node": "destination.archive.sherlock",
+          "location": "left adjoining folio exposed by desk pan: protruding lower folio tab outside every overlap",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/archer": {
+          "node": "destination.archive.archer",
+          "location": "lower-left worktable folio: protruding lower folio tab outside every overlap",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/breaking-bad": {
+          "node": "destination.archive.breaking-bad",
+          "location": "right adjoining large folio: protruding lower folio tab outside every overlap",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "timeline/dexter": {
+          "node": "destination.timeline.dexter",
+          "location": "opening upper-left acetate folio: protruding lower folio tab outside every overlap",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "live/severance": {
+          "node": "destination.live.severance",
+          "location": "opening upper-right broadly rolled acetate folio: protruding lower folio tab outside every overlap",
+          "activate": "real destination; preserve theme for local archive links"
+        }
+      }
+    },
+    "held-in-suspense": {
+      "placements": {
+        "got/s4": {
+          "node": "exhibit.got.s4",
+          "location": "opening upper-right plate",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "got/s3-redesign": {
+          "node": "exhibit.got.s3-redesign",
+          "location": "opening upper-right plate",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "got/s3-classic": {
+          "node": "exhibit.got.s3-classic",
+          "location": "opening upper-right plate",
+          "versionPosition": 3,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "dexter/s8-final": {
+          "node": "exhibit.dexter.s8-final",
+          "location": "opening upper-left unequal hanging plate",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "dexter/s7-finale": {
+          "node": "exhibit.dexter.s7-finale",
+          "location": "opening upper-left unequal hanging plate",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "sherlock/final": {
+          "node": "exhibit.sherlock.final",
+          "location": "next installation arm, short suspension bay",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "sherlock/alpha": {
+          "node": "exhibit.sherlock.alpha",
+          "location": "next installation arm, short suspension bay",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "archer/s5-final": {
+          "node": "exhibit.archer.s5-final",
+          "location": "next cantilever side extension bay",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "breaking-bad/final": {
+          "node": "exhibit.breaking-bad.final",
+          "location": "farther folded-arm broad suspension bay",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "breaking-bad/desert-parallax": {
+          "node": "exhibit.breaking-bad.desert-parallax",
+          "location": "farther folded-arm broad suspension bay",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "house-of-cards/s2": {
+          "node": "exhibit.house-of-cards.s2",
+          "location": "last short counterbalanced bay",
+          "versionPosition": 1,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "severance/s2": {
+          "node": "exhibit.severance.s2",
+          "location": "opening high-center large hanging plate",
+          "versionPosition": 1,
+          "initiallyVisible": true,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        },
+        "severance/tracker": {
+          "node": "exhibit.severance.tracker",
+          "location": "opening high-center large hanging plate",
+          "versionPosition": 2,
+          "initiallyVisible": false,
+          "versionAccess": "direct image activation; adjacent exposed version edge/tab when grouped"
+        }
+      },
+      "destinations": {
+        "archive/got": {
+          "node": "destination.archive.got",
+          "location": "opening upper-right plate: folded metal accessory tab on corresponding suspension",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/dexter": {
+          "node": "destination.archive.dexter",
+          "location": "opening upper-left unequal hanging plate: folded metal accessory tab on corresponding suspension",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/sherlock": {
+          "node": "destination.archive.sherlock",
+          "location": "next installation arm, short suspension bay: folded metal accessory tab on corresponding suspension",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/archer": {
+          "node": "destination.archive.archer",
+          "location": "next cantilever side extension bay: folded metal accessory tab on corresponding suspension",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "archive/breaking-bad": {
+          "node": "destination.archive.breaking-bad",
+          "location": "farther folded-arm broad suspension bay: folded metal accessory tab on corresponding suspension",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "timeline/dexter": {
+          "node": "destination.timeline.dexter",
+          "location": "opening upper-left unequal hanging plate: folded metal accessory tab on corresponding suspension",
+          "activate": "real destination; preserve theme for local archive links"
+        },
+        "live/severance": {
+          "node": "destination.live.severance",
+          "location": "opening high-center large hanging plate: folded metal accessory tab on corresponding suspension",
+          "activate": "real destination; preserve theme for local archive links"
+        }
+      }
+    }
+  }
+}

@@ -1,8 +1,10 @@
 # Revised material direction — Not Yet Ripe
 
-## Final renewed independent review — October 2, 2026
+> **Current status — rejected; architecture redesign is not implemented.** On 2 October 2026 the user rejected this render as failing to resemble the original concept. Every prior visual acceptance, including the later material review, is withdrawn. The observations and screenshots below are historical evidence of the failed implementation, not current approval. Functional checks remain evidence of the behavior they tested; they do not establish art fidelity. The replacement [eleven-section spec](../specs/not-yet-ripe.md) and [architecture audit](../architecture/sculptures.md) govern the next execution. No authored replacement scene/assets have yet been delivered.
 
-**Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
+## Historical renewed independent review — October 2, 2026
+
+**Historical review claimed visual acceptance; that acceptance is withdrawn.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
 
 Uneven rind, raised pith, actual sac relief, varied flesh texture, attached stems, veined leaves and suspended papers establish a tactile specimen installation. Shortening decorative desktop type clears Again; both phone widths keep all four specimens and the first tag.
 
@@ -74,7 +76,7 @@ At 320 px, a final comparison exposed the cropped left fruit and title/glyph col
 
 A subsequent source review replaces the reversal's wall-clock age with visible scene time. Preview opening holds the exact peel/twig phase, and closing resumes its remaining progression; repeated confirmations snapshot the current peel colors. Hover or focus now visibly turns/splays the nearest modeled leaf to the specimen string, with immediate keyboard/reduced-motion response and no content-uncovering requirement. The crown tracks focus independently of hover. Even-numbered phone archive prints receive the same local keyboard lift as hover instead of the desktop stagger.
 
-## Final independent art acceptance — 2026-10-02
+## Historical independent art acceptance — 2026-10-02
 
 **Observed desktop and phone visuals:** Reviewed the final desktop, 390 px and 320 px captures against this spec. Irregular bark and pale hanging tags establish a specimen plate; the plum clock reads inside four radial citrus interiors. Both phone widths preserve complete fruit silhouettes and visible digits. The 320 px title clears the first glyph and remains an edge accent. The first hanging print and split-fruit Again/tally stay exposed without a leaf-uncovering step. The supplied archive continuation captures preserve strings, specimen labels and an angled branch rail with generous gaps.
 

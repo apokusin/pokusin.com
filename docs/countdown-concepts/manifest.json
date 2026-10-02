@@ -1,6 +1,6 @@
 {
   "prepared": "2026-10-02",
-  "status": "eight individually reviewed and implemented selectable explorations; no final direction selected",
+  "status": "architecture reset: seven existing non-Fair implementations rejected; Fair retained; replacement architecture specified, no rebuilt scenes yet",
   "concepts": [
     {
       "id": "tomorrows-roadworks",
@@ -21,7 +21,10 @@
         "module": "../../countdowns/concepts/tomorrows-roadworks.js",
         "stylesheet": "../../countdowns/concepts/tomorrows-roadworks.css",
         "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=tomorrows-roadworks"
-      }
+      },
+      "visualStatus": "rejected; previous visual acceptance withdrawn",
+      "architecture": "architecture/README.md",
+      "replacementStatus": "specified, not implemented"
     },
     {
       "id": "bubblegum-time",
@@ -42,7 +45,10 @@
         "module": "../../countdowns/concepts/bubblegum-time.js",
         "stylesheet": "../../countdowns/concepts/bubblegum-time.css",
         "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=bubblegum-time"
-      }
+      },
+      "visualStatus": "rejected; previous visual acceptance withdrawn",
+      "architecture": "architecture/README.md",
+      "replacementStatus": "specified, not implemented"
     },
     {
       "id": "after-the-flame",
@@ -63,7 +69,10 @@
         "module": "../../countdowns/concepts/after-the-flame.js",
         "stylesheet": "../../countdowns/concepts/after-the-flame.css",
         "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=after-the-flame"
-      }
+      },
+      "visualStatus": "rejected; previous visual acceptance withdrawn",
+      "architecture": "architecture/README.md",
+      "replacementStatus": "specified, not implemented"
     },
     {
       "id": "low-tide-later",
@@ -84,7 +93,10 @@
         "module": "../../countdowns/concepts/low-tide-later.js",
         "stylesheet": "../../countdowns/concepts/low-tide-later.css",
         "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=low-tide-later"
-      }
+      },
+      "visualStatus": "rejected; previous visual acceptance withdrawn",
+      "architecture": "architecture/README.md",
+      "replacementStatus": "specified, not implemented"
     },
     {
       "id": "not-yet-ripe",
@@ -105,7 +117,10 @@
         "module": "../../countdowns/concepts/not-yet-ripe.js",
         "stylesheet": "../../countdowns/concepts/not-yet-ripe.css",
         "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=not-yet-ripe"
-      }
+      },
+      "visualStatus": "rejected; previous visual acceptance withdrawn",
+      "architecture": "architecture/README.md",
+      "replacementStatus": "specified, not implemented"
     },
     {
       "id": "still-drawing-tomorrow",
@@ -126,7 +141,10 @@
         "module": "../../countdowns/concepts/still-drawing-tomorrow.js",
         "stylesheet": "../../countdowns/concepts/still-drawing-tomorrow.css",
         "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=still-drawing-tomorrow"
-      }
+      },
+      "visualStatus": "rejected; previous visual acceptance withdrawn",
+      "architecture": "architecture/README.md",
+      "replacementStatus": "specified, not implemented"
     },
     {
       "id": "held-in-suspense",
@@ -147,7 +165,10 @@
         "module": "../../countdowns/concepts/held-in-suspense.js",
         "stylesheet": "../../countdowns/concepts/held-in-suspense.css",
         "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=held-in-suspense"
-      }
+      },
+      "visualStatus": "rejected; previous visual acceptance withdrawn",
+      "architecture": "architecture/README.md",
+      "replacementStatus": "specified, not implemented"
     },
     {
       "id": "the-almost-fair",
@@ -168,7 +189,8 @@
         "module": "../../countdowns/concepts/the-almost-fair.js",
         "stylesheet": "../../countdowns/concepts/the-almost-fair.css",
         "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=the-almost-fair"
-      }
+      },
+      "visualStatus": "retained; excluded from architecture reset"
     }
   ]
 }

@@ -1,8 +1,10 @@
 # Revised material direction — Bubblegum Time
 
-## Final renewed independent review — October 2, 2026
+> **Current status — rejected; architecture redesign is not implemented.** On 2 October 2026 the user rejected this render as failing to resemble the original concept. Every prior visual acceptance, including the later material review, is withdrawn. The observations and screenshots below are historical evidence of the failed implementation, not current approval. Functional checks remain evidence of the behavior they tested; they do not establish art fidelity. The replacement [eleven-section spec](../specs/bubblegum-time.md) and [architecture audit](../architecture/sculptures.md) govern the next execution. No authored replacement scene/assets have yet been delivered.
 
-**Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
+## Historical renewed independent review — October 2, 2026
+
+**Historical review claimed visual acceptance; that acceptance is withdrawn.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
 
 All four genuine values now sit inside cream physical drum apertures. Glossy stretched gum, cotton photographs and satin pins remain distinct. The fourth face initially escaped behind the balloon; moving the balloon/neck behind that aperture fixed the P1 in fresh renders.
 
@@ -69,7 +71,7 @@ Desktop uses an orthographic material stage (half-span 5.5) to align independent
 
 A subsequent source review corrected two interaction details: deformed belt vertices now recompute their normals, keeping the studio gloss attached to the moving surface, and even-numbered phone archive prints use the same small lift for keyboard focus as for hover instead of inheriting a desktop vertical stagger. The orthographic camera is the implementation contract; the 35 mm perspective belongs only to the visual reference.
 
-## Final independent art acceptance — 2026-10-02
+## Historical independent art acceptance — 2026-10-02
 
 **Observed desktop and phone visuals:** Reviewed the final desktop, 390 px and 320 px captures against this spec. The connected scalloped belt, pale drums, cropped balloon and diagonal black lettering retain separate material roles. At both phone widths the decorative title yields to a complete four-unit clock, a fully visible first print and a distinct Again/tally pair. Paper captions remain outside the elastic surface; the balloon can crop without making an action ambiguous. The supplied archive continuation captures retain mint space, a loose tether and irregular paper mounts below the hero.
 

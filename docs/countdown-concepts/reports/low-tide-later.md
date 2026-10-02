@@ -1,5 +1,15 @@
 # Art direction review — Low Tide, Later
 
+## Current status — architectural reset, October 2, 2026
+
+**Acceptance withdrawn. Current render rejected by the user; replacement planned and NOT IMPLEMENTED.** The previous reviews below are historical records of a failed implementation. Their acceptance of a quieter frontal interpretation relaxed the original concept instead of requiring it, and no longer governs further work.
+
+The original is an oblique, tactile cyanotype shoreline with substantial eroded time bodies, intersecting shallow water, worn/curling photographs and a credible found scallop. The live implementation is a frontal shore/water plate with upright unoccluded DOM digits/cards. It misses the spatial contact, silhouette, lighting and material density which make the source compelling. More texture settings cannot repair that arrangement.
+
+The [replacement spec](../specs/low-tide-later.md) and [runtime audit](../architecture/runtime-audit.md) require a world-space bed/water, physical image/glyph surfaces, scene-owned shoreline camera navigation and a native semantic/fallback adapter. Fair remains unchanged. A complete resting reference frame must pass comparison before cursor effects or remaining archive routes are expanded. No new render, motion or device-performance result is claimed in this architectural reset.
+
+---
+
 ## Final renewed independent review — October 2, 2026
 
 **Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.

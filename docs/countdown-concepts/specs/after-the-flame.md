@@ -1,74 +1,67 @@
 # After the Flame
 
-Revised material direction, October 2, 2026. This revision supersedes the original flat-plate acceptance. Read the [guide](../GUIDE.md), [report](../reports/after-the-flame.md) and actual reference together. All rendering settings below describe the current starting recipe; device frame-rate acceptance requires measurement.
+**Status: architecture redesign planned; NOT IMPLEMENTED. The current render is rejected.** Previous acceptance of an authored relief is withdrawn. Inspect the original image before authoring assets. This replaces the earlier execution spec; [architecture audit](../architecture/sculptures.md) explains the failure and construction plan. The Fair remains unchanged.
 
-![After the Flame reference](../references/after-the-flame.jpg)
+![Original After the Flame reference](../references/after-the-flame.jpg)
 
 ### Premise
 
-Someone postpones tomorrow and a spent candle rebuilds itself. The archive is embedded in the wax landscape. The satire should register through the reversal of a material process, with no explanatory paragraph.
+A spent candle rebuilds itself when someone postpones tomorrow. A miniature landscape of wax carries the clock and archive. The reversal of melting is the joke; no explanatory copy is needed.
 
 ### Art style and composition
 
-Build a macro wax canyon, cropped at left, with a quiet burgundy negative space and three recessed exhibits rising at right. The foreground carries a row of carved clock apertures and a shallow oval finger pool. The reference's uneven masses, pores and translucent drips are essential; neither a smooth beige cylinder nor freestanding rounded cards is an acceptable replacement.
+Preserve deep macro perspective: cropped tall candle mass on the left, poured-wax floor converging through the middle, rising eroded exhibit terraces at right and a quiet burgundy void above. The four clock cavities are part of a continuous foreground ridge; Again is a concave pool in the terrain. Thick banks, collapsed sheets and thin drips establish depth, not freestanding wax picture frames.
 
-The composition is a hybrid physical relief: the authored **art-only**, transparent canyon texture supplies its detailed sculpture and silhouette on a gently displaced mesh; real frames, lips, molten channels, flame and action rim occupy depth in front of it. The plate contains no labels, numbers, screens, crown or flame. Its static fallback is the same sculpture, with real native content placed independently. Do not replace the relief with a complete screenshot of the page.
-
-Desktop clock centers are approximately 40.5/53/65.5/78% across at 73.5% down. Game of Thrones occupies the high-right recess; Dexter the lower-right recess; Severance the middle terrace. Keep the existing real archive pages and every complete title visible. The ordinary archive continuation repeats irregular wax mounts with open dark intervals, rather than boxed shelf rows.
+The three original first exhibits keep their hierarchy: Game of Thrones high-right, Dexter lower-right, Severance middle terrace. All 13 actual gallery works inhabit successive uneven terraces along the same channel; no repeated CSS shelf/grid continuation. Physical inset plaques/links also preserve More/archive destinations, collapsed variants, the Dexter timeline and live Severance site with original URLs/names/LIVE convention.
 
 ### Palette and typography
 
-Wax `#E8C797`, lit thin edges `#F3D5A5`, void `#190D17`, wick `#26171B`, restrained cool rim `#718DBD`, flame orange `#FF982E`. Shadows lean burgundy or slate, never neutral grey. Georgia owns digits, names, Again and the one hidden phrase; Arial owns navigation/status. Limit visible copy to existing names, D/H/M/S, Again and the actual press count.
+Cream wax #E8C797, warm thin edges #F3D5A5, burgundy void #190D17, charred wick #26171B, restrained slate rim #718DBD, flame #FF982E. Georgia for printed/engraved digits, captions and Again; Arial for small native navigation/status. Limit labels to genuine names/seasons, D/H/M/S, Again, real tally and necessary destinations. No ritual instructions or extra slogans.
 
 ### Geometry and materials
 
-- Canyon: 120 × 84-segment relief, full transparent silhouette. Keep displacement to broad terrace depth plus small 0.03–0.07-unit folds. The alpha contour owns the smooth canyon opening; never delete individual triangles to create a stair-step hole.
-- Clock: four irregular superellipse frames, 1.58 × 1.64 units, 0.15-unit lip thickness, uneven corners and seven short hanging lip threads per frame. The flat interior is recessed 0.13 units and receives the true native reel surface. No square DOM backing in a healthy scene.
-- Exhibits: three 3.15 × 2.06-unit organic frames. Archive centers remain flat and unobstructed; upper drips stop outside the live hit region. Labels occupy the wax below the image, except when a particular overlap requires an above-frame caption.
-- Action: a 1.45-radius oval pool, compressed vertically to 61%, bounded by a 0.12-unit wax rim. Again and tally are projected onto this physical surface; remove the independent CSS button pill while graphics work.
-- Material: 256² deterministic packed roughness/thickness-proxy and bump maps. Cooled wax starts at roughness 0.78, clearcoat 0.12; molten channels at roughness 0.20, clearcoat 1.0. Normal-scale grain is local to wax rather than screen noise. Thin-edge warmth is a bounded shader approximation using grazing normal and the packed blue-channel proxy, not a claim of volumetric scattering.
-- Contact: real shallow frame depth and the one shadowed key anchor foreground surfaces. Preserve pores and larger sculptural detail from the authored canyon texture rather than trying to recover them with an all-over noise filter.
+Follow the selected [Blender 4.5.14 LTS asset workflow](../architecture/assets.md), [composition/type anchors](../architecture/composition.md), [input ownership](../architecture/input.md) and [physical inventory](../architecture/INVENTORY.md). Tool setup and authored assets remain production gates, not existing deliverables. Any type/lens choice below is provisional until it passes the original-reference comparison.
 
-`countdowns/concepts/liquid-materials.js` owns the small material/environment library. The canyon image's provenance remains under `assets/concepts/after-the-flame/`. No content is baked into art maps.
+Author actual volumetric terrain: connected wax base, tapered left candle wall, channel floor, right stepped terraces and integrated recesses. Broad banks/folds/cavities/negative space are geometry. Separate thin sheets and drips have real roots in that mass. A photographed canyon on a displaced plane, arbitrary cylinders or repeated tube pastry rims is rejected.
+
+Create an editable high-resolution sculpt or deliberately authored implicit-surface source, with exported static runtime mesh levels, UVs, material regions, pivots/morphs and provenance. Use the pinned Blender 4.5.14 LTS workflow after its tool setup/version gate; it is not installed yet. Bake fine pores/ash/microfolds into matched normal/AO/roughness/thickness maps. Separate matte cooled wax, warm thin wax, wet molten films, wick and tarnished crown; albedo contains no baked camera perspective or specular lighting.
+
+Four slightly staggered flat reading tiles sit inside one sculpted foreground ridge. Dynamic ink-like reel textures mirror the real shared model on those 3D surfaces. The landscape, cavities, number surfaces and hit proxies share transforms/occlusion. Real screenshot centers stay flat, unobstructed and unmodified; their caption strips belong to wax beneath them. Again has a genuine shallow finger concavity with a wet rim, not an oval CSS pill.
 
 ### Camera and lighting
 
-Use a frontal orthographic macro relief camera, vertical half-span 5.5, at `(0,0,18)`. Its frontal projection aligns native live content precisely with physical faces; the canyon texture supplies the authored oblique macro perspective. Do not add camera sway that would expose projection mismatch.
+Use a low macro perspective camera, initially near 30° vertical FOV, tuned against reference mass/negative space. A frontal orthographic plate is rejected. The candle crop, channel and rising right terraces must already match in a clay render before materials. Scrolling advances a shallow authored camera rail around the channel and terraces; no maze, free orbit or mandatory game controls. Focus/direct selection frames the same physical exhibit.
 
-Start exposure at 0.98. Warm directional key: `#FFB661`, intensity 1.8, position `(-7,7,12)`. Cool rim: `#718DBD`, intensity 1.05, position `(8,4,1)`. Burgundy/blue hemisphere fill: intensity 0.24. Actual flame-local point: `#FF982E`, intensity 14, 13-unit range, 1.7 decay. Key shadow uses 2048 desktop / 1024 phone, radius 4, ±12 × ±9 tightly bounded volume, 0.025 normal bias. Avoid hard theatrical cutout shadows around every frame.
-
-A 128 × 64 procedural HDR environment places a broad warm window and narrow cool reflection strip in wax highlights. PMREM is created once; environment intensity 0.45. Canyon diffuse/emissive detail preserves its reference sculpture under the physical lighting; emissive intensity begins at 0.32. Tune this against the actual reference before increasing bloom or exposure.
+The flame is the nearby warm source, supported by a broad dim warm key for readable tiles and archive surfaces. A cool rear-right rim separates distant thin wax; burgundy fill stays low. Build the reflection source coherently from these lights. Use thickness-dependent edge warmth/transmission or a bounded subsurface approximation, explicitly not full volumetric scattering. Keep cold wax matte beside narrow wet highlights. Bake contact/crevice AO separately. No emissive photographic canyon, plastic clearcoat everywhere, dark duplicate rims or full-scene bloom; a tiny local flame halo is optional.
 
 ### Interaction contract
 
-Native links, clock, reset, tally and status remain genuine DOM surfaces, projected onto the relief. Every photograph opens its preserved page through the common overlay; modifiers and middle-click keep ordinary new-tab behavior. Freeze material choreography during a preview and restore the same pose on close. No decorative gesture mutates countdown state.
+Register every action's semantic ID/anchor, visual object, enlarged non-shadowing hit proxy, focus pose and flat surface corners. At-rest archive cavities read as selectable; hover/focus warms only their rim and stills nearby motion. One activation frames the face and opens the existing genuine iframe. Keep modifier/middle-click links, readable modal dimensions, Escape/close, viewport-aligned origin and exact pose/focus restoration. Do not distort an archive over curved wax.
 
-Again pending presses the wax pool slightly into its surface without creating new time or a success animation. A confirmed server success alone causes wax to climb and the existing reel/tally response. A remote observation lifts the flame once, without replaying local reverse flow. Errors retain the real state and short native status.
-
-Exactly one small tarnished crown lives in a foreground crease. Hover/focus gently angles it; click/Enter reveals **Long may I count.** beside the clue. It does not require a reset. Keyboard focus remains active if the pointer leaves.
+Pending Again depresses its pool slightly with no wax reversal or invented state. Confirmed success alone reverses melting; failure releases it and retains the existing short status. Remote observation gives a restrained flame response. Touch cancellation/lost capture/blur/modal opening ends all gesture input. Exactly one crown rests in a foreground crease with a visible gold edge and 44 px semantic equivalent; focus/touch activation reveals Long may I count. Navigation/reset never depend on finding it.
 
 ### Motion choreography
 
-The flame leans at most 0.12 units toward a nearby pointer, with a low 0.045-unit idle sway. Its actual light intensity varies by only 0.4 around 14; it never strobes. Flame lift during success peaks at 0.23 units.
+The terrain rests. Flame shape and local light drift are correlated and small, never random strobe. Pointer proximity bends the tip slightly; it is decorative.
 
-Twelve reusable molten strands remain fully invisible at rest. For 1.5 seconds after confirmed success they climb approximately 0.75 units, stretch at most 30%, then disappear. Keep upward motion plainly legible beside the candle and away from clock/image centers. Existing numerical reels retain 420 ms ordinary ticks and the 1080 ms plus 45 ms stagger reset model. A remote flame lift lasts 0.4 seconds at 0.08-unit amplitude. No accumulating wax geometry or permanent puddle growth.
+On confirmed success, a brief amber vein moves from the pool to the candle, then selected molten films retract uphill and a small wick/tip shape recovers over about 1.5 s. Use authored drip morphs or surface-space flow along actual terrain channels, not floating tubes appearing above a picture. Bound restored silhouette near 12–18% of the visible candle tip and settle to the same composition. Existing 420 ms ticks and 1080 ms/45 ms stagger reset reels run concurrently. Repeats retarget current bounded phase; remote observation gets only a small 400 ms flame pulse. Freeze decorative phase while a preview is open and resume without skipping.
 
 ### Effects and render budget
 
-The additive flame mask and tiny bounded halo are the only glow effects. Use the HDR reflection and actual wax roughness for sheen; no full-scene bloom, lens blur, chromatic aberration, confetti or generic particle curtain. One shadowed key, one shared material library, bounded relief/frame geometry and twelve flow meshes. Dispose the PMREM target on scene teardown; the shared runtime disposes visible textures/materials/geometry. Stop decorative work offscreen, hidden and inside previews.
+Use static sculpt levels and baked detail with one tight shadowed source by default; no real-time fluid solver, new framework or counter service. Begin with profiled targets near 140k desktop / 70k phone visible triangles and approximately 70 draw calls. Retain main banks/sheets/cavities before dropping ash, halo and minor drips. Bounded morph/flow buffers, event-driven numeral texture updates and hidden/offscreen pauses are required; targets are not measured performance claims.
 
 ### Responsive and fallback behavior
 
-At 390 and 320 px, keep the cropped candle on the left, two physical clock pairs, the oval pool below them, a large first exhibit above and two lower exhibits along native scroll. Scale frame geometry and projection widths together; do not shrink only the mesh while retaining desktop-sized DOM surfaces. The current phone clock scale is 0.64 and exhibit scale 0.68. Keep every image and name fully on-screen and preserve 44 px targets.
+Author portrait resting poses in the same landscape: timer/pool with candle edge, a large first exhibit, then rising terrace sequence. Do not shrink desktop scenery around an unrelated two-by-two HTML clock. Keep safe legible number faces, all captions and 44 px targets at 390/320. Reduced motion chooses poses immediately and shows immediate true values; remove flame drift, flow and camera travel while retaining all actions.
 
-Reduced motion removes flame lean/light drift, climbing strands and crown tilt while updating real values immediately. Graphics loss removes projection and restores the authored canyon fallback plus real native controls and archive. Status/expired note/hidden phrase must never sit over Again or its tally.
+Keep a complete illustrated native clock/actions/archive during asset loading and restore it on graphics/asset failure. Scene promotion waits for required mesh/maps/fonts/initial genuine stills; no blank primitives. A fallback can be rendered from authored wax assets without baked live values/screenshots. All real archive/More/timeline/live destinations remain usable after failure.
 
 ### Implementation boundaries
 
-Static site and vendored Three.js only. Shared API, numerical model, faithful archive destinations and common preview remain untouched. Changes belong to the concept module/style, the material helper and its documented art assets. No extra deadline, package/build system, unbounded effects or autoplay sound.
+Keep the static site, shared API/reels, genuine preserved pages and existing preview behavior. Healthy scene visuals may replace ordinary page framing; native controls form the accessible semantic twin and focus visibly selects/frames an object. Root owns generator/runtime integration. No point-pinned upright DOM screens, photographic relief as navigable geometry, three hero mounts plus HTML shelves, second timer/tally, unbounded wax growth or new backend. Deliver editable model source and a manifest for geometry/LODs/maps, reading surfaces, camera poses, interaction proxies, morphs and resource ownership.
 
 ### Fidelity checks
 
-Compare desktop, 390 and 320 rendered frames against the actual reference, including a motion frame. Reject stair-step silhouette gaps, detached tiny flame, rope-like cylindrical drips, plastic frame bubbles, square live backings and excessively hard shadows. Confirm tactile pores, warm flame/cool rim separation and real exhibit mounting at rest. Test actual reset/tally, pending/error/429, remote response, full-image preview/focus return, crown, reduced motion, resize and graphics loss. Renewed visual acceptance and actual runtime evidence are recorded in the report and shared QA.
+Approve clay geometry from initial, slight side and portrait cameras first: left crop, channel depth, burgundy void, rising terrace sequence and integrated foreground clock/pool. Reject assets requiring baked perspective to look deep, detached pastry rims or repeated tentacles. Then polish one wax cavity with an actual screenshot, one live tile and its local flame/cool-rim lighting before building the whole archive.
 
-The final cooled aperture rims use shallow irregular tube relief, reduced clearcoat (0.12, roughness 0.50), and matte wax base roughness 0.78. Molten flow/pool detail remains optically separate. At ≤360 px, physical exhibit frames and native pin widths both scale to 56%; the first exhibit centres at 57% rather than being clipped off the right edge. The canyon remains authored relief, not a free-orbit wax mesh.
+Compare the full resting frame and one visible uphill-flow frame to the original at the same viewport/state. Physical highlights and occlusion must remain coherent during camera movement. Only then verify all destinations, true reset/tally, pending/error/429/repeat/remote, preview/focus return, touch cancellation, reduced motion, loading and graphics failure. Functional checks or a similar background image do not establish visual acceptance.

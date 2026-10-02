@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-02",
+  "origin": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/",
+  "artVersion": "4d7a9cd8ba",
+  "requestedViewport": [
+    1487,
+    1058
+  ],
+  "actualScreenshotDimensions": {
+    "tomorrows-roadworks": [
+      1487,
+      1058
+    ],
+    "bubblegum-time": [
+      1472,
+      1047
+    ],
+    "after-the-flame": [
+      1472,
+      1047
+    ],
+    "low-tide-later": [
+      1472,
+      1047
+    ],
+    "not-yet-ripe": [
+      1472,
+      1047
+    ],
+    "still-drawing-tomorrow": [
+      1472,
+      1047
+    ],
+    "held-in-suspense": [
+      1472,
+      1047
+    ]
+  },
+  "note": "Native screenshots are contained without stretching; JPEG copies/pairs for portable review, original PNGs retained locally. This is current rejected render evidence, not a new implementation."
+}

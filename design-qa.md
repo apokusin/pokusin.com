@@ -1,8 +1,10 @@
 # Countdown worlds — design QA
 
-**Result: passed.** All seven non-Fair concepts have received the requested material/lighting revision, and the Fair review corrections pass native keyboard review. All eight remain selectable implementations; no final replacement is selected. The historical first-pass acceptance below does not substitute for this renewed evidence.
+**Current visual verdict: seven non-Fair concepts rejected by the user. Previous visual passes are withdrawn.** The Fair remains accepted. Functional checks recorded below remain historical behavior evidence; they do not establish reference fidelity. The [architecture reset](docs/countdown-concepts/architecture/README.md), replacement specs and [skeptical art review](docs/countdown-concepts/architecture/challenge.md) define the next execution plan. No replacement scene/model/runtime has been implemented by that reset.
 
-## Seven material worlds — October 2, 2026
+Fresh published [architecture evidence](docs/countdown-concepts/architecture/evidence/README.md) compares the current rejected versions directly with the original references. This review confirms the shared upright DOM/three-mount hero/gallery continuation failure. It does not re-certify mobile interactions or performance. Fair code/material/style files and backend behavior are outside this correction.
+
+## Historical seven material worlds — acceptance superseded
 
 The actual concept references and uniform eleven-section specs were read before implementation. New recipes distinguish macro silhouette, geometry/albedo/height/roughness, reflection source, key/fill/rim and shadow/contact character, motion amplitudes/lifetimes, true controls, phone recomposition and failure behavior. Independent art direction evaluated fresh renders and returned corrections, which were incorporated into source and specs.
 

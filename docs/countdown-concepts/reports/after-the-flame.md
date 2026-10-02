@@ -1,8 +1,10 @@
 # Art direction review — After the Flame
 
-## Final renewed independent review — October 2, 2026
+> **Current status — rejected; architecture redesign is not implemented.** On 2 October 2026 the user rejected this render as failing to resemble the original concept. Every prior visual acceptance, including the later material review, is withdrawn. The observations and screenshots below are historical evidence of the failed implementation, not current approval. Functional checks remain evidence of the behavior they tested; they do not establish art fidelity. The replacement [eleven-section spec](../specs/after-the-flame.md) and [architecture audit](../architecture/sculptures.md) govern the next execution. No authored replacement scene/assets have yet been delivered.
 
-**Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
+## Historical renewed independent review — October 2, 2026
+
+**Historical review claimed visual acceptance; that acceptance is withdrawn.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
 
 Irregular matte cooled-wax lips integrate with the detailed canyon relief; warm flame, burgundy void and cooler edges retain the macro atmosphere. The first exhibit and its name now fit at 320 px after matching mesh/pin scaling.
 
@@ -69,7 +71,7 @@ A final independent desktop comparison found the upper Game of Thrones caption p
 
 A subsequent source review separates the crown's keyboard focus from pointer hover, so pointer departure cannot cancel a still-focused discovery cue. Even-numbered phone archive prints now use the same local 2 px lift for keyboard focus as for hover, preserving the phone arrangement rather than inheriting the desktop vertical stagger.
 
-## Final independent art acceptance — 2026-10-02
+## Historical independent art acceptance — 2026-10-02
 
 **Observed desktop and phone visuals:** Reviewed the corrected desktop, 390 px and 320 px captures against this spec. The monumental left wax mass, burgundy void, recessed clock and ascending archive ledges retain the ritual composition. The upper Game of Thrones caption now reads in full above its recess rather than disappearing behind Severance. Phones preserve the edge candle, first print, complete paired clock and clearly rimmed Again pool. The supplied archive continuation captures retain warm irregular mounts against the dark field.
 
