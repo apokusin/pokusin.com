@@ -1,0 +1,126 @@
+{
+  "prepared": "2026-10-02",
+  "status": "unselected exploration references; no new theme implementation",
+  "concepts": [
+    {
+      "id": "tomorrows-roadworks",
+      "title": "Tomorrow\u2019s Roadworks",
+      "round": "retained-references",
+      "displayOrder": null,
+      "reference": "references/tomorrows-roadworks.jpg",
+      "spec": "specs/tomorrows-roadworks.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-9ed386b7-15ab-4277-9170-38108cc4616c.png",
+      "originalPngSha256": "502ff2e3dc3b02809d53aeb72be4c18f50a6bed5696b17780a0964c08346b54f",
+      "referenceJpgSha256": "1c30c484ad608fc407b53a91e69312797291f2090942eadb76a04511f4c75e2f"
+    },
+    {
+      "id": "bubblegum-time",
+      "title": "Bubblegum Time",
+      "round": "retained-references",
+      "displayOrder": null,
+      "reference": "references/bubblegum-time.jpg",
+      "spec": "specs/bubblegum-time.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-e90f63f8-23b3-453a-ac4f-7245a534be6e.png",
+      "originalPngSha256": "6297efd06438b2527fdebb9545b6a2b1a849a3d2facdf2d30e4821178fc09106",
+      "referenceJpgSha256": "5859e8fd35e791a369d0c4ac1475facaef6d32019ebf1868cf20a837532cd4e9"
+    },
+    {
+      "id": "after-the-flame",
+      "title": "After the Flame",
+      "round": "new-explorations",
+      "displayOrder": 1,
+      "reference": "references/after-the-flame.jpg",
+      "spec": "specs/after-the-flame.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-f4650a5f-c0dc-428a-b0af-061eb7192ba4.png",
+      "originalPngSha256": "b13f7610a9b2541343fa7fe78941a5a65daadd853d85de482160eddad7183a0d",
+      "referenceJpgSha256": "be9db46c6986bb53a38ab2a3f0c7a66f0e845123f5885ed2ee24ed541031ebba"
+    },
+    {
+      "id": "low-tide-later",
+      "title": "Low Tide, Later",
+      "round": "new-explorations",
+      "displayOrder": 2,
+      "reference": "references/low-tide-later.jpg",
+      "spec": "specs/low-tide-later.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-6dbe3343-c1e1-479c-84cc-934d84bb5f0d.png",
+      "originalPngSha256": "b9a74cf89e6b493b8133cc351807c2733d358f7ae9e4fe33d7ebdae6f207bd25",
+      "referenceJpgSha256": "54b52e992d4a7acbb96ff5f9bbdd09ebec10d1402dd08f36802f447a589defc0"
+    },
+    {
+      "id": "not-yet-ripe",
+      "title": "Not Yet Ripe",
+      "round": "new-explorations",
+      "displayOrder": 3,
+      "reference": "references/not-yet-ripe.jpg",
+      "spec": "specs/not-yet-ripe.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-dfe441fa-412e-4b62-8dcb-d15e4dea174c.png",
+      "originalPngSha256": "39178571c4ccd9dfaba81ead521b26bf8f498de522da5f0fa895b18588da443d",
+      "referenceJpgSha256": "92f5afc3591b2b6767f64fd90f90b6646679885703f0e902c3bedb4833455b90"
+    },
+    {
+      "id": "still-drawing-tomorrow",
+      "title": "Still Drawing Tomorrow",
+      "round": "new-explorations",
+      "displayOrder": 4,
+      "reference": "references/still-drawing-tomorrow.jpg",
+      "spec": "specs/still-drawing-tomorrow.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-db396a57-7f12-4b26-83dd-50babd61b769.png",
+      "originalPngSha256": "8127a6365f5a7c0af2e7e0e0e50dd9447b018c166ed7ccaf583f21b2aee1fa0e",
+      "referenceJpgSha256": "94957877324762ee9b69ebba404dc06b13d0a3aa4c9a7b330df0be3e23120803"
+    },
+    {
+      "id": "held-in-suspense",
+      "title": "Held in Suspense",
+      "round": "new-explorations",
+      "displayOrder": 5,
+      "reference": "references/held-in-suspense.jpg",
+      "spec": "specs/held-in-suspense.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-793f81de-4e5c-45ec-80e1-6469f6ca0312.png",
+      "originalPngSha256": "82dfc1f7d48c033514cd4f80f03e162594957047e31a0a11d9b660a5d12b1725",
+      "referenceJpgSha256": "51e6a4aef15795b4ee0d695d841ddbc3e43c73149ff88223576a61af4480a807"
+    },
+    {
+      "id": "the-almost-fair",
+      "title": "The Almost Fair",
+      "round": "new-explorations",
+      "displayOrder": 6,
+      "reference": "references/the-almost-fair.jpg",
+      "spec": "specs/the-almost-fair.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-858abbdc-3414-4588-a16a-f339f49f3a75.png",
+      "originalPngSha256": "52bebfe28f217815dd5a0f4a8b4d688175ca84d52b1411618de7712f29465661",
+      "referenceJpgSha256": "3627bd3acbbddaa30bdd1192ae2047a4a274c8d23b6d760d4aece64c126b7875"
+    }
+  ]
+}
