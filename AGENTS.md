@@ -1,6 +1,6 @@
 # AGENTS.md — pokusin.com
 
-A hand-written, **fully static** personal site. There is **no build step and no `package.json`** — files are served verbatim. Deployed on Vercel from the `master` branch (pushes auto-deploy to pokusin.com); zero-config (no `vercel.json`). The countdowns archive currently lives on the `countdowns-archive` branch / open PR.
+A hand-written personal site. There is **no site build step and no `package.json`** — files are served verbatim. Deployed on **Cloudflare Pages**, project `pokusin-com`, from the `master` branch (pushes auto-deploy to pokusin.com). Only `/api/countdown` uses a Pages Function and D1; all pages and archive files remain static. The countdown themes are being explored in PR #12 on `codex/next-countdown`.
 
 ## Files
 - `index.html`, `styles.css` — the home "link-in-bio" page.
@@ -13,6 +13,24 @@ A hand-written, **fully static** personal site. There is **no build step and no 
 python3 -m http.server 8000 --bind 127.0.0.1   # → http://127.0.0.1:8000/  and  /countdowns/
 ```
 Bind to `127.0.0.1` only, and kill the server when finished.
+
+For the shared countdown API, use Wrangler's local D1 instead:
+```
+wrangler d1 execute pokusin-countdown --local --file countdowns/schema.sql
+wrangler pages dev . --ip 127.0.0.1 --port 8000
+```
+The Python server previews the layout but cannot run the shared reset API.
+
+## Shared countdown and themes
+
+- `?theme=royal` (default) and `?theme=control` explore two gallery designs.
+- Edit gallery markup/CSS in `generate.py`; edit the shared timer and Three.js scenes in `countdowns/themes.js`.
+- `functions/api/countdown.js` reads or atomically resets one D1 row: deadline plus total presses. Each press moves the deadline one calendar month ahead in UTC, clamped at month end.
+- `wrangler.toml` supplies the `COUNTDOWN_DB` binding and `COUNTDOWN_KEY`: `live` for production, `preview` otherwise. Preview presses never alter the live row. Local development uses local storage.
+- `_routes.json` runs the Function only for `/api/countdown`. Keep the rest of the site static.
+- Initialize the remote schema once with `wrangler d1 execute pokusin-countdown --remote --file countdowns/schema.sql`. It is idempotent.
+- Run `node countdowns/check-shared-countdown.mjs` with Node 22+ for the small backend checks. No dependencies are needed.
+- Three.js 0.180.0 is vendored under `countdowns/assets/vendor/` with its license. Both scenes have illustrated fallbacks and respect reduced motion.
 
 ## The /countdowns archive
 

@@ -129,26 +129,12 @@ SHOW_COUNT = len(SHOWS)
 TOTAL = 8 + 10 + 3 + 7 + 4 + 1 + 2  # GoT8 Dexter(3+7eps) Sherlock3 Archer7 BB4 HoC1 Sev2 = 35
 NEXT_COUNTDOWN_DATE = "2026-11-01T00:00:00-07:00"  # One month from October 1, Pacific time.
 
-NEXT_COUNTDOWN_JS = """<script>(function(){
-  var timer = document.getElementById('next-countdown-timer');
-  var target = Date.parse(document.getElementById('next-countdown-date').dateTime);
-  function tick(){
-    var seconds = Math.max(0, Math.ceil((target - Date.now()) / 1000));
-    if(!seconds){ timer.textContent = 'Time to start another countdown.'; return; }
-    var days = Math.floor(seconds / 86400);
-    var hours = Math.floor(seconds % 86400 / 3600);
-    var minutes = Math.floor(seconds % 3600 / 60);
-    timer.textContent = days + 'd ' + String(hours).padStart(2,'0') + 'h ' +
-      String(minutes).padStart(2,'0') + 'm ' + String(seconds % 60).padStart(2,'0') + 's';
-  }
-  tick(); setInterval(tick, 1000);
-  var crown = document.getElementById('countdown-crown');
-  var secret = document.getElementById('countdown-secret');
-  crown.addEventListener('click', function(){
-    secret.hidden = !secret.hidden;
-    crown.setAttribute('aria-expanded', String(!secret.hidden));
-  });
-})();</script>"""
+THEME_HEAD = """<script>
+(function(){var theme=new URLSearchParams(location.search).get('theme');
+ document.documentElement.dataset.theme=theme==='control'?'control':'royal';})();
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+"""
 
 # ---------------------------------------------------------------------- CSS
 CSS = """:root{
@@ -396,7 +382,7 @@ OVERLAY_JS = """<script>(function(){
   var srcCard=null,DUR=440,EASE='cubic-bezier(.2,.8,.2,1)',ft=null;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fullCountdownMedia=matchMedia('(max-width: 640px)');
-  function shouldOpenFullCountdown(){ return fullCountdownMedia.matches; }
+  function shouldOpenFullCountdown(){ return !document.documentElement.classList.contains('gallery') && fullCountdownMedia.matches; }
   frame.addEventListener('load',function(){ if((frame.src||'').indexOf('about:blank')<0) frame.classList.add('loaded'); });
   function map(card){ // uniform scale + translate so the dialog starts centered on the card frame
     var dr=dialog.getBoundingClientRect(), cr=card.querySelector('.frame').getBoundingClientRect();
@@ -489,15 +475,181 @@ CAROUSEL_JS = """<script>(function(){
   document.querySelectorAll('[data-carousel]').forEach(setup);
 })();</script>"""
 
+CSS += """
+/* Two complete archive treatments. Detail pages retain their archival layout. */
+html.gallery{--bg:#f6f2e9;--fg:#24211b;--muted:#726b60;--card:transparent;--line:#d6cbb5;--line-strong:#baa57a;--chip:#ece3d1;--accent:#9c793c;--live:#914834;--shadow:none;--shadow-hover:none;color-scheme:light}
+.gallery body{background:var(--bg)}
+.gallery .wrap{max-width:1280px;padding:24px 44px 42px}
+.gallery .masthead{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:20px;gap:20px}
+.gallery .home-link{font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.theme-picker{display:flex;gap:4px;font-size:11px;letter-spacing:.06em}
+.theme-picker a{padding:8px 12px;border:1px solid transparent;border-radius:2px;color:var(--muted)}
+html[data-theme=royal] [data-theme-link=royal],html[data-theme=control] [data-theme-link=control]{border-color:var(--line-strong);color:var(--fg)}
+.gallery a:focus-visible,.gallery button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.gallery .archive-heading{text-align:center;padding-top:30px}
+.gallery .eyebrow{font-size:10px;letter-spacing:.24em;margin:0 0 9px}
+.gallery h1.title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(54px,6.6vw,90px);text-transform:uppercase;letter-spacing:.045em;line-height:1}
+.gallery .lede{font-size:14px;max-width:none;margin-top:12px}
+.archive-years{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;letter-spacing:.22em;margin-top:12px}
+.gallery .next-countdown{position:relative;height:400px;margin:12px 0 0;padding:0;border:0;text-align:center;isolation:isolate}
+.royal-guardians{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;z-index:-1}
+.countdown-caption{position:relative;z-index:2;padding-top:9px}
+.gallery .next-countdown h2{display:block;font-size:10px;font-weight:500;letter-spacing:.23em;text-transform:uppercase}
+.countdown-caption time{display:block;font-size:11px;margin-top:5px;color:var(--muted)}
+.royal-clock{position:absolute;left:28%;right:28%;top:130px;display:grid;grid-template-columns:1fr 1fr 1.7fr 1fr 1fr;gap:14px;align-items:center;z-index:3;pointer-events:none}
+.clock-unit>span{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(42px,4.6vw,64px);font-variant-numeric:tabular-nums;line-height:1}
+.clock-unit>small{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:16px;color:var(--muted);margin-top:7px}
+.scene-stage{position:absolute;width:330px;height:285px;left:50%;top:65px;transform:translateX(-50%)}
+#theme-scene{width:100%;height:100%;display:block;opacity:0;touch-action:pan-y}
+.scene-ready #theme-scene{opacity:1}
+.scene-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none}
+.gallery .scene-ready .scene-fallback{display:none!important}
+.control-fallback,.control-only{display:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.control-fallback img{width:100%;height:auto;display:block}
+.fallback-digits{position:absolute;left:38.5%;top:56%;transform:translate(-50%,-50%);font-family:monospace;font-size:clamp(11px,3vw,34px);letter-spacing:.04em;color:#ee6655;white-space:nowrap;pointer-events:none}
+.gallery .scene-ready .fallback-digits{display:none!important}
+.scene-action{position:absolute;left:30%;top:20%;width:40%;height:65%;background:none;border:0;border-radius:12px;cursor:pointer;color:var(--fg)}
+.scene-hint{position:absolute;bottom:7px;left:0;right:0;font-size:11px;color:var(--muted);letter-spacing:.03em}
+.gallery .countdown-secret{position:absolute;left:0;right:0;bottom:24px;font-family:'Cormorant Garamond',Georgia,serif;font-size:23px;font-style:italic;color:var(--fg)}
+.royal-reset{position:absolute;bottom:2px;left:50%;transform:translateX(-50%);font-family:Georgia,serif;font-size:12px;letter-spacing:.04em;padding:9px 18px;border:1px solid var(--line-strong);background:var(--bg);color:var(--fg);cursor:pointer;white-space:nowrap}
+.royal-reset:hover{background:var(--chip)}
+.gallery .next-countdown{margin-bottom:36px}
+.gallery[data-theme=control] .next-countdown{margin-bottom:36px}
+.gallery .scene-hint{bottom:44px}
+.gallery .countdown-secret{bottom:72px}
+.reset-count{position:absolute;top:100%;left:0;right:0;font-size:10px;color:var(--muted);padding-top:10px}
+[data-theme=control] .royal-reset{display:none}
+.countdown-ended{position:absolute;left:0;right:0;bottom:0;font-size:12px}
+.gallery .shownav{justify-content:space-between;margin-top:12px;padding:12px 0;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);border-radius:0;background:var(--bg);gap:0}
+.gallery .shownav a{border-radius:0;flex-direction:column;gap:3px;padding:7px 10px;font-size:10px;letter-spacing:.055em}
+.gallery .shownav .nv-e{font-family:Georgia,serif;color:var(--accent);font-size:11px}
+.gallery .shelf{display:block;margin-top:36px;padding-top:0;border:0;scroll-margin-top:94px}
+.gallery .shelf-aside{justify-content:flex-start;margin-bottom:20px}
+.gallery .shelf-copy{display:grid;grid-template-columns:62px 1fr;column-gap:16px;align-items:center}
+.gallery .shelf-kicker{grid-column:2;grid-row:2;font-size:10px;margin:2px 0 0;letter-spacing:.16em}
+.gallery .shelf-id{display:contents}
+.gallery .shelf-emoji{grid-column:1;grid-row:1 / 4;font-family:'Cormorant Garamond',Georgia,serif;border:1px solid var(--line-strong);font-size:50px;line-height:1;text-align:center;padding:7px 0;color:var(--accent)}
+.gallery .shelf-name{grid-column:2;grid-row:1;font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(27px,3.4vw,43px);line-height:1.1;letter-spacing:-.02em}
+.gallery .shelf-origin{grid-column:2;grid-row:3;font-size:10px;margin-top:5px}
+.gallery .shelf .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.gallery .card{border:0;border-radius:0;box-shadow:none;background:none;overflow:visible}
+.gallery .card:hover{transform:translateY(-3px);box-shadow:none}
+.gallery .frame{aspect-ratio:16/9;border:3px double var(--line-strong);border-radius:0;box-shadow:0 3px 8px #34271812}
+.gallery .body{padding:11px 2px 0}
+.gallery .label{font-size:13px;font-weight:600}
+.gallery .row{margin-top:4px}
+.gallery .year{font-size:10px}
+.gallery .desc{font-size:11px;line-height:1.6;margin-top:6px;max-width:46ch}
+.gallery .shelf+.shelf{padding-top:30px;border-top:1px solid var(--line-strong)}
+.gallery .more.shelf-more{margin-top:15px;font-size:11px}
+.gallery .foot{margin-top:40px;font-size:11px}
+.gallery .eyebrow,.gallery .title,.gallery .lede,.gallery .shelf{animation:none}
+html.gallery[data-theme=control]{--bg:#e9e6df;--fg:#1b2225;--muted:#626565;--card:#f0ede5;--line:#bbb8ae;--line-strong:#a8a79e;--chip:#dedad1;--accent:#982c28;--live:#982c28}
+[data-theme=control] body{font-family:'IBM Plex Mono',monospace;letter-spacing:-.025em}
+[data-theme=control] .home-link{letter-spacing:.13em}
+[data-theme=control] .archive-heading{text-align:left;padding-top:32px}
+[data-theme=control] h1.title{font-family:'Archivo Black',Impact,sans-serif;font-size:clamp(66px,8vw,112px);text-transform:none;font-weight:400;letter-spacing:-.045em}
+[data-theme=control] .lede{font-size:14px;letter-spacing:.02em}
+[data-theme=control] .archive-years{display:none}
+[data-theme=control] .next-countdown{height:275px;margin:0 0 36px}
+[data-theme=control] .royal-guardians,[data-theme=control] .royal-clock,[data-theme=control] .royal-fallback,[data-theme=control] .royal-only{display:none}
+[data-theme=control] .control-fallback,[data-theme=control] .control-only{display:initial}
+[data-theme=control] .control-fallback{inset:auto;left:7.5%;top:50%;width:85%;height:auto;transform:translateY(-50%)}
+[data-theme=control] .scene-stage{width:100%;height:275px;left:0;top:0;transform:none}
+[data-theme=control] .countdown-caption{position:absolute;top:105px;left:5%;padding:0;text-align:left;max-width:115px;pointer-events:none}
+[data-theme=control] .next-countdown h2{font-size:11px;letter-spacing:.06em;font-weight:500}
+[data-theme=control] .countdown-caption time{font-size:10px;line-height:1.7;margin-top:9px}
+[data-theme=control] .scene-action{left:73%;top:20%;width:19%;height:65%}
+[data-theme=control] .countdown-secret{font-family:'IBM Plex Mono',monospace;font-size:13px;font-style:normal;bottom:0;left:68%;right:0}
+[data-theme=control] .scene-hint{bottom:0;left:0;right:auto;font-size:10px}
+[data-theme=control] .shownav{margin-top:20px;padding:9px 12px;border:1px solid #b2afa5;background:#f0ede5;box-shadow:0 2px 3px #24231d24,inset 0 1px 0 #fff;border-radius:8px}
+[data-theme=control] .shownav a{font-size:10px;text-transform:uppercase;letter-spacing:0;padding:8px 10px}
+[data-theme=control] .shownav a[aria-current=true]{color:var(--accent)}
+[data-theme=control] .shownav .nv-e{font-family:'IBM Plex Mono',monospace;font-size:9px}
+[data-theme=control] .shelf{display:grid;grid-template-columns:180px minmax(0,1fr);gap:22px;border:1px solid #b2afa5;border-radius:8px;background:linear-gradient(135deg,#f5f2e9,#e6e2d8);padding:25px;box-shadow:0 4px 7px #24231d20,inset 0 1px 0 #fff,inset 0 -2px 2px #827c6920;margin-top:24px}
+[data-theme=control] .shelf+.shelf{border:1px solid #b2afa5;padding-top:25px}
+[data-theme=control] .shelf-aside{align-items:flex-start;margin:0;padding-top:16px}
+[data-theme=control] .shelf-copy{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+[data-theme=control] .shelf-id{display:block}
+[data-theme=control] .shelf-emoji{display:none}
+[data-theme=control] .shelf-name{font-family:'Barlow Condensed',Impact,sans-serif;font-size:32px;font-weight:700;line-height:1;text-transform:uppercase;white-space:nowrap;letter-spacing:-.025em}
+[data-theme=control] .shelf-kicker{font-size:10px;letter-spacing:0}
+[data-theme=control] .shelf-origin{font-size:9px;word-break:break-all;max-width:180px;margin-top:8px}
+[data-theme=control] .shelf .grid{gap:18px}
+[data-theme=control] .frame{border:5px solid #292a28;border-radius:5px;box-shadow:0 2px 4px #0004,inset 0 1px 0 #aaa;aspect-ratio:16/11}
+[data-theme=control] .label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:-.02em}
+[data-theme=control] .desc{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:11px;color:#626565}
+[data-theme=control] .more{font-size:10px}
+@media(min-width:761px){.gallery #dexter .grid,.gallery #sherlock .grid,.gallery #breaking-bad .grid,.gallery #severance .grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1100px) and (min-width:761px){[data-theme=control] .shelf{grid-template-columns:155px minmax(0,1fr);padding:18px;gap:18px}[data-theme=control] .shelf-name{font-size:27px}.gallery .shownav a{padding:7px 6px;font-size:9px}}
+@media(max-width:760px){
+ .gallery .wrap{padding:16px var(--mobile-gutter) 30px}
+ .gallery .masthead{flex-wrap:wrap;gap:12px;padding-bottom:14px}
+ .gallery .home-link{font-size:10px}
+ .theme-picker{font-size:10px}.theme-picker a{padding:7px 9px}
+ .gallery .archive-heading{padding-top:27px}
+ .gallery .eyebrow,.gallery h1.title,.gallery .lede,.gallery .foot{padding-left:0;padding-right:0}
+ .gallery h1.title{font-size:clamp(39px,11vw,72px);letter-spacing:.04em}
+ .gallery .lede{font-size:12px;max-width:30ch;margin:10px auto 0}
+ .gallery .eyebrow{font-size:8px;letter-spacing:.18em}
+ .archive-years{font-size:15px;margin-top:10px}
+ .gallery .next-countdown{height:355px;margin:10px 0 36px}
+ .royal-guardians{opacity:1;inset:170px 0 auto;height:auto;object-fit:contain}
+ .royal-clock{left:0;right:0;top:90px;gap:6px;grid-template-columns:1fr 1fr 1.8fr 1fr 1fr}
+ .clock-unit>span{font-size:37px}.clock-unit>small{font-size:13px;margin-top:4px}
+ .scene-stage{width:215px;height:218px;top:56px}
+ .gallery .countdown-secret{bottom:71px;font-size:21px}
+ .scene-hint{font-size:10px;bottom:5px}
+ .gallery .shownav{margin:4px -18px 0;padding:10px 18px;justify-content:flex-start;gap:7px}
+ .gallery .shownav a{font-size:9px;padding:7px 10px}
+ .gallery .shelf{margin-top:28px;padding:0;gap:12px}
+ .gallery .shelf-aside{padding:0;justify-content:space-between;margin-bottom:12px}
+ .gallery .shelf-copy{grid-template-columns:46px 1fr;column-gap:12px}
+ .gallery .shelf-name{font-size:clamp(24px,6.6vw,36px)}
+ .gallery .shelf-emoji{font-size:35px;padding:7px 0}
+ .gallery .shelf-kicker{font-size:9px}.gallery .shelf-origin{font-size:9px}
+ .gallery .shelf .grid{display:flex;gap:16px;padding:2px 18px 12px;margin:0 -18px;scroll-padding-inline:18px}
+ .gallery .carousel .card{flex:0 0 min(340px,calc(100vw - 68px))}
+ .gallery .body{padding-top:9px}.gallery .label{font-size:12px}
+ .gallery .desc{font-size:11px}.gallery .more.shelf-more{margin-left:0}
+ .gallery .carousel-controls{gap:6px}.gallery .carousel-btn{width:32px;height:32px;font-size:17px;border-radius:2px;background:none;box-shadow:none}
+ .gallery .shelf+.shelf{padding-top:23px}
+ [data-theme=control] .archive-heading{text-align:left;padding-top:26px}
+ [data-theme=control] h1.title{font-size:clamp(37px,12vw,88px);letter-spacing:-.045em}
+ [data-theme=control] .lede{max-width:32ch;margin-left:0;margin-top:10px}
+ [data-theme=control] .next-countdown{height:245px;margin:6px -10px 36px}
+ [data-theme=control] .scene-stage{height:225px;width:100%;top:32px}
+ [data-theme=control] .countdown-caption{top:14px;left:10px;max-width:none;display:flex;align-items:baseline;gap:10px}
+ [data-theme=control] .next-countdown h2{font-size:9px}
+ [data-theme=control] .countdown-caption time{font-size:8px;margin:0}
+ [data-theme=control] .scene-hint{left:10px;bottom:13px;font-size:9px}
+ [data-theme=control] .countdown-secret{font-size:11px;bottom:0;left:0}
+ [data-theme=control] .scene-action{left:76%;top:24%;width:22%;height:55%}
+ [data-theme=control] .shownav{margin:6px -4px 0;padding:7px 9px;gap:3px}
+ [data-theme=control] .shownav a{font-size:9px;padding:7px 10px}
+ [data-theme=control] .shelf{display:block;margin:17px -4px 0;padding:15px 13px}
+ [data-theme=control] .shelf+.shelf{padding-top:15px}
+ [data-theme=control] .shelf-aside{padding:0;margin-bottom:12px;align-items:center}
+ [data-theme=control] .shelf-copy{gap:0}
+ [data-theme=control] .shelf-name{font-size:29px}
+ [data-theme=control] .shelf-origin{display:none}
+ [data-theme=control] .shelf .grid{margin:0 -13px;padding:2px 13px 10px;gap:12px;scroll-padding-inline:13px}
+ [data-theme=control] .carousel .card{flex-basis:calc(100vw - 88px)}
+ [data-theme=control] .more.shelf-more{margin-left:0}
+}
+@media(prefers-reduced-motion:reduce){.gallery .card{transition:none}.gallery .scene-hint{opacity:1}}
+"""
+
 CSS_VER = hashlib.md5(CSS.encode("utf-8")).hexdigest()[:8]
 FAVICON = '<link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">'
 
 def esc(s):
     return html.escape(s, quote=True)
 
-def head(title, extra_head=""):
+def head(title, extra_head="", gallery=False):
     return (
-        "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n"
+        "<!DOCTYPE html>\n" + ('<html lang="en" class="gallery">\n<head>\n' if gallery else '<html lang="en">\n<head>\n') +
         "  <meta charset=\"utf-8\">\n"
         "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
         f"  <title>{esc(title)}</title>\n"
@@ -574,30 +726,46 @@ def grid(show_slug, versions, zoom=4, include_controls=True, carousel_root=True,
 
 # --------------------------------------------------------------- gallery
 def build_gallery():
-    out = head("Countdowns · Artur Pokusin")
-    out += '    <div class="crumb"><a href="/">pokusin.com</a><span class="sep">/</span>countdowns</div>\n'
-    out += '    <div class="eyebrow">An archive · 2012 – 2025</div>\n'
-    out += '    <h1 class="title">Countdowns</h1>\n'
-    out += ('    <p class="lede">A collection of TV-show countdown sites I '
-            'handcrafted between 2012 and 2025. Every illustration and line of '
-            "code was made by hand, and they're all still ticking.</p>\n")
+    out = head("Countdowns · Artur Pokusin", THEME_HEAD, gallery=True)
+    out += ('    <header class="masthead"><a class="home-link" href="/">Artur Pokusin</a>'
+            '<nav class="theme-picker" aria-label="Archive theme">'
+            '<a href="?theme=royal" data-theme-link="royal">Royal archive</a>'
+            '<a href="?theme=control" data-theme-link="control">Control room</a></nav></header>\n')
+    out += '    <div class="archive-heading"><p class="eyebrow">An archive of television anticipation</p><h1 class="title">Countdowns</h1>\n'
+    out += '    <p class="lede">TV-show countdowns, handcrafted and still ticking.</p><p class="archive-years">2012 — 2025</p></div>\n'
     out += (
         '    <section class="next-countdown" aria-labelledby="next-countdown-heading">\n'
-        '      <h2 id="next-countdown-heading">Countdown to the next countdown'
-        ' <button class="countdown-crown" id="countdown-crown" type="button"'
-        ' aria-label="Countdown King" aria-expanded="false" aria-controls="countdown-secret">♛</button></h2>\n'
-        '      <p class="next-countdown-timer" id="next-countdown-timer">November 1, 2026</p>\n'
-        '      <p class="next-countdown-note">Naturally. · '
-        f'<time id="next-countdown-date" datetime="{NEXT_COUNTDOWN_DATE}">Nov 1, 2026 · Pacific time</time></p>\n'
-        '      <p class="countdown-secret" id="countdown-secret" hidden>Long may I count.</p>\n'
+        '      <img class="royal-guardians" src="assets/royal-guardians.png" alt="" width="1440" height="520">\n'
+        '      <div class="countdown-caption"><h2 id="next-countdown-heading">Next countdown</h2>'
+        f'<time id="next-countdown-date" datetime="{NEXT_COUNTDOWN_DATE}">Nov 1, 2026 · Pacific time</time></div>\n'
+        '      <div class="royal-clock" role="timer" aria-label="Time until the next countdown">'
+        '<div class="clock-unit"><span data-unit="days">30</span><small>days</small></div>'
+        '<div class="clock-unit"><span data-unit="hours">00</span><small>hours</small></div>'
+        '<div class="throne-space"></div>'
+        '<div class="clock-unit"><span data-unit="minutes">00</span><small>minutes</small></div>'
+        '<div class="clock-unit"><span data-unit="seconds">00</span><small>seconds</small></div></div>\n'
+        '      <div class="scene-stage" id="scene-stage">'
+        '<img class="scene-fallback royal-fallback" src="assets/throne-fallback.png" alt="A tiny crown on an empty throne">'
+        '<div class="scene-fallback control-fallback"><img src="assets/console-fallback.png" alt="A timer console wired to a red button" width="1024" height="480">'
+        '<span class="fallback-digits" id="fallback-digits">30:00:00:00</span></div>'
+        '<canvas id="theme-scene" aria-hidden="true"></canvas>'
+        '<button class="scene-action" id="scene-action" type="button" aria-label="Crown the countdown" aria-controls="countdown-secret" aria-expanded="false"></button>'
+        '</div>\n'
+        '      <button class="royal-reset royal-only" id="royal-reset" type="button" aria-controls="countdown-secret" aria-expanded="false">By royal decree: postpone.</button>\n'
+        '      <p class="scene-hint"><span class="royal-only">A small crown. A long wait.</span>'
+        '<span class="control-only">Lift the cover. Press the button.</span></p>\n'
+        '      <p class="countdown-secret" id="countdown-secret" role="status" hidden>Long may I count.</p>\n'
+        '      <p class="sr-only" id="timer-readable" role="timer" aria-live="off"></p>\n'
+        '      <p class="reset-count" id="reset-count">Connecting the shared clock…</p>\n'
+        '      <p class="countdown-ended" id="countdown-ended" hidden>Time to start another countdown.</p>\n'
         '    </section>\n'
     )
     out += '    <nav class="shownav" aria-label="Shows">\n'
-    for s in SHOWS:
-        out += (f'      <a href="#{s["slug"]}"><span class="nv-e">{s["emoji"]}</span>'
+    for i, s in enumerate(SHOWS):
+        out += (f'      <a href="#{s["slug"]}"><span class="nv-e">{["I", "II", "III", "IV", "V", "VI", "VII"][i]}</span>'
                 f'<span class="nv-n">{esc(s["name"])}</span></a>\n')
     out += '    </nav>\n'
-    for s in SHOWS:
+    for i, s in enumerate(SHOWS):
         shown = [v for v in s["versions"] if not v.get("collapsed") and not v.get("timeline")]
         collapsed = [v for v in s["versions"] if v.get("collapsed") and not v.get("timeline")]
         has_more = bool(collapsed) or any(v.get("timeline") for v in s["versions"])
@@ -611,7 +779,7 @@ def build_gallery():
         out += f'    <section class="shelf" id="{s["slug"]}"{carousel_attr}>\n      <div class="shelf-aside">\n'
         out += '        <div class="shelf-copy">\n'
         out += f'          <div class="shelf-kicker">{esc(s["years"])}</div>\n'
-        out += (f'          <div class="shelf-id"><span class="shelf-emoji">{s["emoji"]}</span>'
+        out += (f'          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">{s["name"][0]}</span>'
                 f'<span class="shelf-name">{esc(s["name"])}</span></div>\n')
         out += f'          {dom}\n'
         out += '        </div>\n'
@@ -619,7 +787,7 @@ def build_gallery():
         out += '      </div>\n'
         out += grid(s["slug"], shown, s.get("preview_zoom", 4), include_controls=False, carousel_root=False, more_href=more_href)
         out += '    </section>\n'
-    return out + foot(OVERLAY_HTML + OVERLAY_JS + NAV_JS + CAROUSEL_JS + NEXT_COUNTDOWN_JS)
+    return out + foot(OVERLAY_HTML + OVERLAY_JS + NAV_JS + CAROUSEL_JS + '<script type="module" src="themes.js"></script>')
 
 # ----------------------------------------------------- per-show details page
 def build_show_index(s):

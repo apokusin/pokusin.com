@@ -1,39 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="gallery">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Countdowns · Artur Pokusin</title>
   <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin between 2012 and 2025, preserved and ticking live.">
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=b64f59fc">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=ad9623e1">
+<script>
+(function(){var theme=new URLSearchParams(location.search).get('theme');
+ document.documentElement.dataset.theme=theme==='control'?'control':'royal';})();
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 </head>
 <body>
   <div class="wrap">
-    <div class="crumb"><a href="/">pokusin.com</a><span class="sep">/</span>countdowns</div>
-    <div class="eyebrow">An archive · 2012 – 2025</div>
-    <h1 class="title">Countdowns</h1>
-    <p class="lede">A collection of TV-show countdown sites I handcrafted between 2012 and 2025. Every illustration and line of code was made by hand, and they're all still ticking.</p>
+    <header class="masthead"><a class="home-link" href="/">Artur Pokusin</a><nav class="theme-picker" aria-label="Archive theme"><a href="?theme=royal" data-theme-link="royal">Royal archive</a><a href="?theme=control" data-theme-link="control">Control room</a></nav></header>
+    <div class="archive-heading"><p class="eyebrow">An archive of television anticipation</p><h1 class="title">Countdowns</h1>
+    <p class="lede">TV-show countdowns, handcrafted and still ticking.</p><p class="archive-years">2012 — 2025</p></div>
     <section class="next-countdown" aria-labelledby="next-countdown-heading">
-      <h2 id="next-countdown-heading">Countdown to the next countdown <button class="countdown-crown" id="countdown-crown" type="button" aria-label="Countdown King" aria-expanded="false" aria-controls="countdown-secret">♛</button></h2>
-      <p class="next-countdown-timer" id="next-countdown-timer">November 1, 2026</p>
-      <p class="next-countdown-note">Naturally. · <time id="next-countdown-date" datetime="2026-11-01T00:00:00-07:00">Nov 1, 2026 · Pacific time</time></p>
-      <p class="countdown-secret" id="countdown-secret" hidden>Long may I count.</p>
+      <img class="royal-guardians" src="assets/royal-guardians.png" alt="" width="1440" height="520">
+      <div class="countdown-caption"><h2 id="next-countdown-heading">Next countdown</h2><time id="next-countdown-date" datetime="2026-11-01T00:00:00-07:00">Nov 1, 2026 · Pacific time</time></div>
+      <div class="royal-clock" role="timer" aria-label="Time until the next countdown"><div class="clock-unit"><span data-unit="days">30</span><small>days</small></div><div class="clock-unit"><span data-unit="hours">00</span><small>hours</small></div><div class="throne-space"></div><div class="clock-unit"><span data-unit="minutes">00</span><small>minutes</small></div><div class="clock-unit"><span data-unit="seconds">00</span><small>seconds</small></div></div>
+      <div class="scene-stage" id="scene-stage"><img class="scene-fallback royal-fallback" src="assets/throne-fallback.png" alt="A tiny crown on an empty throne"><div class="scene-fallback control-fallback"><img src="assets/console-fallback.png" alt="A timer console wired to a red button" width="1024" height="480"><span class="fallback-digits" id="fallback-digits">30:00:00:00</span></div><canvas id="theme-scene" aria-hidden="true"></canvas><button class="scene-action" id="scene-action" type="button" aria-label="Crown the countdown" aria-controls="countdown-secret" aria-expanded="false"></button></div>
+      <button class="royal-reset royal-only" id="royal-reset" type="button" aria-controls="countdown-secret" aria-expanded="false">By royal decree: postpone.</button>
+      <p class="scene-hint"><span class="royal-only">A small crown. A long wait.</span><span class="control-only">Lift the cover. Press the button.</span></p>
+      <p class="countdown-secret" id="countdown-secret" role="status" hidden>Long may I count.</p>
+      <p class="sr-only" id="timer-readable" role="timer" aria-live="off"></p>
+      <p class="reset-count" id="reset-count">Connecting the shared clock…</p>
+      <p class="countdown-ended" id="countdown-ended" hidden>Time to start another countdown.</p>
     </section>
     <nav class="shownav" aria-label="Shows">
-      <a href="#got"><span class="nv-e">🐉</span><span class="nv-n">Game of Thrones</span></a>
-      <a href="#dexter"><span class="nv-e">🩸</span><span class="nv-n">Dexter</span></a>
-      <a href="#sherlock"><span class="nv-e">🎻</span><span class="nv-n">Sherlock</span></a>
-      <a href="#archer"><span class="nv-e">🥃</span><span class="nv-n">Archer</span></a>
-      <a href="#breaking-bad"><span class="nv-e">⚗️</span><span class="nv-n">Breaking Bad</span></a>
-      <a href="#house-of-cards"><span class="nv-e">🃏</span><span class="nv-n">House of Cards</span></a>
-      <a href="#severance"><span class="nv-e">🧠</span><span class="nv-n">Severance</span></a>
+      <a href="#got"><span class="nv-e">I</span><span class="nv-n">Game of Thrones</span></a>
+      <a href="#dexter"><span class="nv-e">II</span><span class="nv-n">Dexter</span></a>
+      <a href="#sherlock"><span class="nv-e">III</span><span class="nv-n">Sherlock</span></a>
+      <a href="#archer"><span class="nv-e">IV</span><span class="nv-n">Archer</span></a>
+      <a href="#breaking-bad"><span class="nv-e">V</span><span class="nv-n">Breaking Bad</span></a>
+      <a href="#house-of-cards"><span class="nv-e">VI</span><span class="nv-n">House of Cards</span></a>
+      <a href="#severance"><span class="nv-e">VII</span><span class="nv-n">Severance</span></a>
     </nav>
     <section class="shelf" id="got" data-carousel>
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2012 – 2019</div>
-          <div class="shelf-id"><span class="shelf-emoji">🐉</span><span class="shelf-name">Game of Thrones</span></div>
+          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">G</span><span class="shelf-name">Game of Thrones</span></div>
           <span class="shelf-origin">gameofthronescountdown.com</span>
         </div>
         <div class="carousel-controls" aria-label="Preview cards">
@@ -75,7 +85,7 @@
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2012 – 2013</div>
-          <div class="shelf-id"><span class="shelf-emoji">🩸</span><span class="shelf-name">Dexter</span></div>
+          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">D</span><span class="shelf-name">Dexter</span></div>
           <span class="shelf-origin">dextercountdown.com</span>
         </div>
         <div class="carousel-controls" aria-label="Preview cards">
@@ -109,7 +119,7 @@
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2013 – 2014</div>
-          <div class="shelf-id"><span class="shelf-emoji">🎻</span><span class="shelf-name">Sherlock</span></div>
+          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">S</span><span class="shelf-name">Sherlock</span></div>
           <span class="shelf-origin">sherlockcountdown.com</span>
         </div>
         <div class="carousel-controls" aria-label="Preview cards">
@@ -143,7 +153,7 @@
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2012 – 2014</div>
-          <div class="shelf-id"><span class="shelf-emoji">🥃</span><span class="shelf-name">Archer</span></div>
+          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">A</span><span class="shelf-name">Archer</span></div>
           <span class="shelf-origin">archercountdown.com</span>
         </div>
       </div>
@@ -165,7 +175,7 @@
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2012 – 2013</div>
-          <div class="shelf-id"><span class="shelf-emoji">⚗️</span><span class="shelf-name">Breaking Bad</span></div>
+          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">B</span><span class="shelf-name">Breaking Bad</span></div>
           <span class="shelf-origin">breakingbadcountdown.com</span>
         </div>
         <div class="carousel-controls" aria-label="Preview cards">
@@ -199,7 +209,7 @@
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2014</div>
-          <div class="shelf-id"><span class="shelf-emoji">🃏</span><span class="shelf-name">House of Cards</span></div>
+          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">H</span><span class="shelf-name">House of Cards</span></div>
           <span class="shelf-origin">houseofcardscountdown.com</span>
         </div>
       </div>
@@ -220,7 +230,7 @@
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2025 –</div>
-          <div class="shelf-id"><span class="shelf-emoji">🧠</span><span class="shelf-name">Severance</span></div>
+          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">S</span><span class="shelf-name">Severance</span></div>
           <a class="shelf-origin" href="https://severancecountdown.com" target="_blank" rel="noopener">severancecountdown.com ↗</a>
         </div>
         <div class="carousel-controls" aria-label="Preview cards">
@@ -273,7 +283,7 @@
   var srcCard=null,DUR=440,EASE='cubic-bezier(.2,.8,.2,1)',ft=null;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fullCountdownMedia=matchMedia('(max-width: 640px)');
-  function shouldOpenFullCountdown(){ return fullCountdownMedia.matches; }
+  function shouldOpenFullCountdown(){ return !document.documentElement.classList.contains('gallery') && fullCountdownMedia.matches; }
   frame.addEventListener('load',function(){ if((frame.src||'').indexOf('about:blank')<0) frame.classList.add('loaded'); });
   function map(card){ // uniform scale + translate so the dialog starts centered on the card frame
     var dr=dialog.getBoundingClientRect(), cr=card.querySelector('.frame').getBoundingClientRect();
@@ -360,24 +370,5 @@
     update();
   }
   document.querySelectorAll('[data-carousel]').forEach(setup);
-})();</script><script>(function(){
-  var timer = document.getElementById('next-countdown-timer');
-  var target = Date.parse(document.getElementById('next-countdown-date').dateTime);
-  function tick(){
-    var seconds = Math.max(0, Math.ceil((target - Date.now()) / 1000));
-    if(!seconds){ timer.textContent = 'Time to start another countdown.'; return; }
-    var days = Math.floor(seconds / 86400);
-    var hours = Math.floor(seconds % 86400 / 3600);
-    var minutes = Math.floor(seconds % 3600 / 60);
-    timer.textContent = days + 'd ' + String(hours).padStart(2,'0') + 'h ' +
-      String(minutes).padStart(2,'0') + 'm ' + String(seconds % 60).padStart(2,'0') + 's';
-  }
-  tick(); setInterval(tick, 1000);
-  var crown = document.getElementById('countdown-crown');
-  var secret = document.getElementById('countdown-secret');
-  crown.addEventListener('click', function(){
-    secret.hidden = !secret.hidden;
-    crown.setAttribute('aria-expanded', String(!secret.hidden));
-  });
-})();</script></body>
+})();</script><script type="module" src="themes.js"></script></body>
 </html>
