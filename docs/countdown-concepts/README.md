@@ -1,8 +1,25 @@
 # Countdown worlds
 
-Eight art directions for the countdown archive: two retained references, five new material worlds, and an additional third-person exploration developed by a subagent. Prepared October 2, 2026. These are concepts; no new theme has been selected or implemented.
+Eight art directions for the countdown archive: two retained references, five new material worlds, and an additional third-person exploration developed by a subagent. Prepared October 2, 2026. All eight now have separate, selectable implementations in PR #12. Royal and Control remain available, and no final replacement has been selected.
 
-Every brief uses the same eleven sections: premise, composition, palette/type, geometry/materials, camera/lighting, interaction, motion, effects/budget, responsive/fallback behavior, implementation boundaries, and fidelity checks. Read the [shared implementation guide](GUIDE.md) before a selected brief. It preserves the real shared countdown, digit reels, archive content, preview interaction, and minimal copy.
+Every brief uses the same eleven sections: premise, composition, palette/type, geometry/materials, camera/lighting, interaction, motion, effects/budget, responsive/fallback behavior, implementation boundaries, and fidelity checks. Read the [shared implementation guide](GUIDE.md) before a concept brief. It preserves the real shared countdown, digit reels, archive content, preview interaction, and minimal copy.
+
+## Try the worlds
+
+Use **Worlds** in the preview to switch between all ten themes. The eight explorations share the existing live countdown, press tally, digit reels, and actual archive previews.
+
+| World | Preview | Art-director report |
+| --- | --- | --- |
+| Tomorrow’s Roadworks | [Try](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=tomorrows-roadworks) | [Report](reports/tomorrows-roadworks.md) |
+| Bubblegum Time | [Try](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=bubblegum-time) | [Report](reports/bubblegum-time.md) |
+| After the Flame | [Try](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=after-the-flame) | [Report](reports/after-the-flame.md) |
+| Low Tide, Later | [Try](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=low-tide-later) | [Report](reports/low-tide-later.md) |
+| Not Yet Ripe | [Try](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=not-yet-ripe) | [Report](reports/not-yet-ripe.md) |
+| Still Drawing Tomorrow | [Try](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=still-drawing-tomorrow) | [Report](reports/still-drawing-tomorrow.md) |
+| Held in Suspense | [Try](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=held-in-suspense) | [Report](reports/held-in-suspense.md) |
+| The Almost Fair | [Try](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=the-almost-fair) | [Report](reports/the-almost-fair.md) |
+
+[Browser review and evidence](../../design-qa.md) records desktop, phone, and interaction validation. The runtime uses procedural Three.js geometry and separately authored art layers; reference mockups are never used as full-page runtime backgrounds.
 
 ## New explorations
 
@@ -75,4 +92,4 @@ The images are independent ImageGen explorations, not screenshots of functioning
 
 [Generation prompts](prompts.json) record the exact prompts for the six new explorations and identify the actual archive content used as grounding. [The manifest](manifest.json) records stable concept IDs, displayed order, dimensions, and original/reference checksums. The earlier two images are preserved as prior-round references; their exact original prompts are not reconstructed here.
 
-The original generated PNGs remain in the generating task’s image store. Portable references are kept here so later agents do not depend on that local store. The next step is a human choice of concept; these documents do not authorize a blend of directions or a new implementation.
+The original generated PNGs remain in the generating task’s image store. Portable references are kept here so later agents do not depend on that local store. Each concept was reviewed by an art-director subagent before implementation. Its report identifies discoverability, physical feel, motion, and execution risks; the feedback is incorporated into the corresponding spec. Subsequent implementation notes document browser-driven refinements. The next step is to try the eight worlds and choose which direction to develop further.

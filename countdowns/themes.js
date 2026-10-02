@@ -1,13 +1,14 @@
-// Two static archive themes, one shared countdown via the small Pages Function.
+// Static archive worlds share one countdown via the small Pages Function.
 import { NumberReel, reelPlan, reelPosition } from './reels.js';
 const theme = document.documentElement.dataset.theme;
 const control = theme === 'control';
+const art = document.documentElement.classList.contains('art-project');
 const action = document.getElementById('scene-action');
 const royalButton = document.getElementById('royal-reset');
 const secret = document.getElementById('countdown-secret');
 const countLabel = document.getElementById('reset-count');
 const clockStatus = document.getElementById('clock-status');
-const hero = document.getElementById('hero-surface');
+const hero = document.getElementById(art ? 'art-hero' : 'hero-surface');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const dateLabel = document.getElementById('next-countdown-date');
 const initialDeadline = Date.parse(dateLabel.dateTime);
@@ -32,9 +33,11 @@ function applyState(next, forceSpin = false) {
   // A slower GET must never overwrite a newer reset response.
   if (next.count < state.count || (ready && next.count === state.count && next.serverNow < state.serverNow)) return;
   const spin = ready && (forceSpin || next.count > state.count);
+  const remote = ready && !forceSpin && next.count > state.count;
   state = next;
   clockOffset = next.serverNow - Date.now(); ready = true;
   updateLabels(spin); tick(spin); startTicker();
+  if (remote) document.dispatchEvent(new CustomEvent('countdown:remote'));
 }
 async function sync() {
   if (document.hidden || pending) return;
@@ -47,6 +50,7 @@ async function sync() {
 async function reset() {
   if (pending) return;
   pending = true; action.disabled = true; if (royalButton) royalButton.disabled = true;
+  document.dispatchEvent(new CustomEvent('countdown:pending',{detail:true}));
   try {
     const response = await fetch('/api/countdown', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
     if (response.status === 429) {
@@ -56,10 +60,11 @@ async function reset() {
     }
     if (!response.ok) throw new Error('Unavailable');
     applyState(await response.json(), true);
-    secret.hidden = false; action.setAttribute('aria-expanded', 'true');
-    royalButton?.setAttribute('aria-expanded', 'true'); celebrate(); animatePageReset();
+    if (!art) { secret.hidden = false; action.setAttribute('aria-expanded', 'true'); royalButton?.setAttribute('aria-expanded', 'true'); }
+    document.dispatchEvent(new CustomEvent('countdown:reset'));
+    celebrate(); if (!art) animatePageReset();
   } catch (_) { clockStatus.textContent = 'The clock refused. Try again in a moment.'; }
-  finally { pending = false; action.disabled = false; if (royalButton) royalButton.disabled = false; }
+  finally { pending = false; action.disabled = false; if (royalButton) royalButton.disabled = false; document.dispatchEvent(new CustomEvent('countdown:pending',{detail:false})); }
 }
 let coverOpen = false;
 function press() {
@@ -72,7 +77,7 @@ function press() {
 if (control) action.setAttribute('aria-label', 'Lift the launch button cover');
 action.addEventListener('click', press);
 royalButton?.addEventListener('click', reset);
-document.querySelector(`[data-theme-link="${theme}"]`).setAttribute('aria-current', 'page');
+document.querySelectorAll(`[data-theme-link="${theme}"]`).forEach(link=>link.setAttribute('aria-current', 'page'));
 document.querySelectorAll('.shownav a').forEach(link => {
   link.setAttribute('href', `?theme=${theme}#${link.getAttribute('href').split('#').pop()}`);
 });
@@ -359,7 +364,43 @@ async function initScene() {
   };
   tick();render();stage.classList.add('scene-ready');schedule();
 }
-initScene().catch(error => {
+function revealArtSecret(){
+  const trigger=hero.querySelector('.art-secret-trigger');
+  secret.hidden=!secret.hidden;trigger.setAttribute('aria-expanded',String(!secret.hidden));
+  if(secret.hidden)return;
+  // Discoveries stay near their clue, inside the view, and clear of time/reset controls.
+  const area=hero.querySelector('.art-reset-area'),hr=hero.getBoundingClientRect(),br=trigger.getBoundingClientRect();
+  const pr=getComputedStyle(area).position==='static'?hr:area.getBoundingClientRect();
+  secret.style.cssText=`position:absolute;margin:0;width:max-content;max-width:${Math.max(44,hr.width-24)}px;right:auto;bottom:auto;transform:translateX(-50%);text-align:center`;
+  const sr=secret.getBoundingClientRect();
+  const center=Math.max(hr.left+sr.width/2+12,Math.min(hr.right-sr.width/2-12,br.left+br.width/2));
+  const left=center-sr.width/2,right=center+sr.width/2;
+  const controls=[royalButton,...hero.querySelectorAll('.clock-unit')].map(e=>e.getBoundingClientRect());
+  const minTop=Math.max(0,hr.top)+12,maxTop=Math.min(innerHeight,hr.bottom)-sr.height-12;
+  const candidates=[br.bottom+10,br.top-sr.height-10,...controls.flatMap(r=>[r.top-sr.height-12,r.bottom+12])];
+  const clear=y=>y>=minTop&&y<=maxTop&&!controls.some(r=>left<r.right+4&&right>r.left-4&&y<r.bottom+4&&y+sr.height>r.top-4);
+  const top=candidates.find(clear)??Math.max(minTop,Math.min(maxTop,br.top-sr.height-10));
+  secret.style.left=`${center-pr.left}px`;secret.style.top=`${top-pr.top}px`;
+}
+if (art) {
+  import(`./exhibition.js?v=${document.documentElement.dataset.artVersion}`).then(module => module.initExhibition({
+    theme,reducedMotion,requestReset:reset,getDigits:remaining,revealSecret:revealArtSecret
+  })).catch(error=>{
+    // This tiny DOM path also works when the optional exhibition module itself is blocked.
+    const style=document.querySelector('link[href^="concepts/"]');if(style)document.head.append(style);
+    hero.hidden=false;hero.classList.add('art-scene-unavailable');
+    const clock=document.querySelector('.royal-clock');
+    if(clock){clock.classList.replace('royal-clock','art-clock');clock.querySelector('.throne-space')?.remove();
+      clock.querySelectorAll('.clock-unit small').forEach((el,i)=>el.textContent=['D','H','M','S'][i]);hero.append(clock);}
+    royalButton.classList.remove('royal-only');royalButton.textContent='Again';
+    royalButton.removeAttribute('aria-expanded');royalButton.removeAttribute('aria-controls');
+    const tally=countLabel.closest('.press-tally');tally.classList.add('art-tally');tally.querySelector('small').textContent='';
+    hero.querySelector('.art-reset-area').append(royalButton,tally,clockStatus,secret,document.getElementById('countdown-ended'));
+    hero.append(document.getElementById('timer-readable'));
+    hero.querySelector('.art-secret-trigger').addEventListener('click',revealArtSecret);
+    console.warn('The art archive could not initialize; live controls remain available.',error.message);
+  });
+} else initScene().catch(error => {
   if (control) {
     coverOpen = true; action.setAttribute('aria-label', 'Postpone the next countdown');
     document.querySelector('.scene-hint .control-only').textContent = 'Press the button.';

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate the /countdowns archive: gallery, per-show details (with collapsible
 archived variants), and the Dexter Season 7 timeline scrubber."""
-import os, html, json, hashlib
+import os, html, json, hashlib, glob
 from datetime import datetime
 
 CD = os.path.dirname(os.path.abspath(__file__))  # this script lives in countdowns/
@@ -132,12 +132,26 @@ NEXT_COUNTDOWN_DATE = "2026-11-01T00:00:00-07:00"  # One month from October 1, P
 _next_countdown = datetime.fromisoformat(NEXT_COUNTDOWN_DATE)
 NEXT_COUNTDOWN_LABEL = f'{_next_countdown:%b} {_next_countdown.day}, {_next_countdown.year} · Pacific time'
 
+ART_THEMES = [
+    ('tomorrows-roadworks', 'Tomorrow’s Roadworks'), ('bubblegum-time', 'Bubblegum Time'),
+    ('after-the-flame', 'After the Flame'), ('low-tide-later', 'Low Tide, Later'),
+    ('not-yet-ripe', 'Not Yet Ripe'), ('still-drawing-tomorrow', 'Still Drawing Tomorrow'),
+    ('held-in-suspense', 'Held in Suspense'), ('the-almost-fair', 'The Almost Fair'),
+]
+_art_files = sorted(glob.glob(os.path.join(CD, 'concepts', '*.*')) + [os.path.join(CD, 'exhibition.js'), os.path.join(CD, 'exhibition.css')])
+ART_VERSION = hashlib.sha256(b''.join(open(p, 'rb').read() for p in _art_files if os.path.isfile(p))).hexdigest()[:10]
 THEME_HEAD = """<script>
 (function(){var theme=new URLSearchParams(location.search).get('theme');
- document.documentElement.dataset.theme=theme==='control'?'control':'royal';})();
+ var art=['tomorrows-roadworks','bubblegum-time','after-the-flame','low-tide-later','not-yet-ripe','still-drawing-tomorrow','held-in-suspense','the-almost-fair'];
+ var isArt=art.indexOf(theme)!==-1;
+ document.documentElement.dataset.theme=isArt?theme:theme==='control'?'control':'royal';
+ document.documentElement.dataset.artVersion='__ART_VERSION__';
+ if(isArt){document.documentElement.classList.add('art-project');var link=document.createElement('link');link.rel='stylesheet';link.href='concepts/'+theme+'.css?v=__ART_VERSION__';document.head.append(link);}
+})();
 </script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
-"""
+<link rel="stylesheet" href="exhibition.css?v=__ART_VERSION__">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+""".replace('__ART_VERSION__', ART_VERSION)
 
 # ---------------------------------------------------------------------- CSS
 CSS = """:root{
@@ -364,9 +378,9 @@ ROTATOR = """<script>
 })();
 </script>"""
 
-OVERLAY_HTML = """  <div class="ov" id="ov" hidden aria-hidden="true">
+OVERLAY_HTML = """  <div class="ov" id="ov" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Countdown preview">
     <div class="ov-backdrop" data-close></div>
-    <div class="ov-dialog" role="dialog" aria-modal="true" aria-label="Countdown preview">
+    <div class="ov-dialog">
       <div class="ov-stage"><iframe id="ov-frame" title="Countdown preview" scrolling="no"></iframe></div>
     </div>
     <div class="ov-cap" id="ov-cap"></div>
@@ -382,48 +396,64 @@ OVERLAY_JS = """<script>(function(){
   var dialog=ov.querySelector('.ov-dialog'),frame=document.getElementById('ov-frame'),
       openLink=document.getElementById('ov-open'),cap=document.getElementById('ov-cap'),
       closeBtn=ov.querySelector('.ov-close');
-  var srcCard=null,DUR=440,EASE='cubic-bezier(.2,.8,.2,1)',ft=null;
+  var srcCard=null,srcRect=null,DUR=440,EASE='cubic-bezier(.2,.8,.2,1)',ft=null,closing=false,generation=0,endHandler=null;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fullCountdownMedia=matchMedia('(max-width: 640px)');
   function shouldOpenFullCountdown(){ return !document.documentElement.classList.contains('gallery') && fullCountdownMedia.matches; }
-  frame.addEventListener('load',function(){ if((frame.src||'').indexOf('about:blank')<0) frame.classList.add('loaded'); });
+  frame.addEventListener('load',function(){
+    if((frame.src||'').indexOf('about:blank')<0) frame.classList.add('loaded');
+    try{frame.contentDocument.addEventListener('keydown',function(e){if(e.key==='Escape'&&!ov.hidden){e.preventDefault();close();}});}catch(e){}
+  });
   function map(card){ // uniform scale + translate so the dialog starts centered on the card frame
-    var dr=dialog.getBoundingClientRect(), cr=card.querySelector('.frame').getBoundingClientRect();
+    var dr=dialog.getBoundingClientRect(), cr=srcRect||card.querySelector('.frame').getBoundingClientRect();
+    if(!cr.width||!cr.height)return 'translate(0,14px) scale(.97)';
     var s=cr.width/dr.width;
     return 'translate('+((cr.left+cr.width/2)-(dr.left+dr.width/2))+'px,'+((cr.top+cr.height/2)-(dr.top+dr.height/2))+'px) scale('+s+')';
   }
-  function openFrom(card){
+  function stopEnd(){if(endHandler){dialog.removeEventListener('transitionend',endHandler);endHandler=null;}}
+  function afterTransform(fn){
+    stopEnd();endHandler=function(ev){if(ev.target!==dialog||(ev.propertyName&&ev.propertyName!=='transform'))return;stopEnd();fn();};
+    dialog.addEventListener('transitionend',endHandler);
+  }
+  function openFrom(card,originRect){
+    clearTimeout(ft);stopEnd();closing=false;var token=++generation;
+    srcRect=originRect&&['left','top','width','height'].every(function(k){return Number.isFinite(originRect[k]);})&&originRect.width>0&&originRect.height>0?originRect:null;
     srcCard=card; var url=card.getAttribute('href');
     frame.classList.remove('loaded'); frame.src=url; openLink.href=url;
-    var lab=card.querySelector('.label'); if(cap) cap.textContent=lab?lab.textContent:'';
+    var lab=card.querySelector('.label'); if(cap) cap.textContent=card.dataset.previewLabel||(lab?lab.textContent:'');
     ov.hidden=false; ov.setAttribute('aria-hidden','false');
     document.documentElement.classList.add('ov-lock'); ov.classList.add('open');
+    document.querySelector('.wrap').inert=true;
+    document.dispatchEvent(new CustomEvent('archive:overlay',{detail:{open:true,card:card}}));
     if(reduce){ dialog.style.opacity='1'; closeBtn.focus(); return; }
     dialog.style.transition='none'; dialog.style.transformOrigin='50% 50%'; dialog.style.willChange='transform,opacity';
     dialog.style.transform=map(card); dialog.style.opacity='0';
     requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      if(token!==generation||closing||ov.hidden)return;
       dialog.style.transition='transform '+DUR+'ms '+EASE+',opacity '+Math.round(DUR*0.55)+'ms ease';
       dialog.style.transform='translate(0,0) scale(1)'; dialog.style.opacity='1';
     }); });
-    var end=function(ev){ if(ev.propertyName&&ev.propertyName!=='transform') return; dialog.style.willChange=''; dialog.style.transition=''; dialog.removeEventListener('transitionend',end); closeBtn.focus(); };
-    dialog.addEventListener('transitionend',end);
+    afterTransform(function(){if(token!==generation||closing)return;dialog.style.willChange='';dialog.style.transition='';closeBtn.focus();});
   }
   function finish(){
+    if(ov.hidden)return;++generation;closing=false;stopEnd();
     clearTimeout(ft); ov.hidden=true; ov.setAttribute('aria-hidden','true'); ov.classList.remove('open');
     dialog.style.transition=''; dialog.style.transform=''; dialog.style.opacity=''; dialog.style.willChange='';
     frame.classList.remove('loaded'); frame.src='about:blank';
     document.documentElement.classList.remove('ov-lock');
-    if(srcCard){ try{ srcCard.focus({preventScroll:true}); }catch(e){} } srcCard=null;
+    document.querySelector('.wrap').inert=false;
+    document.dispatchEvent(new CustomEvent('archive:overlay',{detail:{open:false,card:srcCard}}));
+    if(srcCard){ try{ srcCard.focus({preventScroll:true}); }catch(e){} } srcCard=null; srcRect=null;
   }
   function close(){
-    if(ov.hidden) return;
+    if(ov.hidden||closing) return;
+    closing=true;++generation;clearTimeout(ft);stopEnd();
     if(reduce||!srcCard){ dialog.style.opacity='0'; ov.classList.remove('open'); ft=setTimeout(finish,reduce?180:220); return; }
     dialog.style.willChange='transform,opacity'; dialog.style.transformOrigin='50% 50%';
     dialog.style.transition='transform '+DUR+'ms '+EASE+',opacity '+Math.round(DUR*0.7)+'ms ease';
     ov.classList.remove('open');
     dialog.style.transform=map(srcCard); dialog.style.opacity='0';
-    var end=function(ev){ if(ev.propertyName&&ev.propertyName!=='transform') return; dialog.removeEventListener('transitionend',end); finish(); };
-    dialog.addEventListener('transitionend',end);
+    afterTransform(finish);
     ft=setTimeout(finish,DUR+160);
   }
   document.querySelectorAll('a.card').forEach(function(c){
@@ -433,8 +463,14 @@ OVERLAY_JS = """<script>(function(){
       e.preventDefault(); openFrom(c);
     });
   });
+  document.addEventListener('archive:open',function(e){var card=e.detail&&e.detail.card;if(card&&card.matches('a.card'))openFrom(card,e.detail.originRect);});
   ov.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click',close); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
+  ov.addEventListener('keydown',function(e){
+    if(e.key!=='Tab'||ov.hidden)return;
+    if(e.target===closeBtn&&!e.shiftKey){e.preventDefault();frame.focus();}
+    else if(e.target===openLink&&e.shiftKey){e.preventDefault();frame.focus();}
+  });
 })();</script>"""
 
 NAV_JS = """<script>(function(){
@@ -480,7 +516,7 @@ CAROUSEL_JS = """<script>(function(){
 
 CSS += """
 /* A paper theatre and a broadcast that never starts. Archive pages stay faithful. */
-html.gallery{--bg:#eee7d8;--fg:#39291f;--muted:#6c6155;--line:#c6b9a0;--line-strong:#ad8b59;--accent:#8b332d;--chip:#e4d5bc;--live:#8b332d;--shadow:none;--shadow-hover:none;color-scheme:light}
+html.gallery:not(.art-project){--bg:#eee7d8;--fg:#39291f;--muted:#6c6155;--line:#c6b9a0;--line-strong:#ad8b59;--accent:#8b332d;--chip:#e4d5bc;--live:#8b332d;--shadow:none;--shadow-hover:none;color-scheme:light}
 .gallery body{background:var(--bg);font-family:'IBM Plex Mono',monospace;isolation:isolate}
 .gallery body::before,.gallery body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:-1}
 .gallery body::before{background:radial-gradient(ellipse at 15% 20%,#fff8e5 0,transparent 50%),radial-gradient(ellipse at 85% 70%,#c19c7540,transparent 60%)}
@@ -748,8 +784,9 @@ def card(show_slug, v, zoom=4):
     iframe = (f'<iframe src="{base}"{zstyle} loading="lazy" tabindex="-1" scrolling="no" '
               f'title="{esc(v["label"])} preview"></iframe>')
     chip = f'<span class="chip">{esc(v["chip"])}</span>' if v.get("chip") else ""
+    thumb = f'/countdowns/assets/previews/{show_slug}-{v["slug"].strip("/").replace("/", "-")}.jpg'
     return (
-        f'      <a class="card" href="{base}" target="_blank" rel="noopener">\n'
+        f'      <a class="card" href="{base}" data-thumb="{thumb}" target="_blank" rel="noopener">\n'
         f'        <div class="frame">{iframe}<span class="open">Open ↗</span></div>\n'
         f'        <div class="body">\n'
         f'          <div class="label">{esc(v["label"])}</div>\n'
@@ -796,7 +833,18 @@ def build_gallery():
     out += ('    <header class="masthead"><a class="home-link" href="/">Artur Pokusin</a>'
             '<nav class="theme-picker" aria-label="Archive theme">'
             '<a href="?theme=royal" data-theme-link="royal" aria-label="Royal archive">Royal</a>'
-            '<a href="?theme=control" data-theme-link="control" aria-label="Control room">Control</a></nav></header>\n')
+            '<a href="?theme=control" data-theme-link="control" aria-label="Control room">Control</a>'
+            '<details class="theme-menu"><summary>Worlds</summary><div class="theme-menu-list">'
+            '<a href="?theme=royal" data-theme-link="royal">Royal</a>'
+            '<a href="?theme=control" data-theme-link="control">Control</a>'
+            + ''.join(f'<a href="?theme={slug}" data-theme-link="{slug}">{esc(name)}</a>' for slug, name in ART_THEMES)
+            + '</div></details></nav></header>\n')
+    out += ('    <section class="art-hero" id="art-hero" aria-label="Interactive countdown archive" hidden>\n'
+            '      <div class="art-stage" id="art-stage"><canvas id="art-scene" tabindex="0" aria-label="Interactive art scene"></canvas></div>\n'
+            '      <h1 class="art-title">Countdowns</h1><div class="art-reset-area"></div><div class="art-mounts"></div>\n'
+            '      <button class="art-secret-trigger" type="button" aria-label="Inspect the small crown" aria-controls="countdown-secret" aria-expanded="false"><img src="assets/concepts/crown.png" alt=""></button>\n'
+            '      <div class="art-route"></div><button class="art-archive-toggle" type="button">Archive</button><div class="art-joystick"></div>\n'
+            '    </section>\n')
     title = ''.join('<span class="title-line">' + ''.join(
         f'<span class="title-glyph" style="--i:{offset + i}">{letter}</span>'
         for i, letter in enumerate(word)) + '</span>' for word, offset in [('Count', 0), ('downs', 5)])
@@ -851,7 +899,7 @@ def build_gallery():
             dom = f'<span class="shelf-origin">{esc(s["domain"])}</span>'
         carousel_attr = ' data-carousel' if len(shown) > 1 else ""
         more_href = f'/countdowns/{s["slug"]}/' if has_more else None
-        out += f'    <section class="shelf" id="{s["slug"]}" data-shelf-index="{i + 1:02}"{carousel_attr}>\n      <div class="shelf-aside">\n'
+        out += f'    <section class="shelf" id="{s["slug"]}"{carousel_attr} data-shelf-index="{i + 1:02}">\n      <div class="shelf-aside">\n'
         out += '        <div class="shelf-copy">\n'
         out += f'          <div class="shelf-kicker">{esc(s["years"])}</div>\n'
         out += (f'          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">{s["name"][0]}</span>'
@@ -862,7 +910,8 @@ def build_gallery():
         out += '      </div>\n'
         out += grid(s["slug"], shown, s.get("preview_zoom", 4), include_controls=False, carousel_root=False, more_href=more_href)
         out += '    </section>\n'
-    return out + '    </main>\n' + foot(OVERLAY_HTML + OVERLAY_JS + NAV_JS + CAROUSEL_JS + '<script type="module" src="themes.js"></script>')
+    themes_version = hashlib.sha256(open(os.path.join(CD, 'themes.js'), 'rb').read()).hexdigest()[:10]
+    return out + '    </main>\n' + foot(OVERLAY_HTML + OVERLAY_JS + NAV_JS + CAROUSEL_JS + f'<script type="module" src="themes.js?v={themes_version}"></script>')
 
 # ----------------------------------------------------- per-show details page
 def build_show_index(s):

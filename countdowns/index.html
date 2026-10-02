@@ -6,16 +6,28 @@
   <title>Countdowns · Artur Pokusin</title>
   <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin between 2012 and 2025, preserved and ticking live.">
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=3997e936">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=f727a6db">
 <script>
 (function(){var theme=new URLSearchParams(location.search).get('theme');
- document.documentElement.dataset.theme=theme==='control'?'control':'royal';})();
+ var art=['tomorrows-roadworks','bubblegum-time','after-the-flame','low-tide-later','not-yet-ripe','still-drawing-tomorrow','held-in-suspense','the-almost-fair'];
+ var isArt=art.indexOf(theme)!==-1;
+ document.documentElement.dataset.theme=isArt?theme:theme==='control'?'control':'royal';
+ document.documentElement.dataset.artVersion='4250fd9e62';
+ if(isArt){document.documentElement.classList.add('art-project');var link=document.createElement('link');link.rel='stylesheet';link.href='concepts/'+theme+'.css?v=4250fd9e62';document.head.append(link);}
+})();
 </script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="exhibition.css?v=4250fd9e62">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
 </head>
 <body>
   <div class="wrap">
-    <header class="masthead"><a class="home-link" href="/">Artur Pokusin</a><nav class="theme-picker" aria-label="Archive theme"><a href="?theme=royal" data-theme-link="royal" aria-label="Royal archive">Royal</a><a href="?theme=control" data-theme-link="control" aria-label="Control room">Control</a></nav></header>
+    <header class="masthead"><a class="home-link" href="/">Artur Pokusin</a><nav class="theme-picker" aria-label="Archive theme"><a href="?theme=royal" data-theme-link="royal" aria-label="Royal archive">Royal</a><a href="?theme=control" data-theme-link="control" aria-label="Control room">Control</a><details class="theme-menu"><summary>Worlds</summary><div class="theme-menu-list"><a href="?theme=royal" data-theme-link="royal">Royal</a><a href="?theme=control" data-theme-link="control">Control</a><a href="?theme=tomorrows-roadworks" data-theme-link="tomorrows-roadworks">Tomorrow’s Roadworks</a><a href="?theme=bubblegum-time" data-theme-link="bubblegum-time">Bubblegum Time</a><a href="?theme=after-the-flame" data-theme-link="after-the-flame">After the Flame</a><a href="?theme=low-tide-later" data-theme-link="low-tide-later">Low Tide, Later</a><a href="?theme=not-yet-ripe" data-theme-link="not-yet-ripe">Not Yet Ripe</a><a href="?theme=still-drawing-tomorrow" data-theme-link="still-drawing-tomorrow">Still Drawing Tomorrow</a><a href="?theme=held-in-suspense" data-theme-link="held-in-suspense">Held in Suspense</a><a href="?theme=the-almost-fair" data-theme-link="the-almost-fair">The Almost Fair</a></div></details></nav></header>
+    <section class="art-hero" id="art-hero" aria-label="Interactive countdown archive" hidden>
+      <div class="art-stage" id="art-stage"><canvas id="art-scene" tabindex="0" aria-label="Interactive art scene"></canvas></div>
+      <h1 class="art-title">Countdowns</h1><div class="art-reset-area"></div><div class="art-mounts"></div>
+      <button class="art-secret-trigger" type="button" aria-label="Inspect the small crown" aria-controls="countdown-secret" aria-expanded="false"><img src="assets/concepts/crown.png" alt=""></button>
+      <div class="art-route"></div><button class="art-archive-toggle" type="button">Archive</button><div class="art-joystick"></div>
+    </section>
     <div class="hero-surface" id="hero-surface">
 <div class="hero-atmosphere" aria-hidden="true"></div><div class="archive-heading"><p class="eyebrow">2012 — ∞</p><h1 class="title" aria-label="Countdowns"><span aria-hidden="true"><span class="title-line"><span class="title-glyph" style="--i:0">C</span><span class="title-glyph" style="--i:1">o</span><span class="title-glyph" style="--i:2">u</span><span class="title-glyph" style="--i:3">n</span><span class="title-glyph" style="--i:4">t</span></span><span class="title-line"><span class="title-glyph" style="--i:5">d</span><span class="title-glyph" style="--i:6">o</span><span class="title-glyph" style="--i:7">w</span><span class="title-glyph" style="--i:8">n</span><span class="title-glyph" style="--i:9">s</span></span></span></h1>
 <p class="lede">An archive of anticipation.</p></div>
@@ -44,7 +56,7 @@
       <a href="#severance"><span class="nv-e">VII</span><span class="nv-n">Severance</span></a>
     </nav>
     <main class="archive-shelves" id="archive-shelves" aria-label="Countdown archive">
-    <section class="shelf" id="got" data-shelf-index="01" data-carousel>
+    <section class="shelf" id="got" data-carousel data-shelf-index="01">
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2012 – 2019</div>
@@ -58,7 +70,7 @@
       </div>
       <div class="carousel">
         <div class="grid">
-      <a class="card" href="/countdowns/got/s4/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/got/s4/" data-thumb="/countdowns/assets/previews/got-s4.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/got/s4/" loading="lazy" tabindex="-1" scrolling="no" title="Season 4 preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 4</div>
@@ -66,7 +78,7 @@
           <div class="desc">The full-bleed house switcher. Pick a house and the page floods with its colors and sigil.</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/got/s3-redesign/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/got/s3-redesign/" data-thumb="/countdowns/assets/previews/got-s3-redesign.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/got/s3-redesign/" style="width:500%;height:500%;transform:scale(0.2000)" loading="lazy" tabindex="-1" scrolling="no" title="Season 3 · Redesign preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 3 · Redesign</div>
@@ -74,7 +86,7 @@
           <div class="desc">House theming, a central sigil, and the Game of Thrones theme on play.</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/got/s3-classic/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/got/s3-classic/" data-thumb="/countdowns/assets/previews/got-s3-classic.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/got/s3-classic/" loading="lazy" tabindex="-1" scrolling="no" title="Season 3 · Classic preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 3 · Classic</div>
@@ -86,7 +98,7 @@
         <a class="more shelf-more" href="/countdowns/got/">More <span class="arrow">→</span></a>
       </div>
     </section>
-    <section class="shelf" id="dexter" data-shelf-index="02" data-carousel>
+    <section class="shelf" id="dexter" data-carousel data-shelf-index="02">
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2012 – 2013</div>
@@ -100,7 +112,7 @@
       </div>
       <div class="carousel">
         <div class="grid">
-      <a class="card" href="/countdowns/dexter/s8-final/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/dexter/s8-final/" data-thumb="/countdowns/assets/previews/dexter-s8-final.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/dexter/s8-final/" loading="lazy" tabindex="-1" scrolling="no" title="Series Finale preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Series Finale</div>
@@ -108,7 +120,7 @@
           <div class="desc">The minimalist redesign, white cards, blood-red badges, labels turned on their side.</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/dexter/s7-finale/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/dexter/s7-finale/" data-thumb="/countdowns/assets/previews/dexter-s7-finale.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/dexter/s7-finale/" loading="lazy" tabindex="-1" scrolling="no" title="Season 7 · Finale preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 7 · Finale</div>
@@ -120,7 +132,7 @@
         <a class="more shelf-more" href="/countdowns/dexter/">More <span class="arrow">→</span></a>
       </div>
     </section>
-    <section class="shelf" id="sherlock" data-shelf-index="03" data-carousel>
+    <section class="shelf" id="sherlock" data-carousel data-shelf-index="03">
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2013 – 2014</div>
@@ -134,7 +146,7 @@
       </div>
       <div class="carousel">
         <div class="grid">
-      <a class="card" href="/countdowns/sherlock/final/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/sherlock/final/" data-thumb="/countdowns/assets/previews/sherlock-final.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/sherlock/final/" loading="lazy" tabindex="-1" scrolling="no" title="Season 3 preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 3</div>
@@ -142,7 +154,7 @@
           <div class="desc">A UK / US air-date toggle, and a hidden 221B easter egg. (Try the door.)</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/sherlock/alpha/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/sherlock/alpha/" data-thumb="/countdowns/assets/previews/sherlock-alpha.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/sherlock/alpha/" loading="lazy" tabindex="-1" scrolling="no" title="Season 3 · Alpha preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 3 · Alpha</div>
@@ -164,7 +176,7 @@
       </div>
       <div class="carousel">
         <div class="grid">
-      <a class="card" href="/countdowns/archer/s5-final/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/archer/s5-final/" data-thumb="/countdowns/assets/previews/archer-s5-final.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/archer/s5-final/" style="width:500%;height:500%;transform:scale(0.2000)" loading="lazy" tabindex="-1" scrolling="no" title="Season 5 preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 5</div>
@@ -176,7 +188,7 @@
         <a class="more shelf-more" href="/countdowns/archer/">More <span class="arrow">→</span></a>
       </div>
     </section>
-    <section class="shelf" id="breaking-bad" data-shelf-index="05" data-carousel>
+    <section class="shelf" id="breaking-bad" data-carousel data-shelf-index="05">
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2012 – 2013</div>
@@ -190,7 +202,7 @@
       </div>
       <div class="carousel">
         <div class="grid">
-      <a class="card" href="/countdowns/breaking-bad/final/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/breaking-bad/final/" data-thumb="/countdowns/assets/previews/breaking-bad-final.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/breaking-bad/final/" loading="lazy" tabindex="-1" scrolling="no" title="Series Finale preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Series Finale</div>
@@ -198,7 +210,7 @@
           <div class="desc">Gold and texture, #allbadthingsmustcometoanend, and the theme on play.</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/breaking-bad/desert-parallax/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/breaking-bad/desert-parallax/" data-thumb="/countdowns/assets/previews/breaking-bad-desert-parallax.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/breaking-bad/desert-parallax/" loading="lazy" tabindex="-1" scrolling="no" title="Desert Parallax preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Desert Parallax</div>
@@ -220,7 +232,7 @@
       </div>
       <div class="carousel">
         <div class="grid">
-      <a class="card" href="/countdowns/house-of-cards/s2/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/house-of-cards/s2/" data-thumb="/countdowns/assets/previews/house-of-cards-s2.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/house-of-cards/s2/" loading="lazy" tabindex="-1" scrolling="no" title="Season 2 preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 2</div>
@@ -231,7 +243,7 @@
         </div>
       </div>
     </section>
-    <section class="shelf" id="severance" data-shelf-index="07" data-carousel>
+    <section class="shelf" id="severance" data-carousel data-shelf-index="07">
       <div class="shelf-aside">
         <div class="shelf-copy">
           <div class="shelf-kicker">2025 –</div>
@@ -245,7 +257,7 @@
       </div>
       <div class="carousel">
         <div class="grid">
-      <a class="card" href="/countdowns/severance/s2/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/severance/s2/" data-thumb="/countdowns/assets/previews/severance-s2.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/severance/s2/" loading="lazy" tabindex="-1" scrolling="no" title="Season 2 preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 2</div>
@@ -253,7 +265,7 @@
           <div class="desc">The Macrodata Refinement Tracker caught mid-season, episode bars half-filled, with a live countdown to the next drop.</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/severance/tracker/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/severance/tracker/" data-thumb="/countdowns/assets/previews/severance-tracker.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/severance/tracker/" loading="lazy" tabindex="-1" scrolling="no" title="Season 3 preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 3</div>
@@ -270,9 +282,9 @@
       <span>7 shows · 35 versions · 2012 – 2025</span>
     </footer>
   </div>
-  <div class="ov" id="ov" hidden aria-hidden="true">
+  <div class="ov" id="ov" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Countdown preview">
     <div class="ov-backdrop" data-close></div>
-    <div class="ov-dialog" role="dialog" aria-modal="true" aria-label="Countdown preview">
+    <div class="ov-dialog">
       <div class="ov-stage"><iframe id="ov-frame" title="Countdown preview" scrolling="no"></iframe></div>
     </div>
     <div class="ov-cap" id="ov-cap"></div>
@@ -286,48 +298,64 @@
   var dialog=ov.querySelector('.ov-dialog'),frame=document.getElementById('ov-frame'),
       openLink=document.getElementById('ov-open'),cap=document.getElementById('ov-cap'),
       closeBtn=ov.querySelector('.ov-close');
-  var srcCard=null,DUR=440,EASE='cubic-bezier(.2,.8,.2,1)',ft=null;
+  var srcCard=null,srcRect=null,DUR=440,EASE='cubic-bezier(.2,.8,.2,1)',ft=null,closing=false,generation=0,endHandler=null;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fullCountdownMedia=matchMedia('(max-width: 640px)');
   function shouldOpenFullCountdown(){ return !document.documentElement.classList.contains('gallery') && fullCountdownMedia.matches; }
-  frame.addEventListener('load',function(){ if((frame.src||'').indexOf('about:blank')<0) frame.classList.add('loaded'); });
+  frame.addEventListener('load',function(){
+    if((frame.src||'').indexOf('about:blank')<0) frame.classList.add('loaded');
+    try{frame.contentDocument.addEventListener('keydown',function(e){if(e.key==='Escape'&&!ov.hidden){e.preventDefault();close();}});}catch(e){}
+  });
   function map(card){ // uniform scale + translate so the dialog starts centered on the card frame
-    var dr=dialog.getBoundingClientRect(), cr=card.querySelector('.frame').getBoundingClientRect();
+    var dr=dialog.getBoundingClientRect(), cr=srcRect||card.querySelector('.frame').getBoundingClientRect();
+    if(!cr.width||!cr.height)return 'translate(0,14px) scale(.97)';
     var s=cr.width/dr.width;
     return 'translate('+((cr.left+cr.width/2)-(dr.left+dr.width/2))+'px,'+((cr.top+cr.height/2)-(dr.top+dr.height/2))+'px) scale('+s+')';
   }
-  function openFrom(card){
+  function stopEnd(){if(endHandler){dialog.removeEventListener('transitionend',endHandler);endHandler=null;}}
+  function afterTransform(fn){
+    stopEnd();endHandler=function(ev){if(ev.target!==dialog||(ev.propertyName&&ev.propertyName!=='transform'))return;stopEnd();fn();};
+    dialog.addEventListener('transitionend',endHandler);
+  }
+  function openFrom(card,originRect){
+    clearTimeout(ft);stopEnd();closing=false;var token=++generation;
+    srcRect=originRect&&['left','top','width','height'].every(function(k){return Number.isFinite(originRect[k]);})&&originRect.width>0&&originRect.height>0?originRect:null;
     srcCard=card; var url=card.getAttribute('href');
     frame.classList.remove('loaded'); frame.src=url; openLink.href=url;
-    var lab=card.querySelector('.label'); if(cap) cap.textContent=lab?lab.textContent:'';
+    var lab=card.querySelector('.label'); if(cap) cap.textContent=card.dataset.previewLabel||(lab?lab.textContent:'');
     ov.hidden=false; ov.setAttribute('aria-hidden','false');
     document.documentElement.classList.add('ov-lock'); ov.classList.add('open');
+    document.querySelector('.wrap').inert=true;
+    document.dispatchEvent(new CustomEvent('archive:overlay',{detail:{open:true,card:card}}));
     if(reduce){ dialog.style.opacity='1'; closeBtn.focus(); return; }
     dialog.style.transition='none'; dialog.style.transformOrigin='50% 50%'; dialog.style.willChange='transform,opacity';
     dialog.style.transform=map(card); dialog.style.opacity='0';
     requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      if(token!==generation||closing||ov.hidden)return;
       dialog.style.transition='transform '+DUR+'ms '+EASE+',opacity '+Math.round(DUR*0.55)+'ms ease';
       dialog.style.transform='translate(0,0) scale(1)'; dialog.style.opacity='1';
     }); });
-    var end=function(ev){ if(ev.propertyName&&ev.propertyName!=='transform') return; dialog.style.willChange=''; dialog.style.transition=''; dialog.removeEventListener('transitionend',end); closeBtn.focus(); };
-    dialog.addEventListener('transitionend',end);
+    afterTransform(function(){if(token!==generation||closing)return;dialog.style.willChange='';dialog.style.transition='';closeBtn.focus();});
   }
   function finish(){
+    if(ov.hidden)return;++generation;closing=false;stopEnd();
     clearTimeout(ft); ov.hidden=true; ov.setAttribute('aria-hidden','true'); ov.classList.remove('open');
     dialog.style.transition=''; dialog.style.transform=''; dialog.style.opacity=''; dialog.style.willChange='';
     frame.classList.remove('loaded'); frame.src='about:blank';
     document.documentElement.classList.remove('ov-lock');
-    if(srcCard){ try{ srcCard.focus({preventScroll:true}); }catch(e){} } srcCard=null;
+    document.querySelector('.wrap').inert=false;
+    document.dispatchEvent(new CustomEvent('archive:overlay',{detail:{open:false,card:srcCard}}));
+    if(srcCard){ try{ srcCard.focus({preventScroll:true}); }catch(e){} } srcCard=null; srcRect=null;
   }
   function close(){
-    if(ov.hidden) return;
+    if(ov.hidden||closing) return;
+    closing=true;++generation;clearTimeout(ft);stopEnd();
     if(reduce||!srcCard){ dialog.style.opacity='0'; ov.classList.remove('open'); ft=setTimeout(finish,reduce?180:220); return; }
     dialog.style.willChange='transform,opacity'; dialog.style.transformOrigin='50% 50%';
     dialog.style.transition='transform '+DUR+'ms '+EASE+',opacity '+Math.round(DUR*0.7)+'ms ease';
     ov.classList.remove('open');
     dialog.style.transform=map(srcCard); dialog.style.opacity='0';
-    var end=function(ev){ if(ev.propertyName&&ev.propertyName!=='transform') return; dialog.removeEventListener('transitionend',end); finish(); };
-    dialog.addEventListener('transitionend',end);
+    afterTransform(finish);
     ft=setTimeout(finish,DUR+160);
   }
   document.querySelectorAll('a.card').forEach(function(c){
@@ -337,8 +365,14 @@
       e.preventDefault(); openFrom(c);
     });
   });
+  document.addEventListener('archive:open',function(e){var card=e.detail&&e.detail.card;if(card&&card.matches('a.card'))openFrom(card,e.detail.originRect);});
   ov.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click',close); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
+  ov.addEventListener('keydown',function(e){
+    if(e.key!=='Tab'||ov.hidden)return;
+    if(e.target===closeBtn&&!e.shiftKey){e.preventDefault();frame.focus();}
+    else if(e.target===openLink&&e.shiftKey){e.preventDefault();frame.focus();}
+  });
 })();</script><script>(function(){
   var nav=document.querySelector('.shownav'); if(!nav||!('IntersectionObserver' in window)) return;
   var links={}; nav.querySelectorAll('a').forEach(function(a){ links[a.getAttribute('href').split('#').pop()]=a; });
@@ -376,5 +410,5 @@
     update();
   }
   document.querySelectorAll('[data-carousel]').forEach(setup);
-})();</script><script type="module" src="themes.js"></script></body>
+})();</script><script type="module" src="themes.js?v=12454f3b12"></script></body>
 </html>

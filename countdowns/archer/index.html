@@ -6,7 +6,7 @@
   <title>Archer Countdowns · Archive</title>
   <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin between 2012 and 2025, preserved and ticking live.">
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=3997e936">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=f727a6db">
 </head>
 <body>
   <div class="wrap">
@@ -16,7 +16,7 @@
     <section class="show">
       <div class="carousel">
         <div class="grid">
-      <a class="card" href="/countdowns/archer/s5-final/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/archer/s5-final/" data-thumb="/countdowns/assets/previews/archer-s5-final.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/archer/s5-final/" style="width:500%;height:500%;transform:scale(0.2000)" loading="lazy" tabindex="-1" scrolling="no" title="Season 5 preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 5</div>
@@ -34,7 +34,7 @@
           <button class="carousel-btn carousel-next" type="button" aria-label="Next preview">›</button>
         </div>
         <div class="grid">
-      <a class="card" href="/countdowns/archer/s4/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/archer/s4/" data-thumb="/countdowns/assets/previews/archer-s4.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/archer/s4/" style="width:500%;height:500%;transform:scale(0.2000)" loading="lazy" tabindex="-1" scrolling="no" title="Season 4 preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 4</div>
@@ -42,7 +42,7 @@
           <div class="desc">The true Season 4 page (“Midnight Ron”).</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/archer/s5-draft/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/archer/s5-draft/" data-thumb="/countdowns/assets/previews/archer-s5-draft.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/archer/s5-draft/" style="width:500%;height:500%;transform:scale(0.2000)" loading="lazy" tabindex="-1" scrolling="no" title="Season 5 · Draft preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 5 · Draft</div>
@@ -50,7 +50,7 @@
           <div class="desc">A pre-launch draft, year typo and all, preserved as found.</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/archer/s5-finished/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/archer/s5-finished/" data-thumb="/countdowns/assets/previews/archer-s5-finished.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/archer/s5-finished/" style="width:500%;height:500%;transform:scale(0.2000)" loading="lazy" tabindex="-1" scrolling="no" title="Season 5 · Finished preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 5 · Finished</div>
@@ -58,7 +58,7 @@
           <div class="desc">“Thanks for visiting!” The after-the-premiere state.</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/archer/coming-soon/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/archer/coming-soon/" data-thumb="/countdowns/assets/previews/archer-coming-soon.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/archer/coming-soon/" style="width:500%;height:500%;transform:scale(0.2000)" loading="lazy" tabindex="-1" scrolling="no" title="Coming Soon preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Coming Soon</div>
@@ -66,7 +66,7 @@
           <div class="desc">The earliest splash, before any clock.</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/archer/s5-episode/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/archer/s5-episode/" data-thumb="/countdowns/assets/previews/archer-s5-episode.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/archer/s5-episode/" style="width:500%;height:500%;transform:scale(0.2000)" loading="lazy" tabindex="-1" scrolling="no" title="Season 5 · Episode preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 5 · Episode</div>
@@ -74,7 +74,7 @@
           <div class="desc">A generic mid-season episode countdown, “Counting down to Archer Season 5!”</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/archer/s5-draft-finished/" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/archer/s5-draft-finished/" data-thumb="/countdowns/assets/previews/archer-s5-draft-finished.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/archer/s5-draft-finished/" style="width:500%;height:500%;transform:scale(0.2000)" loading="lazy" tabindex="-1" scrolling="no" title="Season 5 · Draft (Finished) preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 5 · Draft (Finished)</div>
@@ -91,9 +91,9 @@
       <span>7 shows · 35 versions · 2012 – 2025</span>
     </footer>
   </div>
-  <div class="ov" id="ov" hidden aria-hidden="true">
+  <div class="ov" id="ov" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Countdown preview">
     <div class="ov-backdrop" data-close></div>
-    <div class="ov-dialog" role="dialog" aria-modal="true" aria-label="Countdown preview">
+    <div class="ov-dialog">
       <div class="ov-stage"><iframe id="ov-frame" title="Countdown preview" scrolling="no"></iframe></div>
     </div>
     <div class="ov-cap" id="ov-cap"></div>
@@ -107,48 +107,64 @@
   var dialog=ov.querySelector('.ov-dialog'),frame=document.getElementById('ov-frame'),
       openLink=document.getElementById('ov-open'),cap=document.getElementById('ov-cap'),
       closeBtn=ov.querySelector('.ov-close');
-  var srcCard=null,DUR=440,EASE='cubic-bezier(.2,.8,.2,1)',ft=null;
+  var srcCard=null,srcRect=null,DUR=440,EASE='cubic-bezier(.2,.8,.2,1)',ft=null,closing=false,generation=0,endHandler=null;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fullCountdownMedia=matchMedia('(max-width: 640px)');
   function shouldOpenFullCountdown(){ return !document.documentElement.classList.contains('gallery') && fullCountdownMedia.matches; }
-  frame.addEventListener('load',function(){ if((frame.src||'').indexOf('about:blank')<0) frame.classList.add('loaded'); });
+  frame.addEventListener('load',function(){
+    if((frame.src||'').indexOf('about:blank')<0) frame.classList.add('loaded');
+    try{frame.contentDocument.addEventListener('keydown',function(e){if(e.key==='Escape'&&!ov.hidden){e.preventDefault();close();}});}catch(e){}
+  });
   function map(card){ // uniform scale + translate so the dialog starts centered on the card frame
-    var dr=dialog.getBoundingClientRect(), cr=card.querySelector('.frame').getBoundingClientRect();
+    var dr=dialog.getBoundingClientRect(), cr=srcRect||card.querySelector('.frame').getBoundingClientRect();
+    if(!cr.width||!cr.height)return 'translate(0,14px) scale(.97)';
     var s=cr.width/dr.width;
     return 'translate('+((cr.left+cr.width/2)-(dr.left+dr.width/2))+'px,'+((cr.top+cr.height/2)-(dr.top+dr.height/2))+'px) scale('+s+')';
   }
-  function openFrom(card){
+  function stopEnd(){if(endHandler){dialog.removeEventListener('transitionend',endHandler);endHandler=null;}}
+  function afterTransform(fn){
+    stopEnd();endHandler=function(ev){if(ev.target!==dialog||(ev.propertyName&&ev.propertyName!=='transform'))return;stopEnd();fn();};
+    dialog.addEventListener('transitionend',endHandler);
+  }
+  function openFrom(card,originRect){
+    clearTimeout(ft);stopEnd();closing=false;var token=++generation;
+    srcRect=originRect&&['left','top','width','height'].every(function(k){return Number.isFinite(originRect[k]);})&&originRect.width>0&&originRect.height>0?originRect:null;
     srcCard=card; var url=card.getAttribute('href');
     frame.classList.remove('loaded'); frame.src=url; openLink.href=url;
-    var lab=card.querySelector('.label'); if(cap) cap.textContent=lab?lab.textContent:'';
+    var lab=card.querySelector('.label'); if(cap) cap.textContent=card.dataset.previewLabel||(lab?lab.textContent:'');
     ov.hidden=false; ov.setAttribute('aria-hidden','false');
     document.documentElement.classList.add('ov-lock'); ov.classList.add('open');
+    document.querySelector('.wrap').inert=true;
+    document.dispatchEvent(new CustomEvent('archive:overlay',{detail:{open:true,card:card}}));
     if(reduce){ dialog.style.opacity='1'; closeBtn.focus(); return; }
     dialog.style.transition='none'; dialog.style.transformOrigin='50% 50%'; dialog.style.willChange='transform,opacity';
     dialog.style.transform=map(card); dialog.style.opacity='0';
     requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      if(token!==generation||closing||ov.hidden)return;
       dialog.style.transition='transform '+DUR+'ms '+EASE+',opacity '+Math.round(DUR*0.55)+'ms ease';
       dialog.style.transform='translate(0,0) scale(1)'; dialog.style.opacity='1';
     }); });
-    var end=function(ev){ if(ev.propertyName&&ev.propertyName!=='transform') return; dialog.style.willChange=''; dialog.style.transition=''; dialog.removeEventListener('transitionend',end); closeBtn.focus(); };
-    dialog.addEventListener('transitionend',end);
+    afterTransform(function(){if(token!==generation||closing)return;dialog.style.willChange='';dialog.style.transition='';closeBtn.focus();});
   }
   function finish(){
+    if(ov.hidden)return;++generation;closing=false;stopEnd();
     clearTimeout(ft); ov.hidden=true; ov.setAttribute('aria-hidden','true'); ov.classList.remove('open');
     dialog.style.transition=''; dialog.style.transform=''; dialog.style.opacity=''; dialog.style.willChange='';
     frame.classList.remove('loaded'); frame.src='about:blank';
     document.documentElement.classList.remove('ov-lock');
-    if(srcCard){ try{ srcCard.focus({preventScroll:true}); }catch(e){} } srcCard=null;
+    document.querySelector('.wrap').inert=false;
+    document.dispatchEvent(new CustomEvent('archive:overlay',{detail:{open:false,card:srcCard}}));
+    if(srcCard){ try{ srcCard.focus({preventScroll:true}); }catch(e){} } srcCard=null; srcRect=null;
   }
   function close(){
-    if(ov.hidden) return;
+    if(ov.hidden||closing) return;
+    closing=true;++generation;clearTimeout(ft);stopEnd();
     if(reduce||!srcCard){ dialog.style.opacity='0'; ov.classList.remove('open'); ft=setTimeout(finish,reduce?180:220); return; }
     dialog.style.willChange='transform,opacity'; dialog.style.transformOrigin='50% 50%';
     dialog.style.transition='transform '+DUR+'ms '+EASE+',opacity '+Math.round(DUR*0.7)+'ms ease';
     ov.classList.remove('open');
     dialog.style.transform=map(srcCard); dialog.style.opacity='0';
-    var end=function(ev){ if(ev.propertyName&&ev.propertyName!=='transform') return; dialog.removeEventListener('transitionend',end); finish(); };
-    dialog.addEventListener('transitionend',end);
+    afterTransform(finish);
     ft=setTimeout(finish,DUR+160);
   }
   document.querySelectorAll('a.card').forEach(function(c){
@@ -158,8 +174,14 @@
       e.preventDefault(); openFrom(c);
     });
   });
+  document.addEventListener('archive:open',function(e){var card=e.detail&&e.detail.card;if(card&&card.matches('a.card'))openFrom(card,e.detail.originRect);});
   ov.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click',close); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
+  ov.addEventListener('keydown',function(e){
+    if(e.key!=='Tab'||ov.hidden)return;
+    if(e.target===closeBtn&&!e.shiftKey){e.preventDefault();frame.focus();}
+    else if(e.target===openLink&&e.shiftKey){e.preventDefault();frame.focus();}
+  });
 })();</script><script>(function(){
   var nav=document.querySelector('.shownav'); if(!nav||!('IntersectionObserver' in window)) return;
   var links={}; nav.querySelectorAll('a').forEach(function(a){ links[a.getAttribute('href').split('#').pop()]=a; });

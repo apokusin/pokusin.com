@@ -204,7 +204,7 @@ html.ov-lock{overflow:hidden}
 }
 
 /* A paper theatre and a broadcast that never starts. Archive pages stay faithful. */
-html.gallery{--bg:#eee7d8;--fg:#39291f;--muted:#6c6155;--line:#c6b9a0;--line-strong:#ad8b59;--accent:#8b332d;--chip:#e4d5bc;--live:#8b332d;--shadow:none;--shadow-hover:none;color-scheme:light}
+html.gallery:not(.art-project){--bg:#eee7d8;--fg:#39291f;--muted:#6c6155;--line:#c6b9a0;--line-strong:#ad8b59;--accent:#8b332d;--chip:#e4d5bc;--live:#8b332d;--shadow:none;--shadow-hover:none;color-scheme:light}
 .gallery body{background:var(--bg);font-family:'IBM Plex Mono',monospace;isolation:isolate}
 .gallery body::before,.gallery body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:-1}
 .gallery body::before{background:radial-gradient(ellipse at 15% 20%,#fff8e5 0,transparent 50%),radial-gradient(ellipse at 85% 70%,#c19c7540,transparent 60%)}

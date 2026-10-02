@@ -1,10 +1,10 @@
 # Countdown concept implementation guide
 
-Prepared October 2, 2026. These are visual explorations and implementation briefs, not working demos. No new theme is selected yet. Values for lighting, motion and render budgets are proposed starting targets, to tune against the selected reference on actual devices.
+Prepared October 2, 2026. All eight directions have been implemented separately for comparison. No final replacement theme is selected yet. Values for lighting, motion and render budgets are proposed starting targets, to tune against the selected reference on actual devices.
 
 ## How to use this package
 
-Read this guide, the selected concept's complete spec, and its reference image before editing site code. Open the image itself; do not infer its appearance from its filename. Use the same eleven headings in every spec to compare decisions across concepts.
+Read this guide, the concept's complete spec, and its reference image before editing site code. Open the image itself; do not infer its appearance from its filename. Use the same eleven headings in every spec to compare decisions across concepts.
 
 The user's instructions take priority. This guide owns functional requirements; the selected spec owns art direction and interactions; the image owns the composition, silhouettes and material relationships. Generation prompts record how the visual was explored. Do not combine concepts or substitute a familiar gallery layout without the user's direction.
 
