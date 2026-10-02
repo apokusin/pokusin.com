@@ -127,6 +127,28 @@ EPISODES = [
 
 SHOW_COUNT = len(SHOWS)
 TOTAL = 8 + 10 + 3 + 7 + 4 + 1 + 2  # GoT8 Dexter(3+7eps) Sherlock3 Archer7 BB4 HoC1 Sev2 = 35
+NEXT_COUNTDOWN_DATE = "2026-11-01T00:00:00-07:00"  # One month from October 1, Pacific time.
+
+NEXT_COUNTDOWN_JS = """<script>(function(){
+  var timer = document.getElementById('next-countdown-timer');
+  var target = Date.parse(document.getElementById('next-countdown-date').dateTime);
+  function tick(){
+    var seconds = Math.max(0, Math.ceil((target - Date.now()) / 1000));
+    if(!seconds){ timer.textContent = 'Time to start another countdown.'; return; }
+    var days = Math.floor(seconds / 86400);
+    var hours = Math.floor(seconds % 86400 / 3600);
+    var minutes = Math.floor(seconds % 3600 / 60);
+    timer.textContent = days + 'd ' + String(hours).padStart(2,'0') + 'h ' +
+      String(minutes).padStart(2,'0') + 'm ' + String(seconds % 60).padStart(2,'0') + 's';
+  }
+  tick(); setInterval(tick, 1000);
+  var crown = document.getElementById('countdown-crown');
+  var secret = document.getElementById('countdown-secret');
+  crown.addEventListener('click', function(){
+    secret.hidden = !secret.hidden;
+    crown.setAttribute('aria-expanded', String(!secret.hidden));
+  });
+})();</script>"""
 
 # ---------------------------------------------------------------------- CSS
 CSS = """:root{
@@ -163,6 +185,13 @@ a{color:inherit;text-decoration:none}
 h1.title{font-size:clamp(2rem,6.4vw,3.1rem);letter-spacing:-.035em;font-weight:700;line-height:1.02;text-wrap:balance}
 .lede{color:var(--muted);font-size:clamp(.95rem,2.4vw,1.08rem);max-width:62ch;margin-top:16px;text-wrap:pretty}
 .lede strong{color:var(--fg);font-weight:600}
+.next-countdown{margin-top:28px;padding-left:16px;border-left:2px solid var(--line-strong)}
+.next-countdown h2{font-size:.85rem;font-weight:600;display:flex;align-items:center;gap:6px}
+.countdown-crown{font:inherit;color:var(--muted);background:none;border:0;cursor:pointer;flex:0 0 32px;width:32px;height:32px;border-radius:6px}
+.countdown-crown:hover{color:var(--fg);background:var(--chip)}
+.countdown-crown:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.next-countdown-timer{font-size:clamp(1.4rem,4.5vw,1.8rem);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.035em}
+.next-countdown-note,.countdown-secret{font-size:.78rem;color:var(--muted);margin-top:5px}
 .show{margin-top:clamp(38px,6.4vw,66px)}
 .show-head{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:24px}
 .show-emoji{font-size:1.4rem;line-height:1}
@@ -265,6 +294,7 @@ a.shelf-origin:hover{color:var(--fg)}
 }
 @media (max-width:760px){
   .wrap{padding-left:0;padding-right:0}
+  .next-countdown{margin-left:var(--mobile-gutter);margin-right:var(--mobile-gutter)}
   .crumb,.eyebrow,h1.title,.lede,.foot{padding-left:var(--mobile-gutter);padding-right:var(--mobile-gutter)}
   .shownav{padding-left:var(--mobile-gutter);padding-right:var(--mobile-gutter);scroll-padding-inline:var(--mobile-gutter)}
   .shelf{grid-template-columns:1fr;gap:16px;padding-left:0;padding-right:0}
@@ -551,6 +581,17 @@ def build_gallery():
     out += ('    <p class="lede">A collection of TV-show countdown sites I '
             'handcrafted between 2012 and 2025. Every illustration and line of '
             "code was made by hand, and they're all still ticking.</p>\n")
+    out += (
+        '    <section class="next-countdown" aria-labelledby="next-countdown-heading">\n'
+        '      <h2 id="next-countdown-heading">Countdown to the next countdown'
+        ' <button class="countdown-crown" id="countdown-crown" type="button"'
+        ' aria-label="Countdown King" aria-expanded="false" aria-controls="countdown-secret">♛</button></h2>\n'
+        '      <p class="next-countdown-timer" id="next-countdown-timer">November 1, 2026</p>\n'
+        '      <p class="next-countdown-note">Naturally. · '
+        f'<time id="next-countdown-date" datetime="{NEXT_COUNTDOWN_DATE}">Nov 1, 2026 · Pacific time</time></p>\n'
+        '      <p class="countdown-secret" id="countdown-secret" hidden>Long may I count.</p>\n'
+        '    </section>\n'
+    )
     out += '    <nav class="shownav" aria-label="Shows">\n'
     for s in SHOWS:
         out += (f'      <a href="#{s["slug"]}"><span class="nv-e">{s["emoji"]}</span>'
@@ -578,7 +619,7 @@ def build_gallery():
         out += '      </div>\n'
         out += grid(s["slug"], shown, s.get("preview_zoom", 4), include_controls=False, carousel_root=False, more_href=more_href)
         out += '    </section>\n'
-    return out + foot(OVERLAY_HTML + OVERLAY_JS + NAV_JS + CAROUSEL_JS)
+    return out + foot(OVERLAY_HTML + OVERLAY_JS + NAV_JS + CAROUSEL_JS + NEXT_COUNTDOWN_JS)
 
 # ----------------------------------------------------- per-show details page
 def build_show_index(s):
