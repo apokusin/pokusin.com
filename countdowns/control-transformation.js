@@ -1,6 +1,6 @@
 // The old clock is blown apart; its replacement grows out of one grounded seed.
 // Source meshes/materials stay intact. Only the little seed is owned by this helper.
-export function createClockTransformation({ THREE, parts = [], center }) {
+export function createClockTransformation({ THREE, parts = [], center, actuator }) {
   const origin = center?.clone() || new THREE.Vector3();
   const duration = 5.8;
   const clamp = value => Math.max(0, Math.min(1, value));
@@ -16,6 +16,7 @@ export function createClockTransformation({ THREE, parts = [], center }) {
   const hingeOffset = new THREE.Vector3();
   const machineScale = new THREE.Vector3();
   const localScale = new THREE.Vector3();
+  const lidAxis = new THREE.Vector3(1, 0, 0);
   let active = false, disposed = false, lastAge = duration;
 
   function randomFor(index) {
@@ -119,6 +120,100 @@ export function createClockTransformation({ THREE, parts = [], center }) {
     record.localCenter = record.bounds.getCenter(new THREE.Vector3());
   }
 
+  // The launch box is a separate assembly (translated into the foreground on
+  // phones). Animate its direct modules in that assembly's local coordinates;
+  // the cap keeps its ring and the hinged cover keeps its glass and crown.
+  const actuatorAssembly = actuator?.assembly;
+  const actuatorRecords = [];
+  const actuatorBounds = new THREE.Box3();
+  const actuatorFootprint = new THREE.Vector3();
+  const actuatorPort = new THREE.Vector3();
+  const actuatorAnchor = new THREE.Vector3();
+  const actuatorVisible = actuatorAssembly?.visible;
+  if (actuatorAssembly?.children) {
+    actuatorAssembly.updateWorldMatrix(true, true);
+    for (const [index, object] of actuatorAssembly.children.entries()) {
+      if (!object.isMesh && !object.isGroup) continue;
+      const random = randomFor(index + 1024);
+      const home = { position: object.position.clone(), quaternion: object.quaternion.clone(), scale: object.scale.clone(), visible: object.visible };
+      const role = object === actuator.cover ? 'cover' : object === actuator.button ? 'cap'
+        : object.userData?.actuatorRole || (home.position.y < .3 ? 'base' : 'detail');
+      const bounds = new THREE.Box3(), inverse = object.matrixWorld.clone().invert();
+      const relative = new THREE.Matrix4();
+      object.traverse(node => {
+        if (!node.geometry || !node.visible) return;
+        const local = localBounds(node); relative.multiplyMatrices(inverse, node.matrixWorld);
+        for (const x of [local.min.x, local.max.x]) for (const y of [local.min.y, local.max.y]) for (const z of [local.min.z, local.max.z]) {
+          corner.set(x, y, z).applyMatrix4(relative); bounds.expandByPoint(corner);
+        }
+      });
+      if (!bounds.isEmpty() && home.visible) {
+        for (const x of [bounds.min.x, bounds.max.x]) for (const y of [bounds.min.y, bounds.max.y]) for (const z of [bounds.min.z, bounds.max.z]) {
+          corner.set(x, y, z).multiply(home.scale).applyQuaternion(home.quaternion).add(home.position);
+          actuatorBounds.expandByPoint(corner);
+        }
+      }
+      const side = random() < .5 ? -1 : 1;
+      const velocity = new THREE.Vector3(side * (4 + random() * 3), 4 + random() * 3, 2 + random() * 4);
+      const spinAxis = new THREE.Vector3(random() * 2 - 1, random() * 2 - 1, random() * 2 - 1).normalize();
+      const begins = role === 'base' ? 4.12 : role === 'cover' ? 4.94 : role === 'cap' ? 4.58 + random() * .06 : role === 'cable' ? 4.36 : 4.44 + random() * .05;
+      const span = role === 'cover' ? .71 : role === 'cap' ? .65 : role === 'base' ? .95 : .57;
+      actuatorRecords.push({ object, home, role, velocity, spinAxis, spinSpeed: 5 + random() * 8,
+        vanishesAt: 1.13 + random() * .4, begins, span, blast: home });
+    }
+    if (!actuatorBounds.isEmpty()) { actuatorBounds.getCenter(actuatorFootprint); actuatorFootprint.y = actuatorBounds.min.y; }
+  }
+  function restoreActuator() {
+    actuatorRecords.forEach(restore);
+    if (actuatorAssembly) actuatorAssembly.visible = actuatorVisible;
+  }
+  function updateActuator(age) {
+    if (!actuatorRecords.length) return;
+    // Read the current parent transforms rather than baking desktop positions.
+    // Root supplies its real outlet in assembly.parent-local coordinates.
+    if (actuator.outlet && actuatorAssembly.parent) {
+      actuatorPort.copy(actuator.outlet); actuatorAssembly.parent.localToWorld(actuatorPort);
+    } else {
+      actuatorPort.set(machineBounds.isEmpty() ? origin.x : machineBounds.max.x, footprint.y + .15, footprint.z);
+      parent?.localToWorld(actuatorPort);
+    }
+    actuatorAssembly.worldToLocal(actuatorPort);
+    const travel = clamp(spring((age - 4.12) / .95, 8, 11));
+    actuatorAnchor.copy(actuatorPort).lerp(actuatorFootprint, travel);
+    const growth = Math.max(.06, .08 + .92 * spring((age - 4.12) / .95, 8, 11));
+    let showing = false;
+    for (const record of actuatorRecords) {
+      const { object, home, blast } = record;
+      if (!home.visible) { object.visible = false; continue; }
+      if (age < record.vanishesAt) {
+        const flight = Math.max(0, age - .025);
+        object.visible = true; showing = true;
+        object.position.copy(blast.position).addScaledVector(record.velocity, flight); object.position.y -= 4.8 * flight * flight;
+        object.quaternion.copy(blast.quaternion);
+        if (flight > 0) { offsetQuaternion.setFromAxisAngle(record.spinAxis, record.spinSpeed * flight); object.quaternion.premultiply(offsetQuaternion); }
+        object.scale.copy(blast.scale).multiplyScalar(1 - smooth((age - record.vanishesAt + .3) / .3) * .93);
+      } else if (age < record.begins) {
+        object.visible = false;
+      } else if (age < record.begins + record.span) {
+        const progress = spring((age - record.begins) / record.span, 7.8, 12);
+        const folded = 1 - progress;
+        object.visible = true; showing = true;
+        object.position.copy(home.position).sub(actuatorFootprint).multiplyScalar(growth).add(actuatorAnchor);
+        const pop = record.role === 'base' ? 1 : Math.max(.08, .12 + progress * .88);
+        object.scale.copy(home.scale).multiplyScalar(growth * pop);
+        object.quaternion.copy(home.quaternion);
+        if (record.role === 'cover') {
+          // This is the same rear hinge, now closing onto the rebuilt cap. The
+          // final rebound is small enough to stay within the physical stop.
+          offsetQuaternion.setFromAxisAngle(lidAxis, -1.8 * Math.max(0, folded) - .09 * Math.min(0, folded));
+          object.quaternion.multiply(offsetQuaternion);
+        } else if (record.role === 'cap') object.position.y += .12 * folded;
+        else if (record.role === 'detail') object.position.z += .035 * folded;
+      } else { restore(record); showing = true; }
+    }
+    actuatorAssembly.visible = Boolean(actuatorVisible && showing);
+  }
+
   // A physical seed, rather than a miniature of the final clock. The split
   // front doors and rear-hinged roof reveal the sage internal spine before it
   // telescopes. Its geometry/materials are the only resources owned here.
@@ -164,7 +259,7 @@ export function createClockTransformation({ THREE, parts = [], center }) {
     record.object.scale.copy(record.home.scale); record.object.visible = record.home.visible;
   }
   function finish() {
-    records.forEach(restore); active = false; lastAge = duration;
+    records.forEach(restore); restoreActuator(); active = false; lastAge = duration;
     if (seedGroup) seedGroup.visible = false;
     if (bone) bone.opacity = 1;
     if (sage) sage.opacity = 1;
@@ -203,6 +298,7 @@ export function createClockTransformation({ THREE, parts = [], center }) {
     const age = Number.isFinite(ageSeconds) ? Math.max(0, ageSeconds) : 0; lastAge = age;
     if (age >= duration) { finish(); return false; }
     growingMachine(age);
+    updateActuator(age);
     for (const record of records) {
       const { object, home } = record;
       if (!home.visible) { object.visible = false; continue; }
@@ -251,14 +347,18 @@ export function createClockTransformation({ THREE, parts = [], center }) {
   return {
     start() {
       if (disposed) return;
-      finish(); active = records.some(record => record.home.visible); lastAge = active ? 0 : duration;
+      if (active) finish();
+      const actuatorFlight = actuatorRecords.map(record => ({ position: record.object.position.clone(), quaternion: record.object.quaternion.clone(), scale: record.object.scale.clone(), visible: record.object.visible }));
+      finish(); active = records.some(record => record.home.visible) || actuatorRecords.some(record => record.home.visible); lastAge = active ? 0 : duration;
+      actuatorRecords.forEach((record, index) => { record.blast = actuatorFlight[index]; });
+      if (active) updateActuator(0);
     },
     update,
     finish,
     dispose() {
       if (disposed) return;
       finish(); disposed = true; seedGroup?.removeFromParent();
-      resources.forEach(resource => resource.dispose()); resources.clear(); records.length = 0; seen.clear();
+      resources.forEach(resource => resource.dispose()); resources.clear(); records.length = 0; actuatorRecords.length = 0; seen.clear();
     },
     get screenReady() { return !active || lastAge >= 4.5; }
   };

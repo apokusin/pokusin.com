@@ -16,6 +16,7 @@ const dateLabel = document.getElementById('next-countdown-date');
 const initialDeadline = Date.parse(dateLabel.dateTime);
 let state = { deadline: initialDeadline, count: 0 };
 let celebrate = () => {}, prepareVisualReset = () => {}, ready = false, pending = false, rebuilding = false, clockOffset = 0, tickInterval = 0;
+let resetActionHadFocus = false;
 const reelEnabled = () => hero.classList.contains('hero-awake') && !document.hidden;
 const countReel = control ? null : new NumberReel(countLabel, { enabled: reelEnabled, reducedMotion, direction: 1 });
 let resetAnnouncementTimer;
@@ -63,6 +64,7 @@ async function sync() {
 }
 async function reset() {
   if (pending || rebuilding) return;
+  resetActionHadFocus = document.activeElement === action;
   pending = true; action.disabled = true; if (royalButton) royalButton.disabled = true;
   document.dispatchEvent(new CustomEvent('countdown:pending',{detail:true}));
   try {
@@ -80,10 +82,15 @@ async function reset() {
     document.dispatchEvent(new CustomEvent('countdown:reset'));
     celebrate(); if (!art && !rebuilding) animatePageReset();
   } catch (_) { clockStatus.textContent = control ? 'Reset failed. Try again.' : 'The clock refused. Try again in a moment.'; }
-  finally { pending = false; action.disabled = rebuilding; if (royalButton) royalButton.disabled = rebuilding; document.dispatchEvent(new CustomEvent('countdown:pending',{detail:false})); }
+  finally {
+    pending = false; action.disabled = rebuilding; if (royalButton) royalButton.disabled = rebuilding;
+    if (!rebuilding && !action.hidden && !document.hidden && resetActionHadFocus && document.activeElement === document.body) action.focus({preventScroll:true});
+    document.dispatchEvent(new CustomEvent('countdown:pending',{detail:false}));
+  }
 }
 let coverOpen = false;
 function press() {
+  if (pending || rebuilding || action.disabled) return;
   if (control && !coverOpen) {
     coverOpen = true; action.setAttribute('aria-label', 'Postpone the next countdown');
     action.dataset.open = 'true'; sceneChange(); return;
@@ -189,6 +196,7 @@ async function initScene() {
   const velvet = mat(0xcbbb96, 0, .96), red = mat(0x750706, .1, .38);
   let signalStarted = -Infinity, powerOnStarted = -Infinity, signalLamp, signalGlow, resetAssembly, displayGlass;
   let explosion, transformation, cinemaOverlay, cinemaStarted = -Infinity, cinemaScreenLit = false;
+  let restoreActionFocus = false;
   const archiveHeading = hero.querySelector('.archive-heading');
   const cinemaDuration = 5.8, cinemaHomeCamera = new THREE.Vector3();
   const clockParts = [];
@@ -438,11 +446,12 @@ async function initScene() {
       stage.append(label); instrumentUnits.push({ label, point: new THREE.Vector3(-2.08 + i * .826, .58, .524) });
     }
     resetAssembly = new THREE.Group(); root.add(resetAssembly);
-    box(1.25,.42,1.08,enamel,3.04,.2,.05,resetAssembly);
-    box(1.23,.09,1.06,sage,3.04,.08,.05,resetAssembly);
-    for (let x of [2.57, 3.51]) for (let z of [-.32, .43]) box(.15,.09,.15,rubber,x,-.028,z,resetAssembly);
-    mesh(new THREE.CylinderGeometry(.355,.37,.105,40),brass,3.04,.45,.1,resetAssembly);
-    mesh(new THREE.CylinderGeometry(.312,.327,.065,40),rubber,3.04,.513,.1,resetAssembly);
+    const actuatorPart = (object, role) => { object.userData.actuatorRole = role; return object; };
+    actuatorPart(box(1.25,.42,1.08,enamel,3.04,.2,.05,resetAssembly),'base');
+    actuatorPart(box(1.23,.09,1.06,sage,3.04,.08,.05,resetAssembly),'base');
+    for (let x of [2.57, 3.51]) for (let z of [-.32, .43]) actuatorPart(box(.15,.09,.15,rubber,x,-.028,z,resetAssembly),'base');
+    actuatorPart(mesh(new THREE.CylinderGeometry(.355,.37,.105,40),brass,3.04,.45,.1,resetAssembly),'cap');
+    actuatorPart(mesh(new THREE.CylinderGeometry(.312,.327,.065,40),rubber,3.04,.513,.1,resetAssembly),'cap');
     button = mesh(new THREE.CylinderGeometry(.28,.29,.13,40),red,3.04,.593,.1,resetAssembly);
     const buttonRing = mesh(new THREE.TorusGeometry(.285,.018,8,40),red,3.04,.645,.1,resetAssembly); buttonRing.rotation.x = Math.PI / 2;
     button.add(buttonRing); buttonRing.position.set(0,.052,0);
@@ -467,7 +476,7 @@ async function initScene() {
     const deskCable = [[1.8,.37,-.08],[2.01,.31,-.055],[2.19,.09,.12],[2.43,.11,.18]];
     const foregroundCable = [[1.8,.37,-.08],[2.15,.16,.35],[1.9,0,1.05],[.72,0,1.15],[.70,.08,1.86],[.82,.13,2.18],[1.03,.14,2.18]];
     const cable = tube(deskCable,rubber,.057);
-    const endPlug = mesh(new THREE.CylinderGeometry(.071,.074,.18,14),rubber,2.43,.14,.18,resetAssembly); endPlug.rotation.z = Math.PI / 2;
+    const endPlug = actuatorPart(mesh(new THREE.CylinderGeometry(.071,.074,.18,14),rubber,2.43,.14,.18,resetAssembly),'cable'); endPlug.rotation.z = Math.PI / 2;
     let phoneArrangement = false;
     configureControlLayout = phone => {
       if (phone === phoneArrangement) return;
@@ -477,18 +486,21 @@ async function initScene() {
       cable.geometry.dispose(); cable.geometry = new THREE.TubeGeometry(path, 48, .057, 6, false);
     };
     root.rotation.y = -.025;
-    // The reset box survives. Everything wired to the clock becomes real debris.
+    // The console and guarded button both become debris. The actuator returns
+    // last, from the reconstructed instrument's actual cable outlet.
     clockParts.push(...root.children.filter(object => object !== resetAssembly));
     cable.userData.rebuildRole = 'cable';
-    transformation = effectModules[1].createClockTransformation({ THREE, parts: clockParts, center: new THREE.Vector3(-.75,.9,.05) });
+    transformation = effectModules[1].createClockTransformation({ THREE, parts: clockParts, center: new THREE.Vector3(-.75,.9,.05),
+      actuator: { assembly: resetAssembly, button, cover, outlet: new THREE.Vector3(1.61,.37,-.08) } });
     explosion = effectModules[0].createControlExplosion({ THREE, scene, camera, origin: new THREE.Vector3(-.75,.9,.05) });
   }
   let visible = true, graphicsLost = false, pointerX = 0, pointerY = 0, lastFrame = 0, frameId = 0, burstAt = -10;
   let buttonHeld = false, heldPointer = null, pointerInside = false, heldKey = null;
   function updateButtonPress() {
-    const held = coverOpen && !pending && !action.disabled && ((heldPointer !== null && pointerInside) || heldKey !== null);
+    const held = !rebuilding && coverOpen && !pending && !action.disabled && ((heldPointer !== null && pointerInside) || heldKey !== null);
     if (!button || held === buttonHeld) return;
     buttonHeld = held;
+    if (rebuilding) return;
     // Show contact immediately, even when a quick click fits between scene frames.
     // Release springs back over a few frames; reduced motion snaps to the rest pose.
     if (held || reduce.matches) button.position.y = .593 - (held ? .0375 : 0);
@@ -520,7 +532,8 @@ async function initScene() {
     window.addEventListener('pointercancel', releasePointer);
     const pressKey = event => ['Space', 'Enter', 'NumpadEnter'].includes(event.code);
     action.addEventListener('keydown', event => {
-      if (graphicsLost || !coverOpen || action.disabled || event.repeat || !pressKey(event)) return;
+      if (pressKey(event) && event.repeat) { event.preventDefault(); return; }
+      if (graphicsLost || !coverOpen || action.disabled || !pressKey(event)) return;
       heldKey = event.code; updateButtonPress();
     });
     window.addEventListener('keyup', event => {
@@ -578,34 +591,52 @@ async function initScene() {
     camera.position.copy(cinemaHomeCamera); renderer.toneMappingExposure = 1.05;
     stage.prepend(canvas); cinemaOverlay?.remove(); cinemaOverlay = null;
     canvas.style.removeProperty('opacity'); delete stage.dataset.effect;
-    secret.style.removeProperty('opacity'); action.disabled = pending;
+    secret.style.removeProperty('opacity');
     archiveHeading?.style.removeProperty('opacity');
-    if (royalButton) royalButton.disabled = pending;
     renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
     if (fit && !graphicsLost) resize();
     if (interrupted) settleDisplay();
     else displayUpdate(remaining());
+    action.hidden = false; action.disabled = pending;
+    if (signalGlow) signalGlow.visible = true;
+    if (royalButton) royalButton.disabled = pending;
+    if (!interrupted && restoreActionFocus && document.activeElement === document.body) action.focus({preventScroll:true});
+    restoreActionFocus = false;
     schedule();
   }
   function startCinema(count) {
     if (!control || !explosion || rebuilding || reduce.matches || graphicsLost || !visible || document.hidden) return;
+    releaseButtonPress();
+    // Contact has ended before the replacement captures its source poses.
+    if (button) button.position.y = .593;
     cinemaHomeCamera.copy(camera.position);
     rebuilding = true; cinemaStarted = performance.now(); cinemaScreenLit = false;
     // The invisible desk must not cut a straight edge through the airborne plume.
     floor.material.depthWrite = false;
     stage.dataset.effect = 'exploding'; action.disabled = true;
+    restoreActionFocus = resetActionHadFocus;
+    action.hidden = true;
+    if (signalGlow) signalGlow.visible = false;
     secret.style.opacity = '0'; powerOnStarted = signalStarted = -Infinity;
-    releaseButtonPress();
     cinemaOverlay = document.createElement('div'); cinemaOverlay.className = 'clock-cinema';
     cinemaOverlay.setAttribute('aria-hidden','true');
     cinemaOverlay.style.cssText = 'position:fixed;inset:0;z-index:60;pointer-events:none;overflow:hidden;';
     document.body.append(cinemaOverlay); cinemaOverlay.append(canvas); canvas.style.opacity = '1';
     renderer.setPixelRatio(Math.min(devicePixelRatio,matchMedia('(max-width:760px)').matches ? 1 : 1.25));
     renderer.setSize(innerWidth,innerHeight,false);
-    transformation.start(); explosion.start({count}); render(); schedule();
+    transformation.start();
+    closeControlCover();
+    explosion.start({count}); render(); schedule();
+  }
+  function closeControlCover() {
+    coverOpen = false; action.dataset.open = 'false'; action.setAttribute('aria-label','Lift the launch button cover');
   }
   prepareVisualReset = count => {
     try { startCinema(count); } catch (_) { finishCinema(); }
+    if (control && !rebuilding && !graphicsLost) {
+      closeControlCover();
+      if (cover) cover.rotation.x = 0;
+    }
   };
   function resize() {
     const w = stage.clientWidth, h = stage.clientHeight;
@@ -662,13 +693,13 @@ async function initScene() {
       royalCrown.position.y=.93+(reduce.matches?0:Math.sin(b*Math.PI)*1.15);
       royalCrown.rotation.y=reduce.matches?0:b*Math.PI*4;
     }
-    if(cover)cover.rotation.x=THREE.MathUtils.lerp(cover.rotation.x,coverOpen?-1.9:0,reduce.matches?1:.13);
+    if(cover&&!rebuilding)cover.rotation.x=THREE.MathUtils.lerp(cover.rotation.x,coverOpen?-1.9:0,reduce.matches?1:.13);
     const buttonTarget = .593 - (buttonHeld ? .0375 : 0);
-    if(button){
+    if(button&&!rebuilding){
       button.position.y=buttonHeld||reduce.matches?buttonTarget:THREE.MathUtils.lerp(button.position.y,buttonTarget,.52);
       if(Math.abs(button.position.y-buttonTarget)<.0004)button.position.y=buttonTarget;
     }
-    if (signalLamp) {
+    if (signalLamp && !rebuilding) {
       const age = ms - signalStarted, acquiring = !reduce.matches && age >= 0 && age < 1150;
       const powerAge = ms - powerOnStarted;
       const poweringOn = !reduce.matches && powerAge >= 0 && powerAge < powerOnDuration;
@@ -704,7 +735,7 @@ async function initScene() {
     render();
     const turning=Math.abs(root.rotation.y-targetY)>.0005||Math.abs(root.rotation.x-targetX)>.0005;
     const crowning=royalCrown&&!reduce.matches&&t-burstAt<2.5;
-    const releasing=button&&Math.abs(button.position.y-buttonTarget)>.0004;
+    const releasing=button&&!rebuilding&&Math.abs(button.position.y-buttonTarget)>.0004;
     if(rebuilding||turning||reflecting||crowning||releasing||rolling||particles.length||(cover&&Math.abs(cover.rotation.x-(coverOpen?-1.9:0))>.001))schedule();
   }
   sceneChange=()=>{powerOnStarted=-Infinity;schedule();};

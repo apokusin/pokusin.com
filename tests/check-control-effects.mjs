@@ -90,6 +90,75 @@ assert([...seedResources.values()].every(count => count === 1), 'Repeated seed d
 const empty = createClockTransformation({ THREE, parts: [] });
 empty.start(); assert.equal(empty.update(1), false); assert.equal(empty.screenReady, true); empty.dispose();
 
+// The actuator keeps its own translated parent and nested ring/cover children.
+// Its current open lid is the blast pose; its factory closed lid is the rebuild.
+const actuatorCarrier = new THREE.Group();
+actuatorCarrier.position.set(.4, .02, -.2); actuatorCarrier.rotation.y = .15;
+actuatorCarrier.scale.set(1.1, .95, .9); sourceClock.add(actuatorCarrier);
+const launchAssembly = new THREE.Group(); actuatorCarrier.add(launchAssembly);
+const launchBase = new THREE.Mesh(geometry, material); launchBase.position.set(3.04, .2, .05);
+launchBase.userData.actuatorRole = 'base'; launchAssembly.add(launchBase);
+const launchCap = new THREE.Mesh(geometry, material); launchCap.position.set(3.04, .593, .1);
+launchCap.scale.set(.4, .3, .4); launchAssembly.add(launchCap);
+const launchRing = new THREE.Mesh(geometry, material); launchRing.position.set(0, .052, 0);
+launchRing.scale.set(.1, .1, .1); launchCap.add(launchRing);
+const launchCover = new THREE.Group(); launchCover.position.set(3.04, .48, -.47); launchAssembly.add(launchCover);
+const launchGlass = new THREE.Mesh(geometry, material); launchGlass.position.set(0, .29, .53);
+launchGlass.scale.set(.9, .1, 4); launchCover.add(launchGlass);
+const concealedFastener = new THREE.Mesh(geometry, material); concealedFastener.visible = false; launchAssembly.add(concealedFastener);
+const launchLight = new THREE.PointLight(0xfa7548, .075); launchAssembly.add(launchLight);
+const launchModules = [launchBase, launchCap, launchRing, launchCover, launchGlass, concealedFastener, launchLight];
+const launchHomes = launchModules.map(pose), launchParents = launchModules.map(object => object.parent);
+const outlet = new THREE.Vector3(1.61, .37, -.08);
+const withActuator = createClockTransformation({ THREE, parts, center: new THREE.Vector3(0, .79, 0),
+  actuator: { assembly: launchAssembly, button: launchCap, cover: launchCover, outlet } });
+const checkActuatorHomes = () => {
+  assert.deepEqual(launchModules.map(pose), launchHomes, 'Actuator must restore its closed, uncompressed installed poses');
+  assert.deepEqual(launchModules.map(object => object.parent), launchParents, 'Ring and cover children must retain their original parents');
+  assert.equal(launchAssembly.visible, true); assert.equal(launchLight.intensity, .075);
+  assert.equal(sourceGeometryDisposals, 0); assert.equal(sourceMaterialDisposals, 0);
+};
+for (const [phone, translation] of [[false, [0, 0, 0]], [true, [-1.4, 0, 2]]]) {
+  launchAssembly.position.fromArray(translation);
+  const installedAssembly = pose(launchAssembly);
+  let firstLaunch;
+  for (let repeat = 0; repeat < 2; repeat++) {
+    launchCover.rotation.x = -1.9;
+    const openLid = launchCover.quaternion.toArray();
+    withActuator.start();
+    assert.deepEqual(launchCover.quaternion.toArray(), openLid, 'Accepted press must blast the actual open lid without a closed-pose flash');
+    withActuator.update(.4);
+    const flight = launchModules.map(pose);
+    if (!repeat) firstLaunch = flight; else assert.deepEqual(flight, firstLaunch, 'Repeated open-lid blasts must be deterministic');
+    assert.notDeepEqual(pose(launchBase).position, launchHomes[0].position);
+    assert.notDeepEqual(pose(launchCap).position, launchHomes[1].position);
+    assert.equal(concealedFastener.visible, false);
+    withActuator.update(2); assert.equal(launchAssembly.visible, false, 'Missing actuator must also hide its nested light');
+    withActuator.update(4); assert.equal(launchAssembly.visible, false, 'Launch hardware rebuild must follow the clock');
+    withActuator.update(4.12); assert.equal(launchAssembly.visible, true); assert.equal(launchBase.visible, true);
+    assert.equal(launchCap.visible, false); assert.equal(launchCover.visible, false);
+    const currentOutlet = actuatorCarrier.localToWorld(outlet.clone());
+    assert(launchBase.getWorldPosition(new THREE.Vector3()).distanceTo(currentOutlet) < .15,
+      `Button base must emerge at the actual clock outlet in ${phone ? 'phone' : 'desktop'} layout`);
+    for (let step = 82; step < 116; step++) {
+      withActuator.update(step * .05); sourceClock.updateMatrixWorld(true);
+      launchAssembly.traverse(object => {
+        finite([...object.position.toArray(), ...object.quaternion.toArray(), ...object.scale.toArray()], 'Actuator reconstruction pose');
+        finite(object.matrixWorld.elements, 'Actuator reconstruction matrix');
+      });
+    }
+    withActuator.update(4.5); assert.equal(withActuator.screenReady, true, 'Late actuator growth must not delay clock ignition');
+    withActuator.update(5.66); checkActuatorHomes();
+    assert.deepEqual(pose(launchAssembly), installedAssembly, 'Actuator reconstruction must not bake or overwrite responsive parent translation');
+    withActuator.finish(); checkActuatorHomes();
+  }
+}
+launchCover.rotation.x = -1.9; withActuator.start(); withActuator.update(4.7); withActuator.finish(); checkActuatorHomes();
+launchCover.rotation.x = -1.9; withActuator.start(); withActuator.update(.7); withActuator.dispose(); checkActuatorHomes();
+withActuator.dispose(); withActuator.start(); assert.equal(withActuator.update(.4), false);
+assert.equal(launchAssembly.parent, actuatorCarrier, 'Effect must not take ownership of the original launch assembly');
+sourceClock.remove(actuatorCarrier);
+
 const studioLight = new THREE.PointLight(0xffffff, 3.5); scene.add(studioLight);
 const camera = new THREE.PerspectiveCamera(30, 1, .1, 100);
 camera.position.set(0, 4, 12.4); camera.lookAt(0, .55, 0);
@@ -211,4 +280,4 @@ explosion.dispose(); explosion.start(); assert.equal(explosion.update(.4), false
 assert([...owned.values()].every(count => count === 1), 'Repeated disposal must remain idempotent');
 checkHomes();
 geometry.dispose(); material.dispose();
-console.log('Control effects passed: one burning-to-smoke count volume, captured accepted counts, finite fitted numerals, deterministic staged motion, exact source restoration, screen ignition, owned cleanup, and repeat-safe lifecycle.');
+console.log('Control effects passed: late guarded-button reconstruction, open-lid flight, translated-parent alignment, one burning-to-smoke count volume, captured counts, finite fitted numerals, exact source restoration, screen ignition, owned cleanup, and repeat-safe lifecycle.');
