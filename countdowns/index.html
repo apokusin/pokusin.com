@@ -6,7 +6,7 @@
   <title>Countdowns · Artur Pokusin</title>
   <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin between 2012 and 2025, preserved and ticking live.">
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=781bed23">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=bd7a3bbd">
 <script>
 (function(){var theme=new URLSearchParams(location.search).get('theme');
  var art=['tomorrows-roadworks','bubblegum-time','after-the-flame','low-tide-later','not-yet-ripe','still-drawing-tomorrow','held-in-suspense','the-almost-fair'];
@@ -41,7 +41,8 @@
       <p class="scene-hint"><span class="royal-only">A small crown. A long wait.</span><span class="control-only">Lift. Press.</span></p>
       <p class="countdown-secret" id="countdown-secret" role="status" hidden>Long may I count.</p>
       <p class="sr-only" id="timer-readable" role="timer" aria-live="off"></p>
-      <p class="press-tally"><span id="reset-count">—</span><small>postponements</small></p>
+      <p class="press-tally" hidden aria-hidden="true"><span id="reset-count">—</span><small></small></p>
+      <p class="sr-only" id="postponement-readable" role="status" aria-atomic="true"></p>
       <p class="clock-status" id="clock-status" role="status"></p>
       <p class="countdown-ended" id="countdown-ended" hidden>Time to start another countdown.</p>
       <span class="reset-echo control-only" aria-hidden="true">Again.</span>
@@ -459,5 +460,5 @@
     update();
   }
   document.querySelectorAll('[data-carousel]').forEach(setup);
-})();</script><script type="module" src="themes.js?v=ceff9ba904"></script></body>
+})();</script><script type="module" src="themes.js?v=9b7dcd0b40"></script></body>
 </html>

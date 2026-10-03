@@ -8,6 +8,7 @@ const action = document.getElementById('scene-action');
 const royalButton = document.getElementById('royal-reset');
 const secret = document.getElementById('countdown-secret');
 const countLabel = document.getElementById('reset-count');
+const resetAnnouncement = document.getElementById('postponement-readable');
 const clockStatus = document.getElementById('clock-status');
 const hero = document.getElementById(art ? 'art-hero' : 'hero-surface');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -16,7 +17,16 @@ const initialDeadline = Date.parse(dateLabel.dateTime);
 let state = { deadline: initialDeadline, count: 0 };
 let celebrate = () => {}, prepareVisualReset = () => {}, ready = false, pending = false, rebuilding = false, clockOffset = 0, tickInterval = 0;
 const reelEnabled = () => hero.classList.contains('hero-awake') && !document.hidden;
-const countReel = new NumberReel(countLabel, { enabled: reelEnabled, reducedMotion, direction: 1 });
+const countReel = control ? null : new NumberReel(countLabel, { enabled: reelEnabled, reducedMotion, direction: 1 });
+let resetAnnouncementTimer;
+function announceReset(count) {
+  clearTimeout(resetAnnouncementTimer);
+  resetAnnouncement.textContent = `Postponement ${count.toLocaleString()}.`;
+  resetAnnouncementTimer = setTimeout(() => { resetAnnouncement.textContent = ''; }, 7000);
+}
+window.addEventListener('pagehide', () => {
+  clearTimeout(resetAnnouncementTimer); resetAnnouncement.textContent = '';
+});
 const timerReels = ['days', 'hours', 'minutes', 'seconds'].map(unit => new NumberReel(
   document.querySelector(`[data-unit="${unit}"]`), { enabled: () => !control && reelEnabled(), reducedMotion }
 ));
@@ -24,20 +34,20 @@ const fallbackReel = new NumberReel(document.getElementById('fallback-digits'), 
   enabled: () => control && reelEnabled() && !document.getElementById('scene-stage').classList.contains('scene-ready'), reducedMotion
 });
 function updateLabels(spin = false, immediate = false) {
-  countReel.set(ready ? state.count.toLocaleString() : '—', { spin, immediate });
+  countReel?.set(ready ? state.count.toLocaleString() : '—', { spin, immediate });
   clockStatus.textContent = '';
   dateLabel.dateTime = new Date(state.deadline).toISOString();
   dateLabel.textContent = new Date(state.deadline).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 function applyState(next, forceSpin = false) {
   if (!Number.isFinite(next.deadline) || !Number.isFinite(next.serverNow) || !Number.isSafeInteger(next.count) || next.count < 0) throw new Error('Invalid countdown');
+  // Freeze this press's accepted count even if a newer remote reset won the race.
+  if (forceSpin) { try { prepareVisualReset(next.count); } catch (_) {} }
   // A slower GET must never overwrite a newer reset response.
   if (next.count < state.count || (ready && next.count === state.count && next.serverNow < state.serverNow)) return;
   const initialSync = !ready;
   const spin = ready && (forceSpin || next.count > state.count);
   const remote = ready && !forceSpin && next.count > state.count;
-  // The shared reset is authoritative even if its optional spectacle cannot start.
-  if (forceSpin) { try { prepareVisualReset(); } catch (_) {} }
   state = next;
   clockOffset = next.serverNow - Date.now(); ready = true;
   updateLabels(spin, initialSync); tick(spin); startTicker();
@@ -63,7 +73,9 @@ async function reset() {
       return;
     }
     if (!response.ok) throw new Error('Unavailable');
-    applyState(await response.json(), true);
+    const accepted = await response.json();
+    applyState(accepted, true);
+    announceReset(accepted.count);
     if (!art) { secret.hidden = false; action.setAttribute('aria-expanded', 'true'); royalButton?.setAttribute('aria-expanded', 'true'); }
     document.dispatchEvent(new CustomEvent('countdown:reset'));
     celebrate(); if (!art && !rebuilding) animatePageReset();
@@ -177,6 +189,7 @@ async function initScene() {
   const velvet = mat(0xcbbb96, 0, .96), red = mat(0x750706, .1, .38);
   let signalStarted = -Infinity, powerOnStarted = -Infinity, signalLamp, signalGlow, resetAssembly, displayGlass;
   let explosion, transformation, cinemaOverlay, cinemaStarted = -Infinity, cinemaScreenLit = false;
+  const archiveHeading = hero.querySelector('.archive-heading');
   const cinemaDuration = 5.8, cinemaHomeCamera = new THREE.Vector3();
   const clockParts = [];
   const powerOnDuration = 700;
@@ -566,6 +579,7 @@ async function initScene() {
     stage.prepend(canvas); cinemaOverlay?.remove(); cinemaOverlay = null;
     canvas.style.removeProperty('opacity'); delete stage.dataset.effect;
     secret.style.removeProperty('opacity'); action.disabled = pending;
+    archiveHeading?.style.removeProperty('opacity');
     if (royalButton) royalButton.disabled = pending;
     renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
     if (fit && !graphicsLost) resize();
@@ -573,7 +587,7 @@ async function initScene() {
     else displayUpdate(remaining());
     schedule();
   }
-  function startCinema() {
+  function startCinema(count) {
     if (!control || !explosion || rebuilding || reduce.matches || graphicsLost || !visible || document.hidden) return;
     cinemaHomeCamera.copy(camera.position);
     rebuilding = true; cinemaStarted = performance.now(); cinemaScreenLit = false;
@@ -588,10 +602,10 @@ async function initScene() {
     document.body.append(cinemaOverlay); cinemaOverlay.append(canvas); canvas.style.opacity = '1';
     renderer.setPixelRatio(Math.min(devicePixelRatio,matchMedia('(max-width:760px)').matches ? 1 : 1.25));
     renderer.setSize(innerWidth,innerHeight,false);
-    transformation.start(); explosion.start(); render(); schedule();
+    transformation.start(); explosion.start({count}); render(); schedule();
   }
-  prepareVisualReset = () => {
-    try { startCinema(); } catch (_) { finishCinema(); }
+  prepareVisualReset = count => {
+    try { startCinema(count); } catch (_) { finishCinema(); }
   };
   function resize() {
     const w = stage.clientWidth, h = stage.clientHeight;
@@ -668,6 +682,10 @@ async function initScene() {
     if (rebuilding) {
       const age = (ms - cinemaStarted) / 1000;
       transformation.update(age); explosion.update(age,{phone:matchMedia('(max-width:760px)').matches});
+      // Give the burning count the foreground, then return the title as the
+      // same fire-and-soot volume clears the growing replacement.
+      const blastFocus = THREE.MathUtils.smoothstep(age, .15, .65) * (1 - THREE.MathUtils.smoothstep(age, 2.4, 3.35));
+      if (archiveHeading) archiveHeading.style.opacity = String(1 - blastFocus * .88);
       stage.dataset.effect = age < 2.1 ? 'exploding' : 'rebuilding';
       if (!cinemaScreenLit && transformation.screenReady) {
         cinemaScreenLit = true; powerOnStarted = ms;

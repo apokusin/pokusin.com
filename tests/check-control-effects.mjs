@@ -124,6 +124,48 @@ for (const object of nodes) {
 for (const type of ['isBufferGeometry', 'isMaterial', 'isTexture']) {
   assert([...owned.keys()].some(resource => resource[type]), `Coverage must include ${type} resources`);
 }
+const shapedVolumes = nodes.filter(object => object.material?.uniforms?.uGlyph);
+assert.equal(shapedVolumes.length, 1, 'The explosion itself must form the count without a second numeral volume');
+const numberedBlast = shapedVolumes[0], blastUniforms = numberedBlast.material.uniforms;
+const glyphMask = blastUniforms.uGlyph.value;
+assert(glyphMask.isDataTexture, 'DOM-free checks use the real digit-density mask');
+explosion.start({ count: 425 });
+assert(glyphMask.image.data.some(value => value > 0), 'An accepted count must shape the explosion');
+const capturedMask = glyphMask.image.data.slice();
+explosion.update(.5);
+assert.equal(numberedBlast.visible, true, 'The early burning explosion must already form the count');
+assert.equal(blastUniforms.uHasNumber.value, 1); assert.equal(blastUniforms.uShape.value, 1);
+assert(blastUniforms.uCooling.value < .2, 'Number formation must precede cooling');
+explosion.update(1.9, { phone: true });
+assert.equal(numberedBlast.visible, true);
+assert(blastUniforms.uCooling.value > .7, 'The same numbered volume must cool into smoke');
+explosion.update(2.1, { count: 999 });
+assert.deepEqual(glyphMask.image.data, capturedMask, 'Later updates must not change the accepted count');
+explosion.update(3.4); assert.equal(numberedBlast.visible, false, 'The numbered blast must dissolve during clock growth');
+explosion.finish();
+assert(glyphMask.image.data.every(value => value === 0), 'Finish must erase the previous numeral');
+assert.equal(blastUniforms.uHasNumber.value, 0);
+for (const count of [0, 1, Number.MAX_SAFE_INTEGER]) {
+  explosion.start({ count }); explosion.update(1.9);
+  assert.equal(blastUniforms.uHasNumber.value, 1, 'Every safe count, including zero, must form');
+  assert.equal(numberedBlast.visible, true);
+  assert(numberedBlast.scale.x <= 3.6, 'A growing tally must stay inside its fitted width');
+  assert.equal(blastUniforms.uGlyph.value, glyphMask, 'Repeated presses must reuse the mask texture');
+  explosion.finish();
+}
+for (const count of [-1, NaN, Number.MAX_SAFE_INTEGER + 1, 'unavailable']) {
+  explosion.start({ count }); explosion.update(1.9);
+  assert.equal(blastUniforms.uHasNumber.value, 0, 'Invalid counts must retain the unnumbered blast');
+  assert(glyphMask.image.data.every(value => value === 0), 'Invalid counts must not retain an earlier numeral');
+  explosion.finish();
+}
+for (const phone of [false, true]) {
+  explosion.start({ count: 425 });
+  for (let step = 0; step < 116; step++) {
+    explosion.update(step * .05, { phone }); checkFinite();
+  }
+  explosion.finish();
+}
 assert(!owned.has(geometry) && !owned.has(material), 'Effect resources must exclude source clock resources');
 function checkFinite() {
   group.updateMatrixWorld(true);
@@ -169,4 +211,4 @@ explosion.dispose(); explosion.start(); assert.equal(explosion.update(.4), false
 assert([...owned.values()].every(count => count === 1), 'Repeated disposal must remain idempotent');
 checkHomes();
 geometry.dispose(); material.dispose();
-console.log('Control effects passed: deterministic staged motion, exact source restoration, screen ignition, finite desktop/phone FX, owned cleanup, and repeat-safe lifecycle.');
+console.log('Control effects passed: one burning-to-smoke count volume, captured accepted counts, finite fitted numerals, deterministic staged motion, exact source restoration, screen ignition, owned cleanup, and repeat-safe lifecycle.');

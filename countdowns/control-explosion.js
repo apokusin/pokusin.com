@@ -2,6 +2,7 @@
 // here belongs to this effect; the instrument's lights and materials stay intact.
 export function createControlExplosion({ THREE, scene, camera, origin }) {
   const group = new THREE.Group();
+  group.name = 'countdown-detonation';
   group.position.copy(origin);
   group.visible = false;
   scene.add(group);
@@ -60,9 +61,10 @@ export function createControlExplosion({ THREE, scene, camera, origin }) {
   const billboardVertex = `varying vec2 vUv;
     void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`;
   const fireFragment = `${noise}
-    uniform float uTime,uOpacity,uCooling,uSteps;
+    uniform sampler2D uGlyph;
+    uniform float uTime,uOpacity,uCooling,uSteps,uHasNumber,uShape,uErode,uWarp;
     varying vec2 vUv;
-    float mass(vec3 p,out float roll,out float curl) {
+    float mass(vec3 p,out float roll,out float curl,out float glyph,out float cloudlets) {
       // Connected, asymmetric rolling volumes are integrated together, not
       // drawn as overlapping opaque balls. Density fades through every edge.
       float d=length(p-vec3(0.,-.12,.07))-.57;
@@ -72,9 +74,21 @@ export function createControlExplosion({ THREE, scene, camera, origin }) {
       d=min(d,length(p-vec3(.43,-.08,-.12))-.34);
       d=min(d,length(p-vec3(-.09,.55,-.19))-.29);
       vec3 q=p*5.+vec3(.3,-uTime*.76,uTime*.24);
-      roll=noise3(q);
-      curl=noise3(q*1.8+roll*2.3);
-      return 1.-smoothstep(-.075,.105,d+(roll-.5)*.25+(curl-.5)*.085);
+      float rawRoll=noise3(q),rawCurl=noise3(q*1.8+rawRoll*2.3);
+      float original=1.-smoothstep(-.075,.105,d+(rawRoll-.5)*.25+(rawCurl-.5)*.085);
+      roll=clamp((rawRoll-.5)*3.2+.5,0.,1.);
+      curl=clamp((rawCurl-.5)*2.8+.5,0.,1.);
+      vec2 eddy=vec2(roll-.5,curl-.5)*uWarp*(1.+uErode*5.);
+      // Hot rolls pull a few stroke tips upward; the connected spine stays put.
+      eddy.y-=pow(max(0.,curl-.35),2.)*.045*(1.-uCooling);
+      vec2 wind=vec2(uErode*uErode*(.075+p.z*.018),-uErode*.028);
+      glyph=texture2D(uGlyph,p.xy*.5+.5+eddy+wind).a;
+      float strokes=smoothstep(.12,.78,glyph+(roll-.5)*.17);
+      float depth=1.-smoothstep(.24,.76,abs(p.z)+(roll-.5)*.14);
+      cloudlets=smoothstep(.24,.77,roll*.73+curl*.27);
+      float shaped=strokes*depth*(.24+.76*cloudlets);
+      shaped*=1.-smoothstep(.02,.63,smoothstep(.0,.95,uErode)-(glyph*.43+roll*.22));
+      return mix(original,shaped,uHasNumber*uShape);
     }
     void main() {
       vec2 uv=vUv*2.-1.;
@@ -82,19 +96,37 @@ export function createControlExplosion({ THREE, scene, camera, origin }) {
       for(int i=0;i<14;i++) {
         if(float(i)>=uSteps)break;
         vec3 p=vec3(uv,.90-(float(i)+.5)*1.8/uSteps);
-        float roll,curl;
-        float density=mass(p,roll,curl);
+        float roll,curl,glyph,cloudlets;
+        float density=mass(p,roll,curl,glyph,cloudlets);
         float core=exp(-dot(p-vec3(0.,-.22,.11),p-vec3(0.,-.22,.11))*6.4);
-        float temperature=clamp((.31+core*.79+(1.-curl)*.21-roll*.16
-          +pow(1.-density,2.)*.16)*(1.-uCooling*1.16),0.,1.);
+        float originalHeat=.31+core*.79+(1.-curl)*.21-roll*.16+pow(1.-density,2.)*.16;
+        float thermalField=clamp((noise3(p*7.8+vec3(-14.,-uTime*.53,31.))-.5)*3.8+.5,0.,1.);
+        float hotPocket=smoothstep(.22,.79,thermalField);
+        // Ordinary burning voxels stay in the orange band. White is a rare
+        // local pocket below, not the clipped sum of every density term.
+        float shapedHeat=.31+glyph*.04+cloudlets*.16+hotPocket*.16+core*.07;
+        float temperature=clamp(mix(originalHeat,shapedHeat,uHasNumber*uShape)*(1.-uCooling*1.16),0.,1.);
         vec3 ash=mix(vec3(.012,.017,.013),vec3(.12,.125,.095),roll*.39+max(p.z,0.)*.12);
+        vec3 billowNormal=normalize(vec3((roll-.5)*.7,(curl-.5)*.5,.45));
+        float shade=clamp(.16+cloudlets*.22+dot(billowNormal,normalize(vec3(-.6,.8,1.)))*.38,0.,1.);
+        vec3 shapedAsh=mix(vec3(.026,.036,.028),vec3(.33,.37,.30),shade);
+        ash=mix(ash,shapedAsh,uHasNumber*uShape);
         float underside=exp(-length(p-vec3(0.,-.58,.27))*2.7);
         ash+=vec3(.38,.19,.056)*underside*(1.-uCooling)*.55;
-        vec3 flame=mix(vec3(.25,.12,.045),vec3(1.5,.61,.10),smoothstep(.25,.61,temperature));
-        flame=mix(flame,vec3(4.6,3.7,2.05),smoothstep(.63,.91,temperature));
-        float burning=smoothstep(.12,.46,temperature);
-        float soot=smoothstep(.42,.79,roll+uCooling*.35)*(.25+uCooling*.45);
-        vec3 radiance=mix(ash,flame,burning*(1.-soot));
+        vec3 flame=mix(vec3(.30,.012,.002),vec3(.88,.145,.009),smoothstep(.30,.64,temperature));
+        flame=mix(flame,vec3(1.55,.57,.075),smoothstep(.65,.84,temperature));
+        float narrowCore=exp(-dot(p-vec3(0.,-.22,.11),p-vec3(0.,-.22,.11))*32.);
+        float rarePocket=pow(smoothstep(.70,.87,noise3(p*21.3+vec3(18.,-uTime*.91,10.))),3.)*.45;
+        float whitePockets=max(narrowCore*smoothstep(.55,.85,thermalField),rarePocket)*pow(1.-uCooling,3.);
+        float whiteMix=mix(smoothstep(.87,.985,temperature),whitePockets,uHasNumber*uShape);
+        flame=mix(flame,vec3(3.1,2.4,1.6),whiteMix);
+        float burning=smoothstep(.18,.46,temperature)*(1.-smoothstep(.25,.87,uCooling));
+        float originalSoot=smoothstep(.42,.79,roll+uCooling*.35)*(.25+uCooling*.45);
+        float thermalSoot=smoothstep(.35,.82,1.-hotPocket+roll*.12+uCooling*.38)*.97;
+        float soot=mix(originalSoot,thermalSoot,uHasNumber*uShape);
+        ash*=mix(1.,.07,soot*(1.-uCooling));
+        float fireThroughChar=mix(1.,1.-smoothstep(.75,.93,soot),uHasNumber*uShape);
+        vec3 radiance=mix(ash,flame,burning*(1.-soot)*fireThroughChar);
         float alpha=density*(2.9/uSteps);
         integrated+=radiance*alpha*(1.-opacity);
         opacity+=alpha*(1.-opacity);
@@ -107,10 +139,12 @@ export function createControlExplosion({ THREE, scene, camera, origin }) {
   `;
   const fireMaterial = keep(new THREE.ShaderMaterial({
     vertexShader: billboardVertex, fragmentShader: fireFragment,
-    uniforms: { uNoise: { value: noiseTexture }, uTime: { value: 0 }, uOpacity: { value: 0 }, uCooling: { value: 0 }, uSteps: { value: 14 } },
+    uniforms: { uNoise: { value: noiseTexture }, uTime: { value: 0 }, uOpacity: { value: 0 }, uCooling: { value: 0 }, uSteps: { value: 14 },
+      uGlyph: { value: null }, uHasNumber: { value: 0 }, uShape: { value: 0 }, uErode: { value: 0 }, uWarp: { value: .01 } },
     transparent: true, depthWrite: false, toneMapped: false
   }));
   const fire = new THREE.Mesh(planeGeometry, fireMaterial);
+  fire.name = 'countdown-blast-volume';
   fire.renderOrder = 25; group.add(fire);
   const smokeFragment = `${noise}
     varying vec2 vUv;
@@ -150,6 +184,73 @@ export function createControlExplosion({ THREE, scene, camera, origin }) {
     group.add(mesh);
     smoke.push({ mesh, x: (random() - .5) * 3.4, y: i * .30 - .2, z: -1.25 - random() * 1.1,
       size: 1.6 + random() * .65, birth: .12 + i * .078 });
+  }
+
+  // The accepted count shapes the explosion's own density. This pooled target
+  // never becomes a separate text object: the same fire cools into the same ash.
+  const numberMaskWidth = 1024, numberMaskHeight = 256;
+  const numberCanvas = typeof document !== 'undefined' ? document.createElement('canvas') : null;
+  if (numberCanvas) { numberCanvas.width = numberMaskWidth; numberCanvas.height = numberMaskHeight; }
+  const numberContext = numberCanvas?.getContext('2d');
+  const numberPixels = numberContext ? null : new Uint8Array(numberMaskWidth * numberMaskHeight * 4);
+  const numberTexture = keep(numberContext ? new THREE.CanvasTexture(numberCanvas)
+    : new THREE.DataTexture(numberPixels, numberMaskWidth, numberMaskHeight));
+  numberTexture.name = 'countdown-blast-number-density';
+  numberTexture.magFilter = numberTexture.minFilter = THREE.LinearFilter;
+  numberTexture.generateMipmaps = false;
+  numberTexture.needsUpdate = true;
+  fireMaterial.uniforms.uGlyph.value = numberTexture;
+  let numberText = '', numberWidth = 1, numberHeight = 4.6;
+  function clearNumber() {
+    numberText = '';
+    if (numberContext) numberContext.clearRect(0, 0, numberMaskWidth, numberMaskHeight);
+    else numberPixels.fill(0);
+    numberTexture.needsUpdate = true;
+  }
+  function sculptNumber(count) {
+    clearNumber();
+    const text = typeof count === 'number' && Number.isSafeInteger(count) && count >= 0 ? String(count)
+      : typeof count === 'string' && /^\d{1,16}$/.test(count) && Number.isSafeInteger(Number(count)) ? count : '';
+    if (!text) return;
+    numberText = text;
+    let measuredWidth = text.length * 115;
+    if (numberContext) {
+      numberContext.font = '900 192px Arial, Helvetica, sans-serif';
+      numberContext.textAlign = 'center'; numberContext.textBaseline = 'middle';
+      measuredWidth = numberContext.measureText(text).width;
+      numberContext.save();
+      numberContext.translate(numberMaskWidth / 2, numberMaskHeight / 2 + 8);
+      numberContext.scale(numberMaskWidth * .88 / measuredWidth, 1);
+      numberContext.filter = 'blur(8px)';
+      numberContext.fillStyle = '#fff'; numberContext.fillText(text, 0, 0);
+      numberContext.restore();
+    } else {
+      // A DOM-free mask keeps the lifecycle useful in non-browser fixtures.
+      // Browsers use the authored, softly blurred glyph target above.
+      const segments = ['1111110','0110000','1101101','1111001','0110011','1011011','1011111','1110000','1111111','1111011'];
+      const cell = numberMaskWidth * .88 / text.length, gap = cell * .17;
+      const thick = Math.max(4, Math.min(cell * .16, 24));
+      const rect = (x, y, width, height) => {
+        const x0 = Math.max(0, Math.floor(x)), x1 = Math.min(numberMaskWidth, Math.ceil(x + width));
+        const y0 = Math.max(0, Math.floor(y)), y1 = Math.min(numberMaskHeight, Math.ceil(y + height));
+        for (let yy = y0; yy < y1; yy++) for (let xx = x0; xx < x1; xx++) {
+          const index = (yy * numberMaskWidth + xx) * 4;
+          numberPixels[index] = numberPixels[index + 1] = numberPixels[index + 2] = numberPixels[index + 3] = 255;
+        }
+      };
+      for (let i = 0; i < text.length; i++) {
+        const x = numberMaskWidth * .06 + i * cell + gap / 2, width = cell - gap;
+        const pattern = segments[Number(text[i])];
+        const bars = [[x + thick, 39, width - thick * 2, thick], [x + width - thick, 39 + thick, thick, 76 - thick],
+          [x + width - thick, 127, thick, 77 - thick], [x + thick, 204 - thick, width - thick * 2, thick],
+          [x, 127, thick, 77 - thick], [x, 39 + thick, thick, 76 - thick], [x + thick, 115, width - thick * 2, thick]];
+        for (let bar = 0; bar < 7; bar++) if (pattern[bar] === '1') rect(...bars[bar]);
+      }
+    }
+    const aspect = measuredWidth / numberMaskHeight / .88;
+    numberHeight = Math.min(4.6, 6.5 / aspect);
+    numberWidth = numberHeight * aspect;
+    numberTexture.needsUpdate = true;
   }
 
   const waveFragment = `${noise}
@@ -295,9 +396,17 @@ export function createControlExplosion({ THREE, scene, camera, origin }) {
 
   function finish() {
     active = false; group.visible = false; shake.set(0, 0); light.intensity = 0;
+    fire.visible = false; fireMaterial.uniforms.uOpacity.value = 0;
+    fireMaterial.uniforms.uHasNumber.value = fireMaterial.uniforms.uShape.value = fireMaterial.uniforms.uErode.value = 0;
+    fireMaterial.uniforms.uTime.value = 0; fireMaterial.uniforms.uWarp.value = .01;
+    clearNumber();
   }
-  function start() {
+  function start({ count } = {}) {
     if (disposed) return;
+    fireMaterial.uniforms.uOpacity.value = 0;
+    fireMaterial.uniforms.uShape.value = fireMaterial.uniforms.uErode.value = 0;
+    sculptNumber(count);
+    fireMaterial.uniforms.uHasNumber.value = numberText ? 1 : 0;
     active = true; group.visible = true; shake.set(0, 0);
     update(0);
   }
@@ -306,16 +415,26 @@ export function createControlExplosion({ THREE, scene, camera, origin }) {
     const age = Math.max(0, ageSeconds);
     if (age >= 5.8) { finish(); return false; }
     const growth = 1 - Math.exp(-age * 7.2);
-    const fireFade = 1 - smooth((age - 1.15) / 1.10);
+    const erosion = numberText ? smooth((age - 2.35) / 1.0) : 0;
+    const fireFade = numberText ? 1 - smooth((age - 2.45) / .90) : 1 - smooth((age - 1.15) / 1.10);
     fire.visible = fireFade > .001;
-    fire.position.set(-age * .055, age * .68, .8);
-    fire.scale.set(Math.max(.001, growth * (4.4 + age * .17)),
-      Math.max(.001, growth * (4.15 + age * .24)), 1);
+    if (numberText) {
+      fire.position.set(erosion * .28, .08 + growth * (.40 + age * .49) + erosion * .35, 1.15);
+      fire.scale.set(Math.max(.001, numberWidth * .5 * growth * (1 + erosion * .06)),
+        Math.max(.001, numberHeight * .5 * growth * (1 + erosion * .1)), 1);
+    } else {
+      fire.position.set(-age * .055, age * .68, .8);
+      fire.scale.set(Math.max(.001, growth * (4.4 + age * .17)),
+        Math.max(.001, growth * (4.15 + age * .24)), 1);
+    }
     fire.quaternion.copy(camera.quaternion);
     fireMaterial.uniforms.uTime.value = age;
     fireMaterial.uniforms.uOpacity.value = fireFade * .99;
-    fireMaterial.uniforms.uCooling.value = smooth((age - .52) / 1.55);
+    fireMaterial.uniforms.uCooling.value = numberText ? smooth((age - 1.10) / 1.25) : smooth((age - .52) / 1.55);
     fireMaterial.uniforms.uSteps.value = phone ? 10 : 14;
+    fireMaterial.uniforms.uShape.value = numberText ? smooth((age - .09) / .35) : 0;
+    fireMaterial.uniforms.uErode.value = erosion;
+    fireMaterial.uniforms.uWarp.value = .027 / Math.max(1, numberText.length / 3);
     for (let i = 0; i < smoke.length; i++) {
       const puff = smoke[i], t = Math.max(0, age - puff.birth);
       const build = smooth(t / .48), fade = 1 - smooth((age - 2.4) / 2.1);
@@ -325,7 +444,8 @@ export function createControlExplosion({ THREE, scene, camera, origin }) {
       puff.mesh.quaternion.copy(camera.quaternion);
       puff.mesh.rotateZ(t * (i % 2 ? .04 : -.04));
       const uniforms = puff.mesh.material.uniforms;
-      uniforms.uTime.value = t; uniforms.uOpacity.value = build * fade * .78;
+      const condensing = numberText ? 1 - smooth((age - .28) / .50) * .88 : 1;
+      uniforms.uTime.value = t; uniforms.uOpacity.value = build * fade * .78 * condensing;
       uniforms.uHeat.value = Math.exp(-t * 1.35) * 1.8;
       uniforms.uSteps.value = phone ? 7 : 10;
     }
@@ -358,6 +478,7 @@ export function createControlExplosion({ THREE, scene, camera, origin }) {
     // A single rounded exposure bloom; never repeated flashes or a hard white cut.
     ignitionMaterial.uniforms.uOpacity.value = Math.sin(Math.PI * clamp(age / .19)) * .54;
     light.intensity = 48 * smooth(age / .045) * Math.exp(-age * 2.9)
+      + (numberText ? 10 * smooth(age / .12) * (1 - smooth((age - .80) / .80)) : 0)
       + .75 * smooth((age - 2.7) / .3) * (1 - smooth((age - 4.45) / .55));
     const jolt = smooth(age / .07) * Math.exp(-age * 3.1) * (phone ? .042 : .075);
     shake.set((Math.sin(age * 43) + Math.sin(age * 69) * .3) * jolt,
