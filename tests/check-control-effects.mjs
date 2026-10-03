@@ -27,8 +27,22 @@ const parts = roles.map((role, index) => {
 const hidden = new THREE.Mesh(geometry, material);
 hidden.position.set(1, 2, 3); hidden.rotation.set(.2, .4, .6);
 hidden.scale.set(.6, 1.4, .9); hidden.visible = false; parts.push(hidden);
+const scene = new THREE.Scene();
+const sourceClock = new THREE.Group(); parts.forEach(part => sourceClock.add(part)); scene.add(sourceClock);
 const homes = parts.map(pose);
+const originalClockChildren = new Set(sourceClock.children);
 const mechanical = createClockTransformation({ THREE, parts: [...parts, parts[0]], center: new THREE.Vector3(0, .79, 0) });
+const seedGroups = sourceClock.children.filter(child => !originalClockChildren.has(child));
+assert.equal(seedGroups.length, 1, 'Replacement seed must belong to the source clock assembly');
+const seedResources = new Map();
+seedGroups[0].traverse(object => {
+  for (const resource of [object.geometry, ...(Array.isArray(object.material) ? object.material : [object.material])]) {
+    if (!resource?.dispose || seedResources.has(resource)) continue;
+    seedResources.set(resource, 0);
+    resource.addEventListener('dispose', () => seedResources.set(resource, seedResources.get(resource) + 1));
+  }
+});
+assert(!seedResources.has(geometry) && !seedResources.has(material), 'Seed must own its surfaces without taking ownership of source resources');
 const checkHomes = () => {
   assert.deepEqual(parts.map(pose), homes, 'Every source pose and visibility must be restored exactly');
   for (const part of parts) {
@@ -42,20 +56,40 @@ assert.equal(mechanical.update(.4), true);
 assert.notDeepEqual(parts[0].position.toArray(), homes[0].position, 'Blast must move source hardware');
 assert.equal(hidden.visible, false, 'An originally hidden part must never be exposed');
 const firstFlight = parts.map(pose);
-mechanical.update(2); assert(parts.every(part => !part.visible), 'Destroyed clock stays absent before replacement ingress');
+mechanical.update(2); assert(parts.every(part => !part.visible), 'Destroyed clock stays absent before replacement growth');
+mechanical.update(2.3);
+assert.equal(seedGroups[0].visible, true, 'Cube must be visible before the clock grows');
+assert(parts.every(part => !part.visible), 'Cube reveal must precede source hardware assembly');
 mechanical.update(3); assert.equal(parts[0].visible, true); assert.equal(parts[2].visible, false);
 mechanical.update(4.49); assert.equal(mechanical.screenReady, false);
 mechanical.update(4.5); assert.equal(mechanical.screenReady, true);
 assert.equal(mechanical.update(5.8), false); checkHomes();
 mechanical.start(); mechanical.update(.4); assert.deepEqual(parts.map(pose), firstFlight, 'Repeated blast must be deterministic');
+mechanical.start();
+const replacementCenter = new THREE.Vector3(0, .79, 0);
+const replacementReach = Math.max(...homes.filter(home => home.visible).map(home => new THREE.Vector3(...home.position).distanceTo(replacementCenter))) + .9;
+for (let step = 0; step < 116; step++) {
+  const age = step * .05;
+  mechanical.update(age); sourceClock.updateMatrixWorld(true);
+  sourceClock.traverse(object => {
+    finite([...object.position.toArray(), ...object.quaternion.toArray(), ...object.scale.toArray()], 'Growing machine pose');
+    finite(object.matrixWorld.elements, 'Growing machine matrix');
+  });
+  if (age >= 2.1) for (const part of parts.filter(part => part.visible)) {
+    assert(part.position.distanceTo(replacementCenter) <= replacementReach, 'Rebuilding parts must remain in the growing machine footprint');
+  }
+}
+mechanical.finish(); checkHomes();
 mechanical.start(); mechanical.update(3.4); mechanical.finish(); checkHomes();
+assert.equal(seedGroups[0].visible, false, 'Interrupted growth must remove the replacement cube');
 mechanical.start(); mechanical.update(4); mechanical.dispose(); checkHomes();
+assert.equal(seedGroups[0].parent, null, 'Disposed replacement seed must detach from its assembly');
+assert([...seedResources.values()].every(count => count === 1), 'Seed resources must be disposed exactly once');
 mechanical.dispose(); mechanical.start(); assert.equal(mechanical.update(.4), false);
+assert([...seedResources.values()].every(count => count === 1), 'Repeated seed disposal must stay idempotent');
 const empty = createClockTransformation({ THREE, parts: [] });
 empty.start(); assert.equal(empty.update(1), false); assert.equal(empty.screenReady, true); empty.dispose();
 
-const scene = new THREE.Scene();
-const sourceClock = new THREE.Group(); parts.forEach(part => sourceClock.add(part)); scene.add(sourceClock);
 const studioLight = new THREE.PointLight(0xffffff, 3.5); scene.add(studioLight);
 const camera = new THREE.PerspectiveCamera(30, 1, .1, 100);
 camera.position.set(0, 4, 12.4); camera.lookAt(0, .55, 0);
