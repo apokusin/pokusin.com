@@ -1028,7 +1028,8 @@ def build_gallery():
                 timeline_slug = v['slug'].strip('/')
                 out += f'      <a class="scene-timeline-link" data-show="{s["slug"]}" href="/countdowns/{s["slug"]}/{timeline_slug}/">{esc(s["name"])} · {esc(v["label"])}</a>\n'
     out += '    </template>\n'
-    themes_version = hashlib.sha256(open(os.path.join(CD, 'themes.js'), 'rb').read()).hexdigest()[:10]
+    themes_sources = ['themes.js', 'reels.js', 'control-explosion.js', 'control-transformation.js']
+    themes_version = hashlib.sha256(b''.join(open(os.path.join(CD, file), 'rb').read() for file in themes_sources)).hexdigest()[:10]
     previews = """<script>(function(){
       var art=document.documentElement.classList.contains('art-project');
       if(document.documentElement.dataset.theme==='control'){

@@ -14,7 +14,7 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const dateLabel = document.getElementById('next-countdown-date');
 const initialDeadline = Date.parse(dateLabel.dateTime);
 let state = { deadline: initialDeadline, count: 0 };
-let celebrate = () => {}, ready = false, pending = false, clockOffset = 0, tickInterval = 0;
+let celebrate = () => {}, prepareVisualReset = () => {}, ready = false, pending = false, rebuilding = false, clockOffset = 0, tickInterval = 0;
 const reelEnabled = () => hero.classList.contains('hero-awake') && !document.hidden;
 const countReel = new NumberReel(countLabel, { enabled: reelEnabled, reducedMotion, direction: 1 });
 const timerReels = ['days', 'hours', 'minutes', 'seconds'].map(unit => new NumberReel(
@@ -36,6 +36,8 @@ function applyState(next, forceSpin = false) {
   const initialSync = !ready;
   const spin = ready && (forceSpin || next.count > state.count);
   const remote = ready && !forceSpin && next.count > state.count;
+  // The shared reset is authoritative even if its optional spectacle cannot start.
+  if (forceSpin) { try { prepareVisualReset(); } catch (_) {} }
   state = next;
   clockOffset = next.serverNow - Date.now(); ready = true;
   updateLabels(spin, initialSync); tick(spin); startTicker();
@@ -50,7 +52,7 @@ async function sync() {
   } catch (_) { if (!ready) clockStatus.textContent = control ? 'Shared clock unavailable.' : 'The shared clock is taking a little break.'; }
 }
 async function reset() {
-  if (pending) return;
+  if (pending || rebuilding) return;
   pending = true; action.disabled = true; if (royalButton) royalButton.disabled = true;
   document.dispatchEvent(new CustomEvent('countdown:pending',{detail:true}));
   try {
@@ -64,9 +66,9 @@ async function reset() {
     applyState(await response.json(), true);
     if (!art) { secret.hidden = false; action.setAttribute('aria-expanded', 'true'); royalButton?.setAttribute('aria-expanded', 'true'); }
     document.dispatchEvent(new CustomEvent('countdown:reset'));
-    celebrate(); if (!art) animatePageReset();
+    celebrate(); if (!art && !rebuilding) animatePageReset();
   } catch (_) { clockStatus.textContent = control ? 'Reset failed. Try again.' : 'The clock refused. Try again in a moment.'; }
-  finally { pending = false; action.disabled = false; if (royalButton) royalButton.disabled = false; document.dispatchEvent(new CustomEvent('countdown:pending',{detail:false})); }
+  finally { pending = false; action.disabled = rebuilding; if (royalButton) royalButton.disabled = rebuilding; document.dispatchEvent(new CustomEvent('countdown:pending',{detail:false})); }
 }
 let coverOpen = false;
 function press() {
@@ -136,6 +138,10 @@ let sceneChange = () => {};
 
 async function initScene() {
   const THREE = await import('./assets/vendor/three.module.min.js');
+  const effectVersion = new URL(import.meta.url).search;
+  const effectModules = control ? await Promise.all([
+    import(`./control-explosion.js${effectVersion}`), import(`./control-transformation.js${effectVersion}`)
+  ]) : null;
   const stage = document.getElementById('scene-stage');
   const canvas = document.getElementById('theme-scene');
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'low-power' });
@@ -148,7 +154,7 @@ async function initScene() {
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   const scene = new THREE.Scene();
-  let paintDisplay = () => false;
+  let paintDisplay = () => false, settleDisplay = () => {};
   const camera = new THREE.PerspectiveCamera(control ? 30 : 35, 1, .1, 100);
   camera.position.set(control ? 0 : 0.9, control ? 4 : 2.6, control ? 12.4 : 6.4);
   camera.lookAt(0, control ? 0.35 : 1.2, 0);
@@ -157,6 +163,11 @@ async function initScene() {
   key.position.set(-3, 6, 5); key.castShadow = true;
   key.shadow.mapSize.set(control ? 1024 : 512, control ? 1024 : 512); key.shadow.camera.left = -6; key.shadow.camera.right = 6;
   key.shadow.camera.top = 6; key.shadow.camera.bottom = -6; key.shadow.bias = -.002;
+  if (control) {
+    key.shadow.camera.near = .3; key.shadow.camera.far = 30;
+    key.shadow.bias = -.0003; key.shadow.normalBias = .015;
+    key.shadow.camera.updateProjectionMatrix();
+  }
   scene.add(key);
   const rim = new THREE.DirectionalLight(control ? 0xaec6c4 : 0xffefcf, control ? 1.2 : 1.5); rim.position.set(4, 4, -2); scene.add(rim);
   const root = new THREE.Group(); scene.add(root);
@@ -165,6 +176,9 @@ async function initScene() {
   const enamel = mat(0xd9d7c9, .15, .33), dark = mat(0x161b1a, .3, .4);
   const velvet = mat(0xcbbb96, 0, .96), red = mat(0x750706, .1, .38);
   let signalStarted = -Infinity, powerOnStarted = -Infinity, signalLamp, signalGlow, resetAssembly, displayGlass;
+  let explosion, transformation, cinemaOverlay, cinemaStarted = -Infinity, cinemaScreenLit = false;
+  const cinemaDuration = 5.8, cinemaHomeCamera = new THREE.Vector3();
+  const clockParts = [];
   const powerOnDuration = 700;
   let stageWidth = 1, stageHeight = 1;
   let configureControlLayout = () => {};
@@ -236,6 +250,7 @@ async function initScene() {
   }
   const floor = new THREE.Mesh(new THREE.PlaneGeometry(18, 10), new THREE.ShadowMaterial({ opacity: control ? .29 : .13 }));
   floor.rotation.x = -Math.PI / 2; floor.position.y = -.08; floor.receiveShadow = true; scene.add(floor);
+  const floorDepthWrite = floor.material.depthWrite;
   let royalCrown, button, cover;
   const particles = [];
   if (!control) {
@@ -267,9 +282,20 @@ async function initScene() {
     const sage = enamel.clone(); sage.color.set(0x617063); sage.roughness = .79;
     const rubber = mat(0x121613, 0, .92);
     const brass = mat(0x6c6247, .72, .42);
-    box(5.5, 1.4, .79, enamel, -1.18, .79, 0);
-    box(5.46, .22, .79, sage, -1.18, .2, -.015);
-    box(4.12, .9, .07, rubber, -.75, .88, .432);
+    // Actual enclosure panels can fold and lock into a replacement instrument.
+    const part = (object, role) => { object.userData.rebuildRole = role; return object; };
+    part(box(5.5,.055,.79,enamel,-1.18,1.49,0),'shell');
+    part(box(5.5,.055,.79,enamel,-1.18,.09,0),'base');
+    part(box(.055,1.4,.79,enamel,-3.93,.79,0),'shell');
+    part(box(.055,1.4,.79,enamel,1.57,.79,0),'shell');
+    part(box(5.5,1.4,.045,sage,-1.18,.79,-.39),'shell');
+    part(box(1.12,1.4,.05,enamel,-3.37,.79,.37),'shell');
+    part(box(.26,1.4,.05,enamel,1.44,.79,.37),'shell');
+    part(box(4.13,.17,.05,enamel,-.75,1.405,.37),'shell');
+    part(box(4.13,.345,.05,enamel,-.75,.262,.37),'shell');
+    // Keep the beveled stock behind the thin faceplate, without coplanar faces.
+    part(box(5.46, .22, .79, sage, -1.18, .2, -.035),'base');
+    part(box(4.12, .9, .07, rubber, -.75, .88, .432),'display');
     const aperture = new THREE.Shape();
     const roundedPath = (path, w, h, r) => {
       path.moveTo(-w / 2 + r, -h / 2); path.lineTo(w / 2 - r, -h / 2);
@@ -281,7 +307,7 @@ async function initScene() {
     roundedPath(aperture, 4.08, .86, .095);
     const hole = new THREE.Path(); roundedPath(hole, 3.84, .69, .055); aperture.holes.push(hole);
     const bezel = new THREE.ExtrudeGeometry(aperture, { depth: .082, bevelEnabled: true, bevelSize: .014, bevelThickness: .014, bevelSegments: 2, curveSegments: 8, steps: 1 });
-    mesh(bezel, mat(0x26312a, .47, .43), -.75, .88, .423);
+    part(mesh(bezel, mat(0x26312a, .47, .43), -.75, .88, .423),'detail');
     for (let x of [-3.68, 1.32]) for (let y of [.25, 1.32]) {
       const screw = mesh(new THREE.CylinderGeometry(.044, .046, .014, 16), silver, x, y, .416);
       screw.rotation.x = Math.PI / 2;
@@ -290,14 +316,14 @@ async function initScene() {
       const wear = mesh(new THREE.RingGeometry(.049, .072, 20), mat(0x948e7d, .15, .9), x, y, .411);
       wear.castShadow = false;
     }
-    for (let x of [-3.2, .8]) for (let z of [-.24, .24]) box(.28, .13, .21, rubber, x, .04, z);
+    for (let x of [-3.2, .8]) for (let z of [-.24, .24]) part(box(.28, .13, .21, rubber, x, .04, z),'base');
     for (let i = 0; i < 6; i++) box(.026, .49, .012, rubber, -3.47 + i * .075, .86, .417);
     // These thin seams and chamfered side stock make the shell's assembly legible.
     box(5.2, .013, .012, sage, -1.18, .365, .415);
     box(.026, 1.16, .68, sage, -3.895, .8, -.025);
     const displayCanvas = document.createElement('canvas'); displayCanvas.width = 1024; displayCanvas.height = 192;
     const ctx = displayCanvas.getContext('2d'); const texture = new THREE.CanvasTexture(displayCanvas); texture.colorSpace = THREE.SRGBColorSpace;
-    const display = mesh(new THREE.PlaneGeometry(3.78, .63), new THREE.MeshBasicMaterial({ map: texture, toneMapped: false }), -.75, .89, .491);
+    const display = part(mesh(new THREE.PlaneGeometry(3.78, .63), new THREE.MeshBasicMaterial({ map: texture, toneMapped: false }), -.75, .89, .491),'display');
     display.castShadow = false;
     // A very shallow curved lens catches a broad fixture rather than an arbitrary
     // opaque white stripe. The lit phosphor stays behind the smoked surface.
@@ -309,7 +335,7 @@ async function initScene() {
     }
     lens.computeVertexNormals();
     displayGlass = new THREE.MeshPhysicalMaterial({ color: 0x778176, transparent: true, opacity: .13, roughness: .14, metalness: .04, clearcoat: 1, clearcoatRoughness: .12, envMapIntensity: .8, depthWrite: false });
-    const glassFace = mesh(lens, displayGlass, -.75, .89, .499); glassFace.castShadow = false;
+    const glassFace = part(mesh(lens, displayGlass, -.75, .89, .499),'display'); glassFace.castShadow = false;
     const segments = [[14,0,30,6],[43,7,6,33],[43,47,6,33],[14,80,30,6],[7,47,6,33],[7,7,6,33],[14,40,30,6]];
     const digits = ['1111110','0110000','1101101','1111001','0110011','1011011','1011111','1110000','1111111','1111011'];
     let displayText = '', displayPlans = [], spinUntil = 0, queuedDisplay = null;
@@ -328,6 +354,7 @@ async function initScene() {
       const powerAge = ms - powerOnStarted;
       const poweringOn = !reduce.matches && powerAge >= 0 && powerAge < powerOnDuration;
       ctx.shadowBlur = 0; ctx.fillStyle = '#0b120e'; ctx.fillRect(0, 0, 1024, 192);
+      if (rebuilding && !cinemaScreenLit) { texture.needsUpdate = true; return true; }
       ctx.save(); ctx.translate(51, 18); ctx.scale(1.65, 1.65);
       if (reacquiring) ctx.globalAlpha = age < 145 ? .43 + age / 145 * .57 : 1;
       // A single phosphor warm-up: the real digits stay still while their light rises.
@@ -371,6 +398,7 @@ async function initScene() {
       return moving || reacquiring || poweringOn;
     };
     displayUpdate = (values, { spin = false } = {}) => {
+      if (rebuilding && !cinemaScreenLit) { queuedDisplay = values; return; }
       const now = performance.now(), text = values.map(v => String(v).padStart(2, '0')).join(':');
       if (now < spinUntil && !spin && !reduce.matches && visible && !document.hidden) { queuedDisplay = values; return; }
       if (text === displayText && !spin && !reduce.matches) return;
@@ -385,6 +413,10 @@ async function initScene() {
       spinUntil = spin && motion ? now + Math.max(...displayPlans.filter(Boolean).map(plan => plan.delay + plan.duration)) : 0;
       queuedDisplay = null; displayText = text;
       const moving = paintDisplay(now); render(); if (moving) schedule();
+    };
+    settleDisplay = () => {
+      displayPlans = []; spinUntil = 0; queuedDisplay = null; displayText = '';
+      displayUpdate(remaining());
     };
     for (let i = 0; i < 4; i++) {
       const label = document.createElement('span'); label.className = 'control-unit-label';
@@ -432,6 +464,11 @@ async function initScene() {
       cable.geometry.dispose(); cable.geometry = new THREE.TubeGeometry(path, 48, .057, 6, false);
     };
     root.rotation.y = -.025;
+    // The reset box survives. Everything wired to the clock becomes real debris.
+    clockParts.push(...root.children.filter(object => object !== resetAssembly));
+    cable.userData.rebuildRole = 'cable';
+    transformation = effectModules[1].createClockTransformation({ THREE, parts: clockParts, center: new THREE.Vector3(-.75,.9,.05) });
+    explosion = effectModules[0].createControlExplosion({ THREE, scene, camera, origin: new THREE.Vector3(-.75,.9,.05) });
   }
   let visible = true, graphicsLost = false, pointerX = 0, pointerY = 0, lastFrame = 0, frameId = 0, burstAt = -10;
   let buttonHeld = false, heldPointer = null, pointerInside = false, heldKey = null;
@@ -485,6 +522,7 @@ async function initScene() {
   const actionBox = new THREE.Box3(), projectionPoint = new THREE.Vector3();
   function positionInstrumentControls() {
     if (!control || !resetAssembly) return;
+    if (rebuilding) { instrumentUnits.forEach(unit => { unit.label.style.opacity = '0'; }); return; }
     for (const unit of instrumentUnits) {
       projectionPoint.copy(unit.point); root.localToWorld(projectionPoint); projectionPoint.project(camera);
       unit.label.style.left = `${(projectionPoint.x * .5 + .5) * stageWidth}px`;
@@ -507,10 +545,58 @@ async function initScene() {
     action.style.width = `${width}px`; action.style.height = `${height}px`; action.style.borderRadius = '10px';
   }
   function render() {
-    if (visible && !graphicsLost && !document.hidden) { renderer.render(scene,camera); positionInstrumentControls(); }
+    if (visible && !graphicsLost && !document.hidden) {
+      if (rebuilding) {
+        const rect = stage.getBoundingClientRect();
+        // Extend this exact camera frustum beyond the console stage. The clock
+        // keeps its screen position while the blast can fill the entire viewport.
+        camera.setViewOffset(stageWidth,stageHeight,-rect.left,-rect.top,innerWidth,innerHeight);
+        camera.position.copy(cinemaHomeCamera);
+        camera.position.x += explosion.shake.x; camera.position.y += explosion.shake.y;
+      }
+      renderer.render(scene,camera); positionInstrumentControls();
+    }
   }
+  function finishCinema(interrupted = true, fit = true) {
+    if (!rebuilding) return;
+    rebuilding = false; cinemaStarted = -Infinity; cinemaScreenLit = false;
+    transformation.finish(); explosion.finish(); camera.clearViewOffset();
+    floor.material.depthWrite = floorDepthWrite;
+    camera.position.copy(cinemaHomeCamera); renderer.toneMappingExposure = 1.05;
+    stage.prepend(canvas); cinemaOverlay?.remove(); cinemaOverlay = null;
+    canvas.style.removeProperty('opacity'); delete stage.dataset.effect;
+    secret.style.removeProperty('opacity'); action.disabled = pending;
+    if (royalButton) royalButton.disabled = pending;
+    renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
+    if (fit && !graphicsLost) resize();
+    if (interrupted) settleDisplay();
+    else displayUpdate(remaining());
+    schedule();
+  }
+  function startCinema() {
+    if (!control || !explosion || rebuilding || reduce.matches || graphicsLost || !visible || document.hidden) return;
+    cinemaHomeCamera.copy(camera.position);
+    rebuilding = true; cinemaStarted = performance.now(); cinemaScreenLit = false;
+    // The invisible desk must not cut a straight edge through the airborne plume.
+    floor.material.depthWrite = false;
+    stage.dataset.effect = 'exploding'; action.disabled = true;
+    secret.style.opacity = '0'; powerOnStarted = signalStarted = -Infinity;
+    releaseButtonPress();
+    cinemaOverlay = document.createElement('div'); cinemaOverlay.className = 'clock-cinema';
+    cinemaOverlay.setAttribute('aria-hidden','true');
+    cinemaOverlay.style.cssText = 'position:fixed;inset:0;z-index:60;pointer-events:none;overflow:hidden;';
+    document.body.append(cinemaOverlay); cinemaOverlay.append(canvas); canvas.style.opacity = '1';
+    renderer.setPixelRatio(Math.min(devicePixelRatio,matchMedia('(max-width:760px)').matches ? 1 : 1.25));
+    renderer.setSize(innerWidth,innerHeight,false);
+    transformation.start(); explosion.start(); render(); schedule();
+  }
+  prepareVisualReset = () => {
+    try { startCinema(); } catch (_) { finishCinema(); }
+  };
   function resize() {
-    const w = stage.clientWidth, h = stage.clientHeight; stageWidth = w; stageHeight = h;
+    const w = stage.clientWidth, h = stage.clientHeight;
+    if (rebuilding && (w !== stageWidth || h !== stageHeight)) finishCinema(true,false);
+    stageWidth = w; stageHeight = h;
     if (graphicsLost) return;
     renderer.setSize(w,h,false);camera.aspect=w/h;
     if (control) {
@@ -524,20 +610,22 @@ async function initScene() {
     camera.updateProjectionMatrix();render();
   }
   new ResizeObserver(resize).observe(stage);resize();
-  const observer=new IntersectionObserver(es=>{if(graphicsLost)return;visible=es[0].isIntersecting;if(!visible)releaseButtonPress();schedule();});observer.observe(stage);
+  const observer=new IntersectionObserver(es=>{if(graphicsLost)return;visible=es[0].isIntersecting;if(!visible){releaseButtonPress();finishCinema();}schedule();});observer.observe(stage);
   stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();pointerX=(e.clientX-r.left)/r.width-.5;pointerY=(e.clientY-r.top)/r.height-.5;schedule();});
   stage.addEventListener('pointerleave',()=>{pointerX=pointerY=0;schedule();});
   canvas.addEventListener('webglcontextlost',e=>{
-    e.preventDefault();stage.classList.remove('scene-ready');graphicsLost=true;visible=false;powerOnStarted=-Infinity;releaseButtonPress();cancelAnimationFrame(frameId);frameId=0;
+    e.preventDefault();stage.classList.remove('scene-ready');graphicsLost=true;visible=false;powerOnStarted=-Infinity;finishCinema();releaseButtonPress();cancelAnimationFrame(frameId);frameId=0;
     instrumentUnits.forEach(unit => unit.label.remove());
     if (control) {
       ['left','top','width','height','border-radius'].forEach(property => action.style.removeProperty(property));
       coverOpen = true; action.setAttribute('aria-label', 'Postpone the next countdown');
     }
   });
-  document.addEventListener('visibilitychange',schedule);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)finishCinema();schedule();});
   document.addEventListener('countdown:pending',schedule);
-  reduce.addEventListener('change',()=>{if(reduce.matches)powerOnStarted=-Infinity;schedule();});
+  reduce.addEventListener('change',()=>{if(reduce.matches){powerOnStarted=-Infinity;finishCinema();settleDisplay();}schedule();});
+  window.addEventListener('resize',()=>{if(rebuilding)finishCinema();});
+  window.addEventListener('pagehide',event=>{finishCinema();if(!event.persisted){explosion?.dispose();transformation?.dispose();}});
   const clock=new THREE.Clock();
   function schedule(){if(!frameId&&visible&&!graphicsLost&&!document.hidden)frameId=requestAnimationFrame(animate);}
   function animate(ms){
@@ -577,6 +665,18 @@ async function initScene() {
       signalGlow.color.set(color); signalGlow.intensity = pending ? .16 : acquiring ? .24 * (1 - age / 1150) : coverOpen ? .075 : .015 + warmup * .025;
     }
     const rolling = control && paintDisplay(ms);
+    if (rebuilding) {
+      const age = (ms - cinemaStarted) / 1000;
+      transformation.update(age); explosion.update(age,{phone:matchMedia('(max-width:760px)').matches});
+      stage.dataset.effect = age < 2.1 ? 'exploding' : 'rebuilding';
+      if (!cinemaScreenLit && transformation.screenReady) {
+        cinemaScreenLit = true; powerOnStarted = ms;
+        // The replacement receives today's actual shared time, including any
+        // newer remote press received during its mechanical assembly.
+        displayUpdate(remaining(),{spin:true});
+      }
+      if (age >= cinemaDuration) finishCinema(false);
+    }
     for(let i=particles.length-1;i>=0;i--){
       const p=particles[i],age=t-p.userData.birth;
       if(age>2.3){root.remove(p);p.traverse(o=>o.geometry?.dispose());particles.splice(i,1);continue;}
@@ -587,13 +687,13 @@ async function initScene() {
     const turning=Math.abs(root.rotation.y-targetY)>.0005||Math.abs(root.rotation.x-targetX)>.0005;
     const crowning=royalCrown&&!reduce.matches&&t-burstAt<2.5;
     const releasing=button&&Math.abs(button.position.y-buttonTarget)>.0004;
-    if(turning||reflecting||crowning||releasing||rolling||particles.length||(cover&&Math.abs(cover.rotation.x-(coverOpen?-1.9:0))>.001))schedule();
+    if(rebuilding||turning||reflecting||crowning||releasing||rolling||particles.length||(cover&&Math.abs(cover.rotation.x-(coverOpen?-1.9:0))>.001))schedule();
   }
   sceneChange=()=>{powerOnStarted=-Infinity;schedule();};
   celebrate=()=>{
     powerOnStarted=-Infinity;
     burstAt=clock.getElapsedTime();
-    if(control)signalStarted=performance.now();
+    if(control&&!rebuilding)signalStarted=performance.now();
     if(!control&&!reduce.matches){
       // Three little crowns: an appropriately underwhelming coronation.
       for(let i=0;i<3;i++){
