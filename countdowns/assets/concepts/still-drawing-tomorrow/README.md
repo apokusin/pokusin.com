@@ -1,8 +1,8 @@
 # Drawing assets
 
-`graphite-ink.svg` is authored locally for the live digit texture. It contains only graphite hatch and noise, with no baked digits, labels or UI.
+`graphite-ink.svg` is a retained locally authored hatch/noise texture from the legacy scene. It contains no baked digits, labels or UI. The rebuilt `.scene.js` paints live reels from the separate ten-glyph master in `scene/artwork/graphite-digits.png`; it does not use this SVG as that atlas.
 
-`caveat-variable.ttf` is the Caveat variable handwriting typeface from the official [Google Fonts repository](https://github.com/google/fonts/tree/main/ofl/caveat), retrieved October 2, 2026. It is distributed unchanged under the included [SIL Open Font License](Caveat-OFL.txt). The page self-hosts it so the handwriting is consistent across platforms. Barlow Condensed is the other selected UI family and is already loaded by the site.
+`caveat-variable.ttf` is the Caveat variable handwriting typeface from the official [Google Fonts repository](https://github.com/google/fonts/tree/main/ofl/caveat), retrieved October 2, 2026. It is distributed unchanged under the included [SIL Open Font License](Caveat-OFL.txt). The rebuilt scene loads it as `Drawing Hand` for the tally and sparse handwritten identity. Barlow Condensed remains a common/native UI family loaded by the site; it is not the source of the rebuilt graphite glyph shapes. Georgia paints its unit/caption/Again surface labels.
 
 The rebuilt physical table and reproducible Blender source are documented in
 [scene/README.md](scene/README.md). Its ten isolated graphite digit shapes and

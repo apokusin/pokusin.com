@@ -641,6 +641,87 @@
       "format": "JPEG",
       "originalSavedFilename": "wax-live-plaque-final-320.jpg",
       "series": "current candidate"
+    },
+    {
+      "concept": "held-in-suspense",
+      "file": "metal-clear-unit-final-390.jpg",
+      "role": "current-reflection phone gap correction at art version 7412219769; all four digits/unit labels visibly clear at requested390",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "6a6cf21918574191e282739dc3062120c9dd03a3cd3a4c6619052048d23c77ed",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "functional comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "metal-clear-unit-final-390.jpg",
+      "series": "publication and follow-up evidence",
+      "artVersion": "7412219769"
+    },
+    {
+      "concept": "held-in-suspense",
+      "file": "metal-clear-unit-final-320.jpg",
+      "role": "same bounded phone gap correction at requested320; all four digits/unit labels clear",
+      "pixelDimensions": {
+        "width": 305,
+        "height": 541
+      },
+      "sha256": "f2bb90edb2b6ab2b0376b89344e4816183390eb51ef186313308b69ccf98fb03",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "functional comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "metal-clear-unit-final-320.jpg",
+      "series": "publication and follow-up evidence",
+      "artVersion": "7412219769"
+    },
+    {
+      "concept": "low-tide-later",
+      "file": "tide-navigation-fixed-390.jpg",
+      "role": "local phone utility-ink correction observed RGB17,63,115 at art version7412219769; branch publication separately scoped",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "015bd77582f8f18dffd3b22cf3be9def058f09d6b56b8b431b5169563bab256e",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "functional comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "tide-navigation-fixed-390.jpg",
+      "series": "publication and follow-up evidence",
+      "artVersion": "7412219769"
+    },
+    {
+      "concept": "after-the-flame",
+      "file": "wax-plaque-clock-return-320.jpg",
+      "role": "local rooted Live plaque at progress0 with visible Clock; root activated Clock and observed opening scroll0 with Clock hidden",
+      "pixelDimensions": {
+        "width": 305,
+        "height": 541
+      },
+      "sha256": "d48f119dbf2b2fe804ecc1a90e08f39bb9423f068ed09a503c7cd264a8eab5e6",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "functional comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "wax-plaque-clock-return-320.jpg",
+      "series": "publication and follow-up evidence",
+      "artVersion": "7412219769"
+    },
+    {
+      "concept": "low-tide-later",
+      "file": "published-tide-archer-desktop.jpg",
+      "role": "published commit1b62b21 art9294fb76e7 Archer paper clear; Return opened genuine Season5 final; Escape unloaded iframe/restored native Archer focus",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "e8e0374754135fcd0d7d9d5001c3f810b14ce946c52a38627bd3d906fc512f9a",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "functional comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "published-tide-archer-desktop.jpg",
+      "series": "publication and follow-up evidence",
+      "artVersion": "9294fb76e7",
+      "publishedCommit": "1b62b21"
     }
   ]
 }

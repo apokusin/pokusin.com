@@ -24,7 +24,7 @@
         "sharedHost": "../../countdowns/scene-host.js",
         "sharedStylesheet": "../../countdowns/scene-host.css",
         "assetManifest": "../../countdowns/assets/concepts/tomorrows-roadworks/scene/manifest.json",
-        "deploymentStatus": "local rebuilt candidate; existing preview URL is not proof of this asset version"
+        "deploymentStatus": "branch preview at commit 1b62b21 / art version 9294fb76e7 verified healthy at desktop and phone; later corrections require separate publication verification"
       },
       "visualStatus": "repaired 390/320 phone clock/action composition recorded; representative reset/preview/distant return verified; original-source material gate remains open",
       "architecture": "architecture/README.md",
@@ -62,7 +62,7 @@
         "sharedHost": "../../countdowns/scene-host.js",
         "sharedStylesheet": "../../countdowns/scene-host.css",
         "assetManifest": "../../countdowns/assets/concepts/bubblegum-time/scene/manifest.json",
-        "deploymentStatus": "local rebuilt candidate; existing preview URL is not proof of this asset version"
+        "deploymentStatus": "branch preview at commit 1b62b21 / art version 9294fb76e7 verified healthy at desktop and phone; later corrections require separate publication verification"
       },
       "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
       "architecture": "architecture/README.md",
@@ -98,7 +98,7 @@
         "sharedHost": "../../countdowns/scene-host.js",
         "sharedStylesheet": "../../countdowns/scene-host.css",
         "assetManifest": "../../countdowns/assets/concepts/after-the-flame/scene/manifest.json",
-        "deploymentStatus": "local rebuilt candidate; existing preview URL is not proof of this asset version"
+        "deploymentStatus": "branch preview at commit 1b62b21 / art version 9294fb76e7 verified healthy at desktop and phone; later corrections require separate publication verification"
       },
       "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
       "architecture": "architecture/README.md",
@@ -109,7 +109,8 @@
         "architecture/evidence/rebuilt/wax-final-browser.jpg",
         "architecture/evidence/rebuilt/wax-final-390.jpg",
         "architecture/evidence/rebuilt/wax-final-320.jpg",
-        "architecture/evidence/rebuilt/wax-live-plaque-final-320.jpg"
+        "architecture/evidence/rebuilt/wax-live-plaque-final-320.jpg",
+        "architecture/evidence/rebuilt/wax-plaque-clock-return-320.jpg"
       ],
       "validation": "validation/latest-results.json"
     },
@@ -135,7 +136,7 @@
         "sharedHost": "../../countdowns/scene-host.js",
         "sharedStylesheet": "../../countdowns/scene-host.css",
         "assetManifest": "../../countdowns/assets/concepts/low-tide-later/scene/manifest.json",
-        "deploymentStatus": "local rebuilt candidate; existing preview URL is not proof of this asset version"
+        "deploymentStatus": "branch preview at commit 1b62b21 / art version 9294fb76e7 verified healthy at desktop and phone; later corrections require separate publication verification"
       },
       "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
       "architecture": "architecture/README.md",
@@ -148,7 +149,9 @@
         "architecture/evidence/rebuilt/tide-final-desktop.jpg",
         "architecture/evidence/rebuilt/tide-final-390.jpg",
         "architecture/evidence/rebuilt/tide-glyph-final-320.jpg",
-        "architecture/evidence/rebuilt/tide-archer-final-390.jpg"
+        "architecture/evidence/rebuilt/tide-archer-final-390.jpg",
+        "architecture/evidence/rebuilt/tide-navigation-fixed-390.jpg",
+        "architecture/evidence/rebuilt/published-tide-archer-desktop.jpg"
       ],
       "validation": "validation/latest-results.json"
     },
@@ -174,7 +177,7 @@
         "sharedHost": "../../countdowns/scene-host.js",
         "sharedStylesheet": "../../countdowns/scene-host.css",
         "assetManifest": "../../countdowns/assets/concepts/not-yet-ripe/scene/manifest.json",
-        "deploymentStatus": "local rebuilt candidate; existing preview URL is not proof of this asset version"
+        "deploymentStatus": "branch preview at commit 1b62b21 / art version 9294fb76e7 verified healthy at desktop and phone; later corrections require separate publication verification"
       },
       "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
       "architecture": "architecture/README.md",
@@ -210,7 +213,7 @@
         "sharedHost": "../../countdowns/scene-host.js",
         "sharedStylesheet": "../../countdowns/scene-host.css",
         "assetManifest": "../../countdowns/assets/concepts/still-drawing-tomorrow/scene/manifest.json",
-        "deploymentStatus": "local rebuilt candidate; existing preview URL is not proof of this asset version"
+        "deploymentStatus": "branch preview at commit 1b62b21 / art version 9294fb76e7 verified healthy at desktop and phone; later corrections require separate publication verification"
       },
       "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
       "architecture": "architecture/README.md",
@@ -246,9 +249,9 @@
         "sharedHost": "../../countdowns/scene-host.js",
         "sharedStylesheet": "../../countdowns/scene-host.css",
         "assetManifest": "../../countdowns/assets/concepts/held-in-suspense/scene/manifest.json",
-        "deploymentStatus": "local rebuilt candidate; existing preview URL is not proof of this asset version"
+        "deploymentStatus": "branch preview at commit 1b62b21 / art version 9294fb76e7 verified healthy at desktop and phone; later corrections require separate publication verification"
       },
-      "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
+      "visualStatus": "current-reflection 390/320 phone gap repair browser-confirmed; all four digits/unit faces clear; polished chrome original-source art gate remains open",
       "architecture": "architecture/README.md",
       "replacementStatus": "authored geometry/maps/runtime implemented; final original-reference browser gate pending",
       "evidence": [
@@ -256,7 +259,9 @@
         "architecture/evidence/rebuilt/metal-final-desktop.jpg",
         "architecture/evidence/rebuilt/metal-final-390.jpg",
         "architecture/evidence/rebuilt/metal-final-320.jpg",
-        "architecture/evidence/rebuilt/metal-reflections-desktop.jpg"
+        "architecture/evidence/rebuilt/metal-reflections-desktop.jpg",
+        "architecture/evidence/rebuilt/metal-clear-unit-final-390.jpg",
+        "architecture/evidence/rebuilt/metal-clear-unit-final-320.jpg"
       ],
       "validation": "validation/latest-results.json"
     },
@@ -284,5 +289,21 @@
     }
   ],
   "runtimeAudit": "runtime-audit.md",
-  "rebuiltEvidence": "architecture/evidence/rebuilt/README.md"
+  "rebuiltEvidence": "architecture/evidence/rebuilt/README.md",
+  "publishedVerification": {
+    "commit": "1b62b21",
+    "artVersion": "9294fb76e7",
+    "environment": "Cloudflare Pages branch preview",
+    "reportedBy": "root task purpose-built browser checks",
+    "scope": "seven desktop/phone scenes healthy with one canvas; representative Road physical reset and API observation",
+    "artAccepted": false,
+    "qa": "reimplementation-qa.md#published-branch-preview-checks"
+  },
+  "followupVerification": {
+    "artVersion": "7412219769",
+    "environment": "local browser after initial branch publication; later publication separately scoped",
+    "scope": "Metal390/320 unit gap, Tide phone utility ink, Wax zero-progress plaque Clock return; fresh source fixtures and combined geometry audit",
+    "geometryEvidence": "architecture/evidence/rebuilt/geometry-evidence.json",
+    "artAccepted": false
+  }
 }

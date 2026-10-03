@@ -35,6 +35,11 @@ These are actual root-owned in-app-browser captures, copied byte-for-byte. Encod
 | bubblegum-time | [gum-upper-print-final-390.jpg](gum-upper-print-final-390.jpg) · 375×812 | fresh requested-390 focused upper Dexter Season 7 print after cotton/mounting-root clearance; native Return opened genuine Dexter Season 7 finale |
 | low-tide-later | [tide-archer-final-390.jpg](tide-archer-final-390.jpg) · 375×812 | fresh requested-390 focused Archer paper after whole-footprint bed clearance; native Return opened genuine Archer Season 5 final |
 | after-the-flame | [wax-live-plaque-final-320.jpg](wax-live-plaque-final-320.jpg) · 305×541 | fresh requested-320 native Live focus shows clear rooted wax plaque and one healthy canvas; no link-activation claim |
+| held-in-suspense | [metal-clear-unit-final-390.jpg](metal-clear-unit-final-390.jpg) · 375×812 | current-reflection phone gap correction at art version 7412219769; all four digits/unit labels visibly clear at requested390 |
+| held-in-suspense | [metal-clear-unit-final-320.jpg](metal-clear-unit-final-320.jpg) · 305×541 | same bounded phone gap correction at requested320; all four digits/unit labels clear |
+| low-tide-later | [tide-navigation-fixed-390.jpg](tide-navigation-fixed-390.jpg) · 375×812 | local phone utility-ink correction observed RGB17,63,115 at art version7412219769; branch publication separately scoped |
+| after-the-flame | [wax-plaque-clock-return-320.jpg](wax-plaque-clock-return-320.jpg) · 305×541 | local rooted Live plaque at progress0 with visible Clock; root activated Clock and observed opening scroll0 with Clock hidden |
+| low-tide-later | [published-tide-archer-desktop.jpg](published-tide-archer-desktop.jpg) · 1472×1047 | published commit1b62b21 art9294fb76e7 Archer paper clear; Return opened genuine Season5 final; Escape unloaded iframe/restored native Archer focus |
 
 The repaired Road phone rigs supersede the undersized portrait kept below. The root task separately verified physical shared resets, selected genuine previews/focus returns, remote polling, distant Clock return and shared fallback behavior; exact scope is in [QA](../../../reimplementation-qa.md). Neither representative functional success nor a saved still supplies final art approval.
 
@@ -56,3 +61,7 @@ The repaired Road phone rigs supersede the undersized portrait kept below. The r
 | tomorrows-roadworks | [road-final-390.jpg](road-final-390.jpg) | historical failed undersized phone frame; superseded by road-phone-rig-390/320 |
 
 [captures.json](captures.json) records original saved filenames, actual format/dimensions, checksum and version scope. Each [current report](../../../reports/) preserves concrete source discrepancies. Authored inspection renders prove their authoring view, not final browser shading. The [offline fixtures](../../../validation/README.md) test different functional risks with explicit mocks.
+
+## Final geometric evidence
+
+The [single combined seven-world log](geometry-seven-final.log) records 21 profiles and 17,325 indexed-triangle barycentric rays with zero opaque blockers. Two Fruit desktop GoT blank-arrow-margin OUTSIDE samples remain visible in that log. The [Metal phone clock rays](metal-phone-clock-clearances.log) and [rig metrics](metal-phone-rig-metrics.log) separately verify its corrected digit/unit clearance and bounded weight geometry. [geometry-evidence.json](geometry-evidence.json) records file checksums and mock/GPU limitations. The denser Gum outer blank-margin exception remains in [QA](../../../reimplementation-qa.md). These measurements do not approve materials or artwork.

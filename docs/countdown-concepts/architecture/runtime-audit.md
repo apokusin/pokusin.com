@@ -27,11 +27,11 @@ The host receives the existing real archive nodes and shared countdown callbacks
 ```js
 export async function create(host) {
   // Own a complete composition. There is no supplied hero lens or card layout.
-  const camera = /* artist-owned camera */;
+  const camera = createArtistCamera(host.THREE);
   host.useCamera(camera);
 
   const exhibit = host.exhibits.find(item => item.href === wantedHref);
-  const screen = /* real screenshot surface inside the artwork */;
+  const screen = findArtworkScreen(host.root);
   host.bind(screen, {
     kind: 'preview', native: exhibit.anchor,
     focus: () => frameAndHighlight(screen),
@@ -41,18 +41,25 @@ export async function create(host) {
 
   host.bind(resetMesh, { kind: 'reset', native: host.dom.reset });
   // Clock painter reads the real digits and the same reelPlan/reelPosition.
-  const clock = host.numerals({ surfaces, appearance: authoredType });
+  const clock = host.numerals({ surfaces, ...authoredType });
 
   return {
     ready: criticalAssetPromise,
-    frame(time, delta), resize(width, height),
-    focus(id), capturePose(), restorePose(snapshot),
-    pending(value), celebrate(), remote(), freeze(value), dispose()
+    frame(time, delta) { clock.update(time); },
+    resize(width, height) { fitAuthoredCamera(camera, width, height); },
+    focus(id) { selectAuthoredPose(id); },
+    capturePose() { return captureAuthoredPose(); },
+    restorePose(snapshot) { restoreAuthoredPose(snapshot); },
+    pending(value) { setLocalPressure(value); },
+    celebrate() { clock.spin(); startConfirmedCeremony(); },
+    remote() { clock.spin(); observeRemoteChange(); },
+    freeze(value) { freezeAuthoredMotion(value); },
+    dispose() { clock.dispose(); }
   };
 }
 ```
 
-This is a proposed interface rather than a requirement to add every method to every scene. `bind`, a camera, lifecycle hooks and a numerical painter are the essential parts. A tabletop needs no walking controller. A material installation may have a constrained drag rather than scroll. A shoreline can use native scroll as a camera rail. Their behavior stays inside their modules instead of adding theme branches to the host.
+This historical sketch is now parseable JavaScript, but is not a standalone scene. `createArtistCamera`, `findArtworkScreen`, the other art/pose helpers and the named asset/type inputs are illustrative artist-owned definitions, not host functions. Optional methods need not be added to every scene. The [implemented contract](../../../countdowns/concepts/CONTRACT.md) defines the current API. `bind`, a camera, lifecycle hooks and a numerical painter are the essential parts. A tabletop needs no walking controller. A material installation may have a constrained drag rather than scroll. A shoreline can use native scroll as a camera rail. Their behavior stays inside their modules instead of adding theme branches to the host.
 
 ### One real state, two representations
 

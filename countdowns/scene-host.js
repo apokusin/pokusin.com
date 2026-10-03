@@ -188,7 +188,7 @@ async function createSceneHost({theme, reducedMotion = matchMedia('(prefers-redu
     requestAnimationFrame(() => {scrollSuppressed = false;}); wake();
   }
   function savePose(native) {
-    if (!pose) {pose = {scene: controller.capturePose?.(), progress, scrollY: window.scrollY, viewportHeight: innerHeight}; origin = native;}
+    if (!pose) {pose = {scene: controller.capturePose?.(), progress, scrollY: window.scrollY, viewportHeight: innerHeight, clockHidden: clockReturn.hidden}; origin = native;}
   }
   function restorePose() {
     const saved = pose; pose = null;
@@ -196,7 +196,7 @@ async function createSceneHost({theme, reducedMotion = matchMedia('(prefers-redu
     controller.restorePose?.(saved.scene); progress = saved.progress;
     const scrollY = saved.viewportHeight === innerHeight ? saved.scrollY : saved.progress * Math.max(0, runway.offsetHeight - innerHeight);
     scrollSuppressed = true; window.scrollTo({top: scrollY, behavior: 'instant'});
-    clockReturn.hidden = progress < .035; suppressFocus = true;
+    clockReturn.hidden = saved.clockHidden ?? progress < .035; suppressFocus = true;
     requestAnimationFrame(() => {scrollSuppressed = false; suppressFocus = false;}); wake();
   }
   function invoke(record, event) {
@@ -400,7 +400,12 @@ async function createSceneHost({theme, reducedMotion = matchMedia('(prefers-redu
       if (pose) {activePreview = null; controller.cancelApproach?.(); restorePose();}
       const record = nativeBindings.get(e.target);
       focusCaption.hidden = true;
-      if (record) {if (record.focus) record.focus({keyboard: true}); else controller.focus?.(record.native); wake();}
+      if (record) {
+        if (record.focus) record.focus({keyboard: true}); else controller.focus?.(record.native);
+        // A plaque or crown can move the camera without moving the scroll rail.
+        if (record.kind === 'link' || record.kind === 'secret') clockReturn.hidden = false;
+        wake();
+      }
       else if (e.target.matches('.shownav a')) {
         controller.focus?.(e.target.getAttribute('href').split('#').pop()); wake();
       }

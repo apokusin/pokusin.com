@@ -21,7 +21,7 @@ export async function create(host){
   const camera=new T.PerspectiveCamera(27,innerWidth/innerHeight,.1,130);host.useCamera(camera);const target=new T.Vector3(),viewDirection=new T.Vector3(0,24,17).normalize();
   host.scene.background=new T.Color('#DCE8EB');host.renderer.toneMapping=T.NeutralToneMapping||T.ACESFilmicToneMapping;host.renderer.toneMappingExposure=1.02;host.renderer.shadowMap.type=T.VSMShadowMap;
   document.documentElement.style.setProperty('--scene-utility-ink','#113f73');document.documentElement.style.setProperty('--scene-menu-paper','#e8f1ec');
-  const homeLink=host.destinations.home,homeColor=homeLink?.style.color;if(homeLink)homeLink.style.color='#eef1e8';host.own({dispose(){if(homeLink)homeLink.style.color=homeColor||'';}});
+  const homeLink=host.destinations.home,homeColor=homeLink?.style.color;if(homeLink)homeLink.style.color=host.mobile?'#113f73':'#eef1e8';host.own({dispose(){if(homeLink)homeLink.style.color=homeColor||'';}});
   const sun=host.own(new T.DirectionalLight('#fffdf7',2.1));sun.position.set(-8,16,-9);sun.target.position.set(0,0,0);sun.castShadow=true;sun.shadow.mapSize.set(host.mobile?1024:2048,host.mobile?1024:2048);sun.shadow.radius=4;sun.shadow.blurSamples=10;Object.assign(sun.shadow.camera,{left:-14,right:14,top:14,bottom:-14,near:1,far:60});sun.shadow.bias=-.00008;sun.shadow.normalBias=.017;host.scene.add(sun,sun.target);
   host.scene.add(host.own(new T.HemisphereLight('#D8EDF8','#63737b',.62)));
   const reflection=host.own(new T.Scene());reflection.background=new T.Color('#92B7CF');

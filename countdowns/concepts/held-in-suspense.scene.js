@@ -12,6 +12,28 @@ export async function create(host) {
   ]);
   const installation=model.scene;host.root.add(installation);
   const node=name=>{const object=installation.getObjectByName(name);if(!object)throw new Error('Missing authored node: '+name);return object;};
+  const mobileClockShift=.85;
+  let mobileWeightDelta=null;
+  if(host.mobile){
+    // Keep the cap in place and turn the real cylinder into depth. Its floor
+    // clearance and diameter stay intact while the sleeve clears the S plate.
+    installation.updateMatrixWorld(true);
+    const weight=node('weight_pivot'),before=weight.matrixWorld.clone(),cap=node('reset_face').getWorldPosition(new T.Vector3());
+    const yaw=new T.Quaternion().setFromAxisAngle(new T.Vector3(0,1,0),T.MathUtils.degToRad(-30));
+    weight.position.sub(cap).applyQuaternion(yaw).add(cap);weight.quaternion.premultiply(yaw);
+    installation.updateMatrixWorld(true);mobileWeightDelta=weight.matrixWorld.clone().multiply(before.invert());
+    // Move the four complete clock stocks together, preserving their spacing
+    // and proportions. Beam clamps remain fixed; only their hangers lean left.
+    for(const unit of ['d','h','m','s']){
+      const assembly=node('clock_'+unit+'_assembly'),hanger=node('clock_'+unit+'_suspension');
+      hanger.updateWorldMatrix(true,false);hanger.geometry=host.own(hanger.geometry.clone());
+      const p=hanger.geometry.attributes.position,world=Array.from({length:p.count},(_,i)=>new T.Vector3().fromBufferAttribute(p,i).applyMatrix4(hanger.matrixWorld));
+      const top=Math.max(...world.map(point=>point.y)),bottom=Math.min(...world.map(point=>point.y)),inverse=hanger.matrixWorld.clone().invert();
+      world.forEach((point,i)=>{point.x-=mobileClockShift*T.MathUtils.clamp((top-point.y)/(top-bottom),0,1);point.applyMatrix4(inverse);p.setXYZ(i,point.x,point.y,point.z);});
+      p.needsUpdate=true;hanger.geometry.computeVertexNormals();hanger.geometry.computeBoundingBox();hanger.geometry.computeBoundingSphere();assembly.position.x-=mobileClockShift;
+    }
+    installation.updateMatrixWorld(true);
+  }
   host.scene.background=new T.Color('#efefea');
   host.renderer.toneMappingExposure=1.16;
   host.renderer.shadowMap.type=T.PCFSoftShadowMap;
@@ -117,11 +139,19 @@ export async function create(host) {
   const loadCables=[];
   installation.traverse(object=>{
     if(!object.isMesh||!/^weight_load_cable_\d/.test(object.name))return;
-    const positions=object.geometry.attributes.position,rest=positions.array.slice(),factors=new Float32Array(positions.count);
+    if(mobileWeightDelta)object.geometry=host.own(object.geometry.clone());
+    const positions=object.geometry.attributes.position,factors=new Float32Array(positions.count);
     const worldPoints=Array.from({length:positions.count},(_,i)=>new T.Vector3().fromBufferAttribute(positions,i).applyMatrix4(object.matrixWorld));
     const top=Math.max(...worldPoints.map(p=>p.y)),bottom=Math.min(...worldPoints.map(p=>p.y));
     worldPoints.forEach((p,i)=>{factors[i]=T.MathUtils.clamp((top-p.y)/(top-bottom),0,1);});
     const inverse=new T.Matrix4().copy(object.matrixWorld).invert(),localUp=new T.Vector3(0,1,0).transformDirection(inverse);
+    if(mobileWeightDelta){
+      // The upper pulley remains fixed. Each braided cable's lower end follows
+      // the transformed clevis rather than hanging at the former weight pose.
+      worldPoints.forEach((p,i)=>{p.lerp(p.clone().applyMatrix4(mobileWeightDelta),factors[i]).applyMatrix4(inverse);positions.setXYZ(i,p.x,p.y,p.z);});
+      positions.needsUpdate=true;object.geometry.computeVertexNormals();object.geometry.computeBoundingBox();object.geometry.computeBoundingSphere();
+    }
+    const rest=positions.array.slice();
     loadCables.push({object,positions,rest,factors,localUp});
   });
   const pulleys=['upper_pulley','lower_pulley'].map(name=>{const object=node(name);return{object,rotation:object.rotation.clone()};});
@@ -383,7 +413,9 @@ export async function create(host) {
     if(!host.reduced)ceremonyElapsed+=dt||0;
     const age=ceremonyElapsed;
     const impulse=host.reduced||age>3?0:Math.sin(age*8.5)*Math.exp(-age*1.65);
-    weight.position.copy(weightRest);weight.position.y-=impulse*.17+pendingPressure*.032;
+    weight.position.copy(weightRest);
+    const drop=impulse*.17+pendingPressure*.032;
+    weight.position.y-=host.mobile?Math.min(.039,drop):drop;
     updateLoad();
     assemblies.forEach((assembly,i)=>{assembly.rotation.copy(restRotations[i]);assembly.rotation.z+=impulse*.018*Math.sin(i*.7+age);});
     secretFlange.rotation.x=host.reduced?(secretLift?-.8:0):T.MathUtils.damp(secretFlange.rotation.x,secretLift?-.8:0,10,dt||1/60);

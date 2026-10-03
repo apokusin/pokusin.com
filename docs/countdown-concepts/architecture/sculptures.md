@@ -8,9 +8,9 @@ Inspected the original reference JPG, latest material desktop capture, current m
 
 ## Shared failure and replacement seams
 
-The current runtime makes a conventional gallery the master representation, moves three HTML cards into a hero, and projects upright HTML rectangles onto scene points. `pin()` follows neither a surface's perspective nor its occlusion. The modules consequently build frames around predetermined HTML rectangles. This reverses the design process: the website determines the sculpture, rather than the sculpture determining where an action or archive belongs.
+The rejected legacy runtime made a conventional gallery the master representation, moves three HTML cards into a hero, and projects upright HTML rectangles onto scene points. `pin()` follows neither a surface's perspective nor its occlusion. The modules consequently build frames around predetermined HTML rectangles. This reverses the design process: the website determines the sculpture, rather than the sculpture determining where an action or archive belongs.
 
-The current contract explicitly requires three DOM mounts, an archive of `.shelf/.grid/.card` beneath the hero, native upright clock surfaces, and native page framing except for the Fair. Those constraints need replacement. Adding normal maps, reflection strength, corner folds, or another orbiting prop to this foundation cannot recreate any of the three references.
+The rejected legacy runtime imposed three DOM mounts, an archive of `.shelf/.grid/.card` beneath the hero, upright DOM clock surfaces and native page framing except for the Fair. The implemented scene-first [contract](../../../countdowns/concepts/CONTRACT.md) replaces those constraints. Adding normal maps, reflection strength, corner folds, or another orbiting prop to this foundation cannot recreate any of the three references.
 
 Replacement seams:
 
