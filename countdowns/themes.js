@@ -23,8 +23,8 @@ const timerReels = ['days', 'hours', 'minutes', 'seconds'].map(unit => new Numbe
 const fallbackReel = new NumberReel(document.getElementById('fallback-digits'), {
   enabled: () => control && reelEnabled() && !document.getElementById('scene-stage').classList.contains('scene-ready'), reducedMotion
 });
-function updateLabels(spin = false) {
-  countReel.set(state.count.toLocaleString(), { spin });
+function updateLabels(spin = false, immediate = false) {
+  countReel.set(ready ? state.count.toLocaleString() : '—', { spin, immediate });
   clockStatus.textContent = '';
   dateLabel.dateTime = new Date(state.deadline).toISOString();
   dateLabel.textContent = new Date(state.deadline).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -33,11 +33,12 @@ function applyState(next, forceSpin = false) {
   if (!Number.isFinite(next.deadline) || !Number.isFinite(next.serverNow) || !Number.isSafeInteger(next.count) || next.count < 0) throw new Error('Invalid countdown');
   // A slower GET must never overwrite a newer reset response.
   if (next.count < state.count || (ready && next.count === state.count && next.serverNow < state.serverNow)) return;
+  const initialSync = !ready;
   const spin = ready && (forceSpin || next.count > state.count);
   const remote = ready && !forceSpin && next.count > state.count;
   state = next;
   clockOffset = next.serverNow - Date.now(); ready = true;
-  updateLabels(spin); tick(spin); startTicker();
+  updateLabels(spin, initialSync); tick(spin); startTicker();
   if (remote) document.dispatchEvent(new CustomEvent('countdown:remote'));
 }
 async function sync() {
@@ -46,7 +47,7 @@ async function sync() {
     const response = await fetch('/api/countdown', { cache: 'no-store' });
     if (!response.ok) throw new Error('Unavailable');
     applyState(await response.json());
-  } catch (_) { if (!ready) clockStatus.textContent = 'The shared clock is taking a little break.'; }
+  } catch (_) { if (!ready) clockStatus.textContent = control ? 'Shared clock unavailable.' : 'The shared clock is taking a little break.'; }
 }
 async function reset() {
   if (pending) return;
@@ -56,7 +57,7 @@ async function reset() {
     const response = await fetch('/api/countdown', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
     if (response.status === 429) {
       const seconds = Number(response.headers.get('Retry-After')) || 60;
-      clockStatus.textContent = `Give the button a breather. Try again in ${seconds} seconds.`;
+      clockStatus.textContent = control ? `Try again in ${seconds}s.` : `Give the button a breather. Try again in ${seconds} seconds.`;
       return;
     }
     if (!response.ok) throw new Error('Unavailable');
@@ -64,7 +65,7 @@ async function reset() {
     if (!art) { secret.hidden = false; action.setAttribute('aria-expanded', 'true'); royalButton?.setAttribute('aria-expanded', 'true'); }
     document.dispatchEvent(new CustomEvent('countdown:reset'));
     celebrate(); if (!art) animatePageReset();
-  } catch (_) { clockStatus.textContent = 'The clock refused. Try again in a moment.'; }
+  } catch (_) { clockStatus.textContent = control ? 'Reset failed. Try again.' : 'The clock refused. Try again in a moment.'; }
   finally { pending = false; action.disabled = false; if (royalButton) royalButton.disabled = false; document.dispatchEvent(new CustomEvent('countdown:pending',{detail:false})); }
 }
 let coverOpen = false;
@@ -82,13 +83,7 @@ document.querySelectorAll(`[data-theme-link="${theme}"]`).forEach(link=>link.set
 document.querySelectorAll('.shownav a').forEach(link => {
   link.setAttribute('href', `?theme=${theme}#${link.getAttribute('href').split('#').pop()}`);
 });
-// The theatre reads forward through the archive; the broadcast starts with the live work.
-if (control) {
-  const shelves = document.getElementById('archive-shelves');
-  shelves.append(...Array.from(shelves.children).reverse());
-  const nav = document.querySelector('.shownav');
-  nav.append(...Array.from(nav.children).reverse());
-}
+// The gallery's inline setup orders the archive before its previews and nav hydrate.
 if ('IntersectionObserver' in window) {
   const reveal = new IntersectionObserver(entries => {
     for (const entry of entries) if (entry.isIntersecting) {
@@ -169,7 +164,8 @@ async function initScene() {
   const gold = mat(0xb49142, .72, .25), silver = mat(0x665b47, .68, .36);
   const enamel = mat(0xd9d7c9, .15, .33), dark = mat(0x161b1a, .3, .4);
   const velvet = mat(0xcbbb96, 0, .96), red = mat(0x750706, .1, .38);
-  let signalStarted = -Infinity, signalLamp, signalGlow, resetAssembly, displayGlass;
+  let signalStarted = -Infinity, powerOnStarted = -Infinity, signalLamp, signalGlow, resetAssembly, displayGlass;
+  const powerOnDuration = 700;
   let stageWidth = 1, stageHeight = 1;
   let configureControlLayout = () => {};
   const instrumentUnits = [];
@@ -329,9 +325,14 @@ async function initScene() {
     });
     paintDisplay = ms => {
       const age = ms - signalStarted, reacquiring = !reduce.matches && age >= 0 && age < 1150;
+      const powerAge = ms - powerOnStarted;
+      const poweringOn = !reduce.matches && powerAge >= 0 && powerAge < powerOnDuration;
       ctx.shadowBlur = 0; ctx.fillStyle = '#0b120e'; ctx.fillRect(0, 0, 1024, 192);
       ctx.save(); ctx.translate(51, 18); ctx.scale(1.65, 1.65);
       if (reacquiring) ctx.globalAlpha = age < 145 ? .43 + age / 145 * .57 : 1;
+      // A single phosphor warm-up: the real digits stay still while their light rises.
+      // This never starts a reel spin or changes the semantic timer/tally.
+      else if (poweringOn) ctx.globalAlpha = .18 + .82 * (1 - Math.pow(1 - powerAge / powerOnDuration, 3));
       let x = 0, moving = false;
       [...displayText].forEach((char, i) => {
         if (char === ':') {
@@ -367,7 +368,7 @@ async function initScene() {
       if (queuedDisplay && ms >= spinUntil) {
         const values = queuedDisplay; queuedDisplay = null; displayUpdate(values); return true;
       }
-      return moving || reacquiring;
+      return moving || reacquiring || poweringOn;
     };
     displayUpdate = (values, { spin = false } = {}) => {
       const now = performance.now(), text = values.map(v => String(v).padStart(2, '0')).join(':');
@@ -515,7 +516,7 @@ async function initScene() {
     if (control) {
       const phone = matchMedia('(max-width:760px)').matches;
       configureControlLayout(phone);
-      const focus = new THREE.Vector3(phone ? -.75 : 0, phone ? .42 : .35, 0);
+      const focus = new THREE.Vector3(phone ? -.75 : 0, phone ? .82 : .55, 0);
       camera.position.set(phone ? -.75 : 0, phone ? 3.7 : 4, 12.4); camera.lookAt(focus);
       const distance = camera.position.distanceTo(focus);
       camera.fov = 2 * Math.atan(((phone ? 7.4 : 10.6) / camera.aspect) / (2 * distance)) * 180 / Math.PI;
@@ -527,7 +528,7 @@ async function initScene() {
   stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();pointerX=(e.clientX-r.left)/r.width-.5;pointerY=(e.clientY-r.top)/r.height-.5;schedule();});
   stage.addEventListener('pointerleave',()=>{pointerX=pointerY=0;schedule();});
   canvas.addEventListener('webglcontextlost',e=>{
-    e.preventDefault();stage.classList.remove('scene-ready');graphicsLost=true;visible=false;releaseButtonPress();cancelAnimationFrame(frameId);frameId=0;
+    e.preventDefault();stage.classList.remove('scene-ready');graphicsLost=true;visible=false;powerOnStarted=-Infinity;releaseButtonPress();cancelAnimationFrame(frameId);frameId=0;
     instrumentUnits.forEach(unit => unit.label.remove());
     if (control) {
       ['left','top','width','height','border-radius'].forEach(property => action.style.removeProperty(property));
@@ -536,7 +537,7 @@ async function initScene() {
   });
   document.addEventListener('visibilitychange',schedule);
   document.addEventListener('countdown:pending',schedule);
-  reduce.addEventListener('change',schedule);
+  reduce.addEventListener('change',()=>{if(reduce.matches)powerOnStarted=-Infinity;schedule();});
   const clock=new THREE.Clock();
   function schedule(){if(!frameId&&visible&&!graphicsLost&&!document.hidden)frameId=requestAnimationFrame(animate);}
   function animate(ms){
@@ -567,10 +568,13 @@ async function initScene() {
     }
     if (signalLamp) {
       const age = ms - signalStarted, acquiring = !reduce.matches && age >= 0 && age < 1150;
+      const powerAge = ms - powerOnStarted;
+      const poweringOn = !reduce.matches && powerAge >= 0 && powerAge < powerOnDuration;
+      const warmup = poweringOn ? Math.sin(Math.PI * powerAge / powerOnDuration) : 0;
       const color = pending ? 0xffb75b : 0xfa7548;
       signalLamp.color.set(pending ? 0x9b6524 : 0x8d3423); signalLamp.emissive.set(color);
-      signalLamp.emissiveIntensity = pending ? 1.6 : acquiring ? 1.8 - age / 1150 : coverOpen ? .8 : .12;
-      signalGlow.color.set(color); signalGlow.intensity = pending ? .16 : acquiring ? .24 * (1 - age / 1150) : coverOpen ? .075 : .015;
+      signalLamp.emissiveIntensity = pending ? 1.6 : acquiring ? 1.8 - age / 1150 : coverOpen ? .8 : .12 + warmup * .5;
+      signalGlow.color.set(color); signalGlow.intensity = pending ? .16 : acquiring ? .24 * (1 - age / 1150) : coverOpen ? .075 : .015 + warmup * .025;
     }
     const rolling = control && paintDisplay(ms);
     for(let i=particles.length-1;i>=0;i--){
@@ -585,8 +589,9 @@ async function initScene() {
     const releasing=button&&Math.abs(button.position.y-buttonTarget)>.0004;
     if(turning||reflecting||crowning||releasing||rolling||particles.length||(cover&&Math.abs(cover.rotation.x-(coverOpen?-1.9:0))>.001))schedule();
   }
-  sceneChange=()=>{schedule();};
+  sceneChange=()=>{powerOnStarted=-Infinity;schedule();};
   celebrate=()=>{
+    powerOnStarted=-Infinity;
     burstAt=clock.getElapsedTime();
     if(control)signalStarted=performance.now();
     if(!control&&!reduce.matches){
@@ -597,6 +602,8 @@ async function initScene() {
     }
     schedule();
   };
+  const stageBounds = stage.getBoundingClientRect();
+  if (control && !location.hash && !reduce.matches && !document.hidden && stageBounds.bottom > 0 && stageBounds.top < innerHeight) powerOnStarted = performance.now();
   tick();render();stage.classList.add('scene-ready');schedule();
 }
 function revealArtSecret(){

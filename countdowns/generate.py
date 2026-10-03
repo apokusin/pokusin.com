@@ -652,27 +652,33 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
 [data-theme=control] .title-line:last-child{margin:10px 0 0 auto;color:var(--accent);transform:rotate(-2deg) translateX(-3%)}
 [data-theme=control] .title-glyph{transition:transform .45s cubic-bezier(.2,.8,.2,1)}
 [data-theme=control] .title-glyph:hover{transform:translateY(-3px)}
-[data-theme=control] .next-countdown{height:408px;margin:-14px 0 18px;z-index:2}
-[data-theme=control] .next-countdown:has(.clock-status:not(:empty)){height:448px}
+[data-theme=control] .next-countdown{--instrument-stage:clamp(190px,20.4vw,294px);display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:var(--instrument-stage) 34px 20px;gap:8px 16px;height:auto;margin:6px 0 18px;z-index:2}
 [data-theme=control] .royal-guardians,[data-theme=control] .royal-clock,[data-theme=control] .royal-fallback,[data-theme=control] .royal-only{display:none}
 [data-theme=control] .control-fallback,[data-theme=control] .control-only{display:block}
-[data-theme=control] .control-fallback{inset:auto;left:7.5%;top:50%;width:85%;height:auto;transform:translateY(-50%)}
-[data-theme=control] .scene-stage{width:100%;height:360px;left:0;top:0;transform:none}
+[data-theme=control] .control-fallback{inset:0;width:100%;height:100%;transform:none;display:flex;align-items:center;justify-content:center}
+[data-theme=control] .fallback-instrument{position:relative;width:min(85%,calc(var(--instrument-stage)*2.133333));aspect-ratio:1024/480}
+[data-theme=control] .control-fallback img{width:100%;height:100%;object-fit:contain}
+.gallery[data-theme=control] .scene-ready .control-fallback{display:none!important}
+[data-theme=control] #theme-scene{transition:none}
+[data-theme=control] .scene-stage{position:relative;grid-area:1/1/2/3;width:100%;height:var(--instrument-stage);left:auto;top:auto;transform:none}
 [data-theme=control] .scene-action{left:73%;top:20%;width:22%;height:65%;border-radius:50%}
 [data-theme=control] .scene-action:hover{background:none}
 [data-theme=control] .scene-action:focus-visible{outline:1px solid var(--accent);outline-offset:3px}
 [data-theme=control] .scene-action:disabled{cursor:wait}
-[data-theme=control] .countdown-caption{top:340px;left:0;right:auto;text-align:left}
-[data-theme=control] .next-countdown h2{font-size:10px;letter-spacing:.04em;color:var(--fg)}
-[data-theme=control] .countdown-caption time{font-size:10px;margin-top:6px}
-[data-theme=control] .press-tally{top:340px;right:0;display:flex;align-items:baseline;gap:9px;color:var(--muted)}
+[data-theme=control] .countdown-caption{position:static;grid-area:2/1/3/2;align-self:center;text-align:left}
+[data-theme=control] .next-countdown h2{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+[data-theme=control] .countdown-caption time{font-size:10px;margin:0}
+[data-theme=control] .press-tally{position:static;grid-area:2/2/3/3;display:flex;align-items:baseline;gap:9px;color:var(--muted)}
 [data-theme=control] .press-tally>span{font:400 34px 'IBM Plex Mono',monospace;color:var(--accent);letter-spacing:-.08em}
 [data-theme=control] .press-tally>small{font-size:9px}
-[data-theme=control] .countdown-secret{top:307px;left:55%;right:0;font:italic 12px 'IBM Plex Mono',monospace;color:var(--muted)}
+[data-theme=control] .countdown-secret{top:calc(var(--instrument-stage) - 35px);left:55%;right:0;font:italic 12px 'IBM Plex Mono',monospace;color:var(--muted)}
+[data-theme=control] .clock-status{position:static;grid-area:3/1/4/3;align-self:center;margin:0;max-width:none;text-align:center;font-size:10px;line-height:1.5}
 [data-theme=control] .reset-echo{display:none}
 [data-theme=control] .shownav{border-color:var(--line);background:#111916f2}
-[data-theme=control] .shownav .nv-e{font:10px 'IBM Plex Mono',monospace}
-[data-theme=control] .archive-shelves{padding-top:42px}
+[data-theme=control] .shownav .nv-e{display:none}
+[data-theme=control] .archive-shelves{padding-top:34px}
+.gallery[data-theme=control].motion-ready .shelf{transform:none;transition:opacity .18s ease}
+.gallery[data-theme=control].motion-ready .shelf:target,.gallery[data-theme=control].motion-ready .shelf:focus-within{opacity:1;transition:none}
 [data-theme=control] .shelf{padding:0;margin:0 0 85px;border:0;background:none;box-shadow:none;border-radius:0}
 [data-theme=control] .shelf::before{left:auto;right:0;top:-6px;font:400 65px 'IBM Plex Mono',monospace;color:var(--line);opacity:1}
 [data-theme=control] .shelf-aside{align-items:end;padding-right:130px;margin-bottom:28px}
@@ -690,6 +696,9 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
 [data-theme=control] .body{padding:16px 2px 0}
 [data-theme=control] .label{font:11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.01em}
 [data-theme=control] .year{font-size:10px}
+.gallery[data-theme=control] .card .year{display:none}
+.gallery[data-theme=control] .card .row:has(:only-child.year){display:none}
+.gallery[data-theme=control] .foot>span:first-child{display:none}
 [data-theme=control] .more.shelf-more{color:var(--muted)}
 @media(min-width:761px){
  [data-theme=royal] .shelf:nth-child(even){padding-left:15%;padding-right:3%}
@@ -706,6 +715,7 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
 @media(max-width:1000px) and (min-width:761px){.gallery .shownav a{font-size:9px;gap:5px}.gallery .shownav{gap:10px;justify-content:flex-start}.gallery .wrap{padding-inline:32px}}
 @media(max-width:760px){
  .gallery .wrap{padding:16px 22px 30px}
+ .gallery[data-theme=control] .eyebrow,.gallery[data-theme=control] h1.title,.gallery[data-theme=control] .foot{padding-inline:0}
  .gallery .masthead{gap:12px;padding-bottom:12px}
  .gallery .home-link{font-size:9px;letter-spacing:.08em}
  .gallery .archive-heading{padding-top:34px}
@@ -738,26 +748,28 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
  .gallery .carousel-controls{display:flex;gap:4px;flex-shrink:0}.gallery .carousel-btn{width:32px;height:36px;font-size:20px;border:0;border-bottom:1px solid var(--line-strong);border-radius:0;background:none;box-shadow:none}
  .gallery .more.shelf-more{margin-top:-15px;font-size:10px}
  .gallery .foot{display:flex;flex-wrap:wrap;gap:10px;font-size:9px}
- [data-theme=control] .archive-heading{padding-top:35px}
- [data-theme=control] .eyebrow{margin-bottom:28px}
- [data-theme=control] h1.title{font-size:clamp(65px,22vw,155px);line-height:.84;letter-spacing:-.075em}
+ [data-theme=control] .archive-heading{padding-top:26px}
+ [data-theme=control] .eyebrow{margin-bottom:20px}
+ [data-theme=control] h1.title{font-size:clamp(60px,20.8vw,155px);line-height:.84;letter-spacing:-.075em}
  [data-theme=control] .title-line{transform:none}
  [data-theme=control] .title-line:last-child{margin-top:8px;transform:rotate(-2deg)}
- [data-theme=control] .next-countdown{height:280px;margin:4px 0 18px}
- [data-theme=control] .next-countdown:has(.clock-status:not(:empty)){height:320px}
- [data-theme=control] .scene-stage{height:240px;width:100%;left:0;top:0}
- [data-theme=control] .countdown-caption{top:220px;left:0}
- [data-theme=control] .next-countdown h2,[data-theme=control] .countdown-caption time{font-size:9px}
- [data-theme=control] .press-tally{top:220px;right:0;gap:5px;display:block;text-align:right}
- [data-theme=control] .press-tally>span{font-size:26px}.press-tally>small{font-size:8px;margin-top:2px}
- [data-theme=control] .countdown-secret{top:195px;left:0;right:0;font-size:10px}
+ [data-theme=control] .next-countdown{--instrument-stage:clamp(168px,43vw,320px);height:auto;grid-template-rows:var(--instrument-stage) 28px 20px;gap:6px 10px;margin:10px 0 14px}
+ [data-theme=control] .scene-stage{height:var(--instrument-stage);width:100%;left:auto;top:auto}
+ [data-theme=control] .countdown-caption time{font-size:10px}
+ [data-theme=control] .press-tally{gap:6px;align-items:baseline;text-align:right}
+ [data-theme=control] .press-tally>span{font-size:24px}.press-tally>small{font-size:8px;margin:0}
+ [data-theme=control] .countdown-secret{top:calc(var(--instrument-stage) - 24px);left:0;right:0;font-size:10px}
  [data-theme=control] .scene-action{left:73%;top:22%;width:24%;height:58%}
  [data-theme=control] .reset-echo{font-size:55px}
- [data-theme=control] .archive-shelves{padding-top:35px}
+ [data-theme=control] .shownav{padding-block:6px}
+ [data-theme=control] .shownav a{min-height:44px;padding-block:8px}
+ [data-theme=control] .archive-shelves{padding-top:30px}
  [data-theme=control] .shelf{margin-bottom:58px;padding:0}
- [data-theme=control] .shelf::before{position:static;font-size:32px;margin-bottom:14px;color:var(--accent)}
+ [data-theme=control] .shelf::before{display:none}
  [data-theme=control] .shelf-aside{padding-right:0;align-items:center;margin-bottom:10px}
- [data-theme=control] .shelf-name{font-size:clamp(17px,5.1vw,30px);letter-spacing:-.055em}
+ [data-theme=control] .shelf-name{font-size:clamp(15px,4.8vw,25px);letter-spacing:-.055em}
+ [data-theme=control] .carousel-controls{gap:0}
+ [data-theme=control] .carousel-btn{width:44px;height:44px}
  [data-theme=control] .shelf-copy{gap:7px}
  [data-theme=control] .carousel .card,[data-theme=control] .carousel .card:nth-child(even){transform:none;flex-basis:calc(100vw - 76px)}
  [data-theme=control] .shelf .grid{gap:20px;padding-bottom:30px}
@@ -768,6 +780,7 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
 @media(prefers-reduced-motion:reduce){
  .gallery .hero-atmosphere,.gallery .title-glyph,.gallery .clock-unit>span,.gallery .card,.gallery .shelf,.gallery .frame,.gallery .frame::after{animation:none!important;transition:none!important}
  .gallery.motion-ready .shelf{opacity:1;transform:none}
+ [data-theme=control] #theme-scene,[data-theme=control] .control-fallback,.gallery[data-theme=control] .scene-ready .control-fallback{transition:none}
 }
 """
 
@@ -894,8 +907,8 @@ def build_gallery():
         '<div class="clock-unit"><span data-unit="seconds">00</span><small>seconds</small></div></div>\n'
         '      <div class="scene-stage" id="scene-stage">'
         '<img class="scene-fallback royal-fallback" src="assets/throne-fallback.png" alt="A tiny crown on an empty throne">'
-        '<div class="scene-fallback control-fallback"><img src="assets/console-fallback.png" alt="A timer console wired to a red button" width="1024" height="480">'
-        '<span class="fallback-digits" id="fallback-digits">30:00:00:00</span></div>'
+        '<div class="scene-fallback control-fallback"><div class="fallback-instrument"><img src="assets/console-fallback.png" alt="A timer console wired to a red button" width="1024" height="480">'
+        '<span class="fallback-digits" id="fallback-digits">30:00:00:00</span></div></div>'
         '<canvas id="theme-scene" aria-hidden="true"></canvas>'
         '<button class="scene-action" id="scene-action" type="button" aria-label="Crown the countdown" aria-controls="countdown-secret" aria-expanded="false"></button>'
         '</div>\n'
@@ -948,6 +961,11 @@ def build_gallery():
     themes_version = hashlib.sha256(open(os.path.join(CD, 'themes.js'), 'rb').read()).hexdigest()[:10]
     previews = """<script>(function(){
       var art=document.documentElement.classList.contains('art-project');
+      if(document.documentElement.dataset.theme==='control'){
+        var shelves=document.getElementById('archive-shelves'),nav=document.querySelector('.shownav');
+        shelves.append.apply(shelves,Array.from(shelves.children).reverse());
+        nav.append.apply(nav,Array.from(nav.children).reverse());
+      }
       document.querySelectorAll('template.card-preview').forEach(function(t){
         if(art){t.remove();return;}
         t.parentElement.querySelector('img').remove();t.replaceWith(t.content);

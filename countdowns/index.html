@@ -6,7 +6,7 @@
   <title>Countdowns · Artur Pokusin</title>
   <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin between 2012 and 2025, preserved and ticking live.">
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=c9f6d714">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=d76789d2">
 <script>
 (function(){var theme=new URLSearchParams(location.search).get('theme');
  var art=['tomorrows-roadworks','bubblegum-time','after-the-flame','low-tide-later','not-yet-ripe','still-drawing-tomorrow','held-in-suspense','the-almost-fair'];
@@ -36,7 +36,7 @@
       <img class="royal-guardians" src="assets/royal-guardians.png" alt="" width="1440" height="520">
       <div class="countdown-caption"><h2 id="next-countdown-heading">Next countdown</h2><time id="next-countdown-date" datetime="2026-11-01T00:00:00-07:00">Nov 1, 2026 · Pacific time</time></div>
       <div class="royal-clock" role="timer" aria-label="Time until the next countdown"><div class="clock-unit"><span data-unit="days">30</span><small>days</small></div><div class="clock-unit"><span data-unit="hours">00</span><small>hours</small></div><div class="throne-space"></div><div class="clock-unit"><span data-unit="minutes">00</span><small>minutes</small></div><div class="clock-unit"><span data-unit="seconds">00</span><small>seconds</small></div></div>
-      <div class="scene-stage" id="scene-stage"><img class="scene-fallback royal-fallback" src="assets/throne-fallback.png" alt="A tiny crown on an empty throne"><div class="scene-fallback control-fallback"><img src="assets/console-fallback.png" alt="A timer console wired to a red button" width="1024" height="480"><span class="fallback-digits" id="fallback-digits">30:00:00:00</span></div><canvas id="theme-scene" aria-hidden="true"></canvas><button class="scene-action" id="scene-action" type="button" aria-label="Crown the countdown" aria-controls="countdown-secret" aria-expanded="false"></button></div>
+      <div class="scene-stage" id="scene-stage"><img class="scene-fallback royal-fallback" src="assets/throne-fallback.png" alt="A tiny crown on an empty throne"><div class="scene-fallback control-fallback"><div class="fallback-instrument"><img src="assets/console-fallback.png" alt="A timer console wired to a red button" width="1024" height="480"><span class="fallback-digits" id="fallback-digits">30:00:00:00</span></div></div><canvas id="theme-scene" aria-hidden="true"></canvas><button class="scene-action" id="scene-action" type="button" aria-label="Crown the countdown" aria-controls="countdown-secret" aria-expanded="false"></button></div>
       <button class="royal-reset royal-only" id="royal-reset" type="button" aria-label="Postpone the next countdown" aria-controls="countdown-secret" aria-expanded="false">Again.</button>
       <p class="scene-hint"><span class="royal-only">A small crown. A long wait.</span><span class="control-only">Lift. Press.</span></p>
       <p class="countdown-secret" id="countdown-secret" role="status" hidden>Long may I count.</p>
@@ -288,6 +288,11 @@
   </div>
 <script>(function(){
       var art=document.documentElement.classList.contains('art-project');
+      if(document.documentElement.dataset.theme==='control'){
+        var shelves=document.getElementById('archive-shelves'),nav=document.querySelector('.shownav');
+        shelves.append.apply(shelves,Array.from(shelves.children).reverse());
+        nav.append.apply(nav,Array.from(nav.children).reverse());
+      }
       document.querySelectorAll('template.card-preview').forEach(function(t){
         if(art){t.remove();return;}
         t.parentElement.querySelector('img').remove();t.replaceWith(t.content);
@@ -444,5 +449,5 @@
     update();
   }
   document.querySelectorAll('[data-carousel]').forEach(setup);
-})();</script><script type="module" src="themes.js?v=a5cc77ccf9"></script></body>
+})();</script><script type="module" src="themes.js?v=b31fb365a2"></script></body>
 </html>

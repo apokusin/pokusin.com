@@ -6,6 +6,10 @@ The instrument is a warm late-1970s broadcast console. Bone enamel sits over a s
 
 The enormous cream/coral title remains. Full-page scanlines are replaced by restrained grain; scanlines belong only to the timer and monitor apertures. Archive frames use dark metal surrounds, recessed glare and a small light response on hover or keyboard focus. There are no new explanatory labels.
 
+The UI audit connects that title, console and archive as one composition. The console stage scales with the viewport; revised framing brings its metadata to about 65px below the hardware on desktop and 24px on a phone. Date and tally share a flow grid, with a reserved status row so errors do not displace navigation. Phone title/footer padding no longer doubles the page gutter. Full show names fit beside 44px carousel arrows even at 320px. Card years, navigation numerals, phone section-number rows and the duplicate author footer are hidden in Control; the section dates and live chip retain their context. The visible “Next countdown” label is removed, while its accessible heading remains.
+
+Opening is one 700ms phosphor warm-up and a small lamp pulse. The actual numbers stay legible, and first data synchronization replaces the tally's dash immediately rather than rolling from a fictitious zero. The illustrated instrument swaps directly to the painted canvas; image and fallback digits share a proportional wrapper. Archive shelves reveal through a short opacity change without drifting into place. Newest-first ordering runs before preview hydration and navigation setup. Direct section entries, reduced motion and hidden/offscreen entry skip the warm-up.
+
 Sherlock Season 3's passive card uses its existing still image. The preserved page's hidden autofocus field otherwise steals focus and scrolls a fresh archive entry to Sherlock. Opening the card continues to load the original interactive page; its source is untouched. There is no forced landing scroll or change to show links.
 
 Phones receive an alternate grounded composition: the reset box moves left and into the foreground, the cable follows its actual plug, and the camera fits a narrower 7.4m view rather than the desktop's 10.6m view. The native reset target follows the projected assembly with a 44px minimum. Four projected, aria-hidden unit letters retain readable sizes on phones; the accessible timer always describes the actual shared deadline.
@@ -16,6 +20,8 @@ With the cover open, pointer-down immediately depresses the cap halfway. Release
 
 Verification on the saved implementation:
 
+- The UI audit reviewed entry, instrument, navigation, archive frames, carousel controls, preview overlay and footer at 1280px and 390px, with boundary checks at 320px, 760px and 768px. No parent-page overflow or heading/control collisions were found. The open cover remains inside its stage.
+- A local reduced-motion Space reset moved D1's count from 412 to 413 without moving the navigation (498.265625px before and after). Blocking only the Three.js module exercised the illustrated fallback; its native button reset 413 to 414 and its digits remained in the screen. The block and reduced-motion override were cleared afterward. Desktop Escape and the phone close button clear the preview iframe to `about:blank` and return focus to its card; the phone carousel advances by one card. Five Python checks, module parsing and reproducible generation pass.
 - Real browser review at 1280px, 390px and 320px; timer and all unit labels visible, no theme selector or phone page overflow.
 - Actual local button clicks lift the cover and then reset the shared D1 countdown, increasing its count from 407 to 408. A reduced-motion reset increases it to 409 and settles the display without a title animation.
 - The original Severance Season 2 preview opens in its real iframe; Escape returns focus and clears the iframe to `about:blank`.
