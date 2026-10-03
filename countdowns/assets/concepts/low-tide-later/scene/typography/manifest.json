@@ -1,0 +1,41 @@
+{
+  "status": "source/candidate sheet; independent browser type gate pending",
+  "numerals": {
+    "family": "Bodoni Moda",
+    "axes": {
+      "wght": 400,
+      "opsz": 96
+    },
+    "font": "BodoniModa-variable.ttf",
+    "license": "OFL-BodoniModa.txt",
+    "atlas": "chalk-glyphs.png",
+    "cell": [
+      384,
+      512
+    ],
+    "cells": 10,
+    "fontPixels": 545,
+    "baseline": "complete individually isolated cells, centered; proportional runtime fit",
+    "source": "https://github.com/google/fonts/tree/main/ofl/bodonimoda"
+  },
+  "title": {
+    "family": "Roboto Condensed",
+    "weight": 500,
+    "font": "RobotoCondensed-variable.ttf",
+    "license": "OFL-RobotoCondensed.txt",
+    "master": "title-countdowns.png",
+    "source": "https://github.com/google/fonts/tree/main/ofl/robotocondensed"
+  },
+  "captions": {
+    "family": "Caveat",
+    "weight": 400,
+    "font": "Caveat-variable.ttf",
+    "license": "OFL-Caveat.txt",
+    "source": "https://github.com/google/fonts/tree/main/ofl/caveat"
+  },
+  "fileSha256": {
+    "Caveat-variable.ttf": "0bdb6b660482d31531b3945849fba5916b3ef8695da7024a9e6b9ee3c4157988",
+    "BodoniModa-variable.ttf": "550f5e34ee0a828d7941b1fe9bc58b34e5260d3f33a61532e6d0a0114e79a5cf",
+    "RobotoCondensed-variable.ttf": "dace262afcee68a5276f200d8026c57221735c0118ab5fda8c2c0d3dc409a8d0"
+  }
+}

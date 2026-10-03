@@ -1,6 +1,6 @@
 # AGENTS.md — pokusin.com
 
-A hand-written, **fully static** personal site. There is **no build step and no `package.json`** — files are served verbatim. Deployed on Vercel from the `master` branch (pushes auto-deploy to pokusin.com); zero-config (no `vercel.json`). The countdowns archive currently lives on the `countdowns-archive` branch / open PR.
+A hand-written personal site. There is **no site build step and no `package.json`** — files are served verbatim. Deployed on **Cloudflare Pages**, project `pokusin-com`, from the `master` branch (pushes auto-deploy to pokusin.com). Only `/api/countdown` uses a Pages Function and D1; all pages and archive files remain static. The countdown themes are being explored in PR #12 on `codex/next-countdown`.
 
 ## Files
 - `index.html`, `styles.css` — the home "link-in-bio" page.
@@ -13,6 +13,33 @@ A hand-written, **fully static** personal site. There is **no build step and no 
 python3 -m http.server 8000 --bind 127.0.0.1   # → http://127.0.0.1:8000/  and  /countdowns/
 ```
 Bind to `127.0.0.1` only, and kill the server when finished.
+
+For the shared countdown API, use Wrangler's local D1 instead:
+```
+wrangler d1 execute pokusin-countdown --local --file countdowns/schema.sql
+wrangler pages dev . --ip 127.0.0.1 --port 8000
+```
+The Python server previews the layout but cannot run the shared reset API.
+
+## Shared countdown and themes
+
+- `?theme=control` (default) is a dark broadcast wall; `?theme=royal` is a paper theatre with uneven picture mounts. Royal reads forward through the archive, while control starts with the newest work. Show navigation preserves the selected theme.
+- The public gallery has no theme selector. Control is the direction being refined; earlier concepts remain reachable through their explicit query URLs as references.
+- Edit gallery markup/CSS in `generate.py`; edit the shared timer and Three.js scenes in `countdowns/themes.js`. Control's pooled blast lives in `control-explosion.js`; `control-transformation.js` owns the clock parts' staged reconstruction. The generator fingerprints these helpers with the theme module.
+- Eight additional art explorations are selectable through **Worlds**: `tomorrows-roadworks`, `bubblegum-time`, `after-the-flame`, `low-tide-later`, `not-yet-ripe`, `still-drawing-tomorrow`, `held-in-suspense`, and `the-almost-fair`. Their separate modules/styles live in `countdowns/concepts/`; `exhibition.js` owns shared scene lifecycle, DOM projection and preview adapters. Read `docs/countdown-concepts/GUIDE.md`, the concept spec/report/reference, and `countdowns/concepts/CONTRACT.md` before changing one. No final direction has been selected.
+- Art themes show faithful stills from `assets/previews/` in closed exhibits; opening always loads the real preserved page. The Fair is a full-viewport world: its physical plan offers direct travel, cabinet latches open collapsed versions, and the Worlds constellation switches themes. Native controls/links remain as an accessible semantic twin; keyboard focus steers the scene. Helpers `fair-materials.js`, `fair-architecture.js` and `fair-machinery.js` own physical materials, construction and real drum/tally textures. The live iframe occupies the approached screen aperture; graphics loss restores the illustrated DOM archive. Keep viewport-aligned preview origins, focus restoration, graphics failure fallbacks, and cancellation of touch input.
+- Material libraries `engineered-materials.js`, `liquid-materials.js` and `drawing-surfaces.js` own the concrete/chrome, wax/chalk and paper/rubber/wood recipes. The seven non-Fair revisions have concrete texture/light/shadow and interaction specs with browser comparison evidence. Import helpers with the generated art version; keep microscopic detail distinct from authored macro relief and never bake live UI into art.
+- `countdowns/reels.js` supplies digit reels for both clocks. Regular ticks roll only changed digits; resets spin and settle from left to right. Preserve immediate values for reduced motion and screen readers.
+- `functions/api/countdown.js` reads or atomically resets one D1 row: deadline plus total presses. Each press moves the deadline one calendar month ahead in UTC, clamped at month end.
+- A small D1 spam guard accepts up to 60 resets per IP per minute. Its keys use a server-secret HMAC of the IP, minute and environment; raw IPs and persistent visitor identifiers are not stored. Set `COUNTDOWN_RATE_LIMIT_SECRET` as a Cloudflare Pages secret for production and preview, and in ignored `.dev.vars` for local development. The key is never served or committed. Excess requests return 429 with `Retry-After`. Old indexed buckets are cleaned opportunistically in the background.
+- `wrangler.toml` supplies the `COUNTDOWN_DB` binding and `COUNTDOWN_KEY`: `live` for production, `preview` otherwise. Preview presses never alter the live row. Local development uses local storage.
+- `_routes.json` runs the Function only for `/api/countdown`. Keep the rest of the site static.
+- Initialize the remote schema once with `wrangler d1 execute pokusin-countdown --remote --file countdowns/schema.sql`. It is idempotent.
+- Run `node countdowns/check-shared-countdown.mjs` with Node 22.13+ for the small backend checks. No dependencies are needed.
+- With the local Pages preview running, add `http://127.0.0.1:8000` to that check command to verify eight simultaneous HTTP presses against local D1, then a limiter burst of 80 requests with ten in flight at a time.
+- Three.js 0.180.0 is vendored under `countdowns/assets/vendor/` with its license. Both scenes have illustrated fallbacks and respect reduced motion.
+- A successful local Control press triggers a 5.8-second full-viewport blast and mechanical reconstruction. The fire-and-soot explosion itself expands into the accepted postponement count, cools and dissipates to reveal the growing replacement; there is no separate numeral reveal or standing tally. The blast captures the POST count so later remote updates cannot change that numeral. A temporary screen-reader status announces the count without visible copy. A small grounded cube pops in, telescopes sideways and unfolds upward with damped springs; glass and fittings emerge from the growing machine. Fresh digits light at 4.5 seconds. The guarded button also breaks apart and rebuilds last with its cover closed. Its native target stays hidden and disabled until the complete 5.8-second assembly is restored; held key repeats cannot trigger another launch. Remote updates never trigger the spectacle. Reduced motion settles immediately; offscreen, hidden, resize and graphics-loss cancellation restore the clock and native controls. The accessible timer always uses the real shared deadline. Royal retains its title drift.
+- Run `node tests/check-control-effects.mjs` for deterministic desktop/phone motion, exact source-pose restoration and repeat-safe GPU resource cleanup. These offline checks do not validate shader appearance or physical-device performance; review the actual sequence in a browser.
 
 ## The /countdowns archive
 

@@ -1,0 +1,241 @@
+{
+  "tool": "Blender 4.5.14 LTS",
+  "coordinates": "X right Y up Z toward camera; export_yup=False",
+  "camera": {
+    "position": [
+      0,
+      -1.4,
+      23
+    ],
+    "target": [
+      0,
+      0.1,
+      0
+    ],
+    "height": 10.6
+  },
+  "groups": [
+    {
+      "show": "got",
+      "pivot": "folio_got",
+      "center": [
+        -0.7,
+        3.25,
+        0.25
+      ],
+      "width": 5.1,
+      "height": 3.2
+    },
+    {
+      "show": "dexter",
+      "pivot": "folio_dexter",
+      "center": [
+        -4.3,
+        2.45,
+        0.23
+      ],
+      "width": 3.5,
+      "height": 2.65
+    },
+    {
+      "show": "severance",
+      "pivot": "folio_severance",
+      "center": [
+        3.65,
+        2.72,
+        0.52
+      ],
+      "width": 5.0,
+      "height": 3.35
+    },
+    {
+      "show": "sherlock",
+      "pivot": "folio_sherlock",
+      "center": [
+        4.0,
+        2.6,
+        0.1
+      ],
+      "width": 4.0,
+      "height": 2.9
+    },
+    {
+      "show": "archer",
+      "pivot": "folio_archer",
+      "center": [
+        4.15,
+        2.3,
+        0.12
+      ],
+      "width": 4.6,
+      "height": 3.1
+    },
+    {
+      "show": "breaking-bad",
+      "pivot": "folio_breaking-bad",
+      "center": [
+        4.1,
+        2.15,
+        0.15
+      ],
+      "width": 4.55,
+      "height": 3.0
+    },
+    {
+      "show": "house-of-cards",
+      "pivot": "folio_house-of-cards",
+      "center": [
+        4.05,
+        2.2,
+        0.2
+      ],
+      "width": 4.55,
+      "height": 3.0
+    }
+  ],
+  "archives": [
+    {
+      "show": "got",
+      "slug": "s4",
+      "screen": "screen_got_s4",
+      "caption": "caption_got_s4",
+      "cel": "cel_got_s4",
+      "width": 5.1,
+      "height": 3.2,
+      "version": 0
+    },
+    {
+      "show": "got",
+      "slug": "s3-redesign",
+      "screen": "screen_got_s3-redesign",
+      "caption": "caption_got_s3-redesign",
+      "cel": "cel_got_s3-redesign",
+      "width": 5.1,
+      "height": 3.2,
+      "version": 1
+    },
+    {
+      "show": "got",
+      "slug": "s3-classic",
+      "screen": "screen_got_s3-classic",
+      "caption": "caption_got_s3-classic",
+      "cel": "cel_got_s3-classic",
+      "width": 5.1,
+      "height": 3.2,
+      "version": 2
+    },
+    {
+      "show": "dexter",
+      "slug": "s8-final",
+      "screen": "screen_dexter_s8-final",
+      "caption": "caption_dexter_s8-final",
+      "cel": "cel_dexter_s8-final",
+      "width": 3.5,
+      "height": 2.65,
+      "version": 0
+    },
+    {
+      "show": "dexter",
+      "slug": "s7-finale",
+      "screen": "screen_dexter_s7-finale",
+      "caption": "caption_dexter_s7-finale",
+      "cel": "cel_dexter_s7-finale",
+      "width": 3.5,
+      "height": 2.65,
+      "version": 1
+    },
+    {
+      "show": "severance",
+      "slug": "s2",
+      "screen": "screen_severance_s2",
+      "caption": "caption_severance_s2",
+      "cel": "cel_severance_s2",
+      "width": 5.0,
+      "height": 3.35,
+      "version": 0
+    },
+    {
+      "show": "severance",
+      "slug": "tracker",
+      "screen": "screen_severance_tracker",
+      "caption": "caption_severance_tracker",
+      "cel": "cel_severance_tracker",
+      "width": 5.0,
+      "height": 3.35,
+      "version": 1
+    },
+    {
+      "show": "sherlock",
+      "slug": "final",
+      "screen": "screen_sherlock_final",
+      "caption": "caption_sherlock_final",
+      "cel": "cel_sherlock_final",
+      "width": 4.0,
+      "height": 2.9,
+      "version": 0
+    },
+    {
+      "show": "sherlock",
+      "slug": "alpha",
+      "screen": "screen_sherlock_alpha",
+      "caption": "caption_sherlock_alpha",
+      "cel": "cel_sherlock_alpha",
+      "width": 4.0,
+      "height": 2.9,
+      "version": 1
+    },
+    {
+      "show": "archer",
+      "slug": "s5-final",
+      "screen": "screen_archer_s5-final",
+      "caption": "caption_archer_s5-final",
+      "cel": "cel_archer_s5-final",
+      "width": 4.6,
+      "height": 3.1,
+      "version": 0
+    },
+    {
+      "show": "breaking-bad",
+      "slug": "final",
+      "screen": "screen_breaking-bad_final",
+      "caption": "caption_breaking-bad_final",
+      "cel": "cel_breaking-bad_final",
+      "width": 4.55,
+      "height": 3.0,
+      "version": 0
+    },
+    {
+      "show": "breaking-bad",
+      "slug": "desert-parallax",
+      "screen": "screen_breaking-bad_desert-parallax",
+      "caption": "caption_breaking-bad_desert-parallax",
+      "cel": "cel_breaking-bad_desert-parallax",
+      "width": 4.55,
+      "height": 3.0,
+      "version": 1
+    },
+    {
+      "show": "house-of-cards",
+      "slug": "s2",
+      "screen": "screen_house-of-cards_s2",
+      "caption": "caption_house-of-cards_s2",
+      "cel": "cel_house-of-cards_s2",
+      "width": 4.55,
+      "height": 3.0,
+      "version": 0
+    }
+  ],
+  "required": [
+    "scene.glb",
+    "materials/paper-fibers.png",
+    "materials/paper-roughness.png",
+    "artwork/graphite-digits.png",
+    "artwork/runner-cycle-spaced.png"
+  ],
+  "clock": [
+    "clock_d",
+    "clock_h",
+    "clock_m",
+    "clock_s"
+  ]
+}

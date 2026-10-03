@@ -1,0 +1,1846 @@
+{
+  "concept": "bubblegum-time",
+  "source": "../../../../../docs/countdown-concepts/references/bubblegum-time.jpg",
+  "authoring": {
+    "tool": "Blender",
+    "version": "4.5.14 LTS",
+    "script": "authoring/build_scene.py",
+    "source": "authoring/scene.blend"
+  },
+  "status": "authored candidate; independent/browser fidelity gate required",
+  "axis": "glTF Y-up; artwork XY, front +Z",
+  "bounds": {
+    "x": [
+      -16.5,
+      14.5
+    ],
+    "y": [
+      -6,
+      11.2
+    ],
+    "z": [
+      -2.1,
+      1.8
+    ]
+  },
+  "camera": {
+    "opening": {
+      "position": [
+        0,
+        0,
+        19
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "fov": 33
+    },
+    "inspection": {
+      "position": [
+        12,
+        4,
+        19
+      ],
+      "target": [
+        0,
+        1,
+        0
+      ],
+      "fov": 39
+    }
+  },
+  "runtime": {
+    "model": "scene.glb",
+    "required": true,
+    "nodes": {
+      "gum_connected_membrane": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_inflatable_bubble": {
+        "type": "EMPTY",
+        "worldTranslation": [
+          6.050000190734863,
+          6.25,
+          -0.05000000074505806
+        ]
+      },
+      "gum_gathered_neck": {
+        "type": "EMPTY",
+        "worldTranslation": [
+          4.5,
+          2.200000047683716,
+          0.0
+        ]
+      },
+      "drum_days": {
+        "type": "EMPTY",
+        "worldTranslation": [
+          -3.25,
+          0.2199999988079071,
+          -0.33000001311302185
+        ]
+      },
+      "cylinder_days_0": {
+        "type": "MESH",
+        "worldTranslation": [
+          -3.6449999809265137,
+          0.2199999988079071,
+          -0.33000001311302185
+        ]
+      },
+      "screen_timer_days_left": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "cylinder_days_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -2.8550000190734863,
+          0.2199999988079071,
+          -0.33000001311302185
+        ]
+      },
+      "screen_timer_days_right": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axle_ring_days_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -4.050000190734863,
+          0.2199999988079071,
+          -0.33000001311302185
+        ]
+      },
+      "axle_ring_days_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -2.450000047683716,
+          0.2199999988079071,
+          -0.33000001311302185
+        ]
+      },
+      "drum_hours": {
+        "type": "EMPTY",
+        "worldTranslation": [
+          -1.3600000143051147,
+          0.2800000011920929,
+          -0.33000001311302185
+        ]
+      },
+      "cylinder_hours_0": {
+        "type": "MESH",
+        "worldTranslation": [
+          -1.7549999952316284,
+          0.2800000011920929,
+          -0.33000001311302185
+        ]
+      },
+      "screen_timer_hours_left": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "cylinder_hours_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -0.9649999737739563,
+          0.2800000011920929,
+          -0.33000001311302185
+        ]
+      },
+      "screen_timer_hours_right": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axle_ring_hours_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -2.1600000858306885,
+          0.2800000011920929,
+          -0.33000001311302185
+        ]
+      },
+      "axle_ring_hours_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -0.5600000023841858,
+          0.2800000011920929,
+          -0.33000001311302185
+        ]
+      },
+      "drum_minutes": {
+        "type": "EMPTY",
+        "worldTranslation": [
+          0.38999998569488525,
+          0.6100000143051147,
+          -0.33000001311302185
+        ]
+      },
+      "cylinder_minutes_0": {
+        "type": "MESH",
+        "worldTranslation": [
+          -0.004999999888241291,
+          0.6100000143051147,
+          -0.33000001311302185
+        ]
+      },
+      "screen_timer_minutes_left": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "cylinder_minutes_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.7850000262260437,
+          0.6100000143051147,
+          -0.33000001311302185
+        ]
+      },
+      "screen_timer_minutes_right": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axle_ring_minutes_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -0.4099999964237213,
+          0.6100000143051147,
+          -0.33000001311302185
+        ]
+      },
+      "axle_ring_minutes_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          1.190000057220459,
+          0.6100000143051147,
+          -0.33000001311302185
+        ]
+      },
+      "drum_seconds": {
+        "type": "EMPTY",
+        "worldTranslation": [
+          2.2799999713897705,
+          0.9200000166893005,
+          -0.33000001311302185
+        ]
+      },
+      "cylinder_seconds_0": {
+        "type": "MESH",
+        "worldTranslation": [
+          1.8849999904632568,
+          0.9200000166893005,
+          -0.33000001311302185
+        ]
+      },
+      "screen_timer_seconds_left": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "cylinder_seconds_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          2.674999952316284,
+          0.9200000166893005,
+          -0.33000001311302185
+        ]
+      },
+      "screen_timer_seconds_right": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axle_ring_seconds_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          1.4800000190734863,
+          0.9200000166893005,
+          -0.33000001311302185
+        ]
+      },
+      "axle_ring_seconds_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          3.0799999237060547,
+          0.9200000166893005,
+          -0.33000001311302185
+        ]
+      },
+      "pin_shaft_0": {
+        "type": "MESH",
+        "worldTranslation": [
+          -6.860000133514404,
+          1.8700000047683716,
+          0.7200000286102295
+        ]
+      },
+      "pin_dome_0": {
+        "type": "MESH",
+        "worldTranslation": [
+          -7.0741801261901855,
+          1.8700000047683716,
+          1.2899999618530273
+        ]
+      },
+      "pin_shaft_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          6.630000114440918,
+          0.8299999833106995,
+          0.699999988079071
+        ]
+      },
+      "pin_dome_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          6.931413173675537,
+          0.8299999833106995,
+          1.2699999809265137
+        ]
+      },
+      "paper_severance_tracker": {
+        "type": "MESH",
+        "worldTranslation": [
+          -4.699999809265137,
+          3.4000000953674316,
+          0.4699999988079071
+        ]
+      },
+      "screen_severance_tracker": {
+        "type": "MESH",
+        "worldTranslation": [
+          -4.699999809265137,
+          3.4000000953674316,
+          0.4699999988079071
+        ]
+      },
+      "gum_tether_severance_tracker_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_severance_tracker_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -2.65967059135437,
+          4.427166938781738,
+          0.4699999988079071
+        ]
+      },
+      "gum_tether_severance_tracker_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_severance_tracker_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -6.361412048339844,
+          4.967713356018066,
+          0.4699999988079071
+        ]
+      },
+      "paper_dexter_s8_final": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.3499999940395355,
+          4.179999828338623,
+          0.44999998807907104
+        ]
+      },
+      "screen_dexter_s8_final": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.3499999940395355,
+          4.179999828338623,
+          0.44999998807907104
+        ]
+      },
+      "gum_tether_dexter_s8_final_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_dexter_s8_final_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          1.3097622394561768,
+          5.2733354568481445,
+          0.44999998807907104
+        ]
+      },
+      "gum_tether_dexter_s8_final_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_dexter_s8_final_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -0.91943359375,
+          4.890678882598877,
+          0.44999998807907104
+        ]
+      },
+      "paper_game_of_thrones_s4": {
+        "type": "MESH",
+        "worldTranslation": [
+          5.25,
+          -2.0999999046325684,
+          0.5600000023841858
+        ]
+      },
+      "screen_game_of_thrones_s4": {
+        "type": "MESH",
+        "worldTranslation": [
+          5.25,
+          -2.0999999046325684,
+          0.5600000023841858
+        ]
+      },
+      "gum_tether_game_of_thrones_s4_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_game_of_thrones_s4_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          6.492681503295898,
+          -0.6153916120529175,
+          0.5600000023841858
+        ]
+      },
+      "gum_tether_game_of_thrones_s4_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_game_of_thrones_s4_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          3.5452938079833984,
+          -1.1822327375411987,
+          0.5600000023841858
+        ]
+      },
+      "paper_archer_s5_final": {
+        "type": "MESH",
+        "worldTranslation": [
+          2.069999933242798,
+          -3.7200000286102295,
+          0.38999998569488525
+        ]
+      },
+      "screen_archer_s5_final": {
+        "type": "MESH",
+        "worldTranslation": [
+          2.069999933242798,
+          -3.7200000286102295,
+          0.38999998569488525
+        ]
+      },
+      "gum_tether_archer_s5_final_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_archer_s5_final_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          3.055130958557129,
+          -2.6982038021087646,
+          0.38999998569488525
+        ]
+      },
+      "gum_tether_archer_s5_final_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_archer_s5_final_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.8005071878433228,
+          -3.0852253437042236,
+          0.38999998569488525
+        ]
+      },
+      "paper_severance_s2": {
+        "type": "MESH",
+        "worldTranslation": [
+          -3.200000047683716,
+          7.949999809265137,
+          -0.15000000596046448
+        ]
+      },
+      "screen_severance_s2": {
+        "type": "MESH",
+        "worldTranslation": [
+          -3.200000047683716,
+          7.949999809265137,
+          -0.15000000596046448
+        ]
+      },
+      "gum_tether_severance_s2_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_severance_s2_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -1.643073320388794,
+          8.936056137084961,
+          -0.15000000596046448
+        ]
+      },
+      "gum_tether_severance_s2_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_severance_s2_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -4.555239200592041,
+          9.198861122131348,
+          -0.15000000596046448
+        ]
+      },
+      "paper_dexter_s7_finale": {
+        "type": "MESH",
+        "worldTranslation": [
+          1.5199999809265137,
+          8.100000381469727,
+          -0.30000001192092896
+        ]
+      },
+      "screen_dexter_s7_finale": {
+        "type": "MESH",
+        "worldTranslation": [
+          1.5199999809265137,
+          8.100000381469727,
+          -0.30000001192092896
+        ]
+      },
+      "gum_tether_dexter_s7_finale_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_dexter_s7_finale_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          2.715226650238037,
+          9.18946647644043,
+          -0.30000001192092896
+        ]
+      },
+      "gum_tether_dexter_s7_finale_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_dexter_s7_finale_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.1844397783279419,
+          9.0120210647583,
+          -0.30000001192092896
+        ]
+      },
+      "paper_game_of_thrones_s3_redesign": {
+        "type": "MESH",
+        "worldTranslation": [
+          9.550000190734863,
+          -1.5199999809265137,
+          -0.11999999731779099
+        ]
+      },
+      "screen_game_of_thrones_s3_redesign": {
+        "type": "MESH",
+        "worldTranslation": [
+          9.550000190734863,
+          -1.5199999809265137,
+          -0.11999999731779099
+        ]
+      },
+      "gum_tether_game_of_thrones_s3_redesign_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_game_of_thrones_s3_redesign_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          11.029603004455566,
+          -0.5638505816459656,
+          -0.11999999731779099
+        ]
+      },
+      "gum_tether_game_of_thrones_s3_redesign_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_game_of_thrones_s3_redesign_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          8.34008502960205,
+          -0.23955023288726807,
+          -0.11999999731779099
+        ]
+      },
+      "paper_game_of_thrones_s3_classic": {
+        "type": "MESH",
+        "worldTranslation": [
+          11.649999618530273,
+          -4.349999904632568,
+          -0.2199999988079071
+        ]
+      },
+      "screen_game_of_thrones_s3_classic": {
+        "type": "MESH",
+        "worldTranslation": [
+          11.649999618530273,
+          -4.349999904632568,
+          -0.2199999988079071
+        ]
+      },
+      "gum_tether_game_of_thrones_s3_classic_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_game_of_thrones_s3_classic_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          12.592581748962402,
+          -3.2328274250030518,
+          -0.2199999988079071
+        ]
+      },
+      "gum_tether_game_of_thrones_s3_classic_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_game_of_thrones_s3_classic_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          10.388813972473145,
+          -3.611119031906128,
+          -0.2199999988079071
+        ]
+      },
+      "paper_sherlock_final": {
+        "type": "MESH",
+        "worldTranslation": [
+          -9.649999618530273,
+          6.150000095367432,
+          -0.10999999940395355
+        ]
+      },
+      "screen_sherlock_final": {
+        "type": "MESH",
+        "worldTranslation": [
+          -9.649999618530273,
+          6.150000095367432,
+          -0.10999999940395355
+        ]
+      },
+      "gum_tether_sherlock_final_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_sherlock_final_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -8.37289810180664,
+          7.307870388031006,
+          -0.10999999940395355
+        ]
+      },
+      "gum_tether_sherlock_final_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_sherlock_final_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -11.113759994506836,
+          7.0605244636535645,
+          -0.10999999940395355
+        ]
+      },
+      "paper_sherlock_alpha": {
+        "type": "MESH",
+        "worldTranslation": [
+          -12.050000190734863,
+          3.7200000286102295,
+          -0.20999999344348907
+        ]
+      },
+      "screen_sherlock_alpha": {
+        "type": "MESH",
+        "worldTranslation": [
+          -12.050000190734863,
+          3.7200000286102295,
+          -0.20999999344348907
+        ]
+      },
+      "gum_tether_sherlock_alpha_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_sherlock_alpha_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -10.836800575256348,
+          4.442359924316406,
+          -0.20999999344348907
+        ]
+      },
+      "gum_tether_sherlock_alpha_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_sherlock_alpha_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -13.056720733642578,
+          4.710036277770996,
+          -0.20999999344348907
+        ]
+      },
+      "paper_breaking_bad_final": {
+        "type": "MESH",
+        "worldTranslation": [
+          -9.649999618530273,
+          -3.799999952316284,
+          -0.1599999964237213
+        ]
+      },
+      "screen_breaking_bad_final": {
+        "type": "MESH",
+        "worldTranslation": [
+          -9.649999618530273,
+          -3.799999952316284,
+          -0.1599999964237213
+        ]
+      },
+      "gum_tether_breaking_bad_final_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_breaking_bad_final_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -8.12827205657959,
+          -2.847158908843994,
+          -0.1599999964237213
+        ]
+      },
+      "gum_tether_breaking_bad_final_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_breaking_bad_final_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -10.952094078063965,
+          -2.5638318061828613,
+          -0.1599999964237213
+        ]
+      },
+      "paper_breaking_bad_desert_parallax": {
+        "type": "MESH",
+        "worldTranslation": [
+          -12.199999809265137,
+          -0.8999999761581421,
+          -0.27000001072883606
+        ]
+      },
+      "screen_breaking_bad_desert_parallax": {
+        "type": "MESH",
+        "worldTranslation": [
+          -12.199999809265137,
+          -0.8999999761581421,
+          -0.27000001072883606
+        ]
+      },
+      "gum_tether_breaking_bad_desert_parallax_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_breaking_bad_desert_parallax_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -10.86844253540039,
+          0.29541003704071045,
+          -0.27000001072883606
+        ]
+      },
+      "gum_tether_breaking_bad_desert_parallax_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_breaking_bad_desert_parallax_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -13.839997291564941,
+          -0.18413782119750977,
+          -0.27000001072883606
+        ]
+      },
+      "paper_house_of_cards_s2": {
+        "type": "MESH",
+        "worldTranslation": [
+          -14.220000267028809,
+          6.949999809265137,
+          -0.25999999046325684
+        ]
+      },
+      "screen_house_of_cards_s2": {
+        "type": "MESH",
+        "worldTranslation": [
+          -14.220000267028809,
+          6.949999809265137,
+          -0.25999999046325684
+        ]
+      },
+      "gum_tether_house_of_cards_s2_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_house_of_cards_s2_-1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -13.038830757141113,
+          7.968379974365234,
+          -0.25999999046325684
+        ]
+      },
+      "gum_tether_house_of_cards_s2_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_gathered_paper_root_house_of_cards_s2_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -15.316008567810059,
+          8.059515953063965,
+          -0.25999999046325684
+        ]
+      },
+      "gum_upper_network": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_top_clock_network": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_left_network": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "gum_right_network": {
+        "type": "MESH",
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "reset_droplet": {
+        "type": "MESH",
+        "worldTranslation": [
+          -4.170000076293945,
+          -1.8600000143051147,
+          0.11999999731779099
+        ]
+      },
+      "reset_bridge": {
+        "type": "MESH",
+        "worldTranslation": [
+          -4.150000095367432,
+          -1.3600000143051147,
+          0.07999999821186066
+        ]
+      },
+      "screen_reset": {
+        "type": "MESH",
+        "worldTranslation": [
+          -4.170000076293945,
+          -1.8600000143051147,
+          0.421999990940094
+        ]
+      },
+      "screen_tally": {
+        "type": "MESH",
+        "worldTranslation": [
+          -2.630000114440918,
+          -1.9900000095367432,
+          0.019999999552965164
+        ]
+      },
+      "gum_droplet_0": {
+        "type": "MESH",
+        "worldTranslation": [
+          -1.0399999618530273,
+          2.390000104904175,
+          0.3499999940395355
+        ]
+      },
+      "gum_droplet_1": {
+        "type": "MESH",
+        "worldTranslation": [
+          -2.0,
+          1.940000057220459,
+          0.18000000715255737
+        ]
+      },
+      "gum_droplet_2": {
+        "type": "MESH",
+        "worldTranslation": [
+          -0.6399999856948853,
+          -2.6700000762939453,
+          0.20000000298023224
+        ]
+      },
+      "gum_droplet_3": {
+        "type": "MESH",
+        "worldTranslation": [
+          2.740000009536743,
+          -1.6299999952316284,
+          0.10000000149011612
+        ]
+      },
+      "gum_droplet_4": {
+        "type": "MESH",
+        "worldTranslation": [
+          5.369999885559082,
+          -4.389999866485596,
+          0.05000000074505806
+        ]
+      },
+      "gum_droplet_5": {
+        "type": "MESH",
+        "worldTranslation": [
+          -5.53000020980835,
+          -4.800000190734863,
+          0.10000000149011612
+        ]
+      },
+      "gum_droplet_6": {
+        "type": "MESH",
+        "worldTranslation": [
+          -5.980000019073486,
+          -0.8999999761581421,
+          0.20000000298023224
+        ]
+      },
+      "crown_curl_hinge": {
+        "type": "EMPTY",
+        "worldTranslation": [
+          -6.449999809265137,
+          0.8999999761581421,
+          0.14000000059604645
+        ]
+      },
+      "crown_gum_curl": {
+        "type": "MESH",
+        "worldTranslation": [
+          -6.429999828338623,
+          0.9200000166893005,
+          0.20000000298023224
+        ]
+      },
+      "crown_gold_edge": {
+        "type": "MESH",
+        "worldTranslation": [
+          -6.449999809265137,
+          0.7400000095367432,
+          0.38999998569488525
+        ]
+      }
+    },
+    "surfaces": {
+      "screen_timer_days_left": {
+        "kind": "digit",
+        "unit": "days",
+        "digit": 0,
+        "center": [
+          -3.645,
+          0.22,
+          0.676
+        ],
+        "curved": true,
+        "arcRadians": 2.167698930976957,
+        "width": 0.718,
+        "height": 1.77
+      },
+      "screen_timer_days_right": {
+        "kind": "digit",
+        "unit": "days",
+        "digit": 1,
+        "center": [
+          -2.855,
+          0.22,
+          0.676
+        ],
+        "curved": true,
+        "arcRadians": 2.167698930976957,
+        "width": 0.718,
+        "height": 1.77
+      },
+      "screen_timer_hours_left": {
+        "kind": "digit",
+        "unit": "hours",
+        "digit": 0,
+        "center": [
+          -1.7550000000000001,
+          0.28,
+          0.676
+        ],
+        "curved": true,
+        "arcRadians": 2.167698930976957,
+        "width": 0.718,
+        "height": 1.77
+      },
+      "screen_timer_hours_right": {
+        "kind": "digit",
+        "unit": "hours",
+        "digit": 1,
+        "center": [
+          -0.9650000000000001,
+          0.28,
+          0.676
+        ],
+        "curved": true,
+        "arcRadians": 2.167698930976957,
+        "width": 0.718,
+        "height": 1.77
+      },
+      "screen_timer_minutes_left": {
+        "kind": "digit",
+        "unit": "minutes",
+        "digit": 0,
+        "center": [
+          -0.0050000000000000044,
+          0.61,
+          0.676
+        ],
+        "curved": true,
+        "arcRadians": 2.167698930976957,
+        "width": 0.718,
+        "height": 1.77
+      },
+      "screen_timer_minutes_right": {
+        "kind": "digit",
+        "unit": "minutes",
+        "digit": 1,
+        "center": [
+          0.785,
+          0.61,
+          0.676
+        ],
+        "curved": true,
+        "arcRadians": 2.167698930976957,
+        "width": 0.718,
+        "height": 1.77
+      },
+      "screen_timer_seconds_left": {
+        "kind": "digit",
+        "unit": "seconds",
+        "digit": 0,
+        "center": [
+          1.8849999999999998,
+          0.92,
+          0.676
+        ],
+        "curved": true,
+        "arcRadians": 2.167698930976957,
+        "width": 0.718,
+        "height": 1.77
+      },
+      "screen_timer_seconds_right": {
+        "kind": "digit",
+        "unit": "seconds",
+        "digit": 1,
+        "center": [
+          2.675,
+          0.92,
+          0.676
+        ],
+        "curved": true,
+        "arcRadians": 2.167698930976957,
+        "width": 0.718,
+        "height": 1.77
+      },
+      "screen_severance_tracker": {
+        "kind": "archive",
+        "paper": "paper_severance_tracker",
+        "size": [
+          3.7409999999999997,
+          2.235
+        ],
+        "center": [
+          0,
+          0.1341,
+          0.014
+        ],
+        "localCorners": [
+          [
+            -1.8704999999999998,
+            -0.9833999999999999,
+            0.014
+          ],
+          [
+            1.8704999999999998,
+            -0.9833999999999999,
+            0.014
+          ],
+          [
+            1.8704999999999998,
+            1.2515999999999998,
+            0.014
+          ],
+          [
+            -1.8704999999999998,
+            1.2515999999999998,
+            0.014
+          ]
+        ],
+        "openingVisible": true
+      },
+      "screen_dexter_s8_final": {
+        "kind": "archive",
+        "paper": "paper_dexter_s8_final",
+        "size": [
+          2.2618,
+          1.56
+        ],
+        "center": [
+          0,
+          0.0936,
+          0.014
+        ],
+        "localCorners": [
+          [
+            -1.1309,
+            -0.6864,
+            0.014
+          ],
+          [
+            1.1309,
+            -0.6864,
+            0.014
+          ],
+          [
+            1.1309,
+            0.8736,
+            0.014
+          ],
+          [
+            -1.1309,
+            0.8736,
+            0.014
+          ]
+        ],
+        "openingVisible": true
+      },
+      "screen_game_of_thrones_s4": {
+        "kind": "archive",
+        "paper": "paper_game_of_thrones_s4",
+        "size": [
+          3.0014000000000003,
+          2.085
+        ],
+        "center": [
+          0,
+          0.1251,
+          0.014
+        ],
+        "localCorners": [
+          [
+            -1.5007000000000001,
+            -0.9174,
+            0.014
+          ],
+          [
+            1.5007000000000001,
+            -0.9174,
+            0.014
+          ],
+          [
+            1.5007000000000001,
+            1.1676,
+            0.014
+          ],
+          [
+            -1.5007000000000001,
+            1.1676,
+            0.014
+          ]
+        ],
+        "openingVisible": true
+      },
+      "screen_archer_s5_final": {
+        "kind": "archive",
+        "paper": "paper_archer_s5_final",
+        "size": [
+          2.2876000000000003,
+          1.4324999999999999
+        ],
+        "center": [
+          0,
+          0.08595,
+          0.014
+        ],
+        "localCorners": [
+          [
+            -1.1438000000000001,
+            -0.6303,
+            0.014
+          ],
+          [
+            1.1438000000000001,
+            -0.6303,
+            0.014
+          ],
+          [
+            1.1438000000000001,
+            0.8021999999999999,
+            0.014
+          ],
+          [
+            -1.1438000000000001,
+            0.8021999999999999,
+            0.014
+          ]
+        ],
+        "openingVisible": true
+      },
+      "screen_severance_s2": {
+        "kind": "archive",
+        "paper": "paper_severance_s2",
+        "size": [
+          2.924,
+          1.9124999999999999
+        ],
+        "center": [
+          0,
+          0.11474999999999999,
+          0.014
+        ],
+        "localCorners": [
+          [
+            -1.462,
+            -0.8414999999999999,
+            0.014
+          ],
+          [
+            1.462,
+            -0.8414999999999999,
+            0.014
+          ],
+          [
+            1.462,
+            1.071,
+            0.014
+          ],
+          [
+            -1.462,
+            1.071,
+            0.014
+          ]
+        ],
+        "openingVisible": false
+      },
+      "screen_dexter_s7_finale": {
+        "kind": "archive",
+        "paper": "paper_dexter_s7_finale",
+        "size": [
+          2.537,
+          1.71
+        ],
+        "center": [
+          0,
+          0.10259999999999998,
+          0.014
+        ],
+        "localCorners": [
+          [
+            -1.2685,
+            -0.7524,
+            0.014
+          ],
+          [
+            1.2685,
+            -0.7524,
+            0.014
+          ],
+          [
+            1.2685,
+            0.9576,
+            0.014
+          ],
+          [
+            -1.2685,
+            0.9576,
+            0.014
+          ]
+        ],
+        "openingVisible": false
+      },
+      "screen_game_of_thrones_s3_redesign": {
+        "kind": "archive",
+        "paper": "paper_game_of_thrones_s3_redesign",
+        "size": [
+          2.709,
+          1.92
+        ],
+        "center": [
+          0,
+          0.1152,
+          0.014
+        ],
+        "localCorners": [
+          [
+            -1.3545,
+            -0.8448,
+            0.014
+          ],
+          [
+            1.3545,
+            -0.8448,
+            0.014
+          ],
+          [
+            1.3545,
+            1.0752,
+            0.014
+          ],
+          [
+            -1.3545,
+            1.0752,
+            0.014
+          ]
+        ],
+        "openingVisible": false
+      },
+      "screen_game_of_thrones_s3_classic": {
+        "kind": "archive",
+        "paper": "paper_game_of_thrones_s3_classic",
+        "size": [
+          2.236,
+          1.605
+        ],
+        "center": [
+          0,
+          0.0963,
+          0.014
+        ],
+        "localCorners": [
+          [
+            -1.118,
+            -0.7061999999999999,
+            0.014
+          ],
+          [
+            1.118,
+            -0.7061999999999999,
+            0.014
+          ],
+          [
+            1.118,
+            0.8988,
+            0.014
+          ],
+          [
+            -1.118,
+            0.8988,
+            0.014
+          ]
+        ],
+        "openingVisible": false
+      },
+      "screen_sherlock_final": {
+        "kind": "archive",
+        "paper": "paper_sherlock_final",
+        "size": [
+          2.7520000000000002,
+          1.77
+        ],
+        "center": [
+          0,
+          0.10619999999999999,
+          0.014
+        ],
+        "localCorners": [
+          [
+            -1.3760000000000001,
+            -0.7788,
+            0.014
+          ],
+          [
+            1.3760000000000001,
+            -0.7788,
+            0.014
+          ],
+          [
+            1.3760000000000001,
+            0.9912,
+            0.014
+          ],
+          [
+            -1.3760000000000001,
+            0.9912,
+            0.014
+          ]
+        ],
+        "openingVisible": false
+      },
+      "screen_sherlock_alpha": {
+        "kind": "archive",
+        "paper": "paper_sherlock_alpha",
+        "size": [
+          2.236,
+          1.47
+        ],
+        "center": [
+          0,
+          0.0882,
+          0.014
+        ],
+        "localCorners": [
+          [
+            -1.118,
+            -0.6468,
+            0.014
+          ],
+          [
+            1.118,
+            -0.6468,
+            0.014
+          ],
+          [
+            1.118,
+            0.8231999999999999,
+            0.014
+          ],
+          [
+            -1.118,
+            0.8231999999999999,
+            0.014
+          ]
+        ],
+        "openingVisible": false
+      },
+      "screen_breaking_bad_final": {
+        "kind": "archive",
+        "paper": "paper_breaking_bad_final",
+        "size": [
+          2.8379999999999996,
+          1.875
+        ],
+        "center": [
+          0,
+          0.11249999999999999,
+          0.014
+        ],
+        "localCorners": [
+          [
+            -1.4189999999999998,
+            -0.825,
+            0.014
+          ],
+          [
+            1.4189999999999998,
+            -0.825,
+            0.014
+          ],
+          [
+            1.4189999999999998,
+            1.05,
+            0.014
+          ],
+          [
+            -1.4189999999999998,
+            1.05,
+            0.014
+          ]
+        ],
+        "openingVisible": false
+      },
+      "screen_breaking_bad_desert_parallax": {
+        "kind": "archive",
+        "paper": "paper_breaking_bad_desert_parallax",
+        "size": [
+          3.01,
+          1.6500000000000001
+        ],
+        "center": [
+          0,
+          0.099,
+          0.014
+        ],
+        "localCorners": [
+          [
+            -1.505,
+            -0.7260000000000001,
+            0.014
+          ],
+          [
+            1.505,
+            -0.7260000000000001,
+            0.014
+          ],
+          [
+            1.505,
+            0.924,
+            0.014
+          ],
+          [
+            -1.505,
+            0.924,
+            0.014
+          ]
+        ],
+        "openingVisible": false
+      },
+      "screen_house_of_cards_s2": {
+        "kind": "archive",
+        "paper": "paper_house_of_cards_s2",
+        "size": [
+          2.279,
+          1.815
+        ],
+        "center": [
+          0,
+          0.1089,
+          0.014
+        ],
+        "localCorners": [
+          [
+            -1.1395,
+            -0.7986,
+            0.014
+          ],
+          [
+            1.1395,
+            -0.7986,
+            0.014
+          ],
+          [
+            1.1395,
+            1.0164,
+            0.014
+          ],
+          [
+            -1.1395,
+            1.0164,
+            0.014
+          ]
+        ],
+        "openingVisible": false
+      },
+      "screen_reset": {
+        "kind": "action",
+        "parent": "reset_droplet",
+        "center": [
+          0,
+          0,
+          0.302
+        ],
+        "size": [
+          1.38,
+          0.52
+        ]
+      },
+      "screen_tally": {
+        "kind": "tally",
+        "center": [
+          -2.63,
+          -1.99,
+          0.02
+        ],
+        "size": [
+          1.06,
+          0.42
+        ]
+      }
+    },
+    "deformation": [
+      "gum_connected_membrane",
+      "gum_gathered_neck",
+      "gum_inflatable_bubble",
+      "reset_droplet",
+      "crown_curl_hinge"
+    ],
+    "glyphs": {
+      "title": "typography/title-countdowns.png",
+      "drums": "typography/drum-glyphs.png",
+      "fonts": [
+        "typography/BodoniModa-variable.ttf",
+        "typography/RobotoCondensed-variable.ttf"
+      ],
+      "candidateSheet": "typography/type-candidate-sheet.jpg"
+    }
+  },
+  "materials": {
+    "GumRose": {
+      "type": "physical",
+      "clearcoat": 0.8,
+      "roughness": 0.12,
+      "transmission": 0.24,
+      "ior": 1.39,
+      "attenuationColor": "#F372AC",
+      "thicknessRange": [
+        0.1,
+        0.42
+      ]
+    },
+    "GumThinEdge": {
+      "type": "physical",
+      "clearcoat": 0.85,
+      "roughness": 0.12,
+      "transmission": 0.3
+    },
+    "DrumCream": {
+      "type": "physical",
+      "roughness": 0.25,
+      "clearcoat": 0.27
+    },
+    "CottonPaper": {
+      "type": "standard",
+      "roughness": 0.7
+    }
+  },
+  "maps": {
+    "normal": "materials/gum-stretch-normal.png",
+    "roughness": "materials/gum-roughness.png",
+    "thickness": "materials/gum-thickness.png",
+    "paper": "materials/paper-fibre-normal.png",
+    "cottonAlbedo": "materials/cotton-albedo.png"
+  },
+  "lighting": {
+    "background": "#D7E7DE",
+    "key": {
+      "position": [
+        -7,
+        9,
+        8
+      ],
+      "size": [
+        8,
+        5
+      ],
+      "color": "#FFFDF8"
+    },
+    "fill": {
+      "position": [
+        5,
+        3,
+        7
+      ],
+      "size": [
+        5,
+        7
+      ],
+      "color": "#F5F7FF"
+    },
+    "strip": {
+      "position": [
+        1,
+        8,
+        3
+      ],
+      "size": [
+        10,
+        2
+      ],
+      "color": "#FFFFFF"
+    },
+    "reflection": "tall left white box, overhead strip, broad mullioned window and dark right gaps; no baked highlights"
+  },
+  "license": "Project-authored geometry and procedural maps; no new license declaration.",
+  "triangles": 193032,
+  "geometryValidation": {
+    "closedSkin": true,
+    "nonManifoldEdges": 0,
+    "openApertureCenters": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "removedBooleanSliverFlaps": 5
+  },
+  "titlePlacement": {
+    "position": [
+      -3.7,
+      -3.32,
+      0.03
+    ],
+    "worldSize": [
+      8.37,
+      1.926
+    ],
+    "rotationZ": -0.32,
+    "status": "opening candidate; compare source silhouette after renderer composition"
+  },
+  "budgets": {
+    "glbBytes": 8564468,
+    "authoredTriangles": 193032,
+    "embeddedMaps": 4,
+    "mapSize": [
+      512,
+      512
+    ],
+    "initialScreenshotCount": 4,
+    "totalScreenshotCount": 13,
+    "decodedArtMapBytesApprox": 4194304,
+    "note": "Host DPR bounded; transfer/geometry figures, not device FPS claims."
+  }
+}

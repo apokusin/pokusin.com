@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Generate the /countdowns archive: gallery, per-show details (with collapsible
 archived variants), and the Dexter Season 7 timeline scrubber."""
-import os, html, json, hashlib
+import os, html, json, hashlib, glob
+from datetime import datetime
 
 CD = os.path.dirname(os.path.abspath(__file__))  # this script lives in countdowns/
 REPO = os.path.dirname(CD)
@@ -52,6 +53,7 @@ SHOWS = [
         "domain": "sherlockcountdown.com", "live": False, "years": "2013 – 2014",
         "versions": [
             {"slug": "final", "label": "Season 3", "year": "2014", "collapsed": False,
+             "still_preview": True,  # Its hidden autofocus form can pull the archive down.
              "desc": "A UK / US air-date toggle, and a hidden 221B easter egg. (Try the door.)"},
             {"slug": "alpha", "label": "Season 3 · Alpha", "year": "2013", "collapsed": False,
              "desc": "An early dev build, unminified, with an extra slide, over the looping bg GIF."},
@@ -127,6 +129,35 @@ EPISODES = [
 
 SHOW_COUNT = len(SHOWS)
 TOTAL = 8 + 10 + 3 + 7 + 4 + 1 + 2  # GoT8 Dexter(3+7eps) Sherlock3 Archer7 BB4 HoC1 Sev2 = 35
+NEXT_COUNTDOWN_DATE = "2026-11-01T00:00:00-07:00"  # One month from October 1, Pacific time.
+_next_countdown = datetime.fromisoformat(NEXT_COUNTDOWN_DATE)
+NEXT_COUNTDOWN_LABEL = f'{_next_countdown:%b} {_next_countdown.day}, {_next_countdown.year} · Pacific time'
+
+ART_THEMES = [
+    ('tomorrows-roadworks', 'Tomorrow’s Roadworks'), ('bubblegum-time', 'Bubblegum Time'),
+    ('after-the-flame', 'After the Flame'), ('low-tide-later', 'Low Tide, Later'),
+    ('not-yet-ripe', 'Not Yet Ripe'), ('still-drawing-tomorrow', 'Still Drawing Tomorrow'),
+    ('held-in-suspense', 'Held in Suspense'), ('the-almost-fair', 'The Almost Fair'),
+]
+SCENE_FIRST_THEMES = ['held-in-suspense', 'bubblegum-time', 'after-the-flame', 'tomorrows-roadworks', 'still-drawing-tomorrow', 'low-tide-later', 'not-yet-ripe']
+_scene_assets = [p for p in glob.glob(os.path.join(CD, 'assets', 'concepts', '*', 'scene', '**', '*'), recursive=True)
+                 if os.path.isfile(p) and os.path.splitext(p)[1] in ('.glb', '.json', '.png', '.jpg', '.webp', '.js') and '/authoring/' not in p]
+_art_files = sorted(glob.glob(os.path.join(CD, 'concepts', '*.*')) +
+                    [os.path.join(CD, p) for p in ['exhibition.js', 'exhibition.css', 'scene-host.js', 'scene-host.css', 'scene-surfaces.js', 'scene-gallery.js']] + _scene_assets)
+ART_VERSION = hashlib.sha256(b''.join(open(p, 'rb').read() for p in _art_files if os.path.isfile(p))).hexdigest()[:10]
+THEME_HEAD = """<script>
+(function(){var theme=new URLSearchParams(location.search).get('theme');
+ var art=['tomorrows-roadworks','bubblegum-time','after-the-flame','low-tide-later','not-yet-ripe','still-drawing-tomorrow','held-in-suspense','the-almost-fair'];
+ var isArt=art.indexOf(theme)!==-1;
+ var sceneFirst=__SCENE_FIRST_THEMES__.indexOf(theme)!==-1;
+ document.documentElement.dataset.theme=isArt?theme:theme==='royal'?'royal':'control';
+ document.documentElement.dataset.artVersion='__ART_VERSION__';
+ if(isArt){document.documentElement.classList.add('art-project');if(sceneFirst)document.documentElement.classList.add('scene-project');var link=document.createElement('link');link.rel='stylesheet';link.href=(sceneFirst?'scene-host.css':'concepts/'+theme+'.css')+'?v=__ART_VERSION__';document.head.append(link);}
+})();
+</script>
+<link rel="stylesheet" href="exhibition.css?v=__ART_VERSION__">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+""".replace('__ART_VERSION__', ART_VERSION).replace('__SCENE_FIRST_THEMES__', repr(SCENE_FIRST_THEMES))
 
 # ---------------------------------------------------------------------- CSS
 CSS = """:root{
@@ -163,6 +194,13 @@ a{color:inherit;text-decoration:none}
 h1.title{font-size:clamp(2rem,6.4vw,3.1rem);letter-spacing:-.035em;font-weight:700;line-height:1.02;text-wrap:balance}
 .lede{color:var(--muted);font-size:clamp(.95rem,2.4vw,1.08rem);max-width:62ch;margin-top:16px;text-wrap:pretty}
 .lede strong{color:var(--fg);font-weight:600}
+.next-countdown{margin-top:28px;padding-left:16px;border-left:2px solid var(--line-strong)}
+.next-countdown h2{font-size:.85rem;font-weight:600;display:flex;align-items:center;gap:6px}
+.countdown-crown{font:inherit;color:var(--muted);background:none;border:0;cursor:pointer;flex:0 0 32px;width:32px;height:32px;border-radius:6px}
+.countdown-crown:hover{color:var(--fg);background:var(--chip)}
+.countdown-crown:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.next-countdown-timer{font-size:clamp(1.4rem,4.5vw,1.8rem);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.035em}
+.next-countdown-note,.countdown-secret{font-size:.78rem;color:var(--muted);margin-top:5px}
 .show{margin-top:clamp(38px,6.4vw,66px)}
 .show-head{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:24px}
 .show-emoji{font-size:1.4rem;line-height:1}
@@ -196,6 +234,7 @@ a.shelf-origin:hover{color:var(--fg)}
 .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--line-strong)}
 .frame{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;background:#05070a;border-bottom:1px solid var(--line)}
 .frame iframe{position:absolute;top:0;left:0;width:400%;height:400%;border:0;transform:scale(.25);transform-origin:0 0;pointer-events:none;background:#05070a}
+.frame>img{display:block;width:100%;height:100%;object-fit:cover}
 .frame .open{position:absolute;right:10px;bottom:10px;font-size:.66rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);padding:5px 10px;border-radius:999px;opacity:0;transform:translateY(4px);transition:opacity .2s ease,transform .2s ease}
 .frame .tlbadge{position:absolute;left:10px;top:10px;font-size:.62rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:var(--accent);padding:4px 9px;border-radius:999px;display:flex;align-items:center;gap:5px}
 .frame .tlbadge::before{content:"";width:0;height:0;border-left:6px solid #fff;border-top:4px solid transparent;border-bottom:4px solid transparent}
@@ -265,6 +304,7 @@ a.shelf-origin:hover{color:var(--fg)}
 }
 @media (max-width:760px){
   .wrap{padding-left:0;padding-right:0}
+  .next-countdown{margin-left:var(--mobile-gutter);margin-right:var(--mobile-gutter)}
   .crumb,.eyebrow,h1.title,.lede,.foot{padding-left:var(--mobile-gutter);padding-right:var(--mobile-gutter)}
   .shownav{padding-left:var(--mobile-gutter);padding-right:var(--mobile-gutter);scroll-padding-inline:var(--mobile-gutter)}
   .shelf{grid-template-columns:1fr;gap:16px;padding-left:0;padding-right:0}
@@ -345,9 +385,9 @@ ROTATOR = """<script>
 })();
 </script>"""
 
-OVERLAY_HTML = """  <div class="ov" id="ov" hidden aria-hidden="true">
+OVERLAY_HTML = """  <div class="ov" id="ov" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Countdown preview">
     <div class="ov-backdrop" data-close></div>
-    <div class="ov-dialog" role="dialog" aria-modal="true" aria-label="Countdown preview">
+    <div class="ov-dialog">
       <div class="ov-stage"><iframe id="ov-frame" title="Countdown preview" scrolling="no"></iframe></div>
     </div>
     <div class="ov-cap" id="ov-cap"></div>
@@ -363,48 +403,94 @@ OVERLAY_JS = """<script>(function(){
   var dialog=ov.querySelector('.ov-dialog'),frame=document.getElementById('ov-frame'),
       openLink=document.getElementById('ov-open'),cap=document.getElementById('ov-cap'),
       closeBtn=ov.querySelector('.ov-close');
-  var srcCard=null,DUR=440,EASE='cubic-bezier(.2,.8,.2,1)',ft=null;
+  var srcCard=null,srcRect=null,DUR=440,EASE='cubic-bezier(.2,.8,.2,1)',ft=null,closing=false,generation=0,endHandler=null;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fullCountdownMedia=matchMedia('(max-width: 640px)');
-  function shouldOpenFullCountdown(){ return fullCountdownMedia.matches; }
-  frame.addEventListener('load',function(){ if((frame.src||'').indexOf('about:blank')<0) frame.classList.add('loaded'); });
+  var controlMonitor=document.documentElement.classList.contains('gallery')&&document.documentElement.dataset.theme==='control';
+  if(controlMonitor){dialog.appendChild(cap);dialog.appendChild(ov.querySelector('.ov-ctrls'));frame.setAttribute('scrolling','auto');}
+  function shouldOpenFullCountdown(){ return !document.documentElement.classList.contains('gallery') && fullCountdownMedia.matches; }
+  function frameStops(){
+    var doc=frame.contentDocument;
+    if(!doc)return [];
+    return Array.from(doc.querySelectorAll('a[href],button,input,select,textarea,iframe,[tabindex]')).filter(function(el){
+      var css=doc.defaultView.getComputedStyle(el);
+      return el.tabIndex>=0&&!el.disabled&&!el.closest('[inert]')&&css.visibility!=='hidden'&&css.display!=='none'&&el.getClientRects().length;
+    }).sort(function(a,b){return (a.tabIndex>0?a.tabIndex:Infinity)-(b.tabIndex>0?b.tabIndex:Infinity);});
+  }
+  function focusFrame(last){
+    try{var stops=frameStops();if(stops.length){stops[last?stops.length-1:0].focus();return;}}catch(e){}
+    frame.focus();
+  }
+  frame.addEventListener('load',function(){
+    if((frame.src||'').indexOf('about:blank')<0) frame.classList.add('loaded');
+    try{
+      // Viewer scrollbar chrome only; preserved page typography and layout stay intact.
+      if(controlMonitor){frame.contentDocument.documentElement.style.scrollbarColor='#697466 #111916';frame.contentDocument.documentElement.style.scrollbarWidth='thin';}
+      frame.contentDocument.addEventListener('keydown',function(e){
+      if(ov.hidden)return;
+      if(e.key==='Escape'){e.preventDefault();close();return;}
+      if(e.key!=='Tab')return;
+      var stops=frameStops(),active=frame.contentDocument.activeElement;
+      if(!stops.length||e.shiftKey&&(active===stops[0]||!stops.includes(active))||!e.shiftKey&&active===stops[stops.length-1]){
+        e.preventDefault();(e.shiftKey?closeBtn:openLink).focus();
+      }
+    });}catch(e){}
+  });
   function map(card){ // uniform scale + translate so the dialog starts centered on the card frame
-    var dr=dialog.getBoundingClientRect(), cr=card.querySelector('.frame').getBoundingClientRect();
+    var dr=dialog.getBoundingClientRect(), cr=srcRect||card.querySelector('.frame').getBoundingClientRect();
+    if(!cr.width||!cr.height)return 'translate(0,14px) scale(.97)';
     var s=cr.width/dr.width;
     return 'translate('+((cr.left+cr.width/2)-(dr.left+dr.width/2))+'px,'+((cr.top+cr.height/2)-(dr.top+dr.height/2))+'px) scale('+s+')';
   }
-  function openFrom(card){
+  function stopEnd(){if(endHandler){dialog.removeEventListener('transitionend',endHandler);endHandler=null;}}
+  function afterTransform(fn){
+    stopEnd();endHandler=function(ev){if(ev.target!==dialog||(ev.propertyName&&ev.propertyName!=='transform'))return;stopEnd();fn();};
+    dialog.addEventListener('transitionend',endHandler);
+  }
+  function openFrom(card,originRect){
+    clearTimeout(ft);stopEnd();closing=false;var token=++generation;
+    srcRect=originRect&&['left','top','width','height'].every(function(k){return Number.isFinite(originRect[k]);})&&originRect.width>0&&originRect.height>0?originRect:null;
     srcCard=card; var url=card.getAttribute('href');
     frame.classList.remove('loaded'); frame.src=url; openLink.href=url;
-    var lab=card.querySelector('.label'); if(cap) cap.textContent=lab?lab.textContent:'';
+    var lab=card.querySelector('.label'),show=card.closest('.shelf');
+    if(cap){
+      var caption=card.dataset.previewLabel||(lab?lab.textContent:'');
+      var name=controlMonitor&&show&&show.querySelector('.shelf-name');
+      cap.textContent=(name?name.textContent+' / ':'')+caption;
+    }
     ov.hidden=false; ov.setAttribute('aria-hidden','false');
     document.documentElement.classList.add('ov-lock'); ov.classList.add('open');
+    document.querySelector('.wrap').inert=true;
+    document.dispatchEvent(new CustomEvent('archive:overlay',{detail:{open:true,card:card}}));
     if(reduce){ dialog.style.opacity='1'; closeBtn.focus(); return; }
     dialog.style.transition='none'; dialog.style.transformOrigin='50% 50%'; dialog.style.willChange='transform,opacity';
     dialog.style.transform=map(card); dialog.style.opacity='0';
     requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      if(token!==generation||closing||ov.hidden)return;
       dialog.style.transition='transform '+DUR+'ms '+EASE+',opacity '+Math.round(DUR*0.55)+'ms ease';
       dialog.style.transform='translate(0,0) scale(1)'; dialog.style.opacity='1';
     }); });
-    var end=function(ev){ if(ev.propertyName&&ev.propertyName!=='transform') return; dialog.style.willChange=''; dialog.style.transition=''; dialog.removeEventListener('transitionend',end); closeBtn.focus(); };
-    dialog.addEventListener('transitionend',end);
+    afterTransform(function(){if(token!==generation||closing)return;dialog.style.willChange='';dialog.style.transition='';closeBtn.focus();});
   }
   function finish(){
+    if(ov.hidden)return;++generation;closing=false;stopEnd();
     clearTimeout(ft); ov.hidden=true; ov.setAttribute('aria-hidden','true'); ov.classList.remove('open');
     dialog.style.transition=''; dialog.style.transform=''; dialog.style.opacity=''; dialog.style.willChange='';
     frame.classList.remove('loaded'); frame.src='about:blank';
     document.documentElement.classList.remove('ov-lock');
-    if(srcCard){ try{ srcCard.focus({preventScroll:true}); }catch(e){} } srcCard=null;
+    document.querySelector('.wrap').inert=false;
+    document.dispatchEvent(new CustomEvent('archive:overlay',{detail:{open:false,card:srcCard}}));
+    if(srcCard){ try{ srcCard.focus({preventScroll:true}); }catch(e){} } srcCard=null; srcRect=null;
   }
   function close(){
-    if(ov.hidden) return;
+    if(ov.hidden||closing) return;
+    closing=true;++generation;clearTimeout(ft);stopEnd();
     if(reduce||!srcCard){ dialog.style.opacity='0'; ov.classList.remove('open'); ft=setTimeout(finish,reduce?180:220); return; }
     dialog.style.willChange='transform,opacity'; dialog.style.transformOrigin='50% 50%';
     dialog.style.transition='transform '+DUR+'ms '+EASE+',opacity '+Math.round(DUR*0.7)+'ms ease';
     ov.classList.remove('open');
     dialog.style.transform=map(srcCard); dialog.style.opacity='0';
-    var end=function(ev){ if(ev.propertyName&&ev.propertyName!=='transform') return; dialog.removeEventListener('transitionend',end); finish(); };
-    dialog.addEventListener('transitionend',end);
+    afterTransform(finish);
     ft=setTimeout(finish,DUR+160);
   }
   document.querySelectorAll('a.card').forEach(function(c){
@@ -414,17 +500,27 @@ OVERLAY_JS = """<script>(function(){
       e.preventDefault(); openFrom(c);
     });
   });
+  document.addEventListener('archive:open',function(e){var card=e.detail&&e.detail.card;if(card&&card.matches('a.card'))openFrom(card,e.detail.originRect);});
   ov.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click',close); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!ov.hidden) close(); });
+  ov.addEventListener('keydown',function(e){
+    if(e.key!=='Tab'||ov.hidden)return;
+    if(e.target===closeBtn&&!e.shiftKey){e.preventDefault();focusFrame(false);}
+    else if(e.target===openLink&&e.shiftKey){e.preventDefault();focusFrame(true);}
+    else if(e.target===frame){e.preventDefault();(e.shiftKey?closeBtn:openLink).focus();}
+  });
 })();</script>"""
 
 NAV_JS = """<script>(function(){
   var nav=document.querySelector('.shownav'); if(!nav||!('IntersectionObserver' in window)) return;
-  var links={}; nav.querySelectorAll('a').forEach(function(a){ links[a.getAttribute('href').slice(1)]=a; });
+  var links={}; nav.querySelectorAll('a').forEach(function(a){ links[a.getAttribute('href').split('#').pop()]=a; });
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){ if(!e.isIntersecting) return; var id=e.target.id;
       Object.keys(links).forEach(function(k){ links[k].setAttribute('aria-current', k===id?'true':'false'); });
-      var act=links[id]; if(act && nav.scrollWidth>nav.clientWidth) act.scrollIntoView({inline:'center',block:'nearest'});
+      var act=links[id]; if(act && nav.scrollWidth>nav.clientWidth) {
+        var itemRect=act.getBoundingClientRect(),navRect=nav.getBoundingClientRect();
+        nav.scrollLeft+=itemRect.left-navRect.left-(nav.clientWidth-itemRect.width)/2;
+      }
     });
   }, {rootMargin:'-45% 0px -50% 0px'});
   document.querySelectorAll('.shelf').forEach(function(sec){ io.observe(sec); });
@@ -459,15 +555,305 @@ CAROUSEL_JS = """<script>(function(){
   document.querySelectorAll('[data-carousel]').forEach(setup);
 })();</script>"""
 
+CSS += """
+/* A paper theatre and a broadcast that never starts. Archive pages stay faithful. */
+html.gallery:not(.art-project){--bg:#eee7d8;--fg:#39291f;--muted:#6c6155;--line:#c6b9a0;--line-strong:#ad8b59;--accent:#8b332d;--chip:#e4d5bc;--live:#8b332d;--shadow:none;--shadow-hover:none;color-scheme:light}
+.gallery body{background:var(--bg);font-family:'IBM Plex Mono',monospace;isolation:isolate}
+.gallery body::before,.gallery body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:-1}
+.gallery body::before{background:radial-gradient(ellipse at 15% 20%,#fff8e5 0,transparent 50%),radial-gradient(ellipse at 85% 70%,#c19c7540,transparent 60%)}
+.gallery body::after{background:url('assets/archive-paper.png');opacity:.22;mix-blend-mode:multiply}
+.gallery .wrap{max-width:1440px;padding:24px 54px 40px;overflow:clip}
+.gallery .masthead{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 0 20px;border:0}
+.gallery .home-link{font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.gallery a:focus-visible,.gallery button:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+.hero-surface{position:relative;isolation:isolate}
+.hero-atmosphere{position:absolute;inset:100px 3% 45px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 55%,#bd715c22,transparent 63%);transform:rotate(-8deg);animation:theatre-light 14s ease-in-out infinite alternate;animation-play-state:paused}
+.hero-awake .hero-atmosphere{animation-play-state:running}
+@keyframes theatre-light{to{transform:rotate(8deg) scale(1.1);opacity:.65}}
+.gallery .archive-heading{position:relative;text-align:center;padding:25px 0 0;z-index:1}
+.gallery .eyebrow{font-size:10px;letter-spacing:.24em;margin:0 0 14px}
+.gallery h1.title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-size:clamp(100px,16vw,224px);text-transform:none;letter-spacing:-.065em;line-height:.87;white-space:nowrap;text-wrap:nowrap}
+.title-line{display:inline-block}
+.title-line:last-child{font-style:italic;margin-left:-.02em}
+.title-glyph{display:inline-block;transform-origin:50% 80%}
+[data-theme=royal] .hero-awake .title-glyph{animation:royal-type 8s ease-in-out infinite alternate;animation-delay:calc(var(--i) * -.6s)}
+@keyframes royal-type{from{transform:translateY(-3px) rotate(-1deg)}to{transform:translateY(4px) rotate(1deg)}}
+.gallery .lede{font-family:'Cormorant Garamond',Georgia,serif;font-size:21px;font-style:italic;max-width:none;letter-spacing:0;margin:20px 0 0;color:var(--muted)}
+.gallery .next-countdown{position:relative;height:540px;margin:6px 0 0;padding:0;border:0;text-align:center;isolation:isolate}
+.royal-guardians{position:absolute;left:0;top:30px;width:100%;height:280px;object-fit:contain;pointer-events:none;z-index:-1;opacity:.9}
+.countdown-caption{position:absolute;left:0;right:0;top:5px;z-index:2;pointer-events:none}
+.gallery .next-countdown h2{display:block;font:400 10px 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase}
+.countdown-caption time{display:block;font-size:10px;margin-top:7px;color:var(--muted)}
+.royal-clock{position:absolute;left:17%;right:17%;top:325px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;z-index:3;pointer-events:none}
+.throne-space{display:none}
+.clock-unit>span{display:inline-block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(68px,7.8vw,104px);font-variant-numeric:tabular-nums;line-height:.85;letter-spacing:-.06em}
+.number-reel{--reel-cell:.85em;white-space:nowrap}
+.number-reel .digit-slot{display:inline-block;position:relative;width:1ch;height:var(--reel-cell);overflow:hidden;vertical-align:top;letter-spacing:0;-webkit-mask-image:linear-gradient(transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(transparent,#000 4%,#000 96%,transparent)}
+.clock-unit>.number-reel{--reel-cell:1.1em;line-height:1.1em;margin-block:-.125em}
+.digit-strip{display:block;line-height:var(--reel-cell);text-align:center}
+.digit-cell{display:flex;align-items:center;justify-content:center;height:var(--reel-cell)}
+.clock-unit>small{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:16px;color:var(--muted);margin-top:10px}
+.scene-stage{position:absolute;width:370px;height:310px;left:50%;top:15px;transform:translateX(-50%);z-index:2}
+#theme-scene{width:100%;height:100%;display:block;opacity:0;touch-action:pan-y}
+.scene-ready #theme-scene{opacity:1}
+.scene-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none}
+.gallery .scene-ready .scene-fallback{display:none!important}
+.control-fallback,.control-only{display:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.control-fallback img{width:100%;height:auto;display:block}
+.fallback-digits{position:absolute;left:38.5%;top:56%;transform:translate(-50%,-50%);font-family:monospace;font-size:clamp(11px,3vw,34px);letter-spacing:.04em;color:#ee6655;white-space:nowrap;pointer-events:none}
+.fallback-digits.number-reel{--reel-cell:1.1em}
+.scene-action{position:absolute;left:30%;top:20%;width:40%;height:65%;background:none;border:0;border-radius:12px;cursor:pointer;color:var(--fg)}
+.scene-action:hover{background:radial-gradient(ellipse,#ac6e3420,transparent 70%)}
+.gallery .scene-hint{display:none}
+.royal-reset{position:absolute;top:453px;left:50%;transform:translateX(-50%) rotate(-4deg);font:italic 32px 'Cormorant Garamond',Georgia,serif;letter-spacing:-.04em;padding:6px 24px 8px;border:0;border-bottom:1px solid var(--accent);background:none;color:var(--accent);cursor:pointer;transition:transform .3s,color .3s}
+.royal-reset:hover{transform:translateX(-50%) rotate(3deg);color:var(--fg)}
+.gallery .countdown-secret{position:absolute;left:0;right:0;top:280px;margin:0;font:italic 24px 'Cormorant Garamond',Georgia,serif;color:var(--accent);z-index:4;pointer-events:none}
+.press-tally{display:none!important}
+.clock-status{position:absolute;bottom:0;left:10px;right:10px;max-width:34ch;margin-inline:auto;font-size:11px;line-height:1.5;color:var(--accent)}
+.countdown-ended{position:absolute;bottom:0;left:0;right:0;font-size:11px}
+.gallery .shownav{position:sticky;top:0;justify-content:space-between;gap:12px;margin:0;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;background:var(--bg);box-shadow:none;backdrop-filter:none}
+.gallery .shownav a{border-radius:0;flex-direction:row;gap:8px;padding:6px 0;font-size:10px;letter-spacing:-.035em;background:none}
+.gallery .shownav a[aria-current=true]{color:var(--accent)}
+.gallery .shownav .nv-e{font:italic 14px 'Cormorant Garamond',Georgia,serif;color:var(--accent)}
+.gallery .archive-shelves{padding-top:50px}
+.gallery .shelf{position:relative;display:block;margin:0 0 90px;padding:0 0 0 7%;border:0;scroll-margin-top:95px}
+.gallery .shelf::before{content:attr(data-shelf-index);position:absolute;left:0;top:-12px;font:italic 75px 'Cormorant Garamond',Georgia,serif;color:var(--line-strong);opacity:.65;letter-spacing:-.08em;line-height:1}
+.gallery .shelf-aside{display:flex;justify-content:space-between;margin:0 0 26px;padding:0;align-items:center}
+.gallery .shelf-copy{display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+.gallery .shelf-id{display:block}
+.gallery .shelf-emoji{display:none}
+.gallery .shelf-name{font:400 clamp(32px,4.2vw,56px)/1 'Cormorant Garamond',Georgia,serif;white-space:nowrap;letter-spacing:-.035em}
+.gallery .shelf-kicker{font-size:9px;letter-spacing:.1em;margin:0;order:2}
+.gallery .shelf-origin{display:none;font-size:10px;order:3;margin:0}
+.gallery a.shelf-origin{display:inline-block}
+.gallery .shelf .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;align-items:start;overflow:visible}
+.gallery .card{display:block;border:0;border-radius:0;box-shadow:none;background:none;overflow:visible;transition:transform .5s cubic-bezier(.2,.8,.2,1);transform:rotate(-1deg)}
+.gallery .card:nth-child(even){transform:translateY(36px) rotate(1.5deg)}
+.gallery .card:hover{transform:translateY(-7px) rotate(0);box-shadow:none}
+.gallery .card:nth-child(even):hover{transform:translateY(29px) rotate(0)}
+.gallery .frame{aspect-ratio:16/10;border:12px solid #f9f3e7;border-radius:0;outline:1px solid #c5b497;box-shadow:0 16px 26px -16px #49332266}
+.gallery .frame::after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 10px #0005;border:1px solid #39291f33}
+.gallery .frame .open{border-radius:0;font-size:10px;background:#efe7d9;color:#39291f}
+.gallery .body{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:15px 0 0}
+.gallery .label{font:italic 21px 'Cormorant Garamond',Georgia,serif;font-weight:400;line-height:1.1;letter-spacing:0}
+.gallery .row{margin:0;flex-shrink:0}
+.gallery .year{font-size:10px}
+.gallery .desc{display:none}
+.gallery .chip{border-radius:0;font-size:9px;background:none;padding:0}
+.gallery .chip::before{animation:none}
+.gallery .more.shelf-more{font-size:10px;margin-top:24px}
+.gallery .foot{margin-top:0;border-color:var(--line);font-size:10px}
+.gallery .eyebrow,.gallery .title,.gallery .lede,.gallery .shelf{animation:none}
+.gallery.motion-ready .shelf{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.gallery.motion-ready .shelf.in-view{opacity:1;transform:none}
+html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--line:#303d35;--line-strong:#697466;--chip:#243029;--accent:#f07152;--live:#f07152;color-scheme:dark}
+[data-theme=control] body::before{background:radial-gradient(ellipse at 65% 25%,#b77b4215,transparent 55%),radial-gradient(ellipse at 10% 55%,#34544420,transparent 65%)}
+[data-theme=control] body::after{background:url('assets/control-grain.svg');opacity:.085;mix-blend-mode:soft-light}
+[data-theme=control] .masthead{border-bottom:1px solid var(--line);padding-bottom:18px}
+[data-theme=control] .hero-atmosphere{inset:35% -5% 10%;background:radial-gradient(ellipse,#ed765510,transparent 65%);animation:none;transform:none}
+[data-theme=control] .archive-heading{text-align:left;padding-top:28px}
+[data-theme=control] .eyebrow{margin-bottom:18px;color:var(--accent)}
+[data-theme=control] h1.title{font:400 clamp(104px,14.8vw,210px)/.79 'Archivo Black',Impact,sans-serif;letter-spacing:-.075em;text-transform:uppercase;white-space:normal}
+[data-theme=control] .title-line{display:block;width:max-content;font-style:normal;transform:translateX(3%)}
+[data-theme=control] .title-line:last-child{margin:10px 0 0 auto;color:var(--accent);transform:rotate(-2deg) translateX(-3%)}
+[data-theme=control] .title-glyph{transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+[data-theme=control] .title-glyph:hover{transform:translateY(-3px)}
+[data-theme=control] .next-countdown{--instrument-stage:clamp(190px,20.4vw,294px);display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:var(--instrument-stage) 20px 20px;gap:8px 16px;height:auto;margin:6px 0 18px;z-index:2}
+[data-theme=control] .royal-guardians,[data-theme=control] .royal-clock,[data-theme=control] .royal-fallback,[data-theme=control] .royal-only{display:none}
+[data-theme=control] .control-fallback,[data-theme=control] .control-only{display:block}
+[data-theme=control] .control-fallback{inset:0;width:100%;height:100%;transform:none;display:flex;align-items:center;justify-content:center}
+[data-theme=control] .fallback-instrument{position:relative;width:min(85%,calc(var(--instrument-stage)*2.133333));aspect-ratio:1024/480}
+[data-theme=control] .control-fallback img{width:100%;height:100%;object-fit:contain}
+.gallery[data-theme=control] .scene-ready .control-fallback{display:none!important}
+[data-theme=control] #theme-scene{transition:none}
+[data-theme=control] .scene-stage{position:relative;grid-area:1/1/2/3;width:100%;height:var(--instrument-stage);left:auto;top:auto;transform:none}
+[data-theme=control] .scene-action{left:73%;top:20%;width:22%;height:65%;border-radius:50%}
+[data-theme=control] .scene-action:hover{background:none}
+[data-theme=control] .scene-action:focus-visible{outline:1px solid var(--accent);outline-offset:3px}
+[data-theme=control] .scene-action:disabled{cursor:wait}
+[data-theme=control] .countdown-caption{position:static;grid-area:2/1/3/3;align-self:center;text-align:left}
+[data-theme=control] .next-countdown h2{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+[data-theme=control] .countdown-caption time{font-size:10px;margin:0}
+[data-theme=control] .countdown-secret{top:calc(var(--instrument-stage) - 35px);left:55%;right:0;font:italic 12px 'IBM Plex Mono',monospace;color:var(--muted)}
+[data-theme=control] .clock-status{position:static;grid-area:3/1/4/3;align-self:center;margin:0;max-width:none;text-align:center;font-size:10px;line-height:1.5}
+[data-theme=control] .reset-echo{display:none}
+[data-theme=control] .shownav{border-color:var(--line);background:#111916f2}
+[data-theme=control] .shownav .nv-e{display:none}
+[data-theme=control] .archive-shelves{padding-top:34px}
+.gallery[data-theme=control].motion-ready .shelf{transform:none;transition:opacity .18s ease}
+.gallery[data-theme=control].motion-ready .shelf:target,.gallery[data-theme=control].motion-ready .shelf:focus-within{opacity:1;transition:none}
+[data-theme=control] .shelf{padding:0;margin:0 0 85px;border:0;background:none;box-shadow:none;border-radius:0}
+[data-theme=control] .shelf::before{left:auto;right:0;top:-6px;font:400 65px 'IBM Plex Mono',monospace;color:var(--line);opacity:1}
+[data-theme=control] .shelf-aside{align-items:end;padding-right:130px;margin-bottom:28px}
+[data-theme=control] .shelf-name{font:400 clamp(24px,3.6vw,48px)/1 'Archivo Black',Impact,sans-serif;text-transform:uppercase;letter-spacing:-.05em}
+[data-theme=control] .shelf-copy{gap:11px}
+[data-theme=control] .shelf-kicker{color:var(--accent)}
+[data-theme=control] .shelf .grid{gap:26px}
+[data-theme=control] .card,[data-theme=control] .card:nth-child(even){transform:none}
+[data-theme=control] .card:hover,[data-theme=control] .card:nth-child(even):hover{transform:none}
+.gallery[data-theme=control] .card,.gallery[data-theme=control] .card:nth-child(even){--mount-angle:-1.5deg;--mount-y:0px;--mount-lift:0px;position:relative;transform:translateY(calc(var(--mount-y) + var(--mount-lift))) rotate(var(--mount-angle));transform-origin:50% 55%;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.gallery[data-theme=control] .card:nth-child(even){--mount-angle:2deg;--mount-y:36px}
+.gallery[data-theme=control] .card:hover,.gallery[data-theme=control] .card:nth-child(even):hover,.gallery[data-theme=control] .card:focus-visible{--mount-lift:-6px;z-index:1;transform:translateY(calc(var(--mount-y) + var(--mount-lift))) rotate(var(--mount-angle))}
+[data-theme=control] .frame{aspect-ratio:16/10;border:12px solid #28332d;outline:1px solid #536050;border-radius:10px;box-shadow:inset 0 1px #8f9b8330,0 3px #080e0a,0 20px 30px -15px #000b;transition:outline-color .3s,box-shadow .3s}
+[data-theme=control] .frame::after{border:1px solid #8d9b7c25;border-radius:1px;box-shadow:inset 0 0 38px #0007;background:linear-gradient(122deg,#e8e0bb0e,transparent 38%),repeating-linear-gradient(transparent 0 3px,#0002 3px 4px);transition:opacity .3s}
+[data-theme=control] .card:hover .frame,[data-theme=control] .card:focus-visible .frame{outline-color:#9baf8d;box-shadow:inset 0 1px #8f9b8350,0 3px #080e0a,0 20px 30px -15px #000b,0 0 24px #f071520a}
+[data-theme=control] .card:hover .frame::after,[data-theme=control] .card:focus-visible .frame::after{opacity:.4}
+[data-theme=control] .frame .open{background:var(--fg);color:var(--bg)}
+[data-theme=control] .body{padding:16px 2px 0}
+[data-theme=control] .label{font:11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.01em}
+[data-theme=control] .year{font-size:10px}
+.gallery[data-theme=control] .card .year{display:none}
+.gallery[data-theme=control] .card .row:has(:only-child.year){display:none}
+.gallery[data-theme=control] .foot>span:first-child{display:none}
+[data-theme=control] .more.shelf-more{color:var(--muted)}
+@media(min-width:761px){
+ [data-theme=royal] .shelf:nth-child(even){padding-left:15%;padding-right:3%}
+ [data-theme=royal] .shelf:nth-child(even)::before{left:7%}
+ .gallery #got .grid{grid-template-columns:1.35fr 1fr;row-gap:70px}
+ .gallery #got .card:first-child{grid-row:span 2}
+ .gallery #got .card:first-child .frame{aspect-ratio:4/3}
+ .gallery #got .card:nth-child(3){transform:rotate(-1deg)}
+ .gallery[data-theme=control] .shelf{margin-bottom:56px}
+ .gallery[data-theme=control] .shelf-aside{margin-bottom:24px}
+ .gallery[data-theme=control] .shelf .grid{grid-template-columns:1.1fr 1fr;gap:clamp(30px,4.2vw,60px);padding:18px 20px 52px}
+ .gallery[data-theme=control] #severance .card:nth-child(2){width:92%;margin-left:auto;--mount-angle:2.2deg;--mount-y:38px}
+ .gallery[data-theme=control] #house-of-cards .grid{width:68%;margin-left:24%;grid-template-columns:minmax(0,1fr)}
+ .gallery[data-theme=control] #house-of-cards .card{--mount-angle:1.6deg;--mount-y:0px}
+ .gallery[data-theme=control] #breaking-bad .grid{grid-template-columns:.94fr 1.14fr}
+ .gallery[data-theme=control] #breaking-bad .card:first-child{width:94%;margin-left:6%;--mount-angle:-2deg;--mount-y:28px}
+ .gallery[data-theme=control] #breaking-bad .card:nth-child(2){--mount-angle:1.3deg;--mount-y:0px}
+ .gallery[data-theme=control] #archer .grid{width:72%;margin-left:4%;grid-template-columns:minmax(0,1fr)}
+ .gallery[data-theme=control] #archer .card{--mount-angle:-1.8deg;--mount-y:0px}
+ .gallery[data-theme=control] #sherlock .grid{grid-template-columns:1.2fr 1fr}
+ .gallery[data-theme=control] #sherlock .card:first-child{--mount-angle:-1.1deg}
+ .gallery[data-theme=control] #sherlock .card:nth-child(2){width:94%;margin-left:auto;--mount-angle:1.7deg;--mount-y:40px}
+ .gallery[data-theme=control] #dexter .grid{grid-template-columns:.95fr 1.1fr}
+ .gallery[data-theme=control] #dexter .card:first-child{width:92%;margin-left:7%;--mount-angle:-1.8deg;--mount-y:34px}
+ .gallery[data-theme=control] #dexter .card:nth-child(2){--mount-angle:2.1deg;--mount-y:0px}
+ .gallery[data-theme=control] #got .grid{grid-template-columns:1.2fr 1fr;row-gap:34px}
+ .gallery[data-theme=control] #got .card:first-child{grid-row:span 2;align-self:center;--mount-angle:-1.4deg}
+ .gallery[data-theme=control] #got .card:first-child .frame{aspect-ratio:16/10}
+ .gallery[data-theme=control] #got .card:nth-child(2){width:92%;margin-left:auto;--mount-y:0px;--mount-angle:2deg}
+ .gallery[data-theme=control] #got .card:nth-child(3){width:96%;margin-left:auto;--mount-angle:-2.2deg;transform:translateY(calc(var(--mount-y) + var(--mount-lift))) rotate(var(--mount-angle))}
+}
+@media(max-width:1000px) and (min-width:761px){.gallery .shownav a{font-size:9px;gap:5px}.gallery .shownav{gap:10px;justify-content:flex-start}.gallery .wrap{padding-inline:32px}}
+@media(max-width:760px){
+ .gallery .wrap{padding:16px 22px 30px}
+ .gallery[data-theme=control] .eyebrow,.gallery[data-theme=control] h1.title,.gallery[data-theme=control] .foot{padding-inline:0}
+ .gallery .masthead{gap:12px;padding-bottom:12px}
+ .gallery .home-link{font-size:9px;letter-spacing:.08em}
+ .gallery .archive-heading{padding-top:34px}
+ .gallery .eyebrow{font-size:9px;margin-bottom:17px}
+ .gallery h1.title{font-size:clamp(65px,18vw,130px);letter-spacing:-.07em;line-height:1}
+ .gallery .lede{font-size:19px;margin-top:9px}
+ .gallery .next-countdown{height:440px;margin-top:9px}
+ .royal-guardians{left:-9%;width:118%;top:82px;height:180px;opacity:.7}
+ .scene-stage{width:250px;height:235px;top:38px}
+ .countdown-caption{top:0}
+ .gallery .next-countdown h2,.countdown-caption time{font-size:9px}
+ .royal-clock{left:0;right:0;top:278px;gap:10px}
+ .clock-unit>span{font-size:clamp(49px,13.2vw,70px)}.clock-unit>small{font-size:13px;margin-top:6px}
+ .gallery .countdown-secret{top:246px;font-size:21px}
+ .royal-reset{top:357px;font-size:29px;padding:6px 22px}
+ .gallery .shownav{margin:0 -22px;padding:12px 22px;gap:22px;justify-content:flex-start;scroll-padding-inline:22px}
+ .gallery .shownav a{font-size:10px;gap:6px}.gallery .shownav .nv-e{font-size:13px}
+ .gallery .archive-shelves{padding-top:34px}
+ .gallery .shelf{padding:0;margin-bottom:58px;scroll-margin-top:80px}
+ .gallery .shelf::before{position:static;display:block;font-size:34px;line-height:1;margin-bottom:10px}
+ .gallery .shelf-aside{margin-bottom:18px;gap:10px;align-items:center}
+ .gallery .shelf-copy{gap:6px}.gallery .shelf-name{font-size:clamp(25px,6.9vw,41px)}
+ .gallery .shelf-kicker{font-size:9px}.gallery a.shelf-origin{font-size:9px}
+ .gallery .shelf .grid{display:flex;gap:22px;overflow-x:auto;overflow-y:hidden;margin:0 -22px;padding:12px 22px 48px;scroll-padding-inline:22px;align-items:start}
+ .gallery .carousel .card{flex:0 0 calc(100vw - 76px);transform:rotate(-1deg);min-width:0}
+ .gallery .carousel .card:nth-child(even){transform:translateY(12px) rotate(1deg)}
+ .gallery .frame{border-width:8px}
+ .gallery .body{gap:8px;padding-top:12px}.gallery .label{font-size:19px}.gallery .year{font-size:9px}
+ .gallery .carousel-controls{display:flex;gap:4px;flex-shrink:0}.gallery .carousel-btn{width:32px;height:36px;font-size:20px;border:0;border-bottom:1px solid var(--line-strong);border-radius:0;background:none;box-shadow:none}
+ .gallery .more.shelf-more{margin-top:-15px;font-size:10px}
+ .gallery .foot{display:flex;flex-wrap:wrap;gap:10px;font-size:9px}
+ [data-theme=control] .archive-heading{padding-top:26px}
+ [data-theme=control] .eyebrow{margin-bottom:20px}
+ [data-theme=control] h1.title{font-size:clamp(60px,20.8vw,155px);line-height:.84;letter-spacing:-.075em}
+ [data-theme=control] .title-line{transform:none}
+ [data-theme=control] .title-line:last-child{margin-top:8px;transform:rotate(-2deg)}
+ [data-theme=control] .next-countdown{--instrument-stage:clamp(168px,43vw,320px);height:auto;grid-template-rows:var(--instrument-stage) 20px 20px;gap:6px 10px;margin:10px 0 14px}
+ [data-theme=control] .scene-stage{height:var(--instrument-stage);width:100%;left:auto;top:auto}
+ [data-theme=control] .countdown-caption time{font-size:10px}
+ [data-theme=control] .countdown-secret{top:calc(var(--instrument-stage) - 24px);left:0;right:0;font-size:10px}
+ [data-theme=control] .scene-action{left:73%;top:22%;width:24%;height:58%}
+ [data-theme=control] .reset-echo{font-size:55px}
+ [data-theme=control] .shownav{padding-block:6px}
+ [data-theme=control] .shownav a{min-height:44px;padding-block:8px}
+ [data-theme=control] .archive-shelves{padding-top:30px}
+ [data-theme=control] .shelf{margin-bottom:58px;padding:0}
+ [data-theme=control] .shelf::before{display:none}
+ [data-theme=control] .shelf-aside{padding-right:0;align-items:center;margin-bottom:10px}
+ [data-theme=control] .shelf-name{font-size:clamp(15px,4.8vw,25px);letter-spacing:-.055em}
+ [data-theme=control] .carousel-controls{gap:0}
+ [data-theme=control] .carousel-btn{width:44px;height:44px}
+ [data-theme=control] .shelf-copy{gap:7px}
+ [data-theme=control] .carousel .card,[data-theme=control] .carousel .card:nth-child(even){flex-basis:calc(100vw - 76px)}
+ .gallery[data-theme=control] .carousel .card{--mount-angle:-1.2deg;--mount-y:4px;transform:translateY(calc(var(--mount-y) + var(--mount-lift))) rotate(var(--mount-angle))}
+ .gallery[data-theme=control] .carousel .card:nth-child(even){--mount-angle:1.6deg;--mount-y:18px;transform:translateY(calc(var(--mount-y) + var(--mount-lift))) rotate(var(--mount-angle))}
+ [data-theme=control] .shelf .grid{gap:20px;padding-bottom:30px}
+ .gallery[data-theme=control] .shelf .grid{gap:24px;padding-top:18px;padding-bottom:48px}
+ [data-theme=control] .frame{border-width:9px;border-radius:8px}
+ [data-theme=control] .body{padding-top:12px}.gallery[data-theme=control] .label{font-size:10px;line-height:1.5}
+ [data-theme=control] .more.shelf-more{margin-top:0}
+}
+@media(prefers-reduced-motion:reduce){
+ .gallery .hero-atmosphere,.gallery .title-glyph,.gallery .clock-unit>span,.gallery .card,.gallery .shelf,.gallery .frame,.gallery .frame::after{animation:none!important;transition:none!important}
+ .gallery.motion-ready .shelf{opacity:1;transform:none}
+ [data-theme=control] #theme-scene,[data-theme=control] .control-fallback,.gallery[data-theme=control] .scene-ready .control-fallback{transition:none}
+}
+"""
+
+CSS += """
+/* The expanded archive lives in the same sage monitor chassis as its card. */
+.gallery[data-theme=control] .ov{padding:36px}
+.gallery[data-theme=control] .ov-backdrop{background:#0b120fe3;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+.gallery[data-theme=control] .ov-dialog{width:min(1200px,calc(100vw - 72px));height:min(820px,calc(100dvh - 96px));border:1px solid #71806d;border-radius:14px;background:radial-gradient(circle at 12px 12px,#0a100b 0 2px,#71806d 2px 3px,transparent 3.5px),radial-gradient(circle at calc(100% - 12px) 12px,#0a100b 0 2px,#71806d 2px 3px,transparent 3.5px),linear-gradient(135deg,#354339,#222d26 64%);box-shadow:inset 0 1px #c4cfaa35,inset 0 -3px #0a100b,0 4px #080e0a,0 32px 90px #0009;overflow:hidden}
+.gallery[data-theme=control] .ov-dialog::before{content:'';position:absolute;inset:0;pointer-events:none;background:url('assets/control-grain.svg');opacity:.08;mix-blend-mode:soft-light}
+.gallery[data-theme=control] .ov-stage{inset:24px 24px 80px;border:2px solid #090f0c;border-radius:3px;overflow:hidden;box-shadow:0 1px #95a48133,inset 0 0 20px #0009}
+.gallery[data-theme=control] .ov-stage::after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 24px #0004;background:linear-gradient(120deg,#e8e0bb08,transparent 35%)}
+.gallery[data-theme=control] .ov-ctrls{position:absolute;top:auto;bottom:16px;right:24px;gap:8px}
+.gallery[data-theme=control] .ov-open,.gallery[data-theme=control] .ov-close{width:44px;height:44px;padding:0;border-radius:4px;border:1px solid #71806d;background:#19231c;color:var(--fg);box-shadow:inset 0 1px #c4cfaa15,0 2px #080e0a;backdrop-filter:none;-webkit-backdrop-filter:none}
+.gallery[data-theme=control] .ov-open:hover,.gallery[data-theme=control] .ov-close:hover{border-color:var(--accent);color:var(--accent);background:#1f2b23}
+.gallery[data-theme=control] .ov-open:focus-visible,.gallery[data-theme=control] .ov-close:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.gallery[data-theme=control] .ov-open .lbl{display:none}
+.gallery[data-theme=control] .ov-cap{position:absolute;top:auto;bottom:24px;left:28px;max-width:calc(100% - 174px);color:var(--fg);font:10px/1.6 'IBM Plex Mono',monospace;letter-spacing:.025em;text-transform:uppercase;text-shadow:0 1px #080e0a}
+@media(max-width:640px){
+ .gallery[data-theme=control] .ov{padding:0}
+ .gallery[data-theme=control] .ov-dialog{width:100%;height:100dvh;border:0;border-radius:0;box-shadow:none}
+ .gallery[data-theme=control] .ov-stage{inset:12px 12px calc(76px + env(safe-area-inset-bottom))}
+ .gallery[data-theme=control] .ov-ctrls{bottom:calc(14px + env(safe-area-inset-bottom));right:16px;left:auto;transform:translateY(8px)}
+ .gallery[data-theme=control] .ov.open .ov-ctrls{transform:none}
+ .gallery[data-theme=control] .ov-cap{display:block;bottom:calc(20px + env(safe-area-inset-bottom));left:16px;max-width:calc(100% - 148px);font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ .gallery[data-theme=control] .ov-backdrop,.gallery[data-theme=control] .ov-cap,.gallery[data-theme=control] .ov-ctrls,.gallery[data-theme=control] #ov-frame{transition:none;transform:none}
+}
+"""
+
+CSS += """
+/* Give the show bar its own viewport-wide rail without widening the exhibits. */
+.gallery[data-theme=control] .wrap{--gallery-gutter:54px;max-width:none;padding-inline:0}
+.gallery[data-theme=control] .wrap>.masthead,.gallery[data-theme=control] .wrap>.hero-surface,.gallery[data-theme=control] .wrap>.archive-shelves,.gallery[data-theme=control] .wrap>.foot{width:min(1332px,calc(100% - 2 * var(--gallery-gutter)));margin-inline:auto}
+.gallery[data-theme=control] .shownav{--nav-edge:clamp(28px,4vw,64px);width:100%;margin-inline:0;padding-inline:var(--nav-edge);scroll-padding-inline:var(--nav-edge)}
+@media(max-width:1000px) and (min-width:761px){.gallery[data-theme=control] .wrap{--gallery-gutter:32px}}
+@media(max-width:760px){.gallery[data-theme=control] .wrap{--gallery-gutter:22px}}
+"""
+
 CSS_VER = hashlib.md5(CSS.encode("utf-8")).hexdigest()[:8]
 FAVICON = '<link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">'
 
 def esc(s):
     return html.escape(s, quote=True)
 
-def head(title, extra_head=""):
+def head(title, extra_head="", gallery=False):
     return (
-        "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n"
+        "<!DOCTYPE html>\n" + ('<html lang="en" class="gallery">\n<head>\n' if gallery else '<html lang="en">\n<head>\n') +
         "  <meta charset=\"utf-8\">\n"
         "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
         f"  <title>{esc(title)}</title>\n"
@@ -488,7 +874,7 @@ def foot(scripts=""):
         "</body>\n</html>\n"
     )
 
-def card(show_slug, v, zoom=4):
+def card(show_slug, v, zoom=4, defer_frames=False):
     zoom = v.get("zoom", zoom)  # per-version override beats the show default
     base = f'/countdowns/{show_slug}/{v["slug"]}'
     if not base.endswith("/"):
@@ -500,8 +886,17 @@ def card(show_slug, v, zoom=4):
     iframe = (f'<iframe src="{base}"{zstyle} loading="lazy" tabindex="-1" scrolling="no" '
               f'title="{esc(v["label"])} preview"></iframe>')
     chip = f'<span class="chip">{esc(v["chip"])}</span>' if v.get("chip") else ""
+    thumb = f'/countdowns/assets/previews/{show_slug}-{v["slug"].strip("/").replace("/", "-")}.jpg'
+    still = f'<img src="{thumb}" alt="" loading="lazy" width="720" height="450">'
+    if v.get("still_preview"):
+        # Keep focus-stealing archived forms out of passive cards. Opening the card
+        # still loads its untouched, interactive page in the preview overlay.
+        iframe = still
+    elif defer_frames:
+        # Inert until the theme is known: art worlds never boot archived scripts behind their stills.
+        iframe = f'<template class="card-preview">{iframe}</template>{still}'
     return (
-        f'      <a class="card" href="{base}" target="_blank" rel="noopener">\n'
+        f'      <a class="card" href="{base}" data-thumb="{thumb}" target="_blank" rel="noopener">\n'
         f'        <div class="frame">{iframe}<span class="open">Open ↗</span></div>\n'
         f'        <div class="body">\n'
         f'          <div class="label">{esc(v["label"])}</div>\n'
@@ -525,7 +920,7 @@ def carousel_controls(versions):
         if len(versions) > 1 else ""
     )
 
-def grid(show_slug, versions, zoom=4, include_controls=True, carousel_root=True, more_href=None):
+def grid(show_slug, versions, zoom=4, include_controls=True, carousel_root=True, more_href=None, defer_frames=False):
     controls = carousel_controls(versions) if include_controls else ""
     data_attr = ' data-carousel' if carousel_root and len(versions) > 1 else ""
     more = (
@@ -536,7 +931,7 @@ def grid(show_slug, versions, zoom=4, include_controls=True, carousel_root=True,
         f'      <div class="carousel"{data_attr}>\n'
         f'{controls}'
         '        <div class="grid">\n'
-        + "".join(card(show_slug, v, zoom) for v in versions) +
+        + "".join(card(show_slug, v, zoom, defer_frames=defer_frames) for v in versions) +
         '        </div>\n'
         f'{more}'
         '      </div>\n'
@@ -544,19 +939,59 @@ def grid(show_slug, versions, zoom=4, include_controls=True, carousel_root=True,
 
 # --------------------------------------------------------------- gallery
 def build_gallery():
-    out = head("Countdowns · Artur Pokusin")
-    out += '    <div class="crumb"><a href="/">pokusin.com</a><span class="sep">/</span>countdowns</div>\n'
-    out += '    <div class="eyebrow">An archive · 2012 – 2025</div>\n'
-    out += '    <h1 class="title">Countdowns</h1>\n'
-    out += ('    <p class="lede">A collection of TV-show countdown sites I '
-            'handcrafted between 2012 and 2025. Every illustration and line of '
-            "code was made by hand, and they're all still ticking.</p>\n")
+    out = head("Countdowns · Artur Pokusin", THEME_HEAD, gallery=True)
+    out += '    <header class="masthead"><a class="home-link" href="/">Artur Pokusin</a></header>\n'
+    out += ('    <section class="art-hero" id="art-hero" aria-label="Interactive countdown archive" hidden>\n'
+            '      <div class="art-stage" id="art-stage"><canvas id="art-scene" tabindex="0" aria-label="Interactive art scene"></canvas></div>\n'
+            '      <h1 class="art-title">Countdowns</h1><div class="art-reset-area"></div><div class="art-mounts"></div>\n'
+            '      <button class="art-secret-trigger" type="button" aria-label="Inspect the small crown" aria-controls="countdown-secret" aria-expanded="false"><img src="assets/concepts/crown.png" alt=""></button>\n'
+            '      <div class="art-route"></div><button class="art-archive-toggle" type="button">Archive</button><div class="art-joystick"></div>\n'
+            '    </section>\n')
+    title = ''.join('<span class="title-line">' + ''.join(
+        f'<span class="title-glyph" style="--i:{offset + i}">{letter}</span>'
+        for i, letter in enumerate(word)) + '</span>' for word, offset in [('Count', 0), ('downs', 5)])
+    out += ('    <div class="hero-surface" id="hero-surface">\n'
+            '<div class="hero-atmosphere" aria-hidden="true"></div>'
+            '<div class="archive-heading"><p class="eyebrow">2012 — ∞</p>'
+            f'<h1 class="title" aria-label="Countdowns"><span aria-hidden="true">{title}</span></h1>\n'
+            '</div>\n')
+    out += (
+        '    <section class="next-countdown" aria-labelledby="next-countdown-heading">\n'
+        '      <img class="royal-guardians" src="assets/royal-guardians.png" alt="" width="1440" height="520">\n'
+        '      <div class="countdown-caption"><h2 id="next-countdown-heading">Next countdown</h2>'
+        f'<time id="next-countdown-date" datetime="{NEXT_COUNTDOWN_DATE}">{NEXT_COUNTDOWN_LABEL}</time></div>\n'
+        '      <div class="royal-clock" role="timer" aria-label="Time until the next countdown">'
+        '<div class="clock-unit"><span data-unit="days">30</span><small>days</small></div>'
+        '<div class="clock-unit"><span data-unit="hours">00</span><small>hours</small></div>'
+        '<div class="throne-space"></div>'
+        '<div class="clock-unit"><span data-unit="minutes">00</span><small>minutes</small></div>'
+        '<div class="clock-unit"><span data-unit="seconds">00</span><small>seconds</small></div></div>\n'
+        '      <div class="scene-stage" id="scene-stage">'
+        '<img class="scene-fallback royal-fallback" src="assets/throne-fallback.png" alt="A tiny crown on an empty throne">'
+        '<div class="scene-fallback control-fallback"><div class="fallback-instrument"><img src="assets/console-fallback.png" alt="A timer console wired to a red button" width="1024" height="480">'
+        '<span class="fallback-digits" id="fallback-digits">30:00:00:00</span></div></div>'
+        '<canvas id="theme-scene" aria-hidden="true"></canvas>'
+        '<button class="scene-action" id="scene-action" type="button" aria-label="Crown the countdown" aria-controls="countdown-secret" aria-expanded="false"></button>'
+        '</div>\n'
+        '      <button class="royal-reset royal-only" id="royal-reset" type="button" aria-label="Postpone the next countdown" aria-controls="countdown-secret" aria-expanded="false">Again.</button>\n'
+        '      <p class="scene-hint"><span class="royal-only">A small crown. A long wait.</span>'
+        '<span class="control-only">Lift. Press.</span></p>\n'
+        '      <p class="countdown-secret" id="countdown-secret" role="status" hidden>Long may I count.</p>\n'
+        '      <p class="sr-only" id="timer-readable" role="timer" aria-live="off"></p>\n'
+        '      <p class="press-tally" hidden aria-hidden="true"><span id="reset-count">—</span><small></small></p>\n'
+        '      <p class="sr-only" id="postponement-readable" role="status" aria-atomic="true"></p>\n'
+        '      <p class="clock-status" id="clock-status" role="status"></p>\n'
+        '      <p class="countdown-ended" id="countdown-ended" hidden>Time to start another countdown.</p>\n'
+        '      <span class="reset-echo control-only" aria-hidden="true">Again.</span>\n'
+        '    </section>\n    </div>\n'
+    )
     out += '    <nav class="shownav" aria-label="Shows">\n'
-    for s in SHOWS:
-        out += (f'      <a href="#{s["slug"]}"><span class="nv-e">{s["emoji"]}</span>'
+    for i, s in enumerate(SHOWS):
+        out += (f'      <a href="#{s["slug"]}"><span class="nv-e">{["I", "II", "III", "IV", "V", "VI", "VII"][i]}</span>'
                 f'<span class="nv-n">{esc(s["name"])}</span></a>\n')
     out += '    </nav>\n'
-    for s in SHOWS:
+    out += '    <main class="archive-shelves" id="archive-shelves" aria-label="Countdown archive">\n'
+    for i, s in enumerate(SHOWS):
         shown = [v for v in s["versions"] if not v.get("collapsed") and not v.get("timeline")]
         collapsed = [v for v in s["versions"] if v.get("collapsed") and not v.get("timeline")]
         has_more = bool(collapsed) or any(v.get("timeline") for v in s["versions"])
@@ -567,18 +1002,39 @@ def build_gallery():
             dom = f'<span class="shelf-origin">{esc(s["domain"])}</span>'
         carousel_attr = ' data-carousel' if len(shown) > 1 else ""
         more_href = f'/countdowns/{s["slug"]}/' if has_more else None
-        out += f'    <section class="shelf" id="{s["slug"]}"{carousel_attr}>\n      <div class="shelf-aside">\n'
+        out += f'    <section class="shelf" id="{s["slug"]}"{carousel_attr} data-shelf-index="{i + 1:02}">\n      <div class="shelf-aside">\n'
         out += '        <div class="shelf-copy">\n'
         out += f'          <div class="shelf-kicker">{esc(s["years"])}</div>\n'
-        out += (f'          <div class="shelf-id"><span class="shelf-emoji">{s["emoji"]}</span>'
+        out += (f'          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">{s["name"][0]}</span>'
                 f'<span class="shelf-name">{esc(s["name"])}</span></div>\n')
         out += f'          {dom}\n'
         out += '        </div>\n'
         out += carousel_controls(shown)
         out += '      </div>\n'
-        out += grid(s["slug"], shown, s.get("preview_zoom", 4), include_controls=False, carousel_root=False, more_href=more_href)
+        out += grid(s["slug"], shown, s.get("preview_zoom", 4), include_controls=False, carousel_root=False, more_href=more_href, defer_frames=True)
         out += '    </section>\n'
-    return out + foot(OVERLAY_HTML + OVERLAY_JS + NAV_JS + CAROUSEL_JS)
+    out += '    <template id="scene-destinations">\n'
+    for s in SHOWS:
+        for v in s['versions']:
+            if v.get('timeline'):
+                timeline_slug = v['slug'].strip('/')
+                out += f'      <a class="scene-timeline-link" data-show="{s["slug"]}" href="/countdowns/{s["slug"]}/{timeline_slug}/">{esc(s["name"])} · {esc(v["label"])}</a>\n'
+    out += '    </template>\n'
+    themes_sources = ['themes.js', 'reels.js', 'control-explosion.js', 'control-transformation.js']
+    themes_version = hashlib.sha256(b''.join(open(os.path.join(CD, file), 'rb').read() for file in themes_sources)).hexdigest()[:10]
+    previews = """<script>(function(){
+      var art=document.documentElement.classList.contains('art-project');
+      if(document.documentElement.dataset.theme==='control'){
+        var shelves=document.getElementById('archive-shelves'),nav=document.querySelector('.shownav');
+        shelves.append.apply(shelves,Array.from(shelves.children).reverse());
+        nav.append.apply(nav,Array.from(nav.children).reverse());
+      }
+      document.querySelectorAll('template.card-preview').forEach(function(t){
+        if(art){t.remove();return;}
+        t.parentElement.querySelector('img').remove();t.replaceWith(t.content);
+      });
+    })();</script>"""
+    return out + '    </main>\n' + foot(previews + OVERLAY_HTML + OVERLAY_JS + NAV_JS + CAROUSEL_JS + f'<script type="module" src="themes.js?v={themes_version}"></script>')
 
 # ----------------------------------------------------- per-show details page
 def build_show_index(s):

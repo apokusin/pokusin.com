@@ -1,0 +1,543 @@
+{
+  "concept": "held-in-suspense",
+  "tool": "4.5.14 LTS",
+  "selectedTool": "Blender 4.5.14 LTS",
+  "status": "authored asset gate; independent browser/source acceptance pending",
+  "license": "Project-authored geometry/materials, same repository license; Blender binary not distributed",
+  "bundle": "scene-mobile.glb",
+  "geometryGroup": "counterbalanced_installation",
+  "editable": "authoring/held-in-suspense-mobile.blend",
+  "script": "authoring/create_scene.py",
+  "composition": "portrait physical rig",
+  "axes": {
+    "authoring": "Blender +Z up, -Y front",
+    "runtime": "glTF +Y up, +Z front",
+    "mapping": "Blender(x,y,z) -> glTF(x,z,-y)"
+  },
+  "clockFaces": [
+    {
+      "node": "clock_d",
+      "width": 0.9360730593607305,
+      "height": 2.05,
+      "centerBlender": [
+        -2.0999999046325684,
+        -0.3919999897480011,
+        2.384999990463257
+      ],
+      "normalBlender": [
+        0,
+        -1,
+        0
+      ],
+      "uv": "bottom-left 0,0; outward front -Y; slight camber"
+    },
+    {
+      "node": "clock_h",
+      "width": 1.0136986301369864,
+      "height": 2.22,
+      "centerBlender": [
+        -0.8399999737739563,
+        -0.3919999897480011,
+        2.6040000915527344
+      ],
+      "normalBlender": [
+        0,
+        -1,
+        0
+      ],
+      "uv": "bottom-left 0,0; outward front -Y; slight camber"
+    },
+    {
+      "node": "clock_m",
+      "width": 1.1141552511415524,
+      "height": 2.44,
+      "centerBlender": [
+        0.44999998807907104,
+        -0.3919999897480011,
+        2.8410000801086426
+      ],
+      "normalBlender": [
+        0,
+        -1,
+        0
+      ],
+      "uv": "bottom-left 0,0; outward front -Y; slight camber"
+    },
+    {
+      "node": "clock_s",
+      "width": 1.1872146118721463,
+      "height": 2.6,
+      "centerBlender": [
+        1.809999942779541,
+        -0.3919999897480011,
+        3.068000078201294
+      ],
+      "normalBlender": [
+        0,
+        -1,
+        0
+      ],
+      "uv": "bottom-left 0,0; outward front -Y; slight camber"
+    }
+  ],
+  "archives": [
+    {
+      "id": "dexter",
+      "screen": "archive_dexter_screen",
+      "pivot": "archive_dexter_mount",
+      "width": 2.48,
+      "height": 1.93,
+      "centerBlender": [
+        -2.505178689956665,
+        0.3892202377319336,
+        6.829999923706055
+      ],
+      "normalBlender": [
+        -0.08489768207073212,
+        -0.996389627456665,
+        -4.656612873077393e-10
+      ],
+      "rotationBlenderRadians": [
+        0.0,
+        0.10999999940395355,
+        -0.08500000089406967
+      ]
+    },
+    {
+      "id": "severance",
+      "screen": "archive_severance_screen",
+      "pivot": "archive_severance_mount",
+      "width": 2.75,
+      "height": 2.17,
+      "centerBlender": [
+        -0.21847516298294067,
+        -0.4009809195995331,
+        7.619999885559082
+      ],
+      "normalBlender": [
+        0.024997400119900703,
+        -0.9996876120567322,
+        -1.1641532182693481e-10
+      ],
+      "rotationBlenderRadians": [
+        0.0,
+        -0.07999999821186066,
+        0.02500000037252903
+      ]
+    },
+    {
+      "id": "got",
+      "screen": "archive_got_screen",
+      "pivot": "archive_got_mount",
+      "width": 2.62,
+      "height": 2.05,
+      "centerBlender": [
+        2.166646718978882,
+        1.1390923261642456,
+        7.960000038146973
+      ],
+      "normalBlender": [
+        -0.05497227609157562,
+        -0.9984878897666931,
+        0.0
+      ],
+      "rotationBlenderRadians": [
+        0.0,
+        0.14000000059604645,
+        -0.054999999701976776
+      ]
+    }
+  ],
+  "reset": {
+    "face": "reset_face",
+    "ink": "reset_ink",
+    "tally": "reset_tally",
+    "body": "reset_body",
+    "pivot": "weight_pivot",
+    "radius": 0.81,
+    "inkRadius": 0.78,
+    "endcapCenterBlender": [
+      2.5199999809265137,
+      -1.850000023841858,
+      0.8399999737739563
+    ],
+    "normalBlender": [
+      0.3322508931159973,
+      -0.8288410902023315,
+      -0.45014646649360657
+    ],
+    "tangentXBlender": [
+      0.9282005429267883,
+      0.37208032608032227,
+      0.0
+    ],
+    "tangentYBlender": [
+      0.1674906462430954,
+      -0.41782620549201965,
+      0.8929547071456909
+    ],
+    "inkLocalUVcornersGLTF": [
+      [
+        -0.78,
+        0,
+        0.78
+      ],
+      [
+        0.78,
+        0,
+        0.78
+      ],
+      [
+        0.78,
+        0,
+        -0.78
+      ],
+      [
+        -0.78,
+        0,
+        -0.78
+      ]
+    ],
+    "inkNormalLocalGLTF": [
+      0,
+      1,
+      0
+    ],
+    "uv": "reset_ink explicit circularface UV radial0..1, tangentY projectedworldup; metalbody separate; corners ordered00/10/11/01"
+  },
+  "articulation": [
+    "clock_d_pivot",
+    "clock_h_pivot",
+    "clock_m_pivot",
+    "clock_s_pivot",
+    "weight_pivot",
+    "upper_pulley",
+    "lower_pulley",
+    "secret_flange_pivot"
+  ],
+  "room": {
+    "geometry": "reflection_room",
+    "lightDirectionBlender": [
+      -13.8,
+      -5,
+      11.5
+    ],
+    "use": "Use PMREM from the authored window/flag room; window highlights and actual cast-shadow key agree; luminous panes cast no shadows, physical mullions do"
+  },
+  "camera": {
+    "node": "opening_camera",
+    "positionBlender": [
+      0.10000000149011612,
+      -23.399999618530273,
+      7.940000057220459
+    ],
+    "targetBlender": [
+      -0.30000001192092896,
+      0.0,
+      5.599999904632568
+    ],
+    "positionGLTF": [
+      0.10000000149011612,
+      7.940000057220459,
+      23.399999618530273
+    ],
+    "targetGLTF": [
+      -0.30000001192092896,
+      5.599999904632568,
+      -0.0
+    ],
+    "lensMillimeters": 43.0,
+    "sensorWidthMillimeters": 36,
+    "aspect": 0.46208530805687204,
+    "yfovRadians": 0.7124392986297607,
+    "yfovDegrees": 40.81976497074579,
+    "fitWidth": 8.0,
+    "fitHeight": 14.9
+  },
+  "materials": [
+    {
+      "name": "architectural_daylight",
+      "mapped": []
+    },
+    {
+      "name": "archive_blank_screen",
+      "mapped": []
+    },
+    {
+      "name": "blackened_steel",
+      "mapped": []
+    },
+    {
+      "name": "braided_black_cable",
+      "mapped": []
+    },
+    {
+      "name": "clock_print_surface",
+      "mapped": []
+    },
+    {
+      "name": "hidden_crown_brass",
+      "mapped": []
+    },
+    {
+      "name": "pale_polished_limestone",
+      "mapped": [
+        "limestone_albedo",
+        "limestone_roughness"
+      ]
+    },
+    {
+      "name": "polished_bevels_and_collars",
+      "mapped": []
+    },
+    {
+      "name": "reflection_plaster_return",
+      "mapped": []
+    },
+    {
+      "name": "satin_brushed_steel",
+      "mapped": [
+        "brushed_roughness",
+        "brushed_normal"
+      ]
+    },
+    {
+      "name": "slate_cleavage",
+      "mapped": [
+        "slate_albedo",
+        "slate_roughness",
+        "slate_normal"
+      ]
+    },
+    {
+      "name": "warm_plaster_wall",
+      "mapped": []
+    },
+    {
+      "name": "window_glass",
+      "mapped": []
+    }
+  ],
+  "nodes": [
+    "counterbalanced_installation",
+    "limestone_floor",
+    "rear_plaster_wall",
+    "reflection_room",
+    "window_luminous_2.4_-5.5",
+    "window_luminous_2.4_-2",
+    "window_luminous_2.4_1.5",
+    "window_luminous_5.9_-5.5",
+    "window_luminous_5.9_-2",
+    "window_luminous_5.9_1.5",
+    "window_luminous_9.4_-5.5",
+    "window_luminous_9.4_-2",
+    "window_luminous_9.4_1.5",
+    "window_vertical_mullion_-7.15",
+    "window_vertical_mullion_-3.7",
+    "window_vertical_mullion_-0.25",
+    "window_vertical_mullion_3.2",
+    "window_horizontal_mullion_0.7",
+    "window_horizontal_mullion_4.1",
+    "window_horizontal_mullion_7.55",
+    "window_horizontal_mullion_11.0",
+    "dark_reflection_flag",
+    "front_room_window_-18_3",
+    "front_room_window_-18_7.5",
+    "front_room_window_-18_12",
+    "front_room_window_-24_3",
+    "front_room_window_-24_7.5",
+    "front_room_window_-24_12",
+    "front_room_window_-30_3",
+    "front_room_window_-30_7.5",
+    "front_room_window_-30_12",
+    "front_room_window_-36_3",
+    "front_room_window_-36_7.5",
+    "front_room_window_-36_12",
+    "front_room_window_-42_3",
+    "front_room_window_-42_7.5",
+    "front_room_window_-42_12",
+    "front_room_mullion_-15",
+    "front_room_mullion_-21",
+    "front_room_mullion_-27",
+    "front_room_mullion_-33",
+    "front_room_mullion_-39",
+    "front_room_mullion_-45",
+    "front_room_horizontal_0.8",
+    "front_room_horizontal_5.2",
+    "front_room_horizontal_9.8",
+    "front_room_horizontal_14.3",
+    "front_plaster_return",
+    "front_architectural_column",
+    "slate_anchor",
+    "slate_lifted_cleavage_0",
+    "slate_lifted_cleavage_1",
+    "slate_lifted_cleavage_2",
+    "slate_lifted_cleavage_3",
+    "slate_contact_chip_0",
+    "slate_contact_chip_1",
+    "slate_contact_chip_2",
+    "slate_contact_chip_3",
+    "slate_contact_chip_4",
+    "slate_contact_chip_5",
+    "slate_contact_chip_6",
+    "slate_contact_chip_7",
+    "slate_contact_chip_8",
+    "anchor_steel_sole",
+    "anchor_hex_bolt",
+    "anchor_hex_bolt.001",
+    "anchor_hex_bolt.002",
+    "anchor_hex_bolt.003",
+    "folded_lower_arm",
+    "upper_balance_arm",
+    "return_anchor_strut",
+    "anchor_hinge_axle",
+    "anchor_hinge_front_flange",
+    "anchor_hinge_hex",
+    "upper_peak_hinge_axle",
+    "upper_peak_hinge_front_flange",
+    "upper_peak_hinge_hex",
+    "upper_tip_hinge_axle",
+    "upper_tip_hinge_front_flange",
+    "upper_tip_hinge_hex",
+    "lower_terminal_hinge_axle",
+    "lower_terminal_hinge_front_flange",
+    "lower_terminal_hinge_hex",
+    "beam_fold_joint_0_axle",
+    "beam_fold_joint_0_front_flange",
+    "beam_fold_joint_0_hex",
+    "beam_fold_joint_1_axle",
+    "beam_fold_joint_1_front_flange",
+    "beam_fold_joint_1_hex",
+    "beam_fold_joint_2_axle",
+    "beam_fold_joint_2_front_flange",
+    "beam_fold_joint_2_hex",
+    "beam_fold_joint_3_axle",
+    "beam_fold_joint_3_front_flange",
+    "beam_fold_joint_3_hex",
+    "clock_d_pivot",
+    "clock_d_assembly",
+    "clock_d_body",
+    "clock_d",
+    "clock_d_rear_cassette",
+    "clock_d_suspension",
+    "clock_d_top_eye",
+    "clock_d_beam_clamp",
+    "clock_d_fastener",
+    "clock_d_fastener.001",
+    "clock_d_fastener.002",
+    "clock_d_fastener.003",
+    "clock_d_side_hinge",
+    "clock_h_pivot",
+    "clock_h_assembly",
+    "clock_h_body",
+    "clock_h",
+    "clock_h_rear_cassette",
+    "clock_h_suspension",
+    "clock_h_top_eye",
+    "clock_h_beam_clamp",
+    "clock_h_fastener",
+    "clock_h_fastener.001",
+    "clock_h_fastener.002",
+    "clock_h_fastener.003",
+    "clock_h_side_hinge",
+    "clock_m_pivot",
+    "clock_m_assembly",
+    "clock_m_body",
+    "clock_m",
+    "clock_m_rear_cassette",
+    "clock_m_suspension",
+    "clock_m_top_eye",
+    "clock_m_beam_clamp",
+    "clock_m_fastener",
+    "clock_m_fastener.001",
+    "clock_m_fastener.002",
+    "clock_m_fastener.003",
+    "clock_m_side_hinge",
+    "clock_s_pivot",
+    "clock_s_assembly",
+    "clock_s_body",
+    "clock_s",
+    "clock_s_rear_cassette",
+    "clock_s_suspension",
+    "clock_s_top_eye",
+    "clock_s_beam_clamp",
+    "clock_s_fastener",
+    "clock_s_fastener.001",
+    "clock_s_fastener.002",
+    "clock_s_fastener.003",
+    "clock_s_side_hinge",
+    "archive_dexter_mount",
+    "archive_dexter_back",
+    "archive_dexter_screen",
+    "archive_dexter_cable",
+    "archive_dexter_eye",
+    "archive_dexter_collar",
+    "archive_dexter_cable.001",
+    "archive_dexter_eye.001",
+    "archive_dexter_collar.001",
+    "archive_severance_mount",
+    "archive_severance_back",
+    "archive_severance_screen",
+    "archive_severance_cable",
+    "archive_severance_eye",
+    "archive_severance_collar",
+    "archive_severance_cable.001",
+    "archive_severance_eye.001",
+    "archive_severance_collar.001",
+    "archive_got_mount",
+    "archive_got_back",
+    "archive_got_screen",
+    "archive_got_cable",
+    "archive_got_eye",
+    "archive_got_collar",
+    "archive_got_cable.001",
+    "archive_got_eye.001",
+    "archive_got_collar.001",
+    "weight_pivot",
+    "reset_body",
+    "counterweight_satin_band",
+    "reset_face",
+    "counterweight_endcap_ring",
+    "reset_ink",
+    "reset_tally",
+    "counterweight_top_collar",
+    "counterweight_top_collar.001",
+    "weight_clevis_cheek",
+    "weight_clevis_cheek.001",
+    "weight_clevis_axle",
+    "upper_rear_load_shaft",
+    "lower_rear_load_shaft",
+    "upper_pulley",
+    "upper_pulley_axle",
+    "lower_pulley",
+    "lower_pulley_axle",
+    "weight_load_cable_upper_0",
+    "weight_load_cable_0",
+    "weight_load_cable_upper_1",
+    "weight_load_cable_1",
+    "upper_ceiling_tension",
+    "secret_flange_pivot",
+    "secret_flange",
+    "hidden_crown",
+    "opening_camera"
+  ],
+  "required": [
+    "scene-mobile.glb"
+  ],
+  "textures": {
+    "sizes": "512 square",
+    "colour": [
+      "slate_albedo",
+      "limestone_albedo"
+    ],
+    "data": [
+      "brushed_roughness",
+      "brushed_normal",
+      "slate_roughness",
+      "slate_normal",
+      "limestone_roughness"
+    ]
+  },
+  "transferBytes": 7640848,
+  "triangleEstimate": 80304
+}

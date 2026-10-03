@@ -1,0 +1,269 @@
+{
+  "source": "actual saved scene-mobile.blend from export_mobile.py; full portrait bank and rooted bowl; unchanged archive stops",
+  "surfaces": {
+    "archive_got-s4": {
+      "phone390": 0,
+      "phone320": 0
+    },
+    "archive_severance-tracker": {
+      "phone390": 0,
+      "phone320": 0
+    },
+    "archive_dexter-s8-final": {
+      "phone390": 0,
+      "phone320": 0
+    },
+    "archive_got-s3-redesign": {
+      "phone390": 0,
+      "phone320": 0
+    },
+    "archive_got-s3-classic": {
+      "phone390": 0,
+      "phone320": 0
+    },
+    "archive_dexter-s7-finale": {
+      "phone390": 0,
+      "phone320": 0
+    },
+    "archive_severance-s2": {
+      "phone390": 0,
+      "phone320": 0
+    },
+    "archive_sherlock-final": {
+      "phone390": 0,
+      "phone320": 0
+    },
+    "archive_sherlock-alpha": {
+      "phone390": 0,
+      "phone320": 0
+    },
+    "archive_archer-s5-final": {
+      "phone390": 0,
+      "phone320": 0
+    },
+    "archive_breaking-bad-final": {
+      "phone390": 0,
+      "phone320": 0
+    },
+    "archive_breaking-bad-desert-parallax": {
+      "phone390": 0,
+      "phone320": 0
+    },
+    "archive_house-of-cards-s2": {
+      "phone390": 0,
+      "phone320": 0
+    }
+  },
+  "rails": {
+    "phone390": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "phone320": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "opening": {
+    "phone390": {
+      "phone_clock_days": {
+        "fullFaceBlocked": 0,
+        "glyphAndUnitsBlocked": 0,
+        "glyphPixelBounds": [
+          75.93,
+          322.18,
+          164.22,
+          405.09
+        ],
+        "samples": 81
+      },
+      "phone_clock_hours": {
+        "fullFaceBlocked": 0,
+        "glyphAndUnitsBlocked": 0,
+        "glyphPixelBounds": [
+          223.75,
+          322.18,
+          311.99,
+          405.09
+        ],
+        "samples": 81
+      },
+      "phone_clock_minutes": {
+        "fullFaceBlocked": 9,
+        "glyphAndUnitsBlocked": 0,
+        "glyphPixelBounds": [
+          79.87,
+          453.39,
+          165.21,
+          530.96
+        ],
+        "samples": 81
+      },
+      "phone_clock_seconds": {
+        "fullFaceBlocked": 9,
+        "glyphAndUnitsBlocked": 0,
+        "glyphPixelBounds": [
+          222.82,
+          453.39,
+          308.12,
+          530.96
+        ],
+        "samples": 81
+      },
+      "pressure_rest": {
+        "againBlocked": 0,
+        "tallyBlocked": 0,
+        "againSamples": 81,
+        "tallySamples": 81,
+        "againPixelBounds": [
+          90.09,
+          619.36,
+          299.9,
+          657.83
+        ],
+        "tallyPixelBounds": [
+          170.49,
+          664.47,
+          219.51,
+          676.38
+        ]
+      },
+      "pressure_pending": {
+        "againBlocked": 0,
+        "tallyBlocked": 0,
+        "againSamples": 81,
+        "tallySamples": 81,
+        "againPixelBounds": [
+          90.1,
+          619.89,
+          299.88,
+          659.62
+        ],
+        "tallyPixelBounds": [
+          170.5,
+          665.82,
+          219.51,
+          676.67
+        ]
+      }
+    },
+    "phone320": {
+      "phone_clock_days": {
+        "fullFaceBlocked": 0,
+        "glyphAndUnitsBlocked": 0,
+        "glyphPixelBounds": [
+          55.6,
+          282.48,
+          133.01,
+          355.17
+        ],
+        "samples": 81
+      },
+      "phone_clock_hours": {
+        "fullFaceBlocked": 0,
+        "glyphAndUnitsBlocked": 0,
+        "glyphPixelBounds": [
+          185.21,
+          282.48,
+          262.58,
+          355.17
+        ],
+        "samples": 81
+      },
+      "phone_clock_minutes": {
+        "fullFaceBlocked": 9,
+        "glyphAndUnitsBlocked": 0,
+        "glyphPixelBounds": [
+          59.06,
+          397.52,
+          133.88,
+          465.53
+        ],
+        "samples": 81
+      },
+      "phone_clock_seconds": {
+        "fullFaceBlocked": 9,
+        "glyphAndUnitsBlocked": 0,
+        "glyphPixelBounds": [
+          184.39,
+          397.52,
+          259.18,
+          465.53
+        ],
+        "samples": 81
+      },
+      "pressure_rest": {
+        "againBlocked": 0,
+        "tallyBlocked": 0,
+        "againSamples": 81,
+        "tallySamples": 81,
+        "againPixelBounds": [
+          68.01,
+          543.04,
+          251.97,
+          576.77
+        ],
+        "tallyPixelBounds": [
+          138.51,
+          582.59,
+          181.49,
+          593.04
+        ]
+      },
+      "pressure_pending": {
+        "againBlocked": 0,
+        "tallyBlocked": 0,
+        "againSamples": 81,
+        "tallySamples": 81,
+        "againPixelBounds": [
+          68.03,
+          543.5,
+          251.96,
+          578.34
+        ],
+        "tallyPixelBounds": [
+          138.51,
+          583.77,
+          181.49,
+          593.29
+        ]
+      }
+    }
+  },
+  "topology": {
+    "continuous_sculpted_wax_mass": {
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0
+    },
+    "phone_integrated_clock_bank": {
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0
+    },
+    "phone_rooted_pressure_platform": {
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0
+    }
+  }
+}

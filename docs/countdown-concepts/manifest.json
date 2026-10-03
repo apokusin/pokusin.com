@@ -1,0 +1,309 @@
+{
+  "prepared": "2026-10-02",
+  "status": "seven independently composed scene-first candidates implemented with authored Blender bundles; original rejection remains active until source/browser gates pass; Fair retained",
+  "concepts": [
+    {
+      "id": "tomorrows-roadworks",
+      "title": "Tomorrow’s Roadworks",
+      "round": "retained-references",
+      "displayOrder": null,
+      "reference": "references/tomorrows-roadworks.jpg",
+      "spec": "specs/tomorrows-roadworks.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-9ed386b7-15ab-4277-9170-38108cc4616c.png",
+      "originalPngSha256": "502ff2e3dc3b02809d53aeb72be4c18f50a6bed5696b17780a0964c08346b54f",
+      "referenceJpgSha256": "1c30c484ad608fc407b53a91e69312797291f2090942eadb76a04511f4c75e2f",
+      "report": "reports/tomorrows-roadworks.md",
+      "implementation": {
+        "module": "../../countdowns/concepts/tomorrows-roadworks.scene.js",
+        "stylesheet": "../../countdowns/concepts/tomorrows-roadworks.css",
+        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=tomorrows-roadworks",
+        "sharedHost": "../../countdowns/scene-host.js",
+        "sharedStylesheet": "../../countdowns/scene-host.css",
+        "assetManifest": "../../countdowns/assets/concepts/tomorrows-roadworks/scene/manifest.json",
+        "deploymentStatus": "branch preview at commit 1b62b21 / art version 9294fb76e7 verified healthy at desktop and phone; later corrections require separate publication verification"
+      },
+      "visualStatus": "repaired 390/320 phone clock/action composition recorded; representative reset/preview/distant return verified; original-source material gate remains open",
+      "architecture": "architecture/README.md",
+      "replacementStatus": "authored geometry/maps/runtime implemented; final original-reference browser gate pending",
+      "evidence": [
+        "architecture/evidence/rebuilt/road-eroded-desktop.jpg",
+        "architecture/evidence/rebuilt/road-final-desktop.jpg",
+        "architecture/evidence/rebuilt/road-final-390.jpg",
+        "architecture/evidence/rebuilt/road-phone-rig-390.jpg",
+        "architecture/evidence/rebuilt/road-phone-rig-320.jpg",
+        "architecture/evidence/rebuilt/road-distant-320.jpg",
+        "architecture/evidence/rebuilt/road-third-print-final-390.jpg"
+      ],
+      "validation": "validation/latest-results.json"
+    },
+    {
+      "id": "bubblegum-time",
+      "title": "Bubblegum Time",
+      "round": "retained-references",
+      "displayOrder": null,
+      "reference": "references/bubblegum-time.jpg",
+      "spec": "specs/bubblegum-time.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-e90f63f8-23b3-453a-ac4f-7245a534be6e.png",
+      "originalPngSha256": "6297efd06438b2527fdebb9545b6a2b1a849a3d2facdf2d30e4821178fc09106",
+      "referenceJpgSha256": "5859e8fd35e791a369d0c4ac1475facaef6d32019ebf1868cf20a837532cd4e9",
+      "report": "reports/bubblegum-time.md",
+      "implementation": {
+        "module": "../../countdowns/concepts/bubblegum-time.scene.js",
+        "stylesheet": "../../countdowns/concepts/bubblegum-time.css",
+        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=bubblegum-time",
+        "sharedHost": "../../countdowns/scene-host.js",
+        "sharedStylesheet": "../../countdowns/scene-host.css",
+        "assetManifest": "../../countdowns/assets/concepts/bubblegum-time/scene/manifest.json",
+        "deploymentStatus": "branch preview at commit 1b62b21 / art version 9294fb76e7 verified healthy at desktop and phone; later corrections require separate publication verification"
+      },
+      "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
+      "architecture": "architecture/README.md",
+      "replacementStatus": "authored geometry/maps/runtime implemented; final original-reference browser gate pending",
+      "evidence": [
+        "architecture/evidence/rebuilt/gum-rebuilt-390.jpg",
+        "architecture/evidence/rebuilt/gum-final-desktop.jpg",
+        "architecture/evidence/rebuilt/gum-final-390.jpg",
+        "architecture/evidence/rebuilt/gum-final-320.jpg",
+        "architecture/evidence/rebuilt/gum-upper-print-final-390.jpg"
+      ],
+      "validation": "validation/latest-results.json"
+    },
+    {
+      "id": "after-the-flame",
+      "title": "After the Flame",
+      "round": "new-explorations",
+      "displayOrder": 1,
+      "reference": "references/after-the-flame.jpg",
+      "spec": "specs/after-the-flame.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-f4650a5f-c0dc-428a-b0af-061eb7192ba4.png",
+      "originalPngSha256": "b13f7610a9b2541343fa7fe78941a5a65daadd853d85de482160eddad7183a0d",
+      "referenceJpgSha256": "be9db46c6986bb53a38ab2a3f0c7a66f0e845123f5885ed2ee24ed541031ebba",
+      "report": "reports/after-the-flame.md",
+      "implementation": {
+        "module": "../../countdowns/concepts/after-the-flame.scene.js",
+        "stylesheet": "../../countdowns/concepts/after-the-flame.css",
+        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=after-the-flame",
+        "sharedHost": "../../countdowns/scene-host.js",
+        "sharedStylesheet": "../../countdowns/scene-host.css",
+        "assetManifest": "../../countdowns/assets/concepts/after-the-flame/scene/manifest.json",
+        "deploymentStatus": "branch preview at commit 1b62b21 / art version 9294fb76e7 verified healthy at desktop and phone; later corrections require separate publication verification"
+      },
+      "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
+      "architecture": "architecture/README.md",
+      "replacementStatus": "authored geometry/maps/runtime implemented; final original-reference browser gate pending",
+      "evidence": [
+        "architecture/evidence/rebuilt/wax-rebuilt-desktop.jpg",
+        "architecture/evidence/rebuilt/wax-portrait-bank-390.jpg",
+        "architecture/evidence/rebuilt/wax-final-browser.jpg",
+        "architecture/evidence/rebuilt/wax-final-390.jpg",
+        "architecture/evidence/rebuilt/wax-final-320.jpg",
+        "architecture/evidence/rebuilt/wax-live-plaque-final-320.jpg",
+        "architecture/evidence/rebuilt/wax-plaque-clock-return-320.jpg"
+      ],
+      "validation": "validation/latest-results.json"
+    },
+    {
+      "id": "low-tide-later",
+      "title": "Low Tide, Later",
+      "round": "new-explorations",
+      "displayOrder": 2,
+      "reference": "references/low-tide-later.jpg",
+      "spec": "specs/low-tide-later.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-6dbe3343-c1e1-479c-84cc-934d84bb5f0d.png",
+      "originalPngSha256": "b9a74cf89e6b493b8133cc351807c2733d358f7ae9e4fe33d7ebdae6f207bd25",
+      "referenceJpgSha256": "54b52e992d4a7acbb96ff5f9bbdd09ebec10d1402dd08f36802f447a589defc0",
+      "report": "reports/low-tide-later.md",
+      "implementation": {
+        "module": "../../countdowns/concepts/low-tide-later.scene.js",
+        "stylesheet": "../../countdowns/concepts/low-tide-later.css",
+        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=low-tide-later",
+        "sharedHost": "../../countdowns/scene-host.js",
+        "sharedStylesheet": "../../countdowns/scene-host.css",
+        "assetManifest": "../../countdowns/assets/concepts/low-tide-later/scene/manifest.json",
+        "deploymentStatus": "branch preview at commit 1b62b21 / art version 9294fb76e7 verified healthy at desktop and phone; later corrections require separate publication verification"
+      },
+      "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
+      "architecture": "architecture/README.md",
+      "replacementStatus": "authored geometry/maps/runtime implemented; final original-reference browser gate pending",
+      "evidence": [
+        "architecture/evidence/rebuilt/tide-independent-browser.png",
+        "architecture/evidence/rebuilt/tide-390-browser.jpg",
+        "architecture/evidence/rebuilt/tide-refined-desktop.jpg",
+        "architecture/evidence/rebuilt/tide-final-320.jpg",
+        "architecture/evidence/rebuilt/tide-final-desktop.jpg",
+        "architecture/evidence/rebuilt/tide-final-390.jpg",
+        "architecture/evidence/rebuilt/tide-glyph-final-320.jpg",
+        "architecture/evidence/rebuilt/tide-archer-final-390.jpg",
+        "architecture/evidence/rebuilt/tide-navigation-fixed-390.jpg",
+        "architecture/evidence/rebuilt/published-tide-archer-desktop.jpg"
+      ],
+      "validation": "validation/latest-results.json"
+    },
+    {
+      "id": "not-yet-ripe",
+      "title": "Not Yet Ripe",
+      "round": "new-explorations",
+      "displayOrder": 3,
+      "reference": "references/not-yet-ripe.jpg",
+      "spec": "specs/not-yet-ripe.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-dfe441fa-412e-4b62-8dcb-d15e4dea174c.png",
+      "originalPngSha256": "39178571c4ccd9dfaba81ead521b26bf8f498de522da5f0fa895b18588da443d",
+      "referenceJpgSha256": "92f5afc3591b2b6767f64fd90f90b6646679885703f0e902c3bedb4833455b90",
+      "report": "reports/not-yet-ripe.md",
+      "implementation": {
+        "module": "../../countdowns/concepts/not-yet-ripe.scene.js",
+        "stylesheet": "../../countdowns/concepts/not-yet-ripe.css",
+        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=not-yet-ripe",
+        "sharedHost": "../../countdowns/scene-host.js",
+        "sharedStylesheet": "../../countdowns/scene-host.css",
+        "assetManifest": "../../countdowns/assets/concepts/not-yet-ripe/scene/manifest.json",
+        "deploymentStatus": "branch preview at commit 1b62b21 / art version 9294fb76e7 verified healthy at desktop and phone; later corrections require separate publication verification"
+      },
+      "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
+      "architecture": "architecture/README.md",
+      "replacementStatus": "authored geometry/maps/runtime implemented; final original-reference browser gate pending",
+      "evidence": [
+        "architecture/evidence/rebuilt/fruit-v6-desktop.jpg",
+        "architecture/evidence/rebuilt/fruit-rebuilt-390.jpg",
+        "architecture/evidence/rebuilt/fruit-v8-desktop.jpg",
+        "architecture/evidence/rebuilt/fruit-v8-390.jpg",
+        "architecture/evidence/rebuilt/fruit-caption-clearance-desktop.jpg"
+      ],
+      "validation": "validation/latest-results.json"
+    },
+    {
+      "id": "still-drawing-tomorrow",
+      "title": "Still Drawing Tomorrow",
+      "round": "new-explorations",
+      "displayOrder": 4,
+      "reference": "references/still-drawing-tomorrow.jpg",
+      "spec": "specs/still-drawing-tomorrow.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-db396a57-7f12-4b26-83dd-50babd61b769.png",
+      "originalPngSha256": "8127a6365f5a7c0af2e7e0e0e50dd9447b018c166ed7ccaf583f21b2aee1fa0e",
+      "referenceJpgSha256": "94957877324762ee9b69ebba404dc06b13d0a3aa4c9a7b330df0be3e23120803",
+      "report": "reports/still-drawing-tomorrow.md",
+      "implementation": {
+        "module": "../../countdowns/concepts/still-drawing-tomorrow.scene.js",
+        "stylesheet": "../../countdowns/concepts/still-drawing-tomorrow.css",
+        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=still-drawing-tomorrow",
+        "sharedHost": "../../countdowns/scene-host.js",
+        "sharedStylesheet": "../../countdowns/scene-host.css",
+        "assetManifest": "../../countdowns/assets/concepts/still-drawing-tomorrow/scene/manifest.json",
+        "deploymentStatus": "branch preview at commit 1b62b21 / art version 9294fb76e7 verified healthy at desktop and phone; later corrections require separate publication verification"
+      },
+      "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
+      "architecture": "architecture/README.md",
+      "replacementStatus": "authored geometry/maps/runtime implemented; final original-reference browser gate pending",
+      "evidence": [
+        "architecture/evidence/rebuilt/drawing-cels-desktop.jpg",
+        "architecture/evidence/rebuilt/drawing-rebuilt-390.jpg",
+        "architecture/evidence/rebuilt/drawing-final-desktop.jpg",
+        "architecture/evidence/rebuilt/drawing-final-390.jpg",
+        "architecture/evidence/rebuilt/drawing-final-320.jpg"
+      ],
+      "validation": "validation/latest-results.json"
+    },
+    {
+      "id": "held-in-suspense",
+      "title": "Held in Suspense",
+      "round": "new-explorations",
+      "displayOrder": 5,
+      "reference": "references/held-in-suspense.jpg",
+      "spec": "specs/held-in-suspense.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-793f81de-4e5c-45ec-80e1-6469f6ca0312.png",
+      "originalPngSha256": "82dfc1f7d48c033514cd4f80f03e162594957047e31a0a11d9b660a5d12b1725",
+      "referenceJpgSha256": "51e6a4aef15795b4ee0d695d841ddbc3e43c73149ff88223576a61af4480a807",
+      "report": "reports/held-in-suspense.md",
+      "implementation": {
+        "module": "../../countdowns/concepts/held-in-suspense.scene.js",
+        "stylesheet": "../../countdowns/concepts/held-in-suspense.css",
+        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=held-in-suspense",
+        "sharedHost": "../../countdowns/scene-host.js",
+        "sharedStylesheet": "../../countdowns/scene-host.css",
+        "assetManifest": "../../countdowns/assets/concepts/held-in-suspense/scene/manifest.json",
+        "deploymentStatus": "branch preview at commit 1b62b21 / art version 9294fb76e7 verified healthy at desktop and phone; later corrections require separate publication verification"
+      },
+      "visualStatus": "current-reflection 390/320 phone gap repair browser-confirmed; all four digits/unit faces clear; polished chrome original-source art gate remains open",
+      "architecture": "architecture/README.md",
+      "replacementStatus": "authored geometry/maps/runtime implemented; final original-reference browser gate pending",
+      "evidence": [
+        "architecture/evidence/rebuilt/metal-portrait-rig-390.jpg",
+        "architecture/evidence/rebuilt/metal-final-desktop.jpg",
+        "architecture/evidence/rebuilt/metal-final-390.jpg",
+        "architecture/evidence/rebuilt/metal-final-320.jpg",
+        "architecture/evidence/rebuilt/metal-reflections-desktop.jpg",
+        "architecture/evidence/rebuilt/metal-clear-unit-final-390.jpg",
+        "architecture/evidence/rebuilt/metal-clear-unit-final-320.jpg"
+      ],
+      "validation": "validation/latest-results.json"
+    },
+    {
+      "id": "the-almost-fair",
+      "title": "The Almost Fair",
+      "round": "new-explorations",
+      "displayOrder": 6,
+      "reference": "references/the-almost-fair.jpg",
+      "spec": "specs/the-almost-fair.md",
+      "nativeDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "originalGenerationFilename": "exec-858abbdc-3414-4588-a16a-f339f49f3a75.png",
+      "originalPngSha256": "52bebfe28f217815dd5a0f4a8b4d688175ca84d52b1411618de7712f29465661",
+      "referenceJpgSha256": "3627bd3acbbddaa30bdd1192ae2047a4a274c8d23b6d760d4aece64c126b7875",
+      "report": "reports/the-almost-fair.md",
+      "implementation": {
+        "module": "../../countdowns/concepts/the-almost-fair.js",
+        "stylesheet": "../../countdowns/concepts/the-almost-fair.css",
+        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=the-almost-fair"
+      },
+      "visualStatus": "retained; excluded from architecture reset"
+    }
+  ],
+  "runtimeAudit": "runtime-audit.md",
+  "rebuiltEvidence": "architecture/evidence/rebuilt/README.md",
+  "publishedVerification": {
+    "commit": "1b62b21",
+    "artVersion": "9294fb76e7",
+    "environment": "Cloudflare Pages branch preview",
+    "reportedBy": "root task purpose-built browser checks",
+    "scope": "seven desktop/phone scenes healthy with one canvas; representative Road physical reset and API observation",
+    "artAccepted": false,
+    "qa": "reimplementation-qa.md#published-branch-preview-checks"
+  },
+  "followupVerification": {
+    "artVersion": "7412219769",
+    "environment": "local browser after initial branch publication; later publication separately scoped",
+    "scope": "Metal390/320 unit gap, Tide phone utility ink, Wax zero-progress plaque Clock return; fresh source fixtures and combined geometry audit",
+    "geometryEvidence": "architecture/evidence/rebuilt/geometry-evidence.json",
+    "artAccepted": false
+  }
+}

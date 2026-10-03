@@ -1,0 +1,109 @@
+{
+  "method": "Saved authored meshes;81 sight samples per ink face from exact runtime phone camera; no source save",
+  "profiles": {
+    "phone390": {
+      "clock_d": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "clock_h": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "clock_m": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "clock_s": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "clock_d_unit": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "clock_h_unit": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "clock_m_unit": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "clock_s_unit": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "press_tally": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "again_ink": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      }
+    },
+    "phone320": {
+      "clock_d": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "clock_h": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "clock_m": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "clock_s": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "clock_d_unit": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "clock_h_unit": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "clock_m_unit": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "clock_s_unit": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "press_tally": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      },
+      "again_ink": {
+        "samples": 81,
+        "blocked": 0,
+        "occluders": []
+      }
+    }
+  }
+}

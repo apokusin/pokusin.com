@@ -1,0 +1,102 @@
+[data-theme="tomorrows-roadworks"]{--bg:#d9ae97;--fg:#22221d;--accent:#2356a6;--muted:#655142;--line:transparent;--card:#252521;color:#22221d;background:#d9ae97;font-family:"Barlow Condensed",sans-serif}
+[data-theme="tomorrows-roadworks"] body{background:linear-gradient(120deg,#e5bda2,#d5a389);color:#22221d}
+[data-theme="tomorrows-roadworks"] .gallery{max-width:none;padding-inline:0;overflow:clip}
+[data-theme="tomorrows-roadworks"] #art-hero{height:min(900px,90vw);min-height:680px;position:relative;isolation:isolate;margin:0;background:radial-gradient(ellipse at 75% 45%,#edc3a7 0,transparent 55%),#d9ae97}
+[data-theme="tomorrows-roadworks"] #art-stage{position:absolute;inset:0;background:url("../assets/concepts/tomorrows-roadworks/mineral-coast.jpg") center center/cover no-repeat}
+[data-theme="tomorrows-roadworks"] #art-stage canvas{display:block;width:100%;height:100%}
+[data-theme="tomorrows-roadworks"] .art-title{position:absolute;top:auto;bottom:5%;left:7%;font-family:"Barlow Condensed",sans-serif;font-size:clamp(50px,7vw,110px);line-height:.85;text-transform:uppercase;letter-spacing:-.025em;color:#e7c2a7;transform:rotate(-8deg);text-shadow:2px 2px #98735d,4px 4px #b98e73;z-index:3;pointer-events:none}
+[data-theme="tomorrows-roadworks"] .art-clock{position:absolute;left:27%;top:27%;width:44%;display:flex;gap:clamp(6px,1.2vw,18px);justify-content:center;align-items:center;transform:translate(-50%,-50%);background:#24231f;color:#f4dfb9;padding:12px 10px;border:8px solid #cda58a;border-radius:8px;box-shadow:0 6px 0 #bc947b;z-index:4}
+[data-theme="tomorrows-roadworks"] .art-clock .clock-unit{flex:1;min-width:0;text-align:center;border:1px solid #5b5142;border-radius:5px;padding:10px 0 6px;background:linear-gradient(#252421,#39352c)}
+[data-theme="tomorrows-roadworks"] .art-clock .clock-unit>span{font-family:"Barlow Condensed",sans-serif;font-size:clamp(48px,6.7vw,98px);font-weight:500;letter-spacing:0;line-height:1.05;color:#f4dfb9}
+[data-theme="tomorrows-roadworks"] .art-clock .clock-unit>small{font:500 12px "Barlow Condensed",sans-serif;text-transform:uppercase;margin-top:5px;letter-spacing:.15em;color:#f4dfb9}
+[data-theme="tomorrows-roadworks"] .art-reset-area,[data-theme="tomorrows-roadworks"] .art-mounts{position:absolute;inset:0;pointer-events:none}
+[data-theme="tomorrows-roadworks"] .art-reset-area>*{pointer-events:auto}
+[data-theme="tomorrows-roadworks"] .art-reset-area #royal-reset{position:absolute;left:58%;top:25%;transform:translate(-50%,-50%);width:106px;min-height:90px;aspect-ratio:1;border-radius:50%;border:4px solid #a94818;background:radial-gradient(circle at 30% 20%,#f68a46,#e55e17);box-shadow:0 7px 0 #76370f,inset 0 1px 0 #ffd09a;font:400 clamp(21px,2.3vw,32px) "Libre Baskerville",serif;color:#fff1d3;text-shadow:0 1px #9d4011;cursor:pointer;letter-spacing:-.025em}
+[data-theme="tomorrows-roadworks"] .art-reset-area #royal-reset:hover{filter:brightness(1.1)}
+[data-theme="tomorrows-roadworks"] .art-reset-area #royal-reset:focus-visible{outline:3px dashed #f4dfb9;outline-offset:5px}
+[data-theme="tomorrows-roadworks"] .art-reset-area #royal-reset:disabled{cursor:wait;filter:brightness(.92)}
+[data-theme="tomorrows-roadworks"] .art-reset-area .art-tally{position:absolute;left:58%;top:38%;transform:translate(-50%,-50%);font:500 20px "Barlow Condensed",sans-serif;color:#24231f;text-align:center;white-space:nowrap}
+[data-theme="tomorrows-roadworks"] .art-reset-area .clock-status{position:absolute;left:50%;right:auto;top:auto;bottom:2%;transform:translateX(-50%);font:14px "Barlow Condensed",sans-serif;width:min(90%,500px);text-align:center;color:#342d25;min-height:24px}
+[data-theme="tomorrows-roadworks"] .countdown-secret{font:italic 22px "Libre Baskerville",serif;background:#e4bb9e;padding:5px 14px}
+[data-theme="tomorrows-roadworks"] .art-secret-trigger{position:absolute;left:69%;top:21%;min-width:44px;min-height:44px;transform:translate(-50%,-50%);border:0;background:transparent;color:#d8d638;opacity:.18;z-index:7;cursor:pointer}
+[data-theme="tomorrows-roadworks"] .art-secret-trigger:hover,[data-theme="tomorrows-roadworks"] .art-secret-trigger:focus-visible{opacity:1;outline:1px dashed #292d32;outline-offset:2px}
+[data-theme="tomorrows-roadworks"] .art-scene-ready .art-secret-trigger img{display:none}
+[data-theme="tomorrows-roadworks"] .art-mounts .card{position:absolute;width:24%;margin:0;transform:translate(-50%,-50%);background:#24231f;border:3px solid #dcc1a0;box-shadow:0 4px 2px #8c6a5659;overflow:visible;pointer-events:auto;border-radius:0;z-index:4}
+[data-theme="tomorrows-roadworks"] .art-mounts .card:nth-child(1){left:20%;top:69%}
+[data-theme="tomorrows-roadworks"] .art-mounts .card:nth-child(2){left:81%;top:48%}
+[data-theme="tomorrows-roadworks"] .art-mounts .card:nth-child(3){left:56%;top:70%}
+[data-theme="tomorrows-roadworks"] .card .frame{aspect-ratio:16/9;border:0;background:#191916}
+[data-theme="tomorrows-roadworks"] .card .body{padding:7px 10px;background:#24231f;color:#f1dec3}
+[data-theme="tomorrows-roadworks"] .card .label{color:#f1dec3;font:500 11px "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.07em;line-height:1.2;text-wrap:pretty}
+[data-theme="tomorrows-roadworks"] .card:hover,[data-theme="tomorrows-roadworks"] .card:focus-visible{box-shadow:0 0 0 3px #d5d638,0 6px 3px #81624966;outline:none}
+[data-theme="tomorrows-roadworks"] .shownav{background:#d5d638;color:#272720;border:0;border-block:2px solid #29291d;padding:6px 3vw;margin:0;gap:0;z-index:20;border-radius:0;box-shadow:0 5px 0 #917054}
+[data-theme="tomorrows-roadworks"] .shownav a{font:500 12px "Barlow Condensed",sans-serif;color:#272720;border-radius:0;padding:10px 14px;letter-spacing:.025em}
+[data-theme="tomorrows-roadworks"] .shownav a[aria-current=true],[data-theme="tomorrows-roadworks"] .shownav a:hover{background:#29291d;color:#dfdd55}
+[data-theme="tomorrows-roadworks"] .shelf{position:relative;isolation:isolate;display:block;border:0;padding:70px 7vw 90px;min-height:420px;max-width:1400px;margin:0 auto;background:radial-gradient(ellipse at 68% 84%,#b5826540,transparent 50%)}
+[data-theme="tomorrows-roadworks"] .shelf::before{display:block;content:"";position:absolute;width:70%;height:108%;top:0;left:18%;border:60px solid #2356a6;border-top:0;border-bottom:0;border-radius:40% 60%;transform:rotate(-8deg);opacity:.55;z-index:-1;pointer-events:none}
+[data-theme="tomorrows-roadworks"] .shelf:nth-of-type(even)::before{transform:rotate(8deg);left:5%}
+[data-theme="tomorrows-roadworks"] .shelf-aside{margin:0 0 35px;justify-content:flex-start;padding:0;border:0}
+[data-theme="tomorrows-roadworks"] .shelf-name{font:500 clamp(18px,2.5vw,30px) "Barlow Condensed",sans-serif;text-transform:uppercase;white-space:nowrap;letter-spacing:-.03em;background:#d9dd3d;padding:8px 15px;box-shadow:4px 4px 0 #22221d}
+[data-theme="tomorrows-roadworks"] .shelf .grid{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(30px,5vw,95px);padding:0;overflow:visible}
+[data-theme="tomorrows-roadworks"] .shelf .card{position:relative;flex:0 1 43%;max-width:500px;min-width:250px;background:#24231f;border:8px solid #dabb9d;border-radius:0;margin:0 0 40px;overflow:visible;box-shadow:5px 8px 0 #9e7456;transform:rotate(-2deg)}
+[data-theme="tomorrows-roadworks"] .shelf .card:nth-child(even){transform:rotate(2deg);margin-top:85px}
+[data-theme="tomorrows-roadworks"] .shelf .card::before{content:"";position:absolute;top:-23px;left:44%;width:48px;height:14px;background:#2c2921;border-radius:50% 50% 0 0;box-shadow:0 5px 12px #fff0bc90;pointer-events:none}
+[data-theme="tomorrows-roadworks"] .shelf .card::after{content:"";position:absolute;top:100%;left:12%;width:76%;height:48px;background:linear-gradient(90deg,transparent 8%,#576573 8% 12%,transparent 12% 88%,#576573 88% 92%,transparent 92%);pointer-events:none;z-index:-1}
+[data-theme="tomorrows-roadworks"] .shelf .card .body{padding:12px 16px}
+[data-theme="tomorrows-roadworks"] .shelf .card .label{font-size:14px}
+[data-theme="tomorrows-roadworks"] .shelf-more{color:#22221d;font:500 14px "Barlow Condensed",sans-serif;background:#dcc5a8;border:1px solid #91755f;padding:10px 15px;border-radius:0;min-height:44px}
+@media(min-width:700px) and (max-width:900px){
+ [data-theme="tomorrows-roadworks"] .art-reset-area #royal-reset{min-width:76px;min-height:70px;font-size:21px}
+}
+@media(max-width:699px){
+ [data-theme="tomorrows-roadworks"] #art-hero{height:1170px;min-height:0}
+ [data-theme="tomorrows-roadworks"] .art-title{font-size:52px;bottom:5%;left:7%;transform:rotate(-5deg)}
+ [data-theme="tomorrows-roadworks"] .art-clock{left:50%;top:18%;width:90%;padding:9px 7px;gap:6px;border-width:5px}
+ [data-theme="tomorrows-roadworks"] .art-clock .clock-unit>span{font-size:clamp(38px,12vw,54px)}
+ [data-theme="tomorrows-roadworks"] .art-clock .clock-unit>small{font-size:10px;letter-spacing:.06em}
+ [data-theme="tomorrows-roadworks"] .art-reset-area #royal-reset{left:76%;top:29%;min-height:64px;width:70px;border-width:3px;font-size:20px}
+ [data-theme="tomorrows-roadworks"] .art-reset-area .art-tally{left:76%;top:35%;font-size:18px}
+ [data-theme="tomorrows-roadworks"] .art-mounts .card{width:86%;left:50%;border-width:3px}
+ [data-theme="tomorrows-roadworks"] .art-mounts .card:nth-child(1){left:50%;top:46%}
+ [data-theme="tomorrows-roadworks"] .art-mounts .card:nth-child(2){left:50%;top:63%}
+ [data-theme="tomorrows-roadworks"] .art-mounts .card:nth-child(3){left:50%;top:80%}
+ [data-theme="tomorrows-roadworks"] .art-secret-trigger{left:50%;top:31%}
+ [data-theme="tomorrows-roadworks"] .shelf{padding:60px 22px 70px;min-height:0}
+ [data-theme="tomorrows-roadworks"] .shelf::before{border-width:35px;width:80%;left:10%}
+ [data-theme="tomorrows-roadworks"] .shelf .grid{display:flex;flex-direction:column;gap:42px}
+ [data-theme="tomorrows-roadworks"] .shelf .card{width:100%;min-width:0;flex:auto;margin:0 0 20px;border-width:5px}
+ [data-theme="tomorrows-roadworks"] .shelf .card:nth-child(even){margin-top:0}
+ [data-theme="tomorrows-roadworks"] .shelf-aside{margin-bottom:30px}
+ [data-theme="tomorrows-roadworks"] .shelf-name{font-size:20px;padding:7px 10px}
+ [data-theme="tomorrows-roadworks"] .shownav a{font-size:11px;padding:10px}
+}
+@media(prefers-reduced-motion:reduce){[data-theme="tomorrows-roadworks"] .card,[data-theme="tomorrows-roadworks"] .art-reset-area #royal-reset{transition:none!important}}
+
+[data-theme="tomorrows-roadworks"] .archive-shelves{max-width:none;padding:0}
+
+/* Two intentional UI faces; preserve all measured positions and projected widths. */
+[data-theme="tomorrows-roadworks"] body,[data-theme="tomorrows-roadworks"] button,[data-theme="tomorrows-roadworks"] input,[data-theme="tomorrows-roadworks"] select,[data-theme="tomorrows-roadworks"] textarea,[data-theme="tomorrows-roadworks"] .masthead *,[data-theme="tomorrows-roadworks"] .theme-menu *,[data-theme="tomorrows-roadworks"] .foot,[data-theme="tomorrows-roadworks"] .foot *,[data-theme="tomorrows-roadworks"] .ov,[data-theme="tomorrows-roadworks"] .ov-ctrls *,[data-theme="tomorrows-roadworks"] .art-return,[data-theme="tomorrows-roadworks"] .art-reset-area .clock-status,[data-theme="tomorrows-roadworks"] .art-reset-area .countdown-ended{font-family:"Barlow Condensed",sans-serif}
+[data-theme="tomorrows-roadworks"] .countdown-secret{font-family:"Libre Baskerville",serif}
+[data-theme="tomorrows-roadworks"] .art-reset-area .art-tally>span{font-family:inherit}
+[data-theme="tomorrows-roadworks"] .shelf .more.shelf-more{font-family:"Barlow Condensed",sans-serif}
+
+/* The healthy scene supplies physical enclosures, bevels and lamp light. */
+[data-theme="tomorrows-roadworks"] .art-scene-ready .art-clock{background:transparent;border:0;box-shadow:none;border-radius:0;padding:12px 10px}
+[data-theme="tomorrows-roadworks"] .art-scene-ready .art-clock .clock-unit{background:transparent;border-color:transparent;box-shadow:none}
+[data-theme="tomorrows-roadworks"] .art-scene-ready .art-mounts .card{border:0;background:transparent;box-shadow:none}
+[data-theme="tomorrows-roadworks"] .art-scene-ready .art-mounts .card .body{background:#252621e8;padding:5px 10px}
+[data-theme="tomorrows-roadworks"] .art-scene-ready .art-reset-area #royal-reset{background:transparent;border-color:transparent;box-shadow:none;text-shadow:0 1px 2px #80360b}
+[data-theme="tomorrows-roadworks"] .art-scene-ready .art-reset-area #royal-reset:hover{background:#fff5dc0b}
+[data-theme="tomorrows-roadworks"] .shownav{background:transparent;box-shadow:none;border:0;justify-content:center;padding:12px 3vw;gap:7px}
+[data-theme="tomorrows-roadworks"] .shownav a{background:#d7d741;border:1px solid #817b30;box-shadow:2px 3px 0 #7a5d42;padding:9px 13px;transform:rotate(-1deg)}
+[data-theme="tomorrows-roadworks"] .shownav a:nth-child(even){transform:rotate(1deg)}
+[data-theme="tomorrows-roadworks"] .shownav a[aria-current=true]{background:#24251e;color:#e2df70;border-color:#24251e}
+[data-theme="tomorrows-roadworks"] .shelf{background-image:radial-gradient(ellipse at 68% 84%,#9d61432e,transparent 50%),url("../assets/concepts/tomorrows-roadworks/cast-surface.svg");background-size:auto,256px 256px}
+[data-theme="tomorrows-roadworks"] .shelf .card{border-image:linear-gradient(135deg,#f3d8b8,#b89171 46%,#e2c29e 75%,#a47e60) 1;box-shadow:2px 4px 0 #705139,6px 12px 12px #70462940}
+[data-theme="tomorrows-roadworks"] .shelf .card .body{background:#252621}
+[data-theme="tomorrows-roadworks"] .shelf .card::after{height:70px;background:linear-gradient(90deg,transparent 8%,#455b67 8% 11%,#91a1a3 11% 12%,transparent 12% 88%,#455b67 88% 91%,#91a1a3 91% 92%,transparent 92%),linear-gradient(32deg,transparent 47%,#536873 48% 49%,transparent 50%),linear-gradient(-32deg,transparent 47%,#536873 48% 49%,transparent 50%)}
+@media(max-width:699px){
+ [data-theme="tomorrows-roadworks"] .art-scene-ready .art-clock{padding:9px 7px}
+ [data-theme="tomorrows-roadworks"] .shownav{justify-content:flex-start;padding:13px 14px;gap:9px;background:#dbb195f2}
+ [data-theme="tomorrows-roadworks"] .shownav a{font-size:11px;padding:9px 11px}
+}

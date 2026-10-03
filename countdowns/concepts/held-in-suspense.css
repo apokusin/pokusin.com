@@ -1,0 +1,108 @@
+[data-theme="held-in-suspense"]{--bg:#efefea;--fg:#222526;--accent:#647278;--muted:#6f7879;--line:#b9c1c0;--card:#cbd1d2;background:#efefea;color:#222526;font-family:"Barlow Condensed",sans-serif}
+[data-theme="held-in-suspense"] body{background:linear-gradient(115deg,#f8f8f3,#e8e9e4);color:#222526}
+[data-theme="held-in-suspense"] .gallery{max-width:none;padding-inline:0;overflow:clip}
+[data-theme="held-in-suspense"] #art-hero{height:min(900px,80vw);min-height:730px;position:relative;isolation:isolate;margin:0;background:#efefea}
+[data-theme="held-in-suspense"] #art-stage{position:absolute;inset:0;background:linear-gradient(132deg,#fffef8,#e2e5e3)}
+[data-theme="held-in-suspense"] #art-stage canvas{display:block;width:100%;height:100%}
+[data-theme="held-in-suspense"] .art-title{position:absolute;top:88px;bottom:auto;right:40px;left:auto;font:400 clamp(21px,2.4vw,31px) "Barlow Condensed",sans-serif;letter-spacing:-.045em;color:#222526;transform:none;z-index:4;pointer-events:none}
+[data-theme="held-in-suspense"] .art-clock{position:absolute;inset:0;width:auto;height:auto;display:block;transform:none;padding:0;background:none;border:0;box-shadow:none;z-index:5;pointer-events:none}
+[data-theme="held-in-suspense"] .art-clock .clock-unit{position:absolute;left:34%;top:65%;width:110px;text-align:center;background:linear-gradient(105deg,#d8dddc,#b9c1c4 60%,#e1e4e1);border:1px solid #929ea4;border-radius:0;padding:14px 3px 10px;transform:translate(-50%,-50%);box-shadow:inset -3px 0 #8e9ba1,0 3px 3px #737e7b26}
+[data-theme="held-in-suspense"] .art-clock .clock-unit:nth-child(2){left:46%}
+[data-theme="held-in-suspense"] .art-clock .clock-unit:nth-child(3){left:58%}
+[data-theme="held-in-suspense"] .art-clock .clock-unit:nth-child(4){left:70%}
+[data-theme="held-in-suspense"] .art-clock .clock-unit>span{font-family:"Barlow Condensed",sans-serif;font-size:clamp(55px,5.8vw,90px);font-weight:500;line-height:1.05;color:#15191a;letter-spacing:-.025em}
+[data-theme="held-in-suspense"] .art-clock .clock-unit>small{font:11px "Barlow Condensed",sans-serif;color:#354044;margin-top:13px;text-transform:uppercase;letter-spacing:.2em}
+[data-theme="held-in-suspense"] .art-reset-area,[data-theme="held-in-suspense"] .art-mounts{position:absolute;inset:0;pointer-events:none}
+[data-theme="held-in-suspense"] .art-reset-area>*{pointer-events:auto}
+[data-theme="held-in-suspense"] .art-reset-area #royal-reset{position:absolute;left:85%;top:68%;width:112px;min-height:100px;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:2px solid #8b989e;background:radial-gradient(ellipse at 20% 10%,#f9faf5,#c7cfd2 70%,#9ca7ad);box-shadow:inset 2px 1px #fbfcf8,inset -3px -2px #9ca8ac;font:400 clamp(23px,2.6vw,34px) "Libre Baskerville",serif;color:#222526;padding:8px;cursor:pointer;letter-spacing:-.03em}
+[data-theme="held-in-suspense"] .art-reset-area #royal-reset:hover{filter:brightness(1.08)}
+[data-theme="held-in-suspense"] .art-reset-area #royal-reset:focus-visible{outline:2px solid #263b40;outline-offset:5px}
+[data-theme="held-in-suspense"] .art-reset-area #royal-reset:disabled{cursor:wait;opacity:.75}
+[data-theme="held-in-suspense"] .art-reset-area .art-tally{position:absolute;left:85%;top:81%;transform:translate(-50%,-50%);font:17px "Barlow Condensed",sans-serif;letter-spacing:.06em;color:#222526;text-align:center;white-space:nowrap}
+[data-theme="held-in-suspense"] .art-reset-area .clock-status{position:absolute;left:50%;right:auto;top:auto;bottom:1%;transform:translateX(-50%);width:min(90%,500px);text-align:center;min-height:24px;font:14px "Barlow Condensed",sans-serif;color:#4a5558}
+[data-theme="held-in-suspense"] .countdown-secret{font:italic 23px "Libre Baskerville",serif;color:#222526;background:#f7f8f0;padding:5px 12px}
+[data-theme="held-in-suspense"] .art-secret-trigger{position:absolute;left:15%;top:61%;min-width:44px;min-height:44px;transform:translate(-50%,-50%);background:transparent;border:0;color:#353f44;opacity:.18;cursor:pointer;z-index:8}
+[data-theme="held-in-suspense"] .art-secret-trigger:hover,[data-theme="held-in-suspense"] .art-secret-trigger:focus-visible{opacity:1;outline:1px solid #586e79;outline-offset:2px}
+[data-theme="held-in-suspense"] .art-scene-ready .art-secret-trigger img{display:none}
+[data-theme="held-in-suspense"] .art-mounts .card{position:absolute;width:27%;margin:0;transform:translate(-50%,-50%);background:linear-gradient(100deg,#e4e8e6,#aab5bc);border:6px solid #b2bdc2;border-radius:0;box-shadow:inset 1px 0 #f4f5f0,0 4px 5px #33454826;overflow:visible;pointer-events:auto;z-index:5}
+[data-theme="held-in-suspense"] .art-mounts .card:nth-child(1){left:24%;top:35%}
+[data-theme="held-in-suspense"] .art-mounts .card:nth-child(2){left:50%;top:31%}
+[data-theme="held-in-suspense"] .art-mounts .card:nth-child(3){left:76%;top:35%}
+[data-theme="held-in-suspense"] .card .frame{aspect-ratio:16/9;background:#151b1d;border:0}
+[data-theme="held-in-suspense"] .card .body{padding:7px 9px;background:linear-gradient(90deg,#dce1df,#bec9cc);color:#222526}
+[data-theme="held-in-suspense"] .card .label{font:12px "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.065em;color:#222526;line-height:1.2}
+[data-theme="held-in-suspense"] .card:hover,[data-theme="held-in-suspense"] .card:focus-visible{box-shadow:0 0 0 2px #263b40,0 5px 5px #33454826;outline:0}
+[data-theme="held-in-suspense"] .shownav{position:sticky;top:85px;z-index:20;float:left;width:150px;margin:80px 0 0 25px;padding:0 0 20px 20px;display:flex;flex-direction:column;align-items:flex-start;gap:3px;overflow:visible;background:transparent;border:0;border-left:2px solid #9ba7a9;box-shadow:none;backdrop-filter:none}
+[data-theme="held-in-suspense"] .shownav a{font:12px "Barlow Condensed",sans-serif;padding:10px 3px;color:#7a8282;border-radius:0;background:none;min-height:40px;white-space:nowrap}
+[data-theme="held-in-suspense"] .shownav a[aria-current=true],[data-theme="held-in-suspense"] .shownav a:hover{color:#222526;background:none;border-bottom:1px solid #222526}
+[data-theme="held-in-suspense"] .shelf{position:relative;isolation:isolate;display:block;padding:120px 5vw 100px 65px;border:0;margin:0 3vw 0 175px;max-width:1250px;min-height:410px;scroll-margin-top:75px}
+[data-theme="held-in-suspense"] .shelf::before{display:block;content:"";position:absolute;left:30px;top:0;bottom:0;width:8px;background:linear-gradient(90deg,#8f999f,#e0e6e5,#9aa8b0);box-shadow:3px 1px 3px #53636521;pointer-events:none}
+[data-theme="held-in-suspense"] .shelf::after{content:"";position:absolute;left:34px;top:85px;height:8px;width:calc(100% - 8vw);background:linear-gradient(#eef1ec,#a6b1b6);box-shadow:0 2px 2px #66757130;pointer-events:none}
+[data-theme="held-in-suspense"] .shelf-aside{position:relative;margin:0 0 60px;padding:0;justify-content:flex-start;z-index:2}
+[data-theme="held-in-suspense"] .shelf-name{font:400 clamp(19px,2.8vw,33px) "Barlow Condensed",sans-serif;letter-spacing:-.025em;white-space:nowrap;color:#222526;background:#efefea;padding:4px 13px 4px 0}
+[data-theme="held-in-suspense"] .shelf .grid{display:flex;flex-wrap:wrap;align-items:flex-start;gap:clamp(45px,5vw,80px);padding:0;overflow:visible}
+[data-theme="held-in-suspense"] .shelf .card{position:relative;flex:0 1 43%;max-width:530px;min-width:240px;margin:0 0 40px;background:#c2cbd0;border:7px solid #afb9bd;box-shadow:2px 3px 4px #4e616526;border-radius:0;overflow:visible;transform:rotate(-.7deg)}
+[data-theme="held-in-suspense"] .shelf .card:nth-child(even){margin-top:45px;transform:rotate(.8deg)}
+[data-theme="held-in-suspense"] .shelf .card::before{content:"";position:absolute;left:17%;right:17%;top:-61px;height:54px;background:linear-gradient(90deg,#6c777b 0 1px,transparent 1px calc(100% - 1px),#6c777b calc(100% - 1px));pointer-events:none}
+[data-theme="held-in-suspense"] .shelf .card::after{content:"";position:absolute;top:-10px;left:-9px;width:11px;height:11px;border-radius:50%;border:2px solid #667780;background:radial-gradient(circle,#e9ece9,#939fa6);box-shadow:0 1px 2px #38495333;pointer-events:none}
+[data-theme="held-in-suspense"] .shelf .card .body{padding:11px 13px}
+[data-theme="held-in-suspense"] .shelf .card .label{font-size:14px}
+[data-theme="held-in-suspense"] .shelf-more{font:italic 17px "Libre Baskerville",serif;color:#566770;padding:10px 0;border-bottom:1px solid #7c888b;min-height:44px;white-space:nowrap}
+@media(max-width:699px){
+ [data-theme="held-in-suspense"] #art-hero{height:1470px;min-height:0}
+ [data-theme="held-in-suspense"] .art-title{top:30px;right:auto;left:47%;font-size:17px;transform:translateX(-50%)}
+ [data-theme="held-in-suspense"] .art-clock .clock-unit{left:35%;top:15%;width:84px;padding:12px 1px 8px}
+ [data-theme="held-in-suspense"] .art-clock .clock-unit:nth-child(2){left:65%;top:15%}
+ [data-theme="held-in-suspense"] .art-clock .clock-unit:nth-child(3){left:35%;top:30%}
+ [data-theme="held-in-suspense"] .art-clock .clock-unit:nth-child(4){left:65%;top:30%}
+ [data-theme="held-in-suspense"] .art-clock .clock-unit>span{font-size:clamp(43px,13vw,55px)}
+ [data-theme="held-in-suspense"] .art-clock .clock-unit>small{font-size:10px;margin-top:10px}
+ [data-theme="held-in-suspense"] .art-reset-area #royal-reset{left:77%;top:42%;min-height:70px;width:75px;font-size:25px}
+ [data-theme="held-in-suspense"] .art-reset-area .art-tally{left:77%;top:47%;font-size:16px}
+ [data-theme="held-in-suspense"] .art-mounts .card{width:86%;left:50%;border-width:4px}
+ [data-theme="held-in-suspense"] .art-mounts .card:nth-child(1){left:50%;top:56%}
+ [data-theme="held-in-suspense"] .art-mounts .card:nth-child(2){left:50%;top:73%}
+ [data-theme="held-in-suspense"] .art-mounts .card:nth-child(3){left:50%;top:90%}
+ [data-theme="held-in-suspense"] .art-secret-trigger{left:13%;top:37%}
+ [data-theme="held-in-suspense"] .shownav{float:none;position:sticky;top:0;width:auto;margin:0;padding:9px 14px;flex-direction:row;gap:8px;overflow-x:auto;background:#efefeaee;border:0;border-bottom:1px solid #b9c1c0}
+ [data-theme="held-in-suspense"] .shownav a{padding:10px 5px;font-size:12px}
+ [data-theme="held-in-suspense"] .shelf{padding:80px 28px 80px;margin:0;min-height:0}
+ [data-theme="held-in-suspense"] .shelf::before{left:14px;width:5px}
+ [data-theme="held-in-suspense"] .shelf::after{left:16px;top:60px;width:calc(100% - 34px);height:5px}
+ [data-theme="held-in-suspense"] .shelf-aside{margin-bottom:55px}
+ [data-theme="held-in-suspense"] .shelf-name{font-size:22px}
+ [data-theme="held-in-suspense"] .shelf .grid{flex-direction:column;gap:60px}
+ [data-theme="held-in-suspense"] .shelf .card{width:100%;flex:auto;min-width:0;border-width:5px;margin:0 0 15px}
+ [data-theme="held-in-suspense"] .shelf .card:nth-child(even){margin-top:0}
+ [data-theme="held-in-suspense"] .shelf .card::before{top:-52px;height:45px}
+}
+@media(prefers-reduced-motion:reduce){[data-theme="held-in-suspense"] .card,[data-theme="held-in-suspense"] .art-reset-area #royal-reset{transition:none!important}}
+
+[data-theme="held-in-suspense"] .archive-shelves{max-width:none;padding:0}
+
+/* Two intentional UI faces; preserve all measured positions and projected widths. */
+[data-theme="held-in-suspense"] body,[data-theme="held-in-suspense"] button,[data-theme="held-in-suspense"] input,[data-theme="held-in-suspense"] select,[data-theme="held-in-suspense"] textarea,[data-theme="held-in-suspense"] .masthead *,[data-theme="held-in-suspense"] .theme-menu *,[data-theme="held-in-suspense"] .foot,[data-theme="held-in-suspense"] .foot *,[data-theme="held-in-suspense"] .ov,[data-theme="held-in-suspense"] .ov-ctrls *,[data-theme="held-in-suspense"] .art-return,[data-theme="held-in-suspense"] .art-reset-area .clock-status,[data-theme="held-in-suspense"] .art-reset-area .countdown-ended{font-family:"Barlow Condensed",sans-serif}
+[data-theme="held-in-suspense"] .countdown-secret{font-family:"Libre Baskerville",serif}
+[data-theme="held-in-suspense"] .art-reset-area .art-tally>span{font-family:inherit}
+[data-theme="held-in-suspense"] .shelf .more.shelf-more{font-family:"Libre Baskerville",serif}
+
+/* Live type sits on the actual machined plate; reflections belong to Three.js. */
+[data-theme="held-in-suspense"] .art-scene-ready .art-clock .clock-unit{background:transparent;border-color:transparent;box-shadow:none;padding:14px 3px 10px}
+[data-theme="held-in-suspense"] .art-scene-ready .art-mounts .card{background:transparent;border:0;box-shadow:none}
+[data-theme="held-in-suspense"] .art-scene-ready .art-mounts .card .body{background:transparent;padding:5px 9px}
+[data-theme="held-in-suspense"] .art-scene-ready .art-reset-area #royal-reset{background:transparent;border-color:transparent;box-shadow:none;padding:0;aspect-ratio:auto;min-height:74px}
+[data-theme="held-in-suspense"] .art-scene-ready .art-reset-area #royal-reset:hover{background:#ffffff06;filter:none}
+[data-theme="held-in-suspense"] .shelf{background:radial-gradient(ellipse at 78% 50%,#fafaf5b3,transparent 70%)}
+[data-theme="held-in-suspense"] .shelf::before{background:linear-gradient(90deg,#5f6a70 0%,#a9b6bf 12%,#e7ecea 27%,#a5b0b3 43%,#7c898f 52%,#d7dfdf 76%,#f4f5ed 85%,#77858c 100%);width:11px;box-shadow:2px 1px 2px #212c3333,7px 0 12px #31414a14}
+[data-theme="held-in-suspense"] .shelf::after{height:11px;background:linear-gradient(#f3f5ed 0%,#bfc9ce 19%,#8d9ca4 45%,#d6dddf 67%,#7e8b92 100%);box-shadow:0 1px 0 #5d6870,0 6px 10px #46565e18}
+[data-theme="held-in-suspense"] .shelf .card{border-image:linear-gradient(110deg,#718088 0%,#dae3e3 14%,#f0f1e9 28%,#82949e 42%,#b9c5ca 62%,#f0f3ed 84%,#77848c 100%) 1;box-shadow:1px 2px 0 #45525b,4px 8px 13px #2738411c;transform:rotate(-.45deg)}
+[data-theme="held-in-suspense"] .shelf .card:nth-child(even){transform:rotate(.6deg)}
+[data-theme="held-in-suspense"] .shelf .card .body{background:linear-gradient(105deg,#cfd8da,#b5c0c5 46%,#e0e5e3);padding:7px 13px}
+[data-theme="held-in-suspense"] .shelf .card::before{background:linear-gradient(90deg,#27343c 0 1px,#a4b5bc 1px 2px,transparent 2px calc(100% - 2px),#26353d calc(100% - 2px) calc(100% - 1px),#a4b5bc calc(100% - 1px));box-shadow:none}
+[data-theme="held-in-suspense"] .shelf .card::after{width:9px;height:9px;border-width:1px;background:radial-gradient(circle at 30% 22%,#eef1ea,#d3dcdd 28%,#46575f 68%,#bfc7c9 75%);box-shadow:0 1px 2px #13252a40}
+@media(max-width:699px){
+ [data-theme="held-in-suspense"] .art-scene-ready .art-clock .clock-unit{padding:12px 1px 8px}
+ [data-theme="held-in-suspense"] .art-scene-ready .art-reset-area #royal-reset{min-height:60px}
+ [data-theme="held-in-suspense"] .shelf::before{width:7px}
+ [data-theme="held-in-suspense"] .shelf::after{height:7px}
+}

@@ -1,0 +1,727 @@
+{
+  "prepared": "2026-10-02",
+  "status": "current authored candidates and earlier rebuilt evidence; no final art acceptance",
+  "captures": [
+    {
+      "concept": "tomorrows-roadworks",
+      "file": "road-eroded-desktop.jpg",
+      "role": "earlier rebuilt desktop before the later saved quarry/SSAO material candidate",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "b97b3c7662e31989dbb673e10f6098fa1a3578dbc2be319400d3936ad94ea6bd",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "road-eroded-desktop.png",
+      "series": "earlier rebuilt candidate"
+    },
+    {
+      "concept": "bubblegum-time",
+      "file": "gum-rebuilt-390.jpg",
+      "role": "rebuilt portrait reviewed; latest desktop source gate pending",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "033b3899428a5307dcf6d050f1cb17d043fef10686e5d676f83b86a1014f9637",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "gum-rebuilt-390.png",
+      "series": "earlier rebuilt candidate"
+    },
+    {
+      "concept": "after-the-flame",
+      "file": "wax-rebuilt-desktop.jpg",
+      "role": "rebuilt desktop reviewed; lighting/relief revision pending",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "2080b34cdc439fa21fd57a009baa1cea42d74ff9c3c70dc528e82a07ce0586bb",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "wax-rebuilt-desktop.png",
+      "series": "earlier rebuilt candidate"
+    },
+    {
+      "concept": "after-the-flame",
+      "file": "wax-portrait-bank-390.jpg",
+      "role": "failed portrait before the subsequent rooted-pool repair",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "b4a3c7c64c9894006a1c5e2616ccc37f1721f4a236351d22913b896c42209726",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "wax-portrait-bank-390.png",
+      "series": "earlier rebuilt candidate"
+    },
+    {
+      "concept": "low-tide-later",
+      "file": "tide-independent-browser.png",
+      "role": "earlier rebuilt desktop; later water/foam/material revisions unreviewed",
+      "pixelDimensions": {
+        "width": 1487,
+        "height": 1058
+      },
+      "sha256": "fea4e0d6824b58b370e4b22eeedf1f196b81682d9b06ab78e08fb9d95a6d8275",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "comparison evidence, not final source acceptance",
+      "format": "PNG",
+      "series": "earlier rebuilt candidate"
+    },
+    {
+      "concept": "low-tide-later",
+      "file": "tide-390-browser.jpg",
+      "role": "earlier rebuilt portrait; later revisions unreviewed",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "6380b508264e192d1ef3778e39ff5f732d6483a56b1db2ca41dc6dba0fa98dc6",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "tide-390-browser.png",
+      "series": "earlier rebuilt candidate"
+    },
+    {
+      "concept": "not-yet-ripe",
+      "file": "fruit-v6-desktop.jpg",
+      "role": "v6 rebuilt desktop before the wet-pulp/leaf refinement",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "6c7d4cad7d6d0a3315bf11aed2d125573e77c619065d03b9c92803124bd31b47",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "fruit-v6-desktop.png",
+      "series": "earlier rebuilt candidate"
+    },
+    {
+      "concept": "not-yet-ripe",
+      "file": "fruit-rebuilt-390.jpg",
+      "role": "v6 portrait before the tally/first-print/tag-clearance repair",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "531aa8d96a56e9ca07a645d705c65e6e58b6cb1c86a012e850dfce985acc3dc0",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "fruit-rebuilt-390.png",
+      "series": "earlier rebuilt candidate"
+    },
+    {
+      "concept": "still-drawing-tomorrow",
+      "file": "drawing-cels-desktop.jpg",
+      "role": "rebuilt desktop reviewed before later stock/rubber refinements",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "917506cad415c5fe29aa77bcdc7c471762ac56ebbb196835e536fa3589a550c5",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "drawing-cels-desktop.png",
+      "series": "earlier rebuilt candidate"
+    },
+    {
+      "concept": "still-drawing-tomorrow",
+      "file": "drawing-rebuilt-390.jpg",
+      "role": "rebuilt portrait reviewed",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "e2388b1e13d46eb67e28eaa711c24db74187d3585bdfaa37e1ab9517408fd04e",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "drawing-rebuilt-390.png",
+      "series": "earlier rebuilt candidate"
+    },
+    {
+      "concept": "held-in-suspense",
+      "file": "metal-portrait-rig-390.jpg",
+      "role": "rebuilt portrait reviewed; further chrome/reflection refinement pending",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "b845084f6c34624f409416df585101fbc68b3560f9c5bac9264b55a372ef2a4a",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "metal-portrait-rig-390.png",
+      "series": "earlier rebuilt candidate"
+    },
+    {
+      "concept": "still-drawing-tomorrow",
+      "file": "drawing-final-desktop.jpg",
+      "role": "current saved desktop after stock/rubber refinement",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "drawing-final-desktop.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "b7295a974cb2c23a047cb70911a539aea0097f9515017ef7f9d1fda2c05432a1",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "still-drawing-tomorrow",
+      "file": "drawing-final-390.jpg",
+      "role": "current saved portrait at requested 390",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "drawing-final-390.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "2ce39404081f7a4f65cc0b3b127ac26227ab39be9c4e000987c6e11e3224cfce",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "still-drawing-tomorrow",
+      "file": "drawing-final-320.jpg",
+      "role": "current saved portrait at requested 320",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "drawing-final-320.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 305,
+        "height": 541
+      },
+      "sha256": "e8777059106a841edf6df86eb6f2f5f28c7ed19d978a09600364f5787b1e1cf7",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "bubblegum-time",
+      "file": "gum-final-desktop.jpg",
+      "role": "current saved membrane/drum/cotton desktop",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "gum-final-desktop.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "d2e2d1b0c13336e45f3cb43f8f7b9fb8ce800422ccad57778fc4ef461a9281dd",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "bubblegum-time",
+      "file": "gum-final-390.jpg",
+      "role": "current saved portrait at requested 390",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "gum-final-390.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "43c7f24b2e0bdeb7f142d188c3d8611d57cfa3e388aab0ebc36f08b776ee4eee",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "bubblegum-time",
+      "file": "gum-final-320.jpg",
+      "role": "current saved portrait at requested 320",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "gum-final-320.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 305,
+        "height": 541
+      },
+      "sha256": "0f3d3f7e140ee4ebffc3a6db83d4ce2d9d7a6e0fdc8cff7948cae47f92c4a120",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "after-the-flame",
+      "file": "wax-final-browser.jpg",
+      "role": "current saved desktop with clean apertures and warm lighting",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "wax-final-browser.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "75d1e00da465bde9803f624070bb11a8809b2670554254da0c3c34557100e4c2",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "after-the-flame",
+      "file": "wax-final-390.jpg",
+      "role": "rooted foreground pool repair at requested 390; supersedes cropped-action frame",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "wax-final-390.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "692b457a41f185c0c29b1080ed10b852f9ba5f3ff86a1d367018a5f801031096",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "after-the-flame",
+      "file": "wax-final-320.jpg",
+      "role": "rooted foreground pool repair at requested 320",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "wax-final-320.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 305,
+        "height": 541
+      },
+      "sha256": "9d0c1d0963dccc58504d1779447ad833f7cbe7d50152f97a100290d4e7c346bf",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "held-in-suspense",
+      "file": "metal-final-desktop.jpg",
+      "role": "desktop before latest reflection refinement",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "metal-final-desktop.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "fbf0656ff9381cea5607d4ad307bad57d9271295e56ab109477e32a71848170b",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "held-in-suspense",
+      "file": "metal-final-390.jpg",
+      "role": "dedicated portrait rig at requested 390 before latest desktop reflection refinement",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "metal-final-390.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "6ebfb418c5fbfc19c0d4faa394a2ef2a52f21a6c2e0427cf684c66367fdec47e",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "held-in-suspense",
+      "file": "metal-final-320.jpg",
+      "role": "dedicated portrait rig at requested 320 before latest desktop reflection refinement",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "metal-final-320.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 305,
+        "height": 541
+      },
+      "sha256": "63b857f4e662bb98f6723844ed282e6f1b25c20fc012d3f56d79ebf745afec33",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "held-in-suspense",
+      "file": "metal-reflections-desktop.jpg",
+      "role": "latest saved desktop after chrome/window/floor reflection refinement",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "metal-reflections-desktop.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "bde6d06c11d1179688187dbf44d3e10517395b7ab611aa9e4959fcac9a532466",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "tomorrows-roadworks",
+      "file": "road-final-desktop.jpg",
+      "role": "saved layered quarry/SSAO/enamel desktop candidate",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "road-final-desktop.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "1c2f7e9898e35907791130871831a11e8e4e90ffe1d5c0496ff3ba2605f1bdf0",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "tomorrows-roadworks",
+      "file": "road-final-390.jpg",
+      "role": "historical failed undersized phone frame; superseded by road-phone-rig-390/320",
+      "series": "earlier rebuilt candidate",
+      "originalSavedFilename": "road-final-390.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "7ce03d1ad99b22dd5c8d7a1e0b1d7b984b20e109b652723c343faa73058712d8",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "not-yet-ripe",
+      "file": "fruit-v8-desktop.jpg",
+      "role": "v8 wet-pulp/leaf/ink and physical reset-binding candidate before later caption-clearance adjustment",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "fruit-v8-desktop.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "003c239d87bf76628d9a6fb3081d31a1b93551604057563227ef0614c00e49d8",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "not-yet-ripe",
+      "file": "fruit-v8-390.jpg",
+      "role": "v8 portrait retains v7 two-tier layout; before later desktop caption-clearance adjustment",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "fruit-v8-390.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "a41450aba21131f44883f2c49246d5100e3f31d08c40d26f426793a656cc61b9",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "not-yet-ripe",
+      "file": "fruit-caption-clearance-desktop.jpg",
+      "role": "authoritative desktop snapshot after v8 caption-clearance adjustment, confirmed by root",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "fruit-final-desktop.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "93b34f1ec14dcf598583eb736a9fdc205a3459c69d3d55470905223d9d7219fe",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "low-tide-later",
+      "file": "tide-refined-desktop.jpg",
+      "role": "current saved desktop water/foam/material refinement",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "tide-refined-desktop.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "dfad7cca06cd07097a3cd78801ed6dadfe3018787dfe67eb9f2a636e31e301e5",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "low-tide-later",
+      "file": "tide-final-320.jpg",
+      "role": "saved requested-320 portrait before later phone glyph strengthening",
+      "series": "current saved candidate sequence",
+      "originalSavedFilename": "tide-final-320.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 305,
+        "height": 541
+      },
+      "sha256": "b0339a0c8a93a8ba21bf97b62fb101908a0f1692c919d42c114f5a8fc1ab8dae",
+      "copiedAt": "2026-10-03T02:36:35.546563+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; no final art acceptance"
+    },
+    {
+      "concept": "low-tide-later",
+      "file": "tide-final-desktop.jpg",
+      "role": "latest root-saved desktop after shell-reset/Severance-preview verification",
+      "series": "latest root checks",
+      "originalSavedFilename": "tide-final-desktop.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "ee61ec27fca6f1fde95662f8d537bab7f202687ae71d0e665ddbf0452fc3012d",
+      "copiedAt": "2026-10-03T02:38:20.590077+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; physical reset/preview checks reported separately; no final art acceptance"
+    },
+    {
+      "concept": "low-tide-later",
+      "file": "tide-final-390.jpg",
+      "role": "latest root-saved requested-390 portrait after glyph strengthening",
+      "series": "latest root checks",
+      "originalSavedFilename": "tide-final-390.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "4e4ef2d9c109b25324bf0fb72b42f462b498f1bf18c855738542f466a6a29a3a",
+      "copiedAt": "2026-10-03T02:38:20.590077+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; physical reset/preview checks reported separately; no final art acceptance"
+    },
+    {
+      "concept": "low-tide-later",
+      "file": "tide-glyph-final-320.jpg",
+      "role": "latest root-saved requested-320 portrait after glyph strengthening; distinct from earlier same-named temporary capture",
+      "series": "latest root checks",
+      "originalSavedFilename": "tide-final-320.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 305,
+        "height": 541
+      },
+      "sha256": "f33dd59b41d8d58c6d035cd079943acbb1d59dd371847a652fdee670917556b3",
+      "copiedAt": "2026-10-03T02:38:20.590077+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "version-specific comparison evidence; physical reset/preview checks reported separately; no final art acceptance"
+    },
+    {
+      "concept": "tomorrows-roadworks",
+      "file": "road-phone-rig-390.jpg",
+      "role": "repaired requested-390 phone rig: all four clock units and Again fit; physical reset confirmed once 405\u2192406",
+      "series": "latest root checks",
+      "originalSavedFilename": "road-phone-rig-390.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "c1373161941ff2fb41995ebaeaf03d82ead53489f6947158460df2d6b4eb2b6d",
+      "copiedAt": "2026-10-03T02:44:39.380285+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "repaired phone composition and representative functional evidence; no final art acceptance"
+    },
+    {
+      "concept": "tomorrows-roadworks",
+      "file": "road-phone-rig-320.jpg",
+      "role": "repaired requested-320 phone rig: physical GoT billboard opened genuine Season 4 and Escape restored native focus/scroll",
+      "series": "latest root checks",
+      "originalSavedFilename": "road-phone-rig-320.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 305,
+        "height": 541
+      },
+      "sha256": "64d23b3ce4756b45996f771cb71e7c86591a6544b082505b5a20e1c8dcbbc41c",
+      "copiedAt": "2026-10-03T02:44:39.380285+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "repaired phone composition and representative functional evidence; no final art acceptance"
+    },
+    {
+      "concept": "tomorrows-roadworks",
+      "file": "road-distant-320.jpg",
+      "role": "requested-320 distant Severance tracker reached with End; visible Clock returned to opening scroll 0",
+      "series": "latest root checks",
+      "originalSavedFilename": "road-distant-320.png",
+      "format": "JPEG",
+      "pixelDimensions": {
+        "width": 305,
+        "height": 541
+      },
+      "sha256": "2870eeaa4e83780a2ce7d00f752c75bfb1b55fba45721e9ae6d6e083f0f4d064",
+      "copiedAt": "2026-10-03T02:44:39.380285+00:00",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte; no re-encoding",
+      "verdict": "repaired phone composition and representative functional evidence; no final art acceptance"
+    },
+    {
+      "concept": "tomorrows-roadworks",
+      "file": "road-third-print-final-390.jpg",
+      "role": "fresh requested-390 focused Season 3 classic billboard after rooted telescoping support clearance; native Return opened genuine GoT Season 3 classic",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "26349f0943ea1938f812c4dc1b7a62577802d531a5f48fba5524558fde0274eb",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "functional comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "road-third-print-final-390.jpg",
+      "series": "current candidate"
+    },
+    {
+      "concept": "bubblegum-time",
+      "file": "gum-upper-print-final-390.jpg",
+      "role": "fresh requested-390 focused upper Dexter Season 7 print after cotton/mounting-root clearance; native Return opened genuine Dexter Season 7 finale",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "042bae98905e43640c96a76ed23a1412491d3fd7ba5d817463d6bbb1c9c7b1a4",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "functional comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "gum-upper-print-final-390.jpg",
+      "series": "current candidate"
+    },
+    {
+      "concept": "low-tide-later",
+      "file": "tide-archer-final-390.jpg",
+      "role": "fresh requested-390 focused Archer paper after whole-footprint bed clearance; native Return opened genuine Archer Season 5 final",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "81ef8023d50b8a884e49b4cca323b27a6fb26b2309b65599d1c2c734ffd7f654",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "functional comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "tide-archer-final-390.jpg",
+      "series": "current candidate"
+    },
+    {
+      "concept": "after-the-flame",
+      "file": "wax-live-plaque-final-320.jpg",
+      "role": "fresh requested-320 native Live focus shows clear rooted wax plaque and one healthy canvas; no link-activation claim",
+      "pixelDimensions": {
+        "width": 305,
+        "height": 541
+      },
+      "sha256": "ecd75ea540aac79369f650d8bb6616d55ca6ae70c3a3b05d38e6aede91f053e2",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "functional comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "wax-live-plaque-final-320.jpg",
+      "series": "current candidate"
+    },
+    {
+      "concept": "held-in-suspense",
+      "file": "metal-clear-unit-final-390.jpg",
+      "role": "current-reflection phone gap correction at art version 7412219769; all four digits/unit labels visibly clear at requested390",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "6a6cf21918574191e282739dc3062120c9dd03a3cd3a4c6619052048d23c77ed",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "functional comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "metal-clear-unit-final-390.jpg",
+      "series": "publication and follow-up evidence",
+      "artVersion": "7412219769"
+    },
+    {
+      "concept": "held-in-suspense",
+      "file": "metal-clear-unit-final-320.jpg",
+      "role": "same bounded phone gap correction at requested320; all four digits/unit labels clear",
+      "pixelDimensions": {
+        "width": 305,
+        "height": 541
+      },
+      "sha256": "f2bb90edb2b6ab2b0376b89344e4816183390eb51ef186313308b69ccf98fb03",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "functional comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "metal-clear-unit-final-320.jpg",
+      "series": "publication and follow-up evidence",
+      "artVersion": "7412219769"
+    },
+    {
+      "concept": "low-tide-later",
+      "file": "tide-navigation-fixed-390.jpg",
+      "role": "local phone utility-ink correction observed RGB17,63,115 at art version7412219769; branch publication separately scoped",
+      "pixelDimensions": {
+        "width": 375,
+        "height": 812
+      },
+      "sha256": "015bd77582f8f18dffd3b22cf3be9def058f09d6b56b8b431b5169563bab256e",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "functional comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "tide-navigation-fixed-390.jpg",
+      "series": "publication and follow-up evidence",
+      "artVersion": "7412219769"
+    },
+    {
+      "concept": "after-the-flame",
+      "file": "wax-plaque-clock-return-320.jpg",
+      "role": "local rooted Live plaque at progress0 with visible Clock; root activated Clock and observed opening scroll0 with Clock hidden",
+      "pixelDimensions": {
+        "width": 305,
+        "height": 541
+      },
+      "sha256": "d48f119dbf2b2fe804ecc1a90e08f39bb9423f068ed09a503c7cd264a8eab5e6",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "functional comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "wax-plaque-clock-return-320.jpg",
+      "series": "publication and follow-up evidence",
+      "artVersion": "7412219769"
+    },
+    {
+      "concept": "low-tide-later",
+      "file": "published-tide-archer-desktop.jpg",
+      "role": "published commit1b62b21 art9294fb76e7 Archer paper clear; Return opened genuine Season5 final; Escape unloaded iframe/restored native Archer focus",
+      "pixelDimensions": {
+        "width": 1472,
+        "height": 1047
+      },
+      "sha256": "e8e0374754135fcd0d7d9d5001c3f810b14ce946c52a38627bd3d906fc512f9a",
+      "captureSource": "root-owned in-app-browser screenshot saved locally; copied byte-for-byte",
+      "verdict": "functional comparison evidence, not final source acceptance",
+      "format": "JPEG",
+      "originalSavedFilename": "published-tide-archer-desktop.jpg",
+      "series": "publication and follow-up evidence",
+      "artVersion": "9294fb76e7",
+      "publishedCommit": "1b62b21"
+    }
+  ]
+}

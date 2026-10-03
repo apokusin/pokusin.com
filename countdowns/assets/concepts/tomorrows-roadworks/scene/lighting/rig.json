@@ -1,0 +1,55 @@
+{
+  "toneMapping": "ACESFilm in shared host",
+  "exposure": 1.02,
+  "key": {
+    "color": "#ffc994",
+    "intensity": 3.8,
+    "position": [
+      -22,
+      19,
+      14
+    ],
+    "target": [
+      1,
+      1,
+      -5
+    ],
+    "shadowMap": {
+      "desktop": 2048,
+      "phone": 1024
+    },
+    "shadowBounds": [
+      -20,
+      22,
+      22,
+      -19,
+      1,
+      85
+    ]
+  },
+  "bounce": {
+    "sky": "#9bbded",
+    "ground": "#845330",
+    "intensity": 0.72
+  },
+  "rim": {
+    "color": "#9dbbe7",
+    "intensity": 0.8,
+    "position": [
+      19,
+      16,
+      -18
+    ]
+  },
+  "environment": {
+    "source": "Procedural physical sky with one broad warm sun shape consistent with key",
+    "intensity": 0.36
+  },
+  "localWorkPools": {
+    "color": "#ffcd73",
+    "intensity": 25,
+    "range": 5,
+    "positions": "manifest.workLampPositionsGLTF"
+  },
+  "notes": "Actual browser source/mobile material acceptance remains required; this file records the authored rig, not certification."
+}
