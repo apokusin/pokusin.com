@@ -346,6 +346,9 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
 [data-theme=control] .shelf .grid{gap:26px}
 [data-theme=control] .card,[data-theme=control] .card:nth-child(even){transform:none}
 [data-theme=control] .card:hover,[data-theme=control] .card:nth-child(even):hover{transform:none}
+.gallery[data-theme=control] .card,.gallery[data-theme=control] .card:nth-child(even){--mount-angle:-1.5deg;--mount-y:0px;--mount-lift:0px;position:relative;transform:translateY(calc(var(--mount-y) + var(--mount-lift))) rotate(var(--mount-angle));transform-origin:50% 55%;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.gallery[data-theme=control] .card:nth-child(even){--mount-angle:2deg;--mount-y:36px}
+.gallery[data-theme=control] .card:hover,.gallery[data-theme=control] .card:nth-child(even):hover,.gallery[data-theme=control] .card:focus-visible{--mount-lift:-6px;z-index:1;transform:translateY(calc(var(--mount-y) + var(--mount-lift))) rotate(var(--mount-angle))}
 [data-theme=control] .frame{aspect-ratio:16/10;border:12px solid #28332d;outline:1px solid #536050;border-radius:10px;box-shadow:inset 0 1px #8f9b8330,0 3px #080e0a,0 20px 30px -15px #000b;transition:outline-color .3s,box-shadow .3s}
 [data-theme=control] .frame::after{border:1px solid #8d9b7c25;border-radius:1px;box-shadow:inset 0 0 38px #0007;background:linear-gradient(122deg,#e8e0bb0e,transparent 38%),repeating-linear-gradient(transparent 0 3px,#0002 3px 4px);transition:opacity .3s}
 [data-theme=control] .card:hover .frame,[data-theme=control] .card:focus-visible .frame{outline-color:#9baf8d;box-shadow:inset 0 1px #8f9b8350,0 3px #080e0a,0 20px 30px -15px #000b,0 0 24px #f071520a}
@@ -365,10 +368,28 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
  .gallery #got .card:first-child{grid-row:span 2}
  .gallery #got .card:first-child .frame{aspect-ratio:4/3}
  .gallery #got .card:nth-child(3){transform:rotate(-1deg)}
- [data-theme=control] #got .grid{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:26px}
- [data-theme=control] #got .card:first-child{grid-row:auto}
- [data-theme=control] #got .card:first-child .frame{aspect-ratio:16/10}
- [data-theme=control] #got .card:nth-child(3){transform:none}
+ .gallery[data-theme=control] .shelf{margin-bottom:56px}
+ .gallery[data-theme=control] .shelf-aside{margin-bottom:24px}
+ .gallery[data-theme=control] .shelf .grid{grid-template-columns:1.1fr 1fr;gap:clamp(30px,4.2vw,60px);padding:18px 20px 52px}
+ .gallery[data-theme=control] #severance .card:nth-child(2){width:92%;margin-left:auto;--mount-angle:2.2deg;--mount-y:38px}
+ .gallery[data-theme=control] #house-of-cards .grid{width:68%;margin-left:24%;grid-template-columns:minmax(0,1fr)}
+ .gallery[data-theme=control] #house-of-cards .card{--mount-angle:1.6deg;--mount-y:0px}
+ .gallery[data-theme=control] #breaking-bad .grid{grid-template-columns:.94fr 1.14fr}
+ .gallery[data-theme=control] #breaking-bad .card:first-child{width:94%;margin-left:6%;--mount-angle:-2deg;--mount-y:28px}
+ .gallery[data-theme=control] #breaking-bad .card:nth-child(2){--mount-angle:1.3deg;--mount-y:0px}
+ .gallery[data-theme=control] #archer .grid{width:72%;margin-left:4%;grid-template-columns:minmax(0,1fr)}
+ .gallery[data-theme=control] #archer .card{--mount-angle:-1.8deg;--mount-y:0px}
+ .gallery[data-theme=control] #sherlock .grid{grid-template-columns:1.2fr 1fr}
+ .gallery[data-theme=control] #sherlock .card:first-child{--mount-angle:-1.1deg}
+ .gallery[data-theme=control] #sherlock .card:nth-child(2){width:94%;margin-left:auto;--mount-angle:1.7deg;--mount-y:40px}
+ .gallery[data-theme=control] #dexter .grid{grid-template-columns:.95fr 1.1fr}
+ .gallery[data-theme=control] #dexter .card:first-child{width:92%;margin-left:7%;--mount-angle:-1.8deg;--mount-y:34px}
+ .gallery[data-theme=control] #dexter .card:nth-child(2){--mount-angle:2.1deg;--mount-y:0px}
+ .gallery[data-theme=control] #got .grid{grid-template-columns:1.2fr 1fr;row-gap:34px}
+ .gallery[data-theme=control] #got .card:first-child{grid-row:span 2;align-self:center;--mount-angle:-1.4deg}
+ .gallery[data-theme=control] #got .card:first-child .frame{aspect-ratio:16/10}
+ .gallery[data-theme=control] #got .card:nth-child(2){width:92%;margin-left:auto;--mount-y:0px;--mount-angle:2deg}
+ .gallery[data-theme=control] #got .card:nth-child(3){width:96%;margin-left:auto;--mount-angle:-2.2deg;transform:translateY(calc(var(--mount-y) + var(--mount-lift))) rotate(var(--mount-angle))}
 }
 @media(max-width:1000px) and (min-width:761px){.gallery .shownav a{font-size:9px;gap:5px}.gallery .shownav{gap:10px;justify-content:flex-start}.gallery .wrap{padding-inline:32px}}
 @media(max-width:760px){
@@ -429,8 +450,11 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
  [data-theme=control] .carousel-controls{gap:0}
  [data-theme=control] .carousel-btn{width:44px;height:44px}
  [data-theme=control] .shelf-copy{gap:7px}
- [data-theme=control] .carousel .card,[data-theme=control] .carousel .card:nth-child(even){transform:none;flex-basis:calc(100vw - 76px)}
+ [data-theme=control] .carousel .card,[data-theme=control] .carousel .card:nth-child(even){flex-basis:calc(100vw - 76px)}
+ .gallery[data-theme=control] .carousel .card{--mount-angle:-1.2deg;--mount-y:4px;transform:translateY(calc(var(--mount-y) + var(--mount-lift))) rotate(var(--mount-angle))}
+ .gallery[data-theme=control] .carousel .card:nth-child(even){--mount-angle:1.6deg;--mount-y:18px;transform:translateY(calc(var(--mount-y) + var(--mount-lift))) rotate(var(--mount-angle))}
  [data-theme=control] .shelf .grid{gap:20px;padding-bottom:30px}
+ .gallery[data-theme=control] .shelf .grid{gap:24px;padding-top:18px;padding-bottom:48px}
  [data-theme=control] .frame{border-width:9px;border-radius:8px}
  [data-theme=control] .body{padding-top:12px}.gallery[data-theme=control] .label{font-size:10px;line-height:1.5}
  [data-theme=control] .more.shelf-more{margin-top:0}
@@ -439,4 +463,29 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
  .gallery .hero-atmosphere,.gallery .title-glyph,.gallery .clock-unit>span,.gallery .card,.gallery .shelf,.gallery .frame,.gallery .frame::after{animation:none!important;transition:none!important}
  .gallery.motion-ready .shelf{opacity:1;transform:none}
  [data-theme=control] #theme-scene,[data-theme=control] .control-fallback,.gallery[data-theme=control] .scene-ready .control-fallback{transition:none}
+}
+
+/* The expanded archive lives in the same sage monitor chassis as its card. */
+.gallery[data-theme=control] .ov{padding:36px}
+.gallery[data-theme=control] .ov-backdrop{background:#0b120fe3;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+.gallery[data-theme=control] .ov-dialog{width:min(1200px,calc(100vw - 72px));height:min(820px,calc(100dvh - 96px));border:1px solid #71806d;border-radius:14px;background:radial-gradient(circle at 12px 12px,#0a100b 0 2px,#71806d 2px 3px,transparent 3.5px),radial-gradient(circle at calc(100% - 12px) 12px,#0a100b 0 2px,#71806d 2px 3px,transparent 3.5px),linear-gradient(135deg,#354339,#222d26 64%);box-shadow:inset 0 1px #c4cfaa35,inset 0 -3px #0a100b,0 4px #080e0a,0 32px 90px #0009;overflow:hidden}
+.gallery[data-theme=control] .ov-dialog::before{content:'';position:absolute;inset:0;pointer-events:none;background:url('assets/control-grain.svg');opacity:.08;mix-blend-mode:soft-light}
+.gallery[data-theme=control] .ov-stage{inset:24px 24px 80px;border:2px solid #090f0c;border-radius:3px;overflow:hidden;box-shadow:0 1px #95a48133,inset 0 0 20px #0009}
+.gallery[data-theme=control] .ov-stage::after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 24px #0004;background:linear-gradient(120deg,#e8e0bb08,transparent 35%)}
+.gallery[data-theme=control] .ov-ctrls{position:absolute;top:auto;bottom:16px;right:24px;gap:8px}
+.gallery[data-theme=control] .ov-open,.gallery[data-theme=control] .ov-close{width:44px;height:44px;padding:0;border-radius:4px;border:1px solid #71806d;background:#19231c;color:var(--fg);box-shadow:inset 0 1px #c4cfaa15,0 2px #080e0a;backdrop-filter:none;-webkit-backdrop-filter:none}
+.gallery[data-theme=control] .ov-open:hover,.gallery[data-theme=control] .ov-close:hover{border-color:var(--accent);color:var(--accent);background:#1f2b23}
+.gallery[data-theme=control] .ov-open:focus-visible,.gallery[data-theme=control] .ov-close:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.gallery[data-theme=control] .ov-open .lbl{display:none}
+.gallery[data-theme=control] .ov-cap{position:absolute;top:auto;bottom:24px;left:28px;max-width:calc(100% - 174px);color:var(--fg);font:10px/1.6 'IBM Plex Mono',monospace;letter-spacing:.025em;text-transform:uppercase;text-shadow:0 1px #080e0a}
+@media(max-width:640px){
+ .gallery[data-theme=control] .ov{padding:0}
+ .gallery[data-theme=control] .ov-dialog{width:100%;height:100dvh;border:0;border-radius:0;box-shadow:none}
+ .gallery[data-theme=control] .ov-stage{inset:12px 12px calc(76px + env(safe-area-inset-bottom))}
+ .gallery[data-theme=control] .ov-ctrls{bottom:calc(14px + env(safe-area-inset-bottom));right:16px;left:auto;transform:translateY(8px)}
+ .gallery[data-theme=control] .ov.open .ov-ctrls{transform:none}
+ .gallery[data-theme=control] .ov-cap{display:block;bottom:calc(20px + env(safe-area-inset-bottom));left:16px;max-width:calc(100% - 148px);font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ .gallery[data-theme=control] .ov-backdrop,.gallery[data-theme=control] .ov-cap,.gallery[data-theme=control] .ov-ctrls,.gallery[data-theme=control] #ov-frame{transition:none;transform:none}
 }

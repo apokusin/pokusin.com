@@ -6,7 +6,7 @@
   <title>Sherlock Countdowns · Archive</title>
   <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin between 2012 and 2025, preserved and ticking live.">
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=d76789d2">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=c1f8d3f4">
 </head>
 <body>
   <div class="wrap">
@@ -78,6 +78,8 @@
   var srcCard=null,srcRect=null,DUR=440,EASE='cubic-bezier(.2,.8,.2,1)',ft=null,closing=false,generation=0,endHandler=null;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fullCountdownMedia=matchMedia('(max-width: 640px)');
+  var controlMonitor=document.documentElement.classList.contains('gallery')&&document.documentElement.dataset.theme==='control';
+  if(controlMonitor){dialog.appendChild(cap);dialog.appendChild(ov.querySelector('.ov-ctrls'));frame.setAttribute('scrolling','auto');}
   function shouldOpenFullCountdown(){ return !document.documentElement.classList.contains('gallery') && fullCountdownMedia.matches; }
   function frameStops(){
     var doc=frame.contentDocument;
@@ -93,7 +95,10 @@
   }
   frame.addEventListener('load',function(){
     if((frame.src||'').indexOf('about:blank')<0) frame.classList.add('loaded');
-    try{frame.contentDocument.addEventListener('keydown',function(e){
+    try{
+      // Viewer scrollbar chrome only; preserved page typography and layout stay intact.
+      if(controlMonitor){frame.contentDocument.documentElement.style.scrollbarColor='#697466 #111916';frame.contentDocument.documentElement.style.scrollbarWidth='thin';}
+      frame.contentDocument.addEventListener('keydown',function(e){
       if(ov.hidden)return;
       if(e.key==='Escape'){e.preventDefault();close();return;}
       if(e.key!=='Tab')return;
@@ -119,7 +124,12 @@
     srcRect=originRect&&['left','top','width','height'].every(function(k){return Number.isFinite(originRect[k]);})&&originRect.width>0&&originRect.height>0?originRect:null;
     srcCard=card; var url=card.getAttribute('href');
     frame.classList.remove('loaded'); frame.src=url; openLink.href=url;
-    var lab=card.querySelector('.label'); if(cap) cap.textContent=card.dataset.previewLabel||(lab?lab.textContent:'');
+    var lab=card.querySelector('.label'),show=card.closest('.shelf');
+    if(cap){
+      var caption=card.dataset.previewLabel||(lab?lab.textContent:'');
+      var name=controlMonitor&&show&&show.querySelector('.shelf-name');
+      cap.textContent=(name?name.textContent+' / ':'')+caption;
+    }
     ov.hidden=false; ov.setAttribute('aria-hidden','false');
     document.documentElement.classList.add('ov-lock'); ov.classList.add('open');
     document.querySelector('.wrap').inert=true;
