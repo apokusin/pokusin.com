@@ -4,17 +4,8 @@
 .art-project .wrap{max-width:none;padding:0 0 45px;overflow:clip;overflow-anchor:none}
 .art-project .masthead{position:absolute;top:0;left:0;width:100%;padding:24px 30px;z-index:30;display:flex;align-items:flex-start;border:0}
 .art-project .home-link{font:11px 'IBM Plex Mono',monospace;letter-spacing:0;text-transform:none}
-.art-project .home-link,.art-project .theme-menu{font-family:inherit}
+.art-project .home-link{font-family:inherit}
 .art-project .hero-surface{display:none}
-.art-project .theme-picker>a{display:none}
-.theme-menu{position:relative;font:11px 'IBM Plex Mono',monospace;z-index:31}
-.theme-menu summary{cursor:pointer;padding:8px 12px;min-height:44px;list-style:none;border:1px solid currentColor;border-radius:2px;background:var(--bg)}
-.theme-menu summary::-webkit-details-marker{display:none}
-.theme-menu summary::after{content:' +';margin-left:12px}
-.theme-menu[open] summary::after{content:' −'}
-.theme-menu-list{position:absolute;right:0;top:48px;display:flex;flex-direction:column;min-width:220px;padding:6px;background:var(--bg);border:1px solid currentColor;max-height:75vh;overflow:auto;box-shadow:0 8px 24px #0002}
-.theme-menu-list a{padding:11px 12px;min-height:44px;border:0;white-space:nowrap;opacity:.75}
-.theme-menu-list a:hover,.theme-menu-list a[aria-current=page]{opacity:1;background:color-mix(in srgb,var(--fg) 8%,transparent)}
 .art-hero{position:relative;min-height:900px;height:min(1050px,100svh);isolation:isolate;overflow:hidden}
 /* Reserve the selected scene before its optional module arrives, preventing archive anchoring. */
 .art-project .art-hero[hidden]{display:block;visibility:hidden}
@@ -74,7 +65,6 @@
 .art-route,.art-archive-toggle,.art-joystick{display:none}
 @media(max-width:700px){
  .art-project .masthead{padding:12px 16px}.art-project .home-link{font-size:10px}
- .theme-menu{font-size:10px}.theme-menu summary{padding:10px}.theme-menu-list{min-width:200px}
  .art-hero{height:900px;min-height:900px}
  .art-title{top:92px;font-size:64px;left:6%}
  .art-clock{top:34%;left:10%;gap:14px;width:80%;justify-content:center}

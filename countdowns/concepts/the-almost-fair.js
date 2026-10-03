@@ -360,7 +360,8 @@ export async function create(ctx) {
   ctx.on(ctx.dom.route,'focusin',()=>{if(!focusRestoring&&!sceneLost&&!frozen&&inspectionMode!=='plan')inspectPlan();ctx.wake();});
   ctx.on(ctx.dom.route,'focusout',()=>{queueMicrotask(()=>{if(!disposed&&!frozen&&!ctx.dom.route.contains(document.activeElement))closeRoute();});ctx.wake();});
   ctx.on(document.querySelector('.home-link'),'focus',()=>{if(!focusRestoring&&!sceneLost&&!frozen)inspectWorlds();});
-  ctx.on(document.querySelector('.theme-menu summary'),'focus',()=>{if(!focusRestoring&&!sceneLost&&!frozen)inspectWorlds();});
+  const worldsSummary = document.querySelector('.theme-menu summary');
+  if (worldsSummary) ctx.on(worldsSummary,'focus',()=>{if(!focusRestoring&&!sceneLost&&!frozen)inspectWorlds();});
   for (const link of document.querySelectorAll('.theme-menu-list a')) ctx.on(link, 'focus', () => { if (!focusRestoring && !sceneLost && !frozen) inspectWorlds(); });
 
   function resolveCard(info) {

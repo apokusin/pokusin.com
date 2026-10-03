@@ -553,11 +553,6 @@ html.gallery:not(.art-project){--bg:#eee7d8;--fg:#39291f;--muted:#6c6155;--line:
 .gallery .wrap{max-width:1440px;padding:24px 54px 40px;overflow:clip}
 .gallery .masthead{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 0 20px;border:0}
 .gallery .home-link{font-size:11px;letter-spacing:.12em;text-transform:uppercase}
-.theme-picker{display:flex;gap:24px;font-size:11px}
-.theme-picker a{position:relative;color:var(--muted);padding:8px 0}
-.theme-picker a::after{content:'';position:absolute;left:0;right:0;bottom:2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s}
-.theme-picker a:hover::after,.theme-picker a[aria-current=page]::after{transform:scaleX(1)}
-.theme-picker a[aria-current=page]{color:var(--fg)}
 .gallery a:focus-visible,.gallery button:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
 .hero-surface{position:relative;isolation:isolate}
 .hero-atmosphere{position:absolute;inset:100px 3% 45px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 55%,#bd715c22,transparent 63%);transform:rotate(-8deg);animation:theatre-light 14s ease-in-out infinite alternate;animation-play-state:paused}
@@ -643,36 +638,37 @@ html.gallery:not(.art-project){--bg:#eee7d8;--fg:#39291f;--muted:#6c6155;--line:
 .gallery .eyebrow,.gallery .title,.gallery .lede,.gallery .shelf{animation:none}
 .gallery.motion-ready .shelf{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .8s cubic-bezier(.2,.8,.2,1)}
 .gallery.motion-ready .shelf.in-view{opacity:1;transform:none}
-html.gallery[data-theme=control]{--bg:#151b1b;--fg:#e7dfcc;--muted:#a7a99b;--line:#3a4641;--line-strong:#6f7b6d;--chip:#28332e;--accent:#ed7655;--live:#ed7655;color-scheme:dark}
-[data-theme=control] body::before{background:radial-gradient(ellipse at 75% 20%,#74524045,transparent 50%),radial-gradient(ellipse at 20% 60%,#384c3c55,transparent 70%)}
-[data-theme=control] body::after{background:repeating-linear-gradient(0deg,transparent 0 3px,#000 3px 4px);opacity:.13;mix-blend-mode:normal}
-[data-theme=control] .masthead{border-bottom:1px dashed var(--line);padding-bottom:16px}
-[data-theme=control] .hero-atmosphere{inset:35% -10% 0;background:radial-gradient(ellipse,#cc6e4130,transparent 65%);animation:none;transform:none}
+html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--line:#303d35;--line-strong:#697466;--chip:#243029;--accent:#f07152;--live:#f07152;color-scheme:dark}
+[data-theme=control] body::before{background:radial-gradient(ellipse at 65% 25%,#b77b4215,transparent 55%),radial-gradient(ellipse at 10% 55%,#34544420,transparent 65%)}
+[data-theme=control] body::after{background:url('assets/control-grain.svg');opacity:.085;mix-blend-mode:soft-light}
+[data-theme=control] .masthead{border-bottom:1px solid var(--line);padding-bottom:18px}
+[data-theme=control] .hero-atmosphere{inset:35% -5% 10%;background:radial-gradient(ellipse,#ed765510,transparent 65%);animation:none;transform:none}
 [data-theme=control] .archive-heading{text-align:left;padding-top:28px}
 [data-theme=control] .eyebrow{margin-bottom:18px;color:var(--accent)}
-[data-theme=control] h1.title{font:400 clamp(110px,15.6vw,218px)/.79 'Archivo Black',Impact,sans-serif;letter-spacing:-.075em;text-transform:uppercase;white-space:normal}
+[data-theme=control] h1.title{font:400 clamp(104px,14.8vw,210px)/.79 'Archivo Black',Impact,sans-serif;letter-spacing:-.075em;text-transform:uppercase;white-space:normal}
 [data-theme=control] .title-line{display:block;width:max-content;font-style:normal;transform:translateX(3%)}
-[data-theme=control] .title-line:last-child{margin:8px 0 0 auto;color:var(--accent);transform:rotate(-3deg) translateX(-5%)}
+[data-theme=control] .title-line:last-child{margin:10px 0 0 auto;color:var(--accent);transform:rotate(-2deg) translateX(-3%)}
 [data-theme=control] .title-glyph{transition:transform .45s cubic-bezier(.2,.8,.2,1)}
-[data-theme=control] .title-glyph:hover{transform:translateY(-10px) rotate(-4deg)}
-[data-theme=control] .lede{position:absolute;top:38px;right:0;margin:0;font:11px 'IBM Plex Mono',monospace;max-width:20ch;text-align:right;line-height:1.6}
-[data-theme=control] .next-countdown{height:335px;margin:-35px 0 10px;z-index:2}
-[data-theme=control] .next-countdown:has(.clock-status:not(:empty)){height:375px}
+[data-theme=control] .title-glyph:hover{transform:translateY(-3px)}
+[data-theme=control] .next-countdown{height:408px;margin:-14px 0 18px;z-index:2}
+[data-theme=control] .next-countdown:has(.clock-status:not(:empty)){height:448px}
 [data-theme=control] .royal-guardians,[data-theme=control] .royal-clock,[data-theme=control] .royal-fallback,[data-theme=control] .royal-only{display:none}
 [data-theme=control] .control-fallback,[data-theme=control] .control-only{display:block}
 [data-theme=control] .control-fallback{inset:auto;left:7.5%;top:50%;width:85%;height:auto;transform:translateY(-50%)}
-[data-theme=control] .scene-stage{width:92%;height:300px;left:7%;top:0;transform:none}
+[data-theme=control] .scene-stage{width:100%;height:360px;left:0;top:0;transform:none}
 [data-theme=control] .scene-action{left:73%;top:20%;width:22%;height:65%;border-radius:50%}
-[data-theme=control] .scene-action:hover{background:radial-gradient(ellipse,#ed765526,transparent 65%)}
-[data-theme=control] .countdown-caption{top:250px;left:0;right:auto;text-align:left}
+[data-theme=control] .scene-action:hover{background:none}
+[data-theme=control] .scene-action:focus-visible{outline:1px solid var(--accent);outline-offset:3px}
+[data-theme=control] .scene-action:disabled{cursor:wait}
+[data-theme=control] .countdown-caption{top:340px;left:0;right:auto;text-align:left}
 [data-theme=control] .next-countdown h2{font-size:10px;letter-spacing:.04em;color:var(--fg)}
 [data-theme=control] .countdown-caption time{font-size:10px;margin-top:6px}
-[data-theme=control] .press-tally{top:260px;right:3%;display:flex;align-items:baseline;gap:9px;color:var(--muted)}
+[data-theme=control] .press-tally{top:340px;right:0;display:flex;align-items:baseline;gap:9px;color:var(--muted)}
 [data-theme=control] .press-tally>span{font:400 34px 'IBM Plex Mono',monospace;color:var(--accent);letter-spacing:-.08em}
 [data-theme=control] .press-tally>small{font-size:9px}
-[data-theme=control] .countdown-secret{top:245px;left:35%;right:25%;font:12px 'IBM Plex Mono',monospace;color:var(--fg)}
-[data-theme=control] .reset-echo{position:absolute;inset:0;z-index:-1;opacity:0;font:110px 'Archivo Black',Impact,sans-serif;color:var(--accent);text-transform:uppercase;pointer-events:none}
-[data-theme=control] .shownav{border-color:var(--line);background:#151b1bf2}
+[data-theme=control] .countdown-secret{top:307px;left:55%;right:0;font:italic 12px 'IBM Plex Mono',monospace;color:var(--muted)}
+[data-theme=control] .reset-echo{display:none}
+[data-theme=control] .shownav{border-color:var(--line);background:#111916f2}
 [data-theme=control] .shownav .nv-e{font:10px 'IBM Plex Mono',monospace}
 [data-theme=control] .archive-shelves{padding-top:42px}
 [data-theme=control] .shelf{padding:0;margin:0 0 85px;border:0;background:none;box-shadow:none;border-radius:0}
@@ -683,9 +679,11 @@ html.gallery[data-theme=control]{--bg:#151b1b;--fg:#e7dfcc;--muted:#a7a99b;--lin
 [data-theme=control] .shelf-kicker{color:var(--accent)}
 [data-theme=control] .shelf .grid{gap:26px}
 [data-theme=control] .card,[data-theme=control] .card:nth-child(even){transform:none}
-[data-theme=control] .card:hover,[data-theme=control] .card:nth-child(even):hover{transform:translateY(-6px)}
-[data-theme=control] .frame{aspect-ratio:16/10;border:10px solid #2b3330;outline:1px solid #556052;border-radius:18px;box-shadow:0 18px 30px -15px #000a}
-[data-theme=control] .frame::after{border:1px solid #91a08133;border-radius:7px;box-shadow:inset 0 0 32px #0008;background:repeating-linear-gradient(transparent 0 3px,#0002 3px 4px)}
+[data-theme=control] .card:hover,[data-theme=control] .card:nth-child(even):hover{transform:none}
+[data-theme=control] .frame{aspect-ratio:16/10;border:12px solid #28332d;outline:1px solid #536050;border-radius:10px;box-shadow:inset 0 1px #8f9b8330,0 3px #080e0a,0 20px 30px -15px #000b;transition:outline-color .3s,box-shadow .3s}
+[data-theme=control] .frame::after{border:1px solid #8d9b7c25;border-radius:1px;box-shadow:inset 0 0 38px #0007;background:linear-gradient(122deg,#e8e0bb0e,transparent 38%),repeating-linear-gradient(transparent 0 3px,#0002 3px 4px);transition:opacity .3s}
+[data-theme=control] .card:hover .frame,[data-theme=control] .card:focus-visible .frame{outline-color:#9baf8d;box-shadow:inset 0 1px #8f9b8350,0 3px #080e0a,0 20px 30px -15px #000b,0 0 24px #f071520a}
+[data-theme=control] .card:hover .frame::after,[data-theme=control] .card:focus-visible .frame::after{opacity:.4}
 [data-theme=control] .frame .open{background:var(--fg);color:var(--bg)}
 [data-theme=control] .body{padding:16px 2px 0}
 [data-theme=control] .label{font:11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.01em}
@@ -707,7 +705,7 @@ html.gallery[data-theme=control]{--bg:#151b1b;--fg:#e7dfcc;--muted:#a7a99b;--lin
 @media(max-width:760px){
  .gallery .wrap{padding:16px 22px 30px}
  .gallery .masthead{gap:12px;padding-bottom:12px}
- .gallery .home-link{font-size:9px;letter-spacing:.08em}.theme-picker{font-size:10px;gap:16px}
+ .gallery .home-link{font-size:9px;letter-spacing:.08em}
  .gallery .archive-heading{padding-top:34px}
  .gallery .eyebrow{font-size:9px;margin-bottom:17px}
  .gallery h1.title{font-size:clamp(65px,18vw,130px);letter-spacing:-.07em;line-height:1}
@@ -740,18 +738,17 @@ html.gallery[data-theme=control]{--bg:#151b1b;--fg:#e7dfcc;--muted:#a7a99b;--lin
  .gallery .foot{display:flex;flex-wrap:wrap;gap:10px;font-size:9px}
  [data-theme=control] .archive-heading{padding-top:35px}
  [data-theme=control] .eyebrow{margin-bottom:28px}
- [data-theme=control] h1.title{font-size:clamp(65px,20.5vw,155px);line-height:.84;letter-spacing:-.075em}
+ [data-theme=control] h1.title{font-size:clamp(65px,22vw,155px);line-height:.84;letter-spacing:-.075em}
  [data-theme=control] .title-line{transform:none}
- [data-theme=control] .title-line:last-child{margin-top:6px;transform:rotate(-3deg)}
- [data-theme=control] .lede{top:33px;font-size:9px;max-width:18ch;line-height:1.5}
- [data-theme=control] .next-countdown{height:230px;margin:-10px -10px 8px}
- [data-theme=control] .next-countdown:has(.clock-status:not(:empty)){height:270px}
- [data-theme=control] .scene-stage{height:210px;width:110%;left:-5%;top:0}
- [data-theme=control] .countdown-caption{top:176px;left:10px}
+ [data-theme=control] .title-line:last-child{margin-top:8px;transform:rotate(-2deg)}
+ [data-theme=control] .next-countdown{height:280px;margin:4px 0 18px}
+ [data-theme=control] .next-countdown:has(.clock-status:not(:empty)){height:320px}
+ [data-theme=control] .scene-stage{height:240px;width:100%;left:0;top:0}
+ [data-theme=control] .countdown-caption{top:220px;left:0}
  [data-theme=control] .next-countdown h2,[data-theme=control] .countdown-caption time{font-size:9px}
- [data-theme=control] .press-tally{top:180px;right:10px;gap:5px;display:block;text-align:right}
+ [data-theme=control] .press-tally{top:220px;right:0;gap:5px;display:block;text-align:right}
  [data-theme=control] .press-tally>span{font-size:26px}.press-tally>small{font-size:8px;margin-top:2px}
- [data-theme=control] .countdown-secret{top:144px;left:0;right:0;font-size:10px}
+ [data-theme=control] .countdown-secret{top:195px;left:0;right:0;font-size:10px}
  [data-theme=control] .scene-action{left:73%;top:22%;width:24%;height:58%}
  [data-theme=control] .reset-echo{font-size:55px}
  [data-theme=control] .archive-shelves{padding-top:35px}
@@ -762,12 +759,12 @@ html.gallery[data-theme=control]{--bg:#151b1b;--fg:#e7dfcc;--muted:#a7a99b;--lin
  [data-theme=control] .shelf-copy{gap:7px}
  [data-theme=control] .carousel .card,[data-theme=control] .carousel .card:nth-child(even){transform:none;flex-basis:calc(100vw - 76px)}
  [data-theme=control] .shelf .grid{gap:20px;padding-bottom:30px}
- [data-theme=control] .frame{border-width:7px;border-radius:12px}
+ [data-theme=control] .frame{border-width:9px;border-radius:8px}
  [data-theme=control] .body{padding-top:12px}.gallery[data-theme=control] .label{font-size:10px;line-height:1.5}
  [data-theme=control] .more.shelf-more{margin-top:0}
 }
 @media(prefers-reduced-motion:reduce){
- .gallery .hero-atmosphere,.gallery .title-glyph,.gallery .clock-unit>span,.gallery .card,.gallery .shelf{animation:none!important;transition:none!important}
+ .gallery .hero-atmosphere,.gallery .title-glyph,.gallery .clock-unit>span,.gallery .card,.gallery .shelf,.gallery .frame,.gallery .frame::after{animation:none!important;transition:none!important}
  .gallery.motion-ready .shelf{opacity:1;transform:none}
 }
 """
@@ -863,15 +860,7 @@ def grid(show_slug, versions, zoom=4, include_controls=True, carousel_root=True,
 # --------------------------------------------------------------- gallery
 def build_gallery():
     out = head("Countdowns · Artur Pokusin", THEME_HEAD, gallery=True)
-    out += ('    <header class="masthead"><a class="home-link" href="/">Artur Pokusin</a>'
-            '<nav class="theme-picker" aria-label="Archive theme">'
-            '<a href="?theme=royal" data-theme-link="royal" aria-label="Royal archive">Royal</a>'
-            '<a href="?theme=control" data-theme-link="control" aria-label="Control room">Control</a>'
-            '<details class="theme-menu"><summary>Worlds</summary><div class="theme-menu-list">'
-            '<a href="?theme=royal" data-theme-link="royal">Royal</a>'
-            '<a href="?theme=control" data-theme-link="control">Control</a>'
-            + ''.join(f'<a href="?theme={slug}" data-theme-link="{slug}">{esc(name)}</a>' for slug, name in ART_THEMES)
-            + '</div></details></nav></header>\n')
+    out += '    <header class="masthead"><a class="home-link" href="/">Artur Pokusin</a></header>\n'
     out += ('    <section class="art-hero" id="art-hero" aria-label="Interactive countdown archive" hidden>\n'
             '      <div class="art-stage" id="art-stage"><canvas id="art-scene" tabindex="0" aria-label="Interactive art scene"></canvas></div>\n'
             '      <h1 class="art-title">Countdowns</h1><div class="art-reset-area"></div><div class="art-mounts"></div>\n'
@@ -885,7 +874,7 @@ def build_gallery():
             '<div class="hero-atmosphere" aria-hidden="true"></div>'
             '<div class="archive-heading"><p class="eyebrow">2012 — ∞</p>'
             f'<h1 class="title" aria-label="Countdowns"><span aria-hidden="true">{title}</span></h1>\n'
-            '<p class="lede">An archive of anticipation.</p></div>\n')
+            '</div>\n')
     out += (
         '    <section class="next-countdown" aria-labelledby="next-countdown-heading">\n'
         '      <img class="royal-guardians" src="assets/royal-guardians.png" alt="" width="1440" height="520">\n'
