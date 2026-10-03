@@ -845,6 +845,15 @@ CSS += """
 }
 """
 
+CSS += """
+/* Give the show bar its own viewport-wide rail without widening the exhibits. */
+.gallery[data-theme=control] .wrap{--gallery-gutter:54px;max-width:none;padding-inline:0}
+.gallery[data-theme=control] .wrap>.masthead,.gallery[data-theme=control] .wrap>.hero-surface,.gallery[data-theme=control] .wrap>.archive-shelves,.gallery[data-theme=control] .wrap>.foot{width:min(1332px,calc(100% - 2 * var(--gallery-gutter)));margin-inline:auto}
+.gallery[data-theme=control] .shownav{--nav-edge:clamp(28px,4vw,64px);width:100%;margin-inline:0;padding-inline:var(--nav-edge);scroll-padding-inline:var(--nav-edge)}
+@media(max-width:1000px) and (min-width:761px){.gallery[data-theme=control] .wrap{--gallery-gutter:32px}}
+@media(max-width:760px){.gallery[data-theme=control] .wrap{--gallery-gutter:22px}}
+"""
+
 CSS_VER = hashlib.md5(CSS.encode("utf-8")).hexdigest()[:8]
 FAVICON = '<link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">'
 

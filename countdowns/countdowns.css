@@ -489,3 +489,10 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
 @media(prefers-reduced-motion:reduce){
  .gallery[data-theme=control] .ov-backdrop,.gallery[data-theme=control] .ov-cap,.gallery[data-theme=control] .ov-ctrls,.gallery[data-theme=control] #ov-frame{transition:none;transform:none}
 }
+
+/* Give the show bar its own viewport-wide rail without widening the exhibits. */
+.gallery[data-theme=control] .wrap{--gallery-gutter:54px;max-width:none;padding-inline:0}
+.gallery[data-theme=control] .wrap>.masthead,.gallery[data-theme=control] .wrap>.hero-surface,.gallery[data-theme=control] .wrap>.archive-shelves,.gallery[data-theme=control] .wrap>.foot{width:min(1332px,calc(100% - 2 * var(--gallery-gutter)));margin-inline:auto}
+.gallery[data-theme=control] .shownav{--nav-edge:clamp(28px,4vw,64px);width:100%;margin-inline:0;padding-inline:var(--nav-edge);scroll-padding-inline:var(--nav-edge)}
+@media(max-width:1000px) and (min-width:761px){.gallery[data-theme=control] .wrap{--gallery-gutter:32px}}
+@media(max-width:760px){.gallery[data-theme=control] .wrap{--gallery-gutter:22px}}
