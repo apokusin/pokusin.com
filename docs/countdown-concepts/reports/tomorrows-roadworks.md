@@ -1,34 +1,67 @@
+# Tomorrow’s Roadworks — current reimplementation art review
+
+**Verdict: Layered desktop and repaired 390/320 phone rigs compared; phone scale/action repair evidenced, source-material gate remains open. No final art acceptance.** Compared with the unchanged [original reference](../references/tomorrows-roadworks.jpg). Functional evidence is recorded separately in the [runtime audit](../runtime-audit.md). Version-specific browser snapshots: [road-final-desktop](../architecture/evidence/rebuilt/road-final-desktop.jpg), [road-phone-rig-390](../architecture/evidence/rebuilt/road-phone-rig-390.jpg), [road-phone-rig-320](../architecture/evidence/rebuilt/road-phone-rig-320.jpg), [road-distant-320](../architecture/evidence/rebuilt/road-distant-320.jpg). The [earlier undersized phone](../architecture/evidence/rebuilt/road-final-390.jpg) remains rejected historical evidence. Filenames containing ‘final’ are capture-session labels, not approval.
+
+## What is now built
+
+A real miniature quarry, elevated cobalt road, modeled concrete supports, timer board, crane/road spool, enamel action and individual billboard surfaces now occupy one scene. The road rail includes the opening plus all thirteen genuine works; actual More/timeline/live links are bound to physical destinations. Authored rock/coast silhouettes, road thickness, pier geometry and machinery export from Blender. Distinct mapped concrete aggregate, asphalt/paint wear and stone relief replace the earlier shared hero. Runtime daylight and lamp/reflection sources illuminate the installation; reference scenery is not used as its background.
+
+## Judgment of the saved visuals
+
+The current desktop has a continuous supported cobalt route, readable board, crane/spool, billboard hierarchy and materially denser terrain than the earlier flat candidate. It still uses broadly uniform beige ground and large angular rocks; the source has finer eroded strata, richer low sunlight and more differentiated worn machinery/enamel. The repaired 390/320 opening now fills the portrait with the quarry/road, all four readable clock units and Again, instead of shrinking the entire installation into an empty middle strip. The first GoT and Severance billboards sit along the visible route. The distant 320 capture establishes travel to the actual Severance tracker and a visible Clock return. These are observed composition improvements, not final equivalence to the original artwork.
+
+## Direction that must survive refinement
+
+Keep the warm low quarry key distinct from cool water/sky fill. Raking light should reveal eroded strata and aggregate without uniformly brown piers. Cobalt edges need reflected sky, while enamel gets a localized convex highlight; a single flat blue field is insufficient.
+
+## Interaction and feel
+
+The owned rail frames each billboard independently. Pending board/action pressure and the confirmed road-spool/route ceremony remain separate; scene motion freezes during previews/hidden time, and reduced motion assigns the final mechanical state directly. Repeated presses reuse bounded geometry rather than extend the world indefinitely. The interaction must make its available object visible before it is required: hovering/focusing a work frames its real physical support; a tiny hidden link cannot be the only route. The single crown is optional; the core archive/reset never depends on discovery. Preview returns to the same authored pose, while clock/tally immediately reflect the authoritative shared state.
+
+## Portrait and remaining gate
+
+The latest portrait rig supersedes the failed undersized frame, which remains in the evidence history. Root browser checks confirmed one physical 390 reset (405→406), a physical 320 GoT billboard opening genuine Season 4, Escape restoring native GoT focus/unloading the iframe/scroll 0, and End travel to the distant Severance tracker with Clock returning to opening 0. The final offline rerun covers the newly saved Road source and both model profiles. The quarry, raking-light, convex enamel and source-level machinery/material-density gates remain open. Representative successful taps do not prove every touch target, every route link or art fidelity. The reproducible offline fixtures use real geometry with mocked GPU/canvas/fonts and stripped in-memory GLB image references. Their inventory/callback checks cannot certify shader appearance, actual browser link defaults or device performance.
+
+---
+
+## Historical review of the rejected implementation
+
+<details>
+<summary>Rejected legacy development record — every visual approval below is withdrawn</summary>
+
+The material below is retained as history. Its earlier acceptance claims are superseded by the user’s rejection and by the current source gates above. It does not describe or approve the new `.scene.js` candidate.
+
 # Revised art direction — Tomorrows Roadworks
 
-## Current status — architecture reset, October 2, 2026
+## Historical rejection stage — architecture reset, October 2, 2026
 
-**Current implementation rejected by the user. All prior visual acceptance and “accepted source limitation/interpretation” verdicts below are withdrawn and retained only as a historical record.** Those verdicts incorrectly reduced the original concept's ambition to fit the implementation. Functional/API/preview checks remain historical functional evidence; they do not establish visual fidelity.
+**The preceding implementation was rejected by the user. All prior visual acceptance and “accepted source limitation/interpretation” verdicts below are withdrawn and retained only as a historical record.** Those verdicts incorrectly reduced the original concept's ambition to fit the implementation. Functional/API/preview checks remain historical functional evidence; they do not establish visual fidelity.
 
-The original reference is the authority. The replacement [scene-first spec](../specs/tomorrows-roadworks.md) and [architecture proposal](../architecture/installations.md) are **planned, not implemented**. Their first gate is a final-lit material/geometry/content slice compared directly with the original before navigation and secondary effects. The accepted Fair remains unchanged. No new visual acceptance is claimed.
+The original reference is the authority. The replacement [scene-first spec](../specs/tomorrows-roadworks.md) and [architecture proposal](../architecture/installations.md) were planned at this historical rejection. The separate authored candidates now exist and are evaluated above. Their first gate is a final-lit material/geometry/content slice compared directly with the original before navigation and secondary effects. The accepted Fair remains unchanged. No new visual acceptance is claimed.
 
 ## Historical development record — superseded
 
-## Final renewed independent review — October 2, 2026
+## Historical renewed review — withdrawn — October 2, 2026
 
-**Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
+**Historical review claimed visual acceptance; that conclusion is withdrawn.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
 
 Textured cast enclosure, cobalt aggregate ribbon, real piers, billboard trusses, enamel and warm work lamps form one construction miniature. Both phone widths retain readable time, action and work.
 
-**Accepted source limitation:** The foreground vehicles and rocks remain simpler and less distressed than the authored distant landscape. This is the documented rendered interpretation, not a claim of photographic source equivalence.
+**Historical source compromise (withdrawn):** The foreground vehicles and rocks remain simpler and less distressed than the authored distant landscape. This is the documented rendered interpretation, not a claim of photographic source equivalence.
 
 Evidence: [reference/current](../qa/tomorrows-roadworks-material-comparison.jpg), [1280 × 900](../qa/tomorrows-roadworks-material-desktop.jpg), [390 × 844](../qa/tomorrows-roadworks-material-mobile.jpg), [320 × 720](../qa/tomorrows-roadworks-material-320.jpg). Root separately verified real phone resets 386 → 393 across all seven, genuine archive preview/Escape/focus restoration, 44 px or larger targets, no document overflow, reduced-motion crown discovery and actual graphics-loss restoration. [Shared runtime QA](../../../design-qa.md) distinguishes native checks from still-image review; no hardware FPS or physical touch-device result is implied.
 
-The implementation-stage observations below record the development and correction of these surfaces; earlier pending/historical acceptance is superseded by this final review.
+The implementation-stage observations below describe development of the rejected legacy revision. Acceptance was pending at some stages and claimed by later reviewers; the user subsequently rejected the result. All of those claimed approvals are withdrawn, including the later assessment. The current candidate and its unresolved source gates are described above.
 
 The latest user review rejected prototype-level material fidelity. Re-read the actual reference and the current published baseline; this pass supersedes the historical visual acceptance below.
 
-## Current diagnosis
+## Historical diagnosis
 
 The generated coast had more believable material and light than the live construction geometry. The first implementation’s smooth road, blank concrete boxes, simplified crane and unsupported billboard legs weakened the crafted diorama. Merely adding noise would preserve that mismatch. The revised spec requires thick granular highway, cast enclosure, connected trusses/piers, meaningful work lamps and material-specific light response.
 
-## Acceptance status
+## Historical implementation-stage status
 
-Specs have concrete albedo/roughness/bump/environment, key/fill/rim and shadow recipes, bounded material motion and responsive construction rules. The source-frozen implementation now follows those recipes. Root will provide actual revised desktop/phone/reset/fallback screenshots; current rendered acceptance remains pending. No hardware frame-rate measurements are asserted.
+Specs have concrete albedo/roughness/bump/environment, key/fill/rim and shadow recipes, bounded material motion and responsive construction rules. The source-frozen implementation now follows those recipes. At that historical stage, rendered acceptance was still pending while root collected revised desktop/phone/reset/fallback screenshots. A later claimed approval was subsequently withdrawn; it does not approve the current candidate. No hardware frame-rate measurements are asserted.
 
 ## Source-reviewed revision
 
@@ -106,13 +139,13 @@ The implemented font pair is **Barlow Condensed + Libre Baskerville**. Barlow Co
 
 This pass changes font selection only. Existing camera framing, projected widths, hit targets, geometry, shared values and motion remain unchanged; root rechecks the final 320 px composition.
 
-## Final independent art acceptance — 2026-10-02
+## Historical art assessment — withdrawn — 2026-10-02
 
 **Observed desktop and phone visuals:** Reviewed the corrected desktop, 390 px and 320 px captures against this spec. The concrete clock, orange pressure cap, connected cobalt route and supported unequal billboards remain identifiable. The independent review initially found the clock hiding the rolled highway; the final views now expose its hanging blue roll and connected strip above the desktop route and between clock/action and first phone billboard. This restores the construction joke instead of relying on a hidden animation. The supplied archive continuation captures maintain roadside mounts and a looping route below the hero.
 
 **Code-reviewed feel:** One authored ribbon deforms during confirmed construction rather than accumulating new road. The delayed truck follows the settled response; pending pressure and remote lamp response have separate state paths. The roll's crown follows the same exposed object, and reduced-motion focus applies its reveal directly. The supplied reduced-motion crown capture places the hidden line near that object, clear of Again and the clock. These checks distinguish visible composition and source mechanisms from an unmeasured animation/device-performance claim.
 
-**Fidelity decision:** Accept the separately generated mineral coast and simpler modeled vehicles; they preserve the scene's scale without baking controls into scenery. Keep the exposed roll zone clear in future camera changes. Faithful archive images replace invented reference exhibits. No remaining P0/P1/P2 visual defect was identified in the corrected compositions; runtime state, input and failure acceptance is recorded separately in the shared QA report.
+**Historical fidelity conclusion (withdrawn):** The earlier review stated: Accept the separately generated mineral coast and simpler modeled vehicles; they preserve the scene's scale without baking controls into scenery. Keep the exposed roll zone clear in future camera changes. Faithful archive images replace invented reference exhibits. No remaining P0/P1/P2 visual defect was identified in the corrected compositions; runtime state, input and failure acceptance is recorded separately in the shared QA report.
 
 ## Follow-up implementation corrections
 
@@ -123,3 +156,5 @@ These corrections passed source checks. Updated truck motion, status and discove
 ## Tablet framing correction
 
 The supplied 700 px viewport captures exposed horizontal clipping after the shared breakpoint was aligned with CSS. The scene now derives its desktop orthographic span from the actual stage aspect ratio, including scrollbar-reduced width, while keeping the original wide-screen baseline. This is a camera-fit correction only; geometry, type, hit targets and interactions remain unchanged. Source checks pass. Root will recapture the corrected 700 px and large desktop views before visual acceptance.
+
+</details>

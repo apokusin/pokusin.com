@@ -1,29 +1,31 @@
 # Scene-first concept contract
 
-**Status: proposed replacement API; NOT IMPLEMENTED.** The user rejected all seven non-Fair renders. Their new specs and original images govern rebuilding them. The old hero/gallery API below remains a factual maintenance reference for the existing runtime and accepted Fair, not a template for future concepts. No runtime or Fair dependency is changed by this document.
+**Status: implemented scene-first API; seven authored candidates, with original-reference art acceptance still pending.** The user rejected the earlier seven non-Fair renders and withdrew their acceptance. The new `.scene.js` modules use `scene-host.js`, `scene-surfaces.js` and `scene-gallery.js`; their specs retain the original source targets and record current discrepancies. The old hero/gallery API below is a retained maintenance reference, including the preserved Fair. This document changes no runtime or Fair dependency.
 
-Read [architecture](../../docs/countdown-concepts/architecture/README.md), [assets](../../docs/countdown-concepts/architecture/assets.md), [input](../../docs/countdown-concepts/architecture/input.md), the concept's eleven-section spec, and the original image. Prior reports marked accepted are superseded. The new code path must branch before initExhibition relocates cards or constructs the hero. Keep Fair, Royal and Control on their current paths; switch a rebuilt concept only after its complete slice passes.
+Read [architecture](../../docs/countdown-concepts/architecture/README.md), [assets](../../docs/countdown-concepts/architecture/assets.md), [input](../../docs/countdown-concepts/architecture/input.md), the concept's eleven-section spec, and the original image. Prior reports marked accepted are superseded by the user’s rejection. The implemented branch runs before `initExhibition` relocates cards or constructs the hero. Fair, Royal and Control retain their existing paths. Selecting a new candidate is availability for review, not art approval.
 
-## Proposed ownership and data
+## Ownership and data
 
 Root owns the opt-in host, generated markup and shared state/preview adapters. A concept's asset author owns editable mesh/map/type sources, export and named node inventory; its scene implementer owns composition, lighting, camera, surface graphics and interactions. A separate art reviewer checks source fidelity. Follow the pinned offline workflow and actual archive inventory; no framework, site build, game engine, multiplayer or backend change is needed.
 
 The host receives actual generated nodes before mutation. Expose all **13** preview records as {id, show, label, href, thumbnail, anchor}, seven show focus groups, the **five** real More/archive-page links, separate Dexter timeline, live Severance link, Home and theme destinations. See [inventory](../../docs/countdown-concepts/architecture/INVENTORY.md). Do not invent seven show archive pages or a fixed three-mount array. Runtime still derives content from generate.py; the planning inventory is not another runtime source of truth.
 
-## Proposed minimum API
+## Implemented minimum API
 
-Each rebuilt concept exports async create(host), returning its controller. Names below are a proposed implementation boundary, not functions already available:
+Each rebuilt concept exports `async create(host)`, returning its controller. The following names are supplied by the implemented host:
 
-- **host.THREE, scene, root, renderer, canvas, stage:** selected scene resources. No default lens, layout, lights, background, scrolling model or effects chain. **useCamera(camera)** assigns a concept-owned camera; it is required before ready.
-- **host.exhibits, destinations, dom:** exact records and native timer/reset/tally/status/secret/link handles. Healthy graphics may clip native semantics visually, never hidden/inert/aria-hidden/display:none. The complete native archive remains the loading/failure presentation.
+- **host.THREE, scene, root, renderer, canvas, stage:** selected scene resources. The concept supplies its camera, lights, composition, background and optional effects chain; the host supplies the native scroll runway. **useCamera(camera)** assigns a concept-owned camera; it is required before ready.
+- **host.exhibits, groups, destinations, dom:** exact records and native timer/reset/tally/status/secret/link handles. Healthy graphics may clip native semantics visually, never hidden/inert/aria-hidden/display:none. The complete native archive remains the loading/failure presentation.
 - **host.getDigits(), getTally(), getSnapshot(), requestReset(), revealSecret():** bridges to existing authoritative values/actions. Read-only getSnapshot supplies the real deadline and the existing server-adjusted current time when a material needs progress/ripeness; never reconstruct another deadline from rendered digits. Reuse reelPlan/reelPosition for a bounded numerical surface painter; no independent date model or count. Immediate accessible values and one-second reduced-motion updates are required. Tally layout supports growing character length.
 - **host.bind(mesh,{native, kind, focus, blur, activate}):** connect actual visible geometry to a real action. Register solid occluders separately; an enlarged hit proxy is shadowless and cannot bypass a nearer solid or cover another action. Native focus frames and visibly identifies the object. Native and canvas activation enter the same action exactly once; do not double-run gallery handlers.
-- **host.on(...), wake(), own(resource), awaited asset loading:** bounded listeners/frames and explicit resource ownership. Required model/map/font/still/environment assets resolve before promotion; late/disposed loads release their results. Optional assets can be omitted only when their absence does not remove defining artwork.
-- **host.openPreview(exhibit,{originRect}):** invoke the existing genuine, focus-trapped modal after a deliberate approach. Bounds come from the **actual four screen corners in viewport coordinates**, including canvas offset. No permanent upright point-pinned screenshots or digits. A readable ordinary modal is valid when an aperture cannot fit a legible iframe.
+- **host.on(...), wake(), own(resource), loadGLB(url), texture(url,options):** bounded listeners/frames and explicit resource ownership. Required model/map/font/still/environment assets resolve before promotion; late/disposed loads release their results. Optional assets can be omitted only when their absence does not remove defining artwork.
+- **host.openPreview(exhibit,{originRect,surface}):** invoke the existing genuine, focus-trapped modal after a deliberate approach. Bounds come from the **actual four screen corners in viewport coordinates**, including canvas offset. No permanent upright point-pinned screenshots or digits. A readable ordinary modal is valid when an aperture cannot fit a legible iframe.
 
-Essential controller hooks: **ready** (critical assets), **frame(time,delta), resize(width,height), dispose()**. Optional **pending, celebrate, remote, freeze, capturePose, restorePose**; use only what the concept needs. Full-view/native scrolling adapters follow [input ownership](../../docs/countdown-concepts/architecture/input.md). A camera rail, tabletop and connected sculpture are different models; do not build a universal avatar/orbit controller.
+Controller hooks used by these candidates: **ready, frame(time,delta), resize(width,height), dispose()**. Critical assets resolve in `create` and/or the awaited `ready` value before promotion. Optional **render(delta), navigation(progress), focus(native), pending, celebrate, remote, reducedMotion, freeze, capturePose, restorePose, cancelInput, cancelApproach** support authored behavior. The optional synchronous `render` hook runs for the initial frame as well as later paints; errors restore the complete native fallback.
 
-## Proposed rendering and readiness
+**host.setScrollStops(count), scrollTo(progress,immediate), progress** synchronize the native runway and exact exhibit pose. **host.mobile** is fixed to one authored profile for the lifetime of that host. Crossing 700px disposes/recreates the profile without a page reload, retaining shared/native state and normalized archive position; an open real preview defers rebuilding until close. **host.ink(mesh,options), numerals(options), projectRect(mesh)** provide reusable surface painting and projection. They do not supply a shared visual layout. Full-view/native scrolling adapters follow [input ownership](../../docs/countdown-concepts/architecture/input.md). A camera rail, tabletop and connected sculpture remain different navigation models.
+
+## Rendering and readiness
 
 Mount genuine screenshots, ink and labels on real authored surfaces through UVs/textures or suitable geometry. They follow rotation, perspective, deformation, clipping and occlusion with their paper/frame. Flat readable centers may be preserved within curled borders. Body, numeral surface and hit region share a transform hierarchy. Ink remains legible through light/specular changes; never recolour archive screenshots.
 
@@ -31,7 +33,7 @@ Render a completed first frame before hiding native content. One renderer per se
 
 One tightly framed shadow caster and baked fixed detail are useful starting points, not universal art constraints. Proper authored geometry precedes extra noise/AO/bloom. Do not add effects to disguise silhouette or lighting failure. Pause hidden rendering, bound delta and repeated effects, invalidate approach callbacks on Escape/resize/teardown. Keep reduced-motion camera jumps and immediate numerical values; preserve every action and the sole crown.
 
-## Proposed interaction and preview
+## Interaction and preview
 
 Pointer click intent is evaluated on release independently of camera/material dragging. Picking checks nearest visible solids and front faces. Clear input on cancellation, lost capture, blur, visibility, modal opening and context loss. Touch targets have at least 44px projected safe area; no proxy steals a neighbor. Keyboard focus and direct show selection use the same logical destination as pointer input.
 
@@ -41,11 +43,11 @@ Pending/error/429 cannot change authoritative values or play a success ceremony.
 
 ## Replacement acceptance
 
-Authored asset inspection, original/rest-frame comparison and one complete polished slice precede expansion and secondary spectacle. Compare source/prototype at matching viewport/aspect, then test 390/320 compositions. Record missing forms/materials/spatial relationships plainly. Functional passes do not approve a different aesthetic. This contract and specs are a plan; only new rendered/browser evidence can certify a replacement.
+Authored asset inspection, original/rest-frame comparison and one complete polished slice precede expansion and secondary spectacle. Compare source/prototype at matching viewport/aspect, then test 390/320 compositions. Record missing forms/materials/spatial relationships plainly. Functional passes do not approve a different aesthetic. The shared API and seven candidates are implemented. Source targets and remaining art gates are not thereby satisfied; only new rendered/browser evidence and an explicit art judgment can certify a replacement. [QA](../../docs/countdown-concepts/reimplementation-qa.md) separates geometry, controller and actual browser observations from source fidelity.
 
 ---
 
-The following describes the currently deployed **legacy API** only. Do not apply its three-mount hero, upright pins or CSS shelves to a rebuilt concept. Its Fair exception remains applicable to the accepted Fair's existing implementation.
+The following describes the retained **legacy API** only. Do not apply its three-mount hero, upright pins or CSS shelves to a rebuilt concept. Its Fair exception remains applicable to the accepted Fair's existing implementation.
 
 # Existing legacy API — maintenance only
 
@@ -82,4 +84,6 @@ The Fair's real preview iframe fits its approached 3D screen aperture and remain
 
 ## Material helpers
 
-The seven material revisions use `engineered-materials.js` (cast concrete/aggregate and shaped studio chrome), `liquid-materials.js` (wax/chalk maps and environment), and `drawing-surfaces.js` (paper/rubber/wood and acetate). Gum and citrus author their own bounded texture/relief recipes in their modules. Import helpers with the generated `data-art-version` so a new scene cannot keep an old cached material library. Separate macro silhouette, albedo, height, roughness, physical reflection source and cast/contact shadows. Specs and reports record honest hybrid-relief limits; no hardware FPS is implied by source settings or screenshots.
+These helpers apply to **five of the seven retained legacy non-Fair `.js` revisions**: Roadworks and Metal use `engineered-materials.js`; Wax and Tide use `liquid-materials.js`; Drawing uses `drawing-surfaces.js`. Legacy Gum and Fruit author their own recipes. Import a retained helper with the generated art version when maintaining that path.
+
+The seven new **`.scene.js` candidates supersede those revisions**. They load authored GLB geometry and separate material maps, with concept-owned lighting/material setup; they are not required to adopt the old five-scene helpers. `scene-host.js`, `scene-surfaces.js` and `scene-gallery.js` share lifecycle, picking, native actions and live numerical/image surfaces. Keep macro silhouette, albedo, height, roughness, reflection sources and cast/contact shadows distinct on either path. Helper adoption and successful loading establish neither source fidelity nor hardware performance.

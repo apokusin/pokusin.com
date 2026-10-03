@@ -1,0 +1,6 @@
+AUDIT after-the-flame 1487 825 rays 0 blocked
+PASS after-the-flame 1487 13 preview actions, 7 native links, 14 scroll stops; focus/preview/pose/cancel callbacks.
+AUDIT after-the-flame 390 825 rays 0 blocked
+PASS after-the-flame 390 13 preview actions, 7 native links, 14 scroll stops; focus/preview/pose/cancel callbacks.
+AUDIT after-the-flame 320 825 rays 0 blocked
+PASS after-the-flame 320 13 preview actions, 7 native links, 14 scroll stops; focus/preview/pose/cancel callbacks.

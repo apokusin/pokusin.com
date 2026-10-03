@@ -2,7 +2,7 @@
 
 Generated on 2026-10-02 with the built-in image generation tool. New art-only material asset, visually grounded in `docs/countdown-concepts/references/still-drawing-tomorrow.jpg`; the source reference was inspected, not edited or copied into this texture.
 
-Source output: `/Users/pcyx/.codex/generated_images/01a0fe70-f7fd-77f3-a01c-0b50b7f42241/exec-e6a08cd7-89d4-432e-8f86-cbf6e0a7ba2f.png`
+Source output: `exec-e6a08cd7-89d4-432e-8f86-cbf6e0a7ba2f.png`
 
 Project copy: `paper-stock.png`. Contains paper fibres and tonal mottling only; no writing, countdown content, objects, lights or baked shadows. Lighting and registration marks remain authored scene content.
 

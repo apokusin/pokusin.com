@@ -1,0 +1,47 @@
+{
+  "method": "Actual indexed GLB triangles; 5\u00d75 UV points at .12/.30/.50/.70/.88 located by barycentric interpolation. Camera rays stop .003m before each actual ink skin. All opaque foreground masses retained. Renderer/texture stubs do not certify appearance.",
+  "profiles": [
+    {
+      "width": 1487,
+      "height": 900,
+      "archiveFocus": 13,
+      "archivePreview": 13,
+      "nativeExtras": 7,
+      "rays": 825,
+      "blocked": 0,
+      "outsideViewport": 0,
+      "measuredWaxStemRoots": 7,
+      "exactPlaqueRestore": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "archiveFocus": 13,
+      "archivePreview": 13,
+      "nativeExtras": 7,
+      "rays": 825,
+      "blocked": 0,
+      "outsideViewport": 0,
+      "measuredWaxStemRoots": 7,
+      "exactPlaqueRestore": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "archiveFocus": 13,
+      "archivePreview": 13,
+      "nativeExtras": 7,
+      "rays": 825,
+      "blocked": 0,
+      "outsideViewport": 0,
+      "measuredWaxStemRoots": 7,
+      "exactPlaqueRestore": true
+    }
+  ],
+  "repair": "Focused native destination lifts out on a measured wax filament, with genuinely extruded beveled wax stock behind the original UV ink. Filament anchors are measured intersections with the real cooled wax; low labels search upward on their own terrace. Active plaque is an explicit captured/restored pose state. Leaving a plaque returns its ink to authored placement and hides stock/stem. Opening cameras and source assets are unchanged.",
+  "assets": {
+    "scene.glb": "aa2e1cb50d5c6bb80925c0b90ca4cfbff13c00e7180511fc6efc0cf835243896",
+    "scene-mobile.glb": "0fa67dd71e85538fa151e79bf90863bfca2daaf46de83f04b434d72116e294d4"
+  },
+  "browserGate": "Parent owns actual browser confirmation."
+}

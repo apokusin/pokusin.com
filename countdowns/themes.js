@@ -3,6 +3,7 @@ import { NumberReel, reelPlan, reelPosition } from './reels.js';
 const theme = document.documentElement.dataset.theme;
 const control = theme === 'control';
 const art = document.documentElement.classList.contains('art-project');
+const sceneFirst = document.documentElement.classList.contains('scene-project');
 const action = document.getElementById('scene-action');
 const royalButton = document.getElementById('royal-reset');
 const secret = document.getElementById('countdown-secret');
@@ -386,8 +387,14 @@ function revealArtSecret(){
   secret.style.left=`${center-pr.left}px`;secret.style.top=`${top-pr.top}px`;
 }
 if (art) {
-  import(`./exhibition.js?v=${document.documentElement.dataset.artVersion}`).then(module => module.initExhibition({
-    theme,reducedMotion,requestReset:reset,getDigits:remaining,revealSecret:revealArtSecret
+  const sceneModule = sceneFirst ? './scene-host.js' : './exhibition.js';
+  import(`${sceneModule}?v=${document.documentElement.dataset.artVersion}`).then(module => (sceneFirst ? module.initSceneHost : module.initExhibition)({
+    theme,reducedMotion,requestReset:reset,getDigits:remaining,
+    getTally:()=>state.count,getSnapshot:()=>({deadline:state.deadline,now:Date.now()+clockOffset,ready}),
+    revealSecret:sceneFirst?()=>{
+      secret.hidden=!secret.hidden;
+      document.querySelector('.art-secret-trigger').setAttribute('aria-expanded',String(!secret.hidden));
+    }:revealArtSecret
   })).catch(error=>{
     // This tiny DOM path also works when the optional exhibition module itself is blocked.
     const style=document.querySelector('link[href^="concepts/"]');if(style)document.head.append(style);

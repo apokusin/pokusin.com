@@ -11,12 +11,13 @@
 (function(){var theme=new URLSearchParams(location.search).get('theme');
  var art=['tomorrows-roadworks','bubblegum-time','after-the-flame','low-tide-later','not-yet-ripe','still-drawing-tomorrow','held-in-suspense','the-almost-fair'];
  var isArt=art.indexOf(theme)!==-1;
+ var sceneFirst=['held-in-suspense', 'bubblegum-time', 'after-the-flame', 'tomorrows-roadworks', 'still-drawing-tomorrow', 'low-tide-later', 'not-yet-ripe'].indexOf(theme)!==-1;
  document.documentElement.dataset.theme=isArt?theme:theme==='control'?'control':'royal';
- document.documentElement.dataset.artVersion='caaba7bc0e';
- if(isArt){document.documentElement.classList.add('art-project');var link=document.createElement('link');link.rel='stylesheet';link.href='concepts/'+theme+'.css?v=caaba7bc0e';document.head.append(link);}
+ document.documentElement.dataset.artVersion='9294fb76e7';
+ if(isArt){document.documentElement.classList.add('art-project');if(sceneFirst)document.documentElement.classList.add('scene-project');var link=document.createElement('link');link.rel='stylesheet';link.href=(sceneFirst?'scene-host.css':'concepts/'+theme+'.css')+'?v=9294fb76e7';document.head.append(link);}
 })();
 </script>
-<link rel="stylesheet" href="exhibition.css?v=caaba7bc0e">
+<link rel="stylesheet" href="exhibition.css?v=9294fb76e7">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
 </head>
 <body>
@@ -276,6 +277,9 @@
         </div>
       </div>
     </section>
+    <template id="scene-destinations">
+      <a class="scene-timeline-link" data-show="dexter" href="/countdowns/dexter/s7-episodes/">Dexter · Season 7 · Episode by Episode</a>
+    </template>
     </main>
     <footer class="foot">
       <span>Artur Pokusin</span>
@@ -440,5 +444,5 @@
     update();
   }
   document.querySelectorAll('[data-carousel]').forEach(setup);
-})();</script><script type="module" src="themes.js?v=47be0e5e88"></script></body>
+})();</script><script type="module" src="themes.js?v=bfa7e88410"></script></body>
 </html>

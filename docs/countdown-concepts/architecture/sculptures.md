@@ -1,5 +1,7 @@
 # Architecture audit: three material sculptures
 
+**Historical diagnosis/proposal.** Statements below about the “current” three-mount/DOM-projection runtime describe the rejected pre-rebuild snapshot. The active candidates now use `.scene.js` modules and `scene-host.js`. Consult the [implemented runtime audit](../runtime-audit.md), [current reports](../README.md) and [rebuilt browser evidence](evidence/rebuilt/README.md) for their actual state and remaining gates. This earlier diagnosis is preserved rather than rewritten as new visual acceptance.
+
 Prepared 2 October 2026 after the user rejected all seven non-Fair implementations. This is a replacement architectural proposal, not acceptance of the existing renders. The Fair is outside this audit and must remain intact.
 
 Inspected the original reference JPG, latest material desktop capture, current module, `GUIDE.md`, `CONTRACT.md`, and `exhibition.js` for each direction below. The original image governs composition and the relationships between materials. A superficially similar palette does not pass.

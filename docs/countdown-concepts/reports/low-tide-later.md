@@ -1,26 +1,59 @@
+# Low Tide, Later — current reimplementation art review
+
+**Verdict: Latest desktop and 390/320 glyph-revision portraits compared; optical/source gates remain open. No final art acceptance.** Compared with the unchanged [original reference](../references/low-tide-later.jpg). Functional evidence is recorded separately in the [runtime audit](../runtime-audit.md). Version-specific browser snapshots: [tide-final-desktop](../architecture/evidence/rebuilt/tide-final-desktop.jpg), [tide-final-390](../architecture/evidence/rebuilt/tide-final-390.jpg), [tide-glyph-final-320](../architecture/evidence/rebuilt/tide-glyph-final-320.jpg). Earlier snapshots are retained in the evidence manifest. Filenames containing ‘final’ are capture-session labels, not approval.
+
+## What is now built
+
+A genuine oblique shore, four eroded chalk bodies, scallop Again, partly wet cotton prints and seabed now replace the frontal relief/DOM overlay. The authored model and depth-aware water share one camera. Every genuine version and actual More/timeline/live link has a physical surface and exact touch/focus stop. Chalk pits/chips and wet boundaries are separate from mapped fine detail. Water uses actual common bed depth, multiscale normals, bounded contact foam and shallow caustics; a thin wet physical film surrounds faithful print centers. This is a bounded optical approximation, not a fluid simulation. The latest shader revisions require actual GPU review.
+
+## Judgment of the saved visuals
+
+The refined desktop now has a clear oblique shore, descending real chalk clock, localized shoreline/post foam, scallop action and faithful photographs. Water still has conspicuous regular cellular/ripple structure and broad repeated reflection patches; the source is less periodic, with more irregular broken foam and depth variation. Chalk bodies remain evenly cylindrical/capped and prints visibly thick and clean beside the source’s salt-worn stock. The latest 390/320 portraits keep clock, shell/tally and first Severance print in view after phone glyph strengthening. Blue numeral/unit strokes remain delicate at the narrow width; chalk erosion and thin salt-worn paper remain source gates.
+
+## Direction that must survive refinement
+
+Daylight should make the water blue through depth/reflection, not through an opaque cyan blanket. Keep chalk warm-white above the line, cool mottled beneath it, with soft shore contact. Foam belongs to waves/post/shore contact; it cannot be a uniform tiled wire grid.
+
+## Interaction and feel
+
+Decorative tide time advances only in visible/unfrozen frame dt. Ripple slots, shell/crown heights, hover captions and actual paper curls belong to preview snapshots. Remote observations during a preview coalesce into one small returning response. Reduced motion removes ripple/curl travel and assigns pending/secret states directly. The interaction must make its available object visible before it is required: hovering/focusing a work frames its real physical support; a tiny hidden link cannot be the only route. The single crown is optional; the core archive/reset never depends on discovery. Preview returns to the same authored pose, while clock/tally immediately reflect the authoritative shared state.
+
+## Portrait and remaining gate
+
+Opening plus all thirteen exact record stops is implemented. Latest phone glyph captures are preserved separately from the earlier portrait. Root browser checks confirmed the physical shell reset and genuine Severance Season 2 preview/Escape/focus return. Verify the rest of the route, contact foam, wet paper and cancellation in the actual browser; these representative successful actions do not approve visual fidelity. The clear current optical approximation is not a fluid simulation and remains short of final source fidelity. The reproducible offline run passes thirteen native preview actions and seven additional destinations at both controller profiles; GPU/canvas/fonts are mocked and GLB texture references removed in memory. It proves inventory/callback behavior, not shader/material appearance, physical occlusion, browser link defaults, touch feel or final art acceptance.
+
+---
+
+## Historical review of the rejected implementation
+
+<details>
+<summary>Rejected legacy development record — every visual approval below is withdrawn</summary>
+
+The material below is retained as history. Its earlier acceptance claims are superseded by the user’s rejection and by the current source gates above. It does not describe or approve the new `.scene.js` candidate.
+
 # Art direction review — Low Tide, Later
 
-## Current status — architectural reset, October 2, 2026
+## Historical rejection stage — architectural reset, October 2, 2026
 
-**Acceptance withdrawn. Current render rejected by the user; replacement planned and NOT IMPLEMENTED.** The previous reviews below are historical records of a failed implementation. Their acceptance of a quieter frontal interpretation relaxed the original concept instead of requiring it, and no longer governs further work.
+**Historical rejection: acceptance withdrawn.** At this stage the legacy render was rejected and its replacement had not yet been delivered. The separate authored candidate now exists and is evaluated above. The previous reviews below are historical records of a failed implementation. Their acceptance of a quieter frontal interpretation relaxed the original concept instead of requiring it, and no longer governs further work.
 
-The original is an oblique, tactile cyanotype shoreline with substantial eroded time bodies, intersecting shallow water, worn/curling photographs and a credible found scallop. The live implementation is a frontal shore/water plate with upright unoccluded DOM digits/cards. It misses the spatial contact, silhouette, lighting and material density which make the source compelling. More texture settings cannot repair that arrangement.
+The original is an oblique, tactile cyanotype shoreline with substantial eroded time bodies, intersecting shallow water, worn/curling photographs and a credible found scallop. The rejected legacy implementation was a frontal shore/water plate with upright unoccluded DOM digits/cards. It misses the spatial contact, silhouette, lighting and material density which make the source compelling. More texture settings cannot repair that arrangement.
 
 The [replacement spec](../specs/low-tide-later.md) and [runtime audit](../architecture/runtime-audit.md) require a world-space bed/water, physical image/glyph surfaces, scene-owned shoreline camera navigation and a native semantic/fallback adapter. Fair remains unchanged. A complete resting reference frame must pass comparison before cursor effects or remaining archive routes are expanded. No new render, motion or device-performance result is claimed in this architectural reset.
 
 ---
 
-## Final renewed independent review — October 2, 2026
+## Historical renewed review — withdrawn — October 2, 2026
 
-**Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
+**Historical review claimed visual acceptance; that conclusion is withdrawn.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
 
 Continuous curved marine reflection/current structure replaces the rejected checker pattern and subsequent nearly flat navy field. Pale fine grit replaces dark pixel squares. Chalk stains, shell ribs and dry paper remain distinct; the narrow title clears the complete first phone photograph.
 
-**Accepted source limitation:** The frontal shoreline relief has quieter foam, simpler stone/shell geometry and less macro microdetail than the oblique generated photograph. This is the documented rendered interpretation, not a claim of photographic source equivalence.
+**Historical source compromise (withdrawn):** The frontal shoreline relief has quieter foam, simpler stone/shell geometry and less macro microdetail than the oblique generated photograph. This is the documented rendered interpretation, not a claim of photographic source equivalence.
 
 Evidence: [reference/current](../qa/low-tide-later-material-comparison.jpg), [1280 × 900](../qa/low-tide-later-material-desktop.jpg), [390 × 844](../qa/low-tide-later-material-mobile.jpg), [320 × 720](../qa/low-tide-later-material-320.jpg). Root separately verified real phone resets 386 → 393 across all seven, genuine archive preview/Escape/focus restoration, 44 px or larger targets, no document overflow, reduced-motion crown discovery and actual graphics-loss restoration. [Shared runtime QA](../../../design-qa.md) distinguishes native checks from still-image review; no hardware FPS or physical touch-device result is implied.
 
-The implementation-stage observations below record the development and correction of these surfaces; earlier pending/historical acceptance is superseded by this final review.
+The implementation-stage observations below describe development of the rejected legacy revision. Acceptance was pending at some stages and claimed by later reviewers; the user subsequently rejected the result. All of those claimed approvals are withdrawn, including the later assessment. The current candidate and its unresolved source gates are described above.
 
 ## Renewed material review — October 2, 2026
 
@@ -32,11 +65,11 @@ The user requested the same material rigor as the revised Fair. Earlier acceptan
 
 **Observed and corrected integration defect:** Viewed `/private/tmp/rigor-pass2-low-tide-later.png`; it was captured between module and style changes and showed detached numbers below bare stones. Healthy-scene CSS now gives the projected children a full-stage coordinate origin. Viewed `/private/tmp/rigor-pair-low-tide-later.jpg` and the pass-3 phone capture: the digits now align correctly, water has real depth and the shell reads as a physical action. The phone's vertical title still approached the first photograph; its mount has subsequently moved left. Chalk/shore diffuse pores were strengthened and sand flecks were removed from open water. These final corrections require refreshed capture.
 
-**Acceptance status:** Pending renewed root desktop/390/320 and runtime QA. Current static evidence supports improved composition and proper projection; it is not measured rendering performance or proof of the entire motion/input model. The reference remains denser and more photographic than the procedural water. Keep that difference explicit rather than describing the simpler shader as source-equivalent.
+**Historical implementation-stage status:** Pending renewed root desktop/390/320 and runtime QA. Current static evidence supports improved composition and proper projection; it is not measured rendering performance or proof of the entire motion/input model. The reference remains denser and more photographic than the procedural water. Keep that difference explicit rather than describing the simpler shader as source-equivalent.
 
 ---
 
-Reviewed the actual [reference image](../references/low-tide-later.jpg), complete [spec](../specs/low-tide-later.md), and shared guide. The initial sections below are recommendations for implementation; the later implementation addendum and final acceptance distinguish source review from observed working-page visuals.
+Reviewed the actual [reference image](../references/low-tide-later.jpg), complete [spec](../specs/low-tide-later.md), and shared guide. The initial sections below are recommendations for implementation; the later implementation addendum and withdrawn assessment record the historical distinction between source review and observed working-page visuals.
 
 ## The compelling idea
 
@@ -75,10 +108,12 @@ An orthographic overlay at half-span 5.5 preserves the diagonal image plane. The
 
 A subsequent source review gives remote observations their own one-shot ripple queue, independent of local pointer sampling; continuous mouse movement can no longer starve that response. The crown now shares the stones' matte granular chalk material, with chipped band/points and a small blue pool whose veil attenuates on hover or keyboard focus; focus remains active after pointer departure. Local water detail quiets in that region as well. The expired-countdown note now follows the action in normal flex flow, and even-numbered phone prints use the same bounded keyboard lift as hover. The no-backing rule applies to desktop; the rounded translucent phone contrast backings observed below remain an explicit accepted exception.
 
-## Final independent art acceptance — 2026-10-02
+## Historical art assessment — withdrawn — 2026-10-02
 
 **Observed desktop and phone visuals:** Reviewed the final desktop, 390 px and 320 px captures against this spec. The blue/white diagonal remains the organizing shape, and the staggered chalk cylinders are distinct from the dry paper and rust shell. The upper print clears the seconds numeral. Both phone widths retain two readable stone pairs, the first photograph and a separate shell action; the white home link is legible against blue. Small rounded phone backings trade some exposed chalk texture for consistent digit contrast. The supplied archive continuation captures keep the slanted shore edge and separated dry prints instead of returning to neutral shelf containers.
 
 **Code-reviewed feel:** Eight ripple slots, a 120 ms sample gate and a short stationary-tap test bound water feedback. A vertical swipe does not qualify as a tap or acquire pointer capture. A confirmed reset owns one short surge, while remote state causes a smaller edge response. The water renders behind independent live surfaces, so the decorative flood cannot physically cover an archive hit region or timer glyph. These are source checks, not motion or device-performance measurements.
 
-**Fidelity decision:** Preserve the flattened cyanotype shore rather than adding realistic ocean scenery. The simple shell is sufficient because Again and its press count remain frontal. Actual archived work intentionally replaces invented reference artwork. No remaining P0/P1/P2 visual defect was identified in the supplied final compositions; runtime state, input and failure acceptance is recorded separately in the shared QA report.
+**Historical fidelity conclusion (withdrawn):** The earlier review stated: Preserve the flattened cyanotype shore rather than adding realistic ocean scenery. The simple shell is sufficient because Again and its press count remain frontal. Actual archived work intentionally replaces invented reference artwork. No remaining P0/P1/P2 visual defect was identified in the supplied final compositions; runtime state, input and failure acceptance is recorded separately in the shared QA report.
+
+</details>

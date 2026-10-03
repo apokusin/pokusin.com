@@ -1,0 +1,1147 @@
+{
+  "measuredAtUTC": "2026-10-03T02:45:09.217378+00:00",
+  "status": "Measured candidate assets; independent browser/art acceptance is separate.",
+  "method": "Static GLB headers, actual accessors, embedded image dimensions and SHA-256.",
+  "limits": [
+    "Triangles sum each exported primitive once; runtime clones/instances can change drawn geometry.",
+    "RGBA8 is base-level decoded image storage; mipmaps, renderer targets and geometry/GPU memory are excluded.",
+    "External live ink, screenshots, font atlases, water/reflection targets and other runtime textures are excluded from the embedded-image figure.",
+    "Byte/triangle counts do not establish frame rate, touch reach, visual fidelity or acceptance.",
+    "A hash identifies this exact snapshot; rerun after any asset export."
+  ],
+  "concepts": {
+    "tomorrows-roadworks": {
+      "bundles": [
+        {
+          "file": "countdowns/assets/concepts/tomorrows-roadworks/scene/scene.glb",
+          "transferBytes": 19612608,
+          "sha256": "303e94e2f5686ec8f10405ccca99ba3e6e97babe758f914a47e87d9827d6b4e9",
+          "trianglesPerExportedPrimitive": 394377,
+          "primitives": 250,
+          "nodes": 277,
+          "morphPrimitives": 1,
+          "extensionsRequired": [
+            "KHR_mesh_quantization"
+          ],
+          "missingPrimitiveAttributes": {
+            "NORMAL": 0,
+            "TEXCOORD_0": 0,
+            "TANGENT": 0
+          },
+          "embeddedImages": [
+            {
+              "index": 0,
+              "name": "limestone_normal",
+              "mimeType": "image/png",
+              "encodedBytes": 556519,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 1,
+              "name": "coastal_sediment_albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 349236,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 2,
+              "name": "limestone_roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 278983,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 3,
+              "name": "salmon_limestone_albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 345115,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 4,
+              "name": "weathered_precast_albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 334495,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 5,
+              "name": "aggregate_normal",
+              "mimeType": "image/png",
+              "encodedBytes": 579443,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 6,
+              "name": "cobalt_aggregate_albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 423139,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 7,
+              "name": "aggregate_roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 334251,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 8,
+              "name": "clock_cast_housing_contact_ao-limestone_roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 374598,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 9,
+              "name": "again_cast_pillar_contact_ao-limestone_roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 387643,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            }
+          ],
+          "decodedEmbeddedRGBA8Bytes": 10485760
+        }
+      ],
+      "editableSources": [
+        "countdowns/assets/concepts/tomorrows-roadworks/scene/authoring/scene.blend"
+      ],
+      "authoringScripts": [
+        "countdowns/assets/concepts/tomorrows-roadworks/scene/authoring/build_scene.py",
+        "countdowns/assets/concepts/tomorrows-roadworks/scene/authoring/check_phone_contacts.py",
+        "countdowns/assets/concepts/tomorrows-roadworks/scene/authoring/finish_surface_normals.py",
+        "countdowns/assets/concepts/tomorrows-roadworks/scene/authoring/inspect_export.py",
+        "countdowns/assets/concepts/tomorrows-roadworks/scene/authoring/optimize_scene.py",
+        "countdowns/assets/concepts/tomorrows-roadworks/scene/authoring/pack_attributes.py",
+        "countdowns/assets/concepts/tomorrows-roadworks/scene/authoring/refine_art_surfaces.py"
+      ],
+      "fontNotices": [
+        "countdowns/assets/concepts/tomorrows-roadworks/scene/typography/OFL-RobotoCondensed.txt"
+      ]
+    },
+    "bubblegum-time": {
+      "bundles": [
+        {
+          "file": "countdowns/assets/concepts/bubblegum-time/scene/scene.glb",
+          "transferBytes": 8564468,
+          "sha256": "d9b5b4f9267275f5ddd564f0d36f7a3ede1e912bd4b276b352c61e170d62a86f",
+          "trianglesPerExportedPrimitive": 193032,
+          "primitives": 124,
+          "nodes": 131,
+          "morphPrimitives": 1,
+          "extensionsRequired": [],
+          "missingPrimitiveAttributes": {
+            "NORMAL": 0,
+            "TEXCOORD_0": 31,
+            "TANGENT": 31
+          },
+          "embeddedImages": [
+            {
+              "index": 0,
+              "name": "gum-stretch-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 303405,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 1,
+              "name": "gum-roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 181104,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 2,
+              "name": "paper-fibre-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 258240,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 3,
+              "name": "cotton-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 310097,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            }
+          ],
+          "decodedEmbeddedRGBA8Bytes": 4194304
+        }
+      ],
+      "editableSources": [
+        "countdowns/assets/concepts/bubblegum-time/scene/authoring/scene.blend"
+      ],
+      "authoringScripts": [
+        "countdowns/assets/concepts/bubblegum-time/scene/authoring/build_scene.py",
+        "countdowns/assets/concepts/bubblegum-time/scene/authoring/build_typography.py"
+      ],
+      "fontNotices": [
+        "countdowns/assets/concepts/bubblegum-time/scene/typography/OFL-BodoniModa.txt",
+        "countdowns/assets/concepts/bubblegum-time/scene/typography/OFL-RobotoCondensed.txt"
+      ]
+    },
+    "after-the-flame": {
+      "bundles": [
+        {
+          "file": "countdowns/assets/concepts/after-the-flame/scene/scene-mobile.glb",
+          "transferBytes": 10856748,
+          "sha256": "0fa67dd71e85538fa151e79bf90863bfca2daaf46de83f04b434d72116e294d4",
+          "trianglesPerExportedPrimitive": 180458,
+          "primitives": 78,
+          "nodes": 79,
+          "morphPrimitives": 8,
+          "extensionsRequired": [
+            "KHR_texture_transform"
+          ],
+          "missingPrimitiveAttributes": {
+            "NORMAL": 0,
+            "TEXCOORD_0": 0,
+            "TANGENT": 0
+          },
+          "embeddedImages": [
+            {
+              "index": 0,
+              "name": "wax-pore-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 447462,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 1,
+              "name": "cream-wax-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 7759,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 2,
+              "name": "cooled-wax-roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 153921,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 3,
+              "name": "molten-film-roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 97426,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            }
+          ],
+          "decodedEmbeddedRGBA8Bytes": 4194304
+        },
+        {
+          "file": "countdowns/assets/concepts/after-the-flame/scene/scene.glb",
+          "transferBytes": 11004008,
+          "sha256": "aa2e1cb50d5c6bb80925c0b90ca4cfbff13c00e7180511fc6efc0cf835243896",
+          "trianglesPerExportedPrimitive": 188898,
+          "primitives": 68,
+          "nodes": 69,
+          "morphPrimitives": 8,
+          "extensionsRequired": [
+            "KHR_texture_transform"
+          ],
+          "missingPrimitiveAttributes": {
+            "NORMAL": 0,
+            "TEXCOORD_0": 0,
+            "TANGENT": 0
+          },
+          "embeddedImages": [
+            {
+              "index": 0,
+              "name": "wax-pore-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 447462,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 1,
+              "name": "cream-wax-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 7759,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 2,
+              "name": "cooled-wax-roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 153921,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 3,
+              "name": "molten-film-roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 97426,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            }
+          ],
+          "decodedEmbeddedRGBA8Bytes": 4194304
+        }
+      ],
+      "editableSources": [
+        "countdowns/assets/concepts/after-the-flame/scene/authoring/scene-mobile.blend",
+        "countdowns/assets/concepts/after-the-flame/scene/authoring/scene.blend"
+      ],
+      "authoringScripts": [
+        "countdowns/assets/concepts/after-the-flame/scene/authoring/build_scene.py",
+        "countdowns/assets/concepts/after-the-flame/scene/authoring/check_geometry.py",
+        "countdowns/assets/concepts/after-the-flame/scene/authoring/check_navigation.py",
+        "countdowns/assets/concepts/after-the-flame/scene/authoring/export_mobile.py",
+        "countdowns/assets/concepts/after-the-flame/scene/authoring/inspect_export.py",
+        "countdowns/assets/concepts/after-the-flame/scene/authoring/inspect_obstruction.py",
+        "countdowns/assets/concepts/after-the-flame/scene/authoring/refine_navigation_geometry.py",
+        "countdowns/assets/concepts/after-the-flame/scene/authoring/render_current.py"
+      ],
+      "fontNotices": []
+    },
+    "low-tide-later": {
+      "bundles": [
+        {
+          "file": "countdowns/assets/concepts/low-tide-later/scene/scene.glb",
+          "transferBytes": 15306720,
+          "sha256": "6ea34ddf460bcf4fe8d2203f131a4a4e72bbe5abaa70f1b06c3902b6a5ffde47",
+          "trianglesPerExportedPrimitive": 310334,
+          "primitives": 63,
+          "nodes": 63,
+          "morphPrimitives": 0,
+          "extensionsRequired": [],
+          "missingPrimitiveAttributes": {
+            "NORMAL": 0,
+            "TEXCOORD_0": 2,
+            "TANGENT": 2
+          },
+          "embeddedImages": [
+            {
+              "index": 0,
+              "name": "salt-sand-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 878023,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 1,
+              "name": "salt-sand-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 446046,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 2,
+              "name": "salt-sand-roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 317110,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 3,
+              "name": "chalk-porous-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 664509,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 4,
+              "name": "chalk-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 432458,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 5,
+              "name": "chalk-roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 271788,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 6,
+              "name": "shell-lamella-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 606115,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 7,
+              "name": "shell-rust-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 110168,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 8,
+              "name": "shell-rust-roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 277799,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 9,
+              "name": "salt-paper-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 672246,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 10,
+              "name": "salt-paper-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 374628,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            }
+          ],
+          "decodedEmbeddedRGBA8Bytes": 11534336
+        }
+      ],
+      "editableSources": [
+        "countdowns/assets/concepts/low-tide-later/scene/authoring/scene.blend"
+      ],
+      "authoringScripts": [
+        "countdowns/assets/concepts/low-tide-later/scene/authoring/build_scene.py",
+        "countdowns/assets/concepts/low-tide-later/scene/authoring/build_typography.py"
+      ],
+      "fontNotices": [
+        "countdowns/assets/concepts/low-tide-later/scene/typography/OFL-BodoniModa.txt",
+        "countdowns/assets/concepts/low-tide-later/scene/typography/OFL-Caveat.txt",
+        "countdowns/assets/concepts/low-tide-later/scene/typography/OFL-RobotoCondensed.txt"
+      ]
+    },
+    "not-yet-ripe": {
+      "bundles": [
+        {
+          "file": "countdowns/assets/concepts/not-yet-ripe/scene/scene-mobile.glb",
+          "transferBytes": 7643928,
+          "sha256": "9b10fce8f7b2458abfb03659a9f3f2876e092dd388720524fb10e2d6aecc6f59",
+          "trianglesPerExportedPrimitive": 88200,
+          "primitives": 196,
+          "nodes": 216,
+          "morphPrimitives": 3,
+          "extensionsRequired": [],
+          "missingPrimitiveAttributes": {
+            "NORMAL": 0,
+            "TEXCOORD_0": 1,
+            "TANGENT": 196
+          },
+          "embeddedImages": [
+            {
+              "index": 0,
+              "name": "bark-fissure-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 631111,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 1,
+              "name": "bark-unlit-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 395565,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 2,
+              "name": "weathered-fig-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 389593,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 3,
+              "name": "weathered-fig-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 476967,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 4,
+              "name": "peel-pore-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 685209,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 5,
+              "name": "dry-peel-roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 339742,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 6,
+              "name": "vesicle-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 488079,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 7,
+              "name": "flesh-unlit-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 294786,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 8,
+              "name": "cotton-fibre-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 338473,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 9,
+              "name": "cotton-unlit-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 428869,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 10,
+              "name": "leaf-vein-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 453177,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 11,
+              "name": "leaf-unlit-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 443649,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            }
+          ],
+          "decodedEmbeddedRGBA8Bytes": 12582912
+        },
+        {
+          "file": "countdowns/assets/concepts/not-yet-ripe/scene/scene.glb",
+          "transferBytes": 9500428,
+          "sha256": "dffb49df1658e16781ef16ccd87aa243a6dd06302e59c3512a95e2bf747022d8",
+          "trianglesPerExportedPrimitive": 172063,
+          "primitives": 214,
+          "nodes": 234,
+          "morphPrimitives": 3,
+          "extensionsRequired": [],
+          "missingPrimitiveAttributes": {
+            "NORMAL": 0,
+            "TEXCOORD_0": 1,
+            "TANGENT": 214
+          },
+          "embeddedImages": [
+            {
+              "index": 0,
+              "name": "bark-fissure-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 631111,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 1,
+              "name": "bark-unlit-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 395565,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 2,
+              "name": "weathered-fig-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 389593,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 3,
+              "name": "weathered-fig-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 476967,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 4,
+              "name": "peel-pore-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 685209,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 5,
+              "name": "dry-peel-roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 339742,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 6,
+              "name": "vesicle-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 488079,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 7,
+              "name": "flesh-unlit-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 294786,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 8,
+              "name": "cotton-fibre-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 338473,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 9,
+              "name": "cotton-unlit-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 428869,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 10,
+              "name": "leaf-vein-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 453177,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 11,
+              "name": "leaf-unlit-albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 443649,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            }
+          ],
+          "decodedEmbeddedRGBA8Bytes": 12582912
+        }
+      ],
+      "editableSources": [
+        "countdowns/assets/concepts/not-yet-ripe/scene/authoring/scene.blend"
+      ],
+      "authoringScripts": [
+        "countdowns/assets/concepts/not-yet-ripe/scene/authoring/bake_pulp_ao.py",
+        "countdowns/assets/concepts/not-yet-ripe/scene/authoring/build_scene.py",
+        "countdowns/assets/concepts/not-yet-ripe/scene/authoring/build_typography.py",
+        "countdowns/assets/concepts/not-yet-ripe/scene/authoring/check_geometry.py",
+        "countdowns/assets/concepts/not-yet-ripe/scene/authoring/render_phone_clay.py"
+      ],
+      "fontNotices": [
+        "countdowns/assets/concepts/not-yet-ripe/scene/typography/OFL-BodoniModa.txt",
+        "countdowns/assets/concepts/not-yet-ripe/scene/typography/OFL-RobotoCondensed.txt"
+      ]
+    },
+    "still-drawing-tomorrow": {
+      "bundles": [
+        {
+          "file": "countdowns/assets/concepts/still-drawing-tomorrow/scene/scene.glb",
+          "transferBytes": 11468036,
+          "sha256": "00bc4ba2818648af0b2f66fe7cd8257fbfaaee83d640d871e67b183697015e3b",
+          "trianglesPerExportedPrimitive": 318214,
+          "primitives": 140,
+          "nodes": 165,
+          "morphPrimitives": 0,
+          "extensionsRequired": [],
+          "missingPrimitiveAttributes": {
+            "NORMAL": 0,
+            "TEXCOORD_0": 10,
+            "TANGENT": 10
+          },
+          "embeddedImages": [
+            {
+              "index": 0,
+              "name": "paper-fibers",
+              "mimeType": "image/png",
+              "encodedBytes": 1097280,
+              "dimensions": [
+                1024,
+                1024
+              ],
+              "decodedRGBA8Bytes": 4194304
+            },
+            {
+              "index": 1,
+              "name": "paper-roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 317335,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 2,
+              "name": "graphite-sleeve-contact",
+              "mimeType": "image/png",
+              "encodedBytes": 249167,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 3,
+              "name": "rubber-pore-normal",
+              "mimeType": "image/png",
+              "encodedBytes": 294909,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 4,
+              "name": "rubber-contact-wear",
+              "mimeType": "image/png",
+              "encodedBytes": 177733,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            }
+          ],
+          "decodedEmbeddedRGBA8Bytes": 8388608
+        }
+      ],
+      "editableSources": [
+        "countdowns/assets/concepts/still-drawing-tomorrow/scene/authoring/still-drawing-tomorrow.blend"
+      ],
+      "authoringScripts": [
+        "countdowns/assets/concepts/still-drawing-tomorrow/scene/authoring/create_scene.py"
+      ],
+      "fontNotices": []
+    },
+    "held-in-suspense": {
+      "bundles": [
+        {
+          "file": "countdowns/assets/concepts/held-in-suspense/scene/scene-mobile.glb",
+          "transferBytes": 7640848,
+          "sha256": "e924f8b296e8e6ce6bd3183a1ccf059e0a158d93682cb296697ff6537e32813a",
+          "trianglesPerExportedPrimitive": 132139,
+          "primitives": 185,
+          "nodes": 201,
+          "morphPrimitives": 0,
+          "extensionsRequired": [],
+          "missingPrimitiveAttributes": {
+            "NORMAL": 0,
+            "TEXCOORD_0": 0,
+            "TANGENT": 0
+          },
+          "embeddedImages": [
+            {
+              "index": 0,
+              "name": "brushed_normal",
+              "mimeType": "image/png",
+              "encodedBytes": 5202,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 1,
+              "name": "brushed_roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 137397,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 2,
+              "name": "slate_normal",
+              "mimeType": "image/png",
+              "encodedBytes": 102120,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 3,
+              "name": "slate_albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 414448,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 4,
+              "name": "slate_roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 329402,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 5,
+              "name": "limestone_albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 201478,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 6,
+              "name": "limestone_roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 252636,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            }
+          ],
+          "decodedEmbeddedRGBA8Bytes": 7340032
+        },
+        {
+          "file": "countdowns/assets/concepts/held-in-suspense/scene/scene.glb",
+          "transferBytes": 6653188,
+          "sha256": "f946c792bd99725c0bb77e1b54eb3bf6a20a2146da31f96bcb317727f9ad238b",
+          "trianglesPerExportedPrimitive": 108689,
+          "primitives": 181,
+          "nodes": 197,
+          "morphPrimitives": 0,
+          "extensionsRequired": [],
+          "missingPrimitiveAttributes": {
+            "NORMAL": 0,
+            "TEXCOORD_0": 0,
+            "TANGENT": 0
+          },
+          "embeddedImages": [
+            {
+              "index": 0,
+              "name": "brushed_normal",
+              "mimeType": "image/png",
+              "encodedBytes": 5202,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 1,
+              "name": "brushed_roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 137397,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 2,
+              "name": "slate_normal",
+              "mimeType": "image/png",
+              "encodedBytes": 102120,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 3,
+              "name": "slate_albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 414448,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 4,
+              "name": "slate_roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 329402,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 5,
+              "name": "limestone_albedo",
+              "mimeType": "image/png",
+              "encodedBytes": 201478,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            },
+            {
+              "index": 6,
+              "name": "limestone_roughness",
+              "mimeType": "image/png",
+              "encodedBytes": 252636,
+              "dimensions": [
+                512,
+                512
+              ],
+              "decodedRGBA8Bytes": 1048576
+            }
+          ],
+          "decodedEmbeddedRGBA8Bytes": 7340032
+        }
+      ],
+      "editableSources": [
+        "countdowns/assets/concepts/held-in-suspense/scene/authoring/held-in-suspense-mobile.blend",
+        "countdowns/assets/concepts/held-in-suspense/scene/authoring/held-in-suspense.blend"
+      ],
+      "authoringScripts": [
+        "countdowns/assets/concepts/held-in-suspense/scene/authoring/create_scene.py",
+        "countdowns/assets/concepts/held-in-suspense/scene/authoring/inspect_export.py"
+      ],
+      "fontNotices": []
+    }
+  }
+}

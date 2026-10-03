@@ -138,20 +138,25 @@ ART_THEMES = [
     ('not-yet-ripe', 'Not Yet Ripe'), ('still-drawing-tomorrow', 'Still Drawing Tomorrow'),
     ('held-in-suspense', 'Held in Suspense'), ('the-almost-fair', 'The Almost Fair'),
 ]
-_art_files = sorted(glob.glob(os.path.join(CD, 'concepts', '*.*')) + [os.path.join(CD, 'exhibition.js'), os.path.join(CD, 'exhibition.css')])
+SCENE_FIRST_THEMES = ['held-in-suspense', 'bubblegum-time', 'after-the-flame', 'tomorrows-roadworks', 'still-drawing-tomorrow', 'low-tide-later', 'not-yet-ripe']
+_scene_assets = [p for p in glob.glob(os.path.join(CD, 'assets', 'concepts', '*', 'scene', '**', '*'), recursive=True)
+                 if os.path.isfile(p) and os.path.splitext(p)[1] in ('.glb', '.json', '.png', '.jpg', '.webp', '.js') and '/authoring/' not in p]
+_art_files = sorted(glob.glob(os.path.join(CD, 'concepts', '*.*')) +
+                    [os.path.join(CD, p) for p in ['exhibition.js', 'exhibition.css', 'scene-host.js', 'scene-host.css', 'scene-surfaces.js', 'scene-gallery.js']] + _scene_assets)
 ART_VERSION = hashlib.sha256(b''.join(open(p, 'rb').read() for p in _art_files if os.path.isfile(p))).hexdigest()[:10]
 THEME_HEAD = """<script>
 (function(){var theme=new URLSearchParams(location.search).get('theme');
  var art=['tomorrows-roadworks','bubblegum-time','after-the-flame','low-tide-later','not-yet-ripe','still-drawing-tomorrow','held-in-suspense','the-almost-fair'];
  var isArt=art.indexOf(theme)!==-1;
+ var sceneFirst=__SCENE_FIRST_THEMES__.indexOf(theme)!==-1;
  document.documentElement.dataset.theme=isArt?theme:theme==='control'?'control':'royal';
  document.documentElement.dataset.artVersion='__ART_VERSION__';
- if(isArt){document.documentElement.classList.add('art-project');var link=document.createElement('link');link.rel='stylesheet';link.href='concepts/'+theme+'.css?v=__ART_VERSION__';document.head.append(link);}
+ if(isArt){document.documentElement.classList.add('art-project');if(sceneFirst)document.documentElement.classList.add('scene-project');var link=document.createElement('link');link.rel='stylesheet';link.href=(sceneFirst?'scene-host.css':'concepts/'+theme+'.css')+'?v=__ART_VERSION__';document.head.append(link);}
 })();
 </script>
 <link rel="stylesheet" href="exhibition.css?v=__ART_VERSION__">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
-""".replace('__ART_VERSION__', ART_VERSION)
+""".replace('__ART_VERSION__', ART_VERSION).replace('__SCENE_FIRST_THEMES__', repr(SCENE_FIRST_THEMES))
 
 # ---------------------------------------------------------------------- CSS
 CSS = """:root{
@@ -938,6 +943,13 @@ def build_gallery():
         out += '      </div>\n'
         out += grid(s["slug"], shown, s.get("preview_zoom", 4), include_controls=False, carousel_root=False, more_href=more_href, defer_frames=True)
         out += '    </section>\n'
+    out += '    <template id="scene-destinations">\n'
+    for s in SHOWS:
+        for v in s['versions']:
+            if v.get('timeline'):
+                timeline_slug = v['slug'].strip('/')
+                out += f'      <a class="scene-timeline-link" data-show="{s["slug"]}" href="/countdowns/{s["slug"]}/{timeline_slug}/">{esc(s["name"])} · {esc(v["label"])}</a>\n'
+    out += '    </template>\n'
     themes_version = hashlib.sha256(open(os.path.join(CD, 'themes.js'), 'rb').read()).hexdigest()[:10]
     previews = """<script>(function(){
       var art=document.documentElement.classList.contains('art-project');

@@ -1,0 +1,12 @@
+{
+  "semanticObjectsPreserved": 59,
+  "semanticGeometryAndUVExact": true,
+  "openingCameraExact": true,
+  "plantedPatches": 45,
+  "packedColourAndNormalPNGExact": true,
+  "packedRoughnessGreenChannelExact": true,
+  "surfaceRelief": "real sheared fracture planes and deep eroded pockets, low ground erosion, upright folded leaves and root grit; coherent linear normal and roughness maps",
+  "blendBytes": 15564768,
+  "glbBytes": 19612608,
+  "acceptance": "Independent actual browser/source/phone review pending"
+}

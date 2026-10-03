@@ -1,0 +1,28 @@
+{
+  "status": "selected licensed candidates after actual browser font review; final fidelity gate pending",
+  "numerals": {
+    "family": "Roboto Condensed",
+    "weight": 850,
+    "ink": "#382228",
+    "surface": "two-digit ink follows each genuine lobed cut-flesh mesh; native slots/reels remain live",
+    "source": "https://github.com/google/fonts/tree/main/ofl/robotocondensed",
+    "license": "OFL-RobotoCondensed.txt"
+  },
+  "labels": {
+    "family": "Bodoni Moda",
+    "weight": 400,
+    "source": "https://github.com/google/fonts/tree/main/ofl/bodonimoda",
+    "license": "OFL-BodoniModa.txt"
+  },
+  "title": {
+    "family": "Roboto Condensed",
+    "weight": 900,
+    "orientation": "physical vertical edge print, cropped before phone controls",
+    "source": "https://github.com/google/fonts/tree/main/ofl/robotocondensed",
+    "license": "OFL-RobotoCondensed.txt"
+  },
+  "fileSha256": {
+    "BodoniModa-variable.ttf": "550f5e34ee0a828d7941b1fe9bc58b34e5260d3f33a61532e6d0a0114e79a5cf",
+    "RobotoCondensed-variable.ttf": "dace262afcee68a5276f200d8026c57221735c0118ab5fda8c2c0d3dc409a8d0"
+  }
+}

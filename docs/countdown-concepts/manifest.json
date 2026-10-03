@@ -1,6 +1,6 @@
 {
   "prepared": "2026-10-02",
-  "status": "architecture reset: seven existing non-Fair implementations rejected; Fair retained; replacement architecture specified, no rebuilt scenes yet",
+  "status": "seven independently composed scene-first candidates implemented with authored Blender bundles; original rejection remains active until source/browser gates pass; Fair retained",
   "concepts": [
     {
       "id": "tomorrows-roadworks",
@@ -18,13 +18,27 @@
       "referenceJpgSha256": "1c30c484ad608fc407b53a91e69312797291f2090942eadb76a04511f4c75e2f",
       "report": "reports/tomorrows-roadworks.md",
       "implementation": {
-        "module": "../../countdowns/concepts/tomorrows-roadworks.js",
+        "module": "../../countdowns/concepts/tomorrows-roadworks.scene.js",
         "stylesheet": "../../countdowns/concepts/tomorrows-roadworks.css",
-        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=tomorrows-roadworks"
+        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=tomorrows-roadworks",
+        "sharedHost": "../../countdowns/scene-host.js",
+        "sharedStylesheet": "../../countdowns/scene-host.css",
+        "assetManifest": "../../countdowns/assets/concepts/tomorrows-roadworks/scene/manifest.json",
+        "deploymentStatus": "local rebuilt candidate; existing preview URL is not proof of this asset version"
       },
-      "visualStatus": "rejected; previous visual acceptance withdrawn",
+      "visualStatus": "repaired 390/320 phone clock/action composition recorded; representative reset/preview/distant return verified; original-source material gate remains open",
       "architecture": "architecture/README.md",
-      "replacementStatus": "specified, not implemented"
+      "replacementStatus": "authored geometry/maps/runtime implemented; final original-reference browser gate pending",
+      "evidence": [
+        "architecture/evidence/rebuilt/road-eroded-desktop.jpg",
+        "architecture/evidence/rebuilt/road-final-desktop.jpg",
+        "architecture/evidence/rebuilt/road-final-390.jpg",
+        "architecture/evidence/rebuilt/road-phone-rig-390.jpg",
+        "architecture/evidence/rebuilt/road-phone-rig-320.jpg",
+        "architecture/evidence/rebuilt/road-distant-320.jpg",
+        "architecture/evidence/rebuilt/road-third-print-final-390.jpg"
+      ],
+      "validation": "validation/latest-results.json"
     },
     {
       "id": "bubblegum-time",
@@ -42,13 +56,25 @@
       "referenceJpgSha256": "5859e8fd35e791a369d0c4ac1475facaef6d32019ebf1868cf20a837532cd4e9",
       "report": "reports/bubblegum-time.md",
       "implementation": {
-        "module": "../../countdowns/concepts/bubblegum-time.js",
+        "module": "../../countdowns/concepts/bubblegum-time.scene.js",
         "stylesheet": "../../countdowns/concepts/bubblegum-time.css",
-        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=bubblegum-time"
+        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=bubblegum-time",
+        "sharedHost": "../../countdowns/scene-host.js",
+        "sharedStylesheet": "../../countdowns/scene-host.css",
+        "assetManifest": "../../countdowns/assets/concepts/bubblegum-time/scene/manifest.json",
+        "deploymentStatus": "local rebuilt candidate; existing preview URL is not proof of this asset version"
       },
-      "visualStatus": "rejected; previous visual acceptance withdrawn",
+      "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
       "architecture": "architecture/README.md",
-      "replacementStatus": "specified, not implemented"
+      "replacementStatus": "authored geometry/maps/runtime implemented; final original-reference browser gate pending",
+      "evidence": [
+        "architecture/evidence/rebuilt/gum-rebuilt-390.jpg",
+        "architecture/evidence/rebuilt/gum-final-desktop.jpg",
+        "architecture/evidence/rebuilt/gum-final-390.jpg",
+        "architecture/evidence/rebuilt/gum-final-320.jpg",
+        "architecture/evidence/rebuilt/gum-upper-print-final-390.jpg"
+      ],
+      "validation": "validation/latest-results.json"
     },
     {
       "id": "after-the-flame",
@@ -66,13 +92,26 @@
       "referenceJpgSha256": "be9db46c6986bb53a38ab2a3f0c7a66f0e845123f5885ed2ee24ed541031ebba",
       "report": "reports/after-the-flame.md",
       "implementation": {
-        "module": "../../countdowns/concepts/after-the-flame.js",
+        "module": "../../countdowns/concepts/after-the-flame.scene.js",
         "stylesheet": "../../countdowns/concepts/after-the-flame.css",
-        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=after-the-flame"
+        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=after-the-flame",
+        "sharedHost": "../../countdowns/scene-host.js",
+        "sharedStylesheet": "../../countdowns/scene-host.css",
+        "assetManifest": "../../countdowns/assets/concepts/after-the-flame/scene/manifest.json",
+        "deploymentStatus": "local rebuilt candidate; existing preview URL is not proof of this asset version"
       },
-      "visualStatus": "rejected; previous visual acceptance withdrawn",
+      "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
       "architecture": "architecture/README.md",
-      "replacementStatus": "specified, not implemented"
+      "replacementStatus": "authored geometry/maps/runtime implemented; final original-reference browser gate pending",
+      "evidence": [
+        "architecture/evidence/rebuilt/wax-rebuilt-desktop.jpg",
+        "architecture/evidence/rebuilt/wax-portrait-bank-390.jpg",
+        "architecture/evidence/rebuilt/wax-final-browser.jpg",
+        "architecture/evidence/rebuilt/wax-final-390.jpg",
+        "architecture/evidence/rebuilt/wax-final-320.jpg",
+        "architecture/evidence/rebuilt/wax-live-plaque-final-320.jpg"
+      ],
+      "validation": "validation/latest-results.json"
     },
     {
       "id": "low-tide-later",
@@ -90,13 +129,28 @@
       "referenceJpgSha256": "54b52e992d4a7acbb96ff5f9bbdd09ebec10d1402dd08f36802f447a589defc0",
       "report": "reports/low-tide-later.md",
       "implementation": {
-        "module": "../../countdowns/concepts/low-tide-later.js",
+        "module": "../../countdowns/concepts/low-tide-later.scene.js",
         "stylesheet": "../../countdowns/concepts/low-tide-later.css",
-        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=low-tide-later"
+        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=low-tide-later",
+        "sharedHost": "../../countdowns/scene-host.js",
+        "sharedStylesheet": "../../countdowns/scene-host.css",
+        "assetManifest": "../../countdowns/assets/concepts/low-tide-later/scene/manifest.json",
+        "deploymentStatus": "local rebuilt candidate; existing preview URL is not proof of this asset version"
       },
-      "visualStatus": "rejected; previous visual acceptance withdrawn",
+      "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
       "architecture": "architecture/README.md",
-      "replacementStatus": "specified, not implemented"
+      "replacementStatus": "authored geometry/maps/runtime implemented; final original-reference browser gate pending",
+      "evidence": [
+        "architecture/evidence/rebuilt/tide-independent-browser.png",
+        "architecture/evidence/rebuilt/tide-390-browser.jpg",
+        "architecture/evidence/rebuilt/tide-refined-desktop.jpg",
+        "architecture/evidence/rebuilt/tide-final-320.jpg",
+        "architecture/evidence/rebuilt/tide-final-desktop.jpg",
+        "architecture/evidence/rebuilt/tide-final-390.jpg",
+        "architecture/evidence/rebuilt/tide-glyph-final-320.jpg",
+        "architecture/evidence/rebuilt/tide-archer-final-390.jpg"
+      ],
+      "validation": "validation/latest-results.json"
     },
     {
       "id": "not-yet-ripe",
@@ -114,13 +168,25 @@
       "referenceJpgSha256": "92f5afc3591b2b6767f64fd90f90b6646679885703f0e902c3bedb4833455b90",
       "report": "reports/not-yet-ripe.md",
       "implementation": {
-        "module": "../../countdowns/concepts/not-yet-ripe.js",
+        "module": "../../countdowns/concepts/not-yet-ripe.scene.js",
         "stylesheet": "../../countdowns/concepts/not-yet-ripe.css",
-        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=not-yet-ripe"
+        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=not-yet-ripe",
+        "sharedHost": "../../countdowns/scene-host.js",
+        "sharedStylesheet": "../../countdowns/scene-host.css",
+        "assetManifest": "../../countdowns/assets/concepts/not-yet-ripe/scene/manifest.json",
+        "deploymentStatus": "local rebuilt candidate; existing preview URL is not proof of this asset version"
       },
-      "visualStatus": "rejected; previous visual acceptance withdrawn",
+      "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
       "architecture": "architecture/README.md",
-      "replacementStatus": "specified, not implemented"
+      "replacementStatus": "authored geometry/maps/runtime implemented; final original-reference browser gate pending",
+      "evidence": [
+        "architecture/evidence/rebuilt/fruit-v6-desktop.jpg",
+        "architecture/evidence/rebuilt/fruit-rebuilt-390.jpg",
+        "architecture/evidence/rebuilt/fruit-v8-desktop.jpg",
+        "architecture/evidence/rebuilt/fruit-v8-390.jpg",
+        "architecture/evidence/rebuilt/fruit-caption-clearance-desktop.jpg"
+      ],
+      "validation": "validation/latest-results.json"
     },
     {
       "id": "still-drawing-tomorrow",
@@ -138,13 +204,25 @@
       "referenceJpgSha256": "94957877324762ee9b69ebba404dc06b13d0a3aa4c9a7b330df0be3e23120803",
       "report": "reports/still-drawing-tomorrow.md",
       "implementation": {
-        "module": "../../countdowns/concepts/still-drawing-tomorrow.js",
+        "module": "../../countdowns/concepts/still-drawing-tomorrow.scene.js",
         "stylesheet": "../../countdowns/concepts/still-drawing-tomorrow.css",
-        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=still-drawing-tomorrow"
+        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=still-drawing-tomorrow",
+        "sharedHost": "../../countdowns/scene-host.js",
+        "sharedStylesheet": "../../countdowns/scene-host.css",
+        "assetManifest": "../../countdowns/assets/concepts/still-drawing-tomorrow/scene/manifest.json",
+        "deploymentStatus": "local rebuilt candidate; existing preview URL is not proof of this asset version"
       },
-      "visualStatus": "rejected; previous visual acceptance withdrawn",
+      "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
       "architecture": "architecture/README.md",
-      "replacementStatus": "specified, not implemented"
+      "replacementStatus": "authored geometry/maps/runtime implemented; final original-reference browser gate pending",
+      "evidence": [
+        "architecture/evidence/rebuilt/drawing-cels-desktop.jpg",
+        "architecture/evidence/rebuilt/drawing-rebuilt-390.jpg",
+        "architecture/evidence/rebuilt/drawing-final-desktop.jpg",
+        "architecture/evidence/rebuilt/drawing-final-390.jpg",
+        "architecture/evidence/rebuilt/drawing-final-320.jpg"
+      ],
+      "validation": "validation/latest-results.json"
     },
     {
       "id": "held-in-suspense",
@@ -162,13 +240,25 @@
       "referenceJpgSha256": "51e6a4aef15795b4ee0d695d841ddbc3e43c73149ff88223576a61af4480a807",
       "report": "reports/held-in-suspense.md",
       "implementation": {
-        "module": "../../countdowns/concepts/held-in-suspense.js",
+        "module": "../../countdowns/concepts/held-in-suspense.scene.js",
         "stylesheet": "../../countdowns/concepts/held-in-suspense.css",
-        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=held-in-suspense"
+        "preview": "https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=held-in-suspense",
+        "sharedHost": "../../countdowns/scene-host.js",
+        "sharedStylesheet": "../../countdowns/scene-host.css",
+        "assetManifest": "../../countdowns/assets/concepts/held-in-suspense/scene/manifest.json",
+        "deploymentStatus": "local rebuilt candidate; existing preview URL is not proof of this asset version"
       },
-      "visualStatus": "rejected; previous visual acceptance withdrawn",
+      "visualStatus": "current saved browser comparison recorded; source fidelity and direct interaction gates remain open",
       "architecture": "architecture/README.md",
-      "replacementStatus": "specified, not implemented"
+      "replacementStatus": "authored geometry/maps/runtime implemented; final original-reference browser gate pending",
+      "evidence": [
+        "architecture/evidence/rebuilt/metal-portrait-rig-390.jpg",
+        "architecture/evidence/rebuilt/metal-final-desktop.jpg",
+        "architecture/evidence/rebuilt/metal-final-390.jpg",
+        "architecture/evidence/rebuilt/metal-final-320.jpg",
+        "architecture/evidence/rebuilt/metal-reflections-desktop.jpg"
+      ],
+      "validation": "validation/latest-results.json"
     },
     {
       "id": "the-almost-fair",
@@ -192,5 +282,7 @@
       },
       "visualStatus": "retained; excluded from architecture reset"
     }
-  ]
+  ],
+  "runtimeAudit": "runtime-audit.md",
+  "rebuiltEvidence": "architecture/evidence/rebuilt/README.md"
 }

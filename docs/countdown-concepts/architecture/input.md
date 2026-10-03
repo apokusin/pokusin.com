@@ -1,6 +1,6 @@
 # Input and navigation ownership
 
-**Planned, not implemented.** A full-viewport canvas must still have a understandable route through work. Material interaction, navigation, opening a preview and resetting the clock are distinct intents. Do not leave those decisions to the next agent or hide them behind a paragraph of instructions.
+**Implemented shared input host and independent scene routes; direct browser gates remain.** Every scene owns fourteen exact stops for the opening and all thirteen genuine records. The rules below remain requirements, not proof that every material gesture has passed actual touch testing. See the [implemented audit](../runtime-audit.md). Material interaction, navigation, preview and reset remain distinct intents.
 
 ## One native scroll runway where required
 
@@ -16,7 +16,7 @@ Canvas touch-action permits pan-y. Vertical one-finger movement always remains b
 
 | Concept | Route through work | Decorative/manipulation gesture | Ordinary action and distinct feedback |
 | --- | --- | --- | --- |
-| Roadworks | Native scroll follows the supported road, with seven station reading stops | Pointer on empty dusty ground leaves a short track. Tap/lift the visibly turned roll/ribbon lip for the crown; optional horizontal pull stays local. Vertical touch always scrolls | Billboard face opens its real work; version lip fans neighbors; orange cap depresses before real reset |
+| Roadworks | Native scroll follows the supported road through all thirteen record stops in seven station groups | Pointer on empty dusty ground leaves a short track. Tap/lift the visibly turned roll/ribbon lip for the crown; optional horizontal pull stays local. Vertical touch always scrolls | Billboard face opens its real work; version lip fans neighbors; orange cap depresses before real reset |
 | Gum | Native scroll pans between four unequal hanging clusters | Horizontal pull on exposed empty gum after 6px intent; vertical movement keeps scroll. A visible stretched lip lifts on approach | Photograph center opens immediately; separate lip lifts/fans prints. Joined Again pad compresses; bubble never acts as another reset |
 | Wax | Native scroll moves along the open channel to terraced recesses | Pointer proximity bends the flame; optional touch flame response is bounded and never captures scroll | Recess face opens; shallow Again pool receives pressure; crown remains a separate crease clue |
 | Tide | Native scroll follows the diagonal shore from one exposure to the next | Pointer traces a local wake only on water; touch water taps emit one ripple without consuming vertical scroll | Photograph center opens; dry paper lip exposes versions; shell action depresses rather than initiating a camera drag |
@@ -49,3 +49,7 @@ Do not confuse reveal and activation: focus can frame/open a fold so a target is
 ## Input acceptance before expansion
 
 Demonstrate mouse click versus drag, vertical touch scroll versus material gesture, keyboard focus-visible equivalents, direct group selection, Clock/Home/Worlds from a distant view, modified/middle/context links, and preview restoration. Test a cancel/blur/modal interruption at mid-gesture and opening/closing during a resize. Check at 390/320; phone emulation does not prove physical-device touch performance. No implementation is certified by this plan.
+
+## Current lifecycle/profile behavior
+
+The host reconstructs a concept when crossing the 700px profile boundary, without reloading the page or changing the deadline. It preserves the actual native archive, normalized route, press tally and pending request. It coalesces loading races and postpones reconstruction while a preview is open. A new action/focus/scroll cancels an old camera approach; only the current native preview origin may open. Pointer identity is retained until release; multitouch, drag, vertical pan cancellation, blur, Escape and graphics loss terminate abandoned activation. These paths passed the saved-source harness, while actual mobile gestures, context menus and graphics-loss restoration still need the root-owned browser gate.

@@ -1,26 +1,61 @@
+# Still Drawing Tomorrow — current reimplementation art review
+
+**Verdict: Current desktop and saved 390/320 table compared; stock/rubber/curl fidelity remains open. No final art acceptance.** Compared with the unchanged [original reference](../references/still-drawing-tomorrow.jpg). Functional evidence is recorded separately in the [runtime audit](../runtime-audit.md). Version-specific browser snapshots: [drawing-final-desktop](../architecture/evidence/rebuilt/drawing-final-desktop.jpg), [drawing-final-390](../architecture/evidence/rebuilt/drawing-final-390.jpg), [drawing-final-320](../architecture/evidence/rebuilt/drawing-final-320.jpg). Filenames containing ‘final’ are capture-session labels, not approval.
+
+## What is now built
+
+An authored overhead animation table carries four real graphite reel cels, runner loop, eraser Again, registering folios, pencils and wood shavings. Curved stock carries faithful stills and captions; actual individual works have fourteen camera stops rather than HTML shelves. Blender-authored thin stock/acetate curl, registration holes, rubber wear, wood and separate fibre/graphite/roughness maps now supply physical form. Runtime drawn ink moves with its UV-bound cel. Material/color improvements remain subordinate to true stock thickness and broad developed curls; extra transparent rectangles cannot substitute for acetate.
+
+## Judgment of the saved visuals
+
+The current desktop recognizes the overhead graphite clock, runner loop, genuine registering folios, pencils and eraser. The red worn end and crumbs give Again more material identity than the prior white block. Broad ghost/stacked sheet strips remain visually distracting, stock still reads thick/clean, and the saved rest view does not establish the source’s large developed acetate curl. Golden C-shaped shavings are too repeated and lighting quieter than the source’s raking fibre shadows. The saved phone keeps a full clock, Again and primary Severance folio visible; small side/group tags and clipped stacked sheets remain a direct navigation/legibility gate.
+
+## Direction that must survive refinement
+
+The current directional key is 2.3, hemisphere fill 1.05, environment intensity 0.42 and exposure 1.35, with no dedicated rim. The earlier 1:0.45:0.1 lighting ratio remains a source art target, not a measured current setting.
+
+A directional warm window should reveal paper fibres, broad corner curls and local registration/contact shadows against restrained cool fill. Rubber needs a worn matte edge, dirty crumbs and pigment, distinct from polished plastic. Avoid flat uniformly beige lighting and overly sharp stacked-sheet silhouettes.
+
+## Interaction and feel
+
+Use discrete drawn poses rather than a generic spring. Lift/fan the actual stock with visible registration hinges, freeze exact curl/hover phase and graphite/pencil state for previews, and show a bounded erasing/redrawing ceremony only on confirmed reset. Reduced motion keeps final ink/state without camera or cel travel. The interaction must make its available object visible before it is required: hovering/focusing a work frames its real physical support; a tiny hidden link cannot be the only route. The single crown is optional; the core archive/reset never depends on discovery. Preview returns to the same authored pose, while clock/tally immediately reflect the authoritative shared state.
+
+## Portrait and remaining gate
+
+All thirteen actual folios have individual stops. Review the new stock deformation during focus and ticks, not merely a flat resting frame; no offscreen or transparent rectangle should substitute for a visible authored curl. At 390/320 prove clear D/H/M/S, reachable tabs and the real preview. Paper anatomy, graphite roughness and battered rubber remain the source gates. The reproducible offline run passes thirteen native preview actions and seven additional destinations at both controller profiles; GPU/canvas/fonts are mocked and GLB texture references removed in memory. It proves inventory/callback behavior, not shader/material appearance, physical occlusion, browser link defaults, touch feel or final art acceptance.
+
+---
+
+## Historical review of the rejected implementation
+
+<details>
+<summary>Rejected legacy development record — every visual approval below is withdrawn</summary>
+
+The material below is retained as history. Its earlier acceptance claims are superseded by the user’s rejection and by the current source gates above. It does not describe or approve the new `.scene.js` candidate.
+
 # Art direction review — Still Drawing Tomorrow
 
-## Current status — architecture reset, October 2, 2026
+## Historical rejection stage — architecture reset, October 2, 2026
 
-**Current implementation rejected by the user. All prior visual acceptance and “accepted source limitation/interpretation” verdicts below are withdrawn and retained only as a historical record.** Those verdicts incorrectly reduced the original concept's ambition to fit the implementation. Functional/API/preview checks remain historical functional evidence; they do not establish visual fidelity.
+**The preceding implementation was rejected by the user. All prior visual acceptance and “accepted source limitation/interpretation” verdicts below are withdrawn and retained only as a historical record.** Those verdicts incorrectly reduced the original concept's ambition to fit the implementation. Functional/API/preview checks remain historical functional evidence; they do not establish visual fidelity.
 
-The original reference is the authority. The replacement [scene-first spec](../specs/still-drawing-tomorrow.md) and [architecture proposal](../architecture/installations.md) are **planned, not implemented**. Their first gate is a final-lit material/geometry/content slice compared directly with the original before navigation and secondary effects. The accepted Fair remains unchanged. No new visual acceptance is claimed.
+The original reference is the authority. The replacement [scene-first spec](../specs/still-drawing-tomorrow.md) and [architecture proposal](../architecture/installations.md) were planned at this historical rejection. The separate authored candidates now exist and are evaluated above. Their first gate is a final-lit material/geometry/content slice compared directly with the original before navigation and secondary effects. The accepted Fair remains unchanged. No new visual acceptance is claimed.
 
 ## Historical development record — superseded
 
-## Final renewed independent review — October 2, 2026
+## Historical renewed review — withdrawn — October 2, 2026
 
-**Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
+**Historical review claimed visual acceptance; that conclusion is withdrawn.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
 
 Unequal sheet sizes, rotations and depths replace the earlier tidy row. Real cotton texture, window light, registration strokes, pencil props and a scored eraser create a worktable. Lowering the phone eraser grounds its shadow. The separate corner lift opens no preview, and its targets hide after graphics loss.
 
 **Published-load correction:** Actual Cloudflare first paint exposed an undecoded map briefly darkening the table. Warm procedural stock now remains until the raster is decoded. Both blocked-image and uncached first-frame screenshots retain the warm scene; this is observed loading behavior, not inferred from configured materials.
 
-**Accepted source limitation:** Paper/cel surfaces, runner anatomy and wear are cleaner and simpler than the reference's worn translucent acetate. This is the documented rendered interpretation, not a claim of photographic source equivalence.
+**Historical source compromise (withdrawn):** Paper/cel surfaces, runner anatomy and wear are cleaner and simpler than the reference's worn translucent acetate. This is the documented rendered interpretation, not a claim of photographic source equivalence.
 
 Evidence: [reference/current](../qa/still-drawing-tomorrow-material-comparison.jpg), [1280 × 900](../qa/still-drawing-tomorrow-material-desktop.jpg), [390 × 844](../qa/still-drawing-tomorrow-material-mobile.jpg), [320 × 720](../qa/still-drawing-tomorrow-material-320.jpg). Root separately verified real phone resets 386 → 393 across all seven, genuine archive preview/Escape/focus restoration, 44 px or larger targets, no document overflow, reduced-motion crown discovery and actual graphics-loss restoration. [Shared runtime QA](../../../design-qa.md) distinguishes native checks from still-image review; no hardware FPS or physical touch-device result is implied.
 
-The implementation-stage observations below record the development and correction of these surfaces; earlier pending/historical acceptance is superseded by this final review.
+The implementation-stage observations below describe development of the rejected legacy revision. Acceptance was pending at some stages and claimed by later reviewers; the user subsequently rejected the result. All of those claimed approvals are withdrawn, including the later assessment. The current candidate and its unresolved source gates are described above.
 
 ## Material revision — October 2, 2026
 
@@ -92,16 +127,18 @@ The implemented font pair is **Barlow Condensed + Caveat**. Barlow Condensed giv
 
 This pass changes font selection only. Existing camera framing, projected widths, hit targets, geometry, shared values and motion remain unchanged; root rechecks the final 320 px composition.
 
-## Final independent art acceptance — 2026-10-02
+## Historical art assessment — withdrawn — 2026-10-02
 
 **Observed desktop and phone visuals:** Reviewed the corrected desktop, 390 px and 320 px captures against this spec. The broad connected clock cel, translucent preview sheets, registration marks, drawn poses and red eraser read as one animator's table. Both phone widths retain all four digits and a full first sheet. The final 320 px tally now clears the eraser's red end instead of tucking its first digit underneath. The supplied archive continuation captures retain layered cels, edge registration marks and ordinary show tabs below the hero.
 
 **Code-reviewed feel:** Twelve authored pose textures and a bounded drawn path establish discrete runner timing, while separate corner controls lift sheet geometry without activating the preview. Confirmation erases/reveals the finish sequence; preview state freezes it. Pointer strokes expire within a capped trail rather than promising an editable drawing. Reduced motion omits that trail and holds the runner; the supplied crown capture reveals a local note on the lifted sheet. These are source and static-state observations, not full-motion or physical-device performance measurements.
 
-**Fidelity decision:** Accept the less cluttered worktable and stable Barlow Condensed/Caveat pair over the reference's incidental margin jokes and platform-dependent handwriting. Keep the clock's graphite treatment clipped inside genuine live glyphs. Actual archived screens remain faithful. No remaining P0/P1/P2 visual defect was identified in the corrected compositions; runtime state, input and failure acceptance is recorded separately in the shared QA report.
+**Historical fidelity conclusion (withdrawn):** The earlier review stated: Accept the less cluttered worktable and stable Barlow Condensed/Caveat pair over the reference's incidental margin jokes and platform-dependent handwriting. Keep the clock's graphite treatment clipped inside genuine live glyphs. Actual archived screens remain faithful. No remaining P0/P1/P2 visual defect was identified in the corrected compositions; runtime state, input and failure acceptance is recorded separately in the shared QA report.
 
 ## Follow-up implementation corrections
 
 **Code-reviewed:** Desktop/tablet camera span now follows aspect ratio, retaining both outer sheets at 700 × 730 as well as the spacious desktop composition. The secret/status selectors target the real DOM classes; theme styling no longer supplies competing secret placement, leaving the shared viewport-bounded placement intact. A successful 3D scene hides the fallback crown image, so only the drawn crown appears during discovery; the fallback image remains available without WebGL. Font provenance paths now include the repository’s `countdowns/` prefix. The spec explicitly describes fixed registration cels and shared reels rather than an unimplemented 300 ms ghost-digit effect.
 
 These corrections passed source checks. Their updated tablet/fallback/discovery compositions remain for the root’s browser review; earlier observed visual acceptance refers to the preceding captures.
+
+</details>

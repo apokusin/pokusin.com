@@ -1,0 +1,404 @@
+{
+  "source": "actual phone GLB; 81 rays per real archive/clock reading face",
+  "surfaces": {
+    "clock_days": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "clock_hours": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "clock_minutes": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "clock_seconds": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "unit_ink_0": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "unit_ink_1": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "unit_ink_2": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "unit_ink_3": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "again_leaf_print": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 1,
+        "phone": 1
+      },
+      "nearestOccluders": {
+        "reset_unequal_peel_lobe_1": 2
+      },
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "press_tally_tag": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "archive_dexter-s8-final": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "archive_severance-tracker": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "archive_got-s4": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "archive_got-s3-redesign": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "archive_got-s3-classic": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "archive_dexter-s7-finale": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "archive_severance-s2": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "archive_sherlock-final": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "archive_sherlock-alpha": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "archive_archer-s5-final": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "archive_breaking-bad-final": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "archive_breaking-bad-desert-parallax": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "archive_house-of-cards-s2": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "destination_dexter_archive": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "destination_dexter_timeline": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "destination_severance_live": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "destination_got_archive": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "destination_sherlock_archive": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "destination_archer_archive": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "destination_breaking-bad_archive": {
+      "samples": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0
+      },
+      "nearestOccluders": {},
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    }
+  },
+  "inventory": {
+    "archiveCount": 13,
+    "destinationCount": 7,
+    "clockCount": 4,
+    "goldNotches": 1,
+    "editableSource": true
+  }
+}

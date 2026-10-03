@@ -1,0 +1,192 @@
+{
+  "source": "editable authored geometry, sampled front normals and real opening camera rays",
+  "surfaces": {
+    "archive_archer-s5-final": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0,
+        "phone320": 0
+      }
+    },
+    "archive_breaking-bad-desert-parallax": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0,
+        "phone320": 0
+      }
+    },
+    "archive_breaking-bad-final": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 36,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0,
+        "phone320": 0
+      }
+    },
+    "archive_dexter-s7-finale": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0,
+        "phone320": 0
+      }
+    },
+    "archive_dexter-s8-final": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 0,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0,
+        "phone320": 0
+      }
+    },
+    "archive_got-s3-classic": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0,
+        "phone320": 0
+      }
+    },
+    "archive_got-s3-redesign": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0,
+        "phone320": 0
+      }
+    },
+    "archive_got-s4": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 0,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0,
+        "phone320": 0
+      }
+    },
+    "archive_house-of-cards-s2": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 45,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0,
+        "phone320": 0
+      }
+    },
+    "archive_severance-s2": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0,
+        "phone320": 0
+      }
+    },
+    "archive_severance-tracker": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 0,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0,
+        "phone320": 0
+      }
+    },
+    "archive_sherlock-alpha": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0,
+        "phone320": 0
+      }
+    },
+    "archive_sherlock-final": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 81,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0,
+        "phone320": 0
+      }
+    },
+    "clock_days": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 0,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 1,
+        "phone320": 1
+      }
+    },
+    "clock_hours": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 0,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0,
+        "phone320": 0
+      }
+    },
+    "clock_minutes": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 0,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 0,
+        "phone320": 0
+      }
+    },
+    "clock_seconds": {
+      "samples": 81,
+      "normalClearanceBlocked": 0,
+      "openingCameraBlocked": 0,
+      "approachBlocked": {
+        "desktop": 0,
+        "phone": 1,
+        "phone320": 1
+      }
+    }
+  },
+  "topology": {
+    "continuous_sculpted_wax_mass": {
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "faces": 136226
+    },
+    "tapered_front_candle": {
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "faces": 26238
+    }
+  },
+  "pool": {
+    "upwardFaces": 896,
+    "downwardFaces": 0,
+    "faces": 896
+  }
+}

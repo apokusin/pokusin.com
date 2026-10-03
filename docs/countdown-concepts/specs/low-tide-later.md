@@ -1,6 +1,6 @@
 # Low Tide, Later
 
-**Status: architectural replacement planned; NOT IMPLEMENTED.** The user rejected the current render on October 2, 2026. Previous material-pass acceptance is withdrawn. This spec replaces the frontal relief/DOM-overlay approach; it is an implementation brief, not a description of the live page. Read the [reference](../references/low-tide-later.jpg), [runtime audit](../architecture/runtime-audit.md), [guide](../GUIDE.md) and [report](../reports/low-tide-later.md) together.
+**Status: authored scene-first candidate implemented; original-reference art gate pending.** The earlier non-Fair implementation was rejected and its acceptance remains withdrawn. The original image still controls composition/material judgment. See the [current art-director report](../reports/low-tide-later.md), [implemented runtime audit](../runtime-audit.md) and [saved rebuilt evidence](../architecture/evidence/rebuilt/README.md). The Fair remains unchanged.
 
 ![Low Tide, Later reference](../references/low-tide-later.jpg)
 
@@ -26,7 +26,9 @@ Large digits are actual material-attached curved ink/embossing surfaces, with ex
 
 ### Geometry and materials
 
-Follow the selected [Blender 4.5.14 LTS asset workflow](../architecture/assets.md), [composition/type anchors](../architecture/composition.md), [input ownership](../architecture/input.md) and [physical inventory](../architecture/INVENTORY.md). Tool setup and authored assets remain production gates, not existing deliverables. Any type/lens choice below is provisional until it passes the original-reference comparison.
+**Implemented candidate.** A genuine oblique shore, four eroded chalk bodies, scallop Again, partly wet cotton prints and seabed now replace the frontal relief/DOM overlay. The authored model and depth-aware water share one camera. Every genuine version and actual More/timeline/live link has a physical surface and exact touch/focus stop. Chalk pits/chips and wet boundaries are separate from mapped fine detail. Water uses actual common bed depth, multiscale normals, bounded contact foam and shallow caustics; a thin wet physical film surrounds faithful print centers. This is a bounded optical approximation, not a fluid simulation. The latest shader revisions require actual GPU review.
+
+Follow the selected [Blender 4.5.14 LTS asset workflow](../architecture/assets.md), [composition/type anchors](../architecture/composition.md), [input ownership](../architecture/input.md) and [physical inventory](../architecture/INVENTORY.md). Editable Blender sources, reproducible Python exporters, static GLB bundles, named-node manifests and material maps now exist under the concept’s scene directory. They are implemented candidates; a successful export does not pass the original-reference art gate.
 
 Use world Y up, a shallow XZ bed and actual material bodies. A photograph's texture deforms with its paper mesh, a clock glyph patch follows its curved body, and water is a horizontal physical surface meeting the bed/posts. A front-facing plane at a Z layer behind every object is prohibited.
 
@@ -41,6 +43,8 @@ Before implementation, an asset manifest must identify bed/contour, four body pr
 
 ### Camera and lighting
 
+**Current source gate.** Daylight should make the water blue through depth/reflection, not through an opaque cyan blanket. Keep chalk warm-white above the line, cool mottled beneath it, with soft shore contact. Foam belongs to waves/post/shore contact; it cannot be a uniform tiled wire grid.
+
 Match the reference's broad overhead still life with fitted orthographic or long-perspective lens, about 20 degrees away from top-down. The camera is fixed in rotation; its route follows the shore. The four bodies have different depths and substantial tops, while digits remain upright on local front surfaces. Begin at reference aspect, then author phone compositions. Do not retain the current frontal (0,0,18) relief projection or place artwork by normalized screen percentages.
 
 Use broad high daylight from upper left, around 5500K, with cool low-contrast sky fill. It creates delicate short contact shadows beneath curled paper, shaped water glints and grazing relief on erosion. Start fill at one-quarter to one-third key contribution, then judge the image. Reflections contain broad bright sky/cloud structure aligned with the key; random environment noise and glossy blue gradients are not reflection substitutes.
@@ -48,6 +52,8 @@ Use broad high daylight from upper left, around 5500K, with cool low-contrast sk
 Contact occlusion lives beneath post feet, shell ribs and paper gaps; the white shore stays clean. Wet contacts may have a subtle cyan transmitted tint. Use one tightly bounded shadowed key, starting at 2048 desktop/1024 phone if useful. Broad natural softness must actually be produced/authored; a numeric shadow-radius entry alone is insufficient. Judge exposure against paper whites, faithful screenshot blacks and blue pigment depth. No bloom, beams, haze, vignette or lens blur.
 
 ### Interaction contract
+
+The new scene uses the shared lifecycle/action host without inheriting a shared visual composition. Fourteen exact scroll stops cover the opening and all thirteen genuine versions. Five archive-page links, the Dexter timeline and external live Severance destination retain native href/target/rel semantics; keyboard focus synchronizes the requested surface and runway. Home, Worlds and Clock stay independently accessible.
 
 Native wheel/touch scroll progresses along a continuous shoreline camera rail through seven show exposures. Thread/shore markers and keyboard show/version links offer direct travel. The concept owns display transforms, camera route, physical surfaces and occlusion; the host owns cancellation, actual actions, native semantics and the preview adapter. Represent all 13 main works, show/archive More links with collapsed versions, Dexter's timeline and Severance's external live site. A small paper-edge tab/shore cut can expose a collection, with visible affordance and native equivalent. Navigation never depends on the secret.
 
@@ -60,6 +66,8 @@ Mouse water contact creates a restrained ripple which can lift one nearby print 
 Exactly one salt-crystal crown sits beside/under the shell. A small salt contact makes its inspectable form visible; focus/touch/Enter can discover it without tide timing. It reveals Long may I count beside the clue, clear of clock/action/prints. Reset/navigation never depend on it.
 
 ### Motion choreography
+
+**Implemented motion contract.** Decorative tide time advances only in visible/unfrozen frame dt. Ripple slots, shell/crown heights, hover captions and actual paper curls belong to preview snapshots. Remote observations during a preview coalesce into one small returning response. Reduced motion removes ripple/curl travel and assigns pending/secret states directly.
 
 At rest, broad water current moves slowly/coherently; fine normals provide sparse glints. No habitual print bobbing, tile springs, saw waves or whole-screen pulses. Corner/weed responses inherit the same local disturbance field rather than independent animations.
 
@@ -79,6 +87,8 @@ Initial profiling ceilings: roughly 180,000 visible triangles/70 draw calls desk
 
 ### Responsive and fallback behavior
 
+**Portrait candidate.** The route includes opening plus all thirteen records, not merely seven show stops. Native focus synchronizes the exact record stop before its variant pose. A new phone view must prove complete clock, shell/tally and first print after the optical/print fixes. The host recreates the authored profile when crossing 700px without a page reload, preserving native/shared state and normalized archive position; it defers that recreation until an open preview closes. Failure reveals the complete semantic/native archive.
+
 Phone is a close view of the same shoreline installation. Author a shorter local diagonal with four readable bodies, reachable rust shell and one large recognizable print leading to later exposures. Two staggered pairs are permitted only if physical shoreline contact and broad blue/white balance survive; a 2×2 tile UI over a postcard list fails. Give 390 and 320 their own lens/route framing; preserve selected show and normalized route position on resize.
 
 All actions remain at least 44 projected pixels; the actual modal is readable. Resize during approach/open cancels or recomputes projected aperture bounds and invalidates stale opening callbacks. Reduced motion updates actual clock once per second while decorative rendering sleeps.
@@ -87,11 +97,15 @@ Before the healthy first frame, keep an illustrated static fallback with real ti
 
 ### Implementation boundaries
 
+The active opt-in module is `countdowns/concepts/low-tide-later.scene.js`, with authored files under `countdowns/assets/concepts/low-tide-later/scene/`. `scene-host.js`, `scene-surfaces.js` and `scene-gallery.js` share lifecycle, picking, native actions and dynamic surface values only. Legacy module/style files remain fallback/historical material. No site build or backend change is introduced.
+
 Use the proposed isolated scene-first host. Fair/Royal/Control keep their current paths unchanged. No framework, package manifest, site build, physics server or replacement shared API is needed. Offline authored static geometry/maps fit the hand-written site. Source edits belong in host/assigned concept/assets and generate.py when metadata/fallback wiring needs it; generated output is never hand-edited.
 
 Preserve /api/countdown, preview/live separation, reels.js, faithful archived pages, exact labels/hrefs and native modal/focus. No independent tide counter/deadline, fake visitor avatar or share action. No three fixed DOM mount invariant, screen-percent object layout or required archive shelves in the healthy scene. The original defines silhouette/material/composition; functional tests cannot accept a simplified replacement.
 
 ### Fidelity checks
+
+**Current art-director finding.** The refined desktop now has a clear oblique shore, descending real chalk clock, localized shoreline/post foam, scallop action and faithful photographs. Water still has conspicuous regular cellular/ripple structure and broad repeated reflection patches; the source is less periodic, with more irregular broken foam and depth variation. Chalk bodies remain evenly cylindrical/capped and prints visibly thick and clean beside the source’s salt-worn stock. The latest 390/320 portraits keep clock, shell/tally and first Severance print in view after phone glyph strengthening. Blue numeral/unit strokes remain delicate at the narrow width; chalk erosion and thin salt-worn paper remain source gates. Opening plus all thirteen exact record stops is implemented. Latest phone glyph captures are preserved separately from the earlier portrait. Root browser checks confirmed the physical shell reset and genuine Severance Season 2 preview/Escape/focus return. Verify the rest of the route, contact foam, wet paper and cancellation in the actual browser; these representative successful actions do not approve visual fidelity. The clear current optical approximation is not a fluid simulation and remains short of final source fidelity. See the [version-specific current report](../reports/low-tide-later.md) and [browser evidence](../architecture/evidence/rebuilt/README.md). The offline controller/model checks establish inventory and state behavior; no GPU appearance, measured FPS or art acceptance is claimed.
 
 First build a reference-aspect still-life section with four live numeral surfaces, physical shell, one full worn photograph, correct daylight/reflection and actual wet/base contact. Compare clay pass, lit material pass and 390 frame against the source. Stop if post/shell silhouettes are toy primitives, water a flat blurry plate, images float above independent backings, or digits ignore camera/material depth. Do not add long routes/cursor effects to cover a failing resting frame.
 

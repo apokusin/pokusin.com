@@ -1,5 +1,7 @@
 # Scene architecture audit
 
+**Historical diagnosis/proposal.** Statements below about the “current” three-mount/DOM-projection runtime describe the rejected pre-rebuild snapshot. The active candidates now use `.scene.js` modules and `scene-host.js`. Consult the [implemented runtime audit](../runtime-audit.md), [current reports](../README.md) and [rebuilt browser evidence](evidence/rebuilt/README.md) for their actual state and remaining gates. This earlier diagnosis is preserved rather than rewritten as new visual acceptance.
+
 Status: proposed corrective architecture, October 2, 2026. The user rejected the seven non-Fair implementations. Previous reports accepting a simpler rendered interpretation are superseded by that rejection. This audit is grounded in the current source, the original Low Tide reference and its actual desktop capture. It is not visual acceptance of a new implementation.
 
 ## The failure is structural

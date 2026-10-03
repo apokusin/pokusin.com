@@ -1,34 +1,69 @@
+# Held in Suspense — current reimplementation art review
+
+**Verdict: Latest desktop reflections and saved portrait rigs compared; chrome and phone counterweight clearance remain open. No final art acceptance.** Compared with the unchanged [original reference](../references/held-in-suspense.jpg). Functional evidence is recorded separately in the [runtime audit](../runtime-audit.md). Version-specific browser snapshots: [metal-reflections-desktop](../architecture/evidence/rebuilt/metal-reflections-desktop.jpg), [metal-final-390](../architecture/evidence/rebuilt/metal-final-390.jpg), [metal-final-320](../architecture/evidence/rebuilt/metal-final-320.jpg). Filenames containing ‘final’ are capture-session labels, not approval.
+
+## What is now built
+
+A real beveled cantilever, machined joints/collars, cables, unequal hanging plates, fractured slate anchor and oblique pressure counterweight now inhabit an architectural reflection room. Genuine images and four numerical faces follow their actual planes. All thirteen records and seven native links occupy connected bays. Authored glTF volume and separate brushed-steel/slate maps replace extruded boxes. Distinct brushed faces, polished collars/bevels, dark inserts, architectural PMREM windows and a bounded real floor reflector exist. Their configured presence does not prove that steel reads as chrome in the browser.
+
+## Judgment of the saved visuals
+
+The latest desktop is considerably brighter and its floor reflection quieter than the prior dark/mirror candidate. Connected cantilever, actual joints/cables, hanging works and slate/filings are clear. Steel faces still read predominantly pale brushed satin, with limited architectural black/bright gradients compared with the source’s polished chrome and thin glinting bevels. Saved 390/320 rigs retain the connected installation, but the pressure counterweight overlaps the lower seconds region and the portrait floor copy remains strong. Those portraits precede the latest desktop reflection refinement and cannot certify its phone result.
+
+## Direction that must survive refinement
+
+Broad thin architectural windows and dark flags must create bright silver gradients across polished edges and quieter brushed faces. Use soft cast contacts around the slate and joints; keep the floor mostly quiet, with subtle local glints rather than a strong mirror copy of all numbers. Gray paint is a failed material target.
+
+## Interaction and feel
+
+The current mechanical response has no pretension delay: on confirmation, weight/cable/pulley displacement starts together in the next visible frame and damps over at most 3 s. Remote updates spin reels without a cable impulse. The old staged cable lead-in is a withdrawn art target, not current observed timing.
+
+Mechanical pressure, flange/weight transforms, fans and bounded filings have separate captured state. Confirmed reset changes balance only after shared success; pending pressure is local. Reduced motion immediately sets pressure/flange states and freezes fan/filings. Preview snapshots restore actual layer transforms, filing matrices and local ceremony time. The interaction must make its available object visible before it is required: hovering/focusing a work frames its real physical support; a tiny hidden link cannot be the only route. The single crown is optional; the core archive/reset never depends on discovery. Preview returns to the same authored pose, while clock/tally immediately reflect the authoritative shared state.
+
+## Portrait and remaining gate
+
+A dedicated portrait model/camera is implemented. Require fresh phone evidence after the current reflection changes, including a negative gap between counterweight and seconds, clear real links and restrained local floor reflection. The connected mechanical volume is a real improvement; uniform silver shading or successful rendering still cannot approve the source-level chrome installation. The reproducible offline run passes thirteen native preview actions and seven additional destinations at both controller profiles; GPU/canvas/fonts are mocked and GLB texture references removed in memory. It proves inventory/callback behavior, not shader/material appearance, physical occlusion, browser link defaults, touch feel or final art acceptance.
+
+---
+
+## Historical review of the rejected implementation
+
+<details>
+<summary>Rejected legacy development record — every visual approval below is withdrawn</summary>
+
+The material below is retained as history. Its earlier acceptance claims are superseded by the user’s rejection and by the current source gates above. It does not describe or approve the new `.scene.js` candidate.
+
 # Revised art direction — Held In Suspense
 
-## Current status — architecture reset, October 2, 2026
+## Historical rejection stage — architecture reset, October 2, 2026
 
-**Current implementation rejected by the user. All prior visual acceptance and “accepted source limitation/interpretation” verdicts below are withdrawn and retained only as a historical record.** Those verdicts incorrectly reduced the original concept's ambition to fit the implementation. Functional/API/preview checks remain historical functional evidence; they do not establish visual fidelity.
+**The preceding implementation was rejected by the user. All prior visual acceptance and “accepted source limitation/interpretation” verdicts below are withdrawn and retained only as a historical record.** Those verdicts incorrectly reduced the original concept's ambition to fit the implementation. Functional/API/preview checks remain historical functional evidence; they do not establish visual fidelity.
 
-The original reference is the authority. The replacement [scene-first spec](../specs/held-in-suspense.md) and [architecture proposal](../architecture/installations.md) are **planned, not implemented**. Their first gate is a final-lit material/geometry/content slice compared directly with the original before navigation and secondary effects. The accepted Fair remains unchanged. No new visual acceptance is claimed.
+The original reference is the authority. The replacement [scene-first spec](../specs/held-in-suspense.md) and [architecture proposal](../architecture/installations.md) were planned at this historical rejection. The separate authored candidates now exist and are evaluated above. Their first gate is a final-lit material/geometry/content slice compared directly with the original before navigation and secondary effects. The accepted Fair remains unchanged. No new visual acceptance is claimed.
 
 ## Historical development record — superseded
 
-## Final renewed independent review — October 2, 2026
+## Historical renewed review — withdrawn — October 2, 2026
 
-**Visual result: accepted.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
+**Historical review claimed visual acceptance; that conclusion is withdrawn.** An independent art-director subagent inspected the actual reference, fresh desktop pair and both phone widths. No unresolved P0/P1/P2 visual defect remained in that evidence.
 
 Cambered plate gradients, varied connected-rail reflections and a broad cylinder window highlight resolve the flat grey/banded-metal concerns. Real off-axis/overhead studio lights and vertical flags shape reflections; no painted reflection stripes are used. Slate, dark inserts, taut cables and pivots explain the machine. Both phone structures stay connected and readable.
 
-**Accepted source limitation:** Machined realism and architectural floor lighting are simpler than the photographic reference. This is a graphic kinetic sculpture. This is the documented rendered interpretation, not a claim of photographic source equivalence.
+**Historical source compromise (withdrawn):** Machined realism and architectural floor lighting are simpler than the photographic reference. This is a graphic kinetic sculpture. This is the documented rendered interpretation, not a claim of photographic source equivalence.
 
 Evidence: [reference/current](../qa/held-in-suspense-material-comparison.jpg), [1280 × 900](../qa/held-in-suspense-material-desktop.jpg), [390 × 844](../qa/held-in-suspense-material-mobile.jpg), [320 × 720](../qa/held-in-suspense-material-320.jpg). Root separately verified real phone resets 386 → 393 across all seven, genuine archive preview/Escape/focus restoration, 44 px or larger targets, no document overflow, reduced-motion crown discovery and actual graphics-loss restoration. [Shared runtime QA](../../../design-qa.md) distinguishes native checks from still-image review; no hardware FPS or physical touch-device result is implied.
 
-The implementation-stage observations below record the development and correction of these surfaces; earlier pending/historical acceptance is superseded by this final review.
+The implementation-stage observations below describe development of the rejected legacy revision. Acceptance was pending at some stages and claimed by later reviewers; the user subsequently rejected the result. All of those claimed approvals are withdrawn, including the later assessment. The current candidate and its unresolved source gates are described above.
 
 The latest user review rejected prototype-level material fidelity. Re-read the actual reference and the current published baseline; this pass supersedes the historical visual acceptance below.
 
-## Current diagnosis
+## Historical diagnosis
 
 The first implementation painted repeated light/dark stripes into metal albedo and used strong ambient fill. That reads as a silver texture rather than a real reflected room. The revised spec separates neutral brushed metal, polished edges, true rectangular studio reflections and dark flags. Solid beveled structure, machined collars/bolts and slate contact must make the engineered silhouette feel heavy at rest.
 
-## Acceptance status
+## Historical implementation-stage status
 
-Specs have concrete albedo/roughness/bump/environment, key/fill/rim and shadow recipes, bounded material motion and responsive construction rules. The source-frozen implementation now follows those recipes. Root will provide actual revised desktop/phone/reset/fallback screenshots; current rendered acceptance remains pending. No hardware frame-rate measurements are asserted.
+Specs have concrete albedo/roughness/bump/environment, key/fill/rim and shadow recipes, bounded material motion and responsive construction rules. The source-frozen implementation now follows those recipes. At that historical stage, rendered acceptance was still pending while root collected revised desktop/phone/reset/fallback screenshots. A later claimed approval was subsequently withdrawn; it does not approve the current candidate. No hardware frame-rate measurements are asserted.
 
 ## Source-reviewed revision
 
@@ -106,13 +141,13 @@ The implemented font pair is **Barlow Condensed + Libre Baskerville**, matching 
 
 This pass changes font selection only. Existing camera framing, projected widths, hit targets, geometry, shared values and motion remain unchanged; root rechecks the final 320 px composition.
 
-## Final independent art acceptance — 2026-10-02
+## Historical art assessment — withdrawn — 2026-10-02
 
 **Observed desktop and phone visuals:** Reviewed the corrected desktop, 390 px and 320 px captures against this spec. Connected beams, flush pivots, visibly suspended plates, slate anchor and cylindrical action retain the asymmetric sculpture. The phone reassembly still reads as one connected support, with two complete clock pairs and a frontal endcap. The final 320 px tally now has clear separation beneath Again. The supplied reduced-motion crown capture also keeps the hidden phrase above the endcap instead of obscuring its label. Archive continuation captures preserve supported bays and a named show rail.
 
 **Code-reviewed feel:** Pressure moves the cap along its axis; confirmation raises the existing weight and transfers bounded correction through connected plates. Focused/hovered archive faces suppress their swing. The filing patch uses pooled instances and an authored boundary rather than a free-ranging particle system; reduced motion holds the balance. Those source choices support deterministic material behavior, but this review does not infer full force-transfer timing or frame-rate measurements from still captures.
 
-**Fidelity decision:** Accept the restrained rectangular studio reflections and simpler brushed plate profile; they keep numbers legible while avoiding mirror chrome. Preserve tallies and phrase placement independently when refining the endcap. Actual archive screenshots intentionally replace the reference's invented imagery. No remaining P0/P1/P2 visual defect was identified in the corrected compositions; runtime state, input and failure acceptance is recorded separately in the shared QA report.
+**Historical fidelity conclusion (withdrawn):** The earlier review stated: Accept the restrained rectangular studio reflections and simpler brushed plate profile; they keep numbers legible while avoiding mirror chrome. Preserve tallies and phrase placement independently when refining the endcap. Actual archive screenshots intentionally replace the reference's invented imagery. No remaining P0/P1/P2 visual defect was identified in the corrected compositions; runtime state, input and failure acceptance is recorded separately in the shared QA report.
 
 ## Follow-up implementation corrections
 
@@ -123,3 +158,5 @@ Actual `clock-status` and `countdown-secret` classes now receive theme styling w
 ## Tablet framing correction
 
 The supplied 700 px viewport captures exposed horizontal clipping after the shared breakpoint was aligned with CSS. The scene now derives its desktop orthographic span from the actual stage aspect ratio, including scrollbar-reduced width, while keeping the original wide-screen baseline. This is a camera-fit correction only; geometry, type, hit targets and interactions remain unchanged. Source checks pass. Root will recapture the corrected 700 px and large desktop views before visual acceptance.
+
+</details>

@@ -1,0 +1,64 @@
+{
+  "exposure": 1.0,
+  "warmKey": {
+    "color": "#fff1da",
+    "intensity": 1.45,
+    "position": [
+      -8,
+      11,
+      8
+    ],
+    "target": [
+      1,
+      2,
+      0
+    ],
+    "shadow": "VSM bounded to physical opening; 2048 desktop / 1024 phone"
+  },
+  "flame": {
+    "color": "#ffae53",
+    "intensity": 120,
+    "position": [
+      -5.29,
+      10.43,
+      0.49
+    ],
+    "distance": 23,
+    "falloff": 2
+  },
+  "coolRim": {
+    "color": "#799ed2",
+    "intensity": 1.15,
+    "position": [
+      13,
+      11,
+      -10
+    ]
+  },
+  "hemisphere": {
+    "upper": "#aa8f78",
+    "lower": "#21121c",
+    "intensity": 0.35
+  },
+  "environment": {
+    "warmSoftbox": [
+      -8,
+      11,
+      6
+    ],
+    "coolSoftbox": [
+      12,
+      8,
+      -9
+    ],
+    "intensity": 0.82,
+    "background": "#10090e"
+  },
+  "material": {
+    "coldWaxRoughness": 0.52,
+    "upwardWetSkinRoughness": 0.13,
+    "creviceAOIntensity": 0.35,
+    "albedo": "cream-wax-albedo.png; neutral base factor avoids multiplying a brown tint twice"
+  },
+  "limits": "Thin wax is approximate surface transmission; no volumetric scattering. Physical wet/cold response and actual browser source comparison remain an independent art gate."
+}

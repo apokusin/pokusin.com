@@ -1,6 +1,6 @@
 # Countdown worlds
 
-**Architecture reset: seven rejected implementations; Fair retained.** The user rejected all non-Fair worlds for failing to resemble their original concepts. Previous visual acceptance is withdrawn. The original eight references remain here; seven complete scene-first execution specs now replace their earlier layout/material recipes. These are **plans, not rebuilt scenes**. Current seven preview links still show the rejected versions.
+**Seven scene-first candidates implemented; final original-reference gates pending.** The rejected non-Fair implementations have been rebuilt as independently composed full scenes with authored Blender bundles and real UV-bound archive/clock surfaces. The Fair remains on its existing path. Current [art-director reports](reports/) state exactly which saved views were reviewed, what still misses the source and which later refinements need a new capture. Working controls do not imply visual acceptance.
 
 Start with the [architecture drawing board](architecture/README.md): source failures, seven distinct spatial compositions, authored asset pipeline, exact physical archive inventory, input ownership and staged fidelity gates. The [skeptical art review](architecture/challenge.md) distinguishes an improved plan from work that still needs production evidence. The Fair and its current runtime are outside this migration.
 
@@ -8,20 +8,20 @@ Every brief uses the same eleven sections: premise, composition, palette/type, g
 
 ## Existing comparisons
 
-Use Worlds to switch between the existing themes. Fair is retained; the other seven below are rejected comparisons for diagnosing the architecture, not recommended new results. They still share the real countdown/tally/preview behavior.
+Use Worlds to switch between themes. Fair is retained. The seven replacements share real countdown/tally/preview behavior through the new host; their final art direction has not been selected or approved. The cloud links below are stable destinations, not guarantees that the latest local candidate has been deployed. [Actual rebuilt evidence](architecture/evidence/rebuilt/README.md) records the reviewed versions.
 
 | World | Preview | Art-director report |
 | --- | --- | --- |
-| Tomorrow’s Roadworks · rejected | [Existing](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=tomorrows-roadworks) | [Report](reports/tomorrows-roadworks.md) |
-| Bubblegum Time · rejected | [Existing](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=bubblegum-time) | [Report](reports/bubblegum-time.md) |
-| After the Flame · rejected | [Existing](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=after-the-flame) | [Report](reports/after-the-flame.md) |
-| Low Tide, Later · rejected | [Existing](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=low-tide-later) | [Report](reports/low-tide-later.md) |
-| Not Yet Ripe · rejected | [Existing](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=not-yet-ripe) | [Report](reports/not-yet-ripe.md) |
-| Still Drawing Tomorrow · rejected | [Existing](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=still-drawing-tomorrow) | [Report](reports/still-drawing-tomorrow.md) |
-| Held in Suspense · rejected | [Existing](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=held-in-suspense) | [Report](reports/held-in-suspense.md) |
+| Tomorrow’s Roadworks · candidate | [Preview](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=tomorrows-roadworks) | [Report](reports/tomorrows-roadworks.md) |
+| Bubblegum Time · candidate | [Preview](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=bubblegum-time) | [Report](reports/bubblegum-time.md) |
+| After the Flame · candidate | [Preview](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=after-the-flame) | [Report](reports/after-the-flame.md) |
+| Low Tide, Later · candidate | [Preview](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=low-tide-later) | [Report](reports/low-tide-later.md) |
+| Not Yet Ripe · candidate | [Preview](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=not-yet-ripe) | [Report](reports/not-yet-ripe.md) |
+| Still Drawing Tomorrow · candidate | [Preview](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=still-drawing-tomorrow) | [Report](reports/still-drawing-tomorrow.md) |
+| Held in Suspense · candidate | [Preview](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=held-in-suspense) | [Report](reports/held-in-suspense.md) |
 | The Almost Fair · retained | [Try](https://codex-next-countdown.pokusin-com.pages.dev/countdowns/?theme=the-almost-fair) | [Report](reports/the-almost-fair.md) |
 
-[Browser review and evidence](../../design-qa.md) records desktop, phone, and interaction validation. The runtime uses procedural Three.js geometry and separately authored art layers; reference mockups are never used as full-page runtime backgrounds.
+[Current browser QA](reimplementation-qa.md) records the rebuilt desktop/phone candidates and root-owned physical reset/preview checks; [earlier design QA](../../design-qa.md) is historical. The seven replacements use project-authored GLB volumes, explicit surface maps, independent Three.js lighting/cameras and dynamic UV-bound real content. Reference mockups are never used as full-page runtime backgrounds. The [runtime audit](runtime-audit.md) and [reproducible offline runner](validation/README.md) record executed checks and their limits.
 
 ## New explorations
 
@@ -94,4 +94,4 @@ The images are independent ImageGen explorations, not screenshots of functioning
 
 [Generation prompts](prompts.json) record the exact prompts for the six new explorations and identify the actual archive content used as grounding. [The manifest](manifest.json) records stable concept IDs, displayed order, dimensions, and original/reference checksums. The earlier two images are preserved as prior-round references; their exact original prompts are not reconstructed here.
 
-The original generated PNGs remain in the generating task’s image store. Portable references are kept here so later agents do not depend on that local store. Each concept was reviewed by an art-director subagent before implementation. Its report identifies discoverability, physical feel, motion, and execution risks; the feedback is incorporated into the corresponding spec. Subsequent implementation notes document browser-driven refinements. The replacement architecture must now pass authored-asset and resting-frame gates before another implementation is accepted; the existing rejected scenes do not pass by virtue of their working controls.
+The original generated PNGs remain in the generating task’s image store. Portable references are kept here so later agents do not depend on that local store. Each concept was reviewed by an art-director subagent before implementation. Its report identifies discoverability, physical feel, motion, and execution risks; the feedback is incorporated into the corresponding spec. Subsequent implementation notes document browser-driven refinements. The replacement architecture has now been implemented, but each candidate must still pass strict resting-frame, portrait and direct-interaction gates before acceptance. Prior rejected scenes and current candidates do not pass by virtue of working controls.

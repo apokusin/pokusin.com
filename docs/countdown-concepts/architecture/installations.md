@@ -1,5 +1,7 @@
 # Architecture reset: three installations
 
+**Historical diagnosis/proposal.** Statements below about the “current” three-mount/DOM-projection runtime describe the rejected pre-rebuild snapshot. The active candidates now use `.scene.js` modules and `scene-host.js`. Consult the [implemented runtime audit](../runtime-audit.md), [current reports](../README.md) and [rebuilt browser evidence](evidence/rebuilt/README.md) for their actual state and remaining gates. This earlier diagnosis is preserved rather than rewritten as new visual acceptance.
+
 Prepared October 2, 2026, after the user rejected the seven non-Fair implementations. This is an architectural replacement proposal, not acceptance of their current appearance. The Fair remains unchanged. The original reference images remain the targets; the subsequent material screenshots demonstrate the failure rather than a successful interpretation.
 
 ## The shared mistake
