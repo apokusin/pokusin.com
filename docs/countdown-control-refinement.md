@@ -10,12 +10,15 @@ Phones receive an alternate grounded composition: the reset box moves left and i
 
 Opening the cover readies the machine. An amber lamp indicates a pending request; a successful reset triggers one bounded 1.15-second phosphor sweep/light pulse, slot transitions and a restrained title tracking slip. The digits settle from left to right. “Long may I count.” stays as the small discovery. Reduced motion settles immediately. Decorative animation pauses while hidden/offscreen. Control has no crown confetti or oversized text echo.
 
+With the cover open, pointer-down immediately depresses the cap halfway. Release springs it back; moving away, cancellation, loss of focus, hidden/offscreen state and a pending request clear the held pose. Space/Enter give the same contact feedback while retaining native button activation. Only a completed click requests a shared reset; the cap no longer waits for the response. A released pointer returning from an archive iframe clears stale contact state. Reduced motion uses immediate down/up poses.
+
 Verification on the saved implementation:
 
 - Real browser review at 1280px, 390px and 320px; timer and all unit labels visible, no theme selector or phone page overflow.
 - Actual local button clicks lift the cover and then reset the shared D1 countdown, increasing its count from 407 to 408. A reduced-motion reset increases it to 409 and settles the display without a title animation.
 - The original Severance Season 2 preview opens in its real iframe; Escape returns focus and clears the iframe to `about:blank`.
 - Actual graphics-context loss removes projected labels and bounds. Scrolling away and back does not restart projection over the illustrated fallback; reloading restores the scene.
+- Held pointer input visibly depresses the cap without changing local D1's count of 409. Dragging and releasing over a real archive iframe cancels the press; returning permits a fresh half press. A completed native click increases the count to 410 and Space activation to 411. At 390px with reduced motion, down/up poses are immediate and dragging away leaves the count at 411. These are mouse and keyboard checks; physical touch has not been measured.
 - Five existing Python checks, module parsing and the retained concept/controller/lifecycle fixture checks pass. Generator output is reproducible. Offline fixtures do not validate GPU appearance; physical-device frame rate and touch have not been measured.
 
 This is a refinement pass for review, not an assertion of final art-direction approval.

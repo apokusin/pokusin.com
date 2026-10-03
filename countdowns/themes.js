@@ -240,7 +240,7 @@ async function initScene() {
   }
   const floor = new THREE.Mesh(new THREE.PlaneGeometry(18, 10), new THREE.ShadowMaterial({ opacity: control ? .29 : .13 }));
   floor.rotation.x = -Math.PI / 2; floor.position.y = -.08; floor.receiveShadow = true; scene.add(floor);
-  let royalCrown, button, cover, pressTime = -10;
+  let royalCrown, button, cover;
   const particles = [];
   if (!control) {
     // A proper miniature throne: turned legs, tufted upholstery and scrolling metalwork.
@@ -433,6 +433,54 @@ async function initScene() {
     root.rotation.y = -.025;
   }
   let visible = true, graphicsLost = false, pointerX = 0, pointerY = 0, lastFrame = 0, frameId = 0, burstAt = -10;
+  let buttonHeld = false, heldPointer = null, pointerInside = false, heldKey = null;
+  function updateButtonPress() {
+    const held = coverOpen && !pending && !action.disabled && ((heldPointer !== null && pointerInside) || heldKey !== null);
+    if (!button || held === buttonHeld) return;
+    buttonHeld = held;
+    // Show contact immediately, even when a quick click fits between scene frames.
+    // Release springs back over a few frames; reduced motion snaps to the rest pose.
+    if (held || reduce.matches) button.position.y = .593 - (held ? .0375 : 0);
+    render(); schedule();
+  }
+  function releaseButtonPress() {
+    heldPointer = heldKey = null; pointerInside = false; updateButtonPress();
+  }
+  if (control) {
+    action.addEventListener('pointerdown', event => {
+      if (graphicsLost || !coverOpen || action.disabled || !event.isPrimary || event.button !== 0 || heldPointer !== null) return;
+      heldPointer = event.pointerId; pointerInside = true; updateButtonPress();
+    });
+    action.addEventListener('pointerleave', event => {
+      if (event.pointerId !== heldPointer) return;
+      pointerInside = false; updateButtonPress();
+    });
+    action.addEventListener('pointerenter', event => {
+      if (event.pointerId !== heldPointer) return;
+      // Release can occur inside an archive iframe, beyond the parent's listeners.
+      if (!(event.buttons & 1)) heldPointer = null;
+      pointerInside = heldPointer !== null; updateButtonPress();
+    });
+    const releasePointer = event => {
+      if (event.pointerId !== heldPointer) return;
+      heldPointer = null; pointerInside = false; updateButtonPress();
+    };
+    window.addEventListener('pointerup', releasePointer);
+    window.addEventListener('pointercancel', releasePointer);
+    const pressKey = event => ['Space', 'Enter', 'NumpadEnter'].includes(event.code);
+    action.addEventListener('keydown', event => {
+      if (graphicsLost || !coverOpen || action.disabled || event.repeat || !pressKey(event)) return;
+      heldKey = event.code; updateButtonPress();
+    });
+    window.addEventListener('keyup', event => {
+      if (event.code !== heldKey) return;
+      heldKey = null; updateButtonPress();
+    });
+    action.addEventListener('blur', releaseButtonPress);
+    window.addEventListener('blur', releaseButtonPress);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) releaseButtonPress(); });
+    document.addEventListener('countdown:pending', event => { if (event.detail) releaseButtonPress(); });
+  }
   const actionBox = new THREE.Box3(), projectionPoint = new THREE.Vector3();
   function positionInstrumentControls() {
     if (!control || !resetAssembly) return;
@@ -475,11 +523,11 @@ async function initScene() {
     camera.updateProjectionMatrix();render();
   }
   new ResizeObserver(resize).observe(stage);resize();
-  const observer=new IntersectionObserver(es=>{if(graphicsLost)return;visible=es[0].isIntersecting; schedule();});observer.observe(stage);
+  const observer=new IntersectionObserver(es=>{if(graphicsLost)return;visible=es[0].isIntersecting;if(!visible)releaseButtonPress();schedule();});observer.observe(stage);
   stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();pointerX=(e.clientX-r.left)/r.width-.5;pointerY=(e.clientY-r.top)/r.height-.5;schedule();});
   stage.addEventListener('pointerleave',()=>{pointerX=pointerY=0;schedule();});
   canvas.addEventListener('webglcontextlost',e=>{
-    e.preventDefault();stage.classList.remove('scene-ready');graphicsLost=true;visible=false;cancelAnimationFrame(frameId);frameId=0;
+    e.preventDefault();stage.classList.remove('scene-ready');graphicsLost=true;visible=false;releaseButtonPress();cancelAnimationFrame(frameId);frameId=0;
     instrumentUnits.forEach(unit => unit.label.remove());
     if (control) {
       ['left','top','width','height','border-radius'].forEach(property => action.style.removeProperty(property));
@@ -512,7 +560,11 @@ async function initScene() {
       royalCrown.rotation.y=reduce.matches?0:b*Math.PI*4;
     }
     if(cover)cover.rotation.x=THREE.MathUtils.lerp(cover.rotation.x,coverOpen?-1.9:0,reduce.matches?1:.13);
-    if(button)button.position.y=.593-(t-pressTime<.2?.075:0);
+    const buttonTarget = .593 - (buttonHeld ? .0375 : 0);
+    if(button){
+      button.position.y=buttonHeld||reduce.matches?buttonTarget:THREE.MathUtils.lerp(button.position.y,buttonTarget,.52);
+      if(Math.abs(button.position.y-buttonTarget)<.0004)button.position.y=buttonTarget;
+    }
     if (signalLamp) {
       const age = ms - signalStarted, acquiring = !reduce.matches && age >= 0 && age < 1150;
       const color = pending ? 0xffb75b : 0xfa7548;
@@ -530,12 +582,12 @@ async function initScene() {
     render();
     const turning=Math.abs(root.rotation.y-targetY)>.0005||Math.abs(root.rotation.x-targetX)>.0005;
     const crowning=royalCrown&&!reduce.matches&&t-burstAt<2.5;
-    const releasing=button&&t-pressTime<.2;
+    const releasing=button&&Math.abs(button.position.y-buttonTarget)>.0004;
     if(turning||reflecting||crowning||releasing||rolling||particles.length||(cover&&Math.abs(cover.rotation.x-(coverOpen?-1.9:0))>.001))schedule();
   }
   sceneChange=()=>{schedule();};
   celebrate=()=>{
-    burstAt=clock.getElapsedTime();pressTime=burstAt;
+    burstAt=clock.getElapsedTime();
     if(control)signalStarted=performance.now();
     if(!control&&!reduce.matches){
       // Three little crowns: an appropriately underwhelming coronation.
