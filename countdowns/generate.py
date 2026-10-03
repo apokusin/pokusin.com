@@ -53,6 +53,7 @@ SHOWS = [
         "domain": "sherlockcountdown.com", "live": False, "years": "2013 – 2014",
         "versions": [
             {"slug": "final", "label": "Season 3", "year": "2014", "collapsed": False,
+             "still_preview": True,  # Its hidden autofocus form can pull the archive down.
              "desc": "A UK / US air-date toggle, and a hidden 221B easter egg. (Try the door.)"},
             {"slug": "alpha", "label": "Season 3 · Alpha", "year": "2013", "collapsed": False,
              "desc": "An early dev build, unminified, with an extra slide, over the looping bg GIF."},
@@ -233,6 +234,7 @@ a.shelf-origin:hover{color:var(--fg)}
 .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--line-strong)}
 .frame{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;background:#05070a;border-bottom:1px solid var(--line)}
 .frame iframe{position:absolute;top:0;left:0;width:400%;height:400%;border:0;transform:scale(.25);transform-origin:0 0;pointer-events:none;background:#05070a}
+.frame>img{display:block;width:100%;height:100%;object-fit:cover}
 .frame .open{position:absolute;right:10px;bottom:10px;font-size:.66rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);padding:5px 10px;border-radius:999px;opacity:0;transform:translateY(4px);transition:opacity .2s ease,transform .2s ease}
 .frame .tlbadge{position:absolute;left:10px;top:10px;font-size:.62rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:var(--accent);padding:4px 9px;border-radius:999px;display:flex;align-items:center;gap:5px}
 .frame .tlbadge::before{content:"";width:0;height:0;border-left:6px solid #fff;border-top:4px solid transparent;border-bottom:4px solid transparent}
@@ -811,10 +813,14 @@ def card(show_slug, v, zoom=4, defer_frames=False):
               f'title="{esc(v["label"])} preview"></iframe>')
     chip = f'<span class="chip">{esc(v["chip"])}</span>' if v.get("chip") else ""
     thumb = f'/countdowns/assets/previews/{show_slug}-{v["slug"].strip("/").replace("/", "-")}.jpg'
-    if defer_frames:
+    still = f'<img src="{thumb}" alt="" loading="lazy" width="720" height="450">'
+    if v.get("still_preview"):
+        # Keep focus-stealing archived forms out of passive cards. Opening the card
+        # still loads its untouched, interactive page in the preview overlay.
+        iframe = still
+    elif defer_frames:
         # Inert until the theme is known: art worlds never boot archived scripts behind their stills.
-        iframe = (f'<template class="card-preview">{iframe}</template>'
-                  f'<img src="{thumb}" alt="" loading="lazy" width="720" height="450">')
+        iframe = f'<template class="card-preview">{iframe}</template>{still}'
     return (
         f'      <a class="card" href="{base}" data-thumb="{thumb}" target="_blank" rel="noopener">\n'
         f'        <div class="frame">{iframe}<span class="open">Open ↗</span></div>\n'

@@ -6,6 +6,8 @@ The instrument is a warm late-1970s broadcast console. Bone enamel sits over a s
 
 The enormous cream/coral title remains. Full-page scanlines are replaced by restrained grain; scanlines belong only to the timer and monitor apertures. Archive frames use dark metal surrounds, recessed glare and a small light response on hover or keyboard focus. There are no new explanatory labels.
 
+Sherlock Season 3's passive card uses its existing still image. The preserved page's hidden autofocus field otherwise steals focus and scrolls a fresh archive entry to Sherlock. Opening the card continues to load the original interactive page; its source is untouched. There is no forced landing scroll or change to show links.
+
 Phones receive an alternate grounded composition: the reset box moves left and into the foreground, the cable follows its actual plug, and the camera fits a narrower 7.4m view rather than the desktop's 10.6m view. The native reset target follows the projected assembly with a 44px minimum. Four projected, aria-hidden unit letters retain readable sizes on phones; the accessible timer always describes the actual shared deadline.
 
 Opening the cover readies the machine. An amber lamp indicates a pending request; a successful reset triggers one bounded 1.15-second phosphor sweep/light pulse, slot transitions and a restrained title tracking slip. The digits settle from left to right. “Long may I count.” stays as the small discovery. Reduced motion settles immediately. Decorative animation pauses while hidden/offscreen. Control has no crown confetti or oversized text echo.
@@ -19,6 +21,7 @@ Verification on the saved implementation:
 - The original Severance Season 2 preview opens in its real iframe; Escape returns focus and clears the iframe to `about:blank`.
 - Actual graphics-context loss removes projected labels and bounds. Scrolling away and back does not restart projection over the illustrated fallback; reloading restores the scene.
 - Held pointer input visibly depresses the cap without changing local D1's count of 409. Dragging and releasing over a real archive iframe cancels the press; returning permits a fresh half press. A completed native click increases the count to 410 and Space activation to 411. At 390px with reduced motion, down/up poses are immediate and dragging away leaves the count at 411. These are mouse and keyboard checks; physical touch has not been measured.
+- The Sherlock entry jump was reproduced on the published page: a clean home link resulted in a focused Sherlock iframe and a scroll position of 3241.5px. With the still card, native home-page clicks remain at 0px at desktop and 390px. Explicit Sherlock navigation reaches the section; opening its card loads the real countdown, and Escape clears the preview and restores focus. Four existing countdown gallery/preview checks pass.
 - Five existing Python checks, module parsing and the retained concept/controller/lifecycle fixture checks pass. Generator output is reproducible. Offline fixtures do not validate GPU appearance; physical-device frame rate and touch have not been measured.
 
 This is a refinement pass for review, not an assertion of final art-direction approval.
