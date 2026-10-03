@@ -149,7 +149,7 @@ THEME_HEAD = """<script>
  var art=['tomorrows-roadworks','bubblegum-time','after-the-flame','low-tide-later','not-yet-ripe','still-drawing-tomorrow','held-in-suspense','the-almost-fair'];
  var isArt=art.indexOf(theme)!==-1;
  var sceneFirst=__SCENE_FIRST_THEMES__.indexOf(theme)!==-1;
- document.documentElement.dataset.theme=isArt?theme:theme==='control'?'control':'royal';
+ document.documentElement.dataset.theme=isArt?theme:theme==='royal'?'royal':'control';
  document.documentElement.dataset.artVersion='__ART_VERSION__';
  if(isArt){document.documentElement.classList.add('art-project');if(sceneFirst)document.documentElement.classList.add('scene-project');var link=document.createElement('link');link.rel='stylesheet';link.href=(sceneFirst?'scene-host.css':'concepts/'+theme+'.css')+'?v=__ART_VERSION__';document.head.append(link);}
 })();
