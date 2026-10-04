@@ -15,7 +15,7 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const dateLabel = document.getElementById('next-countdown-date');
 const initialDeadline = Date.parse(dateLabel.dateTime);
 let state = { deadline: initialDeadline, count: 0 };
-let celebrate = () => {}, prepareVisualReset = () => {}, ready = false, pending = false, rebuilding = false, clockOffset = 0, tickInterval = 0;
+let celebrate = () => {}, prepareVisualReset = () => {}, prepareResetEffects = async () => {}, ready = false, pending = false, rebuilding = false, clockOffset = 0, tickInterval = 0;
 let resetActionHadFocus = false;
 const reelEnabled = () => hero.classList.contains('hero-awake') && !document.hidden;
 const countReel = control ? null : new NumberReel(countLabel, { enabled: reelEnabled, reducedMotion, direction: 1 });
@@ -40,7 +40,7 @@ function updateLabels(spin = false, immediate = false) {
   dateLabel.dateTime = new Date(state.deadline).toISOString();
   dateLabel.textContent = new Date(state.deadline).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
-function applyState(next, forceSpin = false) {
+function applyState(next, forceSpin = false, receivedAt = Date.now()) {
   if (!Number.isFinite(next.deadline) || !Number.isFinite(next.serverNow) || !Number.isSafeInteger(next.count) || next.count < 0) throw new Error('Invalid countdown');
   // Freeze this press's accepted count even if a newer remote reset won the race.
   if (forceSpin) { try { prepareVisualReset(next.count); } catch (_) {} }
@@ -50,17 +50,21 @@ function applyState(next, forceSpin = false) {
   const spin = ready && (forceSpin || next.count > state.count);
   const remote = ready && !forceSpin && next.count > state.count;
   state = next;
-  clockOffset = next.serverNow - Date.now(); ready = true;
+  clockOffset = next.serverNow - receivedAt; ready = true;
+  document.documentElement.classList.remove('shared-loading');
   updateLabels(spin, initialSync); tick(spin); startTicker();
   if (remote) document.dispatchEvent(new CustomEvent('countdown:remote'));
 }
 async function sync() {
   if (document.hidden || pending) return;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
   try {
-    const response = await fetch('/api/countdown', { cache: 'no-store' });
+    const response = await fetch('/api/countdown', { cache: 'no-store', signal: controller.signal });
     if (!response.ok) throw new Error('Unavailable');
     applyState(await response.json());
   } catch (_) { if (!ready) clockStatus.textContent = control ? 'Shared clock unavailable.' : 'The shared clock is taking a little break.'; }
+  finally { clearTimeout(timeout); }
 }
 async function reset() {
   if (pending || rebuilding) return;
@@ -68,6 +72,9 @@ async function reset() {
   pending = true; action.disabled = true; if (royalButton) royalButton.disabled = true;
   document.dispatchEvent(new CustomEvent('countdown:pending',{detail:true}));
   try {
+    // Optional cinema warms alongside the request, rather than delaying the
+    // clock's first paint or beginning a second reset when it eventually loads.
+    const effectsReady = prepareResetEffects();
     const response = await fetch('/api/countdown', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
     if (response.status === 429) {
       const seconds = Number(response.headers.get('Retry-After')) || 60;
@@ -76,7 +83,9 @@ async function reset() {
     }
     if (!response.ok) throw new Error('Unavailable');
     const accepted = await response.json();
-    applyState(accepted, true);
+    const receivedAt = Date.now();
+    await effectsReady;
+    applyState(accepted, true, receivedAt);
     announceReset(accepted.count);
     if (!art) { secret.hidden = false; action.setAttribute('aria-expanded', 'true'); royalButton?.setAttribute('aria-expanded', 'true'); }
     document.dispatchEvent(new CustomEvent('countdown:reset'));
@@ -97,9 +106,11 @@ function press() {
   }
   reset();
 }
-if (control) action.setAttribute('aria-label', 'Lift the launch button cover');
+action.setAttribute('aria-label', control ? 'Lift the launch button cover' : 'Crown the countdown');
 action.addEventListener('click', press);
+action.disabled = false;
 royalButton?.addEventListener('click', reset);
+if (royalButton) royalButton.disabled = false;
 document.querySelectorAll(`[data-theme-link="${theme}"]`).forEach(link=>link.setAttribute('aria-current', 'page'));
 document.querySelectorAll('.shownav a').forEach(link => {
   link.setAttribute('href', `?theme=${theme}#${link.getAttribute('href').split('#').pop()}`);
@@ -141,6 +152,10 @@ function timeParts(s) {
 function secondsRemaining() { return Math.max(0, Math.ceil((state.deadline - (Date.now() + clockOffset)) / 1000)); }
 function remaining() { return timeParts(secondsRemaining()); }
 function tick(spin = false) {
+  if (!ready) {
+    document.getElementById('timer-readable').textContent = 'Loading the shared countdown.';
+    return;
+  }
   const values = remaining();
   if (!values.some(value => value > 0)) { clearInterval(tickInterval); tickInterval = 0; }
   timerReels.forEach((reel, i) => reel.set(String(values[i]).padStart(2, '0'), { spin, index: i * 2 }));
@@ -158,9 +173,6 @@ let sceneChange = () => {};
 async function initScene() {
   const THREE = await import('./assets/vendor/three.module.min.js');
   const effectVersion = new URL(import.meta.url).search;
-  const effectModules = control ? await Promise.all([
-    import(`./control-explosion.js${effectVersion}`), import(`./control-transformation.js${effectVersion}`)
-  ]) : null;
   const stage = document.getElementById('scene-stage');
   const canvas = document.getElementById('theme-scene');
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'low-power' });
@@ -436,6 +448,7 @@ async function initScene() {
       const moving = paintDisplay(now); render(); if (moving) schedule();
     };
     settleDisplay = () => {
+      if (!ready) return;
       displayPlans = []; spinUntil = 0; queuedDisplay = null; displayText = '';
       displayUpdate(remaining());
     };
@@ -490,11 +503,44 @@ async function initScene() {
     // last, from the reconstructed instrument's actual cable outlet.
     clockParts.push(...root.children.filter(object => object !== resetAssembly));
     cable.userData.rebuildRole = 'cable';
-    transformation = effectModules[1].createClockTransformation({ THREE, parts: clockParts, center: new THREE.Vector3(-.75,.9,.05),
-      actuator: { assembly: resetAssembly, button, cover, outlet: new THREE.Vector3(1.61,.37,-.08) } });
-    explosion = effectModules[0].createControlExplosion({ THREE, scene, camera, origin: new THREE.Vector3(-.75,.9,.05) });
   }
   let visible = true, graphicsLost = false, pointerX = 0, pointerY = 0, lastFrame = 0, frameId = 0, burstAt = -10;
+  let effectsPromise, effectsDisposed = false, effectsIdle = 0, effectsPaintFrame = 0;
+  function warmEffects() {
+    if (!control || effectsDisposed || graphicsLost || reduce.matches) return Promise.resolve();
+    if (effectsPromise) return effectsPromise;
+    effectsPromise = Promise.all([
+      import(`./control-explosion.js${effectVersion}`), import(`./control-transformation.js${effectVersion}`)
+    ]).then(([blastModule, assemblyModule]) => {
+      if (effectsDisposed || graphicsLost) return;
+      // The helper owns the closed factory poses. A fast visitor may already
+      // have opened the lid; save and restore that pose before another render.
+      const lidPose = cover.quaternion.clone(), capPose = button.position.clone();
+      try {
+        cover.rotation.x = 0; button.position.y = .593;
+        transformation = assemblyModule.createClockTransformation({ THREE, parts: clockParts, center: new THREE.Vector3(-.75,.9,.05),
+          actuator: { assembly: resetAssembly, button, cover, outlet: new THREE.Vector3(1.61,.37,-.08) } });
+        explosion = blastModule.createControlExplosion({ THREE, scene, camera, origin: new THREE.Vector3(-.75,.9,.05) });
+      } catch (error) {
+        transformation?.dispose(); explosion?.dispose(); transformation = explosion = null;
+        throw error;
+      } finally {
+        cover.quaternion.copy(lidPose); button.position.copy(capPose);
+        resetAssembly.updateWorldMatrix(true,true);
+      }
+    }).catch(error => {
+      console.warn('The optional clock cinema could not warm; the shared button remains available.',error.message);
+    });
+    return effectsPromise;
+  }
+  if (control) prepareResetEffects = async () => {
+    if (reduce.matches || graphicsLost || effectsDisposed || !visible || document.hidden) return;
+    // A blocked optional script must not strand a successful shared reset.
+    let timeout;
+    try {
+      await Promise.race([warmEffects(),new Promise(resolve => { timeout=setTimeout(resolve,2000); })]);
+    } finally { clearTimeout(timeout); }
+  };
   let buttonHeld = false, heldPointer = null, pointerInside = false, heldKey = null;
   function updateButtonPress() {
     const held = !rebuilding && coverOpen && !pending && !action.disabled && ((heldPointer !== null && pointerInside) || heldKey !== null);
@@ -605,7 +651,7 @@ async function initScene() {
     schedule();
   }
   function startCinema(count) {
-    if (!control || !explosion || rebuilding || reduce.matches || graphicsLost || !visible || document.hidden) return;
+    if (!control || !explosion || effectsDisposed || rebuilding || reduce.matches || graphicsLost || !visible || document.hidden) return;
     releaseButtonPress();
     // Contact has ended before the replacement captures its source poses.
     if (button) button.position.y = .593;
@@ -670,7 +716,14 @@ async function initScene() {
   document.addEventListener('countdown:pending',schedule);
   reduce.addEventListener('change',()=>{if(reduce.matches){powerOnStarted=-Infinity;finishCinema();settleDisplay();}schedule();});
   window.addEventListener('resize',()=>{if(rebuilding)finishCinema();});
-  window.addEventListener('pagehide',event=>{finishCinema();if(!event.persisted){explosion?.dispose();transformation?.dispose();}});
+  window.addEventListener('pagehide',event=>{
+    finishCinema();cancelAnimationFrame(effectsPaintFrame);
+    if (effectsIdle) {
+      if ('cancelIdleCallback' in window) cancelIdleCallback(effectsIdle); else clearTimeout(effectsIdle);
+      effectsIdle=0;
+    }
+    if(!event.persisted){effectsDisposed=true;explosion?.dispose();transformation?.dispose();}
+  });
   const clock=new THREE.Clock();
   function schedule(){if(!frameId&&visible&&!graphicsLost&&!document.hidden)frameId=requestAnimationFrame(animate);}
   function animate(ms){
@@ -738,7 +791,7 @@ async function initScene() {
     const releasing=button&&!rebuilding&&Math.abs(button.position.y-buttonTarget)>.0004;
     if(rebuilding||turning||reflecting||crowning||releasing||rolling||particles.length||(cover&&Math.abs(cover.rotation.x-(coverOpen?-1.9:0))>.001))schedule();
   }
-  sceneChange=()=>{powerOnStarted=-Infinity;schedule();};
+  sceneChange=()=>{powerOnStarted=-Infinity;if(control&&coverOpen)warmEffects();schedule();};
   celebrate=()=>{
     powerOnStarted=-Infinity;
     burstAt=clock.getElapsedTime();
@@ -754,6 +807,18 @@ async function initScene() {
   const stageBounds = stage.getBoundingClientRect();
   if (control && !location.hash && !reduce.matches && !document.hidden && stageBounds.bottom > 0 && stageBounds.top < innerHeight) powerOnStarted = performance.now();
   tick();render();stage.classList.add('scene-ready');schedule();
+  document.dispatchEvent(new CustomEvent('countdown:scene-ready'));
+  if (control && !reduce.matches) {
+    // Two frame boundaries let the real instrument reach the screen before
+    // downloads, noise baking and reconstruction bounds enter the work queue.
+    effectsPaintFrame=requestAnimationFrame(()=>{
+      effectsPaintFrame=requestAnimationFrame(()=>{
+        effectsPaintFrame=0;
+        const warm=()=>{effectsIdle=0;if(visible&&!document.hidden)warmEffects();};
+        effectsIdle='requestIdleCallback' in window ? requestIdleCallback(warm,{timeout:1000}) : setTimeout(warm,100);
+      });
+    });
+  }
 }
 function revealArtSecret(){
   const trigger=hero.querySelector('.art-secret-trigger');
@@ -801,6 +866,7 @@ if (art) {
     console.warn('The art archive could not initialize; live controls remain available.',error.message);
   });
 } else initScene().catch(error => {
+  document.dispatchEvent(new CustomEvent('countdown:scene-failed'));
   if (control) {
     coverOpen = true; action.setAttribute('aria-label', 'Postpone the next countdown');
     document.querySelector('.scene-hint .control-only').textContent = 'Press the button.';

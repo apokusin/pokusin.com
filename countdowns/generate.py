@@ -145,22 +145,38 @@ _scene_assets = [p for p in glob.glob(os.path.join(CD, 'assets', 'concepts', '*'
 _art_files = sorted(glob.glob(os.path.join(CD, 'concepts', '*.*')) +
                     [os.path.join(CD, p) for p in ['exhibition.js', 'exhibition.css', 'scene-host.js', 'scene-host.css', 'scene-surfaces.js', 'scene-gallery.js']] + _scene_assets)
 ART_VERSION = hashlib.sha256(b''.join(open(p, 'rb').read() for p in _art_files if os.path.isfile(p))).hexdigest()[:10]
-THEME_HEAD = """<script>
+THEMES_VERSION = hashlib.sha256(b''.join(open(os.path.join(CD, file), 'rb').read() for file in
+    ['themes.js', 'reels.js', 'control-explosion.js', 'control-transformation.js'])).hexdigest()[:10]
+THEME_SETUP = """<script>
 (function(){var theme=new URLSearchParams(location.search).get('theme');
  var art=['tomorrows-roadworks','bubblegum-time','after-the-flame','low-tide-later','not-yet-ripe','still-drawing-tomorrow','held-in-suspense','the-almost-fair'];
  var isArt=art.indexOf(theme)!==-1;
  var sceneFirst=__SCENE_FIRST_THEMES__.indexOf(theme)!==-1;
  document.documentElement.dataset.theme=isArt?theme:theme==='royal'?'royal':'control';
  document.documentElement.dataset.artVersion='__ART_VERSION__';
- if(isArt){document.documentElement.classList.add('art-project');if(sceneFirst)document.documentElement.classList.add('scene-project');var link=document.createElement('link');link.rel='stylesheet';link.href=(sceneFirst?'scene-host.css':'concepts/'+theme+'.css')+'?v=__ART_VERSION__';document.head.append(link);}
+ if(isArt){document.documentElement.classList.add('art-project');if(sceneFirst)document.documentElement.classList.add('scene-project');}
+ function preload(href,rel,as){var link=document.createElement('link');link.rel=rel;link.href=href;if(as){link.as=as;link.type='font/woff2';link.crossOrigin='anonymous';}document.head.append(link);}
+ preload('themes.js?v=__THEMES_VERSION__','modulepreload');preload('reels.js','modulepreload');
+ if(!isArt){preload('assets/vendor/three.module.min.js','modulepreload');preload('assets/vendor/three.core.min.js','modulepreload');}
+ if(document.documentElement.dataset.theme==='control'){preload('assets/fonts/archivo-black-latin.woff2','preload','font');preload('assets/fonts/ibm-plex-mono-latin-400.woff2','preload','font');}
 })();
 </script>
-<link rel="stylesheet" href="exhibition.css?v=__ART_VERSION__">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
-""".replace('__ART_VERSION__', ART_VERSION).replace('__SCENE_FIRST_THEMES__', repr(SCENE_FIRST_THEMES))
+""".replace('__ART_VERSION__', ART_VERSION).replace('__THEMES_VERSION__', THEMES_VERSION).replace('__SCENE_FIRST_THEMES__', repr(SCENE_FIRST_THEMES))
+THEME_HEAD = """<script>
+(function(){var html=document.documentElement,theme=html.dataset.theme;
+ function style(href){var link=document.createElement('link');link.rel='stylesheet';link.setAttribute('blocking','render');link.href=href;document.head.append(link);}
+ if(html.classList.contains('art-project')){style((html.classList.contains('scene-project')?'scene-host.css':'concepts/'+theme+'.css')+'?v=__ART_VERSION__');style('exhibition.css?v=__ART_VERSION__');}
+ if(theme==='royal'){style('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');}
+ else if(html.classList.contains('art-project')){style('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');}
+})();
+</script>
+""".replace('__ART_VERSION__', ART_VERSION)
 
 # ---------------------------------------------------------------------- CSS
-CSS = """:root{
+CSS = """@font-face{font-family:'Archivo Black';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/archivo-black-latin.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/ibm-plex-mono-latin-400.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/ibm-plex-mono-latin-500.woff2') format('woff2')}
+:root{
   --bg:#e6ebf0; --fg:#102132; --muted:#5b6b7a;
   --card:#ffffff; --line:rgba(16,33,50,.10); --line-strong:rgba(16,33,50,.20);
   --chip:rgba(16,33,50,.06); --live:#1f9d57; --accent:#9a1d2e;
@@ -235,6 +251,7 @@ a.shelf-origin:hover{color:var(--fg)}
 .frame{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;background:#05070a;border-bottom:1px solid var(--line)}
 .frame iframe{position:absolute;top:0;left:0;width:400%;height:400%;border:0;transform:scale(.25);transform-origin:0 0;pointer-events:none;background:#05070a}
 .frame>img{display:block;width:100%;height:100%;object-fit:cover}
+.frame.preview-loading>img{position:relative;z-index:1}
 .frame .open{position:absolute;right:10px;bottom:10px;font-size:.66rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);padding:5px 10px;border-radius:999px;opacity:0;transform:translateY(4px);transition:opacity .2s ease,transform .2s ease}
 .frame .tlbadge{position:absolute;left:10px;top:10px;font-size:.62rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:var(--accent);padding:4px 9px;border-radius:999px;display:flex;align-items:center;gap:5px}
 .frame .tlbadge::before{content:"";width:0;height:0;border-left:6px solid #fff;border-top:4px solid transparent;border-bottom:4px solid transparent}
@@ -663,12 +680,14 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
 [data-theme=control] .royal-guardians,[data-theme=control] .royal-clock,[data-theme=control] .royal-fallback,[data-theme=control] .royal-only{display:none}
 [data-theme=control] .control-fallback,[data-theme=control] .control-only{display:block}
 [data-theme=control] .control-fallback{inset:0;width:100%;height:100%;transform:none;display:flex;align-items:center;justify-content:center}
-[data-theme=control] .fallback-instrument{position:relative;width:min(85%,calc(var(--instrument-stage)*2.133333));aspect-ratio:1024/480}
-[data-theme=control] .control-fallback img{width:100%;height:100%;object-fit:contain}
+[data-theme=control] .fallback-instrument{position:relative;width:100%;height:100%}
+[data-theme=control] .control-fallback picture,[data-theme=control] .control-fallback img{display:block;width:100%;height:100%;object-fit:fill}
+[data-theme=control] .fallback-digits{left:41.5%;top:40%;font-size:clamp(16px,3.2vw,50px);transform:translate(-50%,-50%) scaleX(1.35);letter-spacing:.06em}
+.gallery.shared-loading .fallback-digits,.gallery.shared-loading #next-countdown-date,.gallery.shared-loading .royal-clock,.gallery.shared-loading .art-clock{visibility:hidden}
 .gallery[data-theme=control] .scene-ready .control-fallback{display:none!important}
 [data-theme=control] #theme-scene{transition:none}
 [data-theme=control] .scene-stage{position:relative;grid-area:1/1/2/3;width:100%;height:var(--instrument-stage);left:auto;top:auto;transform:none}
-[data-theme=control] .scene-action{left:73%;top:20%;width:22%;height:65%;border-radius:50%}
+[data-theme=control] .scene-action{left:70%;top:29%;width:18%;height:58%;border-radius:10px}
 [data-theme=control] .scene-action:hover{background:none}
 [data-theme=control] .scene-action:focus-visible{outline:1px solid var(--accent);outline-offset:3px}
 [data-theme=control] .scene-action:disabled{cursor:wait}
@@ -779,9 +798,10 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
  [data-theme=control] .title-line:last-child{margin-top:8px;transform:rotate(-2deg)}
  [data-theme=control] .next-countdown{--instrument-stage:clamp(168px,43vw,320px);height:auto;grid-template-rows:var(--instrument-stage) 20px 20px;gap:6px 10px;margin:10px 0 14px}
  [data-theme=control] .scene-stage{height:var(--instrument-stage);width:100%;left:auto;top:auto}
+ [data-theme=control] .fallback-digits{left:49%;top:48%;font-size:clamp(14px,4.8vw,32px);transform:translate(-50%,-50%) scaleX(1.15)}
  [data-theme=control] .countdown-caption time{font-size:10px}
  [data-theme=control] .countdown-secret{top:calc(var(--instrument-stage) - 24px);left:0;right:0;font-size:10px}
- [data-theme=control] .scene-action{left:73%;top:22%;width:24%;height:58%}
+ [data-theme=control] .scene-action{left:70%;top:53%;width:30%;height:47%}
  [data-theme=control] .reset-echo{font-size:55px}
  [data-theme=control] .shownav{padding-block:6px}
  [data-theme=control] .shownav a{min-height:44px;padding-block:8px}
@@ -853,11 +873,12 @@ def esc(s):
 
 def head(title, extra_head="", gallery=False):
     return (
-        "<!DOCTYPE html>\n" + ('<html lang="en" class="gallery">\n<head>\n' if gallery else '<html lang="en">\n<head>\n') +
+        "<!DOCTYPE html>\n" + ('<html lang="en" class="gallery shared-loading" data-theme="control">\n<head>\n' if gallery else '<html lang="en">\n<head>\n') +
         "  <meta charset=\"utf-8\">\n"
         "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
         f"  <title>{esc(title)}</title>\n"
         "  <meta name=\"description\" content=\"An archive of the TV-show countdown sites built by Artur Pokusin between 2012 and 2025, preserved and ticking live.\">\n"
+        + (THEME_SETUP if gallery else "") +
         f"  {FAVICON}\n"
         f"  <link rel=\"stylesheet\" href=\"/countdowns/countdowns.css?v={CSS_VER}\">\n"
         f"{extra_head}"
@@ -944,7 +965,7 @@ def build_gallery():
     out += ('    <section class="art-hero" id="art-hero" aria-label="Interactive countdown archive" hidden>\n'
             '      <div class="art-stage" id="art-stage"><canvas id="art-scene" tabindex="0" aria-label="Interactive art scene"></canvas></div>\n'
             '      <h1 class="art-title">Countdowns</h1><div class="art-reset-area"></div><div class="art-mounts"></div>\n'
-            '      <button class="art-secret-trigger" type="button" aria-label="Inspect the small crown" aria-controls="countdown-secret" aria-expanded="false"><img src="assets/concepts/crown.png" alt=""></button>\n'
+            '      <button class="art-secret-trigger" type="button" aria-label="Inspect the small crown" aria-controls="countdown-secret" aria-expanded="false"><img data-theme-asset="art" data-src="assets/concepts/crown.png" alt=""></button>\n'
             '      <div class="art-route"></div><button class="art-archive-toggle" type="button">Archive</button><div class="art-joystick"></div>\n'
             '    </section>\n')
     title = ''.join('<span class="title-line">' + ''.join(
@@ -957,7 +978,7 @@ def build_gallery():
             '</div>\n')
     out += (
         '    <section class="next-countdown" aria-labelledby="next-countdown-heading">\n'
-        '      <img class="royal-guardians" src="assets/royal-guardians.png" alt="" width="1440" height="520">\n'
+        '      <img class="royal-guardians" data-theme-asset="royal" data-src="assets/royal-guardians.png" alt="" width="1440" height="520">\n'
         '      <div class="countdown-caption"><h2 id="next-countdown-heading">Next countdown</h2>'
         f'<time id="next-countdown-date" datetime="{NEXT_COUNTDOWN_DATE}">{NEXT_COUNTDOWN_LABEL}</time></div>\n'
         '      <div class="royal-clock" role="timer" aria-label="Time until the next countdown">'
@@ -967,13 +988,15 @@ def build_gallery():
         '<div class="clock-unit"><span data-unit="minutes">00</span><small>minutes</small></div>'
         '<div class="clock-unit"><span data-unit="seconds">00</span><small>seconds</small></div></div>\n'
         '      <div class="scene-stage" id="scene-stage">'
-        '<img class="scene-fallback royal-fallback" src="assets/throne-fallback.png" alt="A tiny crown on an empty throne">'
-        '<div class="scene-fallback control-fallback"><div class="fallback-instrument"><img src="assets/console-fallback.png" alt="A timer console wired to a red button" width="1024" height="480">'
+        '<img class="scene-fallback royal-fallback" data-theme-asset="royal" data-src="assets/throne-fallback.png" alt="A tiny crown on an empty throne">'
+        '<div class="scene-fallback control-fallback"><div class="fallback-instrument"><picture>'
+        '<source media="(max-width:760px)" srcset="assets/control-loading-phone.jpg">'
+        '<img src="assets/control-loading-desktop.jpg" alt="A timer console wired to a guarded red button" width="1157" height="261" fetchpriority="high"></picture>'
         '<span class="fallback-digits" id="fallback-digits">30:00:00:00</span></div></div>'
         '<canvas id="theme-scene" aria-hidden="true"></canvas>'
-        '<button class="scene-action" id="scene-action" type="button" aria-label="Crown the countdown" aria-controls="countdown-secret" aria-expanded="false"></button>'
+        '<button class="scene-action" id="scene-action" type="button" aria-label="Lift the button cover" aria-controls="countdown-secret" aria-expanded="false" disabled></button>'
         '</div>\n'
-        '      <button class="royal-reset royal-only" id="royal-reset" type="button" aria-label="Postpone the next countdown" aria-controls="countdown-secret" aria-expanded="false">Again.</button>\n'
+        '      <button class="royal-reset royal-only" id="royal-reset" type="button" aria-label="Postpone the next countdown" aria-controls="countdown-secret" aria-expanded="false" disabled>Again.</button>\n'
         '      <p class="scene-hint"><span class="royal-only">A small crown. A long wait.</span>'
         '<span class="control-only">Lift. Press.</span></p>\n'
         '      <p class="countdown-secret" id="countdown-secret" role="status" hidden>Long may I count.</p>\n'
@@ -1020,21 +1043,37 @@ def build_gallery():
                 timeline_slug = v['slug'].strip('/')
                 out += f'      <a class="scene-timeline-link" data-show="{s["slug"]}" href="/countdowns/{s["slug"]}/{timeline_slug}/">{esc(s["name"])} · {esc(v["label"])}</a>\n'
     out += '    </template>\n'
-    themes_sources = ['themes.js', 'reels.js', 'control-explosion.js', 'control-transformation.js']
-    themes_version = hashlib.sha256(b''.join(open(os.path.join(CD, file), 'rb').read() for file in themes_sources)).hexdigest()[:10]
     previews = """<script>(function(){
       var art=document.documentElement.classList.contains('art-project');
+      document.querySelectorAll('[data-theme-asset]').forEach(function(img){if(img.dataset.themeAsset===(art?'art':document.documentElement.dataset.theme)){img.src=img.dataset.src;}});
       if(document.documentElement.dataset.theme==='control'){
         var shelves=document.getElementById('archive-shelves'),nav=document.querySelector('.shownav');
         shelves.append.apply(shelves,Array.from(shelves.children).reverse());
         nav.append.apply(nav,Array.from(nav.children).reverse());
       }
-      document.querySelectorAll('template.card-preview').forEach(function(t){
-        if(art){t.remove();return;}
-        t.parentElement.querySelector('img').remove();t.replaceWith(t.content);
-      });
+      var previews=Array.from(document.querySelectorAll('template.card-preview'));
+      if(art){previews.forEach(function(t){t.remove();});return;}
+      // Stills paint immediately. Boot archived apps only as their mounts enter
+      // the viewport, after the clock has had first use of the network and CPU.
+      function observe(){
+        if(!('IntersectionObserver' in window))return;
+        var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){
+          if(!entry.isIntersecting)return;observer.unobserve(entry.target);
+          var t=entry.target.querySelector('template.card-preview');if(!t)return;
+          var frame=t.content.querySelector('iframe'),img=entry.target.querySelector('img');
+          entry.target.classList.add('preview-loading');
+          frame.addEventListener('load',function(){img.remove();entry.target.classList.remove('preview-loading');},{once:true});
+          t.replaceWith(t.content);
+        });},{rootMargin:'80px'});
+        previews.forEach(function(t){observer.observe(t.parentElement);});
+      }
+      var started=false;
+      function start(){if(started)return;started=true;clearTimeout(fallback);requestAnimationFrame(function(){requestAnimationFrame(observe);});}
+      document.addEventListener('countdown:scene-ready',start,{once:true});
+      document.addEventListener('countdown:scene-failed',start,{once:true});
+      var fallback=setTimeout(start,5000);
     })();</script>"""
-    return out + '    </main>\n' + foot(previews + OVERLAY_HTML + OVERLAY_JS + NAV_JS + CAROUSEL_JS + f'<script type="module" src="themes.js?v={themes_version}"></script>')
+    return out + '    </main>\n' + foot(previews + OVERLAY_HTML + OVERLAY_JS + NAV_JS + CAROUSEL_JS + f'<script type="module" src="themes.js?v={THEMES_VERSION}"></script>')
 
 # ----------------------------------------------------- per-show details page
 def build_show_index(s):
