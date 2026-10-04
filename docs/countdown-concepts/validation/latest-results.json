@@ -1,0 +1,216 @@
+{
+  "date": "2026-10-03T04:16:15.834Z",
+  "node": "v22.23.0",
+  "scope": "offline saved-source/controller/lifecycle checks",
+  "gpuTested": false,
+  "modules": {
+    "countdowns/concepts/tomorrows-roadworks.scene.js": "f0863942c3d237dceaac4194d94ea881b8ab66da588bece9e0f3574a66ec7723",
+    "countdowns/concepts/bubblegum-time.scene.js": "a11c92cebc68440910c659e13ed70b1506ebedcce5ae3d2a91f7246959a9bca5",
+    "countdowns/concepts/after-the-flame.scene.js": "23d8364fddb3f5f0add3dcf42af55c124de545197d82360123fdff5259f52d14",
+    "countdowns/concepts/low-tide-later.scene.js": "7c9774da9793190f4696271e59707d4ecef5bf280cf44f67aeb054f9f255e621",
+    "countdowns/concepts/not-yet-ripe.scene.js": "60c602b1c0ce2fd45b46e8140464d8ba5925968f40866714bb4f8e3f0e029922",
+    "countdowns/concepts/still-drawing-tomorrow.scene.js": "36e88a860f10297d68171e816e474c76ad2a74e0d4b3cf6795672b700ca6eae3",
+    "countdowns/concepts/held-in-suspense.scene.js": "17b3cb6beb5c0c5a0962df3b91479afbb8d4b77b2d4fe385246b3d7d86b3cc9a",
+    "countdowns/scene-host.js": "4c80f3829143ad3a32f6da599a9f61b0927ba503bf54dd112f40387c10d51102",
+    "countdowns/scene-surfaces.js": "08d27e9f74ed2e46132928add4e7cfb729f464202c022cde10346b7e598a3e85",
+    "countdowns/scene-gallery.js": "b632c2feadd0453816d9d24740cef34276173f7bcdc813ba3fd9f2da14c7c634"
+  },
+  "syntax": [
+    {
+      "path": "countdowns/concepts/tomorrows-roadworks.scene.js",
+      "passed": true
+    },
+    {
+      "path": "countdowns/concepts/bubblegum-time.scene.js",
+      "passed": true
+    },
+    {
+      "path": "countdowns/concepts/after-the-flame.scene.js",
+      "passed": true
+    },
+    {
+      "path": "countdowns/concepts/low-tide-later.scene.js",
+      "passed": true
+    },
+    {
+      "path": "countdowns/concepts/not-yet-ripe.scene.js",
+      "passed": true
+    },
+    {
+      "path": "countdowns/concepts/still-drawing-tomorrow.scene.js",
+      "passed": true
+    },
+    {
+      "path": "countdowns/concepts/held-in-suspense.scene.js",
+      "passed": true
+    },
+    {
+      "path": "countdowns/scene-host.js",
+      "passed": true
+    },
+    {
+      "path": "countdowns/scene-surfaces.js",
+      "passed": true
+    },
+    {
+      "path": "countdowns/scene-gallery.js",
+      "passed": true
+    }
+  ],
+  "fixtures": [
+    {
+      "fixture": "controllers.mjs",
+      "passed": true,
+      "controllerProfiles": 14,
+      "previewActivations": 182,
+      "nativeDestinationFocuses": 98,
+      "profiles": [
+        {
+          "theme": "tomorrows-roadworks",
+          "profile": "1487x900",
+          "previews": 13,
+          "links": 7,
+          "stops": 14,
+          "previewActivations": 13
+        },
+        {
+          "theme": "tomorrows-roadworks",
+          "profile": "390x844",
+          "previews": 13,
+          "links": 7,
+          "stops": 14,
+          "previewActivations": 13
+        },
+        {
+          "theme": "bubblegum-time",
+          "profile": "1487x900",
+          "previews": 13,
+          "links": 7,
+          "stops": 14,
+          "previewActivations": 13
+        },
+        {
+          "theme": "bubblegum-time",
+          "profile": "390x844",
+          "previews": 13,
+          "links": 7,
+          "stops": 14,
+          "previewActivations": 13
+        },
+        {
+          "theme": "after-the-flame",
+          "profile": "1487x900",
+          "previews": 13,
+          "links": 7,
+          "stops": 14,
+          "previewActivations": 13
+        },
+        {
+          "theme": "after-the-flame",
+          "profile": "390x844",
+          "previews": 13,
+          "links": 7,
+          "stops": 14,
+          "previewActivations": 13
+        },
+        {
+          "theme": "low-tide-later",
+          "profile": "1487x900",
+          "previews": 13,
+          "links": 7,
+          "stops": 14,
+          "previewActivations": 13
+        },
+        {
+          "theme": "low-tide-later",
+          "profile": "390x844",
+          "previews": 13,
+          "links": 7,
+          "stops": 14,
+          "previewActivations": 13
+        },
+        {
+          "theme": "not-yet-ripe",
+          "profile": "1487x900",
+          "previews": 13,
+          "links": 7,
+          "stops": 14,
+          "previewActivations": 13
+        },
+        {
+          "theme": "not-yet-ripe",
+          "profile": "390x844",
+          "previews": 13,
+          "links": 7,
+          "stops": 14,
+          "previewActivations": 13
+        },
+        {
+          "theme": "still-drawing-tomorrow",
+          "profile": "1487x900",
+          "previews": 13,
+          "links": 7,
+          "stops": 14,
+          "previewActivations": 13
+        },
+        {
+          "theme": "still-drawing-tomorrow",
+          "profile": "390x844",
+          "previews": 13,
+          "links": 7,
+          "stops": 14,
+          "previewActivations": 13
+        },
+        {
+          "theme": "held-in-suspense",
+          "profile": "1487x900",
+          "previews": 13,
+          "links": 7,
+          "stops": 14,
+          "previewActivations": 13
+        },
+        {
+          "theme": "held-in-suspense",
+          "profile": "390x844",
+          "previews": 13,
+          "links": 7,
+          "stops": 14,
+          "previewActivations": 13
+        }
+      ]
+    },
+    {
+      "fixture": "shared-runtime.mjs",
+      "passed": true,
+      "scenarioGroups": 7,
+      "groups": [
+        "responsive wrapper/rebuild races",
+        "late disposal",
+        "six owned-resource categories disposed once",
+        "queued/reduced reels",
+        "authored XZ UV projection",
+        "pointer identity/multitouch",
+        "dragged native-link suppression"
+      ]
+    },
+    {
+      "fixture": "host-lifecycle.mjs",
+      "passed": true,
+      "lifecycleCases": 5,
+      "cases": [
+        "first render fails with throwing cleanup",
+        "later render fails with throwing cleanup",
+        "desktop-phone-desktop with overlay deferral and canonical timeline",
+        "profile crosses and returns during two asset awaits",
+        "pagehide during loading"
+      ]
+    }
+  ],
+  "limitations": [
+    "DOM/canvas/fonts/rendering mocked",
+    "GLB image references removed for geometry-only parsing",
+    "no GPU shader compilation, texture decode, visual approval, browser-native link defaults, physical touch or device performance test"
+  ],
+  "sourceChangedDuringRun": [],
+  "passed": true
+}

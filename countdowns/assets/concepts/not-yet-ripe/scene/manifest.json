@@ -1,0 +1,324 @@
+{
+  "tool": "Blender4.5.14LTS",
+  "source": "authoring/build_scene.py + editable scene.blend",
+  "ownership": "All shape/map source is authored here; no photographed scene, direct lighting, timer values or archive images baked into assets.",
+  "camera": {
+    "positionGLTF": [
+      -0.2,
+      4.3,
+      29.2
+    ],
+    "targetGLTF": [
+      -0.2,
+      4.3,
+      0
+    ],
+    "fov": 33.39848781486555
+  },
+  "clock": [
+    "clock_days",
+    "clock_hours",
+    "clock_minutes",
+    "clock_seconds"
+  ],
+  "fruitRigs": [
+    "fruit_rig_0",
+    "fruit_rig_1",
+    "fruit_rig_2",
+    "fruit_rig_3"
+  ],
+  "peels": [
+    "clock_peel_0",
+    "front_peel_lip_0_-1",
+    "front_peel_lip_0_1",
+    "clock_peel_1",
+    "front_peel_lip_1_-1",
+    "front_peel_lip_1_1",
+    "clock_peel_2",
+    "front_peel_lip_2_-1",
+    "front_peel_lip_2_1",
+    "clock_peel_3",
+    "front_peel_lip_3_-1",
+    "front_peel_lip_3_1"
+  ],
+  "leaves": [
+    "leaf_left_top",
+    "leaf_upper_left",
+    "leaf_upper_right",
+    "leaf_fruit_left",
+    "leaf_fruit_right",
+    "leaf_reset_back",
+    "leaf_low_front",
+    "leaf_right_bottom",
+    "leaf_upper_twin",
+    "leaf_curl_inner",
+    "leaf_upper_edge",
+    "leaf_right_mid",
+    "leaf_reset_twin",
+    "leaf_left_crop",
+    "tag_leaf_got-s3-redesign",
+    "tag_leaf_got-s3-classic",
+    "tag_leaf_dexter-s7-finale",
+    "tag_leaf_severance-s2",
+    "tag_leaf_sherlock-final",
+    "tag_leaf_sherlock-alpha",
+    "tag_leaf_archer-s5-final",
+    "tag_leaf_breaking-bad-final",
+    "tag_leaf_breaking-bad-desert-parallax",
+    "tag_leaf_house-of-cards-s2"
+  ],
+  "archiveRigs": [
+    "tag_rig_dexter-s8-final",
+    "tag_rig_severance-tracker",
+    "tag_rig_got-s4",
+    "tag_rig_got-s3-redesign",
+    "tag_rig_got-s3-classic",
+    "tag_rig_dexter-s7-finale",
+    "tag_rig_severance-s2",
+    "tag_rig_sherlock-final",
+    "tag_rig_sherlock-alpha",
+    "tag_rig_archer-s5-final",
+    "tag_rig_breaking-bad-final",
+    "tag_rig_breaking-bad-desert-parallax",
+    "tag_rig_house-of-cards-s2"
+  ],
+  "archives": [
+    {
+      "id": "dexter-s8-final",
+      "show": "dexter",
+      "slug": "s8-final",
+      "screen": "archive_dexter-s8-final",
+      "caption": "caption_dexter-s8-final",
+      "rig": "tag_rig_dexter-s8-final",
+      "width": 3.35,
+      "height": 2.42,
+      "initial": true
+    },
+    {
+      "id": "severance-tracker",
+      "show": "severance",
+      "slug": "tracker",
+      "screen": "archive_severance-tracker",
+      "caption": "caption_severance-tracker",
+      "rig": "tag_rig_severance-tracker",
+      "width": 4.05,
+      "height": 2.58,
+      "initial": true
+    },
+    {
+      "id": "got-s4",
+      "show": "got",
+      "slug": "s4",
+      "screen": "archive_got-s4",
+      "caption": "caption_got-s4",
+      "rig": "tag_rig_got-s4",
+      "width": 4.4,
+      "height": 2.75,
+      "initial": true
+    },
+    {
+      "id": "got-s3-redesign",
+      "show": "got",
+      "slug": "s3-redesign",
+      "screen": "archive_got-s3-redesign",
+      "caption": "caption_got-s3-redesign",
+      "rig": "tag_rig_got-s3-redesign",
+      "width": 3.7,
+      "height": 2.4,
+      "initial": false
+    },
+    {
+      "id": "got-s3-classic",
+      "show": "got",
+      "slug": "s3-classic",
+      "screen": "archive_got-s3-classic",
+      "caption": "caption_got-s3-classic",
+      "rig": "tag_rig_got-s3-classic",
+      "width": 3.1,
+      "height": 2.1,
+      "initial": false
+    },
+    {
+      "id": "dexter-s7-finale",
+      "show": "dexter",
+      "slug": "s7-finale",
+      "screen": "archive_dexter-s7-finale",
+      "caption": "caption_dexter-s7-finale",
+      "rig": "tag_rig_dexter-s7-finale",
+      "width": 3.8,
+      "height": 2.6,
+      "initial": false
+    },
+    {
+      "id": "severance-s2",
+      "show": "severance",
+      "slug": "s2",
+      "screen": "archive_severance-s2",
+      "caption": "caption_severance-s2",
+      "rig": "tag_rig_severance-s2",
+      "width": 4.1,
+      "height": 2.65,
+      "initial": false
+    },
+    {
+      "id": "sherlock-final",
+      "show": "sherlock",
+      "slug": "final",
+      "screen": "archive_sherlock-final",
+      "caption": "caption_sherlock-final",
+      "rig": "tag_rig_sherlock-final",
+      "width": 3.8,
+      "height": 2.58,
+      "initial": false
+    },
+    {
+      "id": "sherlock-alpha",
+      "show": "sherlock",
+      "slug": "alpha",
+      "screen": "archive_sherlock-alpha",
+      "caption": "caption_sherlock-alpha",
+      "rig": "tag_rig_sherlock-alpha",
+      "width": 3.2,
+      "height": 2.2,
+      "initial": false
+    },
+    {
+      "id": "archer-s5-final",
+      "show": "archer",
+      "slug": "s5-final",
+      "screen": "archive_archer-s5-final",
+      "caption": "caption_archer-s5-final",
+      "rig": "tag_rig_archer-s5-final",
+      "width": 3.8,
+      "height": 2.5,
+      "initial": false
+    },
+    {
+      "id": "breaking-bad-final",
+      "show": "breaking-bad",
+      "slug": "final",
+      "screen": "archive_breaking-bad-final",
+      "caption": "caption_breaking-bad-final",
+      "rig": "tag_rig_breaking-bad-final",
+      "width": 4.1,
+      "height": 2.65,
+      "initial": false
+    },
+    {
+      "id": "breaking-bad-desert-parallax",
+      "show": "breaking-bad",
+      "slug": "desert-parallax",
+      "screen": "archive_breaking-bad-desert-parallax",
+      "caption": "caption_breaking-bad-desert-parallax",
+      "rig": "tag_rig_breaking-bad-desert-parallax",
+      "width": 3.5,
+      "height": 2.38,
+      "initial": false
+    },
+    {
+      "id": "house-of-cards-s2",
+      "show": "house-of-cards",
+      "slug": "s2",
+      "screen": "archive_house-of-cards-s2",
+      "caption": "caption_house-of-cards-s2",
+      "rig": "tag_rig_house-of-cards-s2",
+      "width": 4.0,
+      "height": 2.6,
+      "initial": false
+    }
+  ],
+  "destinations": [
+    {
+      "show": "dexter",
+      "kind": "archive",
+      "surface": "destination_dexter_archive",
+      "parent": "archive_dexter-s8-final"
+    },
+    {
+      "show": "dexter",
+      "kind": "timeline",
+      "surface": "destination_dexter_timeline",
+      "parent": "archive_dexter-s8-final"
+    },
+    {
+      "show": "severance",
+      "kind": "live",
+      "surface": "destination_severance_live",
+      "parent": "archive_severance-tracker"
+    },
+    {
+      "show": "got",
+      "kind": "archive",
+      "surface": "destination_got_archive",
+      "parent": "archive_got-s4"
+    },
+    {
+      "show": "sherlock",
+      "kind": "archive",
+      "surface": "destination_sherlock_archive",
+      "parent": "archive_sherlock-final"
+    },
+    {
+      "show": "archer",
+      "kind": "archive",
+      "surface": "destination_archer_archive",
+      "parent": "archive_archer-s5-final"
+    },
+    {
+      "show": "breaking-bad",
+      "kind": "archive",
+      "surface": "destination_breaking-bad_archive",
+      "parent": "archive_breaking-bad-final"
+    }
+  ],
+  "triangles": 172063,
+  "critical": [
+    "scene.glb",
+    "materials/peel-ripeness-mask.png",
+    "materials/leaf-thickness.png",
+    "materials/flesh-thickness.png",
+    "materials/pulp-local-ao-0.png",
+    "materials/pulp-local-ao-1.png",
+    "materials/pulp-local-ao-2.png",
+    "materials/pulp-local-ao-3.png",
+    "typography/BodoniModa-variable.ttf",
+    "typography/RobotoCondensed-variable.ttf"
+  ],
+  "materials": {
+    "bark": "authored fissures/knots/ridges + dry maps",
+    "peel": "longitudinal half shell + unequal opaque pith + pores and ripeness mask",
+    "flesh": "elongated relief/actual membranes/seeds + vesicle normal/thickness",
+    "leaves": "cupped/folded actual solid leaf+modeled midrib+vein/thickness maps",
+    "paper": "curled .044m cotton with punched holes/thread; flat image centre"
+  },
+  "readingSurfaces": {
+    "clock": "actual lobed pulp skin with faithful UV-bound native reel ink; no separate protected planar panel",
+    "archives": "flat unaltered image centres within curled threaded cotton papers",
+    "destinations": "small physical arrow folds with generous non-shadowing native-link proxies"
+  },
+  "navigation": "1+13 actual individual works, every version reachable by touch scroll and native focus; no content buried in seven show-only stops",
+  "motion": [
+    "bounded branch and twig lag",
+    "focused papers still",
+    "gold_notched_fold Unfold_crown",
+    "again_leaf_print Press_rim",
+    "confirmed1500ms peel front"
+  ],
+  "limits": "Thin transmission approximation, no volumetric botany/cloth/physics simulation. Triangle counts are geometry measurements, not device performance claims.",
+  "phoneAsset": "scene-mobile.glb",
+  "phoneTriangles": 88200,
+  "phoneCamera": {
+    "positionGLTF": [
+      0,
+      1.5,
+      27.7
+    ],
+    "targetGLTF": [
+      0,
+      1.5,
+      0.1
+    ],
+    "fov": 38,
+    "horizontalSpan": 8.8
+  }
+}

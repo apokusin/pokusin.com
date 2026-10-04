@@ -1,0 +1,28 @@
+{
+  "artVersion": "7412219769",
+  "profileCount": 21,
+  "indexedTriangleBarycentricRays": 17325,
+  "opaqueBlockers": 0,
+  "outsideBlankMarginSamples": 2,
+  "limitations": "GPU/canvas/font inputs mocked; Fruit desktop GoT blank arrow margin has two OUTSIDE samples; prior denser Gum outer blank margin exception retained in QA; no art acceptance",
+  "evidence": [
+    {
+      "file": "geometry-seven-final.log",
+      "sha256": "ce6da4697854ed2971dcf32765b59d3fee43805ea5562e141d98be2500c14bc8",
+      "sourceFilename": "review-seven-final-clearances.log",
+      "scope": "actual-controller/GLB geometry with mocked renderer/canvas/fonts; no GPU or art acceptance"
+    },
+    {
+      "file": "metal-phone-clock-clearances.log",
+      "sha256": "e6992ff0c030a9814cc4dfacf12d291d8508191945d9d2dfa3c0f4080e4d245f",
+      "sourceFilename": "metal-opening-clock-clearances.log",
+      "scope": "actual-controller/GLB geometry with mocked renderer/canvas/fonts; no GPU or art acceptance"
+    },
+    {
+      "file": "metal-phone-rig-metrics.log",
+      "sha256": "9d1157be01c66ffc2272c14396f79bdd50b9b5b4e0f84b2ecc620a72cd1ab138",
+      "sourceFilename": "metal-opening-rig-metrics.log",
+      "scope": "actual-controller/GLB geometry with mocked renderer/canvas/fonts; no GPU or art acceptance"
+    }
+  ]
+}

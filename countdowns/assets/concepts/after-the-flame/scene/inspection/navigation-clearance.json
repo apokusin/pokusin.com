@@ -1,0 +1,702 @@
+{
+  "source": "real authored meshes; 81 sight rays per screen from its aspect-specific viewing pose",
+  "surfaces": {
+    "archive_got-s4": {
+      "desktop": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          9.300000190734863,
+          8.920000076293945,
+          4.033332824707031
+        ],
+        "fov": 42.421543099680896
+      },
+      "phone390": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          9.300000190734863,
+          8.920000076293945,
+          21.076805114746094
+        ],
+        "fov": 42
+      },
+      "phone320": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          9.300000190734863,
+          8.920000076293945,
+          22.80872344970703
+        ],
+        "fov": 42
+      }
+    },
+    "archive_severance-tracker": {
+      "desktop": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          4.25,
+          5.320000171661377,
+          3.5741477012634277
+        ],
+        "fov": 42.421543099680896
+      },
+      "phone390": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          4.25,
+          5.320000171661377,
+          12.439620018005371
+        ],
+        "fov": 42
+      },
+      "phone320": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          4.25,
+          5.320000171661377,
+          13.342691421508789
+        ],
+        "fov": 42
+      }
+    },
+    "archive_dexter-s8-final": {
+      "desktop": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          10.100000381469727,
+          4.400000095367432,
+          4.584667205810547
+        ],
+        "fov": 42.421543099680896
+      },
+      "phone390": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          10.100000381469727,
+          4.400000095367432,
+          16.02814483642578
+        ],
+        "fov": 42
+      },
+      "phone320": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          10.100000381469727,
+          4.400000095367432,
+          17.191003799438477
+        ],
+        "fov": 42
+      }
+    },
+    "archive_got-s3-redesign": {
+      "desktop": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          19.110980987548828,
+          6.852677345275879,
+          -14.884244918823242
+        ],
+        "fov": 42.421543099680896
+      },
+      "phone390": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          9.592976570129395,
+          11.694122314453125,
+          -12.27577018737793
+        ],
+        "fov": 42
+      },
+      "phone320": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          8.82568073272705,
+          12.061725616455078,
+          -11.854681968688965
+        ],
+        "fov": 42
+      }
+    },
+    "archive_got-s3-classic": {
+      "desktop": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          8.597471237182617,
+          5.4466938972473145,
+          -13.778352737426758
+        ],
+        "fov": 42.421543099680896
+      },
+      "phone390": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          3.453974723815918,
+          4.800000190734863,
+          -13.399731636047363
+        ],
+        "fov": 42
+      },
+      "phone320": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          2.8770675659179688,
+          4.800000190734863,
+          -13.226016998291016
+        ],
+        "fov": 42
+      }
+    },
+    "archive_dexter-s7-finale": {
+      "desktop": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          8.409226417541504,
+          5.199999809265137,
+          -17.27657127380371
+        ],
+        "fov": 42.421543099680896
+      },
+      "phone390": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          2.515237808227539,
+          5.199999809265137,
+          -9.523407936096191
+        ],
+        "fov": 42
+      },
+      "phone320": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          1.9163055419921875,
+          5.199999809265137,
+          -8.735550880432129
+        ],
+        "fov": 42
+      }
+    },
+    "archive_severance-s2": {
+      "desktop": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          5.282224178314209,
+          5.900000095367432,
+          -24.642803192138672
+        ],
+        "fov": 42.421543099680896
+      },
+      "phone390": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          -2.0983476638793945,
+          5.900000095367432,
+          -25.279102325439453
+        ],
+        "fov": 42
+      },
+      "phone320": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          -2.824275016784668,
+          5.900000095367432,
+          -25.21868324279785
+        ],
+        "fov": 42
+      }
+    },
+    "archive_sherlock-final": {
+      "desktop": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          7.478580474853516,
+          5.400000095367432,
+          -29.603342056274414
+        ],
+        "fov": 42.421543099680896
+      },
+      "phone390": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          -0.21454620361328125,
+          5.400000095367432,
+          -28.53597640991211
+        ],
+        "fov": 42
+      },
+      "phone320": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          -0.9620361328125,
+          5.400000095367432,
+          -28.310897827148438
+        ],
+        "fov": 42
+      }
+    },
+    "archive_sherlock-alpha": {
+      "desktop": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          7.758604526519775,
+          4.300000190734863,
+          -36.849796295166016
+        ],
+        "fov": 42.421543099680896
+      },
+      "phone390": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          3.205606460571289,
+          4.300000190734863,
+          -36.47085189819336
+        ],
+        "fov": 42
+      },
+      "phone320": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          2.611665725708008,
+          4.300000190734863,
+          -36.42142105102539
+        ],
+        "fov": 42
+      }
+    },
+    "archive_archer-s5-final": {
+      "desktop": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          16.206396102905273,
+          6.714837551116943,
+          -39.0097541809082
+        ],
+        "fov": 42.421543099680896
+      },
+      "phone390": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          10.670900344848633,
+          11.542606353759766,
+          -31.728164672851562
+        ],
+        "fov": 42
+      },
+      "phone320": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          10.104889869689941,
+          11.935417175292969,
+          -30.983612060546875
+        ],
+        "fov": 42
+      }
+    },
+    "archive_breaking-bad-final": {
+      "desktop": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          9.125191688537598,
+          6.0,
+          -44.90293502807617
+        ],
+        "fov": 42.421543099680896
+      },
+      "phone390": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          2.641805648803711,
+          6.0,
+          -36.37445831298828
+        ],
+        "fov": 42
+      },
+      "phone320": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          1.9829797744750977,
+          6.0,
+          -35.507816314697266
+        ],
+        "fov": 42
+      }
+    },
+    "archive_breaking-bad-desert-parallax": {
+      "desktop": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          8.163809776306152,
+          4.699999809265137,
+          -53.8419075012207
+        ],
+        "fov": 42.421543099680896
+      },
+      "phone390": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          5.185405731201172,
+          4.699999809265137,
+          -55.557559967041016
+        ],
+        "fov": 42
+      },
+      "phone320": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          4.7190656661987305,
+          4.699999809265137,
+          -55.6168212890625
+        ],
+        "fov": 42
+      }
+    },
+    "archive_house-of-cards-s2": {
+      "desktop": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          8.767207145690918,
+          5.5,
+          -56.08974838256836
+        ],
+        "fov": 42.421543099680896
+      },
+      "phone390": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          2.5785179138183594,
+          5.5,
+          -47.94892501831055
+        ],
+        "fov": 42
+      },
+      "phone320": {
+        "samples": 81,
+        "blocked": 0,
+        "channelAccessBlocked": 0,
+        "cameraGLTF": [
+          1.9496383666992188,
+          5.5,
+          -47.121673583984375
+        ],
+        "fov": 42
+      }
+    }
+  },
+  "rails": {
+    "desktop": [
+      {
+        "destination": "got-s4",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "severance-tracker",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "dexter-s8-final",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "got-s3-redesign",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 3
+      },
+      {
+        "destination": "got-s3-classic",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 3
+      },
+      {
+        "destination": "dexter-s7-finale",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "severance-s2",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "sherlock-final",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "sherlock-alpha",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "archer-s5-final",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 3
+      },
+      {
+        "destination": "breaking-bad-final",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "breaking-bad-desert-parallax",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "house-of-cards-s2",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      }
+    ],
+    "phone390": [
+      {
+        "destination": "got-s4",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "severance-tracker",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "dexter-s8-final",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "got-s3-redesign",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 3
+      },
+      {
+        "destination": "got-s3-classic",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "dexter-s7-finale",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "severance-s2",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "sherlock-final",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "sherlock-alpha",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "archer-s5-final",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "breaking-bad-final",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "breaking-bad-desert-parallax",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "house-of-cards-s2",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      }
+    ],
+    "phone320": [
+      {
+        "destination": "got-s4",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "severance-tracker",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "dexter-s8-final",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "got-s3-redesign",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 3
+      },
+      {
+        "destination": "got-s3-classic",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "dexter-s7-finale",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "severance-s2",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "sherlock-final",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "sherlock-alpha",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "archer-s5-final",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "breaking-bad-final",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "breaking-bad-desert-parallax",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      },
+      {
+        "destination": "house-of-cards-s2",
+        "sweptRadius": 0.16,
+        "segmentIntersections": 0,
+        "segments": 1
+      }
+    ]
+  }
+}

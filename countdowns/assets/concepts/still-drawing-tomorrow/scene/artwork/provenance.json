@@ -1,0 +1,82 @@
+{
+  "concept": "still-drawing-tomorrow",
+  "status": "Retained raster provenance; no new license declaration here.",
+  "sourceReference": "docs/countdown-concepts/references/still-drawing-tomorrow.jpg",
+  "notes": [
+    "Hashes refer to the exact retained files, not inaccessible generation originals.",
+    "Descriptions labeled generationBrief are human reconstruction of asset purpose/style, not invented exact tool prompts.",
+    "Generated ink shapes are separate from authoritative deadline/tally and faithful archive screenshots.",
+    "No complete concept screenshot or source mockup is used as a scene plane."
+  ],
+  "assets": [
+    {
+      "file": "paper-stock.png",
+      "kind": "ImageGen material study",
+      "sha256": "e17af1ca46839dfb42ce21f151b8e4914e4c3428fc6546bba8bbf89aa7ea757b",
+      "encodedBytes": 2850789,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "tool": "Built-in ImageGen",
+      "date": "2026-10-02",
+      "originalOutput": "exec-e6a08cd7-89d4-432e-8f86-cbf6e0a7ba2f.png",
+      "promptStatus": "Exact prompt retained in paper-stock.provenance.md",
+      "exactPrompt": "Use case: stylized-concept. Asset type: seamless square PBR albedo texture for the warm-white paper surface of an animator's drawing table. Generate only flat paper stock viewed exactly straight-on, evenly illuminated: dense visible cellulose fibers, restrained warm-grey tonal mottling, faint fine graphite dust and a few isolated tiny worn flecks. The palette is natural ivory / warm off-white with low-contrast grey and pale beige detail. High tactile physical texture at close range, no regular pattern. Seamlessly tileable on all four edges. No writing, letters, symbols, objects, numbers, borders, folds, shadows, perspective, scene lighting, directional gradients or baked occlusion. No black speck clusters. Aim for a 1024 square surface texture. This is a new material asset, visually informed by a cream paper animator's table, not a scene illustration.",
+      "role": "Retained paper-stock reference study. The rebuilt scene currently uses project-authored paper-fibers/roughness maps.",
+      "contains": "Surface fibres/mottling only; no live UI, writing or complete scene."
+    },
+    {
+      "file": "scene/artwork/graphite-digits.png",
+      "kind": "ImageGen independent ink master",
+      "sha256": "4e96737da74ca6d14aa49f5e5e3c5efbf1db6b2a353e076ed031380d1eccaefa",
+      "encodedBytes": 1339214,
+      "dimensions": [
+        1983,
+        793
+      ],
+      "tool": "Built-in ImageGen",
+      "date": "2026-10-02",
+      "originalOutput": null,
+      "promptStatus": "Exact tool prompt and original output identifier not retained in this bundle; description below is a documented brief, not a verbatim prompt.",
+      "generationBrief": "Ten isolated tall condensed graphite numerals 0\u20139 on transparency, arranged in two rows of five. Uneven pencil hatching and worn graphite fill, with thin red/blue construction outlines and registration strokes. No countdown value, page, interface, button, photograph or background scene.",
+      "role": "Runtime crops individual glyph shapes and paints the authoritative changing slot values; the master contains every digit, not a current clock."
+    },
+    {
+      "file": "scene/artwork/runner-cycle.png",
+      "kind": "ImageGen independent ink master",
+      "sha256": "eacf8521bb02f4508a4f61e6abfa8713eab7c3a80da610306f5474541fe9aef8",
+      "encodedBytes": 1271119,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "tool": "Built-in ImageGen",
+      "date": "2026-10-02",
+      "originalOutput": null,
+      "promptStatus": "Exact tool prompt and original output identifier not retained in this bundle; description below is a documented brief, not a verbatim prompt.",
+      "generationBrief": "Twelve isolated right-facing graphite studies of the same human runner in a tank top and shorts, in a four-column three-row sheet on transparency. Anatomical pencil construction and varied full-body running poses, including visible feet and arms. No labels, scene backdrop, countdown content, finish line or complete webpage.",
+      "role": "Original twelve-pose source master, preserved beside its runtime derivative."
+    },
+    {
+      "file": "scene/artwork/runner-cycle-spaced.png",
+      "kind": "Derived runtime atlas",
+      "sha256": "5958a623069bb0712176c090fc114cbb7e595ffdec1a7796f941b95a677a7778",
+      "encodedBytes": 1098649,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "tool": "Local raster preparation",
+      "source": "scene/artwork/runner-cycle.png",
+      "sourceSha256": "eacf8521bb02f4508a4f61e6abfa8713eab7c3a80da610306f5474541fe9aef8",
+      "layout": {
+        "columns": 4,
+        "rows": 3,
+        "cells": 12
+      },
+      "derivation": "Original poses isolated/repacked into guttered cells for runtime sampling. This is a derivative of the retained ImageGen master, not a fourth independent generation.",
+      "role": "Runtime 12fps ink cycle. It contains isolated art shapes, with the path/finish state painted independently by the real scene controller."
+    }
+  ]
+}

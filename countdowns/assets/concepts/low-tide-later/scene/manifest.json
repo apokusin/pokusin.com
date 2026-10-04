@@ -1,0 +1,955 @@
+{
+  "concept": "low-tide-later",
+  "status": "authored candidate; source/browser fidelity review pending",
+  "source": "../../../../../docs/countdown-concepts/references/low-tide-later.jpg",
+  "axis": "Y up, XZ shore, +Z foreground",
+  "authoring": {
+    "tool": "Blender",
+    "version": "4.5.14 LTS",
+    "script": "authoring/build_scene.py",
+    "source": "authoring/scene.blend"
+  },
+  "camera": {
+    "opening": {
+      "position": [
+        0,
+        24,
+        17
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "fov": 27
+    },
+    "inspection": {
+      "position": [
+        12,
+        15,
+        18
+      ],
+      "target": [
+        0,
+        1,
+        0
+      ],
+      "fov": 38
+    }
+  },
+  "runtime": {
+    "model": "scene.glb",
+    "nodes": {
+      "shore_bed_00": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "sea_surface_00": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "shore_bed_01": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "sea_surface_01": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "shore_bed_02": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "sea_surface_02": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "shore_bed_03": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "sea_surface_03": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "shore_bed_04": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "sea_surface_04": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "shore_bed_05": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "sea_surface_05": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "shore_bed_06": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "sea_surface_06": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "post_days": {
+        "worldTranslation": [
+          -6.099999904632568,
+          -0.26012879610061646,
+          -2.1500000953674316
+        ]
+      },
+      "screen_timer_days_left": {
+        "worldTranslation": [
+          -6.099999904632568,
+          -0.26012879610061646,
+          -2.1500000953674316
+        ]
+      },
+      "screen_timer_days_right": {
+        "worldTranslation": [
+          -6.099999904632568,
+          -0.26012879610061646,
+          -2.1500000953674316
+        ]
+      },
+      "screen_unit_days": {
+        "worldTranslation": [
+          -6.099999904632568,
+          -0.26012879610061646,
+          -2.1500000953674316
+        ]
+      },
+      "post_hours": {
+        "worldTranslation": [
+          -3.3499999046325684,
+          -0.26714736223220825,
+          -1.0800000429153442
+        ]
+      },
+      "screen_timer_hours_left": {
+        "worldTranslation": [
+          -3.3499999046325684,
+          -0.26714736223220825,
+          -1.0800000429153442
+        ]
+      },
+      "screen_timer_hours_right": {
+        "worldTranslation": [
+          -3.3499999046325684,
+          -0.26714736223220825,
+          -1.0800000429153442
+        ]
+      },
+      "screen_unit_hours": {
+        "worldTranslation": [
+          -3.3499999046325684,
+          -0.26714736223220825,
+          -1.0800000429153442
+        ]
+      },
+      "post_minutes": {
+        "worldTranslation": [
+          -0.699999988079071,
+          -0.32098281383514404,
+          0.029999999329447746
+        ]
+      },
+      "screen_timer_minutes_left": {
+        "worldTranslation": [
+          -0.699999988079071,
+          -0.32098281383514404,
+          0.029999999329447746
+        ]
+      },
+      "screen_timer_minutes_right": {
+        "worldTranslation": [
+          -0.699999988079071,
+          -0.32098281383514404,
+          0.029999999329447746
+        ]
+      },
+      "screen_unit_minutes": {
+        "worldTranslation": [
+          -0.699999988079071,
+          -0.32098281383514404,
+          0.029999999329447746
+        ]
+      },
+      "post_seconds": {
+        "worldTranslation": [
+          1.8200000524520874,
+          -0.2995873987674713,
+          0.75
+        ]
+      },
+      "screen_timer_seconds_left": {
+        "worldTranslation": [
+          1.8200000524520874,
+          -0.2995873987674713,
+          0.75
+        ]
+      },
+      "screen_timer_seconds_right": {
+        "worldTranslation": [
+          1.8200000524520874,
+          -0.2995873987674713,
+          0.75
+        ]
+      },
+      "screen_unit_seconds": {
+        "worldTranslation": [
+          1.8200000524520874,
+          -0.2995873987674713,
+          0.75
+        ]
+      },
+      "again_scallop": {
+        "worldTranslation": [
+          6.599999904632568,
+          0.5320520997047424,
+          -0.7200000286102295
+        ]
+      },
+      "screen_reset": {
+        "worldTranslation": [
+          6.599999904632568,
+          0.5320520997047424,
+          -0.7200000286102295
+        ]
+      },
+      "screen_tally": {
+        "worldTranslation": [
+          8.270000457763672,
+          0.5392072200775146,
+          -0.3499999940395355
+        ]
+      },
+      "paper_severance_s2": {
+        "worldTranslation": [
+          5.5,
+          0.5483253002166748,
+          -5.5
+        ]
+      },
+      "screen_severance_s2": {
+        "worldTranslation": [
+          5.5,
+          0.5483253002166748,
+          -5.5
+        ]
+      },
+      "paper_game_of_thrones_s4": {
+        "worldTranslation": [
+          -5.349999904632568,
+          0.26499998569488525,
+          4.25
+        ]
+      },
+      "screen_game_of_thrones_s4": {
+        "worldTranslation": [
+          -5.349999904632568,
+          0.26499998569488525,
+          4.25
+        ]
+      },
+      "paper_dexter_s8_final": {
+        "worldTranslation": [
+          6.25,
+          0.5520298480987549,
+          4.150000095367432
+        ]
+      },
+      "screen_dexter_s8_final": {
+        "worldTranslation": [
+          6.25,
+          0.5520298480987549,
+          4.150000095367432
+        ]
+      },
+      "paper_severance_tracker": {
+        "worldTranslation": [
+          5.099999904632568,
+          0.5787997245788574,
+          -12.0
+        ]
+      },
+      "screen_severance_tracker": {
+        "worldTranslation": [
+          5.099999904632568,
+          0.5787997245788574,
+          -12.0
+        ]
+      },
+      "paper_game_of_thrones_s3_redesign": {
+        "worldTranslation": [
+          -11.199999809265137,
+          0.26499998569488525,
+          9.399999618530273
+        ]
+      },
+      "screen_game_of_thrones_s3_redesign": {
+        "worldTranslation": [
+          -11.199999809265137,
+          0.26499998569488525,
+          9.399999618530273
+        ]
+      },
+      "paper_game_of_thrones_s3_classic": {
+        "worldTranslation": [
+          -4.800000190734863,
+          0.26499998569488525,
+          10.5
+        ]
+      },
+      "screen_game_of_thrones_s3_classic": {
+        "worldTranslation": [
+          -4.800000190734863,
+          0.26499998569488525,
+          10.5
+        ]
+      },
+      "paper_dexter_s7_finale": {
+        "worldTranslation": [
+          8.300000190734863,
+          0.5301997065544128,
+          10.199999809265137
+        ]
+      },
+      "screen_dexter_s7_finale": {
+        "worldTranslation": [
+          8.300000190734863,
+          0.5301997065544128,
+          10.199999809265137
+        ]
+      },
+      "paper_sherlock_final": {
+        "worldTranslation": [
+          3.733264446258545,
+          0.5927619934082031,
+          16.299999237060547
+        ]
+      },
+      "screen_sherlock_final": {
+        "worldTranslation": [
+          3.733264446258545,
+          0.5927619934082031,
+          16.299999237060547
+        ]
+      },
+      "paper_sherlock_alpha": {
+        "worldTranslation": [
+          -1.6667356491088867,
+          0.26499998569488525,
+          16.899999618530273
+        ]
+      },
+      "screen_sherlock_alpha": {
+        "worldTranslation": [
+          -1.6667356491088867,
+          0.26499998569488525,
+          16.899999618530273
+        ]
+      },
+      "paper_archer_s5_final": {
+        "worldTranslation": [
+          3.563145875930786,
+          0.503675639629364,
+          23.0
+        ]
+      },
+      "screen_archer_s5_final": {
+        "worldTranslation": [
+          3.563145875930786,
+          0.503675639629364,
+          23.0
+        ]
+      },
+      "paper_breaking_bad_final": {
+        "worldTranslation": [
+          -0.19851556420326233,
+          0.26499998569488525,
+          30.100000381469727
+        ]
+      },
+      "screen_breaking_bad_final": {
+        "worldTranslation": [
+          -0.19851556420326233,
+          0.26499998569488525,
+          30.100000381469727
+        ]
+      },
+      "paper_breaking_bad_desert_parallax": {
+        "worldTranslation": [
+          5.701484203338623,
+          0.5979498028755188,
+          31.899999618530273
+        ]
+      },
+      "screen_breaking_bad_desert_parallax": {
+        "worldTranslation": [
+          5.701484203338623,
+          0.5979498028755188,
+          31.899999618530273
+        ]
+      },
+      "paper_house_of_cards_s2": {
+        "worldTranslation": [
+          3.4746177196502686,
+          0.6063536405563354,
+          39.0
+        ]
+      },
+      "screen_house_of_cards_s2": {
+        "worldTranslation": [
+          3.4746177196502686,
+          0.6063536405563354,
+          39.0
+        ]
+      },
+      "indigo_shore_thread": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "brown_branching_weed": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "salt_crumb_clusters": {
+        "worldTranslation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "salt_crystal_crown": {
+        "worldTranslation": [
+          7.75,
+          0.49305227398872375,
+          1.399999976158142
+        ]
+      }
+    },
+    "surfaces": {
+      "screen_timer_days_left": {
+        "kind": "digit",
+        "body": "post_days",
+        "column": 0,
+        "curved": true,
+        "height": 2.727
+      },
+      "screen_timer_days_right": {
+        "kind": "digit",
+        "body": "post_days",
+        "column": 1,
+        "curved": true,
+        "height": 2.727
+      },
+      "screen_unit_days": {
+        "kind": "unit",
+        "body": "post_days"
+      },
+      "screen_timer_hours_left": {
+        "kind": "digit",
+        "body": "post_hours",
+        "column": 0,
+        "curved": true,
+        "height": 2.5866000000000002
+      },
+      "screen_timer_hours_right": {
+        "kind": "digit",
+        "body": "post_hours",
+        "column": 1,
+        "curved": true,
+        "height": 2.5866000000000002
+      },
+      "screen_unit_hours": {
+        "kind": "unit",
+        "body": "post_hours"
+      },
+      "screen_timer_minutes_left": {
+        "kind": "digit",
+        "body": "post_minutes",
+        "column": 0,
+        "curved": true,
+        "height": 2.4624
+      },
+      "screen_timer_minutes_right": {
+        "kind": "digit",
+        "body": "post_minutes",
+        "column": 1,
+        "curved": true,
+        "height": 2.4624
+      },
+      "screen_unit_minutes": {
+        "kind": "unit",
+        "body": "post_minutes"
+      },
+      "screen_timer_seconds_left": {
+        "kind": "digit",
+        "body": "post_seconds",
+        "column": 0,
+        "curved": true,
+        "height": 2.3652
+      },
+      "screen_timer_seconds_right": {
+        "kind": "digit",
+        "body": "post_seconds",
+        "column": 1,
+        "curved": true,
+        "height": 2.3652
+      },
+      "screen_unit_seconds": {
+        "kind": "unit",
+        "body": "post_seconds"
+      },
+      "screen_reset": {
+        "kind": "action",
+        "body": "again_scallop"
+      },
+      "screen_tally": {
+        "kind": "tally",
+        "size": [
+          1,
+          0.34
+        ]
+      },
+      "screen_severance_s2": {
+        "kind": "archive",
+        "record": "severance:s2",
+        "paper": "paper_severance_s2",
+        "size": [
+          4.7615,
+          3.08
+        ],
+        "openingVisible": true
+      },
+      "screen_game_of_thrones_s4": {
+        "kind": "archive",
+        "record": "got:s4",
+        "paper": "paper_game_of_thrones_s4",
+        "size": [
+          6.408,
+          3.9200000000000004
+        ],
+        "openingVisible": true
+      },
+      "screen_dexter_s8_final": {
+        "kind": "archive",
+        "record": "dexter:s8-final",
+        "paper": "paper_dexter_s8_final",
+        "size": [
+          5.4735000000000005,
+          3.48
+        ],
+        "openingVisible": true
+      },
+      "screen_severance_tracker": {
+        "kind": "archive",
+        "record": "severance:tracker",
+        "paper": "paper_severance_tracker",
+        "size": [
+          4.0495,
+          2.68
+        ],
+        "openingVisible": false
+      },
+      "screen_game_of_thrones_s3_redesign": {
+        "kind": "archive",
+        "record": "got:s3-redesign",
+        "paper": "paper_game_of_thrones_s3_redesign",
+        "size": [
+          4.717,
+          3.16
+        ],
+        "openingVisible": false
+      },
+      "screen_game_of_thrones_s3_classic": {
+        "kind": "archive",
+        "record": "got:s3-classic",
+        "paper": "paper_game_of_thrones_s3_classic",
+        "size": [
+          3.9605,
+          2.64
+        ],
+        "openingVisible": false
+      },
+      "screen_dexter_s7_finale": {
+        "kind": "archive",
+        "record": "dexter:s7-finale",
+        "paper": "paper_dexter_s7_finale",
+        "size": [
+          3.9605,
+          2.64
+        ],
+        "openingVisible": false
+      },
+      "screen_sherlock_final": {
+        "kind": "archive",
+        "record": "sherlock:final",
+        "paper": "paper_sherlock_final",
+        "size": [
+          5.073,
+          3.24
+        ],
+        "openingVisible": false
+      },
+      "screen_sherlock_alpha": {
+        "kind": "archive",
+        "record": "sherlock:alpha",
+        "paper": "paper_sherlock_alpha",
+        "size": [
+          3.471,
+          2.6
+        ],
+        "openingVisible": false
+      },
+      "screen_archer_s5_final": {
+        "kind": "archive",
+        "record": "archer:s5-final",
+        "paper": "paper_archer_s5_final",
+        "size": [
+          5.607,
+          2.9600000000000004
+        ],
+        "openingVisible": false
+      },
+      "screen_breaking_bad_final": {
+        "kind": "archive",
+        "record": "breaking-bad:final",
+        "paper": "paper_breaking_bad_final",
+        "size": [
+          4.8950000000000005,
+          3.3200000000000003
+        ],
+        "openingVisible": false
+      },
+      "screen_breaking_bad_desert_parallax": {
+        "kind": "archive",
+        "record": "breaking-bad:desert-parallax",
+        "paper": "paper_breaking_bad_desert_parallax",
+        "size": [
+          3.9605,
+          2.9600000000000004
+        ],
+        "openingVisible": false
+      },
+      "screen_house_of_cards_s2": {
+        "kind": "archive",
+        "record": "house-of-cards:s2",
+        "paper": "paper_house_of_cards_s2",
+        "size": [
+          4.272,
+          3.5200000000000005
+        ],
+        "openingVisible": false
+      }
+    },
+    "posts": [
+      {
+        "unit": "days",
+        "center": [
+          -6.1,
+          -2.15
+        ],
+        "radius": [
+          1.22,
+          0.47
+        ],
+        "height": 5.05,
+        "rim": [
+          0.04,
+          0.1,
+          0.02,
+          -0.03,
+          0.04,
+          -0.02,
+          0.06,
+          0.13,
+          0.03,
+          -0.07,
+          -0.02,
+          0.1,
+          0.04,
+          -0.04,
+          0.03,
+          0.02
+        ],
+        "bulges": [
+          1.02,
+          0.98,
+          1.01,
+          0.96,
+          0.99
+        ],
+        "baseY": -0.26012879610061646
+      },
+      {
+        "unit": "hours",
+        "center": [
+          -3.35,
+          -1.08
+        ],
+        "radius": [
+          1.15,
+          0.44
+        ],
+        "height": 4.79,
+        "rim": [
+          -0.03,
+          0.07,
+          0.13,
+          0.03,
+          -0.06,
+          0.04,
+          0.02,
+          -0.04,
+          0.08,
+          0.02,
+          -0.03,
+          0.11,
+          0.08,
+          -0.02,
+          -0.04,
+          0.04
+        ],
+        "bulges": [
+          1.04,
+          1.01,
+          0.98,
+          1.02,
+          0.95
+        ],
+        "baseY": -0.26714736223220825
+      },
+      {
+        "unit": "minutes",
+        "center": [
+          -0.7,
+          0.03
+        ],
+        "radius": [
+          1.12,
+          0.46
+        ],
+        "height": 4.56,
+        "rim": [
+          0.1,
+          0.04,
+          -0.04,
+          0.01,
+          0.08,
+          0.04,
+          -0.03,
+          0.04,
+          0.1,
+          0.13,
+          -0.04,
+          0.04,
+          0.08,
+          0.0,
+          -0.02,
+          0.03
+        ],
+        "bulges": [
+          1.02,
+          0.97,
+          1.04,
+          0.99,
+          0.96
+        ],
+        "baseY": -0.32098281383514404
+      },
+      {
+        "unit": "seconds",
+        "center": [
+          1.82,
+          0.75
+        ],
+        "radius": [
+          1.11,
+          0.45
+        ],
+        "height": 4.38,
+        "rim": [
+          0.01,
+          -0.03,
+          0.09,
+          0.13,
+          0.02,
+          -0.04,
+          0.02,
+          0.11,
+          0.06,
+          -0.04,
+          0.02,
+          0.08,
+          0.03,
+          -0.06,
+          0.02,
+          0.04
+        ],
+        "bulges": [
+          1.06,
+          1.01,
+          0.98,
+          0.95,
+          0.99
+        ],
+        "baseY": -0.2995873987674713
+      }
+    ],
+    "waterLevel": 0.2,
+    "bedPatches": [
+      [
+        -14,
+        -6
+      ],
+      [
+        -6,
+        2
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        10,
+        18
+      ],
+      [
+        18,
+        26
+      ],
+      [
+        26,
+        34
+      ],
+      [
+        34,
+        42
+      ]
+    ]
+  },
+  "maps": {
+    "chalk-albedo": "materials/chalk-albedo.png",
+    "chalk-porous-normal": "materials/chalk-porous-normal.png",
+    "chalk-roughness": "materials/chalk-roughness.png",
+    "salt-sand-albedo": "materials/salt-sand-albedo.png",
+    "salt-sand-normal": "materials/salt-sand-normal.png",
+    "salt-sand-roughness": "materials/salt-sand-roughness.png",
+    "salt-paper-albedo": "materials/salt-paper-albedo.png",
+    "salt-paper-normal": "materials/salt-paper-normal.png",
+    "shell-rust-albedo": "materials/shell-rust-albedo.png",
+    "shell-lamella-normal": "materials/shell-lamella-normal.png",
+    "shell-rust-roughness": "materials/shell-rust-roughness.png",
+    "water-capillary-normal": "materials/water-capillary-normal.png"
+  },
+  "lighting": {
+    "key": {
+      "position": [
+        -8,
+        16,
+        -9
+      ],
+      "color": "#FFFDF7",
+      "size": [
+        8,
+        8
+      ]
+    },
+    "skyFill": "#D6E9F3",
+    "reflection": "broad daylight sky and clouds; no baked glints",
+    "water": "Depth-gated optical shallows, opaque reflective deep water, backlit multi-scale ripples, thin contact foam and dim bed caustics confined to shallow depth. Tiled normal layer disabled pending actual material review."
+  },
+  "license": "Project-authored geometry and procedural maps; no new license declaration. Bundled font licenses separate.",
+  "budgets": {
+    "glbBytes": 15306720,
+    "authoredTriangles": 310334,
+    "textures": 11,
+    "mapSize": [
+      512,
+      512
+    ],
+    "totalScreenshotCount": 13,
+    "note": "Seven shore/water patches cull independently. Actual visible triangles/device FPS require browser measurement."
+  },
+  "geometryValidation": {
+    "closedVolumes": {
+      "post_days": {
+        "nonManifoldEdges": 0,
+        "closed": true
+      },
+      "post_hours": {
+        "nonManifoldEdges": 0,
+        "closed": true
+      },
+      "post_minutes": {
+        "nonManifoldEdges": 0,
+        "closed": true
+      },
+      "post_seconds": {
+        "nonManifoldEdges": 0,
+        "closed": true
+      },
+      "again_scallop": {
+        "nonManifoldEdges": 0,
+        "closed": true
+      }
+    },
+    "postProfiles": 4,
+    "shellRibs": "20 converging continuous ridges, nonuniform outer scalloping, transverse growth layers"
+  }
+}

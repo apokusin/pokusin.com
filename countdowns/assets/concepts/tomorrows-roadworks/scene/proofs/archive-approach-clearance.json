@@ -1,0 +1,62 @@
+{
+  "assetSHA256": "303e94e2f5686ec8f10405ccca99ba3e6e97babe758f914a47e87d9827d6b4e9",
+  "method": "Real exported indexed triangles; each point located by barycentric interpolation at UV .12/.30/.50/.70/.88. Camera rays stop .003m short of the actual skin; visible opaque solids are retained, no nearest-vertex sampling. No browser rendering or appearance claims.",
+  "profiles": [
+    {
+      "width": 1487,
+      "height": 900,
+      "focusedArchives": 13,
+      "focusedAccessories": 7,
+      "focusSamples": 500,
+      "blockedFocusSamples": 0,
+      "previewApproaches": 13,
+      "previewSamples": 325,
+      "blockedPreviewSamples": 0,
+      "exactRestore": [
+        "camera",
+        "plate positions",
+        "selected record",
+        "rod transforms and visibility",
+        "native accessory transforms"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "focusedArchives": 13,
+      "focusedAccessories": 7,
+      "focusSamples": 500,
+      "blockedFocusSamples": 0,
+      "previewApproaches": 13,
+      "previewSamples": 325,
+      "blockedPreviewSamples": 0,
+      "exactRestore": [
+        "camera",
+        "plate positions",
+        "selected record",
+        "rod transforms and visibility",
+        "native accessory transforms"
+      ]
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "focusedArchives": 13,
+      "focusedAccessories": 7,
+      "focusSamples": 500,
+      "blockedFocusSamples": 0,
+      "previewApproaches": 13,
+      "previewSamples": 325,
+      "blockedPreviewSamples": 0,
+      "exactRestore": [
+        "camera",
+        "plate positions",
+        "selected record",
+        "rod transforms and visibility",
+        "native accessory transforms"
+      ]
+    }
+  ],
+  "repair": "Focused authored enamel plate rises 6m on two rods rooted at its original measured lower rear attachments. Other plates return to their authored positions. Primary plate accessories move with that plate. Opening cameras, source geometry, native URLs and depth tests remain unchanged.",
+  "independentBrowserGate": "Parent owns actual browser/rendering verification."
+}

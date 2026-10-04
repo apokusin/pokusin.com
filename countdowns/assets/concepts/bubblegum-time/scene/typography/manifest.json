@@ -1,0 +1,34 @@
+{
+  "status": "candidate requiring independent reference/browser review",
+  "title": {
+    "family": "Bodoni Moda",
+    "axes": {
+      "wght": 400,
+      "opsz": 96
+    },
+    "master": "title-countdowns.png",
+    "license": "OFL-BodoniModa.txt",
+    "font": "BodoniModa-variable.ttf",
+    "source": "https://github.com/google/fonts/tree/main/ofl/bodonimoda",
+    "glyphTreatment": "No digital stretching; high-contrast hairlines and ball terminals retained; world mesh rotation/crop sets composition."
+  },
+  "drums": {
+    "family": "Roboto Condensed",
+    "axes": {
+      "wght": 900
+    },
+    "master": "drum-glyphs.png",
+    "cell": [
+      160,
+      256
+    ],
+    "cells": 10,
+    "license": "OFL-RobotoCondensed.txt",
+    "font": "RobotoCondensed-variable.ttf",
+    "source": "https://github.com/google/fonts/tree/main/ofl/robotocondensed"
+  },
+  "files": {
+    "BodoniModa-variable.ttf": "550f5e34ee0a828d7941b1fe9bc58b34e5260d3f33a61532e6d0a0114e79a5cf",
+    "RobotoCondensed-variable.ttf": "dace262afcee68a5276f200d8026c57221735c0118ab5fda8c2c0d3dc409a8d0"
+  }
+}

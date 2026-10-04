@@ -1,0 +1,33 @@
+{
+  "key": {
+    "positionBlender": [
+      -13.8,
+      -5,
+      11.5
+    ],
+    "targetBlender": [
+      1,
+      0,
+      3.5
+    ],
+    "sunStrength": 2,
+    "sunAngleRadians": 0.01,
+    "areaFillSize": 4,
+    "areaFillWatts": 2500,
+    "color": [
+      1,
+      0.94,
+      0.84
+    ]
+  },
+  "bounce": {
+    "positionBlender": [
+      5,
+      -4,
+      7
+    ],
+    "areaSize": 7,
+    "powerWatts": 550
+  },
+  "source": "Actual side-window geometry in reflection_room; source and shadows must remain coherent in Three. Luminous panes do not cast shadows; mullions do. Frontalreflection reachesactualsidewindow continuationbehindcamera."
+}

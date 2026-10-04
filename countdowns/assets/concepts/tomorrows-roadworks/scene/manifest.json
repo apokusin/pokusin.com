@@ -1,0 +1,546 @@
+{
+  "concept": "tomorrows-roadworks",
+  "tool": "4.5.14 LTS",
+  "bundle": "scene.glb",
+  "status": "Authored scene; independent original/browser/mobile acceptance pending",
+  "axes": "Blender(x,y,z)\u2192glTF(x,z,-y)",
+  "clock": [
+    "clock_d",
+    "clock_h",
+    "clock_m",
+    "clock_s"
+  ],
+  "heading": "clock_heading",
+  "action": "again_ink",
+  "tally": "press_tally",
+  "roll": "road_roll_pivot",
+  "lip": "roll_lift_lip",
+  "crown": "underside_crown_ink",
+  "feed": "connected_feed_ribbon",
+  "feedMorphs": [
+    "Finite_connected_feed",
+    "Coil_turn_seam"
+  ],
+  "truck": "ceremony_truck",
+  "road": "continuous_supported_blue_detour",
+  "stations": [
+    {
+      "show": "got",
+      "number": 1,
+      "marker": "station_number_got"
+    },
+    {
+      "show": "severance",
+      "number": 2,
+      "marker": "station_number_severance"
+    },
+    {
+      "show": "house-of-cards",
+      "number": 3,
+      "marker": "station_number_house-of-cards"
+    },
+    {
+      "show": "breaking-bad",
+      "number": 4,
+      "marker": "station_number_breaking-bad"
+    },
+    {
+      "show": "archer",
+      "number": 5,
+      "marker": "station_number_archer"
+    },
+    {
+      "show": "dexter",
+      "number": 6,
+      "marker": "station_number_dexter"
+    },
+    {
+      "show": "sherlock",
+      "number": 7,
+      "marker": "station_number_sherlock"
+    }
+  ],
+  "archives": [
+    {
+      "id": "got/s4",
+      "show": "got",
+      "screen": "work_got_s4",
+      "caption": "caption_got_s4",
+      "mount": "station_got_s4_mount",
+      "width": 3.660000936985016,
+      "height": 2.6569790613819815,
+      "versionIndex": 0,
+      "station": 1
+    },
+    {
+      "id": "got/s3-redesign",
+      "show": "got",
+      "screen": "work_got_s3-redesign",
+      "caption": "caption_got_s3-redesign",
+      "mount": "station_got_s3-redesign_mount",
+      "width": 3.660000936985016,
+      "height": 2.6569790613819815,
+      "versionIndex": 1,
+      "station": 1
+    },
+    {
+      "id": "got/s3-classic",
+      "show": "got",
+      "screen": "work_got_s3-classic",
+      "caption": "caption_got_s3-classic",
+      "mount": "station_got_s3-classic_mount",
+      "width": 3.660000936985016,
+      "height": 2.6569790613819815,
+      "versionIndex": 2,
+      "station": 1
+    },
+    {
+      "id": "severance/s2",
+      "show": "severance",
+      "screen": "work_severance_s2",
+      "caption": "caption_severance_s2",
+      "mount": "station_severance_s2_mount",
+      "width": 3.767216227054596,
+      "height": 2.7348120416679196,
+      "versionIndex": 0,
+      "station": 2
+    },
+    {
+      "id": "severance/tracker",
+      "show": "severance",
+      "screen": "work_severance_tracker",
+      "caption": "caption_severance_tracker",
+      "mount": "station_severance_tracker_mount",
+      "width": 3.767216227054596,
+      "height": 2.7348120416679196,
+      "versionIndex": 1,
+      "station": 2
+    },
+    {
+      "id": "house-of-cards/s2",
+      "show": "house-of-cards",
+      "screen": "work_house-of-cards_s2",
+      "caption": "caption_house-of-cards_s2",
+      "mount": "station_house-of-cards_s2_mount",
+      "width": 3.264701557159424,
+      "height": 2.4941547779071938,
+      "versionIndex": 0,
+      "station": 3
+    },
+    {
+      "id": "breaking-bad/final",
+      "show": "breaking-bad",
+      "screen": "work_breaking-bad_final",
+      "caption": "caption_breaking-bad_final",
+      "mount": "station_breaking-bad_final_mount",
+      "width": 2.9569446122646332,
+      "height": 1.7981622362694312,
+      "versionIndex": 0,
+      "station": 4
+    },
+    {
+      "id": "breaking-bad/desert-parallax",
+      "show": "breaking-bad",
+      "screen": "work_breaking-bad_desert-parallax",
+      "caption": "caption_breaking-bad_desert-parallax",
+      "mount": "station_breaking-bad_desert-parallax_mount",
+      "width": 2.9569446122646332,
+      "height": 1.7981622362694312,
+      "versionIndex": 1,
+      "station": 4
+    },
+    {
+      "id": "archer/s5-final",
+      "show": "archer",
+      "screen": "work_archer_s5-final",
+      "caption": "caption_archer_s5-final",
+      "mount": "station_archer_s5-final_mount",
+      "width": 2.8417792260646824,
+      "height": 2.3380561284418437,
+      "versionIndex": 0,
+      "station": 5
+    },
+    {
+      "id": "dexter/s8-final",
+      "show": "dexter",
+      "screen": "work_dexter_s8-final",
+      "caption": "caption_dexter_s8-final",
+      "mount": "station_dexter_s8-final_mount",
+      "width": 2.473599301099777,
+      "height": 1.9883536016177423,
+      "versionIndex": 0,
+      "station": 6
+    },
+    {
+      "id": "dexter/s7-finale",
+      "show": "dexter",
+      "screen": "work_dexter_s7-finale",
+      "caption": "caption_dexter_s7-finale",
+      "mount": "station_dexter_s7-finale_mount",
+      "width": 2.473599301099777,
+      "height": 1.9883536016177423,
+      "versionIndex": 1,
+      "station": 6
+    },
+    {
+      "id": "sherlock/final",
+      "show": "sherlock",
+      "screen": "work_sherlock_final",
+      "caption": "caption_sherlock_final",
+      "mount": "station_sherlock_final_mount",
+      "width": 2.6958071451187133,
+      "height": 1.9630207498408103,
+      "versionIndex": 0,
+      "station": 7
+    },
+    {
+      "id": "sherlock/alpha",
+      "show": "sherlock",
+      "screen": "work_sherlock_alpha",
+      "caption": "caption_sherlock_alpha",
+      "mount": "station_sherlock_alpha_mount",
+      "width": 2.6958071451187133,
+      "height": 1.9630207498408103,
+      "versionIndex": 1,
+      "station": 7
+    }
+  ],
+  "destinations": [
+    {
+      "id": "archive/got",
+      "node": "link_archive_got",
+      "label": "Archive \u2197",
+      "show": "got"
+    },
+    {
+      "id": "live/severance",
+      "node": "link_live_severance",
+      "label": "Live \u2197",
+      "show": "severance"
+    },
+    {
+      "id": "archive/breaking-bad",
+      "node": "link_archive_breaking-bad",
+      "label": "Archive \u2197",
+      "show": "breaking-bad"
+    },
+    {
+      "id": "archive/archer",
+      "node": "link_archive_archer",
+      "label": "Archive \u2197",
+      "show": "archer"
+    },
+    {
+      "id": "archive/dexter",
+      "node": "link_archive_dexter",
+      "label": "Archive \u2197",
+      "show": "dexter"
+    },
+    {
+      "id": "timeline/dexter",
+      "node": "link_timeline_dexter",
+      "label": "Timeline",
+      "show": "dexter"
+    },
+    {
+      "id": "archive/sherlock",
+      "node": "link_archive_sherlock",
+      "label": "Archive \u2197",
+      "show": "sherlock"
+    }
+  ],
+  "camera": {
+    "node": "opening_camera",
+    "positionGLTF": [
+      0.0,
+      19.0,
+      29.0
+    ],
+    "targetGLTF": [
+      0.0,
+      1.0,
+      -2.0
+    ],
+    "fov": 29.87842210801368,
+    "lens": 48.0,
+    "exportedQuaternion": [
+      -0.26001057028770447,
+      0,
+      0,
+      0.9656057953834534
+    ],
+    "exportedYFovRadians": 0.5214768384126954,
+    "authoredAspectRatio": 1.4054820415879017
+  },
+  "routeGLTF": [
+    [
+      -10.667718887329102,
+      1.0,
+      10.596330642700195
+    ],
+    [
+      -6.49492073059082,
+      1.1000003814697266,
+      9.048450469970703
+    ],
+    [
+      -3.2895777225494385,
+      1.25,
+      7.607212066650391
+    ],
+    [
+      -2.4697916507720947,
+      1.5499992370605469,
+      4.514711380004883
+    ],
+    [
+      -3.137871742248535,
+      1.7999992370605469,
+      1.7718849182128906
+    ],
+    [
+      -1.2315503358840942,
+      2.1000003814697266,
+      0.8367671966552734
+    ],
+    [
+      2.2077558040618896,
+      2.3500003814697266,
+      0.8463783264160156
+    ],
+    [
+      5.562802314758301,
+      2.6000003814697266,
+      -0.4626026153564453
+    ],
+    [
+      9.241655349731445,
+      2.950000762939453,
+      -1.2606544494628906
+    ],
+    [
+      12.314797401428223,
+      3.299999237060547,
+      -3.1599159240722656
+    ],
+    [
+      13.56591796875,
+      3.59999942779541,
+      -5.362331390380859
+    ],
+    [
+      11.992361068725586,
+      3.84999942779541,
+      -6.649974822998047
+    ],
+    [
+      8.5239896774292,
+      4.0,
+      -7.298213958740234
+    ],
+    [
+      5.120818614959717,
+      4.0,
+      -7.406261444091797
+    ],
+    [
+      4.872757911682129,
+      4.100000381469727,
+      -9.011913299560547
+    ],
+    [
+      7.428194999694824,
+      4.299999237060547,
+      -9.98653793334961
+    ],
+    [
+      11.347184181213379,
+      4.549999237060547,
+      -9.263309478759766
+    ],
+    [
+      14.480072021484375,
+      4.800000190734863,
+      -10.766464233398438
+    ],
+    [
+      15.694897651672363,
+      5.0,
+      -12.764629364013672
+    ],
+    [
+      13.474318504333496,
+      5.199999809265137,
+      -13.533893585205078
+    ],
+    [
+      10.503332138061523,
+      5.350000381469727,
+      -11.998844146728516
+    ],
+    [
+      8.163810729980469,
+      5.450000762939453,
+      -9.070140838623047
+    ],
+    [
+      8.99796199798584,
+      5.550000190734863,
+      -6.008460998535156
+    ],
+    [
+      12.416045188903809,
+      5.649999618530273,
+      -5.694252014160156
+    ]
+  ],
+  "workLampPositionsGLTF": [
+    [
+      -8.136331558227539,
+      8.037117004394531,
+      -5.8551177978515625
+    ],
+    [
+      -4.966946125030518,
+      8.037117004394531,
+      -5.8551177978515625
+    ],
+    [
+      -1.7975614070892334,
+      8.037117004394531,
+      -5.8551177978515625
+    ]
+  ],
+  "ambientOcclusion": [
+    {
+      "node": "clock_cast_housing",
+      "map": "materials/clock_cast_housing_contact_ao.png",
+      "method": "Cycles AO, actual fixed casting/cassette contact; moving cap excluded",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "node": "again_cast_pillar",
+      "map": "materials/again_cast_pillar_contact_ao.png",
+      "method": "Cycles AO, actual fixed casting/cassette contact; moving cap excluded",
+      "size": [
+        512,
+        512
+      ]
+    }
+  ],
+  "source": "Project-authored volumetric geometry/maps; original artwork measurement only. No photographic foreground.",
+  "exportMeasurements": {
+    "meshes": 250,
+    "primitives": 250,
+    "triangles": 394377,
+    "tangentPrimitives": 250,
+    "textures": [
+      {
+        "name": "limestone_normal",
+        "size": [
+          512,
+          512
+        ],
+        "encodedBytes": 556519,
+        "decodedRGBABytes": 1048576
+      },
+      {
+        "name": "coastal_sediment_albedo",
+        "size": [
+          512,
+          512
+        ],
+        "encodedBytes": 349236,
+        "decodedRGBABytes": 1048576
+      },
+      {
+        "name": "limestone_roughness",
+        "size": [
+          512,
+          512
+        ],
+        "encodedBytes": 278983,
+        "decodedRGBABytes": 1048576
+      },
+      {
+        "name": "salmon_limestone_albedo",
+        "size": [
+          512,
+          512
+        ],
+        "encodedBytes": 345115,
+        "decodedRGBABytes": 1048576
+      },
+      {
+        "name": "weathered_precast_albedo",
+        "size": [
+          512,
+          512
+        ],
+        "encodedBytes": 334495,
+        "decodedRGBABytes": 1048576
+      },
+      {
+        "name": "aggregate_normal",
+        "size": [
+          512,
+          512
+        ],
+        "encodedBytes": 579443,
+        "decodedRGBABytes": 1048576
+      },
+      {
+        "name": "cobalt_aggregate_albedo",
+        "size": [
+          512,
+          512
+        ],
+        "encodedBytes": 423139,
+        "decodedRGBABytes": 1048576
+      },
+      {
+        "name": "aggregate_roughness",
+        "size": [
+          512,
+          512
+        ],
+        "encodedBytes": 334251,
+        "decodedRGBABytes": 1048576
+      },
+      {
+        "name": "clock_cast_housing_contact_ao-limestone_roughness",
+        "size": [
+          512,
+          512
+        ],
+        "encodedBytes": 374598,
+        "decodedRGBABytes": 1048576
+      },
+      {
+        "name": "again_cast_pillar_contact_ao-limestone_roughness",
+        "size": [
+          512,
+          512
+        ],
+        "encodedBytes": 387643,
+        "decodedRGBABytes": 1048576
+      }
+    ],
+    "decodedTextureRGBABytes": 10485760,
+    "encodedGLBBytes": 19612608,
+    "sha256": "303e94e2f5686ec8f10405ccca99ba3e6e97babe758f914a47e87d9827d6b4e9",
+    "productionGate": "Complete geometry/surface inventory validated; independent source/browser/mobile visual acceptance remains required"
+  },
+  "typography": {
+    "family": "Roboto Condensed",
+    "file": "typography/RobotoCondensed-variable.ttf",
+    "license": "typography/OFL-RobotoCondensed.txt",
+    "origin": "https://github.com/google/fonts/tree/main/ofl/robotocondensed",
+    "download": "https://raw.githubusercontent.com/google/fonts/main/ofl/robotocondensed/RobotoCondensed%5Bwght%5D.ttf",
+    "usage": "Industrial numerals, units and station captions; Georgia supplies Again only"
+  },
+  "fallback": "fallback.webp"
+}

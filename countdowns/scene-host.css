@@ -1,0 +1,32 @@
+/* Only rebuilt scenes opt in. Fair, Royal and Control retain their own host. */
+html.scene-first-loading .hero-surface,html.scene-first-fallback .hero-surface{display:block}
+html.scene-first-ready .hero-surface{display:block}
+html.scene-first-loading #art-hero,html.scene-first-fallback #art-hero,html.scene-first-ready #art-hero{display:none}
+html.scene-first-loading .wrap,html.scene-first-fallback .wrap{max-width:1320px;margin:auto;padding:80px 24px 40px;overflow:visible}
+html.scene-first-loading .masthead,html.scene-first-fallback .masthead{position:relative;padding:0 0 25px}
+.scene-first-stage{position:fixed;inset:0;z-index:1;opacity:0;pointer-events:none;overflow:hidden;isolation:isolate}
+.scene-first-canvas{display:block;width:100%;height:100%;touch-action:pan-y;outline:none}
+html.scene-first-ready .scene-first-stage{opacity:1;pointer-events:auto}
+html.scene-first-ready,html.scene-first-ready body{margin:0;min-width:0;overscroll-behavior:auto}
+html.scene-first-ready .wrap{padding:0;overflow:visible;max-width:none;min-height:0}
+html.scene-first-ready .masthead{position:fixed;top:0;left:0;width:100%;padding:16px 22px;pointer-events:none;z-index:30}
+html.scene-first-ready .masthead a,html.scene-first-ready .masthead details{pointer-events:auto}
+html.scene-first-ready .home-link{display:flex;align-items:center;min-height:44px;color:var(--scene-utility-ink,var(--fg))}
+html.scene-first-ready .theme-menu{color:var(--scene-utility-ink,var(--fg))}
+html.scene-first-ready .theme-menu summary{border:0;background:var(--scene-utility-paper,transparent)}
+html.scene-first-ready .theme-menu-list{background:var(--scene-menu-paper,var(--bg));border-color:color-mix(in srgb,currentColor 22%,transparent)}
+html.scene-first-ready .scene-semantic-twin{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+/* The show route is focus-only and keeps all seven native group links. */
+html.scene-first-ready .shownav.scene-semantic-twin:focus-within{position:fixed!important;left:12px;right:12px;bottom:12px;width:auto!important;height:auto!important;max-height:35svh;padding:10px!important;margin:0!important;clip:auto!important;clip-path:none!important;white-space:normal!important;overflow:auto!important;z-index:45;display:flex;flex-wrap:wrap;background:var(--scene-menu-paper,var(--bg));color:var(--scene-utility-ink,var(--fg));box-shadow:0 3px 22px #0002}
+.scene-first-runway{position:relative;width:1px;pointer-events:none;overflow-anchor:none}
+.scene-fallback-crown{position:absolute!important;left:calc(50% + 78px)!important;top:445px!important;bottom:auto!important;width:44px;height:44px;display:block}
+.scene-clock-return{position:fixed;right:22px;bottom:18px;border:0;background:var(--scene-utility-paper,transparent);padding:12px;min-height:44px;font:12px 'IBM Plex Mono',monospace;color:var(--scene-utility-ink,var(--fg));cursor:pointer;z-index:30}
+.scene-clock-return[hidden],.scene-native-hover[hidden],.scene-focus-caption[hidden]{display:none}
+.scene-native-hover{position:fixed;display:block;background:transparent;border:0;z-index:3;cursor:pointer;touch-action:pan-y}
+.scene-focus-caption{position:fixed;left:16px;bottom:16px;padding:10px 14px;max-width:calc(100vw - 32px);background:var(--scene-menu-paper,var(--bg));color:var(--scene-utility-ink,var(--fg));font:12px/1.4 'IBM Plex Mono',monospace;z-index:40;pointer-events:none}
+html.scene-first-ready .scene-status{position:fixed!important;left:18px;bottom:18px;top:auto!important;right:auto!important;width:min(310px,calc(100vw - 90px))!important;padding:10px 12px;margin:0;font:12px/1.5 'IBM Plex Mono',monospace;color:var(--scene-utility-ink,var(--fg));background:var(--scene-menu-paper,var(--bg));z-index:35}
+.scene-status:empty{display:none}
+html.scene-first-ready .scene-secret-note{position:fixed!important;width:max-content;max-width:calc(100vw - 24px);margin:0;padding:8px 12px;font:italic 23px/1.2 'Cormorant Garamond',Georgia,serif;color:var(--scene-utility-ink,var(--fg));background:var(--scene-menu-paper,var(--bg));z-index:35}
+.scene-first-ready .ov{z-index:100}
+@media(max-width:700px){html.scene-first-ready .masthead{padding:10px 12px}.scene-clock-return{right:10px;bottom:10px}.scene-focus-caption{left:12px;bottom:12px;font-size:11px}.scene-fallback-crown{top:350px!important}}
+@media(prefers-reduced-motion:reduce){.scene-first-ready *{scroll-behavior:auto!important}}

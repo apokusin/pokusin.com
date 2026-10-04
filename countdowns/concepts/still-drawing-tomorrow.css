@@ -1,0 +1,103 @@
+@font-face{font-family:"Caveat";src:url("../assets/concepts/still-drawing-tomorrow/caveat-variable.ttf") format("truetype");font-style:normal;font-weight:400 700;font-display:swap}
+[data-theme="still-drawing-tomorrow"]{--bg:#f3eee4;--fg:#25231f;--accent:#d94b32;--muted:#746f64;--line:#cec6b8;--card:#fffdf5;background:#f3eee4;color:#25231f;font-family:"Caveat",cursive}
+[data-theme="still-drawing-tomorrow"] body{background:radial-gradient(ellipse at 15% 0,#fffff8 0,transparent 60%),#f3eee4;color:#25231f}
+[data-theme="still-drawing-tomorrow"] .gallery{max-width:none;padding-inline:0;overflow:clip}
+[data-theme="still-drawing-tomorrow"] #art-hero{height:100svh;min-height:730px;position:relative;margin:0;background:#f3eee4;isolation:isolate}
+[data-theme="still-drawing-tomorrow"] #art-stage{position:absolute;inset:0;background:radial-gradient(ellipse at 0 0,#fffefa,transparent 80%)}
+[data-theme="still-drawing-tomorrow"] #art-stage canvas{display:block;width:100%;height:100%}
+[data-theme="still-drawing-tomorrow"] .art-title{position:absolute;top:auto;bottom:5%;right:7%;left:auto;font-family:"Caveat",cursive;font-weight:700;font-size:clamp(52px,7.5vw,105px);line-height:1;letter-spacing:-.07em;color:#25231f;transform:rotate(-5deg);pointer-events:none;text-shadow:1px 0 #25231f;z-index:3}
+[data-theme="still-drawing-tomorrow"] .art-title::after{content:"";position:absolute;left:12%;right:2%;bottom:-9px;height:4px;background:#d94b32;transform:rotate(-1deg);clip-path:polygon(0 40%,100% 0,98% 100%,3% 70%)}
+[data-theme="still-drawing-tomorrow"] .art-clock{position:absolute;left:49%;top:51%;width:77%;display:flex;align-items:center;justify-content:center;gap:22px;transform:translate(-50%,-50%);padding:16px 18px;color:#25231f;background:#faf7f055;border:1px solid #bfb6a866;border-radius:0;box-shadow:3px 4px 8px #5d504019;z-index:4}
+[data-theme="still-drawing-tomorrow"] .art-clock .clock-unit{flex:1;min-width:0;text-align:center;padding:3px 0}
+[data-theme="still-drawing-tomorrow"] .art-clock .clock-unit>span{font-family:"Barlow Condensed",sans-serif;font-size:clamp(76px,13.5vw,172px);font-weight:500;color:#25231f;line-height:1.05;letter-spacing:-.025em}
+[data-theme="still-drawing-tomorrow"] .art-clock .clock-unit>small{font:700 15px "Barlow Condensed",sans-serif;margin-top:14px;letter-spacing:.2em;text-transform:uppercase;color:#25231f}
+[data-theme="still-drawing-tomorrow"] .art-reset-area,[data-theme="still-drawing-tomorrow"] .art-mounts{position:absolute;inset:0;pointer-events:none}
+[data-theme="still-drawing-tomorrow"] .art-reset-area>*{pointer-events:auto}
+[data-theme="still-drawing-tomorrow"] .art-reset-area #royal-reset{position:absolute;top:78%;left:22%;width:162px;min-height:60px;transform:translate(-50%,-50%);font:600 clamp(26px,4vw,49px) "Caveat",cursive;letter-spacing:-.04em;color:#25231f;background:#f0e9de;border:0;border-inline:13px solid #d94b32;border-radius:2px;box-shadow:2px 3px 0 #aeaaa0;cursor:pointer;padding:5px 10px}
+[data-theme="still-drawing-tomorrow"] .art-reset-area #royal-reset:hover{color:#d94b32}
+[data-theme="still-drawing-tomorrow"] .art-reset-area #royal-reset:focus-visible{outline:2px solid #3154b8;outline-offset:4px}
+[data-theme="still-drawing-tomorrow"] .art-reset-area #royal-reset:disabled{cursor:wait;opacity:.7}
+[data-theme="still-drawing-tomorrow"] .art-reset-area .art-tally{position:absolute;left:35%;top:77%;transform:translate(-50%,-50%);font:26px "Caveat",cursive;font-weight:700;color:#d94b32;white-space:nowrap;text-align:center}
+[data-theme="still-drawing-tomorrow"] .art-reset-area .clock-status{position:absolute;left:50%;right:auto;top:auto;bottom:1%;transform:translateX(-50%);width:min(90%,500px);text-align:center;font:14px "Barlow Condensed",sans-serif;min-height:24px;color:#534e45}
+[data-theme="still-drawing-tomorrow"] .countdown-secret{font:24px "Caveat",cursive;background:#f9f5ed;padding:4px 12px}
+[data-theme="still-drawing-tomorrow"] .art-secret-trigger{position:absolute;left:93%;top:30%;min-width:44px;min-height:44px;transform:translate(-50%,-50%);border:0;background:transparent;color:#25231f;cursor:pointer;opacity:.35;z-index:8}
+[data-theme="still-drawing-tomorrow"] .art-secret-trigger:hover,[data-theme="still-drawing-tomorrow"] .art-secret-trigger:focus-visible{opacity:1;outline:1px solid #3154b8;outline-offset:2px}
+[data-theme="still-drawing-tomorrow"] .art-scene-ready .art-secret-trigger img{display:none}
+[data-theme="still-drawing-tomorrow"] .art-mounts .card{position:absolute;width:28%;margin:0;background:#f5f1e999;border:12px solid #f6f2e99c;border-top-width:22px;border-bottom-width:18px;border-radius:1px;transform:translate(-50%,-50%);box-shadow:0 2px 5px #75685418;overflow:visible;z-index:5;pointer-events:auto}
+[data-theme="still-drawing-tomorrow"] .art-mounts .card:nth-child(1){left:20%;top:24%}
+[data-theme="still-drawing-tomorrow"] .art-mounts .card:nth-child(2){left:49%;top:20%}
+[data-theme="still-drawing-tomorrow"] .art-mounts .card:nth-child(3){left:80%;top:26%}
+[data-theme="still-drawing-tomorrow"] .card .frame{aspect-ratio:16/9;border:0;background:#25231f}
+[data-theme="still-drawing-tomorrow"] .card .body{padding:7px 0 0;background:transparent;color:#25231f}
+[data-theme="still-drawing-tomorrow"] .card .label{color:#25231f;font:12px "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.04em;line-height:1.3}
+[data-theme="still-drawing-tomorrow"] .card:hover,[data-theme="still-drawing-tomorrow"] .card:focus-visible{outline:2px solid #3154b8;outline-offset:3px;box-shadow:0 4px 6px #75685420}
+[data-theme="still-drawing-tomorrow"] .shownav{margin:0;padding:10px 4vw;background:#f3eee4ed;border:0;box-shadow:0 2px 0 #7b72602b;gap:8px;z-index:20}
+[data-theme="still-drawing-tomorrow"] .shownav a{background:#f9f7ef;border:1px solid #bcb4a277;border-radius:0 4px 0 0;padding:9px 15px;font:12px "Barlow Condensed",sans-serif;color:#716a5e;letter-spacing:.03em;transform:rotate(-1deg)}
+[data-theme="still-drawing-tomorrow"] .shownav a[aria-current=true],[data-theme="still-drawing-tomorrow"] .shownav a:hover{color:#25231f;background:#fffdf8;border-bottom:2px solid #d94b32}
+[data-theme="still-drawing-tomorrow"] .shelf{position:relative;isolation:isolate;border:0;display:grid;grid-template-columns:70px minmax(0,1fr);gap:38px;padding:70px 7vw 90px;margin:0 auto;max-width:1430px;min-height:380px;scroll-margin-top:90px}
+[data-theme="still-drawing-tomorrow"] .shelf::before{display:block;content:"";position:absolute;inset:20px 3vw 20px 4vw;background:#faf7f0;border:1px solid #d6d0c8;box-shadow:3px 5px 10px #8c80651a;transform:rotate(-.7deg);pointer-events:none;z-index:-1}
+[data-theme="still-drawing-tomorrow"] .shelf:nth-of-type(even)::before{transform:rotate(.8deg);background:#f0ece2}
+[data-theme="still-drawing-tomorrow"] .shelf-aside{display:block;position:relative;padding:0;margin:0}
+[data-theme="still-drawing-tomorrow"] .shelf-id{transform:rotate(-90deg) translateX(-100%);transform-origin:0 0;position:sticky;top:110px;margin-left:0;gap:0}
+[data-theme="still-drawing-tomorrow"] .shelf-name{font:15px "Barlow Condensed",sans-serif;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap;border-bottom:3px solid #3154b8;padding-bottom:6px;color:#25231f}
+[data-theme="still-drawing-tomorrow"] .shelf .grid{display:flex;flex-wrap:wrap;align-items:flex-start;gap:42px;overflow:visible;padding:0 10px 10px 0}
+[data-theme="still-drawing-tomorrow"] .shelf .card{position:relative;flex:0 1 44%;max-width:490px;min-width:220px;background:#fffdf588;border:15px solid #f9f7ef99;border-top-width:27px;border-radius:0;overflow:visible;box-shadow:2px 4px 6px #6a615322;transform:rotate(-2deg);margin:0 0 20px;transition:box-shadow .2s}
+[data-theme="still-drawing-tomorrow"] .shelf .card:nth-child(even){margin-top:55px;transform:rotate(2deg)}
+[data-theme="still-drawing-tomorrow"] .shelf .card::before{content:"";position:absolute;left:4px;right:4px;top:-21px;height:9px;background:radial-gradient(circle at 3px 4px,#bfb8ab 0 3px,transparent 4px) 0 0/33% 9px repeat-x;pointer-events:none}
+[data-theme="still-drawing-tomorrow"] .shelf .card::after{content:"";position:absolute;right:-16px;top:-23px;width:32px;height:32px;background:linear-gradient(135deg,#fffdfd,#ded8ca);clip-path:polygon(0 0,100% 100%,0 100%);filter:drop-shadow(-1px 2px 2px #65584633);pointer-events:none}
+[data-theme="still-drawing-tomorrow"] .shelf .card .body{padding:12px 0 0}
+[data-theme="still-drawing-tomorrow"] .shelf .card .label{font-size:13px}
+[data-theme="still-drawing-tomorrow"] .shelf-more{font:15px "Caveat",cursive;color:#3154b8;padding:9px 0;border-bottom:1px solid #3154b8;min-height:44px;align-self:flex-start;white-space:nowrap}
+@media(max-width:699px){
+ [data-theme="still-drawing-tomorrow"] #art-hero{height:1280px;min-height:0}
+ [data-theme="still-drawing-tomorrow"] .art-clock{left:50%;top:16%;width:90%;gap:7px;padding:12px 6px}
+ [data-theme="still-drawing-tomorrow"] .art-clock .clock-unit>span{font-size:clamp(37px,12.5vw,58px)}
+ [data-theme="still-drawing-tomorrow"] .art-clock .clock-unit>small{font-size:10px;margin-top:10px}
+ [data-theme="still-drawing-tomorrow"] .art-reset-area #royal-reset{left:29%;top:28%;font-size:26px;width:128px;min-height:56px;border-inline-width:9px}
+ [data-theme="still-drawing-tomorrow"] .art-reset-area .art-tally{left:65%;top:28%;font-size:23px}
+ [data-theme="still-drawing-tomorrow"] .art-mounts .card{width:86%;left:50%;border-width:9px;border-top-width:17px;border-bottom-width:14px}
+ [data-theme="still-drawing-tomorrow"] .art-mounts .card:nth-child(1){left:50%;top:43%}
+ [data-theme="still-drawing-tomorrow"] .art-mounts .card:nth-child(2){left:50%;top:64%}
+ [data-theme="still-drawing-tomorrow"] .art-mounts .card:nth-child(3){left:50%;top:84%}
+ [data-theme="still-drawing-tomorrow"] .art-title{font-size:44px;right:8%;bottom:3%}
+ [data-theme="still-drawing-tomorrow"] .art-secret-trigger{left:89%;top:77%}
+ [data-theme="still-drawing-tomorrow"] .shelf{display:block;padding:65px 28px 70px;margin:0;min-height:0}
+ [data-theme="still-drawing-tomorrow"] .shelf-aside{margin-bottom:32px}
+ [data-theme="still-drawing-tomorrow"] .shelf-id{position:static;transform:none}
+ [data-theme="still-drawing-tomorrow"] .shelf-name{font-size:15px;letter-spacing:.03em}
+ [data-theme="still-drawing-tomorrow"] .shelf .grid{flex-direction:column;padding:0;gap:38px}
+ [data-theme="still-drawing-tomorrow"] .shelf .card{width:100%;min-width:0;flex:auto;border-width:10px;border-top-width:22px;margin:0 0 10px}
+ [data-theme="still-drawing-tomorrow"] .shelf .card:nth-child(even){margin-top:0}
+ [data-theme="still-drawing-tomorrow"] .shelf::before{inset:18px 12px}
+ [data-theme="still-drawing-tomorrow"] .shownav{padding:9px 14px;gap:4px}
+ [data-theme="still-drawing-tomorrow"] .shownav a{padding:10px;font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){[data-theme="still-drawing-tomorrow"] .card,[data-theme="still-drawing-tomorrow"] .art-reset-area #royal-reset{transition:none!important}}
+
+[data-theme="still-drawing-tomorrow"] .archive-shelves{max-width:none;padding:0}
+
+[data-theme="still-drawing-tomorrow"] .art-clock .digit-strip,[data-theme="still-drawing-tomorrow"] .art-clock .digit-cell{background:#25231f url("../assets/concepts/still-drawing-tomorrow/graphite-ink.svg") 0 0/88px 108px;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:.35px #39352d}
+
+[data-theme="still-drawing-tomorrow"] .cel-lift{position:absolute;min-width:44px;min-height:44px;pointer-events:auto;z-index:8;background:linear-gradient(135deg,transparent 45%,#fffef6 46% 74%,#cec4b1 75%);border:0;cursor:pointer;opacity:.7}
+[data-theme="still-drawing-tomorrow"] .cel-lift:hover,[data-theme="still-drawing-tomorrow"] .cel-lift:focus-visible{opacity:1;outline:1px solid #3154b8;outline-offset:2px}
+
+/* Two intentional UI faces; preserve all measured positions and projected widths. */
+[data-theme="still-drawing-tomorrow"] body,[data-theme="still-drawing-tomorrow"] button,[data-theme="still-drawing-tomorrow"] input,[data-theme="still-drawing-tomorrow"] select,[data-theme="still-drawing-tomorrow"] textarea,[data-theme="still-drawing-tomorrow"] .masthead *,[data-theme="still-drawing-tomorrow"] .theme-menu *,[data-theme="still-drawing-tomorrow"] .foot,[data-theme="still-drawing-tomorrow"] .foot *,[data-theme="still-drawing-tomorrow"] .ov,[data-theme="still-drawing-tomorrow"] .ov-ctrls *,[data-theme="still-drawing-tomorrow"] .art-return,[data-theme="still-drawing-tomorrow"] .art-reset-area .clock-status,[data-theme="still-drawing-tomorrow"] .art-reset-area .countdown-ended{font-family:"Barlow Condensed",sans-serif}
+[data-theme="still-drawing-tomorrow"] .countdown-secret{font-family:"Caveat",cursive}
+[data-theme="still-drawing-tomorrow"] .art-reset-area .art-tally>span{font-family:inherit}
+[data-theme="still-drawing-tomorrow"] .shelf .more.shelf-more{font-family:"Caveat",cursive}
+[data-theme="still-drawing-tomorrow"] .art-title{font-style:normal}
+
+/* Light falls on actual paper and acetate; DOM contributes only ink and faithful work. */
+[data-theme="still-drawing-tomorrow"] body{background:#f3eee4 var(--drawing-paper,none) repeat;background-size:420px 420px}
+[data-theme="still-drawing-tomorrow"] .art-scene-ready .art-clock{border:0;background:none;box-shadow:none}
+[data-theme="still-drawing-tomorrow"] .art-scene-ready .art-mounts .card{background:none;border-color:transparent;box-shadow:none}
+[data-theme="still-drawing-tomorrow"] .art-scene-ready .art-reset-area #royal-reset{border:0;background:none;box-shadow:none;padding:5px 0}
+[data-theme="still-drawing-tomorrow"] .theme-menu summary{border:0;background:transparent;font:20px "Caveat",cursive;padding:6px 12px}
+[data-theme="still-drawing-tomorrow"] .home-link{font:19px "Caveat",cursive}
+[data-theme="still-drawing-tomorrow"] .shownav{background:transparent;box-shadow:none;border:0}
+[data-theme="still-drawing-tomorrow"] .shownav a{background:#fffaf3 var(--drawing-paper,none);border-color:#d3c8b944;box-shadow:1px 2px 4px #49392b15}
+[data-theme="still-drawing-tomorrow"] .shelf::before{background:#faf7f0 var(--drawing-paper,none);background-size:420px 420px;border-color:#aaa09144;box-shadow:4px 8px 14px #45352818}
+[data-theme="still-drawing-tomorrow"] .shelf:nth-of-type(even)::before{background:#f0ece2 var(--drawing-paper,none)}
+[data-theme="still-drawing-tomorrow"] .shelf .card{border-color:#fffaf344;background:transparent;box-shadow:2px 5px 10px #45352816}
+[data-theme="still-drawing-tomorrow"] .art-scene-unavailable .cel-lift{display:none}

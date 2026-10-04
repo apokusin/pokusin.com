@@ -1,0 +1,58 @@
+# Countdown concept implementation guide
+
+Prepared October 2, 2026. **The user rejected all seven non-Fair implementations. Their visual acceptance is withdrawn.** The Fair remains the accepted world. The [architecture reset](architecture/README.md) is now implemented as seven opt-in `.scene.js` candidates with authored Blender bundles. Their eleven-section specs retain the original source goals and identify current material/portrait gaps. Original reference images remain the standard, and no final art acceptance is implied. Preserve Fair, Royal and Control. Read [actual rebuilt evidence](architecture/evidence/rebuilt/README.md) and the [implemented runtime audit](runtime-audit.md) with each current report.
+
+## How to use this package
+
+Read this guide, the concept's complete spec, and its reference image before editing site code. Open the image itself; do not infer its appearance from its filename. Use the same eleven headings in every spec to compare decisions across concepts.
+
+The user's instructions take priority. This guide owns functional requirements; the selected spec owns art direction and interactions; the image owns the composition, silhouettes and material relationships. Generation prompts record how the visual was explored. Do not combine concepts or substitute a familiar gallery layout without the user's direction.
+
+The JPGs retain the generated composition at its native size. They are reference art, not page backgrounds with working UI painted into them. Generated images can contain invented thumbnail details, inaccurate timer characters, incidental slogans, or extra ornaments. Those are not permission to change archive content or add copy.
+
+## Fixed product behavior
+
+- Keep the home link, a real countdown, one clear **Again** action, a small press count, and discoverable archive work. Most labels should be limited to names and D/H/M/S. Do not add instruction paragraphs, card descriptions, decorative slogans, tooltips explaining every joke, or dashboard controls.
+- Reuse `/api/countdown` and the existing D1 architecture. A successful press sets a deadline one calendar month ahead and increments the shared count. Preview and live rows remain separate. Decorative interactions never mutate this state.
+- Pending requests may compress the button or show a subtle waiting cue, but cannot invent a new deadline, increment the tally, or run a success spectacle. A 429 or error leaves the shared state intact and shows the existing short retry/status message in reserved space.
+- Visitors learn about other presses through the existing synchronization. Play a smaller material response for a newly observed shared count; do not replay the whole local press ceremony or claim that other avatars are live visitors.
+- Keep the existing archive preview: readable scale/fade overlay, Escape/backdrop/close button, focus restoration, and modifier/middle-click opening the real page. Archived pages themselves remain faithful.
+- Include exactly one deliberate hidden crown detail that reveals **Long may I count.** Core navigation and reset cannot require finding it. Focus/touch must offer an equivalent discovery to pointer interaction.
+
+## Timer and type contract
+
+Use the existing wall-time/server-offset calculation. Stop at zero and restart on a later future deadline. Keep immediate accessible values even during decorative motion.
+
+Use `countdowns/reels.js` as the numerical source. Normal ticks roll changed digits for 420 ms, with its existing small column delays. Successful reset spins use 1080 ms with 45 ms between columns, approximately 1.4 s through the last of eight digits. Queue normal ticks during the spin, then land on the current real value. Physical material choreography can take longer, as specified per concept. Keep reduced-motion values immediate.
+
+Use at most two UI fonts. The current real timer must remain easy to read while the artwork moves. A texture-based clock may mirror the same reel model, with a single accessible DOM representation; do not maintain an independent simulated time. Never use the mock's baked-in digits, tally, dates, or inaccurate screenshots as live content.
+
+## Scene and asset boundaries
+
+Continue the hand-written static site and vendored Three.js modules. No new package manifest, frontend framework, build system, multiplayer service, physics server, or counter backend is needed for an exploration. Choose procedural geometry for deliberately simple shapes; obtain proper models/textures or generated art layers where the selected silhouette depends on sculpted detail. A wax canyon should not become a few cylinders with a wax color. The low-poly world deliberately permits sphere-based geometry.
+
+Use one main WebGL canvas for the complete visible artwork and native semantic twins for links, reset, status, timer accessibility and the real preview. Genuine screenshots/ink belong on authored mesh surfaces and follow perspective, deformation, lighting and occlusion. Do not require upright DOM surfaces, three special mounts, an HTML hero or shelves below. Native semantics may be visually clipped only while a healthy scene mirrors them; focus frames and visibly marks their objects. Failures restore the complete native representation. Follow the behavior [contract](../../countdowns/concepts/CONTRACT.md), [asset production](architecture/assets.md), [composition/type anchors](architecture/composition.md), [physical inventory](architecture/INVENTORY.md) and [input ownership](architecture/input.md).
+
+Generated work previews are composition placeholders. Take actual content from `SHOWS` and preserved archive pages. Preserve the exact season/version titles, link destinations and LIVE conventions. Do not recolor or redraw archived websites to fit a theme.
+
+## Lighting and effects discipline
+
+The per-concept light recipes specify direction, temperature and relative key/fill/rim strengths. Treat those ratios as an art target, not measured radiometry. Every spec must distinguish diffuse colour from microscopic height and roughness, name the reflection source, define contact and shadow softness, and state the actual geometry or authored-relief limits. Evaluate those recipes against a resting rendered frame: a configured reflection that reads as painted grey has not met its visual goal. Tune exposure against reference whites and blacks before adding effects. Preserve the chosen shadow character and silhouette at rest.
+
+Ambient occlusion should establish contact and creases, not dirty every surface. Prefer authored/baked occlusion or inexpensive contact shading. Add a screen-space AO pass only if its visible improvement survives phone profiling. One shadow-casting light is the default. Start at 2048 desktop / 1024 phone shadow resolution; use tighter bounds before increasing resolution.
+
+Bloom is permitted only where the spec asks for a luminous source. No default bloom, chromatic aberration, vignette, rainbow reflection, lens blur, confetti, or cursor particle fountain. Give each effect a cause, a maximum amplitude, and an end condition. Repeated resets reuse bounded geometry and stroke buffers; extending a road, branch, or drawn loop is a temporary visual gag, not unlimited world growth. Cursor decoration must never replace the normal pointer, delay clicking, obscure labels, or cover a preview.
+
+## Motion and responsive behavior
+
+Movement should inherit the material: viscous wax, broad water waves, delayed plant flex, discrete drawn poses, heavy metal, or a light character's walk. Do not reuse one spring preset everywhere. Entry should present a finished resting composition; avoid long loading choreography or mandatory introductory tours.
+
+Keep core actions available through keyboard and touch. Each replacement owns a complete scene/navigation model; an explicit native scroll runway can select authored poses without visible HTML shelves or wheel hijacking. Material gestures have distinct regions/intent and vertical touch preserves scrolling. Home/Worlds and a return to the clock remain directly reachable. The accepted Fair retains its existing optional third-person traversal and direct physical navigation, unchanged. Do not require pointer lock, precise jumping, collision puzzles or game skill.
+
+At 390 px and 320 px, prioritize legible time, a 44 px minimum action target and readable work before scenery. Recompose rather than shrinking a desktop screenshot. Reduced motion removes camera travel, trails, spinning and ongoing deformation while retaining the selected art language, immediate state updates and all previews. A failed WebGL context/import shows an illustrated composition with functioning DOM controls and archive links; never a blank screen or stuck button.
+
+## Performance targets and acceptance
+
+Proposed targets: 60 fps on a typical desktop and 30 fps on a phone while interacting. Start with DPR capped at 1.5; lower device quality before changing the selected silhouette. Per-concept geometry/draw-call figures are ceilings to profile, not guarantees. Reuse materials, instance repeated props and bound particle lifetimes. Pause rendering when hidden/offscreen; render only during motion/interaction or at a reduced cadence for intentional ambient effects. Dispose textures, geometry and listeners when switching themes.
+
+Before expanding a new concept, inspect authored volume/type and pass a final-lit resting-frame comparison against the original. Then prove one complete polished slice, including real surfaces/state/preview/focus/fallback and 390/320 compositions. Only then add the rest of the archive and secondary spectacle. Before handoff, test all thirteen works and five actual archive-page links, timeline/live destination, reset/tally, pending/error/429/remote/expiration, preview restoration, keyboard/touch, reduced motion, actual graphics loss and motion frames. Functional checks cannot certify a source mismatch as an accepted interpretation. New rendered evidence is required after every material/composition change. Current saved comparisons document specific unresolved gaps; later refinements do not inherit an earlier visual pass. All thirteen record controllers and seven additional native links passed both tested profiles, while GPU/art, physical phone gestures and device performance remain separate gates. Root has directly exercised required-GLB/context-loss fallback, selected real previews/resets, a Fruit open-preview breakpoint rebuild and one native middle-click; [QA](reimplementation-qa.md) states their exact scope and the remaining gaps.
