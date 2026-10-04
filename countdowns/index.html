@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="gallery">
+<html lang="en" class="gallery shared-loading" data-theme="control">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Countdowns · Artur Pokusin</title>
   <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin between 2012 and 2025, preserved and ticking live.">
-  <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=bd7a3bbd">
 <script>
 (function(){var theme=new URLSearchParams(location.search).get('theme');
  var art=['tomorrows-roadworks','bubblegum-time','after-the-flame','low-tide-later','not-yet-ripe','still-drawing-tomorrow','held-in-suspense','the-almost-fair'];
@@ -14,11 +12,23 @@
  var sceneFirst=['held-in-suspense', 'bubblegum-time', 'after-the-flame', 'tomorrows-roadworks', 'still-drawing-tomorrow', 'low-tide-later', 'not-yet-ripe'].indexOf(theme)!==-1;
  document.documentElement.dataset.theme=isArt?theme:theme==='royal'?'royal':'control';
  document.documentElement.dataset.artVersion='e53b667249';
- if(isArt){document.documentElement.classList.add('art-project');if(sceneFirst)document.documentElement.classList.add('scene-project');var link=document.createElement('link');link.rel='stylesheet';link.href=(sceneFirst?'scene-host.css':'concepts/'+theme+'.css')+'?v=e53b667249';document.head.append(link);}
+ if(isArt){document.documentElement.classList.add('art-project');if(sceneFirst)document.documentElement.classList.add('scene-project');}
+ function preload(href,rel,as){var link=document.createElement('link');link.rel=rel;link.href=href;if(as){link.as=as;link.type='font/woff2';link.crossOrigin='anonymous';}document.head.append(link);}
+ preload('themes.js?v=f4e0d7a560','modulepreload');preload('reels.js','modulepreload');
+ if(!isArt){preload('assets/vendor/three.module.min.js','modulepreload');preload('assets/vendor/three.core.min.js','modulepreload');}
+ if(document.documentElement.dataset.theme==='control'){preload('assets/fonts/archivo-black-latin.woff2','preload','font');preload('assets/fonts/ibm-plex-mono-latin-400.woff2','preload','font');}
 })();
 </script>
-<link rel="stylesheet" href="exhibition.css?v=e53b667249">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=45c79f82">
+<script>
+(function(){var html=document.documentElement,theme=html.dataset.theme;
+ function style(href){var link=document.createElement('link');link.rel='stylesheet';link.setAttribute('blocking','render');link.href=href;document.head.append(link);}
+ if(html.classList.contains('art-project')){style((html.classList.contains('scene-project')?'scene-host.css':'concepts/'+theme+'.css')+'?v=e53b667249');style('exhibition.css?v=e53b667249');}
+ if(theme==='royal'){style('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');}
+ else if(html.classList.contains('art-project')){style('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');}
+})();
+</script>
 </head>
 <body>
   <div class="wrap">
@@ -26,18 +36,18 @@
     <section class="art-hero" id="art-hero" aria-label="Interactive countdown archive" hidden>
       <div class="art-stage" id="art-stage"><canvas id="art-scene" tabindex="0" aria-label="Interactive art scene"></canvas></div>
       <h1 class="art-title">Countdowns</h1><div class="art-reset-area"></div><div class="art-mounts"></div>
-      <button class="art-secret-trigger" type="button" aria-label="Inspect the small crown" aria-controls="countdown-secret" aria-expanded="false"><img src="assets/concepts/crown.png" alt=""></button>
+      <button class="art-secret-trigger" type="button" aria-label="Inspect the small crown" aria-controls="countdown-secret" aria-expanded="false"><img data-theme-asset="art" data-src="assets/concepts/crown.png" alt=""></button>
       <div class="art-route"></div><button class="art-archive-toggle" type="button">Archive</button><div class="art-joystick"></div>
     </section>
     <div class="hero-surface" id="hero-surface">
 <div class="hero-atmosphere" aria-hidden="true"></div><div class="archive-heading"><p class="eyebrow">2012 — ∞</p><h1 class="title" aria-label="Countdowns"><span aria-hidden="true"><span class="title-line"><span class="title-glyph" style="--i:0">C</span><span class="title-glyph" style="--i:1">o</span><span class="title-glyph" style="--i:2">u</span><span class="title-glyph" style="--i:3">n</span><span class="title-glyph" style="--i:4">t</span></span><span class="title-line"><span class="title-glyph" style="--i:5">d</span><span class="title-glyph" style="--i:6">o</span><span class="title-glyph" style="--i:7">w</span><span class="title-glyph" style="--i:8">n</span><span class="title-glyph" style="--i:9">s</span></span></span></h1>
 </div>
     <section class="next-countdown" aria-labelledby="next-countdown-heading">
-      <img class="royal-guardians" src="assets/royal-guardians.png" alt="" width="1440" height="520">
+      <img class="royal-guardians" data-theme-asset="royal" data-src="assets/royal-guardians.png" alt="" width="1440" height="520">
       <div class="countdown-caption"><h2 id="next-countdown-heading">Next countdown</h2><time id="next-countdown-date" datetime="2026-11-01T00:00:00-07:00">Nov 1, 2026 · Pacific time</time></div>
       <div class="royal-clock" role="timer" aria-label="Time until the next countdown"><div class="clock-unit"><span data-unit="days">30</span><small>days</small></div><div class="clock-unit"><span data-unit="hours">00</span><small>hours</small></div><div class="throne-space"></div><div class="clock-unit"><span data-unit="minutes">00</span><small>minutes</small></div><div class="clock-unit"><span data-unit="seconds">00</span><small>seconds</small></div></div>
-      <div class="scene-stage" id="scene-stage"><img class="scene-fallback royal-fallback" src="assets/throne-fallback.png" alt="A tiny crown on an empty throne"><div class="scene-fallback control-fallback"><div class="fallback-instrument"><img src="assets/console-fallback.png" alt="A timer console wired to a red button" width="1024" height="480"><span class="fallback-digits" id="fallback-digits">30:00:00:00</span></div></div><canvas id="theme-scene" aria-hidden="true"></canvas><button class="scene-action" id="scene-action" type="button" aria-label="Crown the countdown" aria-controls="countdown-secret" aria-expanded="false"></button></div>
-      <button class="royal-reset royal-only" id="royal-reset" type="button" aria-label="Postpone the next countdown" aria-controls="countdown-secret" aria-expanded="false">Again.</button>
+      <div class="scene-stage" id="scene-stage"><img class="scene-fallback royal-fallback" data-theme-asset="royal" data-src="assets/throne-fallback.png" alt="A tiny crown on an empty throne"><div class="scene-fallback control-fallback"><div class="fallback-instrument"><picture><source media="(max-width:760px)" srcset="assets/control-loading-phone.jpg"><img src="assets/control-loading-desktop.jpg" alt="A timer console wired to a guarded red button" width="1157" height="261" fetchpriority="high"></picture><span class="fallback-digits" id="fallback-digits">30:00:00:00</span></div></div><canvas id="theme-scene" aria-hidden="true"></canvas><button class="scene-action" id="scene-action" type="button" aria-label="Lift the button cover" aria-controls="countdown-secret" aria-expanded="false" disabled></button></div>
+      <button class="royal-reset royal-only" id="royal-reset" type="button" aria-label="Postpone the next countdown" aria-controls="countdown-secret" aria-expanded="false" disabled>Again.</button>
       <p class="scene-hint"><span class="royal-only">A small crown. A long wait.</span><span class="control-only">Lift. Press.</span></p>
       <p class="countdown-secret" id="countdown-secret" role="status" hidden>Long may I count.</p>
       <p class="sr-only" id="timer-readable" role="timer" aria-live="off"></p>
@@ -289,15 +299,33 @@
   </div>
 <script>(function(){
       var art=document.documentElement.classList.contains('art-project');
+      document.querySelectorAll('[data-theme-asset]').forEach(function(img){if(img.dataset.themeAsset===(art?'art':document.documentElement.dataset.theme)){img.src=img.dataset.src;}});
       if(document.documentElement.dataset.theme==='control'){
         var shelves=document.getElementById('archive-shelves'),nav=document.querySelector('.shownav');
         shelves.append.apply(shelves,Array.from(shelves.children).reverse());
         nav.append.apply(nav,Array.from(nav.children).reverse());
       }
-      document.querySelectorAll('template.card-preview').forEach(function(t){
-        if(art){t.remove();return;}
-        t.parentElement.querySelector('img').remove();t.replaceWith(t.content);
-      });
+      var previews=Array.from(document.querySelectorAll('template.card-preview'));
+      if(art){previews.forEach(function(t){t.remove();});return;}
+      // Stills paint immediately. Boot archived apps only as their mounts enter
+      // the viewport, after the clock has had first use of the network and CPU.
+      function observe(){
+        if(!('IntersectionObserver' in window))return;
+        var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){
+          if(!entry.isIntersecting)return;observer.unobserve(entry.target);
+          var t=entry.target.querySelector('template.card-preview');if(!t)return;
+          var frame=t.content.querySelector('iframe'),img=entry.target.querySelector('img');
+          entry.target.classList.add('preview-loading');
+          frame.addEventListener('load',function(){img.remove();entry.target.classList.remove('preview-loading');},{once:true});
+          t.replaceWith(t.content);
+        });},{rootMargin:'80px'});
+        previews.forEach(function(t){observer.observe(t.parentElement);});
+      }
+      var started=false;
+      function start(){if(started)return;started=true;clearTimeout(fallback);requestAnimationFrame(function(){requestAnimationFrame(observe);});}
+      document.addEventListener('countdown:scene-ready',start,{once:true});
+      document.addEventListener('countdown:scene-failed',start,{once:true});
+      var fallback=setTimeout(start,5000);
     })();</script>  <div class="ov" id="ov" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Countdown preview">
     <div class="ov-backdrop" data-close></div>
     <div class="ov-dialog">
@@ -460,5 +488,5 @@
     update();
   }
   document.querySelectorAll('[data-carousel]').forEach(setup);
-})();</script><script type="module" src="themes.js?v=4da374f20f"></script></body>
+})();</script><script type="module" src="themes.js?v=f4e0d7a560"></script></body>
 </html>
