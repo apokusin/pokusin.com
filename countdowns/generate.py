@@ -1003,7 +1003,7 @@ def build_gallery():
             '<div class="archive-heading"><p class="eyebrow">2012 — ∞</p>'
             f'<h1 class="title" aria-label="Countdowns"><span aria-hidden="true">{title}</span></h1>\n'
             '<p class="lede">I’ve been making countdown sites for TV shows since 2012. '
-            'The old sites are preserved here, and Severance is still live.</p></div>\n')
+            'The old sites are preserved here.</p></div>\n')
     out += (
         '    <section class="next-countdown" aria-labelledby="next-countdown-heading">\n'
         '      <img class="royal-guardians" data-theme-asset="royal" data-src="assets/royal-guardians.png" alt="" width="1440" height="520">\n'
