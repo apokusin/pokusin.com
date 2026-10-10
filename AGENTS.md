@@ -111,9 +111,11 @@ It reads the `SHOWS` / `EPISODES` data and writes `countdowns/index.html`,
    of live destinations. The `<link>` to `countdowns.css` carries a content-hash `?v=` to bust stale
    caches.
 
-8. **Interaction details.** Clicking a card opens a scale + fade preview overlay
+8. **Interaction details.** Clicking an archived card opens a scale + fade preview overlay
    (transform/opacity only, GPU-composited; reduced-motion falls back to a fade).
    `cmd`/`ctrl`/middle-click still opens the real page in a new tab; `Esc` / backdrop / ✕
-   close it. A sticky top nav links to each show (horizontally scrollable on mobile, with
+   close it. Live cards open their actual site in a new tab; a deferred world activation
+   falls back to same-window navigation if its user gesture has expired. A sticky top nav
+   links to each show (horizontally scrollable on mobile, with
    scroll-spy). Keep shelf show-titles on a single line in the gutter — never let them wrap
    awkwardly or overflow into the cards.

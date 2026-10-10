@@ -152,9 +152,13 @@
     dialog.addEventListener('transitionend',endHandler);
   }
   function openFrom(card,originRect){
-    // Deferred world activation cannot open a popup reliably. Go to the real
-    // live site; only preserved, first-party archive pages use the modal.
-    if(card.classList.contains('card-live')){window.location.href=card.href;return;}
+    // Honor the live link's native target during a user gesture. Deferred world
+    // activation retains a reliable same-window fallback after that gesture expires.
+    if(card.classList.contains('card-live')){
+      if(card.target==='_blank'&&navigator.userActivation&&navigator.userActivation.isActive){window.open(card.href,'_blank','noopener');}
+      else{window.location.href=card.href;}
+      return;
+    }
     clearTimeout(ft);stopEnd();closing=false;var token=++generation;
     srcRect=originRect&&['left','top','width','height'].every(function(k){return Number.isFinite(originRect[k]);})&&originRect.width>0&&originRect.height>0?originRect:null;
     srcCard=card; var url=card.getAttribute('href');
