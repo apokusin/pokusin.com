@@ -202,6 +202,10 @@ async function createSceneHost({theme, reducedMotion = matchMedia('(prefers-redu
   }
   function invoke(record, event) {
     if (!healthy || stopped || overlay || record.native?.disabled || record.kind === 'reset' && pending) return;
+    if (record.native?.matches('a.card-live')) {
+      document.dispatchEvent(new CustomEvent('archive:open', {detail: {card: record.native}}));
+      return;
+    }
     if (pose) {controller.cancelApproach?.(); activePreview = null; restorePose();}
     if (record.kind === 'preview') {savePose(record.native); activePreview = {anchor: record.native, surface: record.mesh};}
     const token = ++previewToken;
@@ -428,6 +432,8 @@ async function createSceneHost({theme, reducedMotion = matchMedia('(prefers-redu
         if (suppressedClick?.mesh === record.mesh && performance.now() - suppressedClick.time < 700) {
           suppressedClick = null; event.preventDefault(); event.stopImmediatePropagation(); return;
         }
+        // The live exhibit is a real outbound link, without a camera approach.
+        if (record.native?.matches('a.card-live')) return;
         event.preventDefault(); event.stopImmediatePropagation(); invoke(record, event); return;
       }
       const groupLink = action?.closest('.shownav a');

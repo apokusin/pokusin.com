@@ -38,7 +38,7 @@ class LiveDestinationTest(unittest.TestCase):
         live = gallery.cards[0]
         self.assertIn("card-live", live["class"].split())
         self.assertEqual(live["href"], "https://severancecountdown.com/")
-        self.assertEqual(live["frames"], [live["href"]])
+        self.assertEqual(live["frames"], [])
         self.assertEqual(live["target"], "_blank")
         self.assertEqual(live["data-show"], "severance")
         self.assertEqual(live["data-archive-href"], "/countdowns/severance/tracker/")
@@ -49,6 +49,7 @@ class LiveDestinationTest(unittest.TestCase):
         gallery = Gallery((ROOT / "countdowns/index.html").read_text())
         thumbnail = ROOT / gallery.cards[0]["data-thumb"].lstrip("/")
         self.assertTrue(thumbnail.is_file())
+        self.assertLess(thumbnail.stat().st_size, 100_000)
         # The preserved reconstruction stays available separately for references.
         self.assertTrue((ROOT / "countdowns/severance/tracker/index.html").is_file())
 

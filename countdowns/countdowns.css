@@ -361,6 +361,7 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
 [data-theme=control] .label{font:11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.01em}
 .gallery[data-theme=control] .card-live .frame{border-color:#405046;outline-color:#9ba98f;box-shadow:inset 0 1px #c4cfaa40,0 3px #080e0a,0 26px 42px -18px #000c,0 0 38px #f0715210}
 .gallery[data-theme=control] .card-live .label{font-size:13px}
+.gallery[data-theme=control] .card-live .open{opacity:1;transform:none}
 [data-theme=control] .year{font-size:10px}
 .gallery[data-theme=control] .card .year{display:none}
 .gallery[data-theme=control] .card .row:has(:only-child.year){display:none}

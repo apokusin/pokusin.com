@@ -104,8 +104,9 @@ It reads the `SHOWS` / `EPISODES` data and writes `countdowns/index.html`,
    archive page when it has collapsed items or a timeline (otherwise the gallery already shows
    everything). The Dexter timeline is surfaced as a plain link, not a card. Naming is unified
    to "Season N" / "Season N · Variant". Only Severance (the one still-live site) shows the
-   **LIVE** chip. Control starts with a larger live Season 3 Severance card; its link and
-   iframe use `https://severancecountdown.com/`, while Season 2 stays archived locally.
+   **LIVE** chip. Control starts with a larger live Season 3 Severance card linking to
+   `https://severancecountdown.com/`, with a local screenshot rather than an
+   external iframe. The live card opens that site; Season 2 keeps its local preview.
    Card `data-archive-href` / `data-show` keep reference-world identities independent
    of live destinations. The `<link>` to `countdowns.css` carries a content-hash `?v=` to bust stale
    caches.

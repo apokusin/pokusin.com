@@ -11,7 +11,7 @@
  var isArt=art.indexOf(theme)!==-1;
  var sceneFirst=['held-in-suspense', 'bubblegum-time', 'after-the-flame', 'tomorrows-roadworks', 'still-drawing-tomorrow', 'low-tide-later', 'not-yet-ripe'].indexOf(theme)!==-1;
  document.documentElement.dataset.theme=isArt?theme:theme==='royal'?'royal':'control';
- document.documentElement.dataset.artVersion='f932a94361';
+ document.documentElement.dataset.artVersion='249793a7e2';
  if(isArt){document.documentElement.classList.add('art-project');if(sceneFirst)document.documentElement.classList.add('scene-project');}
  function preload(href,rel,as){var link=document.createElement('link');link.rel=rel;link.href=href;if(as){link.as=as;link.type='font/woff2';link.crossOrigin='anonymous';}document.head.append(link);}
  preload('themes.js?v=f4e0d7a560','modulepreload');preload('reels.js','modulepreload');
@@ -20,11 +20,11 @@
 })();
 </script>
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=b75a5223">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=e77fc064">
 <script>
 (function(){var html=document.documentElement,theme=html.dataset.theme;
  function style(href){var link=document.createElement('link');link.rel='stylesheet';link.setAttribute('blocking','render');link.href=href;document.head.append(link);}
- if(html.classList.contains('art-project')){style((html.classList.contains('scene-project')?'scene-host.css':'concepts/'+theme+'.css')+'?v=f932a94361');style('exhibition.css?v=f932a94361');}
+ if(html.classList.contains('art-project')){style((html.classList.contains('scene-project')?'scene-host.css':'concepts/'+theme+'.css')+'?v=249793a7e2');style('exhibition.css?v=249793a7e2');}
  if(theme==='royal'){style('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');}
  else if(html.classList.contains('art-project')){style('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');}
 })();
@@ -83,7 +83,7 @@
       <div class="carousel">
         <div class="grid">
       <a class="card card-live" href="https://severancecountdown.com/" data-show="severance" data-archive-href="/countdowns/severance/tracker/" data-thumb="/countdowns/assets/previews/severance-live.jpg" target="_blank" rel="noopener">
-        <div class="frame"><template class="card-preview"><iframe src="https://severancecountdown.com/" style="width:250.0%;height:250.0%;transform:scale(0.4000)" loading="lazy" tabindex="-1" scrolling="no" title="Season 3 preview"></iframe></template><img src="/countdowns/assets/previews/severance-live.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
+        <div class="frame"><img src="/countdowns/assets/previews/severance-live.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Visit ↗</span></div>
         <div class="body">
           <div class="label">Season 3</div>
           <div class="row"><span class="year">2025</span><span class="chip">Live</span></div>
@@ -387,6 +387,9 @@
     dialog.addEventListener('transitionend',endHandler);
   }
   function openFrom(card,originRect){
+    // Deferred world activation cannot open a popup reliably. Go to the real
+    // live site; only preserved, first-party archive pages use the modal.
+    if(card.classList.contains('card-live')){window.location.href=card.href;return;}
     clearTimeout(ft);stopEnd();closing=false;var token=++generation;
     srcRect=originRect&&['left','top','width','height'].every(function(k){return Number.isFinite(originRect[k]);})&&originRect.width>0&&originRect.height>0?originRect:null;
     srcCard=card; var url=card.getAttribute('href');
@@ -435,6 +438,7 @@
   document.querySelectorAll('a.card').forEach(function(c){
     c.addEventListener('click',function(e){
       if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return;
+      if(c.classList.contains('card-live'))return;
       if(shouldOpenFullCountdown()){ e.preventDefault(); window.location.href=c.href; return; }
       e.preventDefault(); openFrom(c);
     });

@@ -11,6 +11,7 @@ REPO = os.path.dirname(CD)
 # collapsed=False  -> shown on the main gallery + details grid
 # collapsed=True   -> only in the details page's collapsible "Archived variants"
 # chip             -> only Severance shows an indicator ("Live")
+# live_url         -> a still preview with a native link to the actual live site
 SHOWS = [
     {
         "slug": "got", "name": "Game of Thrones", "emoji": "\U0001F409",
@@ -109,7 +110,7 @@ SHOWS = [
         "domain": "severancecountdown.com", "live": True, "years": "2025 –",
         "versions": [
             {"slug": "tracker", "label": "Season 3", "year": "2025", "collapsed": False, "chip": "Live",
-             "live_url": "https://severancecountdown.com/", "thumbnail": "severance-live.jpg", "zoom": 2.5,
+             "live_url": "https://severancecountdown.com/", "thumbnail": "severance-live.jpg",
              "desc": "The live Macrodata Refinement Tracker at severancecountdown.com."},
             {"slug": "s2", "label": "Season 2", "year": "2025", "collapsed": False,
              "desc": "The Macrodata Refinement Tracker caught mid-season, episode bars half-filled, with a live countdown to the next drop."},
@@ -466,6 +467,9 @@ OVERLAY_JS = """<script>(function(){
     dialog.addEventListener('transitionend',endHandler);
   }
   function openFrom(card,originRect){
+    // Deferred world activation cannot open a popup reliably. Go to the real
+    // live site; only preserved, first-party archive pages use the modal.
+    if(card.classList.contains('card-live')){window.location.href=card.href;return;}
     clearTimeout(ft);stopEnd();closing=false;var token=++generation;
     srcRect=originRect&&['left','top','width','height'].every(function(k){return Number.isFinite(originRect[k]);})&&originRect.width>0&&originRect.height>0?originRect:null;
     srcCard=card; var url=card.getAttribute('href');
@@ -514,6 +518,7 @@ OVERLAY_JS = """<script>(function(){
   document.querySelectorAll('a.card').forEach(function(c){
     c.addEventListener('click',function(e){
       if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return;
+      if(c.classList.contains('card-live'))return;
       if(shouldOpenFullCountdown()){ e.preventDefault(); window.location.href=c.href; return; }
       e.preventDefault(); openFrom(c);
     });
@@ -727,6 +732,7 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
 [data-theme=control] .label{font:11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.01em}
 .gallery[data-theme=control] .card-live .frame{border-color:#405046;outline-color:#9ba98f;box-shadow:inset 0 1px #c4cfaa40,0 3px #080e0a,0 26px 42px -18px #000c,0 0 38px #f0715210}
 .gallery[data-theme=control] .card-live .label{font-size:13px}
+.gallery[data-theme=control] .card-live .open{opacity:1;transform:none}
 [data-theme=control] .year{font-size:10px}
 .gallery[data-theme=control] .card .year{display:none}
 .gallery[data-theme=control] .card .row:has(:only-child.year){display:none}
@@ -910,6 +916,7 @@ def card(show_slug, v, zoom=4, defer_frames=False):
         base += "/"
     destination = v.get("live_url", base)
     live_class = " card-live" if v.get("live_url") else ""
+    open_label = "Visit ↗" if v.get("live_url") else "Open ↗"
     # zoom controls the iframe's internal render width (cardWidth x zoom); raise it for
     # shows whose responsive breakpoint would otherwise trigger a collapsed/tablet layout
     zstyle = (f' style="width:{zoom*100}%;height:{zoom*100}%;transform:scale({1/zoom:.4f})"'
@@ -920,16 +927,16 @@ def card(show_slug, v, zoom=4, defer_frames=False):
     thumb_name = v.get("thumbnail", f'{show_slug}-{v["slug"].strip("/").replace("/", "-")}.jpg')
     thumb = f'/countdowns/assets/previews/{thumb_name}'
     still = f'<img src="{thumb}" alt="" loading="lazy" width="720" height="450">'
-    if v.get("still_preview"):
-        # Keep focus-stealing archived forms out of passive cards. Opening the card
-        # still loads its untouched, interactive page in the preview overlay.
+    if v.get("live_url") or v.get("still_preview"):
+        # Live sites use a faithful still and open at their own origin. Keep
+        # focus-stealing archive forms in their deliberate preview overlay too.
         iframe = still
     elif defer_frames:
         # Inert until the theme is known: art worlds never boot archived scripts behind their stills.
         iframe = f'<template class="card-preview">{iframe}</template>{still}'
     return (
         f'      <a class="card{live_class}" href="{esc(destination)}" data-show="{show_slug}" data-archive-href="{base}" data-thumb="{thumb}" target="_blank" rel="noopener">\n'
-        f'        <div class="frame">{iframe}<span class="open">Open ↗</span></div>\n'
+        f'        <div class="frame">{iframe}<span class="open">{open_label}</span></div>\n'
         f'        <div class="body">\n'
         f'          <div class="label">{esc(v["label"])}</div>\n'
         f'          <div class="row"><span class="year">{esc(v["year"])}</span>{chip}</div>\n'
