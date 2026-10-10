@@ -6,7 +6,7 @@
   <title>Sherlock Countdowns · Archive</title>
   <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin between 2012 and 2025, preserved and ticking live.">
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=45c79f82">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=e77fc064">
 </head>
 <body>
   <div class="wrap">
@@ -20,7 +20,7 @@
           <button class="carousel-btn carousel-next" type="button" aria-label="Next preview">›</button>
         </div>
         <div class="grid">
-      <a class="card" href="/countdowns/sherlock/final/" data-thumb="/countdowns/assets/previews/sherlock-final.jpg" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/sherlock/final/" data-show="sherlock" data-archive-href="/countdowns/sherlock/final/" data-thumb="/countdowns/assets/previews/sherlock-final.jpg" target="_blank" rel="noopener">
         <div class="frame"><img src="/countdowns/assets/previews/sherlock-final.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 3</div>
@@ -28,7 +28,7 @@
           <div class="desc">A UK / US air-date toggle, and a hidden 221B easter egg. (Try the door.)</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/sherlock/alpha/" data-thumb="/countdowns/assets/previews/sherlock-alpha.jpg" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/sherlock/alpha/" data-show="sherlock" data-archive-href="/countdowns/sherlock/alpha/" data-thumb="/countdowns/assets/previews/sherlock-alpha.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/sherlock/alpha/" loading="lazy" tabindex="-1" scrolling="no" title="Season 3 · Alpha preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 3 · Alpha</div>
@@ -42,7 +42,7 @@
         <summary><span class="tw">▶</span> Archived variants <span class="ct">1</span></summary>
       <div class="carousel">
         <div class="grid">
-      <a class="card" href="/countdowns/sherlock/dec2013/" data-thumb="/countdowns/assets/previews/sherlock-dec2013.jpg" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/sherlock/dec2013/" data-show="sherlock" data-archive-href="/countdowns/sherlock/dec2013/" data-thumb="/countdowns/assets/previews/sherlock-dec2013.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/sherlock/dec2013/" loading="lazy" tabindex="-1" scrolling="no" title="Season 3 · December 2013 preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 3 · December 2013</div>
@@ -120,6 +120,13 @@
     dialog.addEventListener('transitionend',endHandler);
   }
   function openFrom(card,originRect){
+    // Honor the live link's native target during a user gesture. Deferred world
+    // activation retains a reliable same-window fallback after that gesture expires.
+    if(card.classList.contains('card-live')){
+      if(card.target==='_blank'&&navigator.userActivation&&navigator.userActivation.isActive){window.open(card.href,'_blank','noopener');}
+      else{window.location.href=card.href;}
+      return;
+    }
     clearTimeout(ft);stopEnd();closing=false;var token=++generation;
     srcRect=originRect&&['left','top','width','height'].every(function(k){return Number.isFinite(originRect[k]);})&&originRect.width>0&&originRect.height>0?originRect:null;
     srcCard=card; var url=card.getAttribute('href');
@@ -168,6 +175,7 @@
   document.querySelectorAll('a.card').forEach(function(c){
     c.addEventListener('click',function(e){
       if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return;
+      if(c.classList.contains('card-live'))return;
       if(shouldOpenFullCountdown()){ e.preventDefault(); window.location.href=c.href; return; }
       e.preventDefault(); openFrom(c);
     });

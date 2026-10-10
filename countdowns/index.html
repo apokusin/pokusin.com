@@ -11,7 +11,7 @@
  var isArt=art.indexOf(theme)!==-1;
  var sceneFirst=['held-in-suspense', 'bubblegum-time', 'after-the-flame', 'tomorrows-roadworks', 'still-drawing-tomorrow', 'low-tide-later', 'not-yet-ripe'].indexOf(theme)!==-1;
  document.documentElement.dataset.theme=isArt?theme:theme==='royal'?'royal':'control';
- document.documentElement.dataset.artVersion='e53b667249';
+ document.documentElement.dataset.artVersion='249793a7e2';
  if(isArt){document.documentElement.classList.add('art-project');if(sceneFirst)document.documentElement.classList.add('scene-project');}
  function preload(href,rel,as){var link=document.createElement('link');link.rel=rel;link.href=href;if(as){link.as=as;link.type='font/woff2';link.crossOrigin='anonymous';}document.head.append(link);}
  preload('themes.js?v=f4e0d7a560','modulepreload');preload('reels.js','modulepreload');
@@ -20,11 +20,11 @@
 })();
 </script>
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=45c79f82">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=e77fc064">
 <script>
 (function(){var html=document.documentElement,theme=html.dataset.theme;
  function style(href){var link=document.createElement('link');link.rel='stylesheet';link.setAttribute('blocking','render');link.href=href;document.head.append(link);}
- if(html.classList.contains('art-project')){style((html.classList.contains('scene-project')?'scene-host.css':'concepts/'+theme+'.css')+'?v=e53b667249');style('exhibition.css?v=e53b667249');}
+ if(html.classList.contains('art-project')){style((html.classList.contains('scene-project')?'scene-host.css':'concepts/'+theme+'.css')+'?v=249793a7e2');style('exhibition.css?v=249793a7e2');}
  if(theme==='royal'){style('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');}
  else if(html.classList.contains('art-project')){style('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');}
 })();
@@ -59,21 +59,21 @@
     </section>
     </div>
     <nav class="shownav" aria-label="Shows">
-      <a href="#got"><span class="nv-e">I</span><span class="nv-n">Game of Thrones</span></a>
-      <a href="#dexter"><span class="nv-e">II</span><span class="nv-n">Dexter</span></a>
-      <a href="#sherlock"><span class="nv-e">III</span><span class="nv-n">Sherlock</span></a>
-      <a href="#archer"><span class="nv-e">IV</span><span class="nv-n">Archer</span></a>
-      <a href="#breaking-bad"><span class="nv-e">V</span><span class="nv-n">Breaking Bad</span></a>
-      <a href="#house-of-cards"><span class="nv-e">VI</span><span class="nv-n">House of Cards</span></a>
       <a href="#severance"><span class="nv-e">VII</span><span class="nv-n">Severance</span></a>
+      <a href="#house-of-cards"><span class="nv-e">VI</span><span class="nv-n">House of Cards</span></a>
+      <a href="#breaking-bad"><span class="nv-e">V</span><span class="nv-n">Breaking Bad</span></a>
+      <a href="#archer"><span class="nv-e">IV</span><span class="nv-n">Archer</span></a>
+      <a href="#sherlock"><span class="nv-e">III</span><span class="nv-n">Sherlock</span></a>
+      <a href="#dexter"><span class="nv-e">II</span><span class="nv-n">Dexter</span></a>
+      <a href="#got"><span class="nv-e">I</span><span class="nv-n">Game of Thrones</span></a>
     </nav>
     <main class="archive-shelves" id="archive-shelves" aria-label="Countdown archive">
-    <section class="shelf" id="got" data-carousel data-shelf-index="01">
+    <section class="shelf" id="severance" data-carousel data-shelf-index="07">
       <div class="shelf-aside">
         <div class="shelf-copy">
-          <div class="shelf-kicker">2012 – 2019</div>
-          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">G</span><span class="shelf-name">Game of Thrones</span></div>
-          <span class="shelf-origin">gameofthronescountdown.com</span>
+          <div class="shelf-kicker">2025 –</div>
+          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">S</span><span class="shelf-name">Severance</span></div>
+          <a class="shelf-origin" href="https://severancecountdown.com" target="_blank" rel="noopener">severancecountdown.com ↗</a>
         </div>
         <div class="carousel-controls" aria-label="Preview cards">
           <button class="carousel-btn carousel-prev" type="button" aria-label="Previous preview">‹</button>
@@ -82,122 +82,44 @@
       </div>
       <div class="carousel">
         <div class="grid">
-      <a class="card" href="/countdowns/got/s4/" data-thumb="/countdowns/assets/previews/got-s4.jpg" target="_blank" rel="noopener">
-        <div class="frame"><template class="card-preview"><iframe src="/countdowns/got/s4/" loading="lazy" tabindex="-1" scrolling="no" title="Season 4 preview"></iframe></template><img src="/countdowns/assets/previews/got-s4.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
-        <div class="body">
-          <div class="label">Season 4</div>
-          <div class="row"><span class="year">2014</span></div>
-          <div class="desc">The full-bleed house switcher. Pick a house and the page floods with its colors and sigil.</div>
-        </div>
-      </a>
-      <a class="card" href="/countdowns/got/s3-redesign/" data-thumb="/countdowns/assets/previews/got-s3-redesign.jpg" target="_blank" rel="noopener">
-        <div class="frame"><template class="card-preview"><iframe src="/countdowns/got/s3-redesign/" style="width:500%;height:500%;transform:scale(0.2000)" loading="lazy" tabindex="-1" scrolling="no" title="Season 3 · Redesign preview"></iframe></template><img src="/countdowns/assets/previews/got-s3-redesign.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
-        <div class="body">
-          <div class="label">Season 3 · Redesign</div>
-          <div class="row"><span class="year">2013</span></div>
-          <div class="desc">House theming, a central sigil, and the Game of Thrones theme on play.</div>
-        </div>
-      </a>
-      <a class="card" href="/countdowns/got/s3-classic/" data-thumb="/countdowns/assets/previews/got-s3-classic.jpg" target="_blank" rel="noopener">
-        <div class="frame"><template class="card-preview"><iframe src="/countdowns/got/s3-classic/" loading="lazy" tabindex="-1" scrolling="no" title="Season 3 · Classic preview"></iframe></template><img src="/countdowns/assets/previews/got-s3-classic.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
-        <div class="body">
-          <div class="label">Season 3 · Classic</div>
-          <div class="row"><span class="year">2013</span></div>
-          <div class="desc">The original dark-leather look, sword logo and an HBO date block.</div>
-        </div>
-      </a>
-        </div>
-        <a class="more shelf-more" href="/countdowns/got/">More <span class="arrow">→</span></a>
-      </div>
-    </section>
-    <section class="shelf" id="dexter" data-carousel data-shelf-index="02">
-      <div class="shelf-aside">
-        <div class="shelf-copy">
-          <div class="shelf-kicker">2012 – 2013</div>
-          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">D</span><span class="shelf-name">Dexter</span></div>
-          <span class="shelf-origin">dextercountdown.com</span>
-        </div>
-        <div class="carousel-controls" aria-label="Preview cards">
-          <button class="carousel-btn carousel-prev" type="button" aria-label="Previous preview">‹</button>
-          <button class="carousel-btn carousel-next" type="button" aria-label="Next preview">›</button>
-        </div>
-      </div>
-      <div class="carousel">
-        <div class="grid">
-      <a class="card" href="/countdowns/dexter/s8-final/" data-thumb="/countdowns/assets/previews/dexter-s8-final.jpg" target="_blank" rel="noopener">
-        <div class="frame"><template class="card-preview"><iframe src="/countdowns/dexter/s8-final/" loading="lazy" tabindex="-1" scrolling="no" title="Series Finale preview"></iframe></template><img src="/countdowns/assets/previews/dexter-s8-final.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
-        <div class="body">
-          <div class="label">Series Finale</div>
-          <div class="row"><span class="year">2013</span></div>
-          <div class="desc">The minimalist redesign, white cards, blood-red badges, labels turned on their side.</div>
-        </div>
-      </a>
-      <a class="card" href="/countdowns/dexter/s7-finale/" data-thumb="/countdowns/assets/previews/dexter-s7-finale.jpg" target="_blank" rel="noopener">
-        <div class="frame"><template class="card-preview"><iframe src="/countdowns/dexter/s7-finale/" loading="lazy" tabindex="-1" scrolling="no" title="Season 7 · Finale preview"></iframe></template><img src="/countdowns/assets/previews/dexter-s7-finale.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
-        <div class="body">
-          <div class="label">Season 7 · Finale</div>
-          <div class="row"><span class="year">2012</span></div>
-          <div class="desc">Egg-shell texture, blood-spatter sprites, and the Dexter theme on a floating player.</div>
-        </div>
-      </a>
-        </div>
-        <a class="more shelf-more" href="/countdowns/dexter/">More <span class="arrow">→</span></a>
-      </div>
-    </section>
-    <section class="shelf" id="sherlock" data-carousel data-shelf-index="03">
-      <div class="shelf-aside">
-        <div class="shelf-copy">
-          <div class="shelf-kicker">2013 – 2014</div>
-          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">S</span><span class="shelf-name">Sherlock</span></div>
-          <span class="shelf-origin">sherlockcountdown.com</span>
-        </div>
-        <div class="carousel-controls" aria-label="Preview cards">
-          <button class="carousel-btn carousel-prev" type="button" aria-label="Previous preview">‹</button>
-          <button class="carousel-btn carousel-next" type="button" aria-label="Next preview">›</button>
-        </div>
-      </div>
-      <div class="carousel">
-        <div class="grid">
-      <a class="card" href="/countdowns/sherlock/final/" data-thumb="/countdowns/assets/previews/sherlock-final.jpg" target="_blank" rel="noopener">
-        <div class="frame"><img src="/countdowns/assets/previews/sherlock-final.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
+      <a class="card card-live" href="https://severancecountdown.com/" data-show="severance" data-archive-href="/countdowns/severance/tracker/" data-thumb="/countdowns/assets/previews/severance-live.jpg" target="_blank" rel="noopener">
+        <div class="frame"><img src="/countdowns/assets/previews/severance-live.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Visit ↗</span></div>
         <div class="body">
           <div class="label">Season 3</div>
-          <div class="row"><span class="year">2014</span></div>
-          <div class="desc">A UK / US air-date toggle, and a hidden 221B easter egg. (Try the door.)</div>
+          <div class="row"><span class="year">2025</span><span class="chip">Live</span></div>
+          <div class="desc">The live Macrodata Refinement Tracker at severancecountdown.com.</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/sherlock/alpha/" data-thumb="/countdowns/assets/previews/sherlock-alpha.jpg" target="_blank" rel="noopener">
-        <div class="frame"><template class="card-preview"><iframe src="/countdowns/sherlock/alpha/" loading="lazy" tabindex="-1" scrolling="no" title="Season 3 · Alpha preview"></iframe></template><img src="/countdowns/assets/previews/sherlock-alpha.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
+      <a class="card" href="/countdowns/severance/s2/" data-show="severance" data-archive-href="/countdowns/severance/s2/" data-thumb="/countdowns/assets/previews/severance-s2.jpg" target="_blank" rel="noopener">
+        <div class="frame"><template class="card-preview"><iframe src="/countdowns/severance/s2/" loading="lazy" tabindex="-1" scrolling="no" title="Season 2 preview"></iframe></template><img src="/countdowns/assets/previews/severance-s2.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
         <div class="body">
-          <div class="label">Season 3 · Alpha</div>
-          <div class="row"><span class="year">2013</span></div>
-          <div class="desc">An early dev build, unminified, with an extra slide, over the looping bg GIF.</div>
+          <div class="label">Season 2</div>
+          <div class="row"><span class="year">2025</span></div>
+          <div class="desc">The Macrodata Refinement Tracker caught mid-season, episode bars half-filled, with a live countdown to the next drop.</div>
         </div>
       </a>
         </div>
-        <a class="more shelf-more" href="/countdowns/sherlock/">More <span class="arrow">→</span></a>
       </div>
     </section>
-    <section class="shelf" id="archer" data-shelf-index="04">
+    <section class="shelf" id="house-of-cards" data-shelf-index="06">
       <div class="shelf-aside">
         <div class="shelf-copy">
-          <div class="shelf-kicker">2012 – 2014</div>
-          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">A</span><span class="shelf-name">Archer</span></div>
-          <span class="shelf-origin">archercountdown.com</span>
+          <div class="shelf-kicker">2014</div>
+          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">H</span><span class="shelf-name">House of Cards</span></div>
+          <span class="shelf-origin">houseofcardscountdown.com</span>
         </div>
       </div>
       <div class="carousel">
         <div class="grid">
-      <a class="card" href="/countdowns/archer/s5-final/" data-thumb="/countdowns/assets/previews/archer-s5-final.jpg" target="_blank" rel="noopener">
-        <div class="frame"><template class="card-preview"><iframe src="/countdowns/archer/s5-final/" style="width:500%;height:500%;transform:scale(0.2000)" loading="lazy" tabindex="-1" scrolling="no" title="Season 5 preview"></iframe></template><img src="/countdowns/assets/previews/archer-s5-final.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
+      <a class="card" href="/countdowns/house-of-cards/s2/" data-show="house-of-cards" data-archive-href="/countdowns/house-of-cards/s2/" data-thumb="/countdowns/assets/previews/house-of-cards-s2.jpg" target="_blank" rel="noopener">
+        <div class="frame"><template class="card-preview"><iframe src="/countdowns/house-of-cards/s2/" loading="lazy" tabindex="-1" scrolling="no" title="Season 2 preview"></iframe></template><img src="/countdowns/assets/previews/house-of-cards-s2.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
         <div class="body">
-          <div class="label">Season 5</div>
+          <div class="label">Season 2</div>
           <div class="row"><span class="year">2014</span></div>
-          <div class="desc">The signature 2×2 colored grid, an animated Pam, and the Archer theme.</div>
+          <div class="desc">Counting down to the Season 2 Netflix drop, the whole series at once, February 14, 2014.</div>
         </div>
       </a>
         </div>
-        <a class="more shelf-more" href="/countdowns/archer/">More <span class="arrow">→</span></a>
       </div>
     </section>
     <section class="shelf" id="breaking-bad" data-carousel data-shelf-index="05">
@@ -214,7 +136,7 @@
       </div>
       <div class="carousel">
         <div class="grid">
-      <a class="card" href="/countdowns/breaking-bad/final/" data-thumb="/countdowns/assets/previews/breaking-bad-final.jpg" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/breaking-bad/final/" data-show="breaking-bad" data-archive-href="/countdowns/breaking-bad/final/" data-thumb="/countdowns/assets/previews/breaking-bad-final.jpg" target="_blank" rel="noopener">
         <div class="frame"><template class="card-preview"><iframe src="/countdowns/breaking-bad/final/" loading="lazy" tabindex="-1" scrolling="no" title="Series Finale preview"></iframe></template><img src="/countdowns/assets/previews/breaking-bad-final.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Series Finale</div>
@@ -222,7 +144,7 @@
           <div class="desc">Gold and texture, #allbadthingsmustcometoanend, and the theme on play.</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/breaking-bad/desert-parallax/" data-thumb="/countdowns/assets/previews/breaking-bad-desert-parallax.jpg" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/breaking-bad/desert-parallax/" data-show="breaking-bad" data-archive-href="/countdowns/breaking-bad/desert-parallax/" data-thumb="/countdowns/assets/previews/breaking-bad-desert-parallax.jpg" target="_blank" rel="noopener">
         <div class="frame"><template class="card-preview"><iframe src="/countdowns/breaking-bad/desert-parallax/" loading="lazy" tabindex="-1" scrolling="no" title="Desert Parallax preview"></iframe></template><img src="/countdowns/assets/previews/breaking-bad-desert-parallax.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Desert Parallax</div>
@@ -234,33 +156,34 @@
         <a class="more shelf-more" href="/countdowns/breaking-bad/">More <span class="arrow">→</span></a>
       </div>
     </section>
-    <section class="shelf" id="house-of-cards" data-shelf-index="06">
+    <section class="shelf" id="archer" data-shelf-index="04">
       <div class="shelf-aside">
         <div class="shelf-copy">
-          <div class="shelf-kicker">2014</div>
-          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">H</span><span class="shelf-name">House of Cards</span></div>
-          <span class="shelf-origin">houseofcardscountdown.com</span>
+          <div class="shelf-kicker">2012 – 2014</div>
+          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">A</span><span class="shelf-name">Archer</span></div>
+          <span class="shelf-origin">archercountdown.com</span>
         </div>
       </div>
       <div class="carousel">
         <div class="grid">
-      <a class="card" href="/countdowns/house-of-cards/s2/" data-thumb="/countdowns/assets/previews/house-of-cards-s2.jpg" target="_blank" rel="noopener">
-        <div class="frame"><template class="card-preview"><iframe src="/countdowns/house-of-cards/s2/" loading="lazy" tabindex="-1" scrolling="no" title="Season 2 preview"></iframe></template><img src="/countdowns/assets/previews/house-of-cards-s2.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
+      <a class="card" href="/countdowns/archer/s5-final/" data-show="archer" data-archive-href="/countdowns/archer/s5-final/" data-thumb="/countdowns/assets/previews/archer-s5-final.jpg" target="_blank" rel="noopener">
+        <div class="frame"><template class="card-preview"><iframe src="/countdowns/archer/s5-final/" style="width:500%;height:500%;transform:scale(0.2000)" loading="lazy" tabindex="-1" scrolling="no" title="Season 5 preview"></iframe></template><img src="/countdowns/assets/previews/archer-s5-final.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
         <div class="body">
-          <div class="label">Season 2</div>
+          <div class="label">Season 5</div>
           <div class="row"><span class="year">2014</span></div>
-          <div class="desc">Counting down to the Season 2 Netflix drop, the whole series at once, February 14, 2014.</div>
+          <div class="desc">The signature 2×2 colored grid, an animated Pam, and the Archer theme.</div>
         </div>
       </a>
         </div>
+        <a class="more shelf-more" href="/countdowns/archer/">More <span class="arrow">→</span></a>
       </div>
     </section>
-    <section class="shelf" id="severance" data-carousel data-shelf-index="07">
+    <section class="shelf" id="sherlock" data-carousel data-shelf-index="03">
       <div class="shelf-aside">
         <div class="shelf-copy">
-          <div class="shelf-kicker">2025 –</div>
-          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">S</span><span class="shelf-name">Severance</span></div>
-          <a class="shelf-origin" href="https://severancecountdown.com" target="_blank" rel="noopener">severancecountdown.com ↗</a>
+          <div class="shelf-kicker">2013 – 2014</div>
+          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">S</span><span class="shelf-name">Sherlock</span></div>
+          <span class="shelf-origin">sherlockcountdown.com</span>
         </div>
         <div class="carousel-controls" aria-label="Preview cards">
           <button class="carousel-btn carousel-prev" type="button" aria-label="Previous preview">‹</button>
@@ -269,23 +192,100 @@
       </div>
       <div class="carousel">
         <div class="grid">
-      <a class="card" href="/countdowns/severance/s2/" data-thumb="/countdowns/assets/previews/severance-s2.jpg" target="_blank" rel="noopener">
-        <div class="frame"><template class="card-preview"><iframe src="/countdowns/severance/s2/" loading="lazy" tabindex="-1" scrolling="no" title="Season 2 preview"></iframe></template><img src="/countdowns/assets/previews/severance-s2.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
-        <div class="body">
-          <div class="label">Season 2</div>
-          <div class="row"><span class="year">2025</span></div>
-          <div class="desc">The Macrodata Refinement Tracker caught mid-season, episode bars half-filled, with a live countdown to the next drop.</div>
-        </div>
-      </a>
-      <a class="card" href="/countdowns/severance/tracker/" data-thumb="/countdowns/assets/previews/severance-tracker.jpg" target="_blank" rel="noopener">
-        <div class="frame"><template class="card-preview"><iframe src="/countdowns/severance/tracker/" loading="lazy" tabindex="-1" scrolling="no" title="Season 3 preview"></iframe></template><img src="/countdowns/assets/previews/severance-tracker.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
+      <a class="card" href="/countdowns/sherlock/final/" data-show="sherlock" data-archive-href="/countdowns/sherlock/final/" data-thumb="/countdowns/assets/previews/sherlock-final.jpg" target="_blank" rel="noopener">
+        <div class="frame"><img src="/countdowns/assets/previews/sherlock-final.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 3</div>
-          <div class="row"><span class="year">2025</span><span class="chip">Live</span></div>
-          <div class="desc">The Lumon terminal counting down to Season 3, a refinement grid, season tracker, and a live clock. Still running at severancecountdown.com.</div>
+          <div class="row"><span class="year">2014</span></div>
+          <div class="desc">A UK / US air-date toggle, and a hidden 221B easter egg. (Try the door.)</div>
+        </div>
+      </a>
+      <a class="card" href="/countdowns/sherlock/alpha/" data-show="sherlock" data-archive-href="/countdowns/sherlock/alpha/" data-thumb="/countdowns/assets/previews/sherlock-alpha.jpg" target="_blank" rel="noopener">
+        <div class="frame"><template class="card-preview"><iframe src="/countdowns/sherlock/alpha/" loading="lazy" tabindex="-1" scrolling="no" title="Season 3 · Alpha preview"></iframe></template><img src="/countdowns/assets/previews/sherlock-alpha.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
+        <div class="body">
+          <div class="label">Season 3 · Alpha</div>
+          <div class="row"><span class="year">2013</span></div>
+          <div class="desc">An early dev build, unminified, with an extra slide, over the looping bg GIF.</div>
         </div>
       </a>
         </div>
+        <a class="more shelf-more" href="/countdowns/sherlock/">More <span class="arrow">→</span></a>
+      </div>
+    </section>
+    <section class="shelf" id="dexter" data-carousel data-shelf-index="02">
+      <div class="shelf-aside">
+        <div class="shelf-copy">
+          <div class="shelf-kicker">2012 – 2013</div>
+          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">D</span><span class="shelf-name">Dexter</span></div>
+          <span class="shelf-origin">dextercountdown.com</span>
+        </div>
+        <div class="carousel-controls" aria-label="Preview cards">
+          <button class="carousel-btn carousel-prev" type="button" aria-label="Previous preview">‹</button>
+          <button class="carousel-btn carousel-next" type="button" aria-label="Next preview">›</button>
+        </div>
+      </div>
+      <div class="carousel">
+        <div class="grid">
+      <a class="card" href="/countdowns/dexter/s8-final/" data-show="dexter" data-archive-href="/countdowns/dexter/s8-final/" data-thumb="/countdowns/assets/previews/dexter-s8-final.jpg" target="_blank" rel="noopener">
+        <div class="frame"><template class="card-preview"><iframe src="/countdowns/dexter/s8-final/" loading="lazy" tabindex="-1" scrolling="no" title="Series Finale preview"></iframe></template><img src="/countdowns/assets/previews/dexter-s8-final.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
+        <div class="body">
+          <div class="label">Series Finale</div>
+          <div class="row"><span class="year">2013</span></div>
+          <div class="desc">The minimalist redesign, white cards, blood-red badges, labels turned on their side.</div>
+        </div>
+      </a>
+      <a class="card" href="/countdowns/dexter/s7-finale/" data-show="dexter" data-archive-href="/countdowns/dexter/s7-finale/" data-thumb="/countdowns/assets/previews/dexter-s7-finale.jpg" target="_blank" rel="noopener">
+        <div class="frame"><template class="card-preview"><iframe src="/countdowns/dexter/s7-finale/" loading="lazy" tabindex="-1" scrolling="no" title="Season 7 · Finale preview"></iframe></template><img src="/countdowns/assets/previews/dexter-s7-finale.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
+        <div class="body">
+          <div class="label">Season 7 · Finale</div>
+          <div class="row"><span class="year">2012</span></div>
+          <div class="desc">Egg-shell texture, blood-spatter sprites, and the Dexter theme on a floating player.</div>
+        </div>
+      </a>
+        </div>
+        <a class="more shelf-more" href="/countdowns/dexter/">More <span class="arrow">→</span></a>
+      </div>
+    </section>
+    <section class="shelf" id="got" data-carousel data-shelf-index="01">
+      <div class="shelf-aside">
+        <div class="shelf-copy">
+          <div class="shelf-kicker">2012 – 2019</div>
+          <div class="shelf-id"><span class="shelf-emoji" aria-hidden="true">G</span><span class="shelf-name">Game of Thrones</span></div>
+          <span class="shelf-origin">gameofthronescountdown.com</span>
+        </div>
+        <div class="carousel-controls" aria-label="Preview cards">
+          <button class="carousel-btn carousel-prev" type="button" aria-label="Previous preview">‹</button>
+          <button class="carousel-btn carousel-next" type="button" aria-label="Next preview">›</button>
+        </div>
+      </div>
+      <div class="carousel">
+        <div class="grid">
+      <a class="card" href="/countdowns/got/s4/" data-show="got" data-archive-href="/countdowns/got/s4/" data-thumb="/countdowns/assets/previews/got-s4.jpg" target="_blank" rel="noopener">
+        <div class="frame"><template class="card-preview"><iframe src="/countdowns/got/s4/" loading="lazy" tabindex="-1" scrolling="no" title="Season 4 preview"></iframe></template><img src="/countdowns/assets/previews/got-s4.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
+        <div class="body">
+          <div class="label">Season 4</div>
+          <div class="row"><span class="year">2014</span></div>
+          <div class="desc">The full-bleed house switcher. Pick a house and the page floods with its colors and sigil.</div>
+        </div>
+      </a>
+      <a class="card" href="/countdowns/got/s3-redesign/" data-show="got" data-archive-href="/countdowns/got/s3-redesign/" data-thumb="/countdowns/assets/previews/got-s3-redesign.jpg" target="_blank" rel="noopener">
+        <div class="frame"><template class="card-preview"><iframe src="/countdowns/got/s3-redesign/" style="width:500%;height:500%;transform:scale(0.2000)" loading="lazy" tabindex="-1" scrolling="no" title="Season 3 · Redesign preview"></iframe></template><img src="/countdowns/assets/previews/got-s3-redesign.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
+        <div class="body">
+          <div class="label">Season 3 · Redesign</div>
+          <div class="row"><span class="year">2013</span></div>
+          <div class="desc">House theming, a central sigil, and the Game of Thrones theme on play.</div>
+        </div>
+      </a>
+      <a class="card" href="/countdowns/got/s3-classic/" data-show="got" data-archive-href="/countdowns/got/s3-classic/" data-thumb="/countdowns/assets/previews/got-s3-classic.jpg" target="_blank" rel="noopener">
+        <div class="frame"><template class="card-preview"><iframe src="/countdowns/got/s3-classic/" loading="lazy" tabindex="-1" scrolling="no" title="Season 3 · Classic preview"></iframe></template><img src="/countdowns/assets/previews/got-s3-classic.jpg" alt="" loading="lazy" width="720" height="450"><span class="open">Open ↗</span></div>
+        <div class="body">
+          <div class="label">Season 3 · Classic</div>
+          <div class="row"><span class="year">2013</span></div>
+          <div class="desc">The original dark-leather look, sword logo and an HBO date block.</div>
+        </div>
+      </a>
+        </div>
+        <a class="more shelf-more" href="/countdowns/got/">More <span class="arrow">→</span></a>
       </div>
     </section>
     <template id="scene-destinations">
@@ -300,7 +300,7 @@
 <script>(function(){
       var art=document.documentElement.classList.contains('art-project');
       document.querySelectorAll('[data-theme-asset]').forEach(function(img){if(img.dataset.themeAsset===(art?'art':document.documentElement.dataset.theme)){img.src=img.dataset.src;}});
-      if(document.documentElement.dataset.theme==='control'){
+      if(document.documentElement.dataset.theme!=='control'){
         var shelves=document.getElementById('archive-shelves'),nav=document.querySelector('.shownav');
         shelves.append.apply(shelves,Array.from(shelves.children).reverse());
         nav.append.apply(nav,Array.from(nav.children).reverse());
@@ -387,6 +387,13 @@
     dialog.addEventListener('transitionend',endHandler);
   }
   function openFrom(card,originRect){
+    // Honor the live link's native target during a user gesture. Deferred world
+    // activation retains a reliable same-window fallback after that gesture expires.
+    if(card.classList.contains('card-live')){
+      if(card.target==='_blank'&&navigator.userActivation&&navigator.userActivation.isActive){window.open(card.href,'_blank','noopener');}
+      else{window.location.href=card.href;}
+      return;
+    }
     clearTimeout(ft);stopEnd();closing=false;var token=++generation;
     srcRect=originRect&&['left','top','width','height'].every(function(k){return Number.isFinite(originRect[k]);})&&originRect.width>0&&originRect.height>0?originRect:null;
     srcCard=card; var url=card.getAttribute('href');
@@ -435,6 +442,7 @@
   document.querySelectorAll('a.card').forEach(function(c){
     c.addEventListener('click',function(e){
       if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return;
+      if(c.classList.contains('card-live'))return;
       if(shouldOpenFullCountdown()){ e.preventDefault(); window.location.href=c.href; return; }
       e.preventDefault(); openFrom(c);
     });

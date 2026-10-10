@@ -32,7 +32,7 @@ class CountdownsMobileCarouselTest(unittest.TestCase):
         html = (ROOT / "countdowns" / "index.html").read_text()
         css = (ROOT / "countdowns" / "countdowns.css").read_text()
         start = html.index('<section class="shelf" id="got"')
-        end = html.index('<section class="shelf" id="dexter"', start)
+        end = html.index('</section>', start)
         shelf = html[start:end]
 
         self.assertIn('<div class="shelf-kicker">2012 – 2019</div>', shelf)

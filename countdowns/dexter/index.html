@@ -6,7 +6,7 @@
   <title>Dexter Countdowns · Archive</title>
   <meta name="description" content="An archive of the TV-show countdown sites built by Artur Pokusin between 2012 and 2025, preserved and ticking live.">
   <link href="https://gravatar.com/avatar/5c858c5daef12e779828769ee705f46b?s=64" rel="shortcut icon">
-  <link rel="stylesheet" href="/countdowns/countdowns.css?v=45c79f82">
+  <link rel="stylesheet" href="/countdowns/countdowns.css?v=e77fc064">
 </head>
 <body>
   <div class="wrap">
@@ -20,7 +20,7 @@
           <button class="carousel-btn carousel-next" type="button" aria-label="Next preview">›</button>
         </div>
         <div class="grid">
-      <a class="card" href="/countdowns/dexter/s8-final/" data-thumb="/countdowns/assets/previews/dexter-s8-final.jpg" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/dexter/s8-final/" data-show="dexter" data-archive-href="/countdowns/dexter/s8-final/" data-thumb="/countdowns/assets/previews/dexter-s8-final.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/dexter/s8-final/" loading="lazy" tabindex="-1" scrolling="no" title="Series Finale preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Series Finale</div>
@@ -28,7 +28,7 @@
           <div class="desc">The minimalist redesign, white cards, blood-red badges, labels turned on their side.</div>
         </div>
       </a>
-      <a class="card" href="/countdowns/dexter/s7-finale/" data-thumb="/countdowns/assets/previews/dexter-s7-finale.jpg" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/dexter/s7-finale/" data-show="dexter" data-archive-href="/countdowns/dexter/s7-finale/" data-thumb="/countdowns/assets/previews/dexter-s7-finale.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/dexter/s7-finale/" loading="lazy" tabindex="-1" scrolling="no" title="Season 7 · Finale preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Season 7 · Finale</div>
@@ -43,7 +43,7 @@
         <summary><span class="tw">▶</span> Archived variants <span class="ct">1</span></summary>
       <div class="carousel">
         <div class="grid">
-      <a class="card" href="/countdowns/dexter/coming-soon/" data-thumb="/countdowns/assets/previews/dexter-coming-soon.jpg" target="_blank" rel="noopener">
+      <a class="card" href="/countdowns/dexter/coming-soon/" data-show="dexter" data-archive-href="/countdowns/dexter/coming-soon/" data-thumb="/countdowns/assets/previews/dexter-coming-soon.jpg" target="_blank" rel="noopener">
         <div class="frame"><iframe src="/countdowns/dexter/coming-soon/" loading="lazy" tabindex="-1" scrolling="no" title="Coming Soon preview"></iframe><span class="open">Open ↗</span></div>
         <div class="body">
           <div class="label">Coming Soon</div>
@@ -121,6 +121,13 @@
     dialog.addEventListener('transitionend',endHandler);
   }
   function openFrom(card,originRect){
+    // Honor the live link's native target during a user gesture. Deferred world
+    // activation retains a reliable same-window fallback after that gesture expires.
+    if(card.classList.contains('card-live')){
+      if(card.target==='_blank'&&navigator.userActivation&&navigator.userActivation.isActive){window.open(card.href,'_blank','noopener');}
+      else{window.location.href=card.href;}
+      return;
+    }
     clearTimeout(ft);stopEnd();closing=false;var token=++generation;
     srcRect=originRect&&['left','top','width','height'].every(function(k){return Number.isFinite(originRect[k]);})&&originRect.width>0&&originRect.height>0?originRect:null;
     srcCard=card; var url=card.getAttribute('href');
@@ -169,6 +176,7 @@
   document.querySelectorAll('a.card').forEach(function(c){
     c.addEventListener('click',function(e){
       if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return;
+      if(c.classList.contains('card-live'))return;
       if(shouldOpenFullCountdown()){ e.preventDefault(); window.location.href=c.href; return; }
       e.preventDefault(); openFrom(c);
     });

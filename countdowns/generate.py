@@ -11,6 +11,7 @@ REPO = os.path.dirname(CD)
 # collapsed=False  -> shown on the main gallery + details grid
 # collapsed=True   -> only in the details page's collapsible "Archived variants"
 # chip             -> only Severance shows an indicator ("Live")
+# live_url         -> a still preview with a native link to the actual live site
 SHOWS = [
     {
         "slug": "got", "name": "Game of Thrones", "emoji": "\U0001F409",
@@ -108,10 +109,11 @@ SHOWS = [
         "slug": "severance", "name": "Severance", "emoji": "\U0001F9E0",
         "domain": "severancecountdown.com", "live": True, "years": "2025 –",
         "versions": [
+            {"slug": "tracker", "label": "Season 3", "year": "2025", "collapsed": False, "chip": "Live",
+             "live_url": "https://severancecountdown.com/", "thumbnail": "severance-live.jpg",
+             "desc": "The live Macrodata Refinement Tracker at severancecountdown.com."},
             {"slug": "s2", "label": "Season 2", "year": "2025", "collapsed": False,
              "desc": "The Macrodata Refinement Tracker caught mid-season, episode bars half-filled, with a live countdown to the next drop."},
-            {"slug": "tracker", "label": "Season 3", "year": "2025", "collapsed": False, "chip": "Live",
-             "desc": "The Lumon terminal counting down to Season 3, a refinement grid, season tracker, and a live clock. Still running at severancecountdown.com."},
         ],
     },
 ]
@@ -465,6 +467,13 @@ OVERLAY_JS = """<script>(function(){
     dialog.addEventListener('transitionend',endHandler);
   }
   function openFrom(card,originRect){
+    // Honor the live link's native target during a user gesture. Deferred world
+    // activation retains a reliable same-window fallback after that gesture expires.
+    if(card.classList.contains('card-live')){
+      if(card.target==='_blank'&&navigator.userActivation&&navigator.userActivation.isActive){window.open(card.href,'_blank','noopener');}
+      else{window.location.href=card.href;}
+      return;
+    }
     clearTimeout(ft);stopEnd();closing=false;var token=++generation;
     srcRect=originRect&&['left','top','width','height'].every(function(k){return Number.isFinite(originRect[k]);})&&originRect.width>0&&originRect.height>0?originRect:null;
     srcCard=card; var url=card.getAttribute('href');
@@ -513,6 +522,7 @@ OVERLAY_JS = """<script>(function(){
   document.querySelectorAll('a.card').forEach(function(c){
     c.addEventListener('click',function(e){
       if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return;
+      if(c.classList.contains('card-live'))return;
       if(shouldOpenFullCountdown()){ e.preventDefault(); window.location.href=c.href; return; }
       e.preventDefault(); openFrom(c);
     });
@@ -659,6 +669,9 @@ html.gallery:not(.art-project){--bg:#eee7d8;--fg:#39291f;--muted:#6c6155;--line:
 .gallery .desc{display:none}
 .gallery .chip{border-radius:0;font-size:9px;background:none;padding:0}
 .gallery .chip::before{animation:none}
+.card-live{position:relative}
+.gallery[data-theme=control] .card-live .chip{position:absolute;z-index:2;top:-12px;left:24px;padding:6px 10px;background:var(--accent);color:var(--bg);font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;box-shadow:0 2px 0 #0004}
+.gallery[data-theme=control] .card-live .chip::before{width:5px;height:5px;background:currentColor;margin-right:7px}
 .gallery .more.shelf-more{font-size:10px;margin-top:24px}
 .gallery .foot{margin-top:0;border-color:var(--line);font-size:10px}
 .gallery .eyebrow,.gallery .title,.gallery .lede,.gallery .shelf{animation:none}
@@ -721,6 +734,9 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
 [data-theme=control] .frame .open{background:var(--fg);color:var(--bg)}
 [data-theme=control] .body{padding:16px 2px 0}
 [data-theme=control] .label{font:11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.01em}
+.gallery[data-theme=control] .card-live .frame{border-color:#405046;outline-color:#9ba98f;box-shadow:inset 0 1px #c4cfaa40,0 3px #080e0a,0 26px 42px -18px #000c,0 0 38px #f0715210}
+.gallery[data-theme=control] .card-live .label{font-size:13px}
+.gallery[data-theme=control] .card-live .open{opacity:1;transform:none}
 [data-theme=control] .year{font-size:10px}
 .gallery[data-theme=control] .card .year{display:none}
 .gallery[data-theme=control] .card .row:has(:only-child.year){display:none}
@@ -736,7 +752,9 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
  .gallery[data-theme=control] .shelf{margin-bottom:56px}
  .gallery[data-theme=control] .shelf-aside{margin-bottom:24px}
  .gallery[data-theme=control] .shelf .grid{grid-template-columns:1.1fr 1fr;gap:clamp(30px,4.2vw,60px);padding:18px 20px 52px}
- .gallery[data-theme=control] #severance .card:nth-child(2){width:92%;margin-left:auto;--mount-angle:2.2deg;--mount-y:38px}
+ .gallery[data-theme=control] #severance .grid{grid-template-columns:1.5fr .85fr}
+ .gallery[data-theme=control] #severance .card-live{--mount-angle:-.7deg}
+ .gallery[data-theme=control] #severance .card:nth-child(2){width:92%;margin-left:auto;--mount-angle:2.2deg;--mount-y:76px}
  .gallery[data-theme=control] #house-of-cards .grid{width:68%;margin-left:24%;grid-template-columns:minmax(0,1fr)}
  .gallery[data-theme=control] #house-of-cards .card{--mount-angle:1.6deg;--mount-y:0px}
  .gallery[data-theme=control] #breaking-bad .grid{grid-template-columns:.94fr 1.14fr}
@@ -900,25 +918,29 @@ def card(show_slug, v, zoom=4, defer_frames=False):
     base = f'/countdowns/{show_slug}/{v["slug"]}'
     if not base.endswith("/"):
         base += "/"
+    destination = v.get("live_url", base)
+    live_class = " card-live" if v.get("live_url") else ""
+    open_label = "Visit ↗" if v.get("live_url") else "Open ↗"
     # zoom controls the iframe's internal render width (cardWidth x zoom); raise it for
     # shows whose responsive breakpoint would otherwise trigger a collapsed/tablet layout
     zstyle = (f' style="width:{zoom*100}%;height:{zoom*100}%;transform:scale({1/zoom:.4f})"'
               if zoom != 4 else "")
-    iframe = (f'<iframe src="{base}"{zstyle} loading="lazy" tabindex="-1" scrolling="no" '
+    iframe = (f'<iframe src="{esc(destination)}"{zstyle} loading="lazy" tabindex="-1" scrolling="no" '
               f'title="{esc(v["label"])} preview"></iframe>')
     chip = f'<span class="chip">{esc(v["chip"])}</span>' if v.get("chip") else ""
-    thumb = f'/countdowns/assets/previews/{show_slug}-{v["slug"].strip("/").replace("/", "-")}.jpg'
+    thumb_name = v.get("thumbnail", f'{show_slug}-{v["slug"].strip("/").replace("/", "-")}.jpg')
+    thumb = f'/countdowns/assets/previews/{thumb_name}'
     still = f'<img src="{thumb}" alt="" loading="lazy" width="720" height="450">'
-    if v.get("still_preview"):
-        # Keep focus-stealing archived forms out of passive cards. Opening the card
-        # still loads its untouched, interactive page in the preview overlay.
+    if v.get("live_url") or v.get("still_preview"):
+        # Live sites use a faithful still and open at their own origin. Keep
+        # focus-stealing archive forms in their deliberate preview overlay too.
         iframe = still
     elif defer_frames:
         # Inert until the theme is known: art worlds never boot archived scripts behind their stills.
         iframe = f'<template class="card-preview">{iframe}</template>{still}'
     return (
-        f'      <a class="card" href="{base}" data-thumb="{thumb}" target="_blank" rel="noopener">\n'
-        f'        <div class="frame">{iframe}<span class="open">Open ↗</span></div>\n'
+        f'      <a class="card{live_class}" href="{esc(destination)}" data-show="{show_slug}" data-archive-href="{base}" data-thumb="{thumb}" target="_blank" rel="noopener">\n'
+        f'        <div class="frame">{iframe}<span class="open">{open_label}</span></div>\n'
         f'        <div class="body">\n'
         f'          <div class="label">{esc(v["label"])}</div>\n'
         f'          <div class="row"><span class="year">{esc(v["year"])}</span>{chip}</div>\n'
@@ -960,6 +982,9 @@ def grid(show_slug, versions, zoom=4, include_controls=True, carousel_root=True,
 
 # --------------------------------------------------------------- gallery
 def build_gallery():
+    # Default Control reads newest first, including before scripts run. References
+    # restore chronological show order in the early footer setup below.
+    gallery_shows = list(reversed(SHOWS))
     out = head("Countdowns · Artur Pokusin", THEME_HEAD, gallery=True)
     out += '    <header class="masthead"><a class="home-link" href="/">Artur Pokusin</a></header>\n'
     out += ('    <section class="art-hero" id="art-hero" aria-label="Interactive countdown archive" hidden>\n'
@@ -1009,12 +1034,14 @@ def build_gallery():
         '    </section>\n    </div>\n'
     )
     out += '    <nav class="shownav" aria-label="Shows">\n'
-    for i, s in enumerate(SHOWS):
+    for s in gallery_shows:
+        i = SHOWS.index(s)
         out += (f'      <a href="#{s["slug"]}"><span class="nv-e">{["I", "II", "III", "IV", "V", "VI", "VII"][i]}</span>'
                 f'<span class="nv-n">{esc(s["name"])}</span></a>\n')
     out += '    </nav>\n'
     out += '    <main class="archive-shelves" id="archive-shelves" aria-label="Countdown archive">\n'
-    for i, s in enumerate(SHOWS):
+    for s in gallery_shows:
+        i = SHOWS.index(s)
         shown = [v for v in s["versions"] if not v.get("collapsed") and not v.get("timeline")]
         collapsed = [v for v in s["versions"] if v.get("collapsed") and not v.get("timeline")]
         has_more = bool(collapsed) or any(v.get("timeline") for v in s["versions"])
@@ -1046,7 +1073,7 @@ def build_gallery():
     previews = """<script>(function(){
       var art=document.documentElement.classList.contains('art-project');
       document.querySelectorAll('[data-theme-asset]').forEach(function(img){if(img.dataset.themeAsset===(art?'art':document.documentElement.dataset.theme)){img.src=img.dataset.src;}});
-      if(document.documentElement.dataset.theme==='control'){
+      if(document.documentElement.dataset.theme!=='control'){
         var shelves=document.getElementById('archive-shelves'),nav=document.querySelector('.shownav');
         shelves.append.apply(shelves,Array.from(shelves.children).reverse());
         nav.append.apply(nav,Array.from(nav.children).reverse());

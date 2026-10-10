@@ -330,7 +330,7 @@ export async function create(ctx) {
   ctx.dom.joystick.setAttribute('aria-label', 'Walk'); ctx.dom.joystick.setAttribute('role', 'group');
   // Hero samples rejoin their shelves: the conventional archive remains complete below the world.
   for (const card of ctx.mounts) {
-    const slug = card.getAttribute('href').split('/')[2];
+    const slug = card.dataset.show || card.getAttribute('href').split('/')[2];
     const shelf = ctx.shelves.find(section => section.id === slug); const grid = shelf?.querySelector('.grid');
     if (grid) {
       grid.querySelector('.art-return')?.remove(); grid.prepend(card); card.classList.remove('art-mount');
