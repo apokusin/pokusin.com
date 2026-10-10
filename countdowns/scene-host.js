@@ -53,11 +53,12 @@ async function createSceneHost({theme, reducedMotion = matchMedia('(prefers-redu
   document.querySelectorAll('.shelf-more, .scene-timeline-link').forEach(anchor => {
     const href = new URL(anchor.href); href.searchParams.set('theme', theme); anchor.href = href.href;
   });
+  // Scene descriptors keep archive identity; native anchors retain the real live destination.
   const exhibits = cards.map((anchor, index) => ({
-    id: anchor.getAttribute('href').replace(/^\/countdowns\//, '').replace(/\/$/, '').replaceAll('/', ':'),
+    id: (anchor.dataset.archiveHref || anchor.getAttribute('href')).replace(/^\/countdowns\//, '').replace(/\/$/, '').replaceAll('/', ':'),
     show: anchor.closest('.shelf').id, label: anchor.querySelector('.label').textContent.trim(),
     showName: anchor.closest('.shelf').querySelector('.shelf-name').textContent.trim(), live: !!anchor.querySelector('.chip'),
-    href: anchor.getAttribute('href'), thumbnail: anchor.dataset.thumb, thumb: anchor.dataset.thumb, anchor, index
+    href: anchor.dataset.archiveHref || anchor.getAttribute('href'), thumbnail: anchor.dataset.thumb, thumb: anchor.dataset.thumb, anchor, index
   }));
   exhibits.forEach(item => item.anchor.setAttribute('aria-label', `${item.showName}, ${item.label}${item.live ? ', live' : ''}`));
   const groups = shelves.map(shelf => ({id: shelf.id, slug: shelf.id, name: shelf.querySelector('.shelf-name').textContent.trim(), exhibits: exhibits.filter(e => e.show === shelf.id)}));
