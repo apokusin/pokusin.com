@@ -687,6 +687,7 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
 [data-theme=control] h1.title{font:400 clamp(104px,14.8vw,210px)/.79 'Archivo Black',Impact,sans-serif;letter-spacing:-.075em;text-transform:uppercase;white-space:normal}
 [data-theme=control] .title-line{display:block;width:max-content;font-style:normal;transform:translateX(3%)}
 [data-theme=control] .title-line:last-child{margin:10px 0 0 auto;color:var(--accent);transform:rotate(-2deg) translateX(-3%)}
+[data-theme=control] .lede{max-width:58ch;margin:22px 0 12px;padding:0;font:400 13px/1.65 'IBM Plex Mono',monospace;text-wrap:pretty}
 [data-theme=control] .title-glyph{transition:transform .45s cubic-bezier(.2,.8,.2,1)}
 [data-theme=control] .title-glyph:hover{transform:translateY(-3px)}
 [data-theme=control] .next-countdown{--instrument-stage:clamp(190px,20.4vw,294px);display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:var(--instrument-stage) 20px 20px;gap:8px 16px;height:auto;margin:6px 0 18px;z-index:2}
@@ -814,6 +815,7 @@ html.gallery[data-theme=control]{--bg:#111916;--fg:#ded8c9;--muted:#939b8b;--lin
  [data-theme=control] h1.title{font-size:clamp(60px,20.8vw,155px);line-height:.84;letter-spacing:-.075em}
  [data-theme=control] .title-line{transform:none}
  [data-theme=control] .title-line:last-child{margin-top:8px;transform:rotate(-2deg)}
+ [data-theme=control] .lede{font-size:13px;margin:20px 0 12px;padding-inline:0}
  [data-theme=control] .next-countdown{--instrument-stage:clamp(168px,43vw,320px);height:auto;grid-template-rows:var(--instrument-stage) 20px 20px;gap:6px 10px;margin:10px 0 14px}
  [data-theme=control] .scene-stage{height:var(--instrument-stage);width:100%;left:auto;top:auto}
  [data-theme=control] .fallback-digits{left:49%;top:48%;font-size:clamp(14px,4.8vw,32px);transform:translate(-50%,-50%) scaleX(1.15)}
@@ -1000,7 +1002,8 @@ def build_gallery():
             '<div class="hero-atmosphere" aria-hidden="true"></div>'
             '<div class="archive-heading"><p class="eyebrow">2012 — ∞</p>'
             f'<h1 class="title" aria-label="Countdowns"><span aria-hidden="true">{title}</span></h1>\n'
-            '</div>\n')
+            '<p class="lede">I’ve been making countdown sites for TV shows since 2012. '
+            'The old sites are preserved here, and Severance is still live.</p></div>\n')
     out += (
         '    <section class="next-countdown" aria-labelledby="next-countdown-heading">\n'
         '      <img class="royal-guardians" data-theme-asset="royal" data-src="assets/royal-guardians.png" alt="" width="1440" height="520">\n'
